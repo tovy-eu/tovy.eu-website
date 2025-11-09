@@ -75,13 +75,15 @@ export function ProjectIntakeForm() {
         ? ["projectFocus", "challenges", "vision"]
         : step === 4
         ? ["budgetReadiness", "timelineReadiness"]
+        : step === 5
+        ? ["name", "email"]
         : [];
     
     const isValid = fieldsToValidate.length > 0 ? await form.trigger(fieldsToValidate) : true;
 
     if (isValid) {
       if (step === 3) {
-        logEvent('completed_form_step_3');
+        logEvent('completed_form_step_3', {});
       }
       setStep(s => Math.min(s + 1, totalSteps));
     }
