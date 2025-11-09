@@ -16,7 +16,7 @@ export function HeroSection() {
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Button asChild size="lg" className="font-semibold text-lg">
-            <Link href="#project-form">
+            <Link href="/project-request">
               Start Project
               <ArrowDown className="ml-2 h-5 w-5" />
             </Link>
