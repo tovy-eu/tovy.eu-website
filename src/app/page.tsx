@@ -2,7 +2,6 @@ import { HeroSection } from "@/components/landing/hero-section";
 import { PainSolutionSection } from "@/components/landing/pain-solution-section";
 import { AboutSection } from "@/components/landing/about-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
-import { ProjectIntakeForm } from "@/components/landing/project-intake-form";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
 export default function Home() {
@@ -26,12 +25,6 @@ export default function Home() {
             <TestimonialsSection />
           </ScrollReveal>
         </div>
-
-        <ScrollReveal>
-          <div id="project-form" className="py-24 sm:py-32">
-            <ProjectIntakeForm />
-          </div>
-        </ScrollReveal>
       </div>
     </main>
   );
