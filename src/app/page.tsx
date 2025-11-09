@@ -6,7 +6,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <div className="w-full max-w-6xl px-4 md:px-8">
         <HeroSection />
         
@@ -26,6 +26,6 @@ export default function Home() {
           </ScrollReveal>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
