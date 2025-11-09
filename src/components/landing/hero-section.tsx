@@ -7,7 +7,7 @@ export function HeroSection() {
     <section 
       className="relative flex flex-col items-center justify-center min-h-[80vh] text-center py-20 md:py-32"
       style={{
-        background: 'linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9)'
+        background: 'linear-gradient(to bottom, #2980B9, #6DD5FA, #FFFFFF)'
       }}
     >
       <div className="z-10 max-w-4xl">
