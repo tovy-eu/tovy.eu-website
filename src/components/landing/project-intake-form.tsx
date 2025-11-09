@@ -83,7 +83,7 @@ export function ProjectIntakeForm() {
 
     if (isValid) {
       if (step === 3) {
-        logEvent('completed_form_step_3', {});
+        logEvent('completed_form_step_3');
       }
       setStep(s => Math.min(s + 1, totalSteps));
     }
