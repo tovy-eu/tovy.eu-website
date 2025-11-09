@@ -4,9 +4,12 @@ import { ArrowDown } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[80vh] text-center py-20 md:py-32">
-      <div className="absolute top-0 left-0 w-full h-full bg-grid-white/[0.05] -z-10"></div>
-      
+    <section 
+      className="relative flex flex-col items-center justify-center min-h-[80vh] text-center py-20 md:py-32"
+      style={{
+        background: 'linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9)'
+      }}
+    >
       <div className="z-10 max-w-4xl">
         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl">
           Your AI development partner
