@@ -3,9 +3,7 @@
 import { useState, useTransition, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useFormState } from "react-dom";
 import { projectRequestSchema, type ProjectRequestData } from "@/lib/definitions";
-import { submitProjectRequest } from "@/app/actions";
 import { logEvent } from "@/lib/firebase";
 import { useToast } from "@/hooks/use-toast";
 
@@ -33,6 +31,7 @@ export function ProjectIntakeForm() {
   const [step, setStep] = useState(1);
   const { toast } = useToast();
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const form = useForm<ProjectRequestData>({
     resolver: zodResolver(projectRequestSchema),
@@ -48,26 +47,20 @@ export function ProjectIntakeForm() {
     },
   });
 
-  const [state, formAction] = useFormState(submitProjectRequest, { message: "", success: false });
-
   useEffect(() => {
     logEvent("began_project_form");
   }, []);
   
-  useEffect(() => {
-    if (state.message) {
-      if (state.success) {
-        setFormSubmitted(true);
-        logEvent("submitted_project_request");
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Submission Failed",
-          description: state.message,
-        });
-      }
-    }
-  }, [state, toast]);
+  const onSubmit = (data: ProjectRequestData) => {
+    startTransition(() => {
+      // Since this is a static site, we can't use server actions.
+      // You would typically send this data to a third-party service or a backend API.
+      // For this example, we'll just log it and show a success message.
+      console.log("Form data submitted:", data);
+      logEvent("submitted_project_request");
+      setFormSubmitted(true);
+    });
+  };
 
   const nextStep = async () => {
     const fieldsToValidate: (keyof ProjectRequestData)[] = step === 1
@@ -115,127 +108,233 @@ export function ProjectIntakeForm() {
       <CardHeader>
         <CardTitle className="text-2xl">Let's build together</CardTitle>
         <CardDescription>Tell us about your project. It'll take just a few minutes.</CardDescription>
-        <Progress value={(step / totalSteps) * 100} className="mt-4" />
+        <Progress value={(step / totalSteps) * 100} className="w-full mt-4" />
       </CardHeader>
       <Form {...form}>
-        <form action={formAction}>
-          <CardContent className="min-h-[350px]">
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <CardContent className="min-h-[400px]">
             {step === 1 && (
               <div className="space-y-8">
-                <FormField name="maturity" control={form.control} render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-lg">Project Maturity</FormLabel>
-                    <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-2 gap-4">
-                      {options.maturity.map(opt => <FormItem key={opt}><FormControl><RadioGroupItem value={opt} id={opt} className="peer sr-only" /><Label htmlFor={opt} className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">{opt}</Label></FormItem>)}
-                    </RadioGroup><FormMessage />
-                  </FormItem>
-                )} />
-                <FormField name="companySize" control={form.control} render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-lg">Company Size</FormLabel>
-                    <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-2 gap-4">
-                       {options.companySize.map(opt => <FormItem key={opt}><FormControl><RadioGroupItem value={opt} id={opt} className="peer sr-only" /><Label htmlFor={opt} className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">{opt}</Label></FormItem>)}
-                    </RadioGroup><FormMessage />
-                  </FormItem>
-                )} />
+                <FormField
+                  control={form.control}
+                  name="maturity"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>What's the maturity of your project?</FormLabel>
+                      <FormControl>
+                        <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {options.maturity.map(option => (
+                            <FormItem key={option} className="flex items-center space-x-3 space-y-0">
+                              <FormControl>
+                                <RadioGroupItem value={option} />
+                              </FormControl>
+                              <FormLabel className="font-normal">{option}</FormLabel>
+                            </FormItem>
+                          ))}
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="companySize"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>What's your company size?</FormLabel>
+                      <FormControl>
+                        <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {options.companySize.map(option => (
+                            <FormItem key={option} className="flex items-center space-x-3 space-y-0">
+                              <FormControl>
+                                <RadioGroupItem value={option} />
+                              </FormControl>
+                              <FormLabel className="font-normal">{option}</FormLabel>
+                            </FormItem>
+                          ))}
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
             )}
             {step === 2 && (
-              <div className="space-y-8">
-                 <FormField name="engineeringTeam" control={form.control} render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-lg">Engineering Team</FormLabel>
-                    <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-2 gap-4">
-                       {options.engineeringTeam.map(opt => <FormItem key={opt}><FormControl><RadioGroupItem value={opt} id={opt} className="peer sr-only" /><Label htmlFor={opt} className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">{opt}</Label></FormItem>)}
-                    </RadioGroup><FormMessage />
-                  </FormItem>
-                )} />
+               <div className="space-y-8">
+                <FormField
+                  control={form.control}
+                  name="engineeringTeam"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>What's the size of your engineering team?</FormLabel>
+                      <FormControl>
+                        <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {options.engineeringTeam.map(option => (
+                            <FormItem key={option} className="flex items-center space-x-3 space-y-0">
+                              <FormControl>
+                                <RadioGroupItem value={option} />
+                              </FormControl>
+                              <FormLabel className="font-normal">{option}</FormLabel>
+                            </FormItem>
+                          ))}
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
             )}
             {step === 3 && (
-              <div className="space-y-6">
-                <FormField control={form.control} name="projectFocus" render={({ field }) => (
-                  <FormItem><FormLabel className="text-lg">What is your project's main focus?</FormLabel><FormControl><Textarea placeholder="e.g., Building an internal knowledge base, creating a customer-facing chatbot..." {...field} /></FormControl><FormMessage /></FormItem>
-                )} />
-                <FormField control={form.control} name="challenges" render={({ field }) => (
-                  <FormItem><FormLabel className="text-lg">What are your main challenges?</FormLabel><FormControl><Textarea placeholder="e.g., Unstructured data, slow response times, high support volume..." {...field} /></FormControl><FormMessage /></FormItem>
-                )} />
-                <FormField control={form.control} name="vision" render={({ field }) => (
-                  <FormItem><FormLabel className="text-lg">What is your vision for this project?</FormLabel><FormControl><Textarea placeholder="e.g., Automate 50% of support tickets, provide instant answers to employee questions..." {...field} /></FormControl><FormMessage /></FormItem>
-                )} />
+              <div className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="projectFocus"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>What is your project's main focus?</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder="e.g., Building an AI-powered chatbot for customer support" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="challenges"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>What are your main challenges?</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder="e.g., Reducing response times, improving accuracy..." {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="vision"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>What's your vision for the project?</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder="e.g., To provide instant, 24/7 support to our users" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
             )}
             {step === 4 && (
               <div className="space-y-8">
-                <FormField name="budgetReadiness" control={form.control} render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-lg">Budget Readiness</FormLabel>
-                    <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      {options.budgetReadiness.map(opt => <FormItem key={opt}><FormControl><RadioGroupItem value={opt} id={opt} className="peer sr-only" /><Label htmlFor={opt} className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">{opt}</Label></FormItem>)}
-                    </RadioGroup><FormMessage />
-                  </FormItem>
-                )} />
-                <FormField name="timelineReadiness" control={form.control} render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-lg">Timeline Readiness</FormLabel>
-                    <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      {options.timelineReadiness.map(opt => <FormItem key={opt}><FormControl><RadioGroupItem value={opt} id={opt} className="peer sr-only" /><Label htmlFor={opt} className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">{opt}</Label></FormItem>)}
-                    </RadioGroup><FormMessage />
-                  </FormItem>
-                )} />
+                <FormField
+                  control={form.control}
+                  name="budgetReadiness"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>What's your budget readiness?</FormLabel>
+                      <FormControl>
+                        <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {options.budgetReadiness.map(option => (
+                            <FormItem key={option} className="flex items-center space-x-3 space-y-0">
+                              <FormControl>
+                                <RadioGroupItem value={option} />
+                              </FormControl>
+                              <FormLabel className="font-normal">{option}</FormLabel>
+                            </FormItem>
+                          ))}
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="timelineReadiness"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>What's your timeline readiness?</FormLabel>
+                      <FormControl>
+                        <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {options.timelineReadiness.map(option => (
+                            <FormItem key={option} className="flex items-center space-x-3 space-y-0">
+                              <FormControl>
+                                <RadioGroupItem value={option} />
+                              </FormControl>
+                              <FormLabel className="font-normal">{option}</FormLabel>
+                            </FormItem>
+                          ))}
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
             )}
             {step === 5 && (
-              <div className="space-y-6">
-                <p className="text-lg font-semibold">Almost there! Just a few final details.</p>
-                <FormField control={form.control} name="name" render={({ field }) => (
-                  <FormItem><FormLabel>Your Name</FormLabel><FormControl><Input placeholder="Jane Doe" {...field} /></FormControl><FormMessage /></FormItem>
-                )} />
-                <FormField control={form.control} name="email" render={({ field }) => (
-                  <FormItem><FormLabel>Your Email</FormLabel><FormControl><Input placeholder="jane.doe@example.com" {...field} /></FormControl><FormMessage /></FormItem>
-                )} />
+               <div className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Your Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="John Doe" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Your Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="john.doe@example.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
             )}
           </CardContent>
           <CardFooter className="flex justify-between">
-            {step > 1 ? (<Button type="button" variant="ghost" onClick={prevStep}><ArrowLeft className="mr-2 h-4 w-4"/>Back</Button>) : <div/>}
-            {step < totalSteps ? (<Button type="button" onClick={nextStep}>Next<ArrowRight className="ml-2 h-4 w-4"/></Button>) : (
-              <SubmitButton />
+            {step > 1 ? (
+              <Button type="button" variant="ghost" onClick={prevStep}>
+                <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+              </Button>
+            ) : <div />}
+            {step < totalSteps ? (
+              <Button type="button" onClick={nextStep}>
+                Next <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            ) : (
+              <Button type="submit" disabled={isPending} size="lg">
+                {isPending ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
+                  </>
+                ) : (
+                  <>
+                    Submit Project <Send className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </Button>
             )}
           </CardFooter>
-          {/* Hidden inputs to pass all data to server action */}
-          {Object.entries(form.getValues()).map(([key, value]) => 
-            value && typeof value === 'string' ? <input key={key} type="hidden" name={key} value={value} /> : null
-          )}
         </form>
       </Form>
     </Card>
-  );
-}
-
-function SubmitButton() {
-  const [pending, startTransition] = useTransition();
-  
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    startTransition(() => {
-      // The form submission is handled by the form's action prop
-      // We just need to trigger the form submission programmatically
-      event.currentTarget.form?.requestSubmit();
-    });
-  };
-
-  return (
-    <Button type="submit" onClick={handleClick} disabled={pending} size="lg">
-      {pending ? (
-        <>
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
-        </>
-      ) : (
-        <>
-          Submit Project <Send className="ml-2 h-4 w-4" />
-        </>
-      )}
-    </Button>
   );
 }
