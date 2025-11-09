@@ -15,13 +15,17 @@ export default function Home() {
           <PainSolutionSection />
         </ScrollReveal>
 
-        <ScrollReveal>
-          <AboutSection />
-        </ScrollReveal>
+        <div id="about">
+          <ScrollReveal>
+            <AboutSection />
+          </ScrollReveal>
+        </div>
 
-        <ScrollReveal>
-          <TestimonialsSection />
-        </ScrollReveal>
+        <div id="testimonials">
+          <ScrollReveal>
+            <TestimonialsSection />
+          </ScrollReveal>
+        </div>
 
         <ScrollReveal>
           <div id="project-form" className="py-24 sm:py-32">
