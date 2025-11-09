@@ -27,18 +27,20 @@ export function Header() {
   }, []);
 
   return (
-    <header 
+    <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         scrolled ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-transparent"
       )}
     >
-      <div className="container relative flex h-16 max-w-6xl items-center justify-between px-4 md:px-8">
-        <Link href="/" className="font-bold text-lg text-primary transition-transform hover:scale-105 mr-8">
-          Tovy AI
-        </Link>
+      <div className="container grid h-16 max-w-6xl grid-cols-3 items-center px-4 md:px-8">
+        <div className="flex items-center justify-start">
+            <Link href="/" className="font-bold text-lg text-primary transition-transform hover:scale-105">
+              Tovy AI
+            </Link>
+        </div>
         
-        <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <nav className="hidden md:flex justify-center">
           <ul className="flex items-center space-x-2">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -50,13 +52,13 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center justify-end">
           <Button asChild>
             <Link href="#project-form">Start Project</Link>
           </Button>
         </div>
 
-        <div className="md:hidden">
+        <div className="flex items-center justify-end md:hidden col-start-3">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon">
