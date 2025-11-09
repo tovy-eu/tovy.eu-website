@@ -37,6 +37,9 @@ export function ProjectIntakeForm() {
   const form = useForm<ProjectRequestData>({
     resolver: zodResolver(projectRequestSchema),
     defaultValues: {
+      maturity: "",
+      companySize: "",
+      engineeringTeam: "",
       projectFocus: "",
       challenges: "",
       vision: "",
