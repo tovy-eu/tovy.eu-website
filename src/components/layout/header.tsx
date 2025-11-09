@@ -33,23 +33,22 @@ export function Header() {
       )}
     >
       <div className="container relative flex h-16 max-w-6xl items-center justify-between px-4 md:px-8">
-        <div className="flex items-center">
+        <div className="flex items-center gap-x-8">
             <Link href="/" className="font-bold text-lg text-primary transition-transform hover:scale-105">
               Tovy AI
             </Link>
+          <nav className="hidden md:flex">
+            <ul className="flex items-center space-x-2">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Button asChild variant="ghost">
+                    <Link href={link.href}>{link.label}</Link>
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
-        
-        <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <ul className="flex items-center space-x-2">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Button asChild variant="ghost">
-                  <Link href={link.href}>{link.label}</Link>
-                </Button>
-              </li>
-            ))}
-          </ul>
-        </nav>
 
         <div className="hidden md:flex items-center justify-end">
           <Button asChild>
@@ -57,7 +56,7 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="flex items-center justify-end md:hidden col-start-3">
+        <div className="flex items-center justify-end md:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon">
