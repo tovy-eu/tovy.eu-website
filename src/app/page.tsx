@@ -9,13 +9,14 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <HeroSection />
+
+      <SectionDivider />
+
+      <ScrollReveal className="w-full">
+        <PainSolutionSection />
+      </ScrollReveal>
+      
       <div className="w-full max-w-6xl px-4 md:px-8">
-        <SectionDivider />
-
-        <ScrollReveal>
-          <PainSolutionSection />
-        </ScrollReveal>
-
         <SectionDivider />
 
         <div id="about">
