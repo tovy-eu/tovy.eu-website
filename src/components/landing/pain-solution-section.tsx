@@ -63,21 +63,6 @@ export function PainSolutionSection() {
 
           </div>
         </div>
-
-        {/* Client Role Box */}
-        <div className="bg-card border-2 border-primary/50 rounded-lg p-8 shadow-lg shadow-primary/10">
-          <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
-            <div className="flex-shrink-0">
-              <div className="p-3 bg-primary/10 rounded-lg">
-                <BrainCircuit className="h-8 w-8 text-primary" />
-              </div>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold">What you do</h3>
-              <p className="mt-2 text-muted-foreground text-lg">{clientRole}</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
