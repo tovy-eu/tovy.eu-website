@@ -15,7 +15,7 @@ export function Header() {
         {/* Left: Logo */}
         <Link href="/" className="font-bold text-lg">
           <span>TOV</span>
-          <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">Y</span>
+          <span className="bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">Y</span>
         </Link>
 
         {/* Right: CTA Button */}
