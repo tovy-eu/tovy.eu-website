@@ -13,7 +13,7 @@ const pillars = [
     icon: <Zap className="h-8 w-8" />,
     title: "Optimalisatie",
     description: "Prestaties zijn geen bijzaak. We ontwerpen vanaf dag één voor snelheid, efficiëntie en betrouwbaarheid.",
-    color: "#A178B8"
+    color: "#566FFF"
   },
   {
     icon: <Bird className="h-8 w-8" />,
