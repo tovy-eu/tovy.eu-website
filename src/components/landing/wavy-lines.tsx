@@ -16,25 +16,41 @@ export function WavyLines() {
           d="M-200,400 C200,200 600,600 1000,400 S1800,200 2200,400"
           fill="none"
           stroke="url(#wavy-gradient)"
-          strokeWidth="2"
+          strokeWidth="1.5"
           className="animated-wavy-line"
-          style={{ animationDuration: '12s' }}
+          style={{ animationDuration: '10s' }}
         />
         <path
-          d="M-200,425 C200,225 600,625 1000,425 S1800,225 2200,425"
+          d="M-200,410 C200,210 600,610 1000,410 S1800,210 2200,410"
           fill="none"
           stroke="url(#wavy-gradient)"
-          strokeWidth="2"
+          strokeWidth="1.5"
           className="animated-wavy-line"
-          style={{ animationDelay: '-5s', animationDuration: '15s' }}
+          style={{ animationDelay: '-3s', animationDuration: '12s' }}
         />
         <path
-          d="M-200,450 C200,250 600,650 1000,450 S1800,250 2200,450"
+          d="M-200,420 C200,220 600,620 1000,420 S1800,220 2200,420"
           fill="none"
           stroke="url(#wavy-gradient)"
-          strokeWidth="2"
+          strokeWidth="1.5"
           className="animated-wavy-line"
-          style={{ animationDelay: '-2s', animationDuration: '20s' }}
+          style={{ animationDelay: '-1s', animationDuration: '8s' }}
+        />
+        <path
+          d="M-200,430 C200,230 600,630 1000,430 S1800,230 2200,430"
+          fill="none"
+          stroke="url(#wavy-gradient)"
+          strokeWidth="1.5"
+          className="animated-wavy-line"
+          style={{ animationDelay: '-6s', animationDuration: '15s' }}
+        />
+        <path
+          d="M-200,440 C200,240 600,640 1000,440 S1800,240 2200,440"
+          fill="none"
+          stroke="url(#wavy-gradient)"
+          strokeWidth="1.5"
+          className="animated-wavy-line"
+          style={{ animationDelay: '-4s', animationDuration: '9s' }}
         />
       </svg>
     </div>
