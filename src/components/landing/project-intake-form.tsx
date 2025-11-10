@@ -60,6 +60,9 @@ export function ProjectIntakeForm() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isPending, startTransition] = useTransition();
 
+  const [showChallenges, setShowChallenges] = useState(false);
+  const [showVision, setShowVision] = useState(false);
+
   const currentField = formSteps[step].field as keyof ProjectRequestData | "projectDetails";
 
   const form = useForm<ProjectRequestData>({
@@ -85,6 +88,29 @@ export function ProjectIntakeForm() {
   useEffect(() => {
     logEvent("began_project_form");
   }, []);
+
+  useEffect(() => {
+    if (projectFocus) {
+      const timer = setTimeout(() => {
+        setShowChallenges(true);
+      }, 2000);
+      return () => clearTimeout(timer);
+    } else {
+      setShowChallenges(false);
+    }
+  }, [projectFocus]);
+
+  useEffect(() => {
+    if (challenges) {
+      const timer = setTimeout(() => {
+        setShowVision(true);
+      }, 2000);
+      return () => clearTimeout(timer);
+    } else {
+      setShowVision(false);
+    }
+  }, [challenges]);
+
 
   const onSubmit = (data: ProjectRequestData) => {
     startTransition(() => {
@@ -155,7 +181,7 @@ export function ProjectIntakeForm() {
         />
         
         {/* Challenges */}
-        {projectFocus && (
+        {showChallenges && (
           <div className="border-t border-border pt-8">
             <FormField
               control={form.control}
@@ -174,7 +200,7 @@ export function ProjectIntakeForm() {
         )}
 
         {/* Vision */}
-        {challenges && (
+        {showVision && (
           <div className="border-t border-border pt-8">
             <FormField
               control={form.control}
