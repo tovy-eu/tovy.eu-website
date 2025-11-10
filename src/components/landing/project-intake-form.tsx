@@ -22,7 +22,7 @@ const formSteps = [
   { field: "companySize", label: "What's your company size?*", description: "This helps us understand the scale of your organization and potential project scope." },
   { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us understand if we'll collaborate with your team or handle development end-to-end." },
   { field: "projectDetails", label: "What do you need help with?*"},
-  { field: "budgetReadiness", label: "What's your budget readiness?" },
+  { field: "budgetReadiness", label: "Are you ready to invest in this project?*", description: "Our projects typically start from $10,000, which covers MVPs, pilots, or first production builds." },
   { field: "timelineReadiness", label: "What's your timeline readiness?" },
   { field: "name", label: "What's your name?" },
   { field: "email", label: "And your email?" },
@@ -42,9 +42,8 @@ const options: Record<string, { label: string, hint?: string }[]> = {
     { label: "No", hint: "N" },
   ],
   budgetReadiness: [
-    { label: "Have a defined budget" },
-    { label: "Exploring options" },
-    { label: "No budget yet" },
+    { label: "Yes, that fits", hint: "A" },
+    { label: "No, not right now", hint: "B" },
   ],
   timelineReadiness: [
     { label: "ASAP" },
@@ -277,8 +276,8 @@ export function ProjectIntakeForm() {
       );
     }
 
-    if (field === 'companySize' || field === 'engineeringTeam') {
-      const fieldName = field as 'companySize' | 'engineeringTeam';
+    if (field === 'companySize' || field === 'engineeringTeam' || field === 'budgetReadiness') {
+      const fieldName = field as 'companySize' | 'engineeringTeam' | 'budgetReadiness';
       return (
         <FormField
           control={form.control}
