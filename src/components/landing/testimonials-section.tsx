@@ -6,16 +6,16 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 const testimonials = [
   {
-    quote: "Tovy AI leverde een systeem dat niet alleen krachtig was, maar ook ongelooflijk eenvoudig te beheren voor ons team. De transparantie en controle die we nu hebben, is een game-changer.",
+    quote: "Tovy AI delivered a system that was not only powerful but also incredibly easy for our team to manage. The transparency and control we have now is a game-changer.",
     name: "Alex Rivera",
     title: "CTO, Innovate Inc.",
     avatar: PlaceHolderImages.find(p => p.id === 'testimonial-1')?.imageUrl || '',
     avatarHint: PlaceHolderImages.find(p => p.id === 'testimonial-1')?.imageHint || '',
   },
   {
-    quote: "De snelheid en betrouwbaarheid van het AI-systeem dat Tovy voor ons heeft gebouwd, overtrof alle verwachtingen. Onze operationele efficiëntie is omhooggeschoten.",
+    quote: "The speed and reliability of the AI system Tovy built for us exceeded all expectations. Our operational efficiency has skyrocketed.",
     name: "Samantha Chen",
-    title: "Hoofd Operaties, Logicore",
+    title: "Head of Operations, Logicore",
     avatar: PlaceHolderImages.find(p => p.id === 'testimonial-2')?.imageUrl || '',
     avatarHint: PlaceHolderImages.find(p => p.id === 'testimonial-2')?.imageHint || '',
   },
@@ -30,10 +30,10 @@ export function TestimonialsSection() {
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
-            Gemoedsrust, Geleverd
+            Peace of Mind, Delivered
           </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-            Vertrouwd door teams die duidelijkheid en controle waarderen.
+            Trusted by teams who value clarity and control.
           </p>
         </div>
         <div className="mt-16">
@@ -54,7 +54,7 @@ export function TestimonialsSection() {
                             {testimonial.avatar && (
                               <Image
                                 src={testimonial.avatar}
-                                alt={`Avatar van ${testimonial.name}`}
+                                alt={`Avatar of ${testimonial.name}`}
                                 width={40}
                                 height={40}
                                 data-ai-hint={testimonial.avatarHint}
