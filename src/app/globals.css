@@ -66,3 +66,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .PhoneInputInput {
+    @apply rounded-s-none !border-s-0;
+  }
+
+  .PhoneInputCountry {
+    @apply h-full;
+  }
+}

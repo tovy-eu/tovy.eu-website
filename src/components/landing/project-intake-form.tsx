@@ -15,6 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
 import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PhoneInput } from "@/components/ui/phone-input";
 
 const formSteps = [
   { field: "maturity", label: "How mature is your use of AI?*", description: "This helps us see how far you've taken AI in your business." },
@@ -180,7 +181,7 @@ export function ProjectIntakeForm() {
           )} />
         </div>
         <FormField control={form.control} name="phone" render={({ field }) => (
-          <FormItem><FormLabel>Phone number *</FormLabel><FormControl><Input type="tel" {...field} /></FormControl><FormMessage /></FormItem>
+            <FormItem><FormLabel>Phone number *</FormLabel><FormControl><PhoneInput {...field} /></FormControl><FormMessage /></FormItem>
         )} />
         <FormField control={form.control} name="email" render={({ field }) => (
           <FormItem><FormLabel>Email *</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
