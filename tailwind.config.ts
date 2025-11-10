@@ -71,6 +71,9 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      boxShadow: {
+        lg: '0 10px 15px -3px var(--pillar-shadow-color), 0 4px 6px -4px var(--pillar-shadow-color)',
+      },
       keyframes: {
         'accordion-down': {
           from: {
