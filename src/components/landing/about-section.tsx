@@ -25,7 +25,7 @@ const pillars = [
     icon: <Lightbulb className="h-8 w-8" />,
     title: "Innovatie",
     description: "We bouwen met een toekomstgerichte mentaliteit, zodat uw systemen aanpasbaar en klaar voor de toekomst zijn.",
-    color: "#8F668C"
+    color: "#FFB8FA"
   }
 ];
 
