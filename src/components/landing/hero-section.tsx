@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { ArrowDown } from "lucide-react";
 import { cn } from '@/lib/utils';
+import { AiChipIcon } from './ai-chip-icon';
 
 export function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
@@ -38,13 +39,14 @@ export function HeroSection() {
         <p className="mt-6 text-lg leading-8 text-white/80 sm:text-xl">
           Wij bouwen schone, snelle en betrouwbare systemen die u volledige controle en gemoedsrust geven.
         </p>
-        <div className="mt-10 flex items-center justify-center gap-x-6">
+        <div className="mt-10 flex flex-col items-center justify-center gap-x-6">
           <Button asChild size="lg" className="font-semibold text-lg">
             <Link href="/project-request">
               Dien uw idee in
               <ArrowDown className="ml-2 h-5 w-5" />
             </Link>
           </Button>
+          <AiChipIcon className="mt-12" />
         </div>
       </div>
     </section>
