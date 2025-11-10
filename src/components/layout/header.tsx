@@ -23,8 +23,8 @@ export function Header() {
         scrolled ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-transparent"
       )}
     >
-      <div className="container flex h-16 items-center justify-between px-4 md:px-8">
-        <Link href="/" className="font-bold text-lg text-primary transition-transform hover:scale-105">
+      <div className="container flex h-16 items-center justify-between">
+        <Link href="/" className="font-bold text-lg text-primary">
           Tovy AI
         </Link>
         <Button asChild>
