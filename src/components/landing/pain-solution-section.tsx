@@ -28,39 +28,41 @@ export function PainSolutionSection() {
         </p>
       </div>
       <div className="mt-16 space-y-8">
-        <div className="bg-card border rounded-lg p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-            
-            {/* Pains Column */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold">You don't have to</h3>
-              <ul className="space-y-4">
-                {pains.map((pain, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="flex-shrink-0">
-                      <XCircle className="h-6 w-6 text-destructive" />
-                    </div>
-                    <span className="text-muted-foreground">{pain}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="p-[1px] rounded-lg bg-gradient-to-r from-primary to-[#8F668C]">
+          <div className="bg-card rounded-lg p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+              
+              {/* Pains Column */}
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold">You don't have to</h3>
+                <ul className="space-y-4">
+                  {pains.map((pain, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="flex-shrink-0">
+                        <XCircle className="h-6 w-6 text-destructive" />
+                      </div>
+                      <span className="text-muted-foreground">{pain}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            {/* Solutions Column */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold">Calm Clarity with Tovy</h3>
-              <ul className="space-y-4">
-                {solutions.map((solution, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="flex-shrink-0">
-                      <CheckCircle2 className="h-6 w-6 text-primary" />
-                    </div>
-                    <span className="text-muted-foreground">{solution}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {/* Solutions Column */}
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold">Calm Clarity with Tovy</h3>
+                <ul className="space-y-4">
+                  {solutions.map((solution, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="flex-shrink-0">
+                        <CheckCircle2 className="h-6 w-6 text-primary" />
+                      </div>
+                      <span className="text-muted-foreground">{solution}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
+            </div>
           </div>
         </div>
       </div>
