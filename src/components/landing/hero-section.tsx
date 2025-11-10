@@ -1,8 +1,21 @@
+"use client";
+
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { ArrowDown } from "lucide-react";
+import { cn } from '@/lib/utils';
 
 export function HeroSection() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section 
       className="relative w-full flex flex-col items-center justify-center min-h-[80vh] text-center py-20 md:py-32"
@@ -10,7 +23,12 @@ export function HeroSection() {
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
     >
-      <div className="z-10 max-w-4xl px-4">
+      <div
+        className={cn(
+          'transition-all ease-in-out duration-700 delay-300 z-10 max-w-4xl px-4',
+          isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        )}
+      >
         <h1 
           className="text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
           style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}
