@@ -1,5 +1,18 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, XCircle } from "lucide-react";
+
+const pains = [
+  "Black-box systems you can't control.",
+  "Endless tweaking and unreliable results.",
+  "Complex tools that slow down your team.",
+  "Unpredictable costs and project delays.",
+];
+
+const solutions = [
+  "Transparent systems with full code ownership.",
+  "Reliable, predictable, and optimized performance.",
+  "Simple integration and developer-first approach.",
+  "Peace of mind with clear deliverables and support.",
+];
 
 export function PainSolutionSection() {
   return (
@@ -13,39 +26,38 @@ export function PainSolutionSection() {
         </p>
       </div>
       <div className="mt-16 bg-card border rounded-lg p-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card className="bg-destructive/10 border-destructive/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <XCircle className="text-destructive" />
-                <span>The Chaos of Traditional AI</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-4 text-muted-foreground">
-                <li>Black-box systems you can't control.</li>
-                <li>Endless tweaking and unreliable results.</li>
-                <li>Complex tools that slow down your team.</li>
-                <li>Unpredictable costs and project delays.</li>
-              </ul>
-            </CardContent>
-          </Card>
-          <Card className="border-primary/20 bg-primary/10">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <CheckCircle2 className="text-primary" />
-                <span>Calm Clarity with Tovy</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-4 text-muted-foreground">
-                <li>Transparent systems with full code ownership.</li>
-                <li>Reliable, predictable, and optimized performance.</li>
-                <li>Simple integration and developer-first approach.</li>
-                <li>Peace of mind with clear deliverables and support.</li>
-              </ul>
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+          
+          {/* Pains Column */}
+          <div className="space-y-6">
+            <h3 className="text-2xl font-semibold">You don't have to</h3>
+            <ul className="space-y-4">
+              {pains.map((pain, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <div className="flex-shrink-0">
+                    <XCircle className="h-6 w-6 text-destructive" />
+                  </div>
+                  <span className="text-muted-foreground">{pain}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Solutions Column */}
+          <div className="space-y-6">
+            <h3 className="text-2xl font-semibold">Calm Clarity with Tovy</h3>
+            <ul className="space-y-4">
+              {solutions.map((solution, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <div className="flex-shrink-0">
+                    <CheckCircle2 className="h-6 w-6 text-primary" />
+                  </div>
+                  <span className="text-muted-foreground">{solution}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
       </div>
     </section>
