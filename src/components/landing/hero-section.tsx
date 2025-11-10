@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { ArrowDown } from "lucide-react";
 import { cn } from '@/lib/utils';
-import { AiChipIcon } from './ai-chip-icon';
 import { WavyLines } from './wavy-lines';
 
 export function HeroSection() {
@@ -48,7 +47,6 @@ export function HeroSection() {
               <ArrowDown className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          <AiChipIcon />
         </div>
       </div>
     </section>

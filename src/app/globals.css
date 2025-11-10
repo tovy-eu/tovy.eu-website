@@ -68,26 +68,6 @@
 }
 
 @layer utilities {
-  .animated-circuit-path {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: draw-circuit 8s ease-in-out infinite;
-  }
-  @keyframes draw-circuit {
-    0% {
-      stroke-dashoffset: 1;
-    }
-    25% {
-      stroke-dashoffset: 0;
-    }
-    75% {
-      stroke-dashoffset: 0;
-    }
-    100% {
-      stroke-dashoffset: -1;
-    }
-  }
-
   .animated-wavy-line {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
