@@ -17,18 +17,9 @@ const solutions = [
 export function PainSolutionSection() {
   return (
     <div 
-      className="bg-gradient-to-b from-primary/10 to-[#8F668C]/10 rounded-2xl"
-      style={{
-        backgroundImage: `
-          linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
-          linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px),
-          linear-gradient(to bottom, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1))
-        `,
-        backgroundSize: '2rem 2rem, 2rem 2rem, 100% 100%',
-        maskImage: 'linear-gradient(to bottom right, #000, transparent)',
-      }}
+      className="pain-solution-container relative bg-gradient-to-b from-primary/10 to-[#8F668C]/10 rounded-2xl overflow-hidden"
     >
-      <section className="py-24 sm:py-32">
+      <section className="py-24 sm:py-32 relative z-10">
         <div className="mx-auto max-w-4xl text-center px-4">
           <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
             Het Tovy Verschil

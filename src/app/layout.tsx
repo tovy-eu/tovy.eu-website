@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './pain-solution-texture.css';
 import { Toaster } from "@/components/ui/toaster"
 import { PageLayout } from '@/components/layout/page-layout';
 
