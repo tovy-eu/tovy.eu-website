@@ -25,8 +25,9 @@ export function Header() {
     >
       <div className="flex h-16 w-full items-center justify-between px-6">
         {/* Left: Logo */}
-        <Link href="/" className="font-bold text-lg text-primary">
-          TOVY
+        <Link href="/" className="font-bold text-lg">
+          <span>TOV</span>
+          <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Y</span>
         </Link>
 
         {/* Right: CTA Button */}
