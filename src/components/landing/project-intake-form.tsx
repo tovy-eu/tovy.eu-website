@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 
 const formSteps = [
   { field: "maturity", label: "How mature is your use of AI?*" },
-  { field: "companySize", label: "What's your company size?" },
+  { field: "companySize", label: "What's your company size?*", description: "This helps us understand the scale of your organization and potential project scope." },
   { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us understand if we'll collaborate with your team or handle development end-to-end." },
   { field: "projectFocus", label: "What is your project's main focus?" },
   { field: "challenges", label: "What are your main challenges?" },
@@ -173,12 +173,13 @@ export function ProjectIntakeForm() {
         />
       );
     }
-    
-    if (field === 'engineeringTeam') {
+
+    if (field === 'companySize' || field === 'engineeringTeam') {
+      const fieldName = field as 'companySize' | 'engineeringTeam';
       return (
         <FormField
           control={form.control}
-          name="engineeringTeam"
+          name={fieldName}
           render={({ field: formField }) => (
             <FormItem>
               <div className="flex items-center gap-4">
@@ -189,7 +190,7 @@ export function ProjectIntakeForm() {
               
               <FormControl>
                 <div className="space-y-3 pt-4 max-w-sm">
-                  {options.engineeringTeam.map(option => (
+                  {options[fieldName].map(option => (
                     <button
                       key={option.label}
                       type="button"
@@ -319,7 +320,7 @@ export function ProjectIntakeForm() {
             
             {renderOkButtonForSingleOption()}
 
-            {step > 0 && step < totalSteps - 1 && !options[currentField] && (
+            {step > 0 && step < totalSteps - 1 && !options[currentField] && !['companySize', 'engineeringTeam'].includes(currentField) && (
               <Button type="button" onClick={nextStep}>
                 Next <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -338,7 +339,7 @@ export function ProjectIntakeForm() {
                 )}
               </Button>
             ) : (
-              step > 0 && options[currentField] && (
+              step > 0 && (options[currentField] || ['companySize', 'engineeringTeam'].includes(currentField)) && (
                 <div />
               )
             )}
@@ -348,5 +349,3 @@ export function ProjectIntakeForm() {
     </Card>
   );
 }
-
-    
