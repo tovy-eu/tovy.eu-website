@@ -20,11 +20,13 @@ export function PainSolutionSection() {
               <span>The Chaos of Traditional AI</span>
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4 text-muted-foreground">
-            <p>Black-box systems you can't control.</p>
-            <p>Endless tweaking and unreliable results.</p>
-            <p>Complex tools that slow down your team.</p>
-            <p>Unpredictable costs and project delays.</p>
+          <CardContent>
+            <ul className="space-y-4 text-muted-foreground">
+              <li>Black-box systems you can't control.</li>
+              <li>Endless tweaking and unreliable results.</li>
+              <li>Complex tools that slow down your team.</li>
+              <li>Unpredictable costs and project delays.</li>
+            </ul>
           </CardContent>
         </Card>
         <Card className="border-primary/20 bg-primary/10">
@@ -34,11 +36,13 @@ export function PainSolutionSection() {
               <span>Calm Clarity with Tovy</span>
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4 text-muted-foreground">
-            <p>Transparent systems with full code ownership.</p>
-            <p>Reliable, predictable, and optimized performance.</p>
-            <p>Simple integration and developer-first approach.</p>
-            <p>Peace of mind with clear deliverables and support.</p>
+          <CardContent>
+            <ul className="space-y-4 text-muted-foreground">
+              <li>Transparent systems with full code ownership.</li>
+              <li>Reliable, predictable, and optimized performance.</li>
+              <li>Simple integration and developer-first approach.</li>
+              <li>Peace of mind with clear deliverables and support.</li>
+            </ul>
           </CardContent>
         </Card>
       </div>
