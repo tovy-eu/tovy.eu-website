@@ -15,7 +15,7 @@ export function AiChipIcon({ className }: { className?: string }) {
     "M64 64h24v24H64z"
   ];
   const circuitStyles = (index: number) => ({
-    animationDelay: `${index * 0.1}s`,
+    animationDelay: `${index * 0.2}s`,
   });
 
   return (
