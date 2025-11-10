@@ -13,7 +13,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-16 w-full items-center justify-between px-4 md:px-8 max-w-6xl">
         {/* Left: Logo */}
-        <Link href="/" className="font-bold text-2xl">
+        <Link href="/" className="font-bold text-3xl">
           <span>TOV</span>
           <span className="bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">Y</span>
         </Link>
