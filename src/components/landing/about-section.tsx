@@ -31,7 +31,42 @@ const pillars = [
 
 export function AboutSection() {
   return (
-    <section className="py-24 sm:py-32">
+    <section className="relative py-24 sm:py-32">
+      <div className="absolute inset-0 z-0 overflow-hidden hidden lg:block">
+        <svg
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto"
+          width="1150"
+          height="300"
+          viewBox="0 0 1150 300"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#2B5EFF" />
+              <stop offset="33%" stopColor="#566FFF" />
+              <stop offset="66%" stopColor="#A792FF" />
+              <stop offset="100%" stopColor="#FFB8FA" />
+            </linearGradient>
+            <filter id="path-glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <path
+            d="M50 150 C 250 150, 300 50, 425 50 C 550 50, 600 250, 725 250 C 850 250, 900 150, 1100 150"
+            stroke="url(#path-gradient)"
+            strokeWidth="2"
+            fill="none"
+            className="animated-wavy-line opacity-50"
+            style={{ filter: "url(#path-glow)" }}
+          />
+        </svg>
+      </div>
+
       <div className="mx-auto max-w-4xl text-center">
         <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
           Wij bouwen systemen die mens en technologie in harmonie laten samenwerken.
@@ -40,11 +75,11 @@ export function AboutSection() {
           Onze filosofie is gebouwd op vier kernpilaren. Ze vormen de basis van elk project dat we ondernemen en zorgen ervoor dat we niet alleen code leveren, maar ook vertrouwen en controle.
         </p>
       </div>
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="relative mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {pillars.map((pillar) => (
           <Card 
             key={pillar.title} 
-            className="text-center transition-all hover:shadow-lg hover:-translate-y-1"
+            className="text-center transition-all hover:shadow-lg hover:-translate-y-1 bg-card/80 backdrop-blur-sm"
             style={{ '--pillar-color': pillar.color, '--pillar-shadow-color': `${pillar.color}1A` } as React.CSSProperties}
           >
             <CardHeader className="items-center">
