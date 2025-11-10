@@ -12,11 +12,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Progress } from "@/components/ui/progress";
 import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Label } from "../ui/label";
 
 const formSteps = [
   { field: "maturity", label: "How mature is your use of AI?*", description: "This helps us see how far you've taken AI in your business." },
@@ -25,8 +23,7 @@ const formSteps = [
   { field: "projectDetails", label: "What do you need help with?*"},
   { field: "budgetReadiness", label: "Are you ready to invest in this project?*", description: "Our projects typically start from $10,000, which covers MVPs, pilots, or first production builds." },
   { field: "timelineReadiness", label: "We like to move fast – do you?*", description: "After kickoff, our team can deliver a first working version within two weeks. We have limited capacity each month, so we prioritize companies ready to take action." },
-  { field: "name", label: "What's your name?" },
-  { field: "email", label: "And your email?" },
+  { field: "contactDetails", label: "Contact details*", description: "Please share your name and company information." },
 ];
 
 const totalSteps = formSteps.length;
@@ -61,7 +58,7 @@ export function ProjectIntakeForm() {
   const [showChallenges, setShowChallenges] = useState(false);
   const [showVision, setShowVision] = useState(false);
 
-  const currentField = formSteps[step].field as keyof ProjectRequestData | "projectDetails";
+  const currentField = formSteps[step].field as keyof ProjectRequestData | "projectDetails" | "contactDetails";
 
   const form = useForm<ProjectRequestData>({
     resolver: zodResolver(projectRequestSchema),
@@ -74,8 +71,11 @@ export function ProjectIntakeForm() {
       vision: "",
       budgetReadiness: "",
       timelineReadiness: "",
-      name: "",
+      firstName: "",
+      lastName: "",
+      phone: "",
       email: "",
+      company: "",
     },
     mode: 'onChange',
   });
@@ -122,10 +122,14 @@ export function ProjectIntakeForm() {
   };
 
   const nextStep = async () => {
-    const fieldsToValidate: (keyof ProjectRequestData)[] =
-      currentField === 'projectDetails'
-        ? ['projectFocus', 'challenges', 'vision']
-        : [currentField as keyof ProjectRequestData];
+    let fieldsToValidate: (keyof ProjectRequestData)[] = [];
+    if (currentField === 'projectDetails') {
+      fieldsToValidate = ['projectFocus', 'challenges', 'vision'];
+    } else if (currentField === 'contactDetails') {
+      fieldsToValidate = ['firstName', 'lastName', 'phone', 'email', 'company'];
+    } else {
+      fieldsToValidate = [currentField as keyof ProjectRequestData];
+    }
         
     const isValid = await form.trigger(fieldsToValidate);
 
@@ -155,6 +159,38 @@ export function ProjectIntakeForm() {
       </Card>
     );
   }
+
+  const renderContactDetailsStep = () => {
+    const { label, description } = formSteps[step];
+    return (
+      <div className="space-y-6">
+        <div>
+          <div className="flex items-center gap-4">
+            <span className="text-primary font-semibold">{step + 1} →</span>
+            <h2 className="text-2xl font-semibold">{label}</h2>
+          </div>
+          {description && <p className="text-muted-foreground mt-2">{description}</p>}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FormField control={form.control} name="firstName" render={({ field }) => (
+            <FormItem><FormLabel>First name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+          )} />
+          <FormField control={form.control} name="lastName" render={({ field }) => (
+            <FormItem><FormLabel>Last name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+          )} />
+        </div>
+        <FormField control={form.control} name="phone" render={({ field }) => (
+          <FormItem><FormLabel>Phone number *</FormLabel><FormControl><Input type="tel" {...field} /></FormControl><FormMessage /></FormItem>
+        )} />
+        <FormField control={form.control} name="email" render={({ field }) => (
+          <FormItem><FormLabel>Email *</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
+        )} />
+        <FormField control={form.control} name="company" render={({ field }) => (
+          <FormItem><FormLabel>Company *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+        )} />
+      </div>
+    )
+  };
   
   const renderProjectDetailsStep = () => {
     return (
@@ -224,6 +260,10 @@ export function ProjectIntakeForm() {
     
     if (field === 'projectDetails') {
       return renderProjectDetailsStep();
+    }
+    
+    if (field === 'contactDetails') {
+      return renderContactDetailsStep();
     }
 
     if (field === 'maturity') {
@@ -326,54 +366,7 @@ export function ProjectIntakeForm() {
       );
     }
 
-    if (options[field]) {
-      return (
-        <FormField
-          control={form.control}
-          name={field as keyof ProjectRequestData}
-          render={({ field: formField }) => (
-            <FormItem className="space-y-4">
-               <div className="flex items-center gap-4">
-                <span className="text-primary font-semibold">{step + 1} →</span>
-                <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
-              </div>
-              <FormControl>
-                <RadioGroup onValueChange={(value) => { formField.onChange(value); setTimeout(() => nextStep(), 200); }} defaultValue={formField.value} className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                  {options[field].map(option => (
-                    <FormItem key={option.label} className="flex items-center space-x-3 space-y-0">
-                      <FormControl>
-                        <RadioGroupItem value={option.label} id={option.label} className="h-6 w-6" />
-                      </FormControl>
-                      <Label htmlFor={option.label} className="font-normal text-lg cursor-pointer">{option.label}</Label>
-                    </FormItem>
-                  ))}
-                </RadioGroup>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      );
-    }
-
-    return (
-      <FormField
-        control={form.control}
-        name={field as 'name' | 'email'}
-        render={({ field: formField }) => (
-          <FormItem>
-            <div className="flex items-center gap-4">
-              <span className="text-primary font-semibold">{step + 1} →</span>
-              <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
-            </div>
-            <FormControl>
-              <Input placeholder="Your answer here..." {...formField} className="text-lg mt-4" type={field === 'email' ? 'email' : 'text'} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-    );
+    return null;
   }
 
   return (
@@ -395,30 +388,29 @@ export function ProjectIntakeForm() {
               </Button>
             ) : <div />}
             
-            {currentField === 'projectDetails' || ['name', 'email'].includes(currentField) ? (
+            {currentField === 'projectDetails' ? (
               <Button type="button" onClick={nextStep}>
                 Next <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             ) : null}
             
             {step === totalSteps - 1 ? (
-              <Button type="submit" disabled={isPending} size="lg">
-                {isPending ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
-                  </>
-                ) : (
-                  <>
-                    Submit Project <Send className="ml-2 h-4 w-4" />
-                  </>
-                )}
-              </Button>
+               isPending ? (
+                <Button type="submit" disabled={true} size="lg">
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
+                </Button>
+               ) : (
+                <Button type="button" onClick={nextStep} size="lg">
+                  OK
+                </Button>
+               )
             ) : null }
+
+            {/* This is a hidden submit button to allow form submission on enter */}
+            <button type="submit" className="hidden" disabled={isPending}></button>
           </CardFooter>
         </form>
       </Form>
     </Card>
   );
 }
-
-    
