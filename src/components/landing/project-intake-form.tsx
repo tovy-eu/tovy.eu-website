@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { projectRequestSchema, type ProjectRequestData } from "@/lib/definitions";
 import { logEvent } from "@/lib/firebase";
 import { useToast } from "@/hooks/use-toast";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,7 +17,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
 import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { PhoneInput } from "@/components/ui/phone-input";
 
 const formSteps = [
   { field: "maturity", label: "How mature is your use of AI?*", description: "This helps us see how far you've taken AI in your business." },
@@ -180,9 +181,24 @@ export function ProjectIntakeForm() {
             <FormItem><FormLabel>Last name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
           )} />
         </div>
-        <FormField control={form.control} name="phone" render={({ field }) => (
-            <FormItem><FormLabel>Phone number *</FormLabel><FormControl><PhoneInput {...field} /></FormControl><FormMessage /></FormItem>
-        )} />
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Phone number *</FormLabel>
+              <FormControl>
+                <PhoneInput
+                  international
+                  defaultCountry="US"
+                  className="[&_input]:h-10 [&_input]:w-full [&_input]:rounded-md [&_input]:border [&_input]:border-input [&_input]:bg-background [&_input]:px-3 [&_input]:py-2 [&_input]:text-base [&_input]:ring-offset-background file:[&_input]:border-0 file:[&_input]:bg-transparent file:[&_input]:text-sm file:[&_input]:font-medium placeholder:[&_input]:text-muted-foreground focus-visible:[&_input]:outline-none focus-visible:[&_input]:ring-2 focus-visible:[&_input]:ring-ring focus-visible:[&_input]:ring-offset-2 disabled:[&_input]:cursor-not-allowed disabled:[&_input]:opacity-50 md:[&_input]:text-sm"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField control={form.control} name="email" render={({ field }) => (
           <FormItem><FormLabel>Email *</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
         )} />
@@ -373,7 +389,7 @@ export function ProjectIntakeForm() {
   return (
     <Card className="w-full max-w-2xl mx-auto border-0 md:border md:shadow-lg">
       <CardHeader>
-        <Progress value={(step / (totalSteps-1)) * 100} className="w-full" />
+        <Progress value={(step / totalSteps) * 100} className="w-full" />
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
