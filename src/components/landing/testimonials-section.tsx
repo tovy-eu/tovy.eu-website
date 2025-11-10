@@ -24,7 +24,7 @@ export function TestimonialsSection() {
   return (
     <section className="py-24 sm:py-32">
       <div className="mx-auto max-w-4xl text-center">
-        <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
           Gemoedsrust, Geleverd
         </h2>
         <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
