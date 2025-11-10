@@ -71,12 +71,21 @@
   .animated-wavy-line {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: move-wavy-line 10s linear infinite;
+    animation: move-wavy-line 10s linear infinite, pulse-glow 4s ease-in-out infinite alternate;
   }
   
   @keyframes move-wavy-line {
     to {
       stroke-dashoffset: -1000;
+    }
+  }
+
+  @keyframes pulse-glow {
+    from {
+      filter: drop-shadow(0 0 4px hsl(var(--primary)));
+    }
+    to {
+      filter: drop-shadow(0 0 10px hsl(var(--primary))) drop-shadow(0 0 10px #8F668C);
     }
   }
 }
