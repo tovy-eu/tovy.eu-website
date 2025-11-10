@@ -21,7 +21,7 @@ export function WavyLines() {
           style={{ animationDuration: '12s' }}
         />
         <path
-          d="M-200,450 C200,250 600,650 1000,450 S1800,250 2200,450"
+          d="M-200,425 C200,225 600,625 1000,425 S1800,225 2200,425"
           fill="none"
           stroke="url(#wavy-gradient)"
           strokeWidth="2"
@@ -29,7 +29,7 @@ export function WavyLines() {
           style={{ animationDelay: '-5s', animationDuration: '15s' }}
         />
         <path
-          d="M-200,500 C200,300 600,700 1000,500 S1800,300 2200,500"
+          d="M-200,450 C200,250 600,650 1000,450 S1800,250 2200,450"
           fill="none"
           stroke="url(#wavy-gradient)"
           strokeWidth="2"
