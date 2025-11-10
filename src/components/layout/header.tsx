@@ -11,7 +11,7 @@ export function Header() {
         "sticky top-0 z-50 w-full bg-background"
       )}
     >
-      <div className="flex h-16 w-full items-center justify-between px-6">
+      <div className="container mx-auto flex h-16 w-full items-center justify-between px-4 md:px-8 max-w-6xl">
         {/* Left: Logo */}
         <Link href="/" className="font-bold text-lg">
           <span>TOV</span>
@@ -26,7 +26,7 @@ export function Header() {
       <div 
         className="h-px w-full" 
         style={{
-          background: 'linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent)'
+          background: 'linear-gradient(to right, transparent, rgba(120, 120, 120, 0.2), transparent)'
         }}
       />
     </header>
