@@ -16,7 +16,7 @@ export function WavyLines() {
           d="M-200,530 C200,330 600,730 1000,530 S1800,330 2200,530"
           fill="none"
           stroke="url(#wavy-gradient)"
-          strokeWidth="1.5"
+          strokeWidth="2"
           className="animated-wavy-line"
           style={{ animationDuration: '10s' }}
         />
@@ -24,7 +24,7 @@ export function WavyLines() {
           d="M-200,540 C200,340 600,740 1000,540 S1800,340 2200,540"
           fill="none"
           stroke="url(#wavy-gradient)"
-          strokeWidth="1.5"
+          strokeWidth="2"
           className="animated-wavy-line"
           style={{ animationDelay: '-3s', animationDuration: '12s' }}
         />
@@ -32,7 +32,7 @@ export function WavyLines() {
           d="M-200,550 C200,350 600,750 1000,550 S1800,350 2200,550"
           fill="none"
           stroke="url(#wavy-gradient)"
-          strokeWidth="1.5"
+          strokeWidth="2"
           className="animated-wavy-line"
           style={{ animationDelay: '-1s', animationDuration: '8s' }}
         />
@@ -40,7 +40,7 @@ export function WavyLines() {
           d="M-200,560 C200,360 600,760 1000,560 S1800,360 2200,560"
           fill="none"
           stroke="url(#wavy-gradient)"
-          strokeWidth="1.5"
+          strokeWidth="2"
           className="animated-wavy-line"
           style={{ animationDelay: '-6s', animationDuration: '15s' }}
         />
@@ -48,7 +48,7 @@ export function WavyLines() {
           d="M-200,570 C200,370 600,770 1000,570 S1800,370 2200,570"
           fill="none"
           stroke="url(#wavy-gradient)"
-          strokeWidth="1.5"
+          strokeWidth="2"
           className="animated-wavy-line"
           style={{ animationDelay: '-4s', animationDuration: '9s' }}
         />
