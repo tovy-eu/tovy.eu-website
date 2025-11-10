@@ -7,7 +7,7 @@ const pillars = [
     icon: <Cpu className="h-8 w-8" />,
     title: "Technologie",
     description: "We gebruiken robuuste, state-of-the-art technologie om systemen te bouwen die krachtig en gemakkelijk te onderhouden zijn.",
-    color: "hsl(var(--primary))"
+    color: "#2B5EFF"
   },
   {
     icon: <Zap className="h-8 w-8" />,
