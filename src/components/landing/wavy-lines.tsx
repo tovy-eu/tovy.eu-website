@@ -13,7 +13,7 @@ export function WavyLines() {
           </linearGradient>
         </defs>
         <path
-          d="M-200,550 C200,350 600,750 1000,550 S1800,350 2200,550"
+          d="M-200,750 C200,550 600,950 1000,750 S1800,550 2200,750"
           fill="none"
           stroke="url(#wavy-gradient)"
           strokeWidth="1.5"
@@ -21,7 +21,7 @@ export function WavyLines() {
           style={{ animationDuration: '10s' }}
         />
         <path
-          d="M-200,560 C200,360 600,760 1000,560 S1800,360 2200,560"
+          d="M-200,760 C200,560 600,960 1000,760 S1800,560 2200,760"
           fill="none"
           stroke="url(#wavy-gradient)"
           strokeWidth="1.5"
@@ -29,7 +29,7 @@ export function WavyLines() {
           style={{ animationDelay: '-3s', animationDuration: '12s' }}
         />
         <path
-          d="M-200,570 C200,370 600,770 1000,570 S1800,370 2200,570"
+          d="M-200,770 C200,570 600,970 1000,770 S1800,570 2200,770"
           fill="none"
           stroke="url(#wavy-gradient)"
           strokeWidth="1.5"
@@ -37,7 +37,7 @@ export function WavyLines() {
           style={{ animationDelay: '-1s', animationDuration: '8s' }}
         />
         <path
-          d="M-200,580 C200,380 600,780 1000,580 S1800,380 2200,580"
+          d="M-200,780 C200,580 600,980 1000,780 S1800,580 2200,780"
           fill="none"
           stroke="url(#wavy-gradient)"
           strokeWidth="1.5"
@@ -45,7 +45,7 @@ export function WavyLines() {
           style={{ animationDelay: '-6s', animationDuration: '15s' }}
         />
         <path
-          d="M-200,590 C200,390 600,790 1000,590 S1800,390 2200,590"
+          d="M-200,790 C200,590 600,990 1000,790 S1800,590 2200,790"
           fill="none"
           stroke="url(#wavy-gradient)"
           strokeWidth="1.5"
