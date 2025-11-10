@@ -11,7 +11,10 @@ export function HeroSection() {
       }}
     >
       <div className="z-10 max-w-4xl px-4">
-        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl">
+        <h1 
+          className="text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
+          style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}
+        >
           Your <span className="bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">AI</span> development partner
         </h1>
         <p className="mt-6 text-lg leading-8 text-white/80 sm:text-xl">
