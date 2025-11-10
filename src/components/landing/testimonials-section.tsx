@@ -24,7 +24,7 @@ export function TestimonialsSection() {
   return (
     <section 
       className="py-24 sm:py-32"
-      style={{ backgroundColor: '#FFB8FA1A' }}
+      style={{ background: 'linear-gradient(to bottom, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1))' }}
     >
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <div className="mx-auto max-w-4xl text-center">
