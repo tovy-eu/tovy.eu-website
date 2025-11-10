@@ -31,7 +31,7 @@ const pillars = [
 
 export function AboutSection() {
   return (
-    <section className="relative py-24 sm:py-32">
+    <section className="relative py-16 sm:py-24">
       <div className="absolute inset-0 z-0 overflow-hidden hidden lg:block">
         <svg
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto"

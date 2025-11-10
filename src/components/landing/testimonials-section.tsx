@@ -23,7 +23,7 @@ const testimonials = [
 export function TestimonialsSection() {
   return (
     <section 
-      className="py-24 sm:py-32"
+      className="py-16 sm:py-24"
       style={{ background: 'linear-gradient(to bottom, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1))' }}
     >
       <div className="mx-auto max-w-6xl px-4 md:px-8">
