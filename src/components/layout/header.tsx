@@ -24,13 +24,13 @@ export function Header() {
       )}
     >
       <div className="container relative flex h-16 max-w-6xl items-center justify-between px-4 md:px-8">
-        <div className="flex flex-1 items-center justify-start">
+        <div className="flex items-center justify-start">
           <Link href="/" className="font-bold text-lg text-primary transition-transform hover:scale-105">
             Tovy AI
           </Link>
         </div>
 
-        <div className="flex flex-1 items-center justify-end">
+        <div className="flex items-center justify-end">
           <Button asChild>
             <Link href="/project-request">Start Project</Link>
           </Button>
