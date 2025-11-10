@@ -5,7 +5,9 @@ import { useMemo } from "react";
 import PhoneInputPrimitive, {
   type Country,
   type PhoneInputProps as PhoneInputPrimitiveProps,
+  getCountryCallingCode,
 } from "react-phone-number-input";
+
 import "react-phone-number-input/style.css";
 import { Button } from "@/components/ui/button";
 import {
@@ -49,7 +51,7 @@ const InputComponent = ({ ...props }: InputProps) => {
 };
 InputComponent.displayName = "InputComponent";
 
-type CountrySelectOption = { label: string; value: Country };
+type CountrySelectOption = { label: string; value: Country, icon: React.ComponentType<{ title: string; className?: string }> };
 
 type CountrySelectProps = {
   disabled?: boolean;
@@ -68,6 +70,8 @@ const CountrySelect = ({
     onChange(country);
   };
 
+  const selectedOption = options.find((option) => option.value === value);
+
   const optionList = useMemo(() => {
     return options
       .filter((option) => option.value)
@@ -77,7 +81,7 @@ const CountrySelect = ({
           key={option.value}
           onSelect={() => handleSelect(option.value)}
         >
-          <FlagComponent country={option.value} countryName={option.label} />
+          <option.icon title={option.label} className="h-5 w-5 rounded-sm" />
           <span>{option.label}</span>
           <span className="text-sm text-muted-foreground">
             +{getCountryCallingCode(option.value)}
@@ -96,10 +100,10 @@ const CountrySelect = ({
         <Button
           type="button"
           variant="outline"
-          className={cn("flex gap-2 rounded-e-none rounded-s-lg pl-3 pr-1")}
+          className={cn("flex gap-2 rounded-e-none rounded-s-lg px-3")}
           disabled={disabled}
         >
-          <FlagComponent country={value} countryName={value} />
+          {selectedOption && <selectedOption.icon title={selectedOption.label} className="h-5 w-5 rounded-sm" />}
           <ChevronsUpDown
             className={cn("-mr-2 h-4 w-4", disabled ? "hidden" : "")}
           />
@@ -120,32 +124,5 @@ const CountrySelect = ({
   );
 };
 CountrySelect.displayName = "CountrySelect";
-
-const FlagComponent = ({ country, countryName }: { country: Country; countryName: string }) => {
-  const Flag = useMemo(() => {
-    try {
-      return require(`react-phone-number-input/flags/${country}.svg`).default;
-    } catch (error) {
-      console.error(`Flag for country "${country}" not found`);
-      return () => null;
-    }
-  }, [country]);
-
-  return <Flag title={countryName} className="h-5 w-5 rounded-sm" />;
-};
-FlagComponent.displayName = "FlagComponent";
-
-// Assuming you have a way to get country calling code
-// This is a placeholder. You might need a library like `libphonenumber-js`
-// to get this information accurately.
-const getCountryCallingCode = (country: Country) => {
-  try {
-    const metadata = require('libphonenumber-js/metadata.min.json');
-    const countryData = metadata.countries[country];
-    return countryData ? countryData[0] : '';
-  } catch (error) {
-    return '';
-  }
-}
 
 export { PhoneInput };
