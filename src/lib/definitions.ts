@@ -2,21 +2,19 @@ import { z } from "zod";
 import { isValidPhoneNumber } from "react-phone-number-input";
 
 export const projectRequestSchema = z.object({
-  maturity: z.string({ required_error: "Please select a project maturity stage." }),
-  companySize: z.string({ required_error: "Please select your company size." }),
-  engineeringTeam: z.string({ required_error: "Please select your engineering team size." }),
-  projectFocus: z.string().min(1, "Please provide your project's main focus."),
-  challenges: z.string().min(1, "Please describe your main challenges."),
-  vision: z.string().min(1, "Please describe your vision for the project."),
-  budgetReadiness: z.string({ required_error: "Please select your budget readiness." }),
-  timelineReadiness: z.string({ required_error: "Please select your timeline readiness." }),
-  firstName: z.string().min(1, "Please enter your first name."),
-  lastName: z.string().min(1, "Please enter your last name."),
-  phone: z.string().refine(isValidPhoneNumber, { message: "Please enter a valid phone number." }),
-  email: z.string().email("Please enter a valid email address."),
-  company: z.string().min(1, "Please enter your company name."),
+  maturity: z.string({ required_error: "Selecteer alstublieft een volwassenheidsfase van het project." }),
+  companySize: z.string({ required_error: "Selecteer alstublieft uw bedrijfsgrootte." }),
+  engineeringTeam: z.string({ required_error: "Selecteer alstublieft de grootte van uw engineeringteam." }),
+  projectFocus: z.string().min(1, "Geef alstublieft de belangrijkste focus van uw project op."),
+  challenges: z.string().min(1, "Beschrijf alstublieft uw belangrijkste uitdagingen."),
+  vision: z.string().min(1, "Beschrijf alstublieft uw visie voor het project."),
+  budgetReadiness: z.string({ required_error: "Selecteer alstublieft uw budgetbereidheid." }),
+  timelineReadiness: z.string({ required_error: "Selecteer alstublieft uw tijdslijnbereidheid." }),
+  firstName: z.string().min(1, "Voer alstublieft uw voornaam in."),
+  lastName: z.string().min(1, "Voer alstublieft uw achternaam in."),
+  phone: z.string().refine(isValidPhoneNumber, { message: "Voer alstublieft een geldig telefoonnummer in." }),
+  email: z.string().email("Voer alstublieft een geldig e-mailadres in."),
+  company: z.string().min(1, "Voer alstublieft uw bedrijfsnaam in."),
 });
 
 export type ProjectRequestData = z.infer<typeof projectRequestSchema>;
-
-    

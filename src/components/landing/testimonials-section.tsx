@@ -5,16 +5,16 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const testimonials = [
   {
-    quote: "Tovy AI delivered a system that was not only powerful but also incredibly easy for our team to manage. The transparency and control we have now is a game-changer.",
+    quote: "Tovy AI leverde een systeem dat niet alleen krachtig was, maar ook ongelooflijk eenvoudig te beheren voor ons team. De transparantie en controle die we nu hebben, is een game-changer.",
     name: "Alex Rivera",
     title: "CTO, Innovate Inc.",
     avatar: PlaceHolderImages.find(p => p.id === 'testimonial-1')?.imageUrl || '',
     avatarHint: PlaceHolderImages.find(p => p.id === 'testimonial-1')?.imageHint || '',
   },
   {
-    quote: "The speed and reliability of the AI system Tovy built for us exceeded all expectations. Our operational efficiency has skyrocketed.",
+    quote: "De snelheid en betrouwbaarheid van het AI-systeem dat Tovy voor ons heeft gebouwd, overtrof alle verwachtingen. Onze operationele efficiëntie is omhooggeschoten.",
     name: "Samantha Chen",
-    title: "Head of Operations, Logicore",
+    title: "Hoofd Operaties, Logicore",
     avatar: PlaceHolderImages.find(p => p.id === 'testimonial-2')?.imageUrl || '',
     avatarHint: PlaceHolderImages.find(p => p.id === 'testimonial-2')?.imageHint || '',
   },
@@ -25,10 +25,10 @@ export function TestimonialsSection() {
     <section className="py-24 sm:py-32">
       <div className="mx-auto max-w-4xl text-center">
         <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-          Peace of Mind, Delivered
+          Gemoedsrust, Geleverd
         </h2>
         <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-          Trusted by teams who value clarity and control.
+          Vertrouwd door teams die duidelijkheid en controle waarderen.
         </p>
       </div>
       <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -41,7 +41,7 @@ export function TestimonialsSection() {
                   {testimonial.avatar && (
                     <Image
                       src={testimonial.avatar}
-                      alt={`Avatar of ${testimonial.name}`}
+                      alt={`Avatar van ${testimonial.name}`}
                       width={40}
                       height={40}
                       data-ai-hint={testimonial.avatarHint}
