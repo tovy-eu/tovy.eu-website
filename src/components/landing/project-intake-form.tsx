@@ -16,14 +16,15 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Progress } from "@/components/ui/progress";
 import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Label } from "../ui/label";
 
 const formSteps = [
-  { field: "maturity", label: "How mature is your use of AI?*" },
+  { field: "maturity", label: "How mature is your use of AI?*", description: "This helps us see how far you've taken AI in your business." },
   { field: "companySize", label: "What's your company size?*", description: "This helps us understand the scale of your organization and potential project scope." },
   { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us understand if we'll collaborate with your team or handle development end-to-end." },
   { field: "projectDetails", label: "What do you need help with?*"},
   { field: "budgetReadiness", label: "Are you ready to invest in this project?*", description: "Our projects typically start from $10,000, which covers MVPs, pilots, or first production builds." },
-  { field: "timelineReadiness", label: "What's your timeline readiness?" },
+  { field: "timelineReadiness", label: "We like to move fast – do you?*", description: "After kickoff, our team can deliver a first working version within two weeks. We have limited capacity each month, so we prioritize companies ready to take action." },
   { field: "name", label: "What's your name?" },
   { field: "email", label: "And your email?" },
 ];
@@ -46,10 +47,8 @@ const options: Record<string, { label: string, hint?: string }[]> = {
     { label: "No, not right now", hint: "B" },
   ],
   timelineReadiness: [
-    { label: "ASAP" },
-    { label: "Within 3 months" },
-    { label: "3-6 months" },
-    { label: "Not sure yet" },
+    { label: "Yes, we're ready to start soon", hint: "A" },
+    { label: "Not yet, still preparing internally", hint: "B" },
   ],
 };
 
@@ -238,11 +237,11 @@ export function ProjectIntakeForm() {
                 <span className="text-primary font-semibold">{step + 1} →</span>
                 <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
               </div>
-              <p className="text-muted-foreground mt-2">This helps us see how far you've taken AI in your business.</p>
+              {description && <p className="text-muted-foreground mt-2">{description}</p>}
               
               <FormControl>
                 <>
-                  <div className="flex justify-center gap-1 my-4">
+                  <div className="flex justify-between gap-1 my-4">
                     {Array.from({ length: 11 }, (_, i) => i).map(value => (
                       <button
                         key={value}
@@ -252,7 +251,7 @@ export function ProjectIntakeForm() {
                           setTimeout(() => nextStep(), 200);
                         }}
                         className={cn(
-                          "h-12 w-12 flex items-center justify-center border rounded-md transition-colors",
+                          "h-10 w-10 flex items-center justify-center border rounded-md transition-colors text-sm",
                           formField.value === String(value)
                             ? "bg-primary text-primary-foreground"
                             : "bg-muted hover:bg-muted/80"
@@ -275,9 +274,9 @@ export function ProjectIntakeForm() {
         />
       );
     }
-
-    if (field === 'companySize' || field === 'engineeringTeam' || field === 'budgetReadiness') {
-      const fieldName = field as 'companySize' | 'engineeringTeam' | 'budgetReadiness';
+    
+    if (['companySize', 'engineeringTeam', 'budgetReadiness', 'timelineReadiness'].includes(field)) {
+      const fieldName = field as 'companySize' | 'engineeringTeam' | 'budgetReadiness' | 'timelineReadiness';
       return (
         <FormField
           control={form.control}
@@ -421,3 +420,5 @@ export function ProjectIntakeForm() {
     </Card>
   );
 }
+
+    
