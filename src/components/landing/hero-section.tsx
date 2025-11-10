@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowDown } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { AiChipIcon } from './ai-chip-icon';
+import { WavyLines } from './wavy-lines';
 
 export function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
@@ -19,11 +20,12 @@ export function HeroSection() {
 
   return (
     <section 
-      className="relative w-full flex flex-col items-center justify-center min-h-[80vh] text-center py-20 md:py-32"
+      className="relative w-full flex flex-col items-center justify-center min-h-[80vh] text-center py-20 md:py-32 overflow-hidden"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
     >
+      <WavyLines />
       <div
         className={cn(
           'transition-all ease-in-out duration-700 delay-300 z-10 max-w-4xl px-4',

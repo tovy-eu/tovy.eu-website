@@ -87,6 +87,18 @@
       stroke-dashoffset: -1;
     }
   }
+
+  .animated-wavy-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: move-wavy-line 10s linear infinite;
+  }
+  
+  @keyframes move-wavy-line {
+    to {
+      stroke-dashoffset: -1000;
+    }
+  }
 }
 
 
