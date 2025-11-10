@@ -1,28 +1,28 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Cpu, Zap, Bird, Lightbulb } from "lucide-react";
+import { BrainCircuit, Rocket, KeyRound, Sparkles } from "lucide-react";
 import React from 'react';
 
 const pillars = [
   {
-    icon: <Cpu className="h-8 w-8" />,
+    icon: <BrainCircuit className="h-8 w-8" />,
     title: "Technologie",
     description: "We gebruiken robuuste, state-of-the-art technologie om systemen te bouwen die krachtig en gemakkelijk te onderhouden zijn.",
     color: "#2B5EFF"
   },
   {
-    icon: <Zap className="h-8 w-8" />,
+    icon: <Rocket className="h-8 w-8" />,
     title: "Optimalisatie",
     description: "Prestaties zijn geen bijzaak. We ontwerpen vanaf dag één voor snelheid, efficiëntie en betrouwbaarheid.",
     color: "#566FFF"
   },
   {
-    icon: <Bird className="h-8 w-8" />,
+    icon: <KeyRound className="h-8 w-8" />,
     title: "Vrijheid",
     description: "U krijgt de volledige eigendom van de code. Ons doel is om u te versterken, niet om u aan een dienst te binden.",
     color: "#A792FF"
   },
   {
-    icon: <Lightbulb className="h-8 w-8" />,
+    icon: <Sparkles className="h-8 w-8" />,
     title: "Innovatie",
     description: "We bouwen met een toekomstgerichte mentaliteit, zodat uw systemen aanpasbaar en klaar voor de toekomst zijn.",
     color: "#FFB8FA"
