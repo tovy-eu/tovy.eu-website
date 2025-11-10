@@ -13,7 +13,7 @@ export function WavyLines() {
           </linearGradient>
         </defs>
         <path
-          d="M-200,300 C200,100 600,500 1000,300 S1800,100 2200,300"
+          d="M-200,400 C200,200 600,600 1000,400 S1800,200 2200,400"
           fill="none"
           stroke="url(#wavy-gradient)"
           strokeWidth="2"
@@ -21,7 +21,7 @@ export function WavyLines() {
           style={{ animationDuration: '12s' }}
         />
         <path
-          d="M-200,400 C200,200 600,600 1000,400 S1800,200 2200,400"
+          d="M-200,450 C200,250 600,650 1000,450 S1800,250 2200,450"
           fill="none"
           stroke="url(#wavy-gradient)"
           strokeWidth="2"
