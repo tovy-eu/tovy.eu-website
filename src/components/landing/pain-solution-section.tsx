@@ -25,6 +25,7 @@ export function PainSolutionSection() {
           linear-gradient(to bottom, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1))
         `,
         backgroundSize: '2rem 2rem, 2rem 2rem, 100% 100%',
+        maskImage: 'linear-gradient(to bottom right, #000, transparent)',
       }}
     >
       <section className="py-24 sm:py-32">
