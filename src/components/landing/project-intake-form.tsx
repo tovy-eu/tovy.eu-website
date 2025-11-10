@@ -21,9 +21,7 @@ const formSteps = [
   { field: "maturity", label: "How mature is your use of AI?*" },
   { field: "companySize", label: "What's your company size?*", description: "This helps us understand the scale of your organization and potential project scope." },
   { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us understand if we'll collaborate with your team or handle development end-to-end." },
-  { field: "projectFocus", label: "What is your project's main focus?" },
-  { field: "challenges", label: "What are your main challenges?" },
-  { field: "vision", label: "What's your vision for the project?" },
+  { field: "projectDetails", label: "What do you need help with?*"},
   { field: "budgetReadiness", label: "What's your budget readiness?" },
   { field: "timelineReadiness", label: "What's your timeline readiness?" },
   { field: "name", label: "What's your name?" },
@@ -62,7 +60,7 @@ export function ProjectIntakeForm() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isPending, startTransition] = useTransition();
 
-  const currentField = formSteps[step].field as keyof ProjectRequestData;
+  const currentField = formSteps[step].field as keyof ProjectRequestData | "projectDetails";
 
   const form = useForm<ProjectRequestData>({
     resolver: zodResolver(projectRequestSchema),
@@ -81,6 +79,9 @@ export function ProjectIntakeForm() {
     mode: 'onChange',
   });
   
+  const projectFocus = form.watch("projectFocus");
+  const challenges = form.watch("challenges");
+
   useEffect(() => {
     logEvent("began_project_form");
   }, []);
@@ -97,7 +98,13 @@ export function ProjectIntakeForm() {
   };
 
   const nextStep = async () => {
-    const isValid = await form.trigger(currentField);
+    const fieldsToValidate: (keyof ProjectRequestData)[] =
+      currentField === 'projectDetails'
+        ? ['projectFocus', 'challenges', 'vision']
+        : [currentField as keyof ProjectRequestData];
+        
+    const isValid = await form.trigger(fieldsToValidate);
+
     if (isValid) {
       if (step < totalSteps - 1) {
         setStep(s => s + 1);
@@ -124,10 +131,77 @@ export function ProjectIntakeForm() {
       </Card>
     );
   }
+  
+  const renderProjectDetailsStep = () => {
+    return (
+      <div className="space-y-8">
+        {/* Project Focus */}
+        <FormField
+          control={form.control}
+          name="projectFocus"
+          render={({ field }) => (
+            <FormItem>
+              <div className="flex items-center gap-4">
+                <span className="text-primary font-semibold">{step + 1} →</span>
+                <FormLabel className="text-2xl font-semibold">What do you need help with?*</FormLabel>
+              </div>
+              <p className="text-muted-foreground mt-2">In one sentence, tell us what you want to build or improve with AI.</p>
+              <FormControl>
+                <Textarea placeholder="e.g., Build a customer support chatbot" {...field} className="text-lg mt-4 min-h-[100px]" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        
+        {/* Challenges */}
+        {projectFocus && (
+          <div className="border-t border-border pt-8">
+            <FormField
+              control={form.control}
+              name="challenges"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-xl font-semibold">Could you elaborate on the specific challenges you're facing?</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="e.g., High support volume, slow response times..." {...field} className="text-lg mt-4 min-h-[100px]" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+        )}
+
+        {/* Vision */}
+        {challenges && (
+          <div className="border-t border-border pt-8">
+            <FormField
+              control={form.control}
+              name="vision"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-xl font-semibold">How do you envision AI agents interacting with and utilizing this?</FormLabel>
+                   <FormControl>
+                    <Textarea placeholder="e.g., Agents should handle common queries and escalate complex issues." {...field} className="text-lg mt-4 min-h-[100px]" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+        )}
+      </div>
+    );
+  };
 
   const renderField = () => {
     const { field, label, description } = formSteps[step];
     
+    if (field === 'projectDetails') {
+      return renderProjectDetailsStep();
+    }
+
     if (field === 'maturity') {
       return (
         <FormField
@@ -148,7 +222,10 @@ export function ProjectIntakeForm() {
                       <button
                         key={value}
                         type="button"
-                        onClick={() => formField.onChange(String(value))}
+                        onClick={() => {
+                          formField.onChange(String(value));
+                          setTimeout(() => nextStep(), 200);
+                        }}
                         className={cn(
                           "h-12 w-12 flex items-center justify-center border rounded-md transition-colors",
                           formField.value === String(value)
@@ -196,7 +273,7 @@ export function ProjectIntakeForm() {
                       type="button"
                       onClick={() => {
                         formField.onChange(option.label);
-                        nextStep();
+                        setTimeout(() => nextStep(), 200);
                       }}
                       className={cn(
                         "w-full flex items-center justify-between text-left p-3 border rounded-md transition-colors",
@@ -232,15 +309,18 @@ export function ProjectIntakeForm() {
           name={field as keyof ProjectRequestData}
           render={({ field: formField }) => (
             <FormItem className="space-y-4">
-              <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
+               <div className="flex items-center gap-4">
+                <span className="text-primary font-semibold">{step + 1} →</span>
+                <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
+              </div>
               <FormControl>
-                <RadioGroup onValueChange={(value) => { formField.onChange(value); nextStep(); }} defaultValue={formField.value} className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                <RadioGroup onValueChange={(value) => { formField.onChange(value); setTimeout(() => nextStep(), 200); }} defaultValue={formField.value} className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
                   {options[field].map(option => (
                     <FormItem key={option.label} className="flex items-center space-x-3 space-y-0">
                       <FormControl>
-                        <RadioGroupItem value={option.label} className="h-6 w-6" />
+                        <RadioGroupItem value={option.label} id={option.label} className="h-6 w-6" />
                       </FormControl>
-                      <FormLabel className="font-normal text-lg">{option.label}</FormLabel>
+                      <Label htmlFor={option.label} className="font-normal text-lg cursor-pointer">{option.label}</Label>
                     </FormItem>
                   ))}
                 </RadioGroup>
@@ -252,31 +332,16 @@ export function ProjectIntakeForm() {
       );
     }
 
-    if (['projectFocus', 'challenges', 'vision'].includes(field)) {
-      return (
-         <FormField
-          control={form.control}
-          name={field as 'projectFocus' | 'challenges' | 'vision'}
-          render={({ field: formField }) => (
-            <FormItem>
-              <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
-              <FormControl>
-                <Textarea placeholder="Your answer here..." {...formField} className="text-lg mt-4 min-h-[150px]" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      );
-    }
-    
     return (
       <FormField
         control={form.control}
         name={field as 'name' | 'email'}
         render={({ field: formField }) => (
           <FormItem>
-            <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
+            <div className="flex items-center gap-4">
+              <span className="text-primary font-semibold">{step + 1} →</span>
+              <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
+            </div>
             <FormControl>
               <Input placeholder="Your answer here..." {...formField} className="text-lg mt-4" type={field === 'email' ? 'email' : 'text'} />
             </FormControl>
@@ -285,18 +350,6 @@ export function ProjectIntakeForm() {
         )}
       />
     );
-  }
-
-  const renderOkButtonForSingleOption = () => {
-    const field = formSteps[step].field;
-    if (field === 'maturity') {
-      return (
-        <Button type="button" onClick={nextStep} disabled={!form.watch('maturity')}>
-          OK <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    }
-    return null;
   }
 
   return (
@@ -318,13 +371,11 @@ export function ProjectIntakeForm() {
               </Button>
             ) : <div />}
             
-            {renderOkButtonForSingleOption()}
-
-            {step > 0 && step < totalSteps - 1 && !options[currentField] && !['companySize', 'engineeringTeam'].includes(currentField) && (
+            {currentField === 'projectDetails' || ['name', 'email'].includes(currentField) ? (
               <Button type="button" onClick={nextStep}>
                 Next <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            )}
+            ) : null}
             
             {step === totalSteps - 1 ? (
               <Button type="submit" disabled={isPending} size="lg">
@@ -338,11 +389,7 @@ export function ProjectIntakeForm() {
                   </>
                 )}
               </Button>
-            ) : (
-              step > 0 && (options[currentField] || ['companySize', 'engineeringTeam'].includes(currentField)) && (
-                <div />
-              )
-            )}
+            ) : null }
           </CardFooter>
         </form>
       </Form>
