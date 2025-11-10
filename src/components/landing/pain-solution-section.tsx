@@ -17,52 +17,54 @@ const solutions = [
 export function PainSolutionSection() {
   return (
     <div 
-      className="pain-solution-container relative bg-gradient-to-b from-primary/10 to-[#8F668C]/10 rounded-2xl overflow-hidden"
+      className="pain-solution-container relative bg-gradient-to-b from-primary/10 to-[#8F668C]/10"
     >
       <section className="py-16 sm:py-24 relative z-10">
-        <div className="mx-auto max-w-4xl text-center px-4">
-          <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
-            Het Tovy Verschil
-          </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-            AI moet vereenvoudigen, niet compliceren.
-          </p>
-        </div>
-        <div className="mt-16 space-y-8 px-4">
-          <div className="p-[1px] rounded-lg bg-gradient-to-r from-primary to-[#8F668C]">
-            <div className="bg-card rounded-lg p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-                
-                {/* Pains Column */}
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-semibold">U hoeft niet</h3>
-                  <ul className="space-y-4">
-                    {pains.map((pain, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <div className="flex-shrink-0">
-                          <XCircle className="h-6 w-6 text-destructive" />
-                        </div>
-                        <span className="text-muted-foreground">{pain}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+        <div className="mx-auto max-w-6xl px-4 md:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
+              Het Tovy Verschil
+            </h2>
+            <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+              AI moet vereenvoudigen, niet compliceren.
+            </p>
+          </div>
+          <div className="mt-16 space-y-8">
+            <div className="p-[1px] rounded-lg bg-gradient-to-r from-primary to-[#8F668C]">
+              <div className="bg-card rounded-lg p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                  
+                  {/* Pains Column */}
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-semibold">U hoeft niet</h3>
+                    <ul className="space-y-4">
+                      {pains.map((pain, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <div className="flex-shrink-0">
+                            <XCircle className="h-6 w-6 text-destructive" />
+                          </div>
+                          <span className="text-muted-foreground">{pain}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                {/* Solutions Column */}
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-semibold">Kalme Duidelijkheid met Tovy</h3>
-                  <ul className="space-y-4">
-                    {solutions.map((solution, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <div className="flex-shrink-0">
-                          <CheckCircle2 className="h-6 w-6 text-primary" />
-                        </div>
-                        <span className="text-muted-foreground">{solution}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  {/* Solutions Column */}
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-semibold">Kalme Duidelijkheid met Tovy</h3>
+                    <ul className="space-y-4">
+                      {solutions.map((solution, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <div className="flex-shrink-0">
+                            <CheckCircle2 className="h-6 w-6 text-primary" />
+                          </div>
+                          <span className="text-muted-foreground">{solution}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
+                </div>
               </div>
             </div>
           </div>
