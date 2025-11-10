@@ -8,6 +8,7 @@ import { logEvent } from "@/lib/firebase";
 import { useToast } from "@/hooks/use-toast";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,7 +16,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
-import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle, Check } from "lucide-react";
+import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle, Check, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const formSteps = [
@@ -158,6 +159,14 @@ export function ProjectIntakeForm() {
             Your project request has been submitted. We'll be in touch shortly.
           </CardDescription>
         </CardHeader>
+        <CardFooter className="flex justify-center">
+          <Button asChild variant="outline">
+            <Link href="/">
+              <Home className="mr-2 h-4 w-4" />
+              Return to Home
+            </Link>
+          </Button>
+        </CardFooter>
       </Card>
     );
   }
