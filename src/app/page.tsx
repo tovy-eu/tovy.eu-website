@@ -23,14 +23,14 @@ export default function Home() {
             <AboutSection />
           </ScrollReveal>
         </div>
+      </div>
 
-        <SectionDivider />
+      <SectionDivider />
 
-        <div id="testimonials">
-          <ScrollReveal>
-            <TestimonialsSection />
-          </ScrollReveal>
-        </div>
+      <div id="testimonials" className="w-full">
+        <ScrollReveal>
+          <TestimonialsSection />
+        </ScrollReveal>
       </div>
     </div>
   );
