@@ -388,23 +388,21 @@ export function ProjectIntakeForm() {
               </Button>
             ) : <div />}
             
-            {currentField === 'projectDetails' ? (
+            {currentField === 'projectDetails' || (currentField === 'contactDetails' && step < totalSteps -1) ? (
               <Button type="button" onClick={nextStep}>
                 Next <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             ) : null}
-            
+
             {step === totalSteps - 1 ? (
-               isPending ? (
-                <Button type="submit" disabled={true} size="lg">
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
-                </Button>
-               ) : (
-                <Button type="button" onClick={nextStep} size="lg">
-                  OK
-                </Button>
-               )
-            ) : null }
+              <Button type="button" onClick={nextStep} size="lg" disabled={isPending}>
+                {isPending ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
+                  </>
+                ) : "Submit Project"}
+              </Button>
+            ) : null}
 
             {/* This is a hidden submit button to allow form submission on enter */}
             <button type="submit" className="hidden" disabled={isPending}></button>
@@ -414,3 +412,5 @@ export function ProjectIntakeForm() {
     </Card>
   );
 }
+
+    
