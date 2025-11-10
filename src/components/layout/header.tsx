@@ -8,7 +8,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b border-border/40 bg-background"
+        "sticky top-0 z-50 w-full bg-background"
       )}
     >
       <div className="flex h-16 w-full items-center justify-between px-6">
@@ -23,6 +23,12 @@ export function Header() {
           <Link href="/project-request">Start Project</Link>
         </Button>
       </div>
+      <div 
+        className="h-px w-full" 
+        style={{
+          background: 'linear-gradient(to right, transparent, white, transparent)'
+        }}
+      />
     </header>
   );
 }
