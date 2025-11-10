@@ -7,6 +7,7 @@ import PhoneInputPrimitive, {
   type PhoneInputProps as PhoneInputPrimitiveProps,
   getCountryCallingCode,
 } from "react-phone-number-input";
+import { flags } from "react-phone-number-input/flags";
 
 import "react-phone-number-input/style.css";
 import { Button } from "@/components/ui/button";
@@ -42,6 +43,7 @@ const PhoneInput = ({
       {...props}
       inputComponent={InputComponent}
       countrySelectComponent={CountrySelect}
+      flags={flags}
     />
   );
 };
@@ -100,7 +102,7 @@ const CountrySelect = ({
         <Button
           type="button"
           variant="outline"
-          className={cn("flex gap-2 rounded-e-none rounded-s-lg px-3")}
+          className={cn("flex gap-2 rounded-e-none rounded-s-lg pl-3 pr-2")}
           disabled={disabled}
         >
           {selectedOption && <selectedOption.icon title={selectedOption.label} className="h-5 w-5 rounded-sm" />}
