@@ -1,17 +1,17 @@
 import { CheckCircle2, XCircle } from "lucide-react";
 
 const pains = [
-  "Black-box systemen waar u geen controle over heeft.",
-  "Eindeloos tweaken en onbetrouwbare resultaten.",
-  "Complexe tools die uw team vertragen.",
-  "Onvoorspelbare kosten en projectvertragingen.",
+  "Black-box systems you can't control.",
+  "Endless tweaking and unreliable results.",
+  "Complex tools that slow down your team.",
+  "Unpredictable costs and project delays.",
 ];
 
 const solutions = [
-  "Transparante systemen met volledige eigendom van de code.",
-  "Betrouwbare, voorspelbare en geoptimaliseerde prestaties.",
-  "Eenvoudige integratie en een aanpak gericht op ontwikkelaars.",
-  "Gemoedsrust met duidelijke deliverables en ondersteuning.",
+  "Transparent systems with full code ownership.",
+  "Reliable, predictable, and optimized performance.",
+  "Simple integration and a developer-first approach.",
+  "Peace of mind with clear deliverables and support.",
 ];
 
 export function PainSolutionSection() {
@@ -23,10 +23,10 @@ export function PainSolutionSection() {
         <div className="mx-auto max-w-6xl px-4 md:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
-              Het Tovy Verschil
+              The Tovy Difference
             </h2>
             <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              AI moet vereenvoudigen, niet compliceren.
+              AI should simplify, not complicate.
             </p>
           </div>
           <div className="mt-16 space-y-8">
@@ -36,7 +36,7 @@ export function PainSolutionSection() {
                   
                   {/* Pains Column */}
                   <div className="space-y-6">
-                    <h3 className="text-2xl font-semibold">U hoeft niet</h3>
+                    <h3 className="text-2xl font-semibold">You don't have to deal with</h3>
                     <ul className="space-y-4">
                       {pains.map((pain, index) => (
                         <li key={index} className="flex items-start gap-3">
@@ -51,7 +51,7 @@ export function PainSolutionSection() {
 
                   {/* Solutions Column */}
                   <div className="space-y-6">
-                    <h3 className="text-2xl font-semibold">Kalme Duidelijkheid met Tovy</h3>
+                    <h3 className="text-2xl font-semibold">Calm Clarity with Tovy</h3>
                     <ul className="space-y-4">
                       {solutions.map((solution, index) => (
                         <li key={index} className="flex items-start gap-3">

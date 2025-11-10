@@ -35,15 +35,15 @@ export function HeroSection() {
           className="text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
           style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}
         >
-          Uw <span className="bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">AI</span> ontwikkelingspartner
+          Your <span className="bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">AI</span> Development Partner
         </h1>
         <p className="mt-6 text-lg leading-8 text-white/80 sm:text-xl">
-          Wij bouwen schone, snelle en betrouwbare systemen die u volledige controle en gemoedsrust geven.
+          We build clean, fast, and reliable systems that give you complete control and peace of mind.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-y-6">
           <Button asChild size="lg" className="font-semibold text-lg">
             <Link href="/project-request">
-              Dien uw idee in
+              Submit Your Idea
               <ArrowDown className="ml-2 h-5 w-5" />
             </Link>
           </Button>
