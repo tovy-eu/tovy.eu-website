@@ -20,8 +20,8 @@ export function PainSolutionSection() {
       className="bg-gradient-to-b from-primary/10 to-[#8F668C]/10 rounded-2xl"
       style={{
         backgroundImage: `
-          linear-gradient(to right, hsl(var(--border) / 0.1) 1px, transparent 1px),
-          linear-gradient(to bottom, hsl(var(--border) / 0.1) 1px, transparent 1px),
+          linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+          linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px),
           linear-gradient(to bottom, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1))
         `,
         backgroundSize: '2rem 2rem, 2rem 2rem, 100% 100%',
