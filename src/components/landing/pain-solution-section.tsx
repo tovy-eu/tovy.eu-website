@@ -1,4 +1,4 @@
-import { CheckCircle2, XCircle } from "lucide-react";
+import { CheckCircle2, XCircle, BrainCircuit } from "lucide-react";
 
 const pains = [
   "Black-box systems you can't control.",
@@ -14,6 +14,8 @@ const solutions = [
   "Peace of mind with clear deliverables and support.",
 ];
 
+const clientRole = "Bring your domain expertise and a clear vision. We'll handle the technology.";
+
 export function PainSolutionSection() {
   return (
     <section className="py-24 sm:py-32">
@@ -25,39 +27,56 @@ export function PainSolutionSection() {
           AI should simplify, not complicate.
         </p>
       </div>
-      <div className="mt-16 bg-card border rounded-lg p-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-          
-          {/* Pains Column */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold">You don't have to</h3>
-            <ul className="space-y-4">
-              {pains.map((pain, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="flex-shrink-0">
-                    <XCircle className="h-6 w-6 text-destructive" />
-                  </div>
-                  <span className="text-muted-foreground">{pain}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className="mt-16 space-y-8">
+        <div className="bg-card border rounded-lg p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+            
+            {/* Pains Column */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-semibold">You don't have to</h3>
+              <ul className="space-y-4">
+                {pains.map((pain, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="flex-shrink-0">
+                      <XCircle className="h-6 w-6 text-destructive" />
+                    </div>
+                    <span className="text-muted-foreground">{pain}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Solutions Column */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold">Calm Clarity with Tovy</h3>
-            <ul className="space-y-4">
-              {solutions.map((solution, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="flex-shrink-0">
-                    <CheckCircle2 className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-muted-foreground">{solution}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* Solutions Column */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-semibold">Calm Clarity with Tovy</h3>
+              <ul className="space-y-4">
+                {solutions.map((solution, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="flex-shrink-0">
+                      <CheckCircle2 className="h-6 w-6 text-primary" />
+                    </div>
+                    <span className="text-muted-foreground">{solution}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
+          </div>
+        </div>
+
+        {/* Client Role Box */}
+        <div className="bg-card border-2 border-primary/50 rounded-lg p-8 shadow-lg shadow-primary/10">
+          <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+            <div className="flex-shrink-0">
+              <div className="p-3 bg-primary/10 rounded-lg">
+                <BrainCircuit className="h-8 w-8 text-primary" />
+              </div>
+            </div>
+            <div>
+              <h3 className="text-2xl font-semibold">What you do</h3>
+              <p className="mt-2 text-muted-foreground text-lg">{clientRole}</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
