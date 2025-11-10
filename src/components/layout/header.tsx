@@ -9,9 +9,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -20,13 +18,18 @@ export function Header() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        scrolled ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-transparent"
+        scrolled
+          ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+          : "bg-transparent"
       )}
     >
-      <div className="container flex h-16 items-center justify-between">
+      <div className="flex h-16 w-full items-center justify-between px-6">
+        {/* Left: Logo */}
         <Link href="/" className="font-bold text-lg text-primary">
-          Tovy AI
+          TOVY
         </Link>
+
+        {/* Right: CTA Button */}
         <Button asChild>
           <Link href="/project-request">Start Project</Link>
         </Button>

@@ -15,9 +15,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Progress } from "@/components/ui/progress";
 import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const formSteps = [
-  { field: "maturity", label: "What's the maturity of your project?" },
+  { field: "maturity", label: "How mature is your use of AI?*" },
   { field: "companySize", label: "What's your company size?" },
   { field: "engineeringTeam", label: "What's the size of your engineering team?" },
   { field: "projectFocus", label: "What is your project's main focus?" },
@@ -32,7 +33,7 @@ const formSteps = [
 const totalSteps = formSteps.length;
 
 const options: Record<string, string[]> = {
-  maturity: ["Idea / Concept", "Prototype / MVP", "Live Product", "Scaling an Existing Product"],
+  maturity: ["Just getting started", "Already using AI tools", "Built custom AI"],
   companySize: ["1-10 employees", "11-50 employees", "51-200 employees", "201+ employees"],
   engineeringTeam: ["No dedicated team", "1-3 engineers", "4-10 engineers", "10+ engineers"],
   budgetReadiness: ["Have a defined budget", "Exploring options", "No budget yet"],
@@ -108,6 +109,52 @@ export function ProjectIntakeForm() {
 
   const renderField = () => {
     const { field, label } = formSteps[step];
+
+    if (field === 'maturity') {
+      return (
+        <FormField
+          control={form.control}
+          name="maturity"
+          render={({ field: formField }) => (
+            <FormItem>
+              <div className="flex items-center gap-4">
+                <span className="text-primary font-semibold">1 →</span>
+                <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
+              </div>
+              <p className="text-muted-foreground mt-2">This helps us see how far you've taken AI in your business.</p>
+              
+              <FormControl>
+                <>
+                  <div className="flex justify-center gap-1 my-4">
+                    {Array.from({ length: 11 }, (_, i) => i).map(value => (
+                      <button
+                        key={value}
+                        type="button"
+                        onClick={() => formField.onChange(String(value))}
+                        className={cn(
+                          "h-12 w-12 flex items-center justify-center border rounded-md transition-colors",
+                          formField.value === String(value)
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-muted hover:bg-muted/80"
+                        )}
+                      >
+                        {value}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="flex justify-between text-sm text-muted-foreground mt-2">
+                    <span>Just getting started</span>
+                    <span>Already using AI tools</span>
+                    <span>Built custom AI</span>
+                  </div>
+                </>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      );
+    }
     
     if (options[field]) {
       return (
@@ -190,6 +237,18 @@ export function ProjectIntakeForm() {
               </Button>
             ) : <div />}
             
+            {step === 0 && (
+                <Button type="button" onClick={nextStep} disabled={!form.watch('maturity')}>
+                  OK
+                </Button>
+            )}
+
+            {step > 0 && step < totalSteps - 1 && !options[currentField] && (
+              <Button type="button" onClick={nextStep}>
+                Next <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            )}
+            
             {step === totalSteps - 1 ? (
               <Button type="submit" disabled={isPending} size="lg">
                 {isPending ? (
@@ -203,9 +262,9 @@ export function ProjectIntakeForm() {
                 )}
               </Button>
             ) : (
-              <Button type="button" onClick={nextStep}>
-                Next <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              step > 0 && options[currentField] && (
+                <div />
+              )
             )}
           </CardFooter>
         </form>
