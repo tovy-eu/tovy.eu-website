@@ -7,7 +7,7 @@ import PhoneInputPrimitive, {
   type PhoneInputProps as PhoneInputPrimitiveProps,
   getCountryCallingCode,
 } from "react-phone-number-input";
-import { flags } from "react-phone-number-input/flags";
+import flags from "react-phone-number-input/flags";
 
 import "react-phone-number-input/style.css";
 import { Button } from "@/components/ui/button";
