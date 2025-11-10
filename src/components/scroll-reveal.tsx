@@ -50,7 +50,7 @@ export const ScrollReveal = ({
       className={cn(
         "transition-all ease-in-out",
         delay,
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20",
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-40",
         className
       )}
     >
