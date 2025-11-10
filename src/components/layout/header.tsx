@@ -26,7 +26,7 @@ export function Header() {
       <div 
         className="h-px w-full" 
         style={{
-          background: 'linear-gradient(to right, transparent, white, transparent)'
+          background: 'linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent)'
         }}
       />
     </header>
