@@ -14,13 +14,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Progress } from "@/components/ui/progress";
-import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle } from "lucide-react";
+import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const formSteps = [
   { field: "maturity", label: "How mature is your use of AI?*" },
   { field: "companySize", label: "What's your company size?" },
-  { field: "engineeringTeam", label: "What's the size of your engineering team?" },
+  { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us understand if we'll collaborate with your team or handle development end-to-end." },
   { field: "projectFocus", label: "What is your project's main focus?" },
   { field: "challenges", label: "What are your main challenges?" },
   { field: "vision", label: "What's your vision for the project?" },
@@ -32,12 +32,28 @@ const formSteps = [
 
 const totalSteps = formSteps.length;
 
-const options: Record<string, string[]> = {
-  maturity: ["Just getting started", "Already using AI tools", "Built custom AI"],
-  companySize: ["1-10 employees", "11-50 employees", "51-200 employees", "201+ employees"],
-  engineeringTeam: ["No dedicated team", "1-3 engineers", "4-10 engineers", "10+ engineers"],
-  budgetReadiness: ["Have a defined budget", "Exploring options", "No budget yet"],
-  timelineReadiness: ["ASAP", "Within 3 months", "3-6 months", "Not sure yet"],
+const options: Record<string, { label: string, hint?: string }[]> = {
+  companySize: [
+    { label: "1-10 employees" },
+    { label: "11-50 employees" },
+    { label: "51-200 employees" },
+    { label: "201+ employees" },
+  ],
+  engineeringTeam: [
+    { label: "Yes", hint: "Y" },
+    { label: "No", hint: "N" },
+  ],
+  budgetReadiness: [
+    { label: "Have a defined budget" },
+    { label: "Exploring options" },
+    { label: "No budget yet" },
+  ],
+  timelineReadiness: [
+    { label: "ASAP" },
+    { label: "Within 3 months" },
+    { label: "3-6 months" },
+    { label: "Not sure yet" },
+  ],
 };
 
 export function ProjectIntakeForm() {
@@ -57,6 +73,8 @@ export function ProjectIntakeForm() {
       projectFocus: "",
       challenges: "",
       vision: "",
+      budgetReadiness: "",
+      timelineReadiness: "",
       name: "",
       email: "",
     },
@@ -108,8 +126,8 @@ export function ProjectIntakeForm() {
   }
 
   const renderField = () => {
-    const { field, label } = formSteps[step];
-
+    const { field, label, description } = formSteps[step];
+    
     if (field === 'maturity') {
       return (
         <FormField
@@ -118,7 +136,7 @@ export function ProjectIntakeForm() {
           render={({ field: formField }) => (
             <FormItem>
               <div className="flex items-center gap-4">
-                <span className="text-primary font-semibold">1 →</span>
+                <span className="text-primary font-semibold">{step + 1} →</span>
                 <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
               </div>
               <p className="text-muted-foreground mt-2">This helps us see how far you've taken AI in your business.</p>
@@ -156,6 +174,56 @@ export function ProjectIntakeForm() {
       );
     }
     
+    if (field === 'engineeringTeam') {
+      return (
+        <FormField
+          control={form.control}
+          name="engineeringTeam"
+          render={({ field: formField }) => (
+            <FormItem>
+              <div className="flex items-center gap-4">
+                <span className="text-primary font-semibold">{step + 1} →</span>
+                <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
+              </div>
+              {description && <p className="text-muted-foreground mt-2">{description}</p>}
+              
+              <FormControl>
+                <div className="space-y-3 pt-4 max-w-sm">
+                  {options.engineeringTeam.map(option => (
+                    <button
+                      key={option.label}
+                      type="button"
+                      onClick={() => {
+                        formField.onChange(option.label);
+                        nextStep();
+                      }}
+                      className={cn(
+                        "w-full flex items-center justify-between text-left p-3 border rounded-md transition-colors",
+                        formField.value === option.label
+                          ? "bg-primary/10 border-primary ring-2 ring-primary"
+                          : "bg-muted/50 hover:bg-muted"
+                      )}
+                    >
+                      <div className="flex items-center gap-3">
+                        {option.hint && (
+                          <div className="flex items-center justify-center h-6 w-6 border rounded-sm text-xs text-muted-foreground bg-background">
+                            {option.hint}
+                          </div>
+                        )}
+                        <span className="font-medium">{option.label}</span>
+                      </div>
+                      {formField.value === option.label && <Check className="h-5 w-5 text-primary" />}
+                    </button>
+                  ))}
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      );
+    }
+
     if (options[field]) {
       return (
         <FormField
@@ -167,11 +235,11 @@ export function ProjectIntakeForm() {
               <FormControl>
                 <RadioGroup onValueChange={(value) => { formField.onChange(value); nextStep(); }} defaultValue={formField.value} className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
                   {options[field].map(option => (
-                    <FormItem key={option} className="flex items-center space-x-3 space-y-0">
+                    <FormItem key={option.label} className="flex items-center space-x-3 space-y-0">
                       <FormControl>
-                        <RadioGroupItem value={option} className="h-6 w-6" />
+                        <RadioGroupItem value={option.label} className="h-6 w-6" />
                       </FormControl>
-                      <FormLabel className="font-normal text-lg">{option}</FormLabel>
+                      <FormLabel className="font-normal text-lg">{option.label}</FormLabel>
                     </FormItem>
                   ))}
                 </RadioGroup>
@@ -218,6 +286,18 @@ export function ProjectIntakeForm() {
     );
   }
 
+  const renderOkButtonForSingleOption = () => {
+    const field = formSteps[step].field;
+    if (field === 'maturity') {
+      return (
+        <Button type="button" onClick={nextStep} disabled={!form.watch('maturity')}>
+          OK <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    }
+    return null;
+  }
+
   return (
     <Card className="w-full max-w-2xl mx-auto border-0 md:border md:shadow-lg">
       <CardHeader>
@@ -237,11 +317,7 @@ export function ProjectIntakeForm() {
               </Button>
             ) : <div />}
             
-            {step === 0 && (
-                <Button type="button" onClick={nextStep} disabled={!form.watch('maturity')}>
-                  OK
-                </Button>
-            )}
+            {renderOkButtonForSingleOption()}
 
             {step > 0 && step < totalSteps - 1 && !options[currentField] && (
               <Button type="button" onClick={nextStep}>
@@ -272,3 +348,5 @@ export function ProjectIntakeForm() {
     </Card>
   );
 }
+
+    
