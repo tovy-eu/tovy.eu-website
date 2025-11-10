@@ -281,7 +281,7 @@ export function ProjectIntakeForm() {
               {description && <p className="text-muted-foreground mt-2">{description}</p>}
               
               <FormControl>
-                <>
+                <div>
                   <div className="flex justify-between gap-1 my-4">
                     {Array.from({ length: 11 }, (_, i) => i).map(value => (
                       <button
@@ -307,7 +307,7 @@ export function ProjectIntakeForm() {
                     <span>Already using AI tools</span>
                     <span>Built custom AI</span>
                   </div>
-                </>
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -373,7 +373,7 @@ export function ProjectIntakeForm() {
   return (
     <Card className="w-full max-w-2xl mx-auto border-0 md:border md:shadow-lg">
       <CardHeader>
-        <Progress value={((step + 1) / totalSteps) * 100} className="w-full" />
+        <Progress value={(step / totalSteps) * 100} className="w-full" />
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
@@ -407,11 +407,9 @@ export function ProjectIntakeForm() {
 
             {/* This is a hidden submit button to allow form submission on enter */}
             <button type="submit" className="hidden" disabled={isPending}></button>
-          </CardFooter>
+          </Footer>
         </form>
       </Form>
     </Card>
   );
 }
-
-    
