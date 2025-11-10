@@ -19,7 +19,7 @@ const pillars = [
     icon: <Bird className="h-8 w-8" />,
     title: "Vrijheid",
     description: "U krijgt de volledige eigendom van de code. Ons doel is om u te versterken, niet om u aan een dienst te binden.",
-    color: "#996FA7"
+    color: "#A792FF"
   },
   {
     icon: <Lightbulb className="h-8 w-8" />,
