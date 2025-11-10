@@ -373,7 +373,7 @@ export function ProjectIntakeForm() {
   return (
     <Card className="w-full max-w-2xl mx-auto border-0 md:border md:shadow-lg">
       <CardHeader>
-        <Progress value={(step / totalSteps) * 100} className="w-full" />
+        <Progress value={(step / (totalSteps-1)) * 100} className="w-full" />
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
@@ -389,7 +389,7 @@ export function ProjectIntakeForm() {
               </Button>
             ) : <div />}
             
-            {currentField === 'projectDetails' || (currentField === 'contactDetails' && step < totalSteps -1) ? (
+            {(currentField === 'projectDetails' || currentField === 'maturity') && step < totalSteps -1 ? (
               <Button type="button" onClick={nextStep}>
                 Next <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -407,7 +407,7 @@ export function ProjectIntakeForm() {
 
             {/* This is a hidden submit button to allow form submission on enter */}
             <button type="submit" className="hidden" disabled={isPending}></button>
-          </Footer>
+          </CardFooter>
         </form>
       </Form>
     </Card>
