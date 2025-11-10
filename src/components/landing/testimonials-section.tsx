@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const testimonials = [
   {
@@ -35,32 +36,45 @@ export function TestimonialsSection() {
             Vertrouwd door teams die duidelijkheid en controle waarderen.
           </p>
         </div>
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {testimonials.map((testimonial) => (
-            <Card key={testimonial.name} className="p-8">
-              <CardContent className="p-0">
-                <p className="text-foreground/80">"{testimonial.quote}"</p>
-                <div className="mt-6 flex items-center gap-4">
-                  <Avatar>
-                    {testimonial.avatar && (
-                      <Image
-                        src={testimonial.avatar}
-                        alt={`Avatar van ${testimonial.name}`}
-                        width={40}
-                        height={40}
-                        data-ai-hint={testimonial.avatarHint}
-                      />
-                    )}
-                    <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="mt-16">
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+            className="w-full max-w-4xl mx-auto"
+          >
+            <CarouselContent>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="md:basis-1/2">
+                    <Card className="h-full p-8">
+                      <CardContent className="p-0 flex flex-col h-full">
+                        <p className="text-foreground/80 flex-grow">"{testimonial.quote}"</p>
+                        <div className="mt-6 flex items-center gap-4">
+                          <Avatar>
+                            {testimonial.avatar && (
+                              <Image
+                                src={testimonial.avatar}
+                                alt={`Avatar van ${testimonial.name}`}
+                                width={40}
+                                height={40}
+                                data-ai-hint={testimonial.avatarHint}
+                              />
+                            )}
+                            <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                          </Avatar>
+                          <div>
+                            <p className="font-semibold">{testimonial.name}</p>
+                            <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
     </section>
