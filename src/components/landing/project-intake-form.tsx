@@ -20,35 +20,35 @@ import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle, Check, Home } from "
 import { cn } from "@/lib/utils";
 
 const formSteps = [
-  { field: "maturity", label: "How mature is your use of AI?*", description: "This helps us see how far you've taken AI in your business." },
-  { field: "companySize", label: "What's your company size?*", description: "This helps us understand the scale of your organization and potential project scope." },
-  { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us understand if we'll collaborate with your team or handle development end-to-end." },
-  { field: "projectDetails", label: "What do you need help with?*"},
-  { field: "budgetReadiness", label: "Are you ready to invest in this project?*", description: "Our projects typically start from $10,000, which covers MVPs, pilots, or first production builds." },
-  { field: "timelineReadiness", label: "We like to move fast – do you?*", description: "After kickoff, our team can deliver a first working version within two weeks. We have limited capacity each month, so we prioritize companies ready to take action." },
-  { field: "contactDetails", label: "Contact details*", description: "Please share your name and company information." },
+  { field: "maturity", label: "Hoe volwassen is uw gebruik van AI?*", description: "Dit helpt ons te zien hoe ver u AI in uw bedrijf heeft doorgevoerd." },
+  { field: "companySize", label: "Wat is uw bedrijfsgrootte?*", description: "Dit helpt ons de schaal van uw organisatie en de mogelijke projectomvang te begrijpen." },
+  { field: "engineeringTeam", label: "Heeft u een intern engineeringteam?*", description: "Dit helpt ons te begrijpen of we zullen samenwerken met uw team of de ontwikkeling end-to-end zullen afhandelen." },
+  { field: "projectDetails", label: "Waarmee heeft u hulp nodig?*"},
+  { field: "budgetReadiness", label: "Bent u klaar om in dit project te investeren?*", description: "Onze projecten beginnen doorgaans vanaf $10.000, wat MVP's, pilots of eerste productiebuilds dekt." },
+  { field: "timelineReadiness", label: "We gaan graag snel – u ook?*", description: "Na de aftrap kan ons team binnen twee weken een eerste werkende versie opleveren. We hebben elke maand beperkte capaciteit, dus we geven voorrang aan bedrijven die klaar zijn om actie te ondernemen." },
+  { field: "contactDetails", label: "Contactgegevens*", description: "Deel alstublieft uw naam en bedrijfsinformatie." },
 ];
 
 const totalSteps = formSteps.length;
 
 const options: Record<string, { label: string, hint?: string }[]> = {
   companySize: [
-    { label: "1-10 employees" },
-    { label: "11-50 employees" },
-    { label: "51-200 employees" },
-    { label: "201+ employees" },
+    { label: "1-10 medewerkers" },
+    { label: "11-50 medewerkers" },
+    { label: "51-200 medewerkers" },
+    { label: "201+ medewerkers" },
   ],
   engineeringTeam: [
-    { label: "Yes", hint: "Y" },
-    { label: "No", hint: "N" },
+    { label: "Ja", hint: "J" },
+    { label: "Nee", hint: "N" },
   ],
   budgetReadiness: [
-    { label: "Yes, that fits", hint: "A" },
-    { label: "No, not right now", hint: "B" },
+    { label: "Ja, dat past", hint: "A" },
+    { label: "Nee, nu niet", hint: "B" },
   ],
   timelineReadiness: [
-    { label: "Yes, we're ready to start soon", hint: "A" },
-    { label: "Not yet, still preparing internally", hint: "B" },
+    { label: "Ja, we zijn er klaar voor om binnenkort te beginnen", hint: "A" },
+    { label: "Nog niet, we zijn ons intern nog aan het voorbereiden", hint: "B" },
   ],
 };
 
@@ -154,16 +154,16 @@ export function ProjectIntakeForm() {
       <Card className="w-full max-w-2xl mx-auto border-0 md:border md:shadow-lg">
         <CardHeader className="text-center">
           <CheckCircle className="mx-auto h-16 w-16 text-green-500 mb-4" />
-          <CardTitle className="text-2xl">Thank You!</CardTitle>
+          <CardTitle className="text-2xl">Bedankt!</CardTitle>
           <CardDescription>
-            Your project request has been submitted. We'll be in touch shortly.
+            Uw projectaanvraag is ingediend. We nemen spoedig contact met u op.
           </CardDescription>
         </CardHeader>
         <CardFooter className="flex justify-center">
           <Button asChild variant="outline">
             <Link href="/">
               <Home className="mr-2 h-4 w-4" />
-              Return to Home
+              Terug naar de startpagina
             </Link>
           </Button>
         </CardFooter>
@@ -184,10 +184,10 @@ export function ProjectIntakeForm() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField control={form.control} name="firstName" render={({ field }) => (
-            <FormItem><FormLabel>First name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+            <FormItem><FormLabel>Voornaam *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
           )} />
           <FormField control={form.control} name="lastName" render={({ field }) => (
-            <FormItem><FormLabel>Last name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+            <FormItem><FormLabel>Achternaam *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
           )} />
         </div>
         <FormField
@@ -195,11 +195,11 @@ export function ProjectIntakeForm() {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone number *</FormLabel>
+              <FormLabel>Telefoonnummer *</FormLabel>
               <FormControl>
                 <PhoneInput
                   international
-                  defaultCountry="US"
+                  defaultCountry="NL"
                   className="[&_input]:h-10 [&_input]:w-full [&_input]:rounded-md [&_input]:border [&_input]:border-input [&_input]:bg-background [&_input]:px-3 [&_input]:py-2 [&_input]:text-base [&_input]:ring-offset-background file:[&_input]:border-0 file:[&_input]:bg-transparent file:[&_input]:text-sm file:[&_input]:font-medium placeholder:[&_input]:text-muted-foreground focus-visible:[&_input]:outline-none focus-visible:[&_input]:ring-2 focus-visible:[&_input]:ring-ring focus-visible:[&_input]:ring-offset-2 disabled:[&_input]:cursor-not-allowed disabled:[&_input]:opacity-50 md:[&_input]:text-sm"
                   {...field}
                 />
@@ -209,10 +209,10 @@ export function ProjectIntakeForm() {
           )}
         />
         <FormField control={form.control} name="email" render={({ field }) => (
-          <FormItem><FormLabel>Email *</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
+          <FormItem><FormLabel>E-mail *</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
         )} />
         <FormField control={form.control} name="company" render={({ field }) => (
-          <FormItem><FormLabel>Company *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+          <FormItem><FormLabel>Bedrijf *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
         )} />
       </div>
     )
@@ -229,11 +229,11 @@ export function ProjectIntakeForm() {
             <FormItem>
               <div className="flex items-center gap-4">
                 <span className="text-primary font-semibold">{step + 1} →</span>
-                <FormLabel className="text-2xl font-semibold">What do you need help with?*</FormLabel>
+                <FormLabel className="text-2xl font-semibold">Waarmee heeft u hulp nodig?*</FormLabel>
               </div>
-              <p className="text-muted-foreground mt-2">In one sentence, tell us what you want to build or improve with AI.</p>
+              <p className="text-muted-foreground mt-2">Vertel ons in één zin wat u wilt bouwen of verbeteren met AI.</p>
               <FormControl>
-                <Textarea placeholder="e.g., Build a customer support chatbot" {...field} className="text-lg mt-4 min-h-[100px]" />
+                <Textarea placeholder="bv. Een klantenservice-chatbot bouwen" {...field} className="text-lg mt-4 min-h-[100px]" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -248,9 +248,9 @@ export function ProjectIntakeForm() {
               name="challenges"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xl font-semibold">Could you elaborate on the specific challenges you're facing?</FormLabel>
+                  <FormLabel className="text-xl font-semibold">Kunt u de specifieke uitdagingen waarmee u wordt geconfronteerd nader toelichten?</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="e.g., High support volume, slow response times..." {...field} className="text-lg mt-4 min-h-[100px]" />
+                    <Textarea placeholder="bv. Hoog ondersteuningsvolume, trage responstijden..." {...field} className="text-lg mt-4 min-h-[100px]" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -267,9 +267,9 @@ export function ProjectIntakeForm() {
               name="vision"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xl font-semibold">How do you envision AI agents interacting with and utilizing this?</FormLabel>
+                  <FormLabel className="text-xl font-semibold">Hoe ziet u de interactie en het gebruik van AI-agenten hiermee voor zich?</FormLabel>
                    <FormControl>
-                    <Textarea placeholder="e.g., Agents should handle common queries and escalate complex issues." {...field} className="text-lg mt-4 min-h-[100px]" />
+                    <Textarea placeholder="bv. Agenten moeten veelvoorkomende vragen afhandelen en complexe problemen escaleren." {...field} className="text-lg mt-4 min-h-[100px]" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -328,9 +328,9 @@ export function ProjectIntakeForm() {
                     ))}
                   </div>
                   <div className="flex justify-between text-sm text-muted-foreground mt-2">
-                    <span>Just getting started</span>
-                    <span>Already using AI tools</span>
-                    <span>Built custom AI</span>
+                    <span>Net begonnen</span>
+                    <span>Gebruikt al AI-tools</span>
+                    <span>Aangepaste AI gebouwd</span>
                   </div>
                 </div>
               </FormControl>
@@ -410,13 +410,13 @@ export function ProjectIntakeForm() {
           <CardFooter className="flex justify-between mt-4">
             {step > 0 ? (
               <Button type="button" variant="ghost" onClick={prevStep}>
-                <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+                <ArrowLeft className="mr-2 h-4 w-4" /> Vorige
               </Button>
             ) : <div />}
             
             {(currentField === 'projectDetails' || currentField === 'maturity') && step < totalSteps -1 ? (
               <Button type="button" onClick={nextStep}>
-                Next <ArrowRight className="ml-2 h-4 w-4" />
+                Volgende <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             ) : null}
 
@@ -424,9 +424,9 @@ export function ProjectIntakeForm() {
               <Button type="button" onClick={nextStep} size="lg" disabled={isPending}>
                 {isPending ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Bezig met indienen...
                   </>
-                ) : "Submit Project"}
+                ) : "Project indienen"}
               </Button>
             ) : null}
 

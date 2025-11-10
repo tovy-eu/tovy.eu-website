@@ -5,7 +5,7 @@ import { PageLayout } from '@/components/layout/page-layout';
 
 export const metadata: Metadata = {
   title: 'Tovy AI Partner',
-  description: 'Your AI development partner for clean, fast, and reliable systems.',
+  description: 'Uw AI-ontwikkelingspartner voor schone, snelle en betrouwbare systemen.',
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ scrollBehavior: 'smooth' }}>
+    <html lang="nl" style={{ scrollBehavior: 'smooth' }}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
