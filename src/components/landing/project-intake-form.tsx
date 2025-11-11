@@ -35,10 +35,10 @@ const totalSteps = formSteps.length;
 
 const options: Record<string, { label: string, hint?: string }[]> = {
   companySize: [
-    { label: "1-10 employees" },
-    { label: "11-50 employees" },
-    { label: "51-200 employees" },
-    { label: "201+ employees" },
+    { label: "1-10 employees", hint: "A" },
+    { label: "11-50 employees", hint: "B" },
+    { label: "51-200 employees", hint: "C" },
+    { label: "201+ employees", hint: "D" },
   ],
   engineeringTeam: [
     { label: "Yes", hint: "Y" },
@@ -150,6 +150,50 @@ export function ProjectIntakeForm() {
   const prevStep = () => {
     setStep(s => Math.max(s - 1, 0));
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (['TEXTAREA', 'INPUT'].includes((event.target as HTMLElement).tagName)) {
+        return;
+      }
+      
+      const key = event.key.toUpperCase();
+      const currentStepField = formSteps[step].field;
+
+      const handleOptionSelect = (fieldName: keyof ProjectRequestData, value: string) => {
+        form.setValue(fieldName, value);
+        setTimeout(() => nextStep(), 200);
+      };
+
+      if (currentStepField === 'maturity' && key >= '0' && key <= '9') {
+        event.preventDefault();
+        handleOptionSelect('maturity', event.key);
+      }
+
+      if (currentStepField === 'companySize' && ['A', 'B', 'C', 'D'].includes(key)) {
+        event.preventDefault();
+        const selectedOption = options.companySize.find(o => o.hint === key);
+        if (selectedOption) {
+          handleOptionSelect('companySize', selectedOption.label);
+        }
+      }
+      
+      const yesNoFields: (keyof ProjectRequestData)[] = ['engineeringTeam', 'budgetReadiness', 'timelineReadiness'];
+      if (yesNoFields.includes(currentStepField as any) && ['Y', 'N'].includes(key)) {
+        event.preventDefault();
+        const fieldOptions = options[currentStepField as 'engineeringTeam' | 'budgetReadiness' | 'timelineReadiness'];
+        const selectedOption = fieldOptions.find(o => o.hint === key);
+        if (selectedOption) {
+          handleOptionSelect(currentStepField as keyof ProjectRequestData, selectedOption.label);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [step, form, nextStep]);
   
   if (formSubmitted) {
     return (
