@@ -33,7 +33,9 @@ const pillars = [
 
 export function AboutSection() {
   return (
-    <section className="pain-solution-container relative w-full bg-gradient-to-b from-primary/10 to-[#8F668C]/10 py-16 sm:py-24">
+    <section 
+      className="pain-solution-container relative w-full bg-gradient-to-b from-primary/10 to-accent/10 py-16 sm:py-24"
+    >
       <ScrollReveal className="relative mx-auto max-w-6xl px-4 md:px-8">
         <div className="absolute inset-0 z-0 overflow-hidden hidden lg:block">
           <svg
