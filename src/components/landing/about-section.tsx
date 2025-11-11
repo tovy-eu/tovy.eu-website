@@ -1,6 +1,7 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BrainCircuit, Rocket, KeyRound, Sparkles } from "lucide-react";
 import React from 'react';
+import { ScrollReveal } from "../scroll-reveal";
 
 const pillars = [
   {
@@ -67,36 +68,38 @@ export function AboutSection() {
         </svg>
       </div>
 
-      <div className="mx-auto max-w-4xl text-center">
-        <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-          We enable proces automation by building smart data eco-systems.
-        </p>
-        <p className="mt-6 text-lg leading-8 text-foreground/80">
-          Our strategy is built on four core values. They are the foundation of every project we take on, ensuring we deliver not just code, but confidence and control.
-        </p>
-      </div>
-      <div className="relative mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {pillars.map((pillar) => (
-          <Card 
-            key={pillar.title} 
-            className="text-center transition-all hover:shadow-lg hover:-translate-y-1 bg-card/80 backdrop-blur-sm"
-            style={{ '--pillar-color': pillar.color, '--pillar-shadow-color': `${pillar.color}1A` } as React.CSSProperties}
-          >
-            <CardHeader className="items-center">
-              <div 
-                className="p-4 rounded-lg"
-                style={{ backgroundColor: `var(--pillar-shadow-color)`}}
-              >
-                {React.cloneElement(pillar.icon, { style: { color: `var(--pillar-color)` } })}
-              </div>
-              <CardTitle className="mt-4">{pillar.title}</CardTitle>
-            </CardHeader>
-            <CardDescription className="p-6 pt-0">
-              {pillar.description}
-            </CardDescription>
-          </Card>
-        ))}
-      </div>
+      <ScrollReveal className="mx-auto max-w-6xl px-4 md:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+            We enable proces automation by building smart data eco-systems.
+          </p>
+          <p className="mt-6 text-lg leading-8 text-foreground/80">
+            Our strategy is built on four core values. They are the foundation of every project we take on, ensuring we deliver not just code, but confidence and control.
+          </p>
+        </div>
+        <div className="relative mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {pillars.map((pillar) => (
+            <Card 
+              key={pillar.title} 
+              className="text-center transition-all hover:shadow-lg hover:-translate-y-1 bg-card/80 backdrop-blur-sm"
+              style={{ '--pillar-color': pillar.color, '--pillar-shadow-color': `${pillar.color}1A` } as React.CSSProperties}
+            >
+              <CardHeader className="items-center">
+                <div 
+                  className="p-4 rounded-lg"
+                  style={{ backgroundColor: `var(--pillar-shadow-color)`}}
+                >
+                  {React.cloneElement(pillar.icon, { style: { color: `var(--pillar-color)` } })}
+                </div>
+                <CardTitle className="mt-4">{pillar.title}</CardTitle>
+              </CardHeader>
+              <CardDescription className="p-6 pt-0">
+                {pillar.description}
+              </CardDescription>
+            </Card>
+          ))}
+        </div>
+      </ScrollReveal>
     </section>
   );
 }

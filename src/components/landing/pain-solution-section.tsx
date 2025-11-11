@@ -1,4 +1,5 @@
 import { CheckCircle2, XCircle } from "lucide-react";
+import { ScrollReveal } from "../scroll-reveal";
 
 const pains = [
   "Black-box systems you can't control.",
@@ -16,11 +17,11 @@ const solutions = [
 
 export function PainSolutionSection() {
   return (
-    <div 
-      className="pain-solution-container relative bg-gradient-to-b from-primary/10 to-[#8F668C]/10"
+    <section 
+      className="pain-solution-container relative w-full bg-gradient-to-b from-primary/10 to-[#8F668C]/10 py-16 sm:py-24"
     >
-      <section className="py-16 sm:py-24 relative z-10">
-        <div className="mx-auto max-w-6xl px-4 md:px-8">
+      <div className="mx-auto max-w-6xl px-4 md:px-8">
+        <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
               The Tovy Difference
@@ -68,8 +69,8 @@ export function PainSolutionSection() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </ScrollReveal>
+      </div>
+    </section>
   );
 }
