@@ -1,5 +1,12 @@
+
+import type { Metadata } from 'next';
 import { ProjectIntakeForm } from '@/components/landing/project-intake-form';
 import { WavyLines } from '@/components/landing/wavy-lines';
+
+export const metadata: Metadata = {
+  title: 'Start Your AI Project | Tovy AI',
+  description: 'Share your project idea with Tovy AI and let\'s build the future together.',
+};
 
 export default function ProjectRequestPage() {
   return (
