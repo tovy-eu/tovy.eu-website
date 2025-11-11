@@ -1,3 +1,4 @@
+
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BrainCircuit, Rocket, KeyRound, Sparkles } from "lucide-react";
 import React from 'react';
@@ -32,43 +33,42 @@ const pillars = [
 
 export function AboutSection() {
   return (
-    <section className="relative py-16 sm:py-24">
-      <div className="absolute inset-0 z-0 overflow-hidden hidden lg:block">
-        <svg
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto"
-          width="1150"
-          height="300"
-          viewBox="0 0 1150 300"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#2B5EFF" />
-              <stop offset="33%" stopColor="#566FFF" />
-              <stop offset="66%" stopColor="#A792FF" />
-              <stop offset="100%" stopColor="#FFB8FA" />
-            </linearGradient>
-            <filter id="path-glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-              <feMerge>
-                <feMergeNode in="coloredBlur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-          <path
-            d="M50 150 C 250 150, 300 50, 425 50 C 550 50, 600 250, 725 250 C 850 250, 900 150, 1100 150"
-            stroke="url(#path-gradient)"
-            strokeWidth="2"
+    <section className="py-16 sm:py-24">
+      <ScrollReveal className="relative mx-auto max-w-6xl px-4 md:px-8">
+        <div className="absolute inset-0 z-0 overflow-hidden hidden lg:block">
+          <svg
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto"
+            width="1150"
+            height="300"
+            viewBox="0 0 1150 300"
             fill="none"
-            className="animated-wavy-line opacity-50"
-            style={{ filter: "url(#path-glow)" }}
-          />
-        </svg>
-      </div>
-
-      <ScrollReveal className="mx-auto max-w-6xl px-4 md:px-8">
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#2B5EFF" />
+                <stop offset="33%" stopColor="#566FFF" />
+                <stop offset="66%" stopColor="#A792FF" />
+                <stop offset="100%" stopColor="#FFB8FA" />
+              </linearGradient>
+              <filter id="path-glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <path
+              d="M50 150 C 250 150, 300 50, 425 50 C 550 50, 600 250, 725 250 C 850 250, 900 150, 1100 150"
+              stroke="url(#path-gradient)"
+              strokeWidth="2"
+              fill="none"
+              className="animated-wavy-line opacity-50"
+              style={{ filter: "url(#path-glow)" }}
+            />
+          </svg>
+        </div>
         <div className="mx-auto max-w-4xl text-center">
           <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
             We enable proces automation by building smart data eco-systems.
