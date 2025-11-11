@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useTransition, useEffect } from "react";
@@ -21,13 +22,13 @@ import { cn } from "@/lib/utils";
 import { Checkbox } from "../ui/checkbox";
 
 const formSteps = [
-  { field: "maturity", label: "How mature is your use of AI?*", description: "This helps us see how far you've adopted AI in your business." },
+  { field: "maturity", label: "How advanced is your AI usage?*", description: "This helps us understand your current AI capabilities." },
   { field: "companySize", label: "What is your company size?*", description: "This helps us understand the scale of your organization and potential project scope." },
-  { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us understand if we'll be collaborating with your team or handling development end-to-end." },
-  { field: "projectDetails", label: "What do you need help with?*"},
-  { field: "budgetReadiness", label: "Are you ready to invest in this project?*", description: "Our projects typically start from $10,000, covering MVPs, pilots, or initial production builds." },
-  { field: "timelineReadiness", label: "We like to move fast – do you?*", description: "After kickoff, our team can deliver a first working version within two weeks. We have limited capacity each month, so we prioritize companies ready to take action." },
-  { field: "contactDetails", label: "Contact Details*", description: "Please share your name and company information." },
+  { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us know if we'll be partnering with your developers." },
+  { field: "projectDetails", label: "Tell us about your project*"},
+  { field: "budgetReadiness", label: "What's your budget outlook?*", description: "Our projects typically start from $10,000, covering MVPs, pilots, or initial production builds." },
+  { field: "timelineReadiness", label: "How soon do you want to start?*", description: "We can deliver a working version in about two weeks. We prioritize companies ready to move quickly." },
+  { field: "contactDetails", label: "How can we reach you?*", description: "Please provide your contact and company information." },
 ];
 
 const totalSteps = formSteps.length;
@@ -254,11 +255,11 @@ export function ProjectIntakeForm() {
             <FormItem>
               <div className="flex items-center gap-4">
                 <span className="text-primary font-semibold">{step + 1} →</span>
-                <FormLabel className="text-2xl font-semibold">What do you need help with?*</FormLabel>
+                <FormLabel className="text-2xl font-semibold">Tell us about your project*</FormLabel>
               </div>
-              <p className="text-muted-foreground mt-2">In one sentence, tell us what you want to build or improve with AI.</p>
+              <p className="text-muted-foreground mt-2">In one sentence, what are you hoping to build or improve?</p>
               <FormControl>
-                <Textarea placeholder="e.g., Build a customer service chatbot" {...field} className="text-lg mt-4 min-h-[100px]" />
+                <Textarea placeholder="e.g., An AI chatbot to handle customer support inquiries..." {...field} className="text-lg mt-4 min-h-[100px]" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -273,9 +274,9 @@ export function ProjectIntakeForm() {
               name="challenges"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xl font-semibold">Can you elaborate on the specific challenges you're facing?</FormLabel>
+                  <FormLabel className="text-xl font-semibold">What are the main challenges you're facing right now?</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="e.g., High support volume, slow response times..." {...field} className="text-lg mt-4 min-h-[100px]" />
+                    <Textarea placeholder="e.g., Our support team is overwhelmed and response times are slow." {...field} className="text-lg mt-4 min-h-[100px]" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -292,9 +293,9 @@ export function ProjectIntakeForm() {
               name="vision"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xl font-semibold">How do you envision AI agents interacting and being used with this?</FormLabel>
+                  <FormLabel className="text-xl font-semibold">What's your vision for how this solution will work?</FormLabel>
                    <FormControl>
-                    <Textarea placeholder="e.g., Agents should handle common questions and escalate complex issues." {...field} className="text-lg mt-4 min-h-[100px]" />
+                    <Textarea placeholder="e.g., We want an AI that can answer common questions and knows when to escalate to a human agent." {...field} className="text-lg mt-4 min-h-[100px]" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -355,7 +356,7 @@ export function ProjectIntakeForm() {
                   <div className="flex justify-between text-sm text-muted-foreground mt-2">
                     <span>Just starting</span>
                     <span>Using AI tools</span>
-                    <span>Built custom AI</span>
+                    <span>Built custom AI AI</span>
                   </div>
                 </div>
               </FormControl>
@@ -463,3 +464,5 @@ export function ProjectIntakeForm() {
     </Card>
   );
 }
+
+    
