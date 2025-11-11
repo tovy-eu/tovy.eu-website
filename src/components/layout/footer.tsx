@@ -12,6 +12,9 @@ export function Footer() {
           </p>
         </div>
         <div className="flex items-center gap-4">
+          <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary">
+            Privacy Policy
+          </Link>
           <Link href="mailto:contact@tovy.ai" className="text-sm text-muted-foreground hover:text-primary">
             contact@tovy.ai
           </Link>

@@ -6,25 +6,25 @@ const pillars = [
   {
     icon: <BrainCircuit className="h-8 w-8" />,
     title: "Technology",
-    description: "We use robust, state-of-the-art technology to build systems that are powerful and easy to maintain.",
+    description: "We love tech and are up-to-date with the rapid changes in the industry.",
     color: "#2B5EFF"
   },
   {
     icon: <Rocket className="h-8 w-8" />,
     title: "Optimization",
-    description: "Performance is not an afterthought. We design for speed, efficiency, and reliability from day one.",
+    description: "We design your business processes in tech for speed, efficiency, and reliability from day one.",
     color: "#566FFF"
   },
   {
     icon: <KeyRound className="h-8 w-8" />,
     title: "Freedom",
-    description: "You get full ownership of the code. Our goal is to empower you, not to lock you into a service.",
+    description: "Our baseline is that solutions should lower workload and boost productivity to the extend that employees find headspace.",
     color: "#A792FF"
   },
   {
     icon: <Sparkles className="h-8 w-8" />,
     title: "Innovation",
-    description: "We build with a forward-thinking mindset, ensuring your systems are adaptable and future-ready.",
+    description: "We build with a forward-thinking mindset, ensuring solutions are adaptable and future-ready.",
     color: "#FFB8FA"
   }
 ];
@@ -69,10 +69,10 @@ export function AboutSection() {
 
       <div className="mx-auto max-w-4xl text-center">
         <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-          We build systems that let people and technology work in harmony.
+          We enable proces automation by building smart data eco-systems.
         </p>
         <p className="mt-6 text-lg leading-8 text-foreground/80">
-          Our philosophy is built on four core pillars. They are the foundation of every project we take on, ensuring we deliver not just code, but confidence and control.
+          Our strategy is built on four core values. They are the foundation of every project we take on, ensuring we deliver not just code, but confidence and control.
         </p>
       </div>
       <div className="relative mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -18,6 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
 import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle, Check, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Checkbox } from "../ui/checkbox";
 
 const formSteps = [
   { field: "maturity", label: "How mature is your use of AI?*", description: "This helps us see how far you've adopted AI in your business." },
@@ -129,7 +130,7 @@ export function ProjectIntakeForm() {
     if (currentField === 'projectDetails') {
       fieldsToValidate = ['projectFocus', 'challenges', 'vision'];
     } else if (currentField === 'contactDetails') {
-      fieldsToValidate = ['firstName', 'lastName', 'phone', 'email', 'company'];
+      fieldsToValidate = ['firstName', 'lastName', 'phone', 'email', 'company', 'consent'];
     } else {
       fieldsToValidate = [currentField as keyof ProjectRequestData];
     }
@@ -214,6 +215,30 @@ export function ProjectIntakeForm() {
         <FormField control={form.control} name="company" render={({ field }) => (
           <FormItem><FormLabel>Company *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
         )} />
+        <FormField
+          control={form.control}
+          name="consent"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>
+                  I agree to the{" "}
+                  <Link href="/privacy-policy" target="_blank" className="underline hover:text-primary">
+                    Privacy Policy
+                  </Link>
+                  .
+                </FormLabel>
+                <FormMessage />
+              </div>
+            </FormItem>
+          )}
+        />
       </div>
     )
   };
