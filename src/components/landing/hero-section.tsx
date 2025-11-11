@@ -1,9 +1,10 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { WavyLines } from './wavy-lines';
 
@@ -44,7 +45,7 @@ export function HeroSection() {
           <Button asChild size="lg" className="font-semibold text-lg">
             <Link href="/project-request">
               Work with us
-              <ArrowDown className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
