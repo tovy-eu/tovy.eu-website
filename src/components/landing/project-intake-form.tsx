@@ -165,9 +165,12 @@ export function ProjectIntakeForm() {
         setTimeout(() => nextStep(), 200);
       };
 
-      if (currentStepField === 'maturity' && key >= '0' && key <= '9') {
+      if (currentStepField === 'maturity' && !isNaN(parseInt(key, 10)) && event.key.length === 1) {
         event.preventDefault();
-        handleOptionSelect('maturity', event.key);
+        const numValue = parseInt(key, 10);
+        if (numValue >= 0 && numValue <= 10) {
+            handleOptionSelect('maturity', String(numValue));
+        }
       }
 
       if (currentStepField === 'companySize' && ['A', 'B', 'C', 'D'].includes(key)) {
@@ -474,11 +477,9 @@ export function ProjectIntakeForm() {
             </div>
           </CardContent>
           <CardFooter className="flex justify-between mt-4 min-h-[52px]">
-            {step > 0 ? (
-              <Button type="button" variant="ghost" onClick={prevStep}>
-                <ArrowLeft className="mr-2 h-4 w-4" /> Previous
-              </Button>
-            ) : <div />}
+            <Button type="button" variant="ghost" onClick={prevStep} disabled={step === 0}>
+              <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+            </Button>
             
             {(currentField === 'projectDetails' || currentField === 'contactDetails') && step < totalSteps - 1 ? (
               <Button type="button" onClick={nextStep}>
@@ -494,7 +495,7 @@ export function ProjectIntakeForm() {
                   </>
                 ) : "Submit Project"}
               </Button>
-            ) : null}
+            ) : <div />}
 
             {/* This is a hidden submit button to allow form submission on enter */}
             <button type="submit" className="hidden" disabled={isPending}></button>
