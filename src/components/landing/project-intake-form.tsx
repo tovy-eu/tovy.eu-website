@@ -424,7 +424,7 @@ export function ProjectIntakeForm() {
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
-          <CardContent className="min-h-[420px] flex items-center">
+          <CardContent className="min-h-[480px] flex items-center">
             <div className="w-full">
               {renderField()}
             </div>
@@ -436,7 +436,7 @@ export function ProjectIntakeForm() {
               </Button>
             ) : <div />}
             
-            {(currentField === 'projectDetails') && step < totalSteps -1 ? (
+            {(currentField === 'projectDetails' || currentField === 'contactDetails') && step < totalSteps - 1 ? (
               <Button type="button" onClick={nextStep}>
                 Next <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
