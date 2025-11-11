@@ -15,6 +15,9 @@ export const projectRequestSchema = z.object({
   phone: z.string().refine(isValidPhoneNumber, { message: "Please enter a valid phone number." }),
   email: z.string().email("Please enter a valid email address."),
   company: z.string().min(1, "Please enter your company name."),
+  consent: z.literal(true, {
+    errorMap: () => ({ message: "You must agree to the privacy policy." }),
+  }),
 });
 
 export type ProjectRequestData = z.infer<typeof projectRequestSchema>;
