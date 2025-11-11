@@ -45,12 +45,12 @@ const options: Record<string, { label: string, hint?: string }[]> = {
     { label: "No", hint: "N" },
   ],
   budgetReadiness: [
-    { label: "Yes, that fits", hint: "A" },
-    { label: "No, not right now", hint: "B" },
+    { label: "Yes, that fits", hint: "Y" },
+    { label: "No, not right now", hint: "N" },
   ],
   timelineReadiness: [
-    { label: "Yes, we're ready to start soon", hint: "A" },
-    { label: "Not yet, we're still preparing internally", hint: "B" },
+    { label: "Yes, we're ready to start soon", hint: "Y" },
+    { label: "Not yet, we're still preparing internally", hint: "N" },
   ],
 };
 
@@ -356,7 +356,7 @@ export function ProjectIntakeForm() {
                   <div className="flex justify-between text-sm text-muted-foreground mt-2">
                     <span>Just starting</span>
                     <span>Using AI tools</span>
-                    <span>Built custom AI AI</span>
+                    <span>Built custom AI</span>
                   </div>
                 </div>
               </FormControl>
