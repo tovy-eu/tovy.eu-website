@@ -39,8 +39,8 @@ export function AboutSection() {
           <svg
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto"
             width="1150"
-            height="300"
-            viewBox="0 0 1150 300"
+            height="600"
+            viewBox="0 0 1150 600"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -60,7 +60,7 @@ export function AboutSection() {
               </filter>
             </defs>
             <path
-              d="M50 300 C 250 300, 300 200, 425 200 C 550 200, 600 400, 725 400 C 850 400, 900 300, 1100 300"
+              d="M50 400 C 250 400, 300 300, 425 300 C 550 300, 600 500, 725 500 C 850 500, 900 400, 1100 400"
               stroke="url(#path-gradient)"
               strokeWidth="2"
               fill="none"
