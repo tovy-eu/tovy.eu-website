@@ -3,27 +3,28 @@ import { HeroSection } from "@/components/landing/hero-section";
 import { AboutSection } from "@/components/landing/about-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { SectionDivider } from "@/components/landing/section-divider";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
-      "name": "Tovy AI",
-      "url": "https://tovy.ai", // Replace with your actual domain
-      "logo": "https://tovy.ai/logo.png", // Replace with a URL to your logo
+      "name": "Tovy",
+      "url": "https://tovy.eu", // Replace with your actual domain
+      "logo": "https://tovy.eu/logo.png", // Replace with a URL to your logo
       "contactPoint": {
         "@type": "ContactPoint",
-        "email": "contact@tovy.ai",
+        "email": "info@tovy.eu",
         "contactType": "Customer Service"
       }
     },
     {
       "@type": "Service",
-      "serviceType": "AI System Development",
+      "serviceType": "AI System Development for industries",
       "provider": {
         "@type": "Organization",
-        "name": "Tovy AI"
+        "name": "Tovy"
       },
       "description": "We build clean, fast, and reliable AI systems that give you full control and turn manual labor into cognitive freedom."
     },
@@ -31,7 +32,7 @@ const jsonLd = {
       "@type": "Review",
       "itemReviewed": {
         "@type": "Organization",
-        "name": "Tovy AI"
+        "name": "Tovy"
       },
       "reviewRating": {
         "@type": "Rating",
@@ -48,7 +49,7 @@ const jsonLd = {
       "@type": "Review",
       "itemReviewed": {
         "@type": "Organization",
-        "name": "Tovy AI"
+        "name": "Tovy"
       },
       "reviewRating": {
         "@type": "Rating",
@@ -76,15 +77,15 @@ export default function Home() {
 
         <SectionDivider />
         
-        <div id="about" className="w-full">
+        <ScrollReveal id="about" className="w-full">
           <AboutSection />
-        </div>
+        </ScrollReveal>
 
         <SectionDivider />
 
-        <div id="testimonials" className="w-full">
+        <ScrollReveal id="testimonials" className="w-full">
           <TestimonialsSection />
-        </div>
+        </ScrollReveal>
       </div>
     </>
   );
