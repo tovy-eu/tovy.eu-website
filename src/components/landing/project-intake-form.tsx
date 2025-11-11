@@ -153,7 +153,7 @@ export function ProjectIntakeForm() {
   
   if (formSubmitted) {
     return (
-      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm">
+      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm opacity-90">
         <CardHeader className="text-center">
           <CheckCircle className="mx-auto h-16 w-16 text-green-500 mb-4" />
           <CardTitle className="text-2xl">Thank You!</CardTitle>
@@ -418,7 +418,7 @@ export function ProjectIntakeForm() {
   }
 
   return (
-    <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm">
+    <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm opacity-90">
       <CardHeader>
         <Progress value={(step / totalSteps) * 100} className="w-full h-2" />
       </CardHeader>
