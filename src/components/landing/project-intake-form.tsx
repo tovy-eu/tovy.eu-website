@@ -96,7 +96,7 @@ export function ProjectIntakeForm() {
     if (projectFocus) {
       const timer = setTimeout(() => {
         setShowChallenges(true);
-      }, 2000);
+      }, 500);
       return () => clearTimeout(timer);
     } else {
       setShowChallenges(false);
@@ -107,7 +107,7 @@ export function ProjectIntakeForm() {
     if (challenges) {
       const timer = setTimeout(() => {
         setShowVision(true);
-      }, 2000);
+      }, 500);
       return () => clearTimeout(timer);
     } else {
       setShowVision(false);
@@ -153,22 +153,24 @@ export function ProjectIntakeForm() {
   
   if (formSubmitted) {
     return (
-      <Card className="w-full max-w-2xl mx-auto border-0 md:border md:shadow-lg">
-        <CardHeader className="text-center">
-          <CheckCircle className="mx-auto h-16 w-16 text-green-500 mb-4" />
-          <CardTitle className="text-2xl">Thank You!</CardTitle>
-          <CardDescription>
-            Your project request has been submitted. We will contact you shortly.
-          </CardDescription>
-        </CardHeader>
-        <CardFooter className="flex justify-center">
-          <Button asChild variant="outline">
-            <Link href="/">
-              <Home className="mr-2 h-4 w-4" />
-              Back to Homepage
-            </Link>
-          </Button>
-        </CardFooter>
+      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm p-1 bg-gradient-to-r from-primary/20 to-[#8F668C]/20 rounded-lg">
+        <div className="bg-background rounded-lg">
+          <CardHeader className="text-center">
+            <CheckCircle className="mx-auto h-16 w-16 text-green-500 mb-4" />
+            <CardTitle className="text-2xl">Thank You!</CardTitle>
+            <CardDescription>
+              Your project request has been submitted. We will contact you shortly.
+            </CardDescription>
+          </CardHeader>
+          <CardFooter className="flex justify-center">
+            <Button asChild variant="outline">
+              <Link href="/">
+                <Home className="mr-2 h-4 w-4" />
+                Back to Homepage
+              </Link>
+            </Button>
+          </CardFooter>
+        </div>
       </Card>
     );
   }
@@ -267,42 +269,38 @@ export function ProjectIntakeForm() {
         />
         
         {/* Challenges */}
-        {showChallenges && (
-          <div className="border-t border-border pt-8">
-            <FormField
-              control={form.control}
-              name="challenges"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xl font-semibold">What are the main challenges you're facing right now?</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="e.g., Our support team is overwhelmed and response times are slow." {...field} className="text-lg mt-4 min-h-[100px]" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-        )}
+        <div className={cn("border-t border-border pt-8 transition-opacity duration-500", showChallenges ? "opacity-100" : "opacity-0")}>
+          <FormField
+            control={form.control}
+            name="challenges"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-xl font-semibold">What are the main challenges you're facing right now?</FormLabel>
+                <FormControl>
+                  <Textarea placeholder="e.g., Our support team is overwhelmed and response times are slow." {...field} className="text-lg mt-4 min-h-[100px]" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
         {/* Vision */}
-        {showVision && (
-          <div className="border-t border-border pt-8">
-            <FormField
-              control={form.control}
-              name="vision"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xl font-semibold">What's your vision for how this solution will work?</FormLabel>
-                   <FormControl>
-                    <Textarea placeholder="e.g., We want an AI that can answer common questions and knows when to escalate to a human agent." {...field} className="text-lg mt-4 min-h-[100px]" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-        )}
+        <div className={cn("border-t border-border pt-8 transition-opacity duration-500", showVision ? "opacity-100" : "opacity-0")}>
+          <FormField
+            control={form.control}
+            name="vision"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-xl font-semibold">What's your vision for how this solution will work?</FormLabel>
+                 <FormControl>
+                  <Textarea placeholder="e.g., We want an AI that can answer common questions and knows when to escalate to a human agent." {...field} className="text-lg mt-4 min-h-[100px]" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
       </div>
     );
   };
@@ -343,9 +341,9 @@ export function ProjectIntakeForm() {
                           setTimeout(() => nextStep(), 200);
                         }}
                         className={cn(
-                          "h-10 w-10 flex items-center justify-center border rounded-md transition-colors text-sm",
+                          "h-10 w-10 flex items-center justify-center border rounded-md transition-all text-sm",
                           formField.value === String(value)
-                            ? "bg-primary text-primary-foreground"
+                            ? "bg-primary text-primary-foreground ring-2 ring-primary ring-offset-2 ring-offset-background"
                             : "bg-muted hover:bg-muted/80"
                         )}
                       >
@@ -392,9 +390,9 @@ export function ProjectIntakeForm() {
                         setTimeout(() => nextStep(), 200);
                       }}
                       className={cn(
-                        "w-full flex items-center justify-between text-left p-3 border rounded-md transition-colors",
+                        "w-full flex items-center justify-between text-left p-3 border rounded-md transition-all",
                         formField.value === option.label
-                          ? "bg-primary/10 border-primary ring-2 ring-primary"
+                          ? "bg-primary/10 border-primary ring-2 ring-primary ring-offset-2 ring-offset-background"
                           : "bg-muted/50 hover:bg-muted"
                       )}
                     >
@@ -422,47 +420,47 @@ export function ProjectIntakeForm() {
   }
 
   return (
-    <Card className="w-full max-w-2xl mx-auto border-0 md:border md:shadow-lg">
-      <CardHeader>
-        <Progress value={(step / totalSteps) * 100} className="w-full" />
-      </CardHeader>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
-          <CardContent className="min-h-[350px] flex items-center">
-            <div className="w-full">
-              {renderField()}
-            </div>
-          </CardContent>
-          <CardFooter className="flex justify-between mt-4">
-            {step > 0 ? (
-              <Button type="button" variant="ghost" onClick={prevStep}>
-                <ArrowLeft className="mr-2 h-4 w-4" /> Previous
-              </Button>
-            ) : <div />}
-            
-            {(currentField === 'projectDetails' || currentField === 'maturity') && step < totalSteps -1 ? (
-              <Button type="button" onClick={nextStep}>
-                Next <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            ) : null}
+    <div className="p-1 bg-gradient-to-r from-primary/20 to-[#8F668C]/20 rounded-lg">
+      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-0">
+        <CardHeader>
+          <Progress value={(step / totalSteps) * 100} className="w-full h-2" />
+        </CardHeader>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
+            <CardContent className="min-h-[420px] flex items-center">
+              <div className="w-full">
+                {renderField()}
+              </div>
+            </CardContent>
+            <CardFooter className="flex justify-between mt-4">
+              {step > 0 ? (
+                <Button type="button" variant="ghost" onClick={prevStep}>
+                  <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+                </Button>
+              ) : <div />}
+              
+              {(currentField === 'projectDetails') && step < totalSteps -1 ? (
+                <Button type="button" onClick={nextStep}>
+                  Next <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              ) : null}
 
-            {step === totalSteps - 1 ? (
-              <Button type="button" onClick={nextStep} size="lg" disabled={isPending}>
-                {isPending ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
-                  </>
-                ) : "Submit Project"}
-              </Button>
-            ) : null}
+              {step === totalSteps - 1 ? (
+                <Button type="button" onClick={nextStep} size="lg" disabled={isPending}>
+                  {isPending ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
+                    </>
+                  ) : "Submit Project"}
+                </Button>
+              ) : null}
 
-            {/* This is a hidden submit button to allow form submission on enter */}
-            <button type="submit" className="hidden" disabled={isPending}></button>
-          </CardFooter>
-        </form>
-      </Form>
-    </Card>
+              {/* This is a hidden submit button to allow form submission on enter */}
+              <button type="submit" className="hidden" disabled={isPending}></button>
+            </CardFooter>
+          </form>
+        </Form>
+      </Card>
+    </div>
   );
 }
-
-    
