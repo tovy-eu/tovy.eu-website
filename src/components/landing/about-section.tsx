@@ -60,7 +60,7 @@ export function AboutSection() {
               </filter>
             </defs>
             <path
-              d="M50 150 C 250 150, 300 50, 425 50 C 550 50, 600 250, 725 250 C 850 250, 900 150, 1100 150"
+              d="M50 200 C 250 200, 300 100, 425 100 C 550 100, 600 300, 725 300 C 850 300, 900 200, 1100 200"
               stroke="url(#path-gradient)"
               strokeWidth="2"
               fill="none"
