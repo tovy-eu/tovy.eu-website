@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, useTransition, useEffect } from "react";
@@ -481,21 +482,23 @@ export function ProjectIntakeForm() {
               <ArrowLeft className="mr-2 h-4 w-4" /> Previous
             </Button>
             
-            {(currentField === 'projectDetails' || currentField === 'contactDetails') && step < totalSteps - 1 ? (
-              <Button type="button" onClick={nextStep}>
-                Next <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            ) : null}
+            <div className="flex justify-end flex-grow">
+              {(currentField === 'projectDetails' || currentField === 'contactDetails') && step < totalSteps - 1 ? (
+                <Button type="button" onClick={nextStep}>
+                  Next <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              ) : null}
 
-            {step === totalSteps - 1 ? (
-              <Button type="button" onClick={nextStep} size="lg" disabled={isPending}>
-                {isPending ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
-                  </>
-                ) : "Submit Project"}
-              </Button>
-            ) : <div />}
+              {step === totalSteps - 1 ? (
+                <Button type="button" onClick={nextStep} size="lg" disabled={isPending}>
+                  {isPending ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
+                    </>
+                  ) : "Submit Project"}
+                </Button>
+              ) : null}
+            </div>
 
             {/* This is a hidden submit button to allow form submission on enter */}
             <button type="submit" className="hidden" disabled={isPending}></button>
