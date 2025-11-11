@@ -77,13 +77,13 @@ export default function Home() {
 
         <SectionDivider />
         
-        <ScrollReveal id="about" className="w-full">
+        <ScrollReveal className="w-full">
           <AboutSection />
         </ScrollReveal>
 
         <SectionDivider />
 
-        <ScrollReveal id="testimonials" className="w-full">
+        <ScrollReveal className="w-full">
           <TestimonialsSection />
         </ScrollReveal>
       </div>

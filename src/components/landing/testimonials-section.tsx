@@ -1,8 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ScrollReveal } from "../scroll-reveal";
 
@@ -11,13 +9,13 @@ const testimonials = [
     quote: "Tovy delivered a system that was not only powerful but also incredibly easy for our team to manage. The transparency and control we have now is a game-changer.",
     name: "Alex Rivera",
     title: "CTO, Innovate Inc.",
-    image: PlaceHolderImages.find(p => p.id === 'testimonial-1'),
+    initials: "AR",
   },
   {
     quote: "The speed and reliability of the AI system Tovy built for us exceeded all expectations. Our operational efficiency has skyrocketed.",
     name: "Samantha Chen",
     title: "Head of Operations, Logicore",
-    image: PlaceHolderImages.find(p => p.id === 'testimonial-2'),
+    initials: "SC",
   },
 ];
 
@@ -52,17 +50,7 @@ export function TestimonialsSection() {
                           <p className="text-foreground/80 flex-grow">"{testimonial.quote}"</p>
                           <div className="mt-6 flex items-center gap-4">
                             <Avatar>
-                              {testimonial.image && (
-                                <Image
-                                  src={testimonial.image.imageUrl}
-                                  alt={`Portrait of ${testimonial.name}, ${testimonial.title}`}
-                                  width={testimonial.image.width}
-                                  height={testimonial.image.height}
-                                  data-ai-hint={testimonial.image.imageHint}
-                                  className="rounded-full"
-                                />
-                              )}
-                              <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                              <AvatarFallback>{testimonial.initials}</AvatarFallback>
                             </Avatar>
                             <div>
                               <p className="font-semibold">{testimonial.name}</p>
