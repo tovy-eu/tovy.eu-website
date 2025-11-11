@@ -11,15 +11,13 @@ const testimonials = [
     quote: "Tovy delivered a system that was not only powerful but also incredibly easy for our team to manage. The transparency and control we have now is a game-changer.",
     name: "Alex Rivera",
     title: "CTO, Innovate Inc.",
-    avatar: PlaceHolderImages.find(p => p.id === 'testimonial-1')?.imageUrl || '',
-    avatarHint: PlaceHolderImages.find(p => p.id === 'testimonial-1')?.imageHint || '',
+    image: PlaceHolderImages.find(p => p.id === 'testimonial-1'),
   },
   {
     quote: "The speed and reliability of the AI system Tovy built for us exceeded all expectations. Our operational efficiency has skyrocketed.",
     name: "Samantha Chen",
     title: "Head of Operations, Logicore",
-    avatar: PlaceHolderImages.find(p => p.id === 'testimonial-2')?.imageUrl || '',
-    avatarHint: PlaceHolderImages.find(p => p.id === 'testimonial-2')?.imageHint || '',
+    image: PlaceHolderImages.find(p => p.id === 'testimonial-2'),
   },
 ];
 
@@ -54,13 +52,13 @@ export function TestimonialsSection() {
                           <p className="text-foreground/80 flex-grow">"{testimonial.quote}"</p>
                           <div className="mt-6 flex items-center gap-4">
                             <Avatar>
-                              {testimonial.avatar && (
+                              {testimonial.image && (
                                 <Image
-                                  src={testimonial.avatar}
+                                  src={testimonial.image.imageUrl}
                                   alt={`Portrait of ${testimonial.name}, ${testimonial.title}`}
-                                  width={40}
-                                  height={40}
-                                  data-ai-hint={testimonial.avatarHint}
+                                  width={testimonial.image.width}
+                                  height={testimonial.image.height}
+                                  data-ai-hint={testimonial.image.imageHint}
                                   className="rounded-full"
                                 />
                               )}
