@@ -70,8 +70,11 @@ export function AboutSection() {
           </svg>
         </div>
         <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
+            Tovy Strategy
+          </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-          What we do.
+            What and why we do this.
           </p>
         </div>
 
