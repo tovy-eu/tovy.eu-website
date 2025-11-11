@@ -20,7 +20,7 @@ const pillars = [
   {
     icon: <KeyRound className="h-8 w-8" />,
     title: "Freedom",
-    description: "Our baseline is that solutions should lower workload and boost productivity to the extend that employees find headspace.",
+    description: "Our baseline is that solutions should generate cognitive freedom, therefore lowering workload and boost productivity.",
     color: "#A792FF"
   },
   {
@@ -73,10 +73,29 @@ export function AboutSection() {
           <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
             We enable proces automation by building smart data eco-systems.
           </p>
-          <p className="mt-6 text-lg leading-8 text-foreground/80">
+        </div>
+
+        <div className="mx-auto max-w-4xl mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 text-center">
+          <div>
+            <h3 className="text-xl font-semibold text-primary">Mission</h3>
+            <p className="mt-2 text-foreground/80">
+              We build smart systems that take work off your hands, so you can focus on what really matters.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold text-primary">Vision</h3>
+            <p className="mt-2 text-foreground/80">
+              A world where technology gives people more time, focus, and freedom to grow.
+            </p>
+          </div>
+        </div>
+        
+        <div className="mx-auto max-w-4xl text-center mt-16">
+          <p className="text-lg leading-8 text-foreground/80">
             Our strategy is built on four core values. They are the foundation of every project we take on, ensuring we deliver not just code, but confidence and control.
           </p>
         </div>
+        
         <div className="relative mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {pillars.map((pillar) => (
             <Card 
