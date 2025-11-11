@@ -189,7 +189,7 @@ export function ProjectIntakeForm() {
             <FormItem><FormLabel>First Name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
           )} />
           <FormField control={form.control} name="lastName" render={({ field }) => (
-            <FormItem><FormLabel>Last Name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormMessage></FormItem>
+            <FormItem><FormLabel>Last Name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
           )} />
         </div>
         <FormField
@@ -424,7 +424,7 @@ export function ProjectIntakeForm() {
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
-          <CardContent className="min-h-[800px] flex items-center">
+          <CardContent className="min-h-[600px] flex items-center">
             <div className="w-full">
               {renderField()}
             </div>
