@@ -14,7 +14,7 @@ const pillars = [
   {
     icon: <Rocket className="h-8 w-8" />,
     title: "Optimization",
-    description: "We design your business processes in tech for speed, efficiency, and reliability from day one.",
+    description: "We design systems to achieve milestones towards automation from day one. ",
     color: "#566FFF"
   },
   {
