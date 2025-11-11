@@ -153,24 +153,22 @@ export function ProjectIntakeForm() {
   
   if (formSubmitted) {
     return (
-      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm p-1 bg-gradient-to-r from-primary/20 to-[#8F668C]/20 rounded-lg">
-        <div className="bg-background rounded-lg">
-          <CardHeader className="text-center">
-            <CheckCircle className="mx-auto h-16 w-16 text-green-500 mb-4" />
-            <CardTitle className="text-2xl">Thank You!</CardTitle>
-            <CardDescription>
-              Your project request has been submitted. We will contact you shortly.
-            </CardDescription>
-          </CardHeader>
-          <CardFooter className="flex justify-center">
-            <Button asChild variant="outline">
-              <Link href="/">
-                <Home className="mr-2 h-4 w-4" />
-                Back to Homepage
-              </Link>
-            </Button>
-          </CardFooter>
-        </div>
+      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm">
+        <CardHeader className="text-center">
+          <CheckCircle className="mx-auto h-16 w-16 text-green-500 mb-4" />
+          <CardTitle className="text-2xl">Thank You!</CardTitle>
+          <CardDescription>
+            Your project request has been submitted. We will contact you shortly.
+          </CardDescription>
+        </CardHeader>
+        <CardFooter className="flex justify-center">
+          <Button asChild variant="outline">
+            <Link href="/">
+              <Home className="mr-2 h-4 w-4" />
+              Back to Homepage
+            </Link>
+          </Button>
+        </CardFooter>
       </Card>
     );
   }
@@ -420,47 +418,45 @@ export function ProjectIntakeForm() {
   }
 
   return (
-    <div className="p-1 bg-gradient-to-r from-primary/20 to-[#8F668C]/20 rounded-lg">
-      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-0">
-        <CardHeader>
-          <Progress value={(step / totalSteps) * 100} className="w-full h-2" />
-        </CardHeader>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
-            <CardContent className="min-h-[420px] flex items-center">
-              <div className="w-full">
-                {renderField()}
-              </div>
-            </CardContent>
-            <CardFooter className="flex justify-between mt-4">
-              {step > 0 ? (
-                <Button type="button" variant="ghost" onClick={prevStep}>
-                  <ArrowLeft className="mr-2 h-4 w-4" /> Previous
-                </Button>
-              ) : <div />}
-              
-              {(currentField === 'projectDetails') && step < totalSteps -1 ? (
-                <Button type="button" onClick={nextStep}>
-                  Next <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              ) : null}
+    <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm">
+      <CardHeader>
+        <Progress value={(step / totalSteps) * 100} className="w-full h-2" />
+      </CardHeader>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
+          <CardContent className="min-h-[420px] flex items-center">
+            <div className="w-full">
+              {renderField()}
+            </div>
+          </CardContent>
+          <CardFooter className="flex justify-between mt-4">
+            {step > 0 ? (
+              <Button type="button" variant="ghost" onClick={prevStep}>
+                <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+              </Button>
+            ) : <div />}
+            
+            {(currentField === 'projectDetails') && step < totalSteps -1 ? (
+              <Button type="button" onClick={nextStep}>
+                Next <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            ) : null}
 
-              {step === totalSteps - 1 ? (
-                <Button type="button" onClick={nextStep} size="lg" disabled={isPending}>
-                  {isPending ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
-                    </>
-                  ) : "Submit Project"}
-                </Button>
-              ) : null}
+            {step === totalSteps - 1 ? (
+              <Button type="button" onClick={nextStep} size="lg" disabled={isPending}>
+                {isPending ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
+                  </>
+                ) : "Submit Project"}
+              </Button>
+            ) : null}
 
-              {/* This is a hidden submit button to allow form submission on enter */}
-              <button type="submit" className="hidden" disabled={isPending}></button>
-            </CardFooter>
-          </form>
-        </Form>
-      </Card>
-    </div>
+            {/* This is a hidden submit button to allow form submission on enter */}
+            <button type="submit" className="hidden" disabled={isPending}></button>
+          </CardFooter>
+        </form>
+      </Form>
+    </Card>
   );
 }
