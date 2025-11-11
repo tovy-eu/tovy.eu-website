@@ -26,7 +26,7 @@ export function TestimonialsSection() {
   return (
     <section 
       className="w-full py-16 sm:py-24"
-      style={{ background: 'linear-gradient(to bottom, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1))' }}
+      style={{ background: 'linear-gradient(to bottom, hsl(var(--primary) / 0.1), hsl(var(--background)))' }}
     >
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <ScrollReveal>
