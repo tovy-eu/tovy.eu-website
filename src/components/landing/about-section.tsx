@@ -8,25 +8,25 @@ const pillars = [
   {
     icon: <BrainCircuit className="h-8 w-8" />,
     title: "Technology",
-    description: "We love tech and are up-to-date with the rapid changes in the industry.",
+    description: "We love tech, data and AI. We are up-to-date with the rapid changes in the industry.",
     color: "#2B5EFF"
   },
   {
     icon: <Rocket className="h-8 w-8" />,
     title: "Optimization",
-    description: "We design systems to achieve milestones towards automation from day one. ",
+    description: "Every design aims for efficiency and automation. We target removal of tedious, inefficient tasks.",
     color: "#566FFF"
   },
   {
     icon: <KeyRound className="h-8 w-8" />,
     title: "Freedom",
-    description: "Our baseline is that solutions should generate cognitive freedom, therefore lowering workload and boost productivity.",
+    description: "Our solutions are built to reduce cognitive load. We freeing people to think, innovate, and grow.",
     color: "#A792FF"
   },
   {
     icon: <Sparkles className="h-8 w-8" />,
     title: "Innovation",
-    description: "We build with a forward-thinking mindset, ensuring solutions are adaptable and future-ready.",
+    description: "We design adaptable, future-ready systems that evolve with your business.",
     color: "#FFB8FA"
   }
 ];
@@ -71,19 +71,19 @@ export function AboutSection() {
         </div>
         <div className="mx-auto max-w-4xl text-center">
           <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-            We enable proces automation by building smart data eco-systems.
+          What we do.
           </p>
         </div>
 
         <div className="mx-auto max-w-4xl mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 text-center">
           <div>
-            <h3 className="text-xl font-semibold text-primary">Mission</h3>
+            <h3 className="text-xl font-semibold bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">Mission</h3>
             <p className="mt-2 text-foreground/80">
               We build smart systems that take work off your hands, so you can focus on what really matters.
             </p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold text-primary">Vision</h3>
+            <h3 className="text-xl font-semibold bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">Vision</h3>
             <p className="mt-2 text-foreground/80">
               A world where technology gives people more time, focus, and freedom to grow.
             </p>
@@ -92,7 +92,7 @@ export function AboutSection() {
         
         <div className="mx-auto max-w-4xl text-center mt-16">
           <p className="text-lg leading-8 text-foreground/80">
-            Our strategy is built on four core values. They are the foundation of every project we take on, ensuring we deliver not just code, but confidence and control.
+            Our strategy is built on four core values. They are the foundation delivered solution.
           </p>
         </div>
         

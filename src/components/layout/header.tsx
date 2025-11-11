@@ -20,7 +20,7 @@ export function Header() {
 
         {/* Right: CTA Button */}
         <Button asChild>
-          <Link href="/project-request">Start Project</Link>
+          <Link href="/project-request">Share your idea</Link>
         </Button>
       </div>
       <div 
