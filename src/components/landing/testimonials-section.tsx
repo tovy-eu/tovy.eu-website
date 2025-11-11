@@ -7,7 +7,7 @@ import { ScrollReveal } from "../scroll-reveal";
 
 const testimonials = [
   {
-    quote: "Tovy AI delivered a system that was not only powerful but also incredibly easy for our team to manage. The transparency and control we have now is a game-changer.",
+    quote: "Tovy delivered a system that was not only powerful but also incredibly easy for our team to manage. The transparency and control we have now is a game-changer.",
     name: "Alex Rivera",
     title: "CTO, Innovate Inc.",
     avatar: PlaceHolderImages.find(p => p.id === 'testimonial-1')?.imageUrl || '',
