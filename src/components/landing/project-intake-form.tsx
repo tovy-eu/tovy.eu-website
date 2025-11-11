@@ -424,7 +424,7 @@ export function ProjectIntakeForm() {
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
-          <CardContent className="min-h-[480px] flex items-center">
+          <CardContent className="min-h-[520px] flex items-center">
             <div className="w-full">
               {renderField()}
             </div>
