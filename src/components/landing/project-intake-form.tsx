@@ -189,7 +189,7 @@ export function ProjectIntakeForm() {
             <FormItem><FormLabel>First Name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
           )} />
           <FormField control={form.control} name="lastName" render={({ field }) => (
-            <FormItem><FormLabel>Last Name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+            <FormItem><FormLabel>Last Name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormMessage></FormItem>
           )} />
         </div>
         <FormField
@@ -241,7 +241,7 @@ export function ProjectIntakeForm() {
           )}
         />
       </div>
-    )
+    );
   };
   
   const renderProjectDetailsStep = () => {
@@ -415,7 +415,7 @@ export function ProjectIntakeForm() {
     }
 
     return null;
-  }
+  };
 
   return (
     <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm opacity-90">
@@ -424,12 +424,12 @@ export function ProjectIntakeForm() {
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
-          <CardContent className="min-h-[520px] flex items-center">
+          <CardContent className="min-h-[800px] flex items-center">
             <div className="w-full">
               {renderField()}
             </div>
           </CardContent>
-          <CardFooter className="flex justify-between mt-4">
+          <CardFooter className="flex justify-between mt-4 min-h-[52px]">
             {step > 0 ? (
               <Button type="button" variant="ghost" onClick={prevStep}>
                 <ArrowLeft className="mr-2 h-4 w-4" /> Previous
