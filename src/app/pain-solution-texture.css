@@ -6,6 +6,6 @@
     linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
     linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
   background-size: 2rem 2rem;
-  mask-image: linear-gradient(to bottom right, #000, transparent);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   z-index: 0;
 }
