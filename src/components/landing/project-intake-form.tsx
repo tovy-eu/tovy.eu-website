@@ -6,7 +6,6 @@ import { useState, useTransition, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { projectRequestSchema, type ProjectRequestData } from "@/lib/definitions";
-import { logEvent } from "@/lib/firebase";
 import { useToast } from "@/hooks/use-toast";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -90,7 +89,7 @@ export function ProjectIntakeForm() {
   const challenges = form.watch("challenges");
 
   useEffect(() => {
-    logEvent("began_project_form");
+    // A good place for an analytics event
   }, []);
 
   useEffect(() => {
@@ -119,10 +118,7 @@ export function ProjectIntakeForm() {
   const onSubmit = (data: ProjectRequestData) => {
     startTransition(() => {
       console.log("Form data submitted:", data);
-      logEvent("submitted_project_request", {
-        companySize: data.companySize,
-        engineeringTeam: data.engineeringTeam,
-      });
+      // A good place for an analytics event
       setFormSubmitted(true);
     });
   };
