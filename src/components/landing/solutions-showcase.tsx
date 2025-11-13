@@ -13,19 +13,7 @@ const solutions = [
     description: "An intelligent CRM that automates lead scoring and provides deep customer insights, freeing up your sales team to focus on closing deals.",
     link: "#",
     imageId: "solution-1"
-  },
-  {
-    title: "FlowState Scheduler",
-    description: "A smart scheduling platform that optimizes team availability and project timelines, eliminating coordination headaches.",
-    link: "#",
-    imageId: "solution-2"
-  },
-  {
-    title: "Insightify Analytics",
-    description: "Turn raw data into actionable business intelligence. Insightify provides clear, automated reports to guide your strategy.",
-    link: "#",
-    imageId: "solution-3"
-  },
+  }
 ];
 
 const solutionImages = Object.fromEntries(PlaceHolderImages.map(img => [img.id, img]));
@@ -46,7 +34,7 @@ export function SolutionsShowcase() {
               Trusted by teams who value clarity and control.
             </h2>
           </div>
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
             {solutions.map((solution) => {
               const image = solutionImages[solution.imageId];
               return (
