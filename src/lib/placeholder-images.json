@@ -7,22 +7,6 @@
       "imageHint": "software interface",
       "width": 600,
       "height": 400
-    },
-    {
-      "id": "solution-2",
-      "description": "Abstract image for a software solution",
-      "imageUrl": "https://images.unsplash.com/photo-1748439281934-2803c6a3ee36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkYXNoYm9hcmQlMjBjaGFydHxlbnwwfHx8fDE3NjI5NzE0MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "dashboard chart",
-      "width": 600,
-      "height": 400
-    },
-    {
-      "id": "solution-3",
-      "description": "Abstract image for a software solution",
-      "imageUrl": "https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwdmlzdWFsaXphdGlvbnxlbnwwfHx8fDE3NjI5NjU0NTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "data visualization",
-      "width": 600,
-      "height": 400
     }
   ]
 }
