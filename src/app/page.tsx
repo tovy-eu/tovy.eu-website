@@ -1,7 +1,7 @@
 
 import { HeroSection } from "@/components/landing/hero-section";
 import { AboutSection } from "@/components/landing/about-section";
-import { TestimonialsSection } from "@/components/landing/testimonials-section";
+import { SolutionsShowcase } from "@/components/landing/solutions-showcase";
 import { SectionDivider } from "@/components/landing/section-divider";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
@@ -84,7 +84,7 @@ export default function Home() {
         <SectionDivider />
 
         <ScrollReveal className="w-full">
-          <TestimonialsSection />
+          <SolutionsShowcase />
         </ScrollReveal>
       </div>
     </>

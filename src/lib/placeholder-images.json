@@ -1,20 +1,28 @@
 {
   "placeholderImages": [
     {
-      "id": "testimonial-1",
-      "description": "Avatar for testimonial 1",
-      "imageUrl": "https://images.unsplash.com/photo-1607031542107-f6f46b5d54e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjI4NTg1MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "man portrait",
-      "width": 40,
-      "height": 40
+      "id": "solution-1",
+      "description": "Abstract image for a software solution",
+      "imageUrl": "https://images.unsplash.com/photo-1759752394755-1241472b589d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzb2Z0d2FyZSUyMGludGVyZmFjZXxlbnwwfHx8fDE3NjI5MjQ2NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "software interface",
+      "width": 600,
+      "height": 400
     },
     {
-      "id": "testimonial-2",
-      "description": "Avatar for testimonial 2",
-      "imageUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MjgwMDA3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "woman portrait",
-      "width": 40,
-      "height": 40
+      "id": "solution-2",
+      "description": "Abstract image for a software solution",
+      "imageUrl": "https://images.unsplash.com/photo-1748439281934-2803c6a3ee36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkYXNoYm9hcmQlMjBjaGFydHxlbnwwfHx8fDE3NjI5NzE0MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dashboard chart",
+      "width": 600,
+      "height": 400
+    },
+    {
+      "id": "solution-3",
+      "description": "Abstract image for a software solution",
+      "imageUrl": "https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwdmlzdWFsaXphdGlvbnxlbnwwfHx8fDE3NjI5NjU0NTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data visualization",
+      "width": 600,
+      "height": 400
     }
   ]
 }
