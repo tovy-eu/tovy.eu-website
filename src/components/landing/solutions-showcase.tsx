@@ -28,10 +28,10 @@ export function SolutionsShowcase() {
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
-              Peace of Mind, Delivered
+              Delivered Solutions
             </h2>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              Trusted by teams who value clarity and control.
+              Trusted by companies and teams who value their workforce
             </h2>
           </div>
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
