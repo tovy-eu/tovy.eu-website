@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -15,7 +14,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
 
 const solutions = [
   {
@@ -64,12 +62,6 @@ export function SolutionsShowcase() {
                 align: "start",
                 loop: true,
               }}
-              plugins={[
-                Autoplay({
-                  delay: 4000,
-                  stopOnInteraction: true,
-                }),
-              ]}
               className="w-full max-w-sm md:max-w-md lg:max-w-lg"
             >
               <CarouselContent>
