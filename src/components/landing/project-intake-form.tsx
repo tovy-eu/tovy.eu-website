@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
 import { Checkbox } from "../ui/checkbox";
 
 const formSteps = [
-  { field: "maturity", label: "How advanced is your AI usage?*", description: "This helps us understand your current AI capabilities." },
+  { field: "maturity", label: "How advanced is your Data Management/Governance?*", description: "This helps us understand your current data capabilities." },
   { field: "companySize", label: "What is your company size?*", description: "This helps us understand the scale of your organization and potential project scope." },
   { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us know if we'll be partnering with your developers." },
   { field: "projectDetails", label: "Tell us about your project*"},
