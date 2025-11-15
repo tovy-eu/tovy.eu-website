@@ -21,12 +21,6 @@ export function Footer() {
           <div className="flex items-center gap-1">
             <Button variant="ghost" size="icon" asChild>
               <Link href="#" target="_blank">
-                <Twitter className="h-4 w-4" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="#" target="_blank">
                 <Github className="h-4 w-4" />
                 <span className="sr-only">GitHub</span>
               </Link>
