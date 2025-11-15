@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { WavyLines } from './wavy-lines';
 
@@ -41,11 +41,17 @@ export function HeroSection() {
         <p className="mt-6 text-lg leading-8 text-white/80 sm:text-xl">
         Every solution we create turns manual labor into cognitive freedom to learn and grow.
         </p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-y-6">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button asChild size="lg" className="font-semibold text-lg">
             <Link href="/project-request">
               Work with us
               <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="font-semibold text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white">
+            <Link href="/blog">
+              <BookOpen className="mr-2 h-5 w-5" />
+              Read about us
             </Link>
           </Button>
         </div>

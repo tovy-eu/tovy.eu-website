@@ -3,6 +3,7 @@ import { getSortedPostsData } from '@/lib/blog';
 import { format } from 'date-fns';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import type { Metadata } from 'next';
+import { SubscriptionForm } from '@/components/blog/subscription-form';
 
 export const metadata: Metadata = {
   title: 'Blog | Tovy AI',
@@ -15,6 +16,11 @@ export default function BlogHome() {
   return (
     <div className="container mx-auto max-w-4xl py-12 px-4 md:px-8">
       <h1 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">Tovy Blog</h1>
+      
+      <div className="my-12">
+        <SubscriptionForm />
+      </div>
+
       <div className="grid gap-8">
         {allPostsData.map(({ id, date, title, excerpt }) => (
           <Link href={`/blog/${id}`} key={id}>

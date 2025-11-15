@@ -1,6 +1,7 @@
 import { getPostData, getSortedPostsData } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
+import { SubscriptionForm } from '@/components/blog/subscription-form';
 
 export function generateStaticParams() {
   const posts = getSortedPostsData();
@@ -30,6 +31,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   }
 
   return (
+    <>
     <article className="container mx-auto max-w-3xl py-12 px-4 md:px-8 prose dark:prose-invert lg:prose-xl">
       <h1 className="mb-2">{postData.title}</h1>
       <p className="text-muted-foreground text-lg">
@@ -37,5 +39,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       </p>
       <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </article>
+    <div className="container mx-auto max-w-3xl py-12 px-4 md:px-8">
+        <SubscriptionForm />
+    </div>
+    </>
   );
 }
