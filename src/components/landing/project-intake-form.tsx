@@ -245,7 +245,7 @@ export function ProjectIntakeForm() {
               <FormControl>
                 <PhoneInput
                   international
-                  defaultCountry="US"
+                  defaultCountry="NL"
                   className="[&_input]:h-10 [&_input]:w-full [&_input]:rounded-md [&_input]:border [&_input]:border-input [&_input]:bg-background [&_input]:px-3 [&_input]:py-2 [&_input]:text-base [&_input]:ring-offset-background file:[&_input]:border-0 file:[&_input]:bg-transparent file:[&_input]:text-sm file:[&_input]:font-medium placeholder:[&_input]:text-muted-foreground focus-visible:[&_input]:outline-none focus-visible:[&_input]:ring-2 focus-visible:[&_input]:ring-ring focus-visible:[&_input]:ring-offset-2 disabled:[&_input]:cursor-not-allowed disabled:[&_input]:opacity-50 md:[&_input]:text-sm"
                   {...field}
                 />
