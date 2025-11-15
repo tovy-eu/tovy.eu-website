@@ -7,6 +7,22 @@
       "imageHint": "software interface",
       "width": 600,
       "height": 400
+    },
+    {
+      "id": "solution-2",
+      "description": "Abstract image for data analytics",
+      "imageUrl": "https://images.unsplash.com/photo-1542744173-05336fcc7ad4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8MTc2MzE2MjQxNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data analytics",
+      "width": 600,
+      "height": 400
+    },
+    {
+      "id": "solution-3",
+      "description": "Abstract image for a scheduling tool",
+      "imageUrl": "https://images.unsplash.com/photo-1617106400445-2a7a84cec8c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjYWxlbmRhciUyMHNjaGVkdWxlfGVufDB8fHx8MTc2MzIyMDEwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "calendar schedule",
+      "width": 600,
+      "height": 400
     }
   ]
 }

@@ -1,4 +1,6 @@
 
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +8,14 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { ScrollReveal } from "../scroll-reveal";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
 
 const solutions = [
   {
@@ -13,6 +23,18 @@ const solutions = [
     description: "An intelligent CRM that automates lead scoring and provides deep customer insights, freeing up your sales team to focus on closing deals.",
     link: "#",
     imageId: "solution-1"
+  },
+  {
+    title: "Insightify Analytics",
+    description: "A platform that turns complex data into actionable insights with predictive modeling.",
+    link: "#",
+    imageId: "solution-2"
+  },
+  {
+    title: "FlowState Scheduler",
+    description: "An intelligent scheduling tool that optimizes team availability and minimizes meeting conflicts.",
+    link: "#",
+    imageId: "solution-3"
   }
 ];
 
@@ -36,38 +58,61 @@ export function SolutionsShowcase() {
           </div>
         </ScrollReveal>
         <ScrollReveal>
-          <div className="mt-16 grid grid-cols-1 gap-8 justify-center">
-            {solutions.map((solution) => {
-              const image = solutionImages[solution.imageId];
-              return (
-                <Card key={solution.title} className="flex flex-col">
-                  <CardHeader>
-                    {image && (
-                      <div className="aspect-video relative w-full rounded-t-lg overflow-hidden mb-4">
-                        <Image
-                          src={image.imageUrl}
-                          alt={`Showcase image for ${solution.title}`}
-                          fill
-                          className="object-cover"
-                          data-ai-hint={image.imageHint}
-                        />
+          <div className="mt-16 flex justify-center">
+            <Carousel 
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              plugins={[
+                Autoplay({
+                  delay: 4000,
+                  stopOnInteraction: true,
+                }),
+              ]}
+              className="w-full max-w-sm md:max-w-md lg:max-w-lg"
+            >
+              <CarouselContent>
+                {solutions.map((solution) => {
+                  const image = solutionImages[solution.imageId];
+                  return (
+                    <CarouselItem key={solution.title}>
+                      <div className="p-1">
+                        <Card className="flex flex-col h-full">
+                          <CardHeader>
+                            {image && (
+                              <div className="aspect-video relative w-full rounded-t-lg overflow-hidden mb-4">
+                                <Image
+                                  src={image.imageUrl}
+                                  alt={`Showcase image for ${solution.title}`}
+                                  width={image.width}
+                                  height={image.height}
+                                  className="object-cover"
+                                  data-ai-hint={image.imageHint}
+                                />
+                              </div>
+                            )}
+                            <CardTitle>{solution.title}</CardTitle>
+                          </CardHeader>
+                          <CardContent className="flex-grow">
+                            <CardDescription>{solution.description}</CardDescription>
+                          </CardContent>
+                          <CardFooter>
+                            <Button asChild variant="link" className="p-0 h-auto">
+                              <Link href={solution.link}>
+                                View Solution <ArrowRight className="ml-2 h-4 w-4" />
+                              </Link>
+                            </Button>
+                          </CardFooter>
+                        </Card>
                       </div>
-                    )}
-                    <CardTitle>{solution.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <CardDescription>{solution.description}</CardDescription>
-                  </CardContent>
-                  <CardFooter>
-                    <Button asChild variant="link" className="p-0 h-auto">
-                      <Link href={solution.link}>
-                        View Solution <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardFooter>
-                </Card>
-              );
-            })}
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </ScrollReveal>
       </div>
