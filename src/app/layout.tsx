@@ -5,8 +5,8 @@ import { Toaster } from "@/components/ui/toaster"
 import { PageLayout } from '@/components/layout/page-layout';
 
 export const metadata: Metadata = {
-  title: 'Tovy AI Partner',
-  description: 'Your AI development partner for clean, fast, and reliable systems.',
+  title: 'Tovy AI | Custom AI Systems for Business Automation',
+  description: 'We build clean, fast, and reliable AI systems that give you full control and turn manual labor into cognitive freedom.',
 };
 
 export default function RootLayout({

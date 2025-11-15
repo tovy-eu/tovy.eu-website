@@ -5,7 +5,7 @@ import { WavyLines } from '@/components/landing/wavy-lines';
 
 export const metadata: Metadata = {
   title: 'Start Your AI Project | Tovy AI',
-  description: 'Share your project idea with Tovy AI and let\'s build the future together.',
+  description: 'Share your project details with Tovy AI to build clean, fast, and reliable AI systems that turn manual labor into cognitive freedom.',
 };
 
 export default function ProjectRequestPage() {

@@ -2,6 +2,12 @@ import Link from 'next/link';
 import { getSortedPostsData } from '@/lib/blog';
 import { format } from 'date-fns';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog | Tovy AI',
+  description: 'Insights and articles on AI system development, business automation, and cognitive freedom from Tovy AI.',
+};
 
 export default function BlogHome() {
   const allPostsData = getSortedPostsData();
