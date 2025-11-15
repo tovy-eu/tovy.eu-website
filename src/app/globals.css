@@ -92,12 +92,17 @@
 
 
 @layer components {
+  /* Phone Input custom styles */
   .PhoneInputInput {
-    @apply rounded-s-none !border-s-0;
+    @apply rounded-s-none !border-s-0 bg-background text-foreground;
   }
 
   .PhoneInputCountry {
     @apply h-full;
+  }
+  
+  .PhoneInputCountryIcon {
+    @apply shadow-md;
   }
 
   .PhoneInputCountrySelect {
@@ -105,7 +110,7 @@
   }
 
   .PhoneInputCountrySelect-menu {
-    @apply bg-background text-muted-foreground border-border;
+    @apply bg-background text-muted-foreground border border-border rounded-md shadow-lg;
   }
 
   .PhoneInputCountrySelect-option:hover {
