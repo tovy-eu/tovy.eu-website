@@ -33,12 +33,15 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
   return (
     <>
-    <article className="container mx-auto max-w-3xl py-12 px-4 md:px-8 prose dark:prose-invert lg:prose-xl">
-      <h1 className="mb-2 text-foreground">{postData.title}</h1>
+    <article className="container mx-auto max-w-3xl py-12 px-4 md:px-8">
+      <h1 className="text-4xl font-bold mb-2 text-foreground">{postData.title}</h1>
       <p className="text-muted-foreground text-lg">
         <time dateTime={new Date(postData.date).toISOString()}>{format(new Date(postData.date), 'LLLL d, yyyy')}</time>
       </p>
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      <div 
+        className="prose dark:prose-invert lg:prose-xl max-w-none mt-8"
+        dangerouslySetInnerHTML={{ __html: postData.contentHtml }} 
+      />
     </article>
     <div className="container mx-auto max-w-3xl py-12 px-4 md:px-8">
         <SubscriptionForm />
