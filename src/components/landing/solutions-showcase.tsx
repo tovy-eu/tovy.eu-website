@@ -2,12 +2,10 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { ScrollReveal } from "../scroll-reveal";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import {
   Carousel,
   CarouselContent,
@@ -18,26 +16,12 @@ import {
 
 const solutions = [
   {
-    title: "CogniLink CRM",
-    description: "An intelligent CRM that automates lead scoring and provides deep customer insights, freeing up your sales team to focus on closing deals.",
+    title: "Kenexis: Anamnesis Automation",
+    description: "Cloud SaaS which eliminates the administrational burden of therapists in healthcare.",
     link: "#",
-    imageId: "solution-1"
-  },
-  {
-    title: "Insightify Analytics",
-    description: "A platform that turns complex data into actionable insights with predictive modeling.",
-    link: "#",
-    imageId: "solution-2"
-  },
-  {
-    title: "FlowState Scheduler",
-    description: "An intelligent scheduling tool that optimizes team availability and minimizes meeting conflicts.",
-    link: "#",
-    imageId: "solution-3"
+    imageId: "kenexis"
   }
 ];
-
-const solutionImages = Object.fromEntries(PlaceHolderImages.map(img => [img.id, img]));
 
 export function SolutionsShowcase() {
   return (
@@ -66,25 +50,11 @@ export function SolutionsShowcase() {
               className="w-full max-w-sm md:max-w-md lg:max-w-lg"
             >
               <CarouselContent>
-                {solutions.map((solution) => {
-                  const image = solutionImages[solution.imageId];
-                  return (
+                {solutions.map((solution) => (
                     <CarouselItem key={solution.title}>
                       <div className="p-1">
                         <Card className="flex flex-col h-full">
                           <CardHeader>
-                            {image && (
-                              <div className="aspect-video relative w-full rounded-t-lg overflow-hidden mb-4">
-                                <Image
-                                  src={image.imageUrl}
-                                  alt={`Showcase image for ${solution.title}`}
-                                  width={image.width}
-                                  height={image.height}
-                                  className="object-cover"
-                                  data-ai-hint={image.imageHint}
-                                />
-                              </div>
-                            )}
                             <CardTitle>{solution.title}</CardTitle>
                           </CardHeader>
                           <CardContent className="flex-grow">
@@ -100,8 +70,7 @@ export function SolutionsShowcase() {
                         </Card>
                       </div>
                     </CarouselItem>
-                  );
-                })}
+                  ))}
               </CarouselContent>
               <CarouselPrevious />
               <CarouselNext />
