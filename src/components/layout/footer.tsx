@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -20,18 +21,18 @@ export function Footer() {
         
         {/* Social Icons */}
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="#" target="_blank">
+          <Link href="#" target="_blank">
+            <Button variant="ghost" size="icon">
               <Github className="h-4 w-4" />
               <span className="sr-only">GitHub</span>
-            </Link>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="#" target="_blank">
+            </Button>
+          </Link>
+          <Link href="#" target="_blank">
+            <Button variant="ghost" size="icon">
               <Linkedin className="h-4 w-4" />
               <span className="sr-only">LinkedIn</span>
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
         
         {/* Center: Links */}
