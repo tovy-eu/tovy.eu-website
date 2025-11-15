@@ -36,7 +36,7 @@ export function SolutionsShowcase() {
               Delivered Solutions
             </h2>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              Trusted by our customers and partners who value their workforce
+              Trusted by our customers.
             </h2>
           </div>
         </ScrollReveal>
