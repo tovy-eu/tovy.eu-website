@@ -3,7 +3,6 @@ import { HeroSection } from "@/components/landing/hero-section";
 import { AboutSection } from "@/components/landing/about-section";
 import { SolutionsShowcase } from "@/components/landing/solutions-showcase";
 import { SectionDivider } from "@/components/landing/section-divider";
-import { ScrollReveal } from "@/components/scroll-reveal";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -77,15 +76,11 @@ export default function Home() {
 
         <SectionDivider />
         
-        <ScrollReveal className="w-full">
-          <AboutSection />
-        </ScrollReveal>
+        <AboutSection />
 
         <SectionDivider />
 
-        <ScrollReveal className="w-full">
-          <SolutionsShowcase />
-        </ScrollReveal>
+        <SolutionsShowcase />
       </div>
     </>
   );
