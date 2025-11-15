@@ -31,7 +31,7 @@ export default function BlogHome() {
               <CardHeader>
                 <CardTitle className="text-xl lg:text-2xl group-hover:text-primary transition-colors">{title}</CardTitle>
                 <CardDescription>
-                  <time dateTime={date}>{format(new Date(date), 'LLLL d, yyyy')}</time>
+                  <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'LLLL d, yyyy')}</time>
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-grow">
