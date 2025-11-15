@@ -25,7 +25,7 @@ const formSteps = [
   { field: "maturity", label: "How advanced is your Data Management/Governance?*", description: "This helps us understand your current data capabilities." },
   { field: "companySize", label: "What is your company size?*", description: "This helps us understand the scale of your organization and potential project scope." },
   { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us know if we'll be partnering with your developers." },
-  { field: "projectDetails", label: "Tell us about your project*"},
+  { field: "projectDetails", label: "Tell us about your automation gap or project*"},
   { field: "budgetReadiness", label: "What's your budget outlook?*", description: "Our projects typically start from $10,000, covering MVPs, pilots, or initial production builds." },
   { field: "timelineReadiness", label: "How soon do you want to start?*", description: "We can deliver a working version in about two weeks. We prioritize companies ready to move quickly." },
   { field: "contactDetails", label: "How can we reach you?*", description: "Please provide your contact and company information." },
@@ -299,7 +299,7 @@ export function ProjectIntakeForm() {
             <FormItem>
               <div className="flex items-center gap-4">
                 <span className="text-primary font-semibold">{step + 1} →</span>
-                <FormLabel className="text-2xl font-semibold">Tell us about your project*</FormLabel>
+                <FormLabel className="text-2xl font-semibold">Tell us about your automation gap or project*</FormLabel>
               </div>
               <p className="text-muted-foreground mt-2">In one sentence, what are you hoping to build or improve?</p>
               <FormControl>
