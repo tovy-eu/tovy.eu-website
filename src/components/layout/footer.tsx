@@ -15,8 +15,8 @@ export function Footer() {
           <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary">
             Privacy Policy
           </Link>
-          <Link href="mailto:contact@tovy.ai" className="text-sm text-muted-foreground hover:text-primary">
-            contact@tovy.ai
+          <Link href="mailto:info@tovy.eu" className="text-sm text-muted-foreground hover:text-primary">
+            info@tovy.eu
           </Link>
           <div className="flex items-center gap-1">
             <Button variant="ghost" size="icon" asChild>

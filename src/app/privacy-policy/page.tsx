@@ -55,7 +55,7 @@ export default function PrivacyPolicyPage() {
 
         <h2 className="text-2xl font-semibold text-foreground pt-4">6. Contact Us</h2>
         <p>
-          For any questions or concerns regarding your privacy, you may contact us using the following details: contact@tovy.ai
+          For any questions or concerns regarding your privacy, you may contact us using the following details: info@tovy.eu
         </p>
 
         <p className="pt-4">This policy is effective as of July 30, 2024.</p>
