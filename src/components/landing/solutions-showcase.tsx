@@ -34,7 +34,9 @@ export function SolutionsShowcase() {
               Trusted by companies and teams who value their workforce
             </h2>
           </div>
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+        </ScrollReveal>
+        <ScrollReveal>
+          <div className="mt-16 grid grid-cols-1 gap-8 justify-center">
             {solutions.map((solution) => {
               const image = solutionImages[solution.imageId];
               return (
