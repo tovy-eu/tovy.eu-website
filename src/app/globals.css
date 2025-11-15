@@ -99,4 +99,24 @@
   .PhoneInputCountry {
     @apply h-full;
   }
+
+  .PhoneInputCountrySelect {
+    @apply bg-background border-border;
+  }
+
+  .PhoneInputCountrySelect-menu {
+    @apply bg-background text-muted-foreground border-border;
+  }
+
+  .PhoneInputCountrySelect-option:hover {
+    @apply bg-accent;
+  }
+
+  .PhoneInputCountrySelect-option--selected {
+    @apply bg-primary/20 text-foreground;
+  }
+
+  .PhoneInputCountrySelect-option--selected:hover {
+    @apply bg-primary/30;
+  }
 }
