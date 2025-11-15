@@ -17,6 +17,12 @@ export function Header() {
           <span>TOV</span>
           <span className="bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">Y</span>
         </Link>
+        
+        <nav className="hidden md:flex gap-6 items-center">
+            <Link href="/blog" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+              Blog
+            </Link>
+        </nav>
 
         {/* Right: CTA Button */}
         <Button asChild>
