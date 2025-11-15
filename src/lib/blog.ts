@@ -47,9 +47,12 @@ export async function getPostData(id: string) {
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 
+  const excerpt = matterResult.content.substring(0, 160).trim() + '...';
+
   return {
     id,
     contentHtml,
+    excerpt,
     ...(matterResult.data as { date: string; title: string }),
   };
 }
