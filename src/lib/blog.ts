@@ -20,7 +20,7 @@ export function getSortedPostsData() {
     return {
       id,
       excerpt,
-      ...(matterResult.data as { date: string; title: string, author: string }),
+      ...(matterResult.data as { date: string; title: string, author: string, image_id: string }),
     };
   });
 
@@ -54,6 +54,6 @@ export async function getPostData(id: string) {
     id,
     contentHtml,
     excerpt,
-    ...(matterResult.data as { date: string; title: string, author: string }),
+    ...(matterResult.data as { date: string; title: string, author: string, image_id: string }),
   };
 }
