@@ -1,4 +1,4 @@
-# **App Name**: Tovy AI Partner
+# **App Name**: Tovy
 
 ## Core Features:
 
