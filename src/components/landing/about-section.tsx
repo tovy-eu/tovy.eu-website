@@ -20,7 +20,7 @@ const pillars = [
   {
     icon: <KeyRound className="h-8 w-8" />,
     title: "Freedom",
-    description: "Our solutions are built to reduce cognitive load. We freeing people to think, innovate, and grow.",
+    description: "Our solutions are built to reduce cognitive load. We free up people's time to think, innovate, and grow.",
     color: "#A792FF"
   },
   {
@@ -85,7 +85,7 @@ export function AboutSection() {
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center mt-12">
             <p className="text-lg leading-8 text-foreground/80">
-              Our mission is to build smart systems that take work off your hands, creating a world where technology gives people more time, focus, and freedom to grow. We achieve this by adhering to our core values:
+              Our mission is to build smart data ecosystems that take work off your hands. We desire a world where technology gives people more time, focus, and freedom to grow. We achieve this by sticking close to our core values:
             </p>
           </div>
         </ScrollReveal>
