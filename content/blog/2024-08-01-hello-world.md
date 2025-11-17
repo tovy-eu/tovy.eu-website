@@ -18,27 +18,27 @@ lists. This helps keep your articles readable and well-organized.
 ### Lists
 
 
-  You can create both unordered and ordered lists.
+You can create both unordered and ordered lists.
 
 
-  An unordered list looks like this:
+An unordered list looks like this:
 
 
-  *   Clean, fast, and reliable systems.
+*   Clean, fast, and reliable systems.
 
-  *   Full control and transparency.
+*   Full control and transparency.
 
-  *   Turning manual labor into cognitive freedom.
-
-
-  And an ordered list for sequential steps:
+*   Turning manual labor into cognitive freedom.
 
 
-  1.  Define the problem.
+And an ordered list for sequential steps:
 
-  2.  Design the AI solution.
 
-  3.  Deploy and iterate.
+1.  Define the problem.
+
+2.  Design the AI solution.
+
+3.  Deploy and iterate.
 
 
 
