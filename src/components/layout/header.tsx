@@ -3,6 +3,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { BookOpen } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 export function Header() {
   return (
@@ -18,16 +25,28 @@ export function Header() {
           <span className="bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">Y</span>
         </Link>
         
-        <nav className="hidden md:flex gap-6 items-center">
-            <Link href="/blog" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-              Blog
-            </Link>
-        </nav>
+        <div className="flex items-center gap-4">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="icon" asChild>
+                  <Link href="/blog">
+                    <BookOpen className="h-5 w-5" />
+                    <span className="sr-only">Blog</span>
+                  </Link>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Blog</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
 
-        {/* Right: CTA Button */}
-        <Button asChild>
-          <Link href="/project-request">Share your idea</Link>
-        </Button>
+          {/* Right: CTA Button */}
+          <Button asChild>
+            <Link href="/project-request">Share your idea</Link>
+          </Button>
+        </div>
       </div>
       <div 
         className="h-px w-full" 
