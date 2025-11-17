@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { getSortedPostsData } from '@/lib/blog';
 import { format } from 'date-fns';
@@ -21,13 +22,13 @@ export default function BlogHome() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        {allPostsData.map(({ id, date, title, excerpt }) => (
+        {allPostsData.map(({ id, date, title, excerpt, author }) => (
           <Link href={`/blog/${id}`} key={id} className="block group">
             <Card className="h-full flex flex-col transition-all duration-300 ease-in-out group-hover:border-primary group-hover:shadow-lg group-hover:-translate-y-1">
               <CardHeader>
                 <CardTitle className="text-xl lg:text-2xl group-hover:text-primary transition-colors text-foreground">{title}</CardTitle>
                 <CardDescription>
-                  <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'LLLL d, yyyy')}</time>
+                  <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'LLLL d, yyyy')}</time> &bull; {author}
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-grow">

@@ -1,3 +1,4 @@
+
 import { getPostData, getSortedPostsData } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
@@ -36,7 +37,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     <article className="container mx-auto max-w-3xl py-12 px-4 md:px-8">
       <h1 className="text-4xl font-bold mb-2">{postData.title}</h1>
       <p className="text-muted-foreground text-lg">
-        <time dateTime={new Date(postData.date).toISOString()}>{format(new Date(postData.date), 'LLLL d, yyyy')}</time>
+        {postData.author} &bull; <time dateTime={new Date(postData.date).toISOString()}>{format(new Date(postData.date), 'LLLL d, yyyy')}</time>
       </p>
       <div 
         className="prose dark:prose-invert lg:prose-xl max-w-none mt-8"

@@ -1,3 +1,4 @@
+
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -19,7 +20,7 @@ export function getSortedPostsData() {
     return {
       id,
       excerpt,
-      ...(matterResult.data as { date: string; title: string }),
+      ...(matterResult.data as { date: string; title: string, author: string }),
     };
   });
 
@@ -53,6 +54,6 @@ export async function getPostData(id: string) {
     id,
     contentHtml,
     excerpt,
-    ...(matterResult.data as { date: string; title: string }),
+    ...(matterResult.data as { date: string; title: string, author: string }),
   };
 }
