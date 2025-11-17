@@ -22,7 +22,7 @@ export function Header() {
         {/* Left: Logo */}
         <Link href="/" className="font-bold text-3xl">
           <span>TOV</span>
-          <span className="bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">Y</span>
+          <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
         </Link>
         
         <div className="flex items-center gap-4">

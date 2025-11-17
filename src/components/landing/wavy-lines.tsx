@@ -9,7 +9,7 @@ export function WavyLines() {
         <defs>
           <linearGradient id="wavy-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="hsl(var(--primary))" />
-            <stop offset="100%" stopColor="#8F668C" />
+            <stop offset="100%" stopColor="hsl(var(--accent-gradient-stop))" />
           </linearGradient>
         </defs>
         <path

@@ -73,7 +73,7 @@ export function AboutSection() {
         </div>
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
+            <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
               Tovy Strategy
             </h2>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">

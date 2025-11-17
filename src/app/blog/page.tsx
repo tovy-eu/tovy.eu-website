@@ -17,7 +17,7 @@ export default function BlogHome() {
   return (
     <div className="container mx-auto max-w-5xl py-12 px-4 md:px-8">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">Blog</h1>
+        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Blog</h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Articles on business automation and cognitive freedom by Tovy.</p>
       </div>
 
