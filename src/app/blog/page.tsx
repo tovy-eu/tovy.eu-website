@@ -1,10 +1,12 @@
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { getSortedPostsData } from '@/lib/blog';
 import { format } from 'date-fns';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import type { Metadata } from 'next';
 import { SubscriptionForm } from '@/components/blog/subscription-form';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
   title: 'Blog | Tovy',
@@ -22,21 +24,35 @@ export default function BlogHome() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        {allPostsData.map(({ id, date, title, excerpt, author }) => (
-          <Link href={`/blog/${id}`} key={id} className="block group">
-            <Card className="h-full flex flex-col transition-all duration-300 ease-in-out group-hover:border-primary group-hover:shadow-lg group-hover:-translate-y-1">
-              <CardHeader>
-                <CardTitle className="text-xl lg:text-2xl group-hover:text-primary transition-colors text-foreground">{title}</CardTitle>
-                <CardDescription>
-                  <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'LLLL d, yyyy')}</time> &bull; {author}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <p className="text-muted-foreground">{excerpt}</p>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
+        {allPostsData.map(({ id, date, title, excerpt, author, image_id }) => {
+          const image = PlaceHolderImages.find(img => img.id === image_id);
+          return (
+            <Link href={`/blog/${id}`} key={id} className="block group">
+              <Card className="h-full flex flex-col transition-all duration-300 ease-in-out group-hover:border-primary group-hover:shadow-lg group-hover:-translate-y-1 overflow-hidden">
+                {image && (
+                  <div className="relative w-full aspect-video">
+                    <Image
+                      src={image.imageUrl}
+                      alt={title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      data-ai-hint={image.imageHint}
+                    />
+                  </div>
+                )}
+                <CardHeader>
+                  <CardTitle className="text-xl lg:text-2xl group-hover:text-primary transition-colors text-foreground">{title}</CardTitle>
+                  <CardDescription>
+                    <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'LLLL d, yyyy')}</time> &bull; {author}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <p className="text-muted-foreground">{excerpt}</p>
+                </CardContent>
+              </Card>
+            </Link>
+          );
+        })}
       </div>
 
       <div className="w-full flex justify-center">
