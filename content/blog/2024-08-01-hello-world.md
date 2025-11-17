@@ -1,17 +1,14 @@
 ---
 title: Hello World
 date: 2024-08-01T10:00:00.000Z
-body: >-
-  Welcome to your new blog! This is a sample post to demonstrate the layout and
-  styling of your markdown content. You can edit this post or create new ones
-  by going to the `/admin` page. Now, let's explore what you can do.
+body: >
+  Welcome to your new blog! This is a sample post to demonstrate the layout and styling of your markdown content. You can edit this post or create new ones by going to the `/admin` page. Now, let's explore what you can do.
 
 
   ## Structuring Your Content
 
 
-  Markdown makes it easy to structure your content with headings, paragraphs, and
-  lists. This helps keep your articles readable and well-organized.
+  Markdown makes it easy to structure your content with headings, paragraphs, and lists. This helps keep your articles readable and well-organized.
 
 
   ### Lists
@@ -43,20 +40,16 @@ body: >-
   ### Blockquotes
 
 
-  To emphasize a point or include a quotation, you can use blockquotes. They are a
-  great way to draw the reader's attention.
+  To emphasize a point or include a quotation, you can use blockquotes. They are a great way to draw the reader's attention.
 
 
-  > Our mission is to build smart systems that take work off your hands, creating
-  > a world where technology gives people more time, focus, and freedom to
-  > grow.
+  > Our mission is to build smart systems that take work off your hands, creating a world where technology gives people more time, focus, and freedom to grow.
 
 
   ### Code Blocks
 
 
-  Sharing code is simple. You can use backticks to create inline code, like
-  `const a = 1;`, or fenced code blocks for longer snippets.
+  Sharing code is simple. You can use backticks to create inline code, like `const a = 1;`, or fenced code blocks for longer snippets.
 
 
   ```javascript
@@ -69,6 +62,5 @@ body: >-
   ```
 
 
-  This placeholder gives you a solid foundation for your future articles. Happy
-  writing!
+  This placeholder gives you a solid foundation for your future articles. Happy writing!
 ---
