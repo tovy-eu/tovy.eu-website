@@ -65,10 +65,11 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             />
           </article>
         </CardContent>
-        <CardContent className="py-6 border-t">
-          <SubscriptionForm />
-        </CardContent>
       </Card>
+
+      <div className="mt-12">
+        <SubscriptionForm />
+      </div>
     </div>
   );
 }
