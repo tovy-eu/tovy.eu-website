@@ -66,6 +66,15 @@
   body {
     @apply bg-background text-foreground;
   }
+  .dark .prose {
+    color: hsl(var(--foreground));
+  }
+  .dark .prose a, .dark .prose strong, .dark .prose h1, .dark .prose h2, .dark .prose h3, .dark .prose h4 {
+    color: hsl(var(--foreground));
+  }
+  .dark .prose blockquote, .dark .prose code {
+    color: hsl(var(--muted-foreground));
+  }
 }
 
 @layer utilities {
