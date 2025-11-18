@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/landing/hero-section";
 import { AboutSection } from "@/components/landing/about-section";
 import { SolutionsShowcase } from "@/components/landing/solutions-showcase";
 import { SectionDivider } from "@/components/landing/section-divider";
+import { SubscriptionForm } from "@/components/blog/subscription-form";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -81,6 +82,13 @@ export default function Home() {
         <SectionDivider />
 
         <SolutionsShowcase />
+
+        <div className="w-full">
+          <SectionDivider />
+          <div className="py-16 sm:py-24 container mx-auto max-w-2xl">
+            <SubscriptionForm />
+          </div>
+        </div>
       </div>
     </>
   );
