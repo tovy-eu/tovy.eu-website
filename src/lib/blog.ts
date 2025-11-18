@@ -7,6 +7,12 @@ import html from 'remark-html';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
+function getReadingTime(content: string) {
+  const wordsPerMinute = 200;
+  const wordCount = content.split(/\s+/).length;
+  return Math.ceil(wordCount / wordsPerMinute);
+}
+
 export function getSortedPostsData() {
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map(fileName => {
@@ -16,11 +22,13 @@ export function getSortedPostsData() {
     const matterResult = matter(fileContents);
     
     const excerpt = matterResult.content.substring(0, 150) + (matterResult.content.length > 150 ? '...' : '');
+    const readingTime = getReadingTime(matterResult.content);
 
     return {
       id,
       excerpt,
-      ...(matterResult.data as { date: string; title: string, author: string, image_id: string }),
+      readingTime,
+      ...(matterResult.data as { date: string; title: string, author: string, image_id: string, tags: string[] }),
     };
   });
 
@@ -39,7 +47,10 @@ export async function getPostData(id: string) {
   if (!fs.existsSync(fullPath)) {
     return null;
   }
-
+  
+  const sortedPosts = getSortedPostsData();
+  const postIndex = sortedPosts.findIndex(p => p.id === id);
+  
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const matterResult = matter(fileContents);
 
@@ -49,11 +60,18 @@ export async function getPostData(id: string) {
   const contentHtml = processedContent.toString();
 
   const excerpt = matterResult.content.substring(0, 160).trim() + '...';
+  const readingTime = getReadingTime(matterResult.content);
+  
+  const previousPost = postIndex > 0 ? sortedPosts[postIndex - 1] : null;
+  const nextPost = postIndex < sortedPosts.length - 1 ? sortedPosts[postIndex + 1] : null;
 
   return {
     id,
     contentHtml,
     excerpt,
-    ...(matterResult.data as { date: string; title: string, author: string, image_id: string }),
+    readingTime,
+    previousPost,
+    nextPost,
+    ...(matterResult.data as { date: string; title: string, author: string, image_id: string, tags: string[] }),
   };
 }
