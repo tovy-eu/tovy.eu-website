@@ -7,6 +7,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import type { Metadata } from 'next';
 import { SubscriptionForm } from '@/components/blog/subscription-form';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { SectionDivider } from '@/components/landing/section-divider';
 
 export const metadata: Metadata = {
   title: 'Blog | Tovy',
@@ -53,6 +54,10 @@ export default function BlogHome() {
             </Link>
           );
         })}
+      </div>
+
+      <div className="my-16">
+        <SectionDivider />
       </div>
 
       <div className="w-full flex justify-center">
