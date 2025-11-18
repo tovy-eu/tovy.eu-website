@@ -4,6 +4,7 @@ date: '2025-11-12'
 author: 'Giel Nijkamp'
 summary: 'Hello Data-World'
 image_id: 'test'
+tags: ['Welcome', 'Technology']
 ---
 
 Welcome to your new blog! This is a sample post to demonstrate the layout and

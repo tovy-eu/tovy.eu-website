@@ -7,6 +7,10 @@ import type { Metadata } from 'next';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 export function generateStaticParams() {
   const posts = getSortedPostsData();
@@ -53,9 +57,24 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         )}
         <CardHeader className="border-b">
           <CardTitle className="text-4xl">{postData.title}</CardTitle>
-          <CardDescription className="text-lg pt-2">
-            {postData.author} &bull; <time dateTime={new Date(postData.date).toISOString()}>{format(new Date(postData.date), 'LLLL d, yyyy')}</time>
+          <CardDescription className="text-lg pt-2 flex items-center gap-2 flex-wrap">
+            <span>{postData.author}</span>
+            <span>&bull;</span>
+            <time dateTime={new Date(postData.date).toISOString()}>{format(new Date(postData.date), 'LLLL d, yyyy')}</time>
+            {postData.readingTime && 
+              <>
+                <span>&bull;</span>
+                <span className="flex items-center gap-1"><BookOpen className="h-4 w-4" /> {postData.readingTime} min read</span>
+              </>
+            }
           </CardDescription>
+           {postData.tags && postData.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 pt-2">
+              {postData.tags.map(tag => (
+                <Badge key={tag} variant="secondary">{tag}</Badge>
+              ))}
+            </div>
+          )}
         </CardHeader>
         <CardContent className="py-6">
           <article>
@@ -66,6 +85,25 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </article>
         </CardContent>
       </Card>
+      
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        {postData.previousPost ? (
+          <Button asChild variant="outline">
+            <Link href={`/blog/${postData.previousPost.id}`}>
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Previous
+            </Link>
+          </Button>
+        ) : <div />}
+        {postData.nextPost ? (
+          <Button asChild variant="outline" className="md:justify-self-end">
+            <Link href={`/blog/${postData.nextPost.id}`}>
+              Next
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        ) : <div />}
+      </div>
 
       <div className="mt-12">
         <SubscriptionForm />
