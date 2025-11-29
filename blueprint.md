@@ -1,4 +1,4 @@
-# Tovy AI - Project Blueprint
+# Tovy - Project Blueprint
 
 ## 1. Project Overview
 

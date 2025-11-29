@@ -7,7 +7,7 @@ import { PageLayout } from '@/components/layout/page-layout';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'Tovy AI | Smart Data Ecosystems for Business Growth',
+  title: 'Tovy | Smart Data Ecosystems for Business Growth',
   description: 'We build smart data ecosystems that take work off your hands, creating a world where technology gives people more time, focus, and freedom to grow.',
 };
 
