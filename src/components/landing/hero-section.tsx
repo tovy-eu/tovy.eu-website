@@ -36,7 +36,7 @@ export function HeroSection() {
           className="text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
           style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}
         >
-          We build smart AI solutions that close gaps in industries.
+          We engineer
         </h1>
         <p className="mt-6 text-lg leading-8 text-white/80 sm:text-xl">
         Every solution we create turns manual labor into cognitive freedom to learn and grow.
