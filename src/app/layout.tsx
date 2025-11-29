@@ -7,8 +7,8 @@ import { PageLayout } from '@/components/layout/page-layout';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'Tovy AI | Custom AI Systems for Business Automation',
-  description: 'We build clean, fast, and reliable AI systems that give you full control and turn manual labor into cognitive freedom.',
+  title: 'Tovy AI | Smart Data Ecosystems for Business Growth',
+  description: 'We build smart data ecosystems that take work off your hands, creating a world where technology gives people more time, focus, and freedom to grow.',
 };
 
 const poppins = Poppins({
