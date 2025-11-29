@@ -7,7 +7,7 @@ import { Send } from "lucide-react";
 
 export function SubscriptionForm() {
   return (
-    <div className="rounded-lg p-[1px] bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))]">
+    <div className="rounded-lg p-[1px] bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] mx-4 md:mx-0">
       <div className="p-8 rounded-lg bg-card/80 backdrop-blur-sm">
         <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
           Stay up-to-date
