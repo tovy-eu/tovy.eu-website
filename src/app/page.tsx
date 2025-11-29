@@ -79,9 +79,9 @@ export default function Home() {
         
         <AboutSection />
 
-        <SectionDivider />
+        {/* <SectionDivider />
 
-        <SolutionsShowcase />
+        <SolutionsShowcase /> */}
 
         <div className="w-full">
           <SectionDivider />

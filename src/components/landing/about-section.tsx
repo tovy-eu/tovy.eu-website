@@ -85,7 +85,7 @@ export function AboutSection() {
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center mt-12">
             <p className="text-lg leading-8 text-foreground/80">
-              Our mission is to build smart data ecosystems that take work off your hands. We desire a world where technology gives people more time, focus, and freedom to grow. We achieve this by sticking close to our core values:
+              Our mission is to build smart data ecosystems that take work off your hands. We desire a world where technology gives people more time, focus, and freedom to grow.
             </p>
           </div>
         </ScrollReveal>
