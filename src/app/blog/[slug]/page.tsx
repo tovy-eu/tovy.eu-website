@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   }
   return {
-    title: `${postData.title} | Tovy AI`,
+    title: `${postData.title} | Tovy`,
     description: postData.excerpt,
   }
 }

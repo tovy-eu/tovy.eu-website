@@ -48,7 +48,7 @@ export function Footer() {
         
         {/* Bottom: Copyright */}
         <div className="text-sm text-muted-foreground">
-          © {year} Tovy AI. All rights reserved.
+          © {year} Tovy. All rights reserved.
         </div>
       </div>
     </footer>
