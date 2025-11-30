@@ -12,6 +12,10 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
 export function generateStaticParams() {
   const posts = getSortedPostsData();
   return posts.map(post => ({
@@ -19,7 +23,9 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params: { slug } }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
+  const { slug } = params;
   const postData = await getPostData(slug);
   if (!postData) {
     return {
@@ -32,7 +38,9 @@ export async function generateMetadata({ params: { slug } }: { params: { slug: s
   }
 }
 
-export default async function BlogPost({ params: { slug } }: { params: { slug: string } }) {
+export default async function BlogPost(props: Props) {
+  const params = await props.params;
+  const { slug } = params;
   const postData = await getPostData(slug);
 
   if (!postData) {
