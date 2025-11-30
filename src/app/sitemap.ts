@@ -1,6 +1,8 @@
 import { getSortedPostsData } from '@/lib/blog'
 import { MetadataRoute } from 'next'
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   // For production, you would set this in your environment variables
   const baseUrl = 'https://tovy.eu'; 
