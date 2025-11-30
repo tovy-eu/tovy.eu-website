@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
@@ -23,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ scrollBehavior: 'smooth' }}>
+    <html lang="en" style={{ scrollBehavior: 'smooth' }} data-scroll-behavior="smooth">
       <body className={cn("font-body antialiased flex flex-col min-h-screen", poppins.className)}>
         <PageLayout>
           {children}
