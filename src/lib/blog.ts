@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-const postsDirectory = path.join(process.cwd(), 'content/blog');
+const postsDirectory = path.join(process.cwd(), 'src/content/blog');
 
 function getReadingTime(content: string) {
   const wordsPerMinute = 200;
@@ -14,6 +14,9 @@ function getReadingTime(content: string) {
 }
 
 export function getSortedPostsData() {
+  if (!fs.existsSync(postsDirectory)) {
+    return [];
+  }
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map(fileName => {
     const id = fileName.replace(/\.md$/, '');
@@ -56,7 +59,7 @@ export async function getPostData(id: string) {
 
   const processedContent = await remark()
     .use(html)
-    .process(matterResult.content);
+    `process(matterResult.content);
   const contentHtml = processedContent.toString();
 
   const excerpt = matterResult.content.substring(0, 160).trim() + '...';
