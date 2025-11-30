@@ -50,7 +50,7 @@ export function SubscriptionForm() {
 
         await addDoc(subscriptionsRef, {
           email: validatedEmail,
-          subscribedAt: new Date(),
+          timestamp: new Date(),
         });
         
         toast({

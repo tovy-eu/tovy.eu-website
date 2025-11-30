@@ -13,7 +13,7 @@ import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 };
 
 export function generateStaticParams() {
@@ -31,8 +31,7 @@ export function generateStaticParams() {
   }
 }
 
-export async function generateMetadata(props: Props): Promise<Metadata> {
-  const params = await props.params;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = params;
   const postData = await getPostData(slug);
   if (!postData) {
@@ -46,8 +45,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 }
 
-export default async function BlogPost(props: Props) {
-  const params = await props.params;
+export default async function BlogPost({ params }: Props) {
   const { slug } = params;
   const postData = await getPostData(slug);
 
