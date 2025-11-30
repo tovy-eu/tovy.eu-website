@@ -1,0 +1,33 @@
+/**
+ * @fileoverview Firestore Security Rules for the Data Use Case Submission App.
+ *
+ * Core Philosophy:
+ * This ruleset allows unauthenticated users to submit data use cases. There is no authentication or authorization required.
+ *
+ * Data Structure:
+ * All data use case submissions are stored in the top-level `/data_use_case_submissions/{dataUseCaseSubmissionId}` collection.
+ *
+ * Key Security Decisions:
+ * - Unrestricted access to `get` and `list` operations is allowed since the application reasoning specifies no user authentication.
+ * - Unrestricted access to `create`, `update`, and `delete` operations is allowed since the application reasoning specifies no user authentication or ownership.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Allows anyone to read, create, update, and delete data use case submissions.
+     * @path /data_use_case_submissions/{dataUseCaseSubmissionId}
+     * @allow (create) Any unauthenticated user can submit a new data use case.
+     * @allow (get) Any user can retrieve a data use case.
+     * @allow (list) Any user can list data use cases.
+     * @allow (update) Any user can update a data use case.
+     * @allow (delete) Any user can delete a data use case.
+     * @principle No authentication or authorization required.
+     */
+    match /data_use_case_submissions/{dataUseCaseSubmissionId} {
+      allow get, list: if true;
+      allow create, update, delete: if true;
+    }
+  }
+}
