@@ -15,7 +15,6 @@ The application is built around the following key features:
 - **Project Intake Form**: A multi-step, user-friendly form at `/project-request` to capture detailed client requirements. It asks sequential questions to qualify leads effectively.
 - **Blog**: A markdown-based blog accessible at `/blog` for publishing articles. It includes a main listing page and individual post pages.
 - **Subscription Form**: A component to capture user emails for a newsletter, integrated into the blog.
-- **CMS for Content**: The `/admin` route is set up with Decap CMS to allow for easy management of blog content.
 
 ## 3. Tech Stack
 
@@ -25,7 +24,7 @@ The application is built around the following key features:
 - **UI Components**: ShadCN UI
 - **Icons**: Lucide React
 - **Forms**: React Hook Form with Zod for validation
-- **Content Management**: Decap CMS (for the blog)
+- **Blog Content**: Markdown files stored in the repository.
 
 ## 4. Key File Structure
 
