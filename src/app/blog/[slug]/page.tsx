@@ -17,10 +17,18 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  const posts = getSortedPostsData();
-  return posts.map(post => ({
-    slug: post.id,
-  }));
+  try {
+    const posts = getSortedPostsData();
+    if (!posts || posts.length === 0) {
+      return [];
+    }
+    return posts.map(post => ({
+      slug: post.id,
+    }));
+  } catch (error) {
+    console.error("Failed to generate static params for blog:", error);
+    return [];
+  }
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
