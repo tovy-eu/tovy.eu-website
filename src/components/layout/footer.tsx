@@ -27,7 +27,7 @@ export function Footer() {
               <span className="sr-only">GitHub</span>
             </Button>
           </Link>
-          <Link href="#" target="_blank">
+          <Link href="https://www.linkedin.com/company/tovy" target="_blank">
             <Button variant="ghost" size="icon">
               <Linkedin className="h-4 w-4" />
               <span className="sr-only">LinkedIn</span>
