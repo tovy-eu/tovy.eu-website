@@ -22,11 +22,11 @@ service cloud.firestore {
      * @description Allow anyone to subscribe to the newsletter.
      * @path /subscriptions/{subscriptionId}
      * @principle Unauthenticated users need to be able to subscribe.
-     *            No one should be able to read the subscriber list.
-     *            We will check for duplicates on the client-side.
+     *            The client needs to query for existing emails to prevent duplicates.
+     *            No one should be able to read the full subscriber list.
      */
     match /subscriptions/{subscriptionId} {
-      allow create: if true;
+      allow read, create: if true;
     }
   }
 }
