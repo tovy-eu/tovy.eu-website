@@ -6,18 +6,14 @@ export default function Cms() {
   useEffect(() => {
     (async () => {
       const CMS = (await import("decap-cms-app")).default;
-      const response = await fetch('/admin/config.yml');
-      const config = await response.text();
       
       CMS.init({
         config: {
-          ...CMS.resolveConfig(config, {
-            backend: {
-              name: "git-gateway",
-            },
-            media_folder: "public/uploads",
-            public_folder: "/uploads",
-          })!,
+          backend: {
+            name: "git-gateway",
+          },
+          media_folder: "public/uploads",
+          public_folder: "/uploads",
           collections: [
             {
               name: "blog",
