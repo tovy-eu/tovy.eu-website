@@ -19,6 +19,16 @@ export const metadata: Metadata = {
 
 export default function BlogHome() {
   const allPostsData = getSortedPostsData();
+
+  if (allPostsData.length === 0) {
+    return (
+      <div className="container mx-auto max-w-5xl py-12 px-4 md:px-8 text-center">
+        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Blog</h1>
+        <p className="text-lg text-muted-foreground mt-4">No blog posts found. Check back soon!</p>
+      </div>
+    );
+  }
+
   const featuredPost = allPostsData[0];
   const otherPosts = allPostsData.slice(1);
   const featuredImage = PlaceHolderImages.find(img => img.id === featuredPost.image_id);
@@ -52,7 +62,7 @@ export default function BlogHome() {
                   <time dateTime={new Date(featuredPost.date).toISOString()}>{format(new Date(featuredPost.date), 'LLLL d, yyyy')}</time> &bull; {featuredPost.author}
                    {featuredPost.readingTime && <span className="flex items-center gap-1 mt-1"><BookOpen className="h-4 w-4" /> {featuredPost.readingTime} min read</span>}
                 </CardDescription>
-              </CardHeader>
+              </Header>
               <CardContent className="flex-grow">
                 <p className="text-muted-foreground">{featuredPost.excerpt}</p>
                 {featuredPost.tags && featuredPost.tags.length > 0 && (
