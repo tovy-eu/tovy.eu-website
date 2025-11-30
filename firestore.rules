@@ -1,33 +1,32 @@
-/**
- * @fileoverview Firestore Security Rules for the Data Use Case Submission App.
- *
- * Core Philosophy:
- * This ruleset allows unauthenticated users to submit data use cases. There is no authentication or authorization required.
- *
- * Data Structure:
- * All data use case submissions are stored in the top-level `/data_use_case_submissions/{dataUseCaseSubmissionId}` collection.
- *
- * Key Security Decisions:
- * - Unrestricted access to `get` and `list` operations is allowed since the application reasoning specifies no user authentication.
- * - Unrestricted access to `create`, `update`, and `delete` operations is allowed since the application reasoning specifies no user authentication or ownership.
- */
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // Default to a secure "deny all" rule
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
     /**
-     * @description Allows anyone to read, create, update, and delete data use case submissions.
-     * @path /data_use_case_submissions/{dataUseCaseSubmissionId}
-     * @allow (create) Any unauthenticated user can submit a new data use case.
-     * @allow (get) Any user can retrieve a data use case.
-     * @allow (list) Any user can list data use cases.
-     * @allow (update) Any user can update a data use case.
-     * @allow (delete) Any user can delete a data use case.
-     * @principle No authentication or authorization required.
+     * @description Allow anyone to submit a project request.
+     * @path /project_requests/{requestId}
+     * @principle Unauthenticated users need to be able to create requests.
+     *            No one should be able to read or modify other requests.
      */
-    match /data_use_case_submissions/{dataUseCaseSubmissionId} {
-      allow get, list: if true;
-      allow create, update, delete: if true;
+    match /project_requests/{requestId} {
+      allow create: if true;
+    }
+    
+    /**
+     * @description Allow anyone to subscribe to the newsletter.
+     * @path /subscriptions/{subscriptionId}
+     * @principle Unauthenticated users need to be able to subscribe.
+     *            No one should be able to read the subscriber list.
+     *            We will check for duplicates on the client-side.
+     */
+    match /subscriptions/{subscriptionId} {
+      allow create: if true;
     }
   }
 }
