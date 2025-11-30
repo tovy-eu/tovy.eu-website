@@ -62,7 +62,7 @@ export default function BlogHome() {
                   <time dateTime={new Date(featuredPost.date).toISOString()}>{format(new Date(featuredPost.date), 'LLLL d, yyyy')}</time> &bull; {featuredPost.author}
                    {featuredPost.readingTime && <span className="flex items-center gap-1 mt-1"><BookOpen className="h-4 w-4" /> {featuredPost.readingTime} min read</span>}
                 </CardDescription>
-              </Header>
+              </CardHeader>
               <CardContent className="flex-grow">
                 <p className="text-muted-foreground">{featuredPost.excerpt}</p>
                 {featuredPost.tags && featuredPost.tags.length > 0 && (
