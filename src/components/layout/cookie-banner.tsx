@@ -6,20 +6,26 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Cookie } from 'lucide-react';
+import { getConsent, updateConsent } from '@/lib/consent';
 
 export function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
     // This code only runs on the client
-    const consent = localStorage.getItem('cookie-consent');
-    if (!consent) {
+    const consent = getConsent();
+    if (consent === null) {
       setShowBanner(true);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem('cookie-consent', 'true');
+    updateConsent(true);
+    setShowBanner(false);
+  };
+
+  const handleDecline = () => {
+    updateConsent(false);
     setShowBanner(false);
   };
 
@@ -39,16 +45,21 @@ export function CookieBanner() {
         <div className="flex items-start gap-3">
           <Cookie className="h-5 w-5 mt-1 text-primary flex-shrink-0"/>
           <p className="text-sm text-muted-foreground">
-            We use essential cookies to make our site work. To learn more, please see our{' '}
+            We use cookies to enhance your experience and for analytics purposes. By clicking "Accept", you agree to our use of cookies. For more details, see our{' '}
             <Link href="/privacy-policy" className="underline hover:text-primary">
               Privacy Policy
             </Link>
             .
           </p>
         </div>
-        <Button onClick={handleAccept} size="sm" className="flex-shrink-0 w-full sm:w-auto">
-          Accept
-        </Button>
+        <div className="flex gap-2 flex-shrink-0 w-full sm:w-auto">
+          <Button onClick={handleDecline} variant="secondary" size="sm" className="flex-grow sm:flex-grow-0">
+            Decline
+          </Button>
+          <Button onClick={handleAccept} size="sm" className="flex-grow sm:flex-grow-0">
+            Accept
+          </Button>
+        </div>
       </div>
     </div>
   );
