@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { useState, useTransition, useEffect } from "react";
@@ -241,7 +240,7 @@ export function ProjectIntakeForm() {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone Number *</FormLabel>
+              <FormLabel>Phone Number</FormLabel>
               <FormControl>
                 <PhoneInput
                   international

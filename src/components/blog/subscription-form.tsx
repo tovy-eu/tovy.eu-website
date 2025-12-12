@@ -6,32 +6,42 @@ import { z } from 'zod';
 import { useToast } from "@/hooks/use-toast";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import Link from 'next/link';
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Send, Loader2 } from "lucide-react";
+import { Checkbox } from '../ui/checkbox';
+import { Label } from '../ui/label';
 
-const emailSchema = z.string().email({ message: "Please enter a valid email address." });
+const subscriptionSchema = z.object({
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  consent: z.literal(true, {
+    errorMap: () => ({ message: "You must agree to the privacy policy." }),
+  }),
+});
 
 export function SubscriptionForm() {
   const [email, setEmail] = useState('');
+  const [consent, setConsent] = useState(false);
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const result = emailSchema.safeParse(email);
+    const result = subscriptionSchema.safeParse({ email, consent });
     if (!result.success) {
+      const errorMessage = result.error.errors[0].message;
       toast({
-        title: "Invalid Email",
-        description: result.error.errors[0].message,
+        title: "Submission Failed",
+        description: errorMessage,
         variant: "destructive",
       });
       return;
     }
     
-    const validatedEmail = result.data;
+    const { email: validatedEmail } = result.data;
 
     startTransition(async () => {
       try {
@@ -45,6 +55,7 @@ export function SubscriptionForm() {
             description: "This email address is already on our list. Thank you!",
           });
           setEmail('');
+          setConsent(false);
           return;
         }
 
@@ -58,6 +69,7 @@ export function SubscriptionForm() {
           description: "Thank you for subscribing to our newsletter.",
         });
         setEmail('');
+        setConsent(false);
 
       } catch (error) {
         console.error("Subscription error:", error);
@@ -79,26 +91,38 @@ export function SubscriptionForm() {
         <p className="mt-2 text-muted-foreground">
           Receive newsletters on what is happening at Tovy.
         </p>
-        <form onSubmit={handleSubmit} className="mt-6 flex w-full max-w-md items-center space-x-2">
-          <Input 
-            type="email" 
-            placeholder="you@company.com" 
-            className="rounded-md" 
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={isPending}
-          />
-          <Button type="submit" className="rounded-md whitespace-nowrap" disabled={isPending}>
-            {isPending ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Subscribing...
-              </>
-            ) : (
-              <>
-                Subscribe <Send className="ml-2 h-4 w-4" />
-              </>
-            )}
-          </Button>
+        <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4 w-full max-w-md">
+          <div className="flex w-full items-center space-x-2">
+            <Input 
+              type="email" 
+              placeholder="you@company.com" 
+              className="rounded-md" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={isPending}
+            />
+            <Button type="submit" className="rounded-md whitespace-nowrap" disabled={isPending}>
+              {isPending ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Subscribing...
+                </>
+              ) : (
+                <>
+                  Subscribe <Send className="ml-2 h-4 w-4" />
+                </>
+              )}
+            </Button>
+          </div>
+           <div className="flex items-center space-x-2">
+            <Checkbox id="subscription-consent" checked={consent} onCheckedChange={(checked) => setConsent(checked as boolean)} disabled={isPending} />
+            <Label htmlFor="subscription-consent" className="text-sm text-muted-foreground">
+              I agree to the{" "}
+              <Link href="/privacy-policy" target="_blank" className="underline hover:text-primary">
+                Privacy Policy
+              </Link>
+              .
+            </Label>
+          </div>
         </form>
       </div>
     </div>
