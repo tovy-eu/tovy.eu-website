@@ -36,11 +36,15 @@ export function Footer() {
         </div>
         
         {/* Center: Links */}
-        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
           <Link href="/privacy-policy" className="hover:text-primary transition-colors">
             Privacy Policy
           </Link>
-          <div className="h-4 w-px bg-border"></div>
+          <div className="h-4 w-px bg-border hidden sm:block"></div>
+          <Link href="/legal-notice" className="hover:text-primary transition-colors">
+            Legal Notice
+          </Link>
+          <div className="h-4 w-px bg-border hidden sm:block"></div>
           <Link href="mailto:info@tovy.eu" className="hover:text-primary transition-colors">
             info@tovy.eu
           </Link>
