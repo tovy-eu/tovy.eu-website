@@ -1,3 +1,4 @@
+
 import { z } from "zod";
 import { isValidPhoneNumber } from "react-phone-number-input";
 
@@ -12,7 +13,7 @@ export const projectRequestSchema = z.object({
   timelineReadiness: z.string({ required_error: "Please select your timeline readiness." }),
   firstName: z.string().min(1, "Please enter your first name."),
   lastName: z.string().min(1, "Please enter your last name."),
-  phone: z.string().refine(isValidPhoneNumber, { message: "Please enter a valid phone number." }),
+  phone: z.string().refine(value => !value || isValidPhoneNumber(value), { message: "Please enter a valid phone number." }).optional(),
   email: z.string().email("Please enter a valid email address."),
   company: z.string().min(1, "Please enter your company name."),
   consent: z.literal(true, {
