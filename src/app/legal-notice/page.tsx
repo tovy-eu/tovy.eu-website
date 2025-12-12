@@ -15,33 +15,37 @@ export default function LegalNoticePage() {
         
         <div className="space-y-2 pt-4 text-foreground">
           <h2 className="text-xl font-semibold">Company Name:</h2>
-          <p className="text-muted-foreground">[Your Company's Full Legal Name]</p>
+          <p className="text-muted-foreground">Tovy</p>
 
           <h2 className="text-xl font-semibold">Address:</h2>
           <p className="text-muted-foreground">
-            [Street Name & Number]<br />
-            [Postal Code], [City]<br />
-            [Country]
+            Markendaalseweg 347<br />
+            4811KW, Breda<br />
+            Nederland
           </p>
           
           <h2 className="text-xl font-semibold">Contact:</h2>
           <p className="text-muted-foreground">
             Email: <a href="mailto:info@tovy.eu" className="underline hover:text-primary">info@tovy.eu</a><br />
-            {/* Phone: [Your Company Phone Number] */}
+            Phone: +31 6 46879498
           </p>
 
           <h2 className="text-xl font-semibold">Represented by:</h2>
-          <p className="text-muted-foreground">[Name of Legal Representative, e.g., CEO or Managing Director]</p>
+          <p className="text-muted-foreground">Gerrit Cornelis Nijkamp</p>
 
           <h2 className="text-xl font-semibold">Register Entry:</h2>
           <p className="text-muted-foreground">
-            Register Court: [e.g., Amtsgericht Charlottenburg]<br />
-            Registration Number: [e.g., HRB 123456 B]
+            Dutch Chamber of Commerce (KvK)
           </p>
           
+          <h2 className="text-xl font-semibold">KvK-nummer (Registration Number):</h2>
+          <p className="text-muted-foreground">
+            98787055
+          </p>
+
           <h2 className="text-xl font-semibold">VAT ID:</h2>
           <p className="text-muted-foreground">
-            Value Added Tax Identification Number: [Your VAT ID Number]
+            As a sole proprietorship in the Netherlands, the VAT ID is private and will be provided on invoices as required.
           </p>
         </div>
 
