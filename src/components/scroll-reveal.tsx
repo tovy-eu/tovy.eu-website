@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, useEffect, useState, type ReactNode } from "react";
@@ -13,7 +14,7 @@ type ScrollRevealProps = {
 export const ScrollReveal = ({
   children,
   className,
-  threshold = 0.1,
+  threshold = 0.5,
   delay = 'duration-700',
 }: ScrollRevealProps) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -50,7 +51,7 @@ export const ScrollReveal = ({
       className={cn(
         "transition-all ease-in-out",
         delay,
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-40",
+        isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95",
         className
       )}
     >

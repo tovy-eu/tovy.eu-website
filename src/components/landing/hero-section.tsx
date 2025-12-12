@@ -36,10 +36,10 @@ export function HeroSection() {
           className="text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
           style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}
         >
-          Reliable Business Automation That Frees Your Time
+          Build the Scalable Data Foundation That Powers AI-Driven Automation.
         </h1>
         <p className="mt-6 text-lg leading-8 text-white/80 sm:text-xl">
-        Every solution we create turns manual labor into cognitive freedom to learn and grow.
+        We design and implement production-ready data pipelines, ensuring your AI initiatives scale reliably from pilot to enterprise.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button asChild size="lg" className="font-semibold text-lg">
