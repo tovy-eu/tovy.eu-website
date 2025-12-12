@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { PageLayout } from '@/components/layout/page-layout';
 import { cn } from '@/lib/utils';
 import { CookieBanner } from '@/components/layout/cookie-banner';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Tovy | Smart Data Ecosystems for Business Growth',
@@ -26,6 +27,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ scrollBehavior: 'smooth' }} data-scroll-behavior="smooth">
+      <head>
+        <Script id="google-consent-mode" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            
+            // Set default consent to 'denied' as required for EU users
+            gtag('consent', 'default', {
+              'analytics_storage': 'denied',
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied',
+              'wait_for_update': 500
+            });
+          `}
+        </Script>
+      </head>
       <body className={cn("font-body antialiased flex flex-col min-h-screen", poppins.className)}>
         <PageLayout>
           {children}
