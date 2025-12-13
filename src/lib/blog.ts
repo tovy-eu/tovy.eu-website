@@ -66,8 +66,8 @@ export async function getPostData(id: string) {
   const readingTime = getReadingTime(matterResult.content);
   
   // Posts are sorted descending, so previous post is at a higher index
-  const previousPost = postIndex < sortedPosts.length - 1 ? sortedPosts[postIndex + 1] : null;
-  const nextPost = postIndex > 0 ? sortedPosts[postIndex - 1] : null;
+  const previousPost = postIndex > 0 ? sortedPosts[postIndex - 1] : null;
+  const nextPost = postIndex < sortedPosts.length - 1 ? sortedPosts[postIndex + 1] : null;
 
   return {
     id,

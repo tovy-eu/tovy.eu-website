@@ -1,7 +1,6 @@
 
 import { HeroSection } from "@/components/landing/hero-section";
 import { AboutSection } from "@/components/landing/about-section";
-import { SolutionsShowcase } from "@/components/landing/solutions-showcase";
 import { SectionDivider } from "@/components/landing/section-divider";
 import { SubscriptionForm } from "@/components/blog/subscription-form";
 
@@ -78,10 +77,6 @@ export default function Home() {
         <SectionDivider />
         
         <AboutSection />
-
-        {/* <SectionDivider />
-
-        <SolutionsShowcase /> */}
 
         <div className="w-full">
           <SectionDivider />
