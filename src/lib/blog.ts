@@ -8,8 +8,10 @@ import html from 'remark-html';
 const postsDirectory = path.join(process.cwd(), 'src/content/blog');
 
 function getReadingTime(content: string) {
+  if (!content) return 0;
   const wordsPerMinute = 200;
   const wordCount = content.split(/\s+/).length;
+  if (wordCount === 0) return 0;
   return Math.ceil(wordCount / wordsPerMinute);
 }
 
@@ -65,7 +67,9 @@ export async function getPostData(id: string) {
   const excerpt = matterResult.content.substring(0, 160).trim() + '...';
   const readingTime = getReadingTime(matterResult.content);
   
-  // Posts are sorted descending, so previous post is at a higher index
+  // Posts are sorted descending by date.
+  // The "previous" post in the list is the one with a more recent date (next chronologically).
+  // The "next" post in the list is the one with an older date (previous chronologically).
   const previousPost = postIndex > 0 ? sortedPosts[postIndex - 1] : null;
   const nextPost = postIndex < sortedPosts.length - 1 ? sortedPosts[postIndex + 1] : null;
 

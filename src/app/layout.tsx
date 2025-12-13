@@ -4,10 +4,11 @@ import { Poppins } from 'next/font/google';
 import './globals.css';
 import './pain-solution-texture.css';
 import { Toaster } from "@/components/ui/toaster"
-import { PageLayout } from '@/components/layout/page-layout';
 import { cn } from '@/lib/utils';
 import { CookieBanner } from '@/components/layout/cookie-banner';
 import Script from 'next/script';
+import { Header } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
 
 export const metadata: Metadata = {
   title: 'Tovy | Smart Data Ecosystems for Business Growth',
@@ -45,9 +46,11 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={cn("font-body antialiased flex flex-col min-h-screen", poppins.className)}>
-        <PageLayout>
+        <Header />
+        <main className="flex-grow">
           {children}
-        </PageLayout>
+        </main>
+        <Footer />
         <Toaster />
         <CookieBanner />
       </body>
