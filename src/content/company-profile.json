@@ -1,0 +1,26 @@
+
+{
+  "public_company_profile": {
+    "entity_name": "Tovy",
+    "legal_structure": "Sole Proprietorship (Eenmanszaak)",
+    "primary_identifiers": {
+      "commercial_registry_number": "98787055",
+      "vat_id_number": "NL005353903B84"
+    },
+    "contact_details": {
+      "address_type": "Registered Address",
+      "street_name": "Markendaalseweg",
+      "house_number": "347",
+      "postal_code": "4811KW",
+      "city": "Breda",
+      "country_code": "+31",
+      "phone_number": "646879498",
+      "email": "info@tovy.eu"
+    },
+    "business_context": {
+      "start_date": "2025-11-06",
+      "proprietor_name": "Gerrit Cornelis Nijkamp",
+      "primary_activity_description": "Support of business process automation (consulting and engineering)"
+    }
+  }
+}

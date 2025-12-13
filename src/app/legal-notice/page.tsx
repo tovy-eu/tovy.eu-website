@@ -1,5 +1,6 @@
 
 import type { Metadata } from 'next';
+import companyProfile from '@/content/company-profile.json';
 
 export const metadata: Metadata = {
   title: 'Legal Notice | Tovy',
@@ -7,6 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default function LegalNoticePage() {
+  const { public_company_profile: profile } = companyProfile;
+
   return (
     <div className="container mx-auto max-w-4xl py-12 px-4 md:px-8">
       <h1 className="text-3xl font-bold mb-6">Legal Notice (Impressum)</h1>
@@ -15,26 +18,26 @@ export default function LegalNoticePage() {
         
         <div className="space-y-2 pt-4 text-foreground">
           <h2 className="text-xl font-semibold">Company Name:</h2>
-          <p className="text-muted-foreground">Tovy</p>
+          <p className="text-muted-foreground">{profile.entity_name}</p>
 
           <h2 className="text-xl font-semibold">Legal Structure:</h2>
-          <p className="text-muted-foreground">Sole Proprietorship (Eenmanszaak)</p>
+          <p className="text-muted-foreground">{profile.legal_structure}</p>
           
           <h2 className="text-xl font-semibold">Address:</h2>
           <p className="text-muted-foreground">
-            Markendaalseweg 347<br />
-            4811KW Breda<br />
+            {profile.contact_details.street_name} {profile.contact_details.house_number}<br />
+            {profile.contact_details.postal_code} {profile.contact_details.city}<br />
             Nederland
           </p>
           
           <h2 className="text-xl font-semibold">Contact:</h2>
           <p className="text-muted-foreground">
-            Email: <a href="mailto:info@tovy.eu" className="underline hover:text-primary">info@tovy.eu</a><br />
-            Phone: +31 6 46879498
+            Email: <a href={`mailto:${profile.contact_details.email}`} className="underline hover:text-primary">{profile.contact_details.email}</a><br />
+            Phone: {profile.contact_details.country_code} {profile.contact_details.phone_number}
           </p>
 
           <h2 className="text-xl font-semibold">Represented by (Proprietor):</h2>
-          <p className="text-muted-foreground">Gerrit Cornelis Nijkamp</p>
+          <p className="text-muted-foreground">{profile.business_context.proprietor_name}</p>
 
           <h2 className="text-xl font-semibold">Commercial Registry:</h2>
           <p className="text-muted-foreground">
@@ -43,17 +46,17 @@ export default function LegalNoticePage() {
           
           <h2 className="text-xl font-semibold">KvK Number (Registration Number):</h2>
           <p className="text-muted-foreground">
-            98787055
+            {profile.primary_identifiers.commercial_registry_number}
           </p>
 
           <h2 className="text-xl font-semibold">VAT Identification Number:</h2>
           <p className="text-muted-foreground">
-            NL005353903B84
+            {profile.primary_identifiers.vat_id_number}
           </p>
 
           <h2 className="text-xl font-semibold">Primary Business Activity:</h2>
           <p className="text-muted-foreground">
-            Support of business process automation (consulting and engineering)
+            {profile.business_context.primary_activity_description}
           </p>
         </div>
 
