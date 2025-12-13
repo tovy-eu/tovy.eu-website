@@ -1,4 +1,3 @@
-
 'use client';
 
 import type { Metadata } from 'next';
@@ -21,13 +20,12 @@ export default function LegalNoticePage() {
     // This runs on the client, avoiding server/client mismatch for the href
     const jsonString = JSON.stringify(companyProfile, null, 2);
     const blob = new Blob([jsonString], { type: 'application/json' });
-    setDownloadHref(URL.createObjectURL(blob));
+    const url = URL.createObjectURL(blob);
+    setDownloadHref(url);
 
     // Cleanup the object URL when the component unmounts
     return () => {
-      if (downloadHref) {
-        URL.revokeObjectURL(downloadHref);
-      }
+      URL.revokeObjectURL(url);
     };
   }, []); // Empty dependency array means this runs once on mount
 
