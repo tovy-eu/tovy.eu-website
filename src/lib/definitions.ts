@@ -22,3 +22,29 @@ export const projectRequestSchema = z.object({
 });
 
 export type ProjectRequestData = z.infer<typeof projectRequestSchema>;
+
+export type JSONContent = {
+  public_company_profile: {
+    entity_name: string;
+    legal_structure: string;
+    primary_identifiers: {
+      commercial_registry_number: string;
+      vat_id_number: string;
+    };
+    contact_details: {
+      address_type: string;
+      street_name: string;
+      house_number: string;
+      postal_code: string;
+      city: string;
+      country_code: string;
+      phone_number: string;
+      email: string;
+    };
+    business_context: {
+      start_date: string;
+      proprietor_name: string;
+      primary_activity_description: string;
+    };
+  };
+};
