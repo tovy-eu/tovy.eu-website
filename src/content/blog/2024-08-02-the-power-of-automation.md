@@ -3,7 +3,7 @@ title: 'The Power of Automation'
 date: '2024-07-29'
 author: 'Giel Nijkamp'
 summary: 'Discover how AI-driven automation can transform your business by eliminating tedious tasks.'
-image_id: 'automation-power'
+image: '/images/blog/automation-power.jpg'
 tags: ['Automation', 'AI', 'Business']
 ---
 

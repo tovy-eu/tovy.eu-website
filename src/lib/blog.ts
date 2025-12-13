@@ -33,7 +33,7 @@ export function getSortedPostsData() {
       id,
       excerpt,
       readingTime,
-      ...(matterResult.data as { date: string; title: string, author: string, image_id: string, tags: string[] }),
+      ...(matterResult.data as { date: string; title: string, author: string, image: string, tags: string[] }),
     };
   });
 
@@ -67,9 +67,6 @@ export async function getPostData(id: string) {
   const excerpt = matterResult.content.substring(0, 160).trim() + '...';
   const readingTime = getReadingTime(matterResult.content);
   
-  // Posts are sorted descending by date.
-  // The "previous" post in the list is the one with a more recent date (next chronologically).
-  // The "next" post in the list is the one with an older date (previous chronologically).
   const previousPost = postIndex > 0 ? sortedPosts[postIndex - 1] : null;
   const nextPost = postIndex < sortedPosts.length - 1 ? sortedPosts[postIndex + 1] : null;
 
@@ -80,6 +77,6 @@ export async function getPostData(id: string) {
     readingTime,
     previousPost,
     nextPost,
-    ...(matterResult.data as { date: string; title: string, author: string, image_id: string, tags: string[] }),
+    ...(matterResult.data as { date: string; title: string, author: string, image: string, tags: string[] }),
   };
 }
