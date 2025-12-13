@@ -98,7 +98,7 @@ export function SubscriptionForm() {
               name="email"
               type="email"
               autoComplete="email" 
-              placeholder="you@company.com" 
+              placeholder="Enter your email here" 
               className="rounded-md" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}

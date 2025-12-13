@@ -15,6 +15,14 @@
       "imageHint": "technology abstract",
       "width": 600,
       "height": 400
+    },
+    {
+      "id": "automation-power",
+      "description": "Abstract image representing the power of automation",
+      "imageUrl": "https://images.unsplash.com/photo-1677442135753-7315a65a7cad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhaSUyMGF1dG9tYXRpb258ZW58MHx8fHwxNzYzMzI4ODU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "AI automation",
+      "width": 600,
+      "height": 400
     }
   ]
 }
