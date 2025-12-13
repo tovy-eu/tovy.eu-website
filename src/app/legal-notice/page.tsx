@@ -17,10 +17,13 @@ export default function LegalNoticePage() {
           <h2 className="text-xl font-semibold">Company Name:</h2>
           <p className="text-muted-foreground">Tovy</p>
 
+          <h2 className="text-xl font-semibold">Legal Structure:</h2>
+          <p className="text-muted-foreground">Sole Proprietorship (Eenmanszaak)</p>
+          
           <h2 className="text-xl font-semibold">Address:</h2>
           <p className="text-muted-foreground">
             Markendaalseweg 347<br />
-            4811KW, Breda<br />
+            4811KW Breda<br />
             Nederland
           </p>
           
@@ -30,22 +33,27 @@ export default function LegalNoticePage() {
             Phone: +31 6 46879498
           </p>
 
-          <h2 className="text-xl font-semibold">Represented by:</h2>
+          <h2 className="text-xl font-semibold">Represented by (Proprietor):</h2>
           <p className="text-muted-foreground">Gerrit Cornelis Nijkamp</p>
 
-          <h2 className="text-xl font-semibold">Register Entry:</h2>
+          <h2 className="text-xl font-semibold">Commercial Registry:</h2>
           <p className="text-muted-foreground">
-            Dutch Chamber of Commerce (KvK)
+            Dutch Chamber of Commerce (Kamer van Koophandel)
           </p>
           
-          <h2 className="text-xl font-semibold">KvK-nummer (Registration Number):</h2>
+          <h2 className="text-xl font-semibold">KvK Number (Registration Number):</h2>
           <p className="text-muted-foreground">
             98787055
           </p>
 
-          <h2 className="text-xl font-semibold">VAT ID:</h2>
+          <h2 className="text-xl font-semibold">VAT Identification Number:</h2>
           <p className="text-muted-foreground">
-            As a sole proprietorship in the Netherlands, the VAT ID is private and will be provided on invoices as required.
+            NL005353903B84
+          </p>
+
+          <h2 className="text-xl font-semibold">Primary Business Activity:</h2>
+          <p className="text-muted-foreground">
+            Support of business process automation (consulting and engineering)
           </p>
         </div>
 
