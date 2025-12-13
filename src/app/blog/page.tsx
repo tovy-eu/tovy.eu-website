@@ -6,7 +6,6 @@ import { format } from 'date-fns';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import type { Metadata } from 'next';
 import { SubscriptionForm } from '@/components/blog/subscription-form';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SectionDivider } from '@/components/landing/section-divider';
 import { Badge } from '@/components/ui/badge';
 import { BookOpen } from 'lucide-react';
@@ -31,7 +30,7 @@ export default function BlogHome() {
 
   const featuredPost = allPostsData[0];
   const otherPosts = allPostsData.slice(1);
-  const featuredImage = PlaceHolderImages.find(img => img.id === featuredPost.image_id);
+  const featuredImage = featuredPost.image;
 
   return (
     <div className="container mx-auto max-w-5xl py-12 px-4 md:px-8">
@@ -47,11 +46,11 @@ export default function BlogHome() {
             {featuredImage && (
               <div className="relative w-full aspect-video md:aspect-auto">
                 <Image
-                  src={featuredImage.imageUrl}
+                  src={featuredImage}
                   alt={featuredPost.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  data-ai-hint={featuredImage.imageHint}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             )}
@@ -79,19 +78,18 @@ export default function BlogHome() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        {otherPosts.map(({ id, date, title, excerpt, author, image_id, tags, readingTime }) => {
-          const image = PlaceHolderImages.find(img => img.id === image_id);
+        {otherPosts.map(({ id, date, title, excerpt, author, image, tags, readingTime }) => {
           return (
             <Link href={`/blog/${id}`} key={id} className="block group">
               <Card className="h-full flex flex-col transition-all duration-300 ease-in-out group-hover:border-primary group-hover:shadow-lg group-hover:-translate-y-1 overflow-hidden">
                 {image && (
                   <div className="relative w-full aspect-video">
                     <Image
-                      src={image.imageUrl}
+                      src={image}
                       alt={title}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      data-ai-hint={image.imageHint}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
                 )}

@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { SubscriptionForm } from '@/components/blog/subscription-form';
 import type { Metadata } from 'next';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
@@ -53,7 +52,7 @@ export default async function BlogPost({ params }: Props) {
     notFound();
   }
   
-  const image = PlaceHolderImages.find(img => img.id === postData.image_id);
+  const image = postData.image;
 
   return (
     <div className="container mx-auto max-w-3xl py-12 px-4 md:px-8">
@@ -61,11 +60,11 @@ export default async function BlogPost({ params }: Props) {
         {image && (
           <div className="relative w-full aspect-video">
             <Image
-              src={image.imageUrl}
+              src={image}
               alt={postData.title}
               fill
               className="object-cover"
-              data-ai-hint={image.imageHint}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
         )}

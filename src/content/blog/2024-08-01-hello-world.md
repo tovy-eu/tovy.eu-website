@@ -3,7 +3,7 @@ title: 'Hello World'
 date: '2024-07-30'
 author: 'Giel Nijkamp'
 summary: 'Hello Data-World'
-image_id: 'test'
+image: '/images/blog/hello-world.jpg'
 tags: ['Welcome', 'Technology']
 ---
 
