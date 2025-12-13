@@ -46,11 +46,11 @@ export function Footer() {
             Legal Notice
           </Link>
           <div className="h-4 w-px bg-border hidden sm:block"></div>
-          <Link href="mailto:info@tovy.eu" className="hover:text-primary transition-colors">
-            info@tovy.eu
+          <Link href={`mailto:${companyProfile.public_company_profile.contact_details.email}`} className="hover:text-primary transition-colors">
+            {companyProfile.public_company_profile.contact_details.email}
           </Link>
           <div className="h-4 w-px bg-border hidden sm:block"></div>
-          <span>VAT: {companyProfile.public_company_profile.primary_identifiers.vat_id_number}</span>
+          <span>{companyProfile.public_company_profile.primary_identifiers.vat_id_number}</span>
         </div>
         
         {/* Bottom: Copyright */}
