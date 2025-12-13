@@ -1,5 +1,6 @@
 
 import type { Metadata } from 'next';
+import companyProfile from '@/content/company-profile.json';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Tovy',
@@ -7,6 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPolicyPage() {
+  const email = companyProfile.public_company_profile.contact_details.email;
+
   return (
     <div className="container mx-auto max-w-4xl py-12 px-4 md:px-8">
       <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
@@ -17,7 +20,7 @@ export default function PrivacyPolicyPage() {
 
         <h2 className="text-2xl font-semibold text-foreground pt-4">1. Data Controller</h2>
         <p>
-          Tovy is the data controller for the personal information collected through this website. For any questions, you can contact us at <a href="mailto:info@tovy.eu" className="underline hover:text-primary">info@tovy.eu</a>.
+          Tovy is the data controller for the personal information collected through this website. For any questions, you can contact us at <a href={`mailto:${email}`} className="underline hover:text-primary">{email}</a>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground pt-4">2. Information We Collect and How We Use It</h2>
@@ -68,7 +71,7 @@ export default function PrivacyPolicyPage() {
 
         <h2 className="text-2xl font-semibold text-foreground pt-4">6. Contact Us</h2>
         <p>
-          For any questions or concerns regarding your privacy, or to exercise your GDPR rights, you may contact our Data Protection Officer at: <a href="mailto:info@tovy.eu" className="underline hover:text-primary">info@tovy.eu</a>
+          For any questions or concerns regarding your privacy, or to exercise your GDPR rights, you may contact our Data Protection Officer at: <a href={`mailto:${email}`} className="underline hover:text-primary">{email}</a>
         </p>
 
         <p className="pt-4">This policy is effective as of July 30, 2024.</p>
