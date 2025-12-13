@@ -27,9 +27,7 @@ An unordered list looks like this:
 And an ordered list for sequential steps:
 
 1.  Define the problem.
-
 2.  Design the AI solution.
-
 3.  Deploy and iterate.
 
 ### Blockquotes
