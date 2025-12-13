@@ -1,7 +1,13 @@
 
+'use client';
+
 import type { Metadata } from 'next';
 import companyProfile from '@/content/company-profile.json';
+import { Button } from '@/components/ui/button';
+import { Download } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
+// Metadata is still supported in client components
 export const metadata: Metadata = {
   title: 'Legal Notice | Tovy',
   description: 'Legal Notice and company information for Tovy.',
@@ -9,10 +15,36 @@ export const metadata: Metadata = {
 
 export default function LegalNoticePage() {
   const { public_company_profile: profile } = companyProfile;
+  const [downloadHref, setDownloadHref] = useState('');
+
+  useEffect(() => {
+    // This runs on the client, avoiding server/client mismatch for the href
+    const jsonString = JSON.stringify(companyProfile, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    setDownloadHref(URL.createObjectURL(blob));
+
+    // Cleanup the object URL when the component unmounts
+    return () => {
+      if (downloadHref) {
+        URL.revokeObjectURL(downloadHref);
+      }
+    };
+  }, []); // Empty dependency array means this runs once on mount
 
   return (
     <div className="container mx-auto max-w-4xl py-12 px-4 md:px-8">
-      <h1 className="text-3xl font-bold mb-6">Legal Notice (Impressum)</h1>
+      <div className="flex justify-between items-start mb-6">
+        <h1 className="text-3xl font-bold">Legal Notice (Impressum)</h1>
+        {downloadHref && (
+          <Button asChild variant="link">
+            <a href={downloadHref} download="company-profile.json">
+              <Download className="mr-2 h-4 w-4" />
+              Download JSON
+            </a>
+          </Button>
+        )}
+      </div>
+
       <div className="space-y-4 text-muted-foreground">
         <p>Information pursuant to the German Telemedia Act (TMG) and other relevant EU regulations.</p>
         
