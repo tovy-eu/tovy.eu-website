@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -55,7 +54,7 @@ export function Footer() {
         
         {/* Bottom: Copyright */}
         <div className="text-sm text-muted-foreground">
-          © {year} Tovy. All rights reserved.
+          © {year} {companyProfile.public_company_profile.entity_name}. All rights reserved.
         </div>
       </div>
     </footer>
