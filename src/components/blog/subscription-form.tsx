@@ -93,8 +93,11 @@ export function SubscriptionForm() {
         </p>
         <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4 w-full max-w-md">
           <div className="flex w-full items-center space-x-2">
-            <Input 
-              type="email" 
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email" 
               placeholder="you@company.com" 
               className="rounded-md" 
               value={email}
