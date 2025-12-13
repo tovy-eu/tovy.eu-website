@@ -25,6 +25,8 @@ Why do so many AI projects fail? The answer is usually **Context**.
 
 An AI Agent (like a chatbot) is only as smart as the information you give it. In a university, giving AI good information is easy. In a real company, it is very hard.
 
+> The term "Agent" can be defined in several ways. Anthropic makes an important architectural distinction between **Workflows**, where LLMs follow predefined code, and **Agents**, where LLMs dynamically direct their own processes and tool usage to accomplish tasks.
+
 Company knowledge is messy. It is hidden in PDF contracts, long email chains, and millions of rows of SAP tables. To an AI, a raw SAP table looks like noise, not knowledge.
 
 > Tovy sees Reliability as a Data Engineering problem.
