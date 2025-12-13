@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
+import companyProfile from '@/content/company-profile.json';
 
 export function Footer() {
   const [year, setYear] = useState(new Date().getFullYear());
@@ -48,6 +49,8 @@ export function Footer() {
           <Link href="mailto:info@tovy.eu" className="hover:text-primary transition-colors">
             info@tovy.eu
           </Link>
+          <div className="h-4 w-px bg-border hidden sm:block"></div>
+          <span>VAT: {companyProfile.public_company_profile.primary_identifiers.vat_id_number}</span>
         </div>
         
         {/* Bottom: Copyright */}
