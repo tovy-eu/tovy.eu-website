@@ -9,6 +9,8 @@ import { useToast } from "@/hooks/use-toast";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Link from "next/link";
+import { db } from "@/lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -115,10 +117,21 @@ export function ProjectIntakeForm() {
 
 
   const onSubmit = (data: ProjectRequestData) => {
-    startTransition(() => {
-      console.log("Form data submitted:", data);
-      // A good place for an analytics event
-      setFormSubmitted(true);
+    startTransition(async () => {
+      try {
+        await addDoc(collection(db, "project_requests"), {
+          ...data,
+          timestamp: new Date(),
+        });
+        setFormSubmitted(true);
+      } catch (error) {
+        console.error("Failed to submit project request:", error);
+        toast({
+          title: "Submission Failed",
+          description: "There was an error submitting your request. Please try again later.",
+          variant: "destructive",
+        });
+      }
     });
   };
 
