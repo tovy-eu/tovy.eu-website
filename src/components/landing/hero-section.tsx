@@ -51,7 +51,7 @@ export function HeroSection() {
           <Button asChild size="lg" variant="outline" className="font-semibold text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white">
             <Link href="/blog">
               <BookOpen className="mr-2 h-5 w-5" />
-              Read about us
+              Read our blog
             </Link>
           </Button>
         </div>
