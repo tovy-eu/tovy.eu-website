@@ -11,7 +11,7 @@ import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 type Props = {
-  params: Promise<{ slug: string }>; // Updated for Next.js 15
+  params: { slug: string };
 };
 
 // 1. Required for output: export
@@ -36,8 +36,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params; // Must await params in Next.js 15
-  const postData = await getPostData(slug);
+  const postData = await getPostData(params.slug);
   
   if (!postData) {
     return {
@@ -52,8 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPost({ params }: Props) {
-  const { slug } = await params; // Must await params in Next.js 15
-  const postData = await getPostData(slug);
+  const postData = await getPostData(params.slug);
 
   if (!postData) {
     notFound();
