@@ -217,7 +217,7 @@ export function ProjectIntakeForm() {
     return (
       <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm opacity-90">
         <CardHeader className="text-center">
-          <CheckCircle className="mx-auto h-16 w-16 text-primary mb-4" />
+          <CheckCircle className="mx-auto h-16 w-16 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent mb-4" />
           <CardTitle className="text-2xl">Thank You!</CardTitle>
           <CardDescription>
             Your project request has been submitted. We will contact you shortly.
@@ -282,8 +282,8 @@ export function ProjectIntakeForm() {
                     </div>
                     <div className="flex justify-between text-sm text-muted-foreground mt-2">
                       <span>Just starting</span>
-                      <span>Using AI tools</span>
-                      <span>Built custom AI</span>
+                      <span>Managing data</span>
+                      <span>Built custom solutions</span>
                     </div>
                   </div>
                 </FormControl>
@@ -522,3 +522,5 @@ export function ProjectIntakeForm() {
     </Card>
   );
 }
+
+    
