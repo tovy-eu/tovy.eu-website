@@ -217,7 +217,7 @@ export function ProjectIntakeForm() {
     return (
       <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm opacity-90">
         <CardHeader className="text-center">
-          <CheckCircle className="mx-auto h-16 w-16 text-green-500 mb-4" />
+          <CheckCircle className="mx-auto h-16 w-16 text-primary mb-4" />
           <CardTitle className="text-2xl">Thank You!</CardTitle>
           <CardDescription>
             Your project request has been submitted. We will contact you shortly.
