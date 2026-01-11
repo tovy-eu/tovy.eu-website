@@ -81,46 +81,40 @@ export function EngineeringSection() {
 
         <div className="relative mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {serviceLines.map((service, index) => (
-              <div key={service.id} className="relative">
-                <ScrollReveal delay={`duration-${300 + index * 200}`}>
-                  <Card 
-                    className="h-full flex flex-col bg-card/80 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 text-center"
-                    style={{ '--pillar-color': service.color, '--pillar-shadow-color': `${service.color}1A` } as React.CSSProperties}
-                  >
-                    <CardHeader className="items-center">
-                      <div 
-                        className="p-4 rounded-lg"
-                        style={{ backgroundColor: `var(--pillar-shadow-color)`}}
-                      >
-                        {React.cloneElement(service.icon, { style: { color: `var(--pillar-color)` } })}
-                      </div>
-                      <CardTitle className="mt-4">{service.title}</CardTitle>
-                    </CardHeader>
-                    <CardDescription className="p-6 pt-0 flex-grow">
-                      {service.description}
-                    </CardDescription>
-                    <CardContent className="flex flex-col justify-end">
-                      <div className="flex flex-wrap justify-center gap-2">
-                        {service.stack.map(item => (
-                          <Badge key={item.tool} variant="secondary">{item.tool}</Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </ScrollReveal>
-                
-                {index < serviceLines.length - 1 && (
-                  <div className="hidden lg:flex absolute top-1/2 -right-10 transform -translate-y-1/2 items-center justify-center pointer-events-none">
-                    <ChevronRight className="h-8 w-8 text-muted-foreground" />
-                  </div>
-                )}
-                
-                {index === 1 && (
-                   <div className="hidden md:flex lg:hidden absolute -bottom-10 left-1/2 transform -translate-x-1/2 rotate-90 items-center justify-center pointer-events-none">
-                    <ChevronRight className="h-8 w-8 text-muted-foreground" />
-                  </div>
-                )}
-            </div>
+            <React.Fragment key={service.id}>
+              <ScrollReveal delay={`duration-${300 + index * 200}`}>
+                <Card 
+                  className="h-full flex flex-col bg-card/80 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 text-center"
+                  style={{ '--pillar-color': service.color, '--pillar-shadow-color': `${service.color}1A` } as React.CSSProperties}
+                >
+                  <CardHeader className="items-center">
+                    <div 
+                      className="p-4 rounded-lg"
+                      style={{ backgroundColor: `var(--pillar-shadow-color)`}}
+                    >
+                      {React.cloneElement(service.icon, { style: { color: `var(--pillar-color)` } })}
+                    </div>
+                    <CardTitle className="mt-4">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardDescription className="p-6 pt-0 flex-grow">
+                    {service.description}
+                  </CardDescription>
+                  <CardContent className="flex flex-col justify-end">
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {service.stack.map(item => (
+                        <Badge key={item.tool} variant="secondary">{item.tool}</Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </ScrollReveal>
+              
+              {index < serviceLines.length - 1 && (
+                <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 items-center justify-center pointer-events-none" style={{ left: `calc(${(index + 1) * 25}% - 1.25rem)`, width: '2.5rem' }}>
+                  <ChevronRight className="h-8 w-8 text-muted-foreground" />
+                </div>
+              )}
+            </React.Fragment>
           ))}
         </div>
       </div>
