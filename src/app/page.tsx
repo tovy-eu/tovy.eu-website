@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/landing/hero-section";
 import { AboutSection } from "@/components/landing/about-section";
 import { SectionDivider } from "@/components/landing/section-divider";
 import { SubscriptionForm } from "@/components/blog/subscription-form";
+import { EngineeringSection } from "@/components/landing/engineering-section";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -77,6 +78,10 @@ export default function Home() {
         <SectionDivider />
         
         <AboutSection />
+
+        <SectionDivider />
+
+        <EngineeringSection />
 
         <div className="w-full">
           <SectionDivider />
