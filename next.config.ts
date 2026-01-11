@@ -1,10 +1,9 @@
-import type {NextConfig} from 'next';
 
-const devOrigin = process.env.CWD_HOST_URL ? new URL(process.env.CWD_HOST_URL).hostname : undefined;
+import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  allowedDevOrigins: devOrigin ? [devOrigin] : ["*.cloudworkstations.dev"],
+  allowedDevOrigins: ["*.cloudworkstations.dev"],
   output: 'export',
   typescript: {
     ignoreBuildErrors: true,
