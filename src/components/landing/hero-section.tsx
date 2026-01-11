@@ -36,7 +36,7 @@ export function HeroSection() {
           className="text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
           style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}
         >
-          Build the Tech Foundation That Powers Your Business's AI Automation.
+          We build the AI foundation of your business.
         </h1>
         <p className="mt-6 text-lg leading-8 text-white/80 sm:text-xl">
         We design and implement production-ready tech solutions, ensuring your business scales reliably.
