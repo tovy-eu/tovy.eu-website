@@ -9,7 +9,7 @@ export const projectRequestSchema = z.object({
   projectFocus: z.string().min(1, "Please provide the main focus of your project."),
   challenges: z.string().min(1, "Please describe your main challenges."),
   vision: z.string().min(1, "Please describe your vision for the project."),
-  budgetReadiness: z.string({ required_error: "Please select your budget readiness." }).optional(),
+  budgetReadiness: z.string({ required_error: "Please select your budget readiness." }),
   timelineReadiness: z.string({ required_error: "Please select your timeline readiness." }),
   firstName: z.string().min(1, "Please enter your first name."),
   lastName: z.string().min(1, "Please enter your last name."),
