@@ -484,7 +484,11 @@ export function ProjectIntakeForm() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
           <CardContent className="min-h-[600px] flex items-center">
             <div className="w-full">
-              {formSteps.map((_, index) => renderStep(index))}
+              {formSteps.map((_, index) => (
+                <div key={`step-${index}`}>
+                  {renderStep(index)}
+                </div>
+              ))}
             </div>
           </CardContent>
           <CardFooter className="flex justify-between mt-4 min-h-[52px]">
