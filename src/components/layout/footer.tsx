@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -5,6 +6,25 @@ import { Button } from "@/components/ui/button";
 import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 import companyProfile from '@/content/company-profile.json';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+const socialLinks = [
+  {
+    name: "GitHub",
+    url: "https://github.com/tovy-engineering",
+    icon: <Github className="h-4 w-4" />,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/company/tovy",
+    icon: <Linkedin className="h-4 w-4" />,
+  },
+];
 
 export function Footer() {
   const [year, setYear] = useState(new Date().getFullYear());
@@ -21,18 +41,22 @@ export function Footer() {
         
         {/* Social Icons */}
         <div className="flex items-center gap-2">
-          <Link href="#" target="_blank">
-            <Button variant="ghost" size="icon">
-              <Github className="h-4 w-4" />
-              <span className="sr-only">GitHub</span>
-            </Button>
-          </Link>
-          <Link href="https://www.linkedin.com/company/tovy" target="_blank">
-            <Button variant="ghost" size="icon">
-              <Linkedin className="h-4 w-4" />
-              <span className="sr-only">LinkedIn</span>
-            </Button>
-          </Link>
+          <TooltipProvider>
+            {socialLinks.map((link) => (
+              <Tooltip key={link.name}>
+                <TooltipTrigger asChild>
+                  <Button asChild variant="ghost" size="icon">
+                    <Link href={link.url} target="_blank" aria-label={link.name}>
+                      {link.icon}
+                    </Link>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{link.name}</p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
+          </TooltipProvider>
         </div>
         
         {/* Center: Links */}
