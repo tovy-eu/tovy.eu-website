@@ -1,4 +1,3 @@
-
 import { getPostData, getSortedPostsData } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
@@ -12,40 +11,48 @@ import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>; // Updated for Next.js 15
 };
 
-export function generateStaticParams() {
+// 1. Required for output: export
+export async function generateStaticParams() {
   try {
     const posts = getSortedPostsData();
+    
+    // Returns empty array [] if no blogs exist. 
+    // Next.js will simply generate 0 blog pages but the build will succeed.
     if (!posts || posts.length === 0) {
       return [];
     }
-    return posts.map(post => ({
+
+    return posts.map((post) => ({
       slug: post.id,
     }));
   } catch (error) {
-    console.error("Failed to generate static params for blog:", error);
+    // Fail gracefully during build if folder is missing
+    console.warn("Warning: Could not generate static params (likely no posts found):", error);
     return [];
   }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params; // Must await params in Next.js 15
   const postData = await getPostData(slug);
+  
   if (!postData) {
     return {
       title: 'Post Not Found'
-    }
+    };
   }
+  
   return {
     title: `${postData.title} | Tovy`,
     description: postData.excerpt,
-  }
+  };
 }
 
 export default async function BlogPost({ params }: Props) {
-  const { slug } = params;
+  const { slug } = await params; // Must await params in Next.js 15
   const postData = await getPostData(slug);
 
   if (!postData) {
