@@ -14,7 +14,7 @@ const pillars = [
   {
     icon: <Rocket className="h-8 w-8" />,
     title: "Optimization",
-    description: "Every design aims for efficiency and automation. We target removal of tedious, inefficient tasks.",
+    description: "Every process design aims for efficiency and automation. We target removal of tedious, inefficient tasks.",
     color: "#566FFF"
   },
   {
