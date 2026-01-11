@@ -39,7 +39,7 @@ export function HeroSection() {
           Build the Tech Foundation That Powers Your Business's AI Automation.
         </h1>
         <p className="mt-6 text-lg leading-8 text-white/80 sm:text-xl">
-        We design and implement production-ready tetch solutions, ensuring your business scales reliably.
+        We design and implement production-ready tech solutions, ensuring your business scales reliably.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button asChild size="lg" className="font-semibold text-lg">
