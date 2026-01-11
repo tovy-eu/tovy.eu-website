@@ -3,7 +3,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CloudCog, CodeXml, DatabaseZap, BrainCircuit, ChevronRight } from "lucide-react";
+import { CloudCog, CodeXml, DatabaseZap, DraftingCompass, ChevronRight } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
 
@@ -11,7 +11,7 @@ const serviceLines = [
   {
     id: "strategic_design",
     title: "Strategic Design",
-    icon: <BrainCircuit className="h-8 w-8" />,
+    icon: <DraftingCompass className="h-8 w-8" />,
     description: "Thinking through tech, data, and AI strategies to align with your business goals.",
     stack: [
       { tool: "Roadmapping" },
