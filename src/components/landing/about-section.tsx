@@ -34,7 +34,7 @@ const pillars = [
 export function AboutSection() {
   return (
     <section 
-      className="pain-solution-container relative w-full bg-gradient-to-b from-accent/10 to-primary/10 py-16 sm:py-24"
+      className="pain-solution-container relative w-full bg-gradient-to-b from-accent/10 to-background py-16 sm:py-24"
     >
       <div className="relative mx-auto max-w-6xl px-4 md:px-8">
         <div className="absolute inset-0 z-0 overflow-hidden hidden lg:block">
