@@ -516,7 +516,7 @@ export function ProjectIntakeForm() {
 
             {/* This is a hidden submit button to allow form submission on enter */}
             <button type="submit" className="hidden" disabled={isPending}></button>
-          </Footer>
+          </CardFooter>
         </form>
       </Form>
     </Card>
