@@ -118,12 +118,15 @@ export function ProjectIntakeForm() {
 
 
   const onSubmit = (data: ProjectRequestData) => {
+    console.log("onSubmit triggered. Validation successful. Data:", data);
     startTransition(async () => {
       try {
+        console.log("Attempting to add document to Firestore...");
         await addDoc(collection(db, "project_requests"), {
           ...data,
           timestamp: new Date(),
         });
+        console.log("Document successfully added to Firestore.");
         setFormSubmitted(true);
       } catch (error) {
         console.error("Failed to submit project request:", error);
@@ -147,6 +150,8 @@ export function ProjectIntakeForm() {
     }
         
     const isValid = await form.trigger(fieldsToValidate);
+    console.log(`Validation for step ${step} (${fieldsToValidate.join(', ')}):`, isValid ? 'Success' : 'Failed');
+    console.log('Current form errors:', form.formState.errors);
 
     if (isValid) {
       if (step < totalSteps - 1) {
@@ -511,7 +516,7 @@ export function ProjectIntakeForm() {
 
             {/* This is a hidden submit button to allow form submission on enter */}
             <button type="submit" className="hidden" disabled={isPending}></button>
-          </CardFooter>
+          </Footer>
         </form>
       </Form>
     </Card>
