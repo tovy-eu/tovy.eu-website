@@ -1,50 +1,59 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CloudCog, CodeXml, DatabaseZap } from "lucide-react";
+import { CloudCog, CodeXml, DatabaseZap, BrainCircuit } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
 
 const serviceLines = [
   {
-    id: "data_engineering",
-    title: "Data Engineering & Analytics",
-    priority: "Primary",
-    icon: <DatabaseZap className="h-8 w-8" />,
-    description: "Architecting scalable pipelines and data warehouses using the Modern Data Stack.",
+    id: "strategic_design",
+    title: "Strategic Design",
+    icon: <BrainCircuit className="h-8 w-8" />,
+    description: "Thinking through tech, data, and AI strategies to align with your business goals.",
     stack: [
-      { tool: "Databricks", context: "Lakehouse architecture, Spark processing" },
-      { tool: "dbt", context: "Transformation, testing, documentation" },
-      { tool: "SQL / SSMS", context: "Legacy integration, complex querying" },
-      { tool: "Python", context: "Orchestration, custom ETL scripting" },
+      { tool: "Roadmapping" },
+      { tool: "Architecture" },
+      { tool: "Feasibility" },
     ],
     color: "#2B5EFF"
   },
   {
     id: "cloud_infrastructure",
-    title: "Azure Cloud Infrastructure",
-    priority: "Foundation",
+    title: "Cloud Infrastructure",
     icon: <CloudCog className="h-8 w-8" />,
     description: "Designing secure, cost-optimized cloud environments for data workloads.",
     stack: [
-      { tool: "Azure Data Factory", context: "Orchestration" },
-      { tool: "Azure Synapse/SQL DB", context: "Warehousing" },
-      { tool: "Azure Blob/ADLS", context: "Data Lake Storage" },
+      { tool: "Azure Data Factory" },
+      { tool: "Azure Synapse/SQL DB" },
+      { tool: "Azure Blob/ADLS" },
     ],
     color: "#566FFF"
   },
   {
+    id: "data_engineering",
+    title: "Data Engineering",
+    icon: <DatabaseZap className="h-8 w-8" />,
+    description: "Architecting scalable pipelines and data warehouses using the Modern Data Stack.",
+    stack: [
+      { tool: "Databricks" },
+      { tool: "dbt" },
+      { tool: "SQL / SSMS" },
+      { tool: "Python" },
+    ],
+    color: "#A792FF"
+  },
+  {
     id: "application_development",
     title: "Full-Stack Data Applications",
-    priority: "Differentiator",
     icon: <CodeXml className="h-8 w-8" />,
     description: "Building custom interfaces and internal tools to operationalize data.",
     stack: [
-      { tool: "TypeScript / JavaScript", context: "Frontend logic, Node.js backends" },
-      { tool: "Web & App Dev", context: "Custom dashboards, internal tooling" },
-      { tool: "API Integration", context: "Serving data models to external systems" },
+      { tool: "TypeScript / JavaScript" },
+      { tool: "Web & App Dev" },
+      { tool: "API Integration" },
     ],
-    color: "#A792FF"
+    color: "#FFB8FA"
   },
 ];
 
@@ -101,7 +110,7 @@ export function EngineeringSection() {
           </div>
         </ScrollReveal>
 
-        <div className="relative mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="relative mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
           {serviceLines.map((service, index) => (
             <ScrollReveal key={service.id} delay={`duration-${300 + index * 200}`}>
               <Card 
