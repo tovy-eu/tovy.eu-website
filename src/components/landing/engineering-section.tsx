@@ -94,12 +94,12 @@ export function EngineeringSection() {
                     >
                       {React.cloneElement(service.icon, { style: { color: `var(--pillar-color)` } })}
                     </div>
-                    <CardTitle className="mt-4">{service.title}</CardTitle>
+                    <CardTitle className="mt-4 min-h-[3.5rem] flex items-center">{service.title}</CardTitle>
                   </CardHeader>
-                  <CardDescription className="p-6 pt-0 flex-grow">
+                  <CardDescription className="p-6 pt-0 flex-grow h-24">
                     {service.description}
                   </CardDescription>
-                  <CardContent className="flex flex-col justify-end">
+                  <CardContent className="flex flex-col justify-end min-h-[5.5rem]">
                     <div className="flex flex-wrap justify-center gap-2">
                       {service.stack.map(item => (
                         <Badge key={item.tool} variant="secondary">{item.tool}</Badge>
