@@ -36,10 +36,11 @@ const totalSteps = formSteps.length;
 
 const options: Record<string, { label: string, hint?: string }[]> = {
   companySize: [
-    { label: "1-10 employees", hint: "A" },
-    { label: "11-50 employees", hint: "B" },
-    { label: "51-200 employees", hint: "C" },
-    { label: "201+ employees", hint: "D" },
+    { label: "Solo", hint: "A" },
+    { label: "1-10 employees", hint: "B" },
+    { label: "11-50 employees", hint: "C" },
+    { label: "51-200 employees", hint: "D" },
+    { label: "201+ employees", hint: "E" },
   ],
   engineeringTeam: [
     { label: "Yes", hint: "Y" },
@@ -188,7 +189,7 @@ export function ProjectIntakeForm() {
         }
       }
 
-      if (currentStepField === 'companySize' && ['A', 'B', 'C', 'D'].includes(key)) {
+      if (currentStepField === 'companySize' && ['A', 'B', 'C', 'D', 'E'].includes(key)) {
         event.preventDefault();
         const selectedOption = options.companySize.find(o => o.hint === key);
         if (selectedOption) {
@@ -522,5 +523,6 @@ export function ProjectIntakeForm() {
     </Card>
   );
 }
+    
 
     
