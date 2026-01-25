@@ -1,6 +1,6 @@
 
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { BrainCircuit, Rocket, Sparkles } from "lucide-react";
+import { BrainCircuit, Rocket, Sparkles, Feather } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
 
@@ -18,22 +18,7 @@ const pillars = [
     color: "#566FFF"
   },
   {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-8 w-8"
-      >
-        <path d="M2 15c4.1-1.8 6.9-3.2 9.9-3.2 3.1 0 6 1.4 10.1 3.2" />
-        <path d="M11.9 11.8c-2.5-2.2-4.9-5-4.9-5" />
-        <path d="M11.9 11.8c2.5-2.2 4.9-5 4.9-5" />
-      </svg>
-    ),
+    icon: <Feather className="h-8 w-8" />,
     title: "Freedom",
     description: "Our solutions are built to reduce cognitive load. We free up people's time to think, innovate, and grow.",
     color: "#A792FF"
