@@ -1,6 +1,6 @@
 
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { BrainCircuit, Rocket, Bird, Sparkles } from "lucide-react";
+import { BrainCircuit, Rocket, Sparkles } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
 
@@ -18,7 +18,23 @@ const pillars = [
     color: "#566FFF"
   },
   {
-    icon: <Bird className="h-8 w-8" />,
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-8 w-8"
+      >
+        <path d="M12 22a2 2 0 0 0 4 0c0-1.1.9-2 2-2s2 .9 2 2a2 2 0 0 0 4 0" />
+        <path d="M14 18.3c0-1.7 1.3-3.1 3-3.1h.5c1.4 0 2.5-1.1 2.5-2.5v-.5c0-1.4-1.1-2.5-2.5-2.5h-3.5c-1.4 0-2.5-1.1-2.5-2.5v-.5C11.5 5.6 10.4 4.5 9 4.5H8.5c-1.4 0-2.5-1.1-2.5-2.5V1" />
+        <path d="M14 12a2 2 0 0 0-2-2H4.5C3.1 10 2 11.1 2 12.5v.5C2 14.4 3.6 16 5.5 16H8" />
+        <path d="m14 8 3-3-3-3" />
+      </svg>
+    ),
     title: "Freedom",
     description: "Our solutions are built to reduce cognitive load. We free up people's time to think, innovate, and grow.",
     color: "#A792FF"
@@ -34,7 +50,7 @@ const pillars = [
 export function AboutSection() {
   return (
     <section 
-      className="pain-solution-container relative w-full bg-gradient-to-b from-accent/10 to-background py-16 sm:py-24"
+      className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-16 sm:py-24"
     >
       <div className="relative mx-auto max-w-6xl px-4 md:px-8">
         <div className="absolute inset-0 z-0 overflow-hidden hidden lg:block">
