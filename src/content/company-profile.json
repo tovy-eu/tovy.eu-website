@@ -2,7 +2,7 @@
 {
   "public_company_profile": {
     "entity_name": "Tovy",
-    "legal_structure": "Sole Proprietorship (Eenmanszaak)",
+    "legal_structure": "Sole Proprietorship",
     "primary_identifiers": {
       "commercial_registry_number": "98787055",
       "vat_id_number": "NL005353903B84"
@@ -19,7 +19,7 @@
     },
     "business_context": {
       "start_date": "2025-11-06",
-      "proprietor_name": "Gerrit Cornelis Nijkamp",
+      "proprietor_name": "Giel Nijkamp",
       "primary_activity_description": "Support of business process automation (consulting and engineering)"
     }
   }
