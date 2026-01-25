@@ -1,6 +1,6 @@
 
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { BrainCircuit, Rocket, KeyRound, Sparkles } from "lucide-react";
+import { BrainCircuit, Rocket, Bird, Sparkles } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
 
@@ -18,7 +18,7 @@ const pillars = [
     color: "#566FFF"
   },
   {
-    icon: <KeyRound className="h-8 w-8" />,
+    icon: <Bird className="h-8 w-8" />,
     title: "Freedom",
     description: "Our solutions are built to reduce cognitive load. We free up people's time to think, innovate, and grow.",
     color: "#A792FF"
