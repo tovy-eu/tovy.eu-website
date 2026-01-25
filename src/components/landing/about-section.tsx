@@ -62,7 +62,7 @@ export function AboutSection() {
               </filter>
             </defs>
             <path
-              d="M50 400 C 250 400, 300 300, 425 300 C 550 300, 600 500, 725 500 C 850 500, 900 400, 1100 400"
+              d="M50 400 C 250 400 300 300 425 300 C 550 300 600 500 725 500 C 850 500 900 400 1100 400"
               stroke="url(#path-gradient)"
               strokeWidth="2"
               fill="none"
@@ -89,9 +89,17 @@ export function AboutSection() {
             </p>
           </div>
         </ScrollReveal>
+
+        <ScrollReveal>
+          <div className="mt-16 text-center">
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
+              Our Pillars of Success
+            </h3>
+          </div>
+        </ScrollReveal>
         
         <ScrollReveal>
-          <div className="relative mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="relative mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {pillars.map((pillar) => (
               <Card 
                 key={pillar.title} 
