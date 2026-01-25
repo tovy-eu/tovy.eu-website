@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Badge } from "@/components/ui/badge";
@@ -147,7 +146,7 @@ export function EngineeringSection() {
               
               {index < serviceLines.length - 1 && (
                 <div 
-                  className="hidden lg:flex absolute top-1/2 -translate-y-1/2 items-center justify-center pointer-events-none" 
+                  className="hidden lg:flex absolute top-1/2 -translate-y-1/2 items-center justify-center pointer-events-none z-10" 
                   style={{ left: `calc(${(index + 1) * 25}% - 3rem)`, width: '6rem', height: '3rem' }}
                 >
                   <WavyArrow />

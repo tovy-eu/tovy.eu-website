@@ -51,7 +51,6 @@ export function LegalNoticeClient({ profile }: LegalNoticeClientProps) {
         <div className="flex flex-col sm:flex-row justify-between items-start mb-8">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Legal Notice</h1>
-            <p className="text-muted-foreground mt-2">Information pursuant to the German Telemedia Act (TMG).</p>
           </div>
           {downloadHref && (
             <Button asChild variant="link" className="mt-4 sm:mt-0">
