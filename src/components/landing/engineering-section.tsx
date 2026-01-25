@@ -84,7 +84,7 @@ const WavyArrow = () => (
       </marker>
     </defs>
     <path
-      d="M5 20 C 30 0, 70 40, 95 20"
+      d="M5 20 C 30 0 70 40 95 20"
       stroke="url(#wavy-arrow-gradient)"
       strokeWidth="2"
       fill="none"
