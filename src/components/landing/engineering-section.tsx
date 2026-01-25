@@ -3,7 +3,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CloudCog, CodeXml, DatabaseZap, DraftingCompass, ChevronRight } from "lucide-react";
+import { CloudCog, CodeXml, DatabaseZap, DraftingCompass } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
 
@@ -59,6 +59,42 @@ const serviceLines = [
   },
 ];
 
+const WavyArrow = () => (
+  <svg
+    width="100%"
+    height="100%"
+    viewBox="0 0 100 40"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="opacity-60"
+  >
+    <defs>
+      <linearGradient id="wavy-arrow-gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+        <stop offset="0%" stopColor="hsl(var(--primary))" />
+        <stop offset="100%" stopColor="hsl(var(--accent-gradient-stop))" />
+      </linearGradient>
+      <marker
+        id="wavy-arrowhead"
+        markerWidth="10"
+        markerHeight="7"
+        refX="8"
+        refY="3.5"
+        orient="auto"
+      >
+        <polygon points="0 0, 10 3.5, 0 7" fill="url(#wavy-arrow-gradient)" />
+      </marker>
+    </defs>
+    <path
+      d="M5 20 C 30 0, 70 40, 95 20"
+      stroke="url(#wavy-arrow-gradient)"
+      strokeWidth="2"
+      fill="none"
+      markerEnd="url(#wavy-arrowhead)"
+    />
+  </svg>
+);
+
+
 export function EngineeringSection() {
   return (
     <section 
@@ -94,12 +130,12 @@ export function EngineeringSection() {
                     >
                       {React.cloneElement(service.icon, { style: { color: `var(--pillar-color)` } })}
                     </div>
-                    <CardTitle className="mt-4 min-h-[3.5rem] flex items-center">{service.title}</CardTitle>
+                    <CardTitle className="mt-4 min-h-[3.5rem] flex items-center justify-center">{service.title}</CardTitle>
                   </CardHeader>
-                  <CardDescription className="p-6 pt-0 flex-grow h-24">
+                  <CardDescription className="p-6 pt-0 flex-grow h-24 flex items-center justify-center">
                     {service.description}
                   </CardDescription>
-                  <CardContent className="flex flex-col justify-end min-h-[5.5rem]">
+                  <CardContent className="flex flex-col justify-center items-center min-h-[5.5rem]">
                     <div className="flex flex-wrap justify-center gap-2">
                       {service.stack.map(item => (
                         <Badge key={item.tool} variant="secondary">{item.tool}</Badge>
@@ -110,8 +146,11 @@ export function EngineeringSection() {
               </ScrollReveal>
               
               {index < serviceLines.length - 1 && (
-                <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 items-center justify-center pointer-events-none" style={{ left: `calc(${(index + 1) * 25}% - 1.25rem)`, width: '2.5rem' }}>
-                  <ChevronRight className="h-8 w-8 text-muted-foreground" />
+                <div 
+                  className="hidden lg:flex absolute top-1/2 -translate-y-1/2 items-center justify-center pointer-events-none" 
+                  style={{ left: `calc(${(index + 1) * 25}% - 3rem)`, width: '6rem', height: '3rem' }}
+                >
+                  <WavyArrow />
                 </div>
               )}
             </React.Fragment>
