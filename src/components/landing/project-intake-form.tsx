@@ -28,7 +28,7 @@ const formSteps = [
   { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us know if we'll be partnering with your developers." },
   { field: "projectDetails", label: "Tell us about your automation gap or project*"},
   { field: "budgetReadiness", label: "What's your budget outlook?*", description: "Our projects typically start from €2.500, covering MVPs, pilots, or initial production builds." },
-  { field: "timelineReadiness", label: "How soon do you want to start?*", description: "We can deliver a working version in about two weeks. We prioritize companies ready to move quickly." },
+  { field: "timelineReadiness", label: "How soon do you want to start?*", description: "We can deliver a working versions in 10 working days. We prioritize companies ready to move quickly." },
   { field: "contactDetails", label: "How can we reach you?*", description: "Please provide your contact and company information." },
 ];
 
