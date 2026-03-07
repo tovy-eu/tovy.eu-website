@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
@@ -9,6 +8,7 @@ import { CookieBanner } from '@/components/layout/cookie-banner';
 import Script from 'next/script';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { HubSpotNavigationTracker } from '@/components/layout/hubspot-tracker';
 
 export const metadata: Metadata = {
   title: 'Tovy | Smart Data Ecosystems for Business Growth',
@@ -46,6 +46,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={cn("font-body antialiased flex flex-col min-h-screen", poppins.className)}>
+        <HubSpotNavigationTracker />
         <Header />
         <main className="flex-grow">
           {children}
@@ -53,6 +54,15 @@ export default function RootLayout({
         <Footer />
         <Toaster />
         <CookieBanner />
+
+        {/* HubSpot Tracking Code */}
+        <Script
+          id="hs-script-loader"
+          strategy="afterInteractive"
+          src="//js-eu1.hs-scripts.com/147968095.js"
+          async
+          defer
+        />
       </body>
     </html>
   );
