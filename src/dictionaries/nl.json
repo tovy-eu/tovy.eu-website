@@ -18,6 +18,30 @@
     "title": "Wij bouwen de AI-fundering van uw bedrijf.",
     "subtitle": "Wij ontwerpen en implementeren productieklare technologische oplossingen, zodat uw bedrijf betrouwbaar kan schalen."
   },
+  "about": {
+    "strategy": "Tovy Strategie",
+    "title": "Wat we doen en waarom.",
+    "mission": "Onze missie is om slimme data-ecosystemen te bouwen die u werk uit handen nemen. Wij verlangen naar een wereld waarin technologie mensen meer tijd, focus en vrijheid geeft om te groeien.",
+    "pillarsTitle": "Onze Pijlers voor Succes",
+    "pillars": {
+      "tech": {
+        "title": "Technologische Expertise",
+        "desc": "Wij houden van tech, data en AI. We zijn op de hoogte van de snelle veranderingen in de sector."
+      },
+      "optimization": {
+        "title": "Optimalisatie",
+        "desc": "Elk procesontwerp is gericht op efficiëntie en automatisering. We richten ons op het verwijderen van tijdrovende, inefficiënte taken."
+      },
+      "freedom": {
+        "title": "Vrijheid",
+        "desc": "Onze oplossingen zijn gebouwd om de cognitieve belasting te verminderen. We maken tijd vrij voor mensen om na te denken, te innoveren en te groeien."
+      },
+      "innovation": {
+        "title": "Innovatie",
+        "desc": "Wij ontwerpen aanpasbare, toekomstbestendige systemen die meegroeien met uw bedrijf."
+      }
+    }
+  },
   "navigation": {
     "blog": "Blog",
     "about": "Over ons",

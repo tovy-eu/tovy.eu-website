@@ -1,36 +1,38 @@
+
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BrainCircuit, Rocket, Sparkles, Feather } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
+import type { Dictionary } from "@/lib/get-dictionary";
 
-const pillars = [
-  {
-    icon: <BrainCircuit className="h-8 w-8" />,
-    title: "Tech Savviness",
-    description: "We love tech, data and AI. We are up-to-date with the rapid changes in the industry.",
-    color: "#2B5EFF"
-  },
-  {
-    icon: <Rocket className="h-8 w-8" />,
-    title: "Optimization",
-    description: "Every process design aims for efficiency and automation. We target removal of tedious, inefficient tasks.",
-    color: "#566FFF"
-  },
-  {
-    icon: <Feather className="h-8 w-8" />,
-    title: "Freedom",
-    description: "Our solutions are built to reduce cognitive load. We free up people's time to think, innovate, and grow.",
-    color: "#A792FF"
-  },
-  {
-    icon: <Sparkles className="h-8 w-8" />,
-    title: "Innovation",
-    description: "We design adaptable, future-ready systems that evolve with your business.",
-    color: "#FFB8FA"
-  }
-];
+export function AboutSection({ dict }: { dict: Dictionary }) {
+  const pillars = [
+    {
+      icon: <BrainCircuit className="h-8 w-8" />,
+      title: dict.about.pillars.tech.title,
+      description: dict.about.pillars.tech.desc,
+      color: "#2B5EFF"
+    },
+    {
+      icon: <Rocket className="h-8 w-8" />,
+      title: dict.about.pillars.optimization.title,
+      description: dict.about.pillars.optimization.desc,
+      color: "#566FFF"
+    },
+    {
+      icon: <Feather className="h-8 w-8" />,
+      title: dict.about.pillars.freedom.title,
+      description: dict.about.pillars.freedom.desc,
+      color: "#A792FF"
+    },
+    {
+      icon: <Sparkles className="h-8 w-8" />,
+      title: dict.about.pillars.innovation.title,
+      description: dict.about.pillars.innovation.desc,
+      color: "#FFB8FA"
+    }
+  ];
 
-export function AboutSection() {
   return (
     <section 
       className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-16 sm:py-24"
@@ -73,10 +75,10 @@ export function AboutSection() {
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
-              Tovy Strategy
+              {dict.about.strategy}
             </h2>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              What and why we do this.
+              {dict.about.title}
             </h2>
           </div>
         </ScrollReveal>
@@ -84,7 +86,7 @@ export function AboutSection() {
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center mt-12">
             <p className="text-lg leading-8 text-foreground/80">
-              Our mission is to build smart data ecosystems that take work off your hands. We desire a world where technology gives people more time, focus, and freedom to grow.
+              {dict.about.mission}
             </p>
           </div>
         </ScrollReveal>
@@ -92,7 +94,7 @@ export function AboutSection() {
         <ScrollReveal>
           <div className="mt-16 text-center">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
-              Our Pillars of Success
+              {dict.about.pillarsTitle}
             </h3>
           </div>
         </ScrollReveal>
@@ -101,7 +103,7 @@ export function AboutSection() {
           {pillars.map((pillar, index) => (
             <ScrollReveal key={pillar.title} delay={`delay-[${index * 150}ms] duration-700`}>
               <Card 
-                className="relative h-full flex flex-col bg-card/80 backdrop-blur-sm border-none shadow-xl transition-all duration-300 hover:-translate-y-2 text-center overflow-hidden group"
+                className="relative h-full flex flex-col bg-card/60 backdrop-blur-md border-none shadow-xl transition-all duration-300 hover:-translate-y-2 text-center overflow-hidden group"
                 style={{ '--pillar-color': pillar.color, '--pillar-shadow-color': `${pillar.color}1A` } as React.CSSProperties}
               >
                 {/* Glass Reflection Shine */}
@@ -112,7 +114,7 @@ export function AboutSection() {
                     className="p-4 rounded-lg"
                     style={{ backgroundColor: `var(--pillar-shadow-color)`}}
                   >
-                    {React.cloneElement(pillar.icon, { style: { color: `var(--pillar-color)` } })}
+                    {React.cloneElement(pillar.icon as React.ReactElement, { style: { color: `var(--pillar-color)` } })}
                   </div>
                   <CardTitle className="mt-4">{pillar.title}</CardTitle>
                 </CardHeader>

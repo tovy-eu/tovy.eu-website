@@ -18,6 +18,30 @@
     "title": "We build the AI foundation of your business.",
     "subtitle": "We design and implement production-ready tech solutions, ensuring your business scales reliably."
   },
+  "about": {
+    "strategy": "Tovy Strategy",
+    "title": "What and why we do this.",
+    "mission": "Our mission is to build smart data ecosystems that take work off your hands. We desire a world where technology gives people more time, focus, and freedom to grow.",
+    "pillarsTitle": "Our Pillars of Success",
+    "pillars": {
+      "tech": {
+        "title": "Tech Savviness",
+        "desc": "We love tech, data and AI. We are up-to-date with the rapid changes in the industry."
+      },
+      "optimization": {
+        "title": "Optimization",
+        "desc": "Every process design aims for efficiency and automation. We target removal of tedious, inefficient tasks."
+      },
+      "freedom": {
+        "title": "Freedom",
+        "desc": "Our solutions are built to reduce cognitive load. We free up people's time to think, innovate, and grow."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "desc": "We design adaptable, future-ready systems that evolve with your business."
+      }
+    }
+  },
   "navigation": {
     "blog": "Blog",
     "about": "About",
