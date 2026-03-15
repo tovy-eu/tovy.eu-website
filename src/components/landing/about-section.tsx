@@ -102,7 +102,7 @@ export function AboutSection() {
             {pillars.map((pillar) => (
               <Card 
                 key={pillar.title} 
-                className="text-center transition-all hover:shadow-lg hover:-translate-y-1 bg-card border-border/50 shadow-xl"
+                className="text-center transition-all hover:shadow-2xl hover:-translate-y-1 bg-card border-white/5 shadow-xl"
                 style={{ '--pillar-color': pillar.color, '--pillar-shadow-color': `${pillar.color}1A` } as React.CSSProperties}
               >
                 <CardHeader className="items-center">
@@ -114,7 +114,7 @@ export function AboutSection() {
                   </div>
                   <CardTitle className="mt-4">{pillar.title}</CardTitle>
                 </CardHeader>
-                <CardDescription className="p-6 pt-0">
+                <CardDescription className="p-6 pt-0 text-muted-foreground/90">
                   {pillar.description}
                 </CardDescription>
               </Card>

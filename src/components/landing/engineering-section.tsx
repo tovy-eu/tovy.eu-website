@@ -79,7 +79,7 @@ export function EngineeringSection() {
           {serviceLines.map((service, index) => (
             <ScrollReveal key={service.id} delay={`duration-${300 + index * 200}`}>
               <Card 
-                className="h-full flex flex-col bg-card border-border/50 shadow-xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 text-center"
+                className="h-full flex flex-col bg-card border-white/5 shadow-xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 text-center"
                 style={{ '--pillar-color': service.color, '--pillar-shadow-color': `${service.color}1A` } as React.CSSProperties}
               >
                 <CardHeader className="items-center">
@@ -91,7 +91,7 @@ export function EngineeringSection() {
                   </div>
                   <CardTitle className="mt-4 min-h-[3.5rem] flex items-center justify-center">{service.title}</CardTitle>
                 </CardHeader>
-                <CardDescription className="p-6 pt-0 flex-grow h-24 flex items-center justify-center">
+                <CardDescription className="p-6 pt-0 flex-grow h-24 flex items-center justify-center text-muted-foreground/90">
                   {service.description}
                 </CardDescription>
                 <CardContent className="flex flex-col justify-center items-center min-h-[5.5rem]">
