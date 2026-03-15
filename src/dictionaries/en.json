@@ -1,4 +1,3 @@
-
 {
   "common": {
     "workWithUs": "Work with us",
@@ -150,5 +149,77 @@
     "disclaimerSubtitle": "Our responsibility regarding website content.",
     "disclaimerContent": "The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents' accuracy, completeness or topicality. According to statutory provisions, we are furthermore responsible for our own content on these web pages. In this matter, please note that we are not obliged to monitor the transmitted or saved information of third parties, or investigate circumstances pointing to illegal activity.",
     "nederland": "Netherlands"
+  },
+  "projectForm": {
+    "title": "Start Your AI Project",
+    "subtitle": "Share your project details with Tovy to build clean, fast, and reliable AI systems.",
+    "success": {
+      "title": "Thank You!",
+      "description": "Your project request has been submitted. We will contact you shortly.",
+      "backHome": "Back to Homepage"
+    },
+    "steps": {
+      "maturity": {
+        "label": "How advanced is your Data Maturity?*",
+        "description": "This helps us understand your current data capabilities.",
+        "low": "Just starting",
+        "mid": "Managing data",
+        "high": "Built custom solutions"
+      },
+      "companySize": {
+        "label": "What is your company size?*",
+        "description": "This helps us understand the scale of your organization.",
+        "options": ["Solo", "1-10 employees", "11-50 employees", "51-200 employees", "201+ employees"]
+      },
+      "engineeringTeam": {
+        "label": "Do you have an in-house engineering team?*",
+        "description": "This helps us know if we'll be partnering with your developers.",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "details": {
+        "label": "Tell us about your automation gap or project*",
+        "focusLabel": "In one sentence, what are you hoping to build or improve?",
+        "focusPlaceholder": "e.g., An AI chatbot to handle customer support inquiries...",
+        "challengesLabel": "What are the main challenges you're facing right now?",
+        "challengesPlaceholder": "e.g., Our support team is overwhelmed and response times are slow.",
+        "visionLabel": "What's your vision for how this solution will work?",
+        "visionPlaceholder": "e.g., We want an AI that can answer common questions and knows when to escalate."
+      },
+      "budget": {
+        "label": "What's your budget outlook?*",
+        "description": "Our projects typically start from €2.500, covering MVPs or initial builds.",
+        "options": {
+          "yes": "Yes, that fits",
+          "no": "No, not right now"
+        }
+      },
+      "timeline": {
+        "label": "How soon do you want to start?*",
+        "description": "We can deliver a working version in 10 working days.",
+        "options": {
+          "yes": "Yes, we're ready to start soon",
+          "no": "Not yet, we're still preparing"
+        }
+      },
+      "contact": {
+        "label": "How can we reach you?*",
+        "description": "Please provide your contact and company information.",
+        "firstName": "First Name *",
+        "lastName": "Last Name *",
+        "phone": "Phone Number",
+        "email": "Email *",
+        "company": "Company *",
+        "consent": "I agree to the Privacy Policy."
+      }
+    },
+    "buttons": {
+      "previous": "Previous",
+      "next": "Next",
+      "submit": "Submit Project",
+      "submitting": "Submitting..."
+    }
   }
 }

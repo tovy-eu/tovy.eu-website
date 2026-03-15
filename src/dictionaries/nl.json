@@ -1,4 +1,3 @@
-
 {
   "common": {
     "workWithUs": "Werk met ons",
@@ -150,5 +149,77 @@
     "disclaimerSubtitle": "Onze verantwoordelijkheid met betrekking tot de inhoud van de website.",
     "disclaimerContent": "De inhoud van onze pagina's is met de grootste zorg samengesteld. Wij kunnen echter geen garantie geven voor de juistheid, volledigheid of actualiteit van de inhoud. Volgens de wettelijke bepalingen zijn wij bovendien verantwoordelijk voor onze eigen inhoud op deze webpagina's. In dit verband wijzen wij u erop dat wij niet verplicht zijn om de verzonden of opgeslagen informatie van derden te controleren, of omstandigheden te onderzoeken die duiden op illegale activiteiten.",
     "nederland": "Nederland"
+  },
+  "projectForm": {
+    "title": "Start Je AI-Project",
+    "subtitle": "Deel je projectdetails met Tovy om schone, snelle en betrouwbare AI-systemen te bouwen.",
+    "success": {
+      "title": "Bedankt!",
+      "description": "Je projectaanvraag is ingediend. We nemen zo snel mogelijk contact met je op.",
+      "backHome": "Terug naar Homepage"
+    },
+    "steps": {
+      "maturity": {
+        "label": "Hoe geavanceerd is je Data Maturity?*",
+        "description": "Dit helpt ons je huidige datacapaciteiten te begrijpen.",
+        "low": "Net begonnen",
+        "mid": "Data beheren",
+        "high": "Eigen oplossingen gebouwd"
+      },
+      "companySize": {
+        "label": "Wat is je bedrijfsgrootte?*",
+        "description": "Dit helpt ons de schaal van je organisatie te begrijpen.",
+        "options": ["Solo", "1-10 medewerkers", "11-50 medewerkers", "51-200 medewerkers", "201+ medewerkers"]
+      },
+      "engineeringTeam": {
+        "label": "Heb je een intern engineeringteam?*",
+        "description": "Dit helpt ons te weten of we samenwerken met je ontwikkelaars.",
+        "options": {
+          "yes": "Ja",
+          "no": "Nee"
+        }
+      },
+      "details": {
+        "label": "Vertel ons over je automatiseringsvraag of project*",
+        "focusLabel": "In één zin, wat hoop je te bouwen of te verbeteren?",
+        "focusPlaceholder": "bijv. Een AI-chatbot voor klantondersteuning...",
+        "challengesLabel": "Wat zijn de belangrijkste uitdagingen waar je nu voor staat?",
+        "challengesPlaceholder": "bijv. Ons supportteam is overbelast en reactietijden zijn traag.",
+        "visionLabel": "Wat is je visie op hoe deze oplossing moet werken?",
+        "visionPlaceholder": "bijv. We willen een AI die vragen kan beantwoorden en weet wanneer te escaleren."
+      },
+      "budget": {
+        "label": "Wat is je budgetverwachting?*",
+        "description": "Onze projecten starten doorgaans vanaf €2.500 voor MVP's of pilots.",
+        "options": {
+          "yes": "Ja, dat past",
+          "no": "Nee, nu nog niet"
+        }
+      },
+      "timeline": {
+        "label": "Hoe snel wil je beginnen?*",
+        "description": "We kunnen een werkende versie leveren binnen 10 werkdagen.",
+        "options": {
+          "yes": "Ja, we zijn klaar om snel te starten",
+          "no": "Nog niet, we bereiden ons intern voor"
+        }
+      },
+      "contact": {
+        "label": "Hoe kunnen we je bereiken?*",
+        "description": "Geef je contact- en bedrijfsgegevens door.",
+        "firstName": "Voornaam *",
+        "lastName": "Achternaam *",
+        "phone": "Telefoonnummer",
+        "email": "E-mail *",
+        "company": "Bedrijf *",
+        "consent": "Ik ga akkoord met het Privacybeleid."
+      }
+    },
+    "buttons": {
+      "previous": "Vorige",
+      "next": "Volgende",
+      "submit": "Verzend Project",
+      "submitting": "Verzenden..."
+    }
   }
 }
