@@ -15,7 +15,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
 
       <SectionDivider />
       
-      <AboutSection />
+      <AboutSection dict={dict} />
 
       <SectionDivider />
 
@@ -24,7 +24,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
       <div className="w-full">
         <SectionDivider />
         <div className="py-16 sm:py-24 container mx-auto max-w-2xl">
-          <SubscriptionForm dict={dict} />
+          <SubscriptionForm />
         </div>
       </div>
     </div>
