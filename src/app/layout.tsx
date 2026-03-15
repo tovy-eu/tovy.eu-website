@@ -4,10 +4,8 @@ import './globals.css';
 import './pain-solution-texture.css';
 import { Toaster } from "@/components/ui/toaster"
 import { cn } from '@/lib/utils';
-import { CookieBanner } from '@/components/layout/cookie-banner';
+import CookieBanner from '@/components/layout/cookie-banner';
 import Script from 'next/script';
-import { Header } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
 import { HubSpotNavigationTracker } from '@/components/layout/hubspot-tracker';
 
 export const metadata: Metadata = {
@@ -47,11 +45,9 @@ export default function RootLayout({
       </head>
       <body className={cn("font-body antialiased flex flex-col min-h-screen", poppins.className)}>
         <HubSpotNavigationTracker />
-        <Header />
-        <main className="flex-grow">
+        <main className="flex-grow flex flex-col">
           {children}
         </main>
-        <Footer />
         <Toaster />
         <CookieBanner />
 
