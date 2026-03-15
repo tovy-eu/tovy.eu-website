@@ -42,6 +42,33 @@
       }
     }
   },
+  "engineering": {
+    "strategy": "How We Engineer",
+    "title": "End-to-End Data Ecosystems",
+    "subtitle": "From raw ingestion in Azure to custom end-user applications.",
+    "services": {
+      "strategic": {
+        "title": "Strategic Design",
+        "desc": "Thinking through tech, data, and AI strategies to align with your business goals.",
+        "tools": ["Roadmapping", "Architecture", "Feasibility"]
+      },
+      "cloud": {
+        "title": "Cloud Infrastructure",
+        "desc": "Designing secure, cost-optimized cloud environments for data workloads.",
+        "tools": ["Azure, GCP, AWS", "Datawarehousing"]
+      },
+      "data": {
+        "title": "Data Engineering",
+        "desc": "Architecting scalable pipelines and data warehouses using the Modern Data Stack.",
+        "tools": ["Databricks", "dbt", "SQL", "Python"]
+      },
+      "analytics": {
+        "title": "Analytics & Automation",
+        "desc": "Building dashboarding or automations to operationalize data.",
+        "tools": ["TypeScript / JavaScript"]
+      }
+    }
+  },
   "navigation": {
     "blog": "Blog",
     "about": "About",

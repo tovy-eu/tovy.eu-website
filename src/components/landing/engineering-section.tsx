@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Badge } from "@/components/ui/badge";
@@ -5,57 +6,44 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { CloudCog, CodeXml, DatabaseZap, DraftingCompass } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
+import type { Dictionary } from "@/lib/get-dictionary";
 
-const serviceLines = [
-  {
-    id: "strategic_design",
-    title: "Strategic Design",
-    icon: <DraftingCompass className="h-8 w-8" />,
-    description: "Thinking through tech, data, and AI strategies to align with your business goals.",
-    stack: [
-      { tool: "Roadmapping" },
-      { tool: "Architecture" },
-      { tool: "Feasibility" },
-    ],
-    color: "#2B5EFF"
-  },
-  {
-    id: "cloud_infrastructure",
-    title: "Cloud Infrastructure",
-    icon: <CloudCog className="h-8 w-8" />,
-    description: "Designing secure, cost-optimized cloud environments for data workloads.",
-    stack: [
-      { tool: "Azure, GCP, AWS" },
-      { tool: "Datawarehousing" },
-    ],
-    color: "#566FFF"
-  },
-  {
-    id: "data_engineering",
-    title: "Data Engineering",
-    icon: <DatabaseZap className="h-8 w-8" />,
-    description: "Architecting scalable pipelines and data warehouses using the Modern Data Stack.",
-    stack: [
-      { tool: "Databricks" },
-      { tool: "dbt" },
-      { tool: "SQL" },
-      { tool: "Python" },
-    ],
-    color: "#A792FF"
-  },
-  {
-    id: "analytics_automation",
-    title: "Analytics & Automation",
-    icon: <CodeXml className="h-8 w-8" />,
-    description: "Building dashboarding or automations to operationalize data.",
-    stack: [
-      { tool: "TypeScript / JavaScript" },
-    ],
-    color: "#FFB8FA"
-  },
-];
+export function EngineeringSection({ dict }: { dict: Dictionary }) {
+  const serviceLines = [
+    {
+      id: "strategic_design",
+      title: dict.engineering.services.strategic.title,
+      icon: <DraftingCompass className="h-8 w-8" />,
+      description: dict.engineering.services.strategic.desc,
+      stack: dict.engineering.services.strategic.tools.map(tool => ({ tool })),
+      color: "#2B5EFF"
+    },
+    {
+      id: "cloud_infrastructure",
+      title: dict.engineering.services.cloud.title,
+      icon: <CloudCog className="h-8 w-8" />,
+      description: dict.engineering.services.cloud.desc,
+      stack: dict.engineering.services.cloud.tools.map(tool => ({ tool })),
+      color: "#566FFF"
+    },
+    {
+      id: "data_engineering",
+      title: dict.engineering.services.data.title,
+      icon: <DatabaseZap className="h-8 w-8" />,
+      description: dict.engineering.services.data.desc,
+      stack: dict.engineering.services.data.tools.map(tool => ({ tool })),
+      color: "#A792FF"
+    },
+    {
+      id: "analytics_automation",
+      title: dict.engineering.services.analytics.title,
+      icon: <CodeXml className="h-8 w-8" />,
+      description: dict.engineering.services.analytics.desc,
+      stack: dict.engineering.services.analytics.tools.map(tool => ({ tool })),
+      color: "#FFB8FA"
+    },
+  ];
 
-export function EngineeringSection() {
   return (
     <section 
       className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-16 sm:py-24"
@@ -64,13 +52,13 @@ export function EngineeringSection() {
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
-              How We Engineer
+              {dict.engineering.strategy}
             </h2>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              End-to-End Data Ecosystems
+              {dict.engineering.title}
             </h2>
             <p className="mt-4 text-lg leading-8 text-foreground/80">
-              From raw ingestion in Azure to custom end-user applications.
+              {dict.engineering.subtitle}
             </p>
           </div>
         </ScrollReveal>
@@ -79,7 +67,7 @@ export function EngineeringSection() {
           {serviceLines.map((service, index) => (
             <ScrollReveal key={service.id} delay={`delay-[${index * 150}ms] duration-700`}>
               <Card 
-                className="relative h-full flex flex-col bg-card/80 backdrop-blur-sm border-none shadow-xl transition-all duration-300 hover:-translate-y-2 text-center overflow-hidden group"
+                className="relative h-full flex flex-col bg-card/40 backdrop-blur-md border-none shadow-xl transition-all duration-300 hover:-translate-y-2 text-center overflow-hidden group"
                 style={{ '--pillar-color': service.color, '--pillar-shadow-color': `${service.color}1A` } as React.CSSProperties}
               >
                 {/* Glass Reflection Shine */}

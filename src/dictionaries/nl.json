@@ -42,6 +42,33 @@
       }
     }
   },
+  "engineering": {
+    "strategy": "Hoe Wij Engineeren",
+    "title": "End-to-End Data-ecosystemen",
+    "subtitle": "Van ruwe data-inname in Azure tot op maat gemaakte eindgebruikersapplicaties.",
+    "services": {
+      "strategic": {
+        "title": "Strategisch Ontwerp",
+        "desc": "Doordenken van technologie-, data- en AI-strategieën om aan te sluiten bij uw bedrijfsdoelstellingen.",
+        "tools": ["Roadmapping", "Architectuur", "Haalbaarheid"]
+      },
+      "cloud": {
+        "title": "Cloud Infrastructuur",
+        "desc": "Ontwerpen van veilige, kosten-geoptimaliseerde cloudomgevingen voor dataworkloads.",
+        "tools": ["Azure, GCP, AWS", "Datawarehousing"]
+      },
+      "data": {
+        "title": "Data Engineering",
+        "desc": "Architeren van schaalbare pijplijnen en datawarehouses met behulp van de Modern Data Stack.",
+        "tools": ["Databricks", "dbt", "SQL", "Python"]
+      },
+      "analytics": {
+        "title": "Analytics & Automatisering",
+        "desc": "Bouwen van dashboards of automatiseringen om data operationeel inzetbaar te maken.",
+        "tools": ["TypeScript / JavaScript"]
+      }
+    }
+  },
   "navigation": {
     "blog": "Blog",
     "about": "Over ons",
