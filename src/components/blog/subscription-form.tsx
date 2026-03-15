@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Send, Loader2 } from "lucide-react";
 import { Checkbox } from '../ui/checkbox';
 import { Label } from '../ui/label';
+import type { Dictionary } from '@/lib/get-dictionary';
 
 const subscriptionSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -20,11 +21,19 @@ const subscriptionSchema = z.object({
   }),
 });
 
-export function SubscriptionForm() {
+export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
   const [email, setEmail] = useState('');
   const [consent, setConsent] = useState(false);
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
+
+  const stayUpToDateText = dict?.common.stayUpToDate || "Stay up-to-date";
+  const newsletterDescText = dict?.common.newsletterDesc || "Receive newsletters on what is happening at Tovy.";
+  const subscribeText = dict?.common.subscribe || "Subscribe";
+  const subscribingText = dict?.common.subscribing || "Subscribing...";
+  const emailPlaceholderText = dict?.common.emailPlaceholder || "Enter your email here";
+  const agreeToText = dict?.common.agreeTo || "I agree to the";
+  const privacyPolicyText = dict?.common.privacyPolicy || "Privacy Policy";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -83,12 +92,15 @@ export function SubscriptionForm() {
 
   return (
     <div className="mx-4 md:mx-0">
-      <div className="p-8 rounded-lg bg-card/80 backdrop-blur-sm shadow-xl">
+      <div className="p-8 rounded-lg bg-card/40 backdrop-blur-md shadow-xl border-none overflow-hidden relative group">
+        {/* Glass Reflection Shine */}
+        <div className="absolute inset-0 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg] pointer-events-none z-10" />
+        
         <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
-          Stay up-to-date
+          {stayUpToDateText}
         </h3>
         <p className="mt-2 text-muted-foreground">
-          Receive newsletters on what is happening at Tovy.
+          {newsletterDescText}
         </p>
         <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4 w-full max-w-md">
           <div className="flex w-full items-center space-x-2">
@@ -97,7 +109,7 @@ export function SubscriptionForm() {
               name="email"
               type="email"
               autoComplete="email" 
-              placeholder="Enter your email here" 
+              placeholder={emailPlaceholderText} 
               className="rounded-md bg-background/50 border-border" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -106,11 +118,11 @@ export function SubscriptionForm() {
             <Button type="submit" className="rounded-md whitespace-nowrap" disabled={isPending}>
               {isPending ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Subscribing...
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {subscribingText}
                 </>
               ) : (
                 <>
-                  Subscribe <Send className="ml-2 h-4 w-4" />
+                  {subscribeText} <Send className="ml-2 h-4 w-4" />
                 </>
               )}
             </Button>
@@ -118,9 +130,9 @@ export function SubscriptionForm() {
            <div className="flex items-center space-x-2">
             <Checkbox id="subscription-consent" checked={consent} onCheckedChange={(checked) => setConsent(checked as boolean)} disabled={isPending} />
             <Label htmlFor="subscription-consent" className="text-sm text-muted-foreground">
-              I agree to the{" "}
+              {agreeToText}{" "}
               <Link href="/privacy-policy" target="_blank" className="underline hover:text-primary">
-                Privacy Policy
+                {privacyPolicyText}
               </Link>
               .
             </Label>
