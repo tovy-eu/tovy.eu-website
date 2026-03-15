@@ -77,9 +77,9 @@ export function EngineeringSection() {
 
         <div className="relative mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {serviceLines.map((service, index) => (
-            <ScrollReveal key={service.id} delay={`duration-${300 + index * 200}`}>
+            <ScrollReveal key={service.id} delay={`delay-[${index * 150}ms] duration-700`}>
               <Card 
-                className="h-full flex flex-col bg-card border-white/5 shadow-xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 text-center"
+                className="h-full flex flex-col bg-card border-white/10 shadow-xl hover:shadow-2xl hover:border-primary/40 transition-all duration-300 hover:-translate-y-2 text-center"
                 style={{ '--pillar-color': service.color, '--pillar-shadow-color': `${service.color}1A` } as React.CSSProperties}
               >
                 <CardHeader className="items-center">
@@ -91,10 +91,10 @@ export function EngineeringSection() {
                   </div>
                   <CardTitle className="mt-4 min-h-[3.5rem] flex items-center justify-center">{service.title}</CardTitle>
                 </CardHeader>
-                <CardDescription className="p-6 pt-0 flex-grow h-24 flex items-center justify-center text-muted-foreground/90">
+                <CardDescription className="px-6 pb-4 flex-grow text-muted-foreground/90 flex items-center justify-center min-h-[5rem]">
                   {service.description}
                 </CardDescription>
-                <CardContent className="flex flex-col justify-center items-center min-h-[5.5rem]">
+                <CardContent className="flex flex-col justify-center items-center pb-6">
                   <div className="flex flex-wrap justify-center gap-2">
                     {service.stack.map(item => (
                       <Badge key={item.tool} variant="secondary">{item.tool}</Badge>
