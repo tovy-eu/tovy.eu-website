@@ -92,10 +92,7 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
 
   return (
     <div className="mx-4 md:mx-0">
-      <div className="p-8 rounded-lg bg-card/40 backdrop-blur-md shadow-xl border-none overflow-hidden relative group">
-        {/* Glass Reflection Shine */}
-        <div className="absolute inset-0 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg] pointer-events-none z-10" />
-        
+      <div className="p-8 rounded-lg bg-card/40 backdrop-blur-md shadow-xl border-none overflow-hidden relative">
         <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
           {stayUpToDateText}
         </h3>
