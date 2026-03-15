@@ -101,10 +101,13 @@ export function AboutSection() {
           {pillars.map((pillar, index) => (
             <ScrollReveal key={pillar.title} delay={`delay-[${index * 150}ms] duration-700`}>
               <Card 
-                className="h-full flex flex-col bg-card border-white/10 shadow-xl hover:shadow-2xl hover:border-primary/40 transition-all duration-300 hover:-translate-y-2 text-center"
+                className="relative h-full flex flex-col bg-card border-white/10 shadow-xl transition-all duration-300 hover:-translate-y-2 text-center overflow-hidden group"
                 style={{ '--pillar-color': pillar.color, '--pillar-shadow-color': `${pillar.color}1A` } as React.CSSProperties}
               >
-                <CardHeader className="items-center">
+                {/* Glass Reflection Shine */}
+                <div className="absolute inset-0 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg] pointer-events-none z-10" />
+                
+                <CardHeader className="items-center z-0">
                   <div 
                     className="p-4 rounded-lg"
                     style={{ backgroundColor: `var(--pillar-shadow-color)`}}
@@ -113,7 +116,7 @@ export function AboutSection() {
                   </div>
                   <CardTitle className="mt-4">{pillar.title}</CardTitle>
                 </CardHeader>
-                <CardDescription className="p-6 pt-0 text-muted-foreground/90 flex-grow">
+                <CardDescription className="p-6 pt-0 text-muted-foreground/90 flex-grow z-0">
                   {pillar.description}
                 </CardDescription>
               </Card>
