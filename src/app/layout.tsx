@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { Geist } from 'next/font/google';
 import './globals.css';
 import './pain-solution-texture.css';
 import { Toaster } from "@/components/ui/toaster"
@@ -13,10 +13,9 @@ export const metadata: Metadata = {
   description: 'We build smart data ecosystems that take work off your hands, creating a world where technology gives people more time, focus, and freedom to grow.',
 };
 
-const poppins = Poppins({
+const geistSans = Geist({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-poppins',
+  variable: '--font-geist-sans',
 });
 
 export default function RootLayout({
@@ -43,7 +42,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={cn("font-body antialiased flex flex-col min-h-screen", poppins.className)}>
+      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
         <HubSpotNavigationTracker />
         <main className="flex-grow flex flex-col">
           {children}
