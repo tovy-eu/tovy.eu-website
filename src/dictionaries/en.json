@@ -12,7 +12,8 @@
     "subscribe": "Subscribe",
     "subscribing": "Subscribing...",
     "emailPlaceholder": "Enter your email here",
-    "agreeTo": "I agree to the"
+    "agreeTo": "I agree to the",
+    "downloadJson": "Download as JSON"
   },
   "hero": {
     "title": "We build the AI foundation of your business.",
@@ -130,5 +131,23 @@
       }
     ],
     "effectiveDate": "This policy is effective as of July 30, 2024."
+  },
+  "legal": {
+    "title": "Legal Notice",
+    "companyDetails": "Company Details",
+    "companyName": "Company Name",
+    "representedBy": "Represented by (Proprietor)",
+    "address": "Address",
+    "contactInfo": "Contact Information",
+    "email": "Email",
+    "phone": "Phone",
+    "registry": "Registry & Identification",
+    "commercialRegistry": "Commercial Registry",
+    "kvkNumber": "KvK Number (Registration Number)",
+    "vatNumber": "VAT Identification Number",
+    "disclaimer": "Disclaimer",
+    "disclaimerSubtitle": "Our responsibility regarding website content.",
+    "disclaimerContent": "The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents' accuracy, completeness or topicality. According to statutory provisions, we are furthermore responsible for our own content on these web pages. In this matter, please note that we are not obliged to monitor the transmitted or saved information of third parties, or investigate circumstances pointing to illegal activity.",
+    "nederland": "Netherlands"
   }
 }
