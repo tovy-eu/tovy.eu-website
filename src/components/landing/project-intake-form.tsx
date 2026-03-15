@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useTransition, useEffect } from "react";
@@ -18,45 +17,16 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
-import { Loader2, ArrowRight, ArrowLeft, Send, CheckCircle, Check, Home } from "lucide-react";
+import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Checkbox } from "../ui/checkbox";
+import type { Dictionary } from "@/lib/get-dictionary";
 
-const formSteps = [
-  { field: "maturity", label: "How advanced is your Data Maturity?*", description: "This helps us understand your current data capabilities." },
-  { field: "companySize", label: "What is your company size?*", description: "This helps us understand the scale of your organization and potential project scope." },
-  { field: "engineeringTeam", label: "Do you have an in-house engineering team?*", description: "This helps us know if we'll be partnering with your developers." },
-  { field: "projectDetails", label: "Tell us about your automation gap or project*"},
-  { field: "budgetReadiness", label: "What's your budget outlook?*", description: "Our projects typically start from €2.500, covering MVPs, pilots, or initial production builds." },
-  { field: "timelineReadiness", label: "How soon do you want to start?*", description: "We can deliver a working versions in 10 working days. We prioritize companies ready to move quickly." },
-  { field: "contactDetails", label: "How can we reach you?*", description: "Please provide your contact and company information." },
-];
+interface ProjectIntakeFormProps {
+  dict: Dictionary;
+}
 
-const totalSteps = formSteps.length;
-
-const options: Record<string, { label: string, hint?: string }[]> = {
-  companySize: [
-    { label: "Solo", hint: "A" },
-    { label: "1-10 employees", hint: "B" },
-    { label: "11-50 employees", hint: "C" },
-    { label: "51-200 employees", hint: "D" },
-    { label: "201+ employees", hint: "E" },
-  ],
-  engineeringTeam: [
-    { label: "Yes", hint: "Y" },
-    { label: "No", hint: "N" },
-  ],
-  budgetReadiness: [
-    { label: "Yes, that fits", hint: "Y" },
-    { label: "No, not right now", hint: "N" },
-  ],
-  timelineReadiness: [
-    { label: "Yes, we're ready to start soon", hint: "Y" },
-    { label: "Not yet, we're still preparing internally", hint: "N" },
-  ],
-};
-
-export function ProjectIntakeForm() {
+export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const [step, setStep] = useState(0);
   const { toast } = useToast();
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -64,6 +34,37 @@ export function ProjectIntakeForm() {
 
   const [showChallenges, setShowChallenges] = useState(false);
   const [showVision, setShowVision] = useState(false);
+
+  const formSteps = [
+    { field: "maturity", label: dict.projectForm.steps.maturity.label, description: dict.projectForm.steps.maturity.description },
+    { field: "companySize", label: dict.projectForm.steps.companySize.label, description: dict.projectForm.steps.companySize.description },
+    { field: "engineeringTeam", label: dict.projectForm.steps.engineeringTeam.label, description: dict.projectForm.steps.engineeringTeam.description },
+    { field: "projectDetails", label: dict.projectForm.steps.details.label },
+    { field: "budgetReadiness", label: dict.projectForm.steps.budget.label, description: dict.projectForm.steps.budget.description },
+    { field: "timelineReadiness", label: dict.projectForm.steps.timeline.label, description: dict.projectForm.steps.timeline.description },
+    { field: "contactDetails", label: dict.projectForm.steps.contact.label, description: dict.projectForm.steps.contact.description },
+  ];
+
+  const totalSteps = formSteps.length;
+
+  const options: Record<string, { label: string, hint?: string }[]> = {
+    companySize: dict.projectForm.steps.companySize.options.map((opt: string, i: number) => ({
+      label: opt,
+      hint: String.fromCharCode(65 + i)
+    })),
+    engineeringTeam: [
+      { label: dict.projectForm.steps.engineeringTeam.options.yes, hint: "Y" },
+      { label: dict.projectForm.steps.engineeringTeam.options.no, hint: "N" },
+    ],
+    budgetReadiness: [
+      { label: dict.projectForm.steps.budget.options.yes, hint: "Y" },
+      { label: dict.projectForm.steps.budget.options.no, hint: "N" },
+    ],
+    timelineReadiness: [
+      { label: dict.projectForm.steps.timeline.options.yes, hint: "Y" },
+      { label: dict.projectForm.steps.timeline.options.no, hint: "N" },
+    ],
+  };
 
   const currentField = formSteps[step].field as keyof ProjectRequestData | "projectDetails" | "contactDetails";
 
@@ -92,10 +93,6 @@ export function ProjectIntakeForm() {
   const challenges = form.watch("challenges");
 
   useEffect(() => {
-    // A good place for an analytics event
-  }, []);
-
-  useEffect(() => {
     if (projectFocus) {
       const timer = setTimeout(() => {
         setShowChallenges(true);
@@ -119,15 +116,12 @@ export function ProjectIntakeForm() {
 
 
   const onSubmit = (data: ProjectRequestData) => {
-    console.log("onSubmit triggered. Validation successful. Data:", data);
     startTransition(async () => {
       try {
-        console.log("Attempting to add document to Firestore...");
         await addDoc(collection(db, "project_requests"), {
           ...data,
           timestamp: new Date(),
         });
-        console.log("Document successfully added to Firestore.");
         setFormSubmitted(true);
       } catch (error) {
         console.error("Failed to submit project request:", error);
@@ -151,8 +145,6 @@ export function ProjectIntakeForm() {
     }
         
     const isValid = await form.trigger(fieldsToValidate);
-    console.log(`Validation for step ${step} (${fieldsToValidate.join(', ')}):`, isValid ? 'Success' : 'Failed');
-    console.log('Current form errors:', form.formState.errors);
 
     if (isValid) {
       if (step < totalSteps - 1) {
@@ -167,68 +159,21 @@ export function ProjectIntakeForm() {
     setStep(s => Math.max(s - 1, 0));
   };
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (['TEXTAREA', 'INPUT'].includes((event.target as HTMLElement).tagName)) {
-        return;
-      }
-      
-      const key = event.key.toUpperCase();
-      const currentStepField = formSteps[step].field;
-
-      const handleOptionSelect = (fieldName: keyof ProjectRequestData, value: string) => {
-        form.setValue(fieldName, value, { shouldValidate: true });
-        setTimeout(() => nextStep(), 200);
-      };
-
-      if (currentStepField === 'maturity' && !isNaN(parseInt(key, 10)) && event.key.length === 1) {
-        event.preventDefault();
-        const numValue = parseInt(key, 10);
-        if (numValue >= 0 && numValue <= 10) {
-            handleOptionSelect('maturity', String(numValue));
-        }
-      }
-
-      if (currentStepField === 'companySize' && ['A', 'B', 'C', 'D', 'E'].includes(key)) {
-        event.preventDefault();
-        const selectedOption = options.companySize.find(o => o.hint === key);
-        if (selectedOption) {
-          handleOptionSelect('companySize', selectedOption.label);
-        }
-      }
-      
-      const yesNoFields: (keyof ProjectRequestData)[] = ['engineeringTeam', 'budgetReadiness', 'timelineReadiness'];
-      if (yesNoFields.includes(currentField as any) && ['Y', 'N'].includes(key)) {
-        event.preventDefault();
-        const fieldOptions = options[currentField as 'engineeringTeam' | 'budgetReadiness' | 'timelineReadiness'];
-        const selectedOption = fieldOptions.find(o => o.hint === key);
-        if (selectedOption) {
-          handleOptionSelect(currentField as keyof ProjectRequestData, selectedOption.label);
-        }
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [step, form, nextStep]);
-  
   if (formSubmitted) {
     return (
       <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm opacity-90">
         <CardHeader className="text-center">
           <CheckCircle className="mx-auto h-16 w-16 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent mb-4" />
-          <CardTitle className="text-2xl">Thank You!</CardTitle>
+          <CardTitle className="text-2xl">{dict.projectForm.success.title}</CardTitle>
           <CardDescription>
-            Your project request has been submitted. We will contact you shortly.
+            {dict.projectForm.success.description}
           </CardDescription>
         </CardHeader>
         <CardFooter className="flex justify-center">
           <Button asChild variant="outline">
             <Link href="/">
               <Home className="mr-2 h-4 w-4" />
-              Back to Homepage
+              {dict.projectForm.success.backHome}
             </Link>
           </Button>
         </CardFooter>
@@ -238,9 +183,7 @@ export function ProjectIntakeForm() {
 
   const renderStep = (stepIndex: number) => {
     const { field, label, description } = formSteps[stepIndex];
-
     const isVisible = step === stepIndex;
-
     const commonProps = {
       className: cn(!isVisible && "hidden")
     };
@@ -261,7 +204,7 @@ export function ProjectIntakeForm() {
                 
                 <FormControl>
                   <div>
-                    <div className="flex justify-between gap-1 my-4">
+                    <div className="flex justify-between gap-1 my-4 overflow-x-auto pb-2">
                       {Array.from({ length: 11 }, (_, i) => i).map(value => (
                         <button
                           key={value}
@@ -271,7 +214,7 @@ export function ProjectIntakeForm() {
                             setTimeout(() => nextStep(), 200);
                           }}
                           className={cn(
-                            "h-10 w-10 flex items-center justify-center border rounded-md transition-all text-sm",
+                            "h-10 w-10 shrink-0 flex items-center justify-center border rounded-md transition-all text-sm",
                             formField.value === String(value)
                               ? "bg-primary text-primary-foreground ring-2 ring-primary ring-offset-2 ring-offset-background"
                               : "bg-muted hover:bg-muted/80"
@@ -281,10 +224,10 @@ export function ProjectIntakeForm() {
                         </button>
                       ))}
                     </div>
-                    <div className="flex justify-between text-sm text-muted-foreground mt-2">
-                      <span>Just starting</span>
-                      <span>Managing data</span>
-                      <span>Built custom solutions</span>
+                    <div className="flex justify-between text-xs text-muted-foreground mt-2">
+                      <span>{dict.projectForm.steps.maturity.low}</span>
+                      <span>{dict.projectForm.steps.maturity.mid}</span>
+                      <span>{dict.projectForm.steps.maturity.high}</span>
                     </div>
                   </div>
                 </FormControl>
@@ -359,40 +302,40 @@ export function ProjectIntakeForm() {
               <FormItem>
                 <div className="flex items-center gap-4">
                   <span className="text-primary font-semibold">{stepIndex + 1} →</span>
-                  <FormLabel className="text-2xl font-semibold">Tell us about your automation gap or project*</FormLabel>
+                  <FormLabel className="text-2xl font-semibold">{dict.projectForm.steps.details.label}</FormLabel>
                 </div>
-                <p className="text-muted-foreground mt-2">In one sentence, what are you hoping to build or improve?</p>
+                <p className="text-muted-foreground mt-2">{dict.projectForm.steps.details.focusLabel}</p>
                 <FormControl>
-                  <Textarea placeholder="e.g., An AI chatbot to handle customer support inquiries..." {...field} className="text-lg mt-4 min-h-[100px]" />
+                  <Textarea placeholder={dict.projectForm.steps.details.focusPlaceholder} {...field} className="text-lg mt-4 min-h-[100px]" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <div className={cn("border-t border-border pt-8 transition-opacity duration-500", showChallenges ? "opacity-100" : "opacity-0")}>
+          <div className={cn("border-t border-border pt-8 transition-opacity duration-500", showChallenges ? "opacity-100" : "opacity-0 invisible")}>
             <FormField
               control={form.control}
               name="challenges"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xl font-semibold">What are the main challenges you're facing right now?</FormLabel>
+                  <FormLabel className="text-xl font-semibold">{dict.projectForm.steps.details.challengesLabel}</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="e.g., Our support team is overwhelmed and response times are slow." {...field} className="text-lg mt-4 min-h-[100px]" />
+                    <Textarea placeholder={dict.projectForm.steps.details.challengesPlaceholder} {...field} className="text-lg mt-4 min-h-[100px]" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <div className={cn("border-t border-border pt-8 transition-opacity duration-500", showVision ? "opacity-100" : "opacity-0")}>
+          <div className={cn("border-t border-border pt-8 transition-opacity duration-500", showVision ? "opacity-100" : "opacity-0 invisible")}>
             <FormField
               control={form.control}
               name="vision"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xl font-semibold">What's your vision for how this solution will work?</FormLabel>
+                  <FormLabel className="text-xl font-semibold">{dict.projectForm.steps.details.visionLabel}</FormLabel>
                    <FormControl>
-                    <Textarea placeholder="e.g., We want an AI that can answer common questions and knows when to escalate to a human agent." {...field} className="text-lg mt-4 min-h-[100px]" />
+                    <Textarea placeholder={dict.projectForm.steps.details.visionPlaceholder} {...field} className="text-lg mt-4 min-h-[100px]" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -415,10 +358,10 @@ export function ProjectIntakeForm() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField control={form.control} name="firstName" render={({ field }) => (
-              <FormItem><FormLabel>First Name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+              <FormItem><FormLabel>{dict.projectForm.steps.contact.firstName}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="lastName" render={({ field }) => (
-              <FormItem><FormLabel>Last Name *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+              <FormItem><FormLabel>{dict.projectForm.steps.contact.lastName}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <FormField
@@ -426,7 +369,7 @@ export function ProjectIntakeForm() {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel>{dict.projectForm.steps.contact.phone}</FormLabel>
                 <FormControl>
                   <PhoneInput
                     international
@@ -440,10 +383,10 @@ export function ProjectIntakeForm() {
             )}
           />
           <FormField control={form.control} name="email" render={({ field }) => (
-            <FormItem><FormLabel>Email *</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
+            <FormItem><FormLabel>{dict.projectForm.steps.contact.email}</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
           )} />
           <FormField control={form.control} name="company" render={({ field }) => (
-            <FormItem><FormLabel>Company *</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+            <FormItem><FormLabel>{dict.projectForm.steps.contact.company}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
           )} />
           <FormField
             control={form.control}
@@ -458,9 +401,9 @@ export function ProjectIntakeForm() {
                 </FormControl>
                 <div className="space-y-1 leading-none">
                   <FormLabel>
-                    I agree to the{" "}
+                    {dict.common.agreeTo}{" "}
                     <Link href="/privacy-policy" target="_blank" className="underline hover:text-primary">
-                      Privacy Policy
+                      {dict.common.privacyPolicy}
                     </Link>
                     .
                   </FormLabel>
@@ -494,13 +437,13 @@ export function ProjectIntakeForm() {
           </CardContent>
           <CardFooter className="flex justify-between mt-4 min-h-[52px]">
             <Button type="button" variant="ghost" onClick={prevStep} disabled={step === 0}>
-              <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+              <ArrowLeft className="mr-2 h-4 w-4" /> {dict.projectForm.buttons.previous}
             </Button>
             
             <div className="flex justify-end flex-grow">
               {(currentField === 'projectDetails' || currentField === 'contactDetails' || step < totalSteps - 1) && (
                 <Button type="button" onClick={nextStep} disabled={isPending || step === totalSteps - 1}>
-                  Next <ArrowRight className="ml-2 h-4 w-4" />
+                  {dict.projectForm.buttons.next} <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               )}
 
@@ -508,14 +451,12 @@ export function ProjectIntakeForm() {
                 <Button type="button" onClick={form.handleSubmit(onSubmit)} size="lg" disabled={isPending}>
                   {isPending ? (
                     <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {dict.projectForm.buttons.submitting}
                     </>
-                  ) : "Submit Project"}
+                  ) : dict.projectForm.buttons.submit}
                 </Button>
               )}
             </div>
-
-            {/* This is a hidden submit button to allow form submission on enter */}
             <button type="submit" className="hidden" disabled={isPending}></button>
           </CardFooter>
         </form>
@@ -523,6 +464,3 @@ export function ProjectIntakeForm() {
     </Card>
   );
 }
-    
-
-    
