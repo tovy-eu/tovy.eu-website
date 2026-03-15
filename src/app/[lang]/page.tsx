@@ -19,7 +19,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
 
       <SectionDivider />
 
-      <EngineeringSection />
+      <EngineeringSection dict={dict} />
 
       <div className="w-full">
         <SectionDivider />
