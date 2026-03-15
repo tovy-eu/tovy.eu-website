@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useTransition } from 'react';
@@ -83,8 +82,8 @@ export function SubscriptionForm() {
   };
 
   return (
-    <div className="rounded-lg p-[1px] bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] mx-4 md:mx-0">
-      <div className="p-8 rounded-lg bg-card/80 backdrop-blur-sm">
+    <div className="mx-4 md:mx-0">
+      <div className="p-8 rounded-lg bg-card shadow-xl">
         <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
           Stay up-to-date
         </h3>
@@ -99,7 +98,7 @@ export function SubscriptionForm() {
               type="email"
               autoComplete="email" 
               placeholder="Enter your email here" 
-              className="rounded-md" 
+              className="rounded-md bg-background/50 border-border" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={isPending}
