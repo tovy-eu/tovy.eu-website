@@ -12,7 +12,8 @@
     "subscribe": "Inschrijven",
     "subscribing": "Inschrijven...",
     "emailPlaceholder": "Voer hier je e-mailadres in",
-    "agreeTo": "Ik ga akkoord met het"
+    "agreeTo": "Ik ga akkoord met het",
+    "downloadJson": "Downloaden als JSON"
   },
   "hero": {
     "title": "Wij bouwen de AI-fundering van uw bedrijf.",
@@ -130,5 +131,23 @@
       }
     ],
     "effectiveDate": "Dit beleid is van kracht vanaf 30 juli 2024."
+  },
+  "legal": {
+    "title": "Colofon",
+    "companyDetails": "Bedrijfsgegevens",
+    "companyName": "Bedrijfsnaam",
+    "representedBy": "Vertegenwoordigd door (Eigenaar)",
+    "address": "Adres",
+    "contactInfo": "Contactinformatie",
+    "email": "E-mail",
+    "phone": "Telefoon",
+    "registry": "Register & Identificatie",
+    "commercialRegistry": "Handelsregister",
+    "kvkNumber": "KvK-nummer",
+    "vatNumber": "BTW-identificatienummer",
+    "disclaimer": "Disclaimer",
+    "disclaimerSubtitle": "Onze verantwoordelijkheid met betrekking tot de inhoud van de website.",
+    "disclaimerContent": "De inhoud van onze pagina's is met de grootste zorg samengesteld. Wij kunnen echter geen garantie geven voor de juistheid, volledigheid of actualiteit van de inhoud. Volgens de wettelijke bepalingen zijn wij bovendien verantwoordelijk voor onze eigen inhoud op deze webpagina's. In dit verband wijzen wij u erop dat wij niet verplicht zijn om de verzonden of opgeslagen informatie van derden te controleren, of omstandigheden te onderzoeken die duiden op illegale activiteiten.",
+    "nederland": "Nederland"
   }
 }
