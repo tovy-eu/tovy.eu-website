@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -7,10 +6,13 @@ import Link from 'next/link';
 import { ArrowRight, BookOpen } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { WavyLines } from './wavy-lines';
+import { usePathname } from 'next/navigation';
 import type { Dictionary } from '@/lib/get-dictionary';
 
 export function HeroSection({ dict }: { dict: Dictionary }) {
   const [isMounted, setIsMounted] = useState(false);
+  const pathname = usePathname();
+  const lang = pathname?.split('/')[1] || 'en';
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -44,13 +46,13 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         </p>
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button asChild size="lg" className="font-semibold text-lg">
-            <Link href="/project-request">
+            <Link href={`/${lang}/project-request/`}>
               {dict.common.workWithUs}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="font-semibold text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white">
-            <Link href="/blog">
+            <Link href={`/${lang}/blog/`}>
               <BookOpen className="mr-2 h-5 w-5" />
               {dict.common.readBlog}
             </Link>

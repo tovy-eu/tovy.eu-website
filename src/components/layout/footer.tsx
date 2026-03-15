@@ -26,7 +26,7 @@ const socialLinks = [
   },
 ];
 
-export default function Footer({ lang, dict }: { lang?: string; dict?: Dictionary }) {
+export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Dictionary }) {
   const [year, setYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
@@ -63,11 +63,11 @@ export default function Footer({ lang, dict }: { lang?: string; dict?: Dictionar
         
         {/* Center: Links */}
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-          <Link href="/privacy-policy" className="hover:text-primary transition-colors">
+          <Link href={`/${lang}/privacy-policy/`} className="hover:text-primary transition-colors">
             {privacyText}
           </Link>
           <div className="h-4 w-px bg-border hidden sm:block"></div>
-          <Link href="/legal-notice" className="hover:text-primary transition-colors">
+          <Link href={`/${lang}/legal-notice/`} className="hover:text-primary transition-colors">
             {legalText}
           </Link>
           <div className="h-4 w-px bg-border hidden sm:block"></div>

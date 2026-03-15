@@ -6,9 +6,12 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Cookie } from 'lucide-react';
 import { getConsent, updateConsent } from '@/lib/consent';
+import { usePathname } from 'next/navigation';
 
 export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
+  const pathname = usePathname();
+  const lang = pathname?.split('/')[1] || 'en';
 
   useEffect(() => {
     const consent = getConsent();
@@ -44,7 +47,7 @@ export default function CookieBanner() {
           <Cookie className="h-5 w-5 mt-1 text-primary flex-shrink-0"/>
           <p className="text-sm text-muted-foreground">
             We use cookies to enhance your experience and for analytics purposes. By clicking "Accept", you agree to our use of cookies. For more details, see our{' '}
-            <Link href="/privacy-policy" className="underline hover:text-primary">
+            <Link href={`/${lang}/privacy-policy/`} className="underline hover:text-primary">
               Privacy Policy
             </Link>
             .

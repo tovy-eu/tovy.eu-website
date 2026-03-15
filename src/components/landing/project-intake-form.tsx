@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { db } from "@/lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
 
@@ -31,6 +32,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const { toast } = useToast();
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isPending, startTransition] = useTransition();
+  const pathname = usePathname();
+  const lang = pathname?.split('/')[1] || 'en';
 
   const [showChallenges, setShowChallenges] = useState(false);
   const [showVision, setShowVision] = useState(false);
@@ -171,7 +174,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         </CardHeader>
         <CardFooter className="flex justify-center">
           <Button asChild variant="outline">
-            <Link href="/">
+            <Link href={`/${lang}/`}>
               <Home className="mr-2 h-4 w-4" />
               {dict.projectForm.success.backHome}
             </Link>
@@ -402,7 +405,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                 <div className="space-y-1 leading-none">
                   <FormLabel>
                     {dict.common.agreeTo}{" "}
-                    <Link href="/privacy-policy" target="_blank" className="underline hover:text-primary">
+                    <Link href={`/${lang}/privacy-policy/`} target="_blank" className="underline hover:text-primary">
                       {dict.common.privacyPolicy}
                     </Link>
                     .

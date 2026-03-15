@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,8 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
   const [consent, setConsent] = useState(false);
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
+  const pathname = usePathname();
+  const lang = pathname?.split('/')[1] || 'en';
 
   const stayUpToDateText = dict?.common.stayUpToDate || "Stay up-to-date";
   const newsletterDescText = dict?.common.newsletterDesc || "Receive newsletters on what is happening at Tovy.";
@@ -128,7 +131,7 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
             <Checkbox id="subscription-consent" checked={consent} onCheckedChange={(checked) => setConsent(checked as boolean)} disabled={isPending} />
             <Label htmlFor="subscription-consent" className="text-sm text-muted-foreground">
               {agreeToText}{" "}
-              <Link href="/privacy-policy" target="_blank" className="underline hover:text-primary">
+              <Link href={`/${lang}/privacy-policy/`} target="_blank" className="underline hover:text-primary">
                 {privacyPolicyText}
               </Link>
               .
