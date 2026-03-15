@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -12,12 +11,16 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import type { Dictionary } from "@/lib/get-dictionary";
 
 /**
  * The primary navigation header for the application.
  * Integrated with a language switcher and localized links.
  */
-export default function Header({ lang = "en" }: { lang?: string }) {
+export default function Header({ lang = "en", dict }: { lang?: string; dict?: Dictionary }) {
+  const shareIdeaText = dict?.common.shareIdea || "Share your idea";
+  const blogText = dict?.navigation.blog || "Blog";
+
   return (
     <header
       className={cn(
@@ -39,19 +42,19 @@ export default function Header({ lang = "en" }: { lang?: string }) {
                 <Button variant="ghost" size="icon" asChild className="h-9 w-9 rounded-full">
                   <Link href="/blog">
                     <BookOpen className="h-5 w-5" />
-                    <span className="sr-only">Blog</span>
+                    <span className="sr-only">{blogText}</span>
                   </Link>
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Blog</p>
+                <p>{blogText}</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
 
           {/* Main CTA */}
           <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link href="/project-request">Share your idea</Link>
+            <Link href="/project-request">{shareIdeaText}</Link>
           </Button>
 
           {/* Minimalistic Language Toggle - Moved to far right */}

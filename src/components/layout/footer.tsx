@@ -11,6 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import type { Dictionary } from "@/lib/get-dictionary";
 
 const socialLinks = [
   {
@@ -25,12 +26,16 @@ const socialLinks = [
   },
 ];
 
-export default function Footer({ lang }: { lang?: string }) {
+export default function Footer({ lang, dict }: { lang?: string; dict?: Dictionary }) {
   const [year, setYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
     setYear(new Date().getFullYear());
   }, []);
+
+  const privacyText = dict?.common.privacyPolicy || "Privacy Policy";
+  const legalText = dict?.common.legalNotice || "Legal Notice";
+  const rightsText = dict?.common.allRightsReserved || "All rights reserved.";
 
   return (
     <footer className="w-full border-t border-border/40 bg-card/80 backdrop-blur-sm">
@@ -59,11 +64,11 @@ export default function Footer({ lang }: { lang?: string }) {
         {/* Center: Links */}
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
           <Link href="/privacy-policy" className="hover:text-primary transition-colors">
-            Privacy Policy
+            {privacyText}
           </Link>
           <div className="h-4 w-px bg-border hidden sm:block"></div>
           <Link href="/legal-notice" className="hover:text-primary transition-colors">
-            Legal Notice
+            {legalText}
           </Link>
           <div className="h-4 w-px bg-border hidden sm:block"></div>
           <Link href={`mailto:${companyProfile.public_company_profile.contact_details.email}`} className="hover:text-primary transition-colors">
@@ -75,7 +80,7 @@ export default function Footer({ lang }: { lang?: string }) {
         
         {/* Bottom: Copyright */}
         <div className="text-sm text-muted-foreground">
-          © {year} {companyProfile.public_company_profile.entity_name}. All rights reserved.
+          © {year} {companyProfile.public_company_profile.entity_name}. {rightsText}
         </div>
       </div>
     </footer>
