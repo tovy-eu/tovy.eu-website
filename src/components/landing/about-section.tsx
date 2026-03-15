@@ -6,7 +6,7 @@ import { ScrollReveal } from "../scroll-reveal";
 const pillars = [
   {
     icon: <BrainCircuit className="h-8 w-8" />,
-    title: "Technology",
+    title: "Tech Savviness",
     description: "We love tech, data and AI. We are up-to-date with the rapid changes in the industry.",
     color: "#2B5EFF"
   },

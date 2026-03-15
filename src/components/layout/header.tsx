@@ -15,7 +15,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full bg-background/90 backdrop-blur-lg"
+        "sticky top-0 z-50 w-full bg-card/90 backdrop-blur-lg"
       )}
     >
       <div className="container mx-auto flex h-16 w-full items-center justify-between px-4 md:px-8 max-w-6xl">
