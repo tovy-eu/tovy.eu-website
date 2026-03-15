@@ -25,8 +25,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ scrollBehavior: 'smooth' }} data-scroll-behavior="smooth">
-      <head>
-        <Script id="google-consent-mode" strategy="beforeInteractive">
+      <body className={cn("font-sans antialiased flex flex-col min-h-screen", spaceGrotesk.variable)}>
+        <Script id="google-consent-mode" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -41,8 +41,7 @@ export default function RootLayout({
             });
           `}
         </Script>
-      </head>
-      <body className={cn("font-sans antialiased flex flex-col min-h-screen", spaceGrotesk.variable)}>
+        
         <HubSpotNavigationTracker />
         <main className="flex-grow flex flex-col">
           {children}
