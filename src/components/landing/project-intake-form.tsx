@@ -173,7 +173,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           </CardDescription>
         </CardHeader>
         <CardFooter className="flex justify-center">
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" className="border-0 bg-white/5 hover:bg-white/10">
             <Link href={`/${lang}/`}>
               <Home className="mr-2 h-4 w-4" />
               {dict.projectForm.success.backHome}
@@ -312,14 +312,14 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                   <Textarea 
                     placeholder={dict.projectForm.steps.details.focusPlaceholder} 
                     {...field} 
-                    className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" 
+                    className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
                   />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <div className={cn("border-t border-white/5 pt-8 transition-opacity duration-500", showChallenges ? "opacity-100" : "opacity-0 invisible")}>
+          <div className={cn("pt-8 transition-opacity duration-500", showChallenges ? "opacity-100" : "opacity-0 invisible")}>
             <FormField
               control={form.control}
               name="challenges"
@@ -330,7 +330,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                     <Textarea 
                       placeholder={dict.projectForm.steps.details.challengesPlaceholder} 
                       {...field} 
-                      className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" 
+                      className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
                     />
                   </FormControl>
                   <FormMessage />
@@ -338,7 +338,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
               )}
             />
           </div>
-          <div className={cn("border-t border-white/5 pt-8 transition-opacity duration-500", showVision ? "opacity-100" : "opacity-0 invisible")}>
+          <div className={cn("pt-8 transition-opacity duration-500", showVision ? "opacity-100" : "opacity-0 invisible")}>
             <FormField
               control={form.control}
               name="vision"
@@ -349,7 +349,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                     <Textarea 
                       placeholder={dict.projectForm.steps.details.visionPlaceholder} 
                       {...field} 
-                      className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" 
+                      className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
                     />
                   </FormControl>
                   <FormMessage />
@@ -373,10 +373,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField control={form.control} name="firstName" render={({ field }) => (
-              <FormItem><FormLabel>{dict.projectForm.steps.contact.firstName}</FormLabel><FormControl><Input {...field} className="bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
+              <FormItem><FormLabel>{dict.projectForm.steps.contact.firstName}</FormLabel><FormControl><Input {...field} className="bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="lastName" render={({ field }) => (
-              <FormItem><FormLabel>{dict.projectForm.steps.contact.lastName}</FormLabel><FormControl><Input {...field} className="bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
+              <FormItem><FormLabel>{dict.projectForm.steps.contact.lastName}</FormLabel><FormControl><Input {...field} className="bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <FormField
@@ -398,10 +398,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
             )}
           />
           <FormField control={form.control} name="email" render={({ field }) => (
-            <FormItem><FormLabel>{dict.projectForm.steps.contact.email}</FormLabel><FormControl><Input type="email" {...field} className="bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
+            <FormItem><FormLabel>{dict.projectForm.steps.contact.email}</FormLabel><FormControl><Input type="email" {...field} className="bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
           )} />
           <FormField control={form.control} name="company" render={({ field }) => (
-            <FormItem><FormLabel>{dict.projectForm.steps.contact.company}</FormLabel><FormControl><Input {...field} className="bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
+            <FormItem><FormLabel>{dict.projectForm.steps.contact.company}</FormLabel><FormControl><Input {...field} className="bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
           )} />
           <FormField
             control={form.control}
@@ -412,6 +412,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
+                    className="border-primary/20"
                   />
                 </FormControl>
                 <div className="space-y-1 leading-none">
@@ -451,7 +452,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
             </div>
           </CardContent>
           <CardFooter className="flex justify-between mt-4 min-h-[52px]">
-            <Button type="button" variant="ghost" onClick={prevStep} disabled={step === 0}>
+            <Button type="button" variant="ghost" onClick={prevStep} disabled={step === 0} className="hover:bg-white/5">
               <ArrowLeft className="mr-2 h-4 w-4" /> {dict.projectForm.buttons.previous}
             </Button>
             

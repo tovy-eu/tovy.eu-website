@@ -4,49 +4,41 @@ import { MetadataRoute } from 'next'
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // For production, you would set this in your environment variables
   const baseUrl = 'https://tovy.eu'; 
-
+  const languages = ['en', 'nl'];
   const posts = getSortedPostsData();
 
-  const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.id}`,
-    lastModified: new Date(post.date),
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }));
+  const routes = [
+    '',
+    '/blog',
+    '/project-request',
+    '/privacy-policy',
+    '/legal-notice',
+  ];
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    ...postEntries,
-    {
-      url: `${baseUrl}/project-request`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/legal-notice`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-  ]
+  const sitemapEntries: MetadataRoute.Sitemap = [];
+
+  // Add localized routes for all main pages
+  languages.forEach((lang) => {
+    routes.forEach((route) => {
+      sitemapEntries.push({
+        url: `${baseUrl}/${lang}${route}/`,
+        lastModified: new Date(),
+        changeFrequency: route === '/blog' ? 'weekly' : 'monthly',
+        priority: route === '' ? 1.0 : 0.8,
+      });
+    });
+
+    // Add localized routes for all blog posts
+    posts.forEach((post) => {
+      sitemapEntries.push({
+        url: `${baseUrl}/${lang}/blog/${post.id}/`,
+        lastModified: new Date(post.date),
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      });
+    });
+  });
+
+  return sitemapEntries;
 }
