@@ -35,7 +35,7 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="w-full border-t border-border/40 bg-card">
+    <footer className="w-full border-t border-border/40 bg-card/80 backdrop-blur-sm">
       <div className="container mx-auto flex flex-col items-center gap-6 py-8 max-w-6xl px-4 md:px-8">
         
         {/* Social Icons */}
