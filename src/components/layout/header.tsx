@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -31,9 +32,6 @@ export default function Header({ lang = "en" }: { lang?: string }) {
         </Link>
         
         <div className="flex items-center gap-3">
-          {/* Minimalistic Language Toggle */}
-          <LanguageSwitcher currentLang={lang} />
-          
           {/* Blog Access */}
           <TooltipProvider>
             <Tooltip>
@@ -55,6 +53,9 @@ export default function Header({ lang = "en" }: { lang?: string }) {
           <Button asChild size="sm" className="hidden sm:inline-flex">
             <Link href="/project-request">Share your idea</Link>
           </Button>
+
+          {/* Minimalistic Language Toggle - Moved to far right */}
+          <LanguageSwitcher currentLang={lang} />
         </div>
       </div>
     </header>
