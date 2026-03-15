@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist } from 'next/font/google';
+import { Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import './pain-solution-texture.css';
 import { Toaster } from "@/components/ui/toaster"
@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   description: 'We build smart data ecosystems that take work off your hands, creating a world where technology gives people more time, focus, and freedom to grow.',
 };
 
-const geistSans = Geist({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-geist-sans',
+  variable: '--font-space-grotesk',
 });
 
 export default function RootLayout({
@@ -42,7 +42,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
+      <body className={cn("font-sans antialiased flex flex-col min-h-screen", spaceGrotesk.variable)}>
         <HubSpotNavigationTracker />
         <main className="flex-grow flex flex-col">
           {children}
