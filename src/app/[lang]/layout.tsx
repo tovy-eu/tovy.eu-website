@@ -1,5 +1,6 @@
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
+import { getDictionary } from '@/lib/get-dictionary';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'nl' }];
@@ -13,14 +14,15 @@ export default async function LocalizedLayout({
   params: Promise<{ lang: string }>;
 }>) {
   const { lang } = await params;
+  const dict = await getDictionary(lang);
   
   return (
     <>
-      <Header lang={lang} />
+      <Header lang={lang} dict={dict} />
       <div className="flex-grow flex flex-col">
         {children}
       </div>
-      <Footer lang={lang} />
+      <Footer lang={lang} dict={dict} />
     </>
   );
 }
