@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   allowedDevOrigins: ["*.cloudworkstations.dev"],
   output: 'export',
+  trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true,
   },
