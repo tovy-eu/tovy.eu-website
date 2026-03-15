@@ -164,7 +164,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
 
   if (formSubmitted) {
     return (
-      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-none shadow-none">
+      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-0 shadow-none">
         <CardHeader className="text-center">
           <CheckCircle className="mx-auto h-16 w-16 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent mb-4" />
           <CardTitle className="text-2xl">{dict.projectForm.success.title}</CardTitle>
@@ -217,10 +217,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                             setTimeout(() => nextStep(), 200);
                           }}
                           className={cn(
-                            "h-10 w-10 shrink-0 flex items-center justify-center rounded-md transition-all text-sm border-none",
+                            "h-10 w-10 shrink-0 flex items-center justify-center rounded-md transition-all text-sm border-0 focus:outline-none focus:ring-2 focus:ring-primary",
                             formField.value === String(value)
-                              ? "bg-primary text-primary-foreground ring-2 ring-primary ring-offset-2 ring-offset-background"
-                              : "bg-muted hover:bg-muted/80"
+                              ? "bg-primary text-primary-foreground shadow-lg"
+                              : "bg-white/5 hover:bg-white/10"
                           )}
                         >
                           {value}
@@ -268,15 +268,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                           setTimeout(() => nextStep(), 200);
                         }}
                         className={cn(
-                          "w-full flex items-center justify-between text-left p-3 rounded-md transition-all border-none",
+                          "w-full flex items-center justify-between text-left p-3 rounded-md transition-all border-0 focus:outline-none focus:ring-2 focus:ring-primary",
                           formField.value === option.label
-                            ? "bg-primary/10 ring-2 ring-primary ring-offset-2 ring-offset-background"
-                            : "bg-muted/50 hover:bg-muted"
+                            ? "bg-primary/20 shadow-inner"
+                            : "bg-white/5 hover:bg-white/10"
                         )}
                       >
                         <div className="flex items-center gap-3">
                           {option.hint && (
-                            <div className="flex items-center justify-center h-6 w-6 border-none rounded-sm text-xs text-muted-foreground bg-background">
+                            <div className="flex items-center justify-center h-6 w-6 rounded-sm text-xs text-muted-foreground bg-black/20">
                               {option.hint}
                             </div>
                           )}
@@ -309,13 +309,17 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                 </div>
                 <p className="text-muted-foreground mt-2">{dict.projectForm.steps.details.focusLabel}</p>
                 <FormControl>
-                  <Textarea placeholder={dict.projectForm.steps.details.focusPlaceholder} {...field} className="text-lg mt-4 min-h-[100px]" />
+                  <Textarea 
+                    placeholder={dict.projectForm.steps.details.focusPlaceholder} 
+                    {...field} 
+                    className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" 
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <div className={cn("border-t border-border pt-8 transition-opacity duration-500", showChallenges ? "opacity-100" : "opacity-0 invisible")}>
+          <div className={cn("border-t border-white/5 pt-8 transition-opacity duration-500", showChallenges ? "opacity-100" : "opacity-0 invisible")}>
             <FormField
               control={form.control}
               name="challenges"
@@ -323,14 +327,18 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                 <FormItem>
                   <FormLabel className="text-xl font-semibold">{dict.projectForm.steps.details.challengesLabel}</FormLabel>
                   <FormControl>
-                    <Textarea placeholder={dict.projectForm.steps.details.challengesPlaceholder} {...field} className="text-lg mt-4 min-h-[100px]" />
+                    <Textarea 
+                      placeholder={dict.projectForm.steps.details.challengesPlaceholder} 
+                      {...field} 
+                      className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" 
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <div className={cn("border-t border-border pt-8 transition-opacity duration-500", showVision ? "opacity-100" : "opacity-0 invisible")}>
+          <div className={cn("border-t border-white/5 pt-8 transition-opacity duration-500", showVision ? "opacity-100" : "opacity-0 invisible")}>
             <FormField
               control={form.control}
               name="vision"
@@ -338,7 +346,11 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                 <FormItem>
                   <FormLabel className="text-xl font-semibold">{dict.projectForm.steps.details.visionLabel}</FormLabel>
                    <FormControl>
-                    <Textarea placeholder={dict.projectForm.steps.details.visionPlaceholder} {...field} className="text-lg mt-4 min-h-[100px]" />
+                    <Textarea 
+                      placeholder={dict.projectForm.steps.details.visionPlaceholder} 
+                      {...field} 
+                      className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" 
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -361,10 +373,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField control={form.control} name="firstName" render={({ field }) => (
-              <FormItem><FormLabel>{dict.projectForm.steps.contact.firstName}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+              <FormItem><FormLabel>{dict.projectForm.steps.contact.firstName}</FormLabel><FormControl><Input {...field} className="bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="lastName" render={({ field }) => (
-              <FormItem><FormLabel>{dict.projectForm.steps.contact.lastName}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+              <FormItem><FormLabel>{dict.projectForm.steps.contact.lastName}</FormLabel><FormControl><Input {...field} className="bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <FormField
@@ -377,7 +389,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                   <PhoneInput
                     international
                     defaultCountry="NL"
-                    className="[&_input]:h-10 [&_input]:w-full [&_input]:rounded-md [&_input]:border [&_input]:border-input [&_input]:bg-background [&_input]:px-3 [&_input]:py-2 [&_input]:text-base [&_input]:ring-offset-background file:[&_input]:border-0 file:[&_input]:bg-transparent file:[&_input]:text-sm file:[&_input]:font-medium placeholder:[&_input]:text-muted-foreground focus-visible:[&_input]:outline-none focus-visible:[&_input]:ring-2 focus-visible:[&_input]:ring-ring focus-visible:[&_input]:ring-offset-2 disabled:[&_input]:cursor-not-allowed disabled:[&_input]:opacity-50 md:[&_input]:text-sm"
+                    className="[&_input]:h-10 [&_input]:w-full [&_input]:rounded-md [&_input]:border-0 [&_input]:bg-white/5 [&_input]:px-3 [&_input]:py-2 [&_input]:text-base focus-visible:[&_input]:outline-none focus-visible:[&_input]:ring-1 focus-visible:[&_input]:ring-primary md:[&_input]:text-sm"
                     {...field}
                   />
                 </FormControl>
@@ -386,10 +398,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
             )}
           />
           <FormField control={form.control} name="email" render={({ field }) => (
-            <FormItem><FormLabel>{dict.projectForm.steps.contact.email}</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
+            <FormItem><FormLabel>{dict.projectForm.steps.contact.email}</FormLabel><FormControl><Input type="email" {...field} className="bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
           )} />
           <FormField control={form.control} name="company" render={({ field }) => (
-            <FormItem><FormLabel>{dict.projectForm.steps.contact.company}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+            <FormItem><FormLabel>{dict.projectForm.steps.contact.company}</FormLabel><FormControl><Input {...field} className="bg-white/5 border-0 focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
           )} />
           <FormField
             control={form.control}
@@ -423,7 +435,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-none shadow-none">
+    <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-0 shadow-none">
       <CardHeader>
         <Progress value={(step / totalSteps) * 100} className="w-full h-2" />
       </CardHeader>
