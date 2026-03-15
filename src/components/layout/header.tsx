@@ -40,7 +40,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button variant="ghost" size="icon" asChild className="h-9 w-9 rounded-full">
-                  <Link href="/blog">
+                  <Link href={`/${lang}/blog/`}>
                     <BookOpen className="h-5 w-5" />
                     <span className="sr-only">{blogText}</span>
                   </Link>
@@ -54,7 +54,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
 
           {/* Main CTA */}
           <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link href="/project-request">{shareIdeaText}</Link>
+            <Link href={`/${lang}/project-request/`}>{shareIdeaText}</Link>
           </Button>
 
           {/* Minimalistic Language Toggle - Moved to far right */}
