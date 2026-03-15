@@ -55,7 +55,7 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
       variant="ghost"
       size="sm"
       onClick={toggleLanguage}
-      className="h-9 px-2 rounded-full border border-white/10 hover:bg-white/10 transition-all flex items-center justify-center gap-2 overflow-hidden"
+      className="h-9 px-2 rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-2 overflow-hidden border-none"
       aria-label={`Switch to ${currentLang === 'en' ? 'Dutch' : 'English'}`}
     >
       {currentLang === "en" ? <GBFlag /> : <NLFlag />}
