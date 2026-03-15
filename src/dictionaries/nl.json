@@ -83,5 +83,52 @@
     "blog": "Blog",
     "about": "Over ons",
     "contact": "Contact"
+  },
+  "privacy": {
+    "title": "Privacybeleid",
+    "intro": "Uw privacy is belangrijk voor ons. Het is het beleid van Tovy om uw privacy te respecteren met betrekking tot alle informatie die we van u verzamelen via onze website. Dit beleid is in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG/GDPR).",
+    "sections": [
+      {
+        "title": "1. Verwerkingsverantwoordelijke",
+        "content": "Tovy is de verwerkingsverantwoordelijke voor de persoonlijke informatie die via deze website wordt verzameld. Voor vragen kunt u contact met ons opnemen via"
+      },
+      {
+        "title": "2. Informatie die we verzamelen en hoe we deze gebruiken",
+        "content": "We vragen alleen om persoonlijke informatie wanneer we deze echt nodig hebben om u een dienst te kunnen leveren. We verzamelen deze op eerlijke en rechtmatige wijze, met uw medeweten en expliciete toestemming. De rechtsgronden voor onze verwerking zijn primair toestemming, contractuele noodzaak en gerechtvaardigd belang.",
+        "list": [
+          "<strong>Project Intake Formulier:</strong> We verzamelen uw naam, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore en worden gebruikt om uw projectaanvraag te beoordelen en te beantwoorden. De rechtsgrond is de intentie om een overeenkomst aan te gaan.",
+          "<strong>Nieuwsbrief Inschrijving:</strong> We verzamelen uw e-mailadres wanneer u zich inschrijft voor onze nieuwsbrief. Deze gegevens worden opgeslagen in Google Cloud Firestore en uitsluitend gebruikt voor het verzenden van nieuwsbrieven. De rechtsgrond is uw expliciete toestemming.",
+          "<strong>Server Logs:</strong> Onze webserver, gehost door Firebase Hosting, registreert automatisch verzoeken, waaronder uw IP-adres, browsertype en de pagina's die u bezoekt. Deze gegevens worden gebruikt voor beveiligingsmonitoring en diagnostiek. De rechtsgrond is ons gerechtvaardigd belang bij het onderhouden van een veilige en functionele website.",
+          "<strong>Cookies:</strong> We gebruiken essentiële cookies om uw toestemmingsvoorkeuren met betrekking tot tracking te beheren. We gebruiken geen niet-essentiële cookies of tracking cookies (zoals die voor Google Analytics) zonder uw expliciete voorafgaande toestemming via onze cookiebanner."
+        ]
+      },
+      {
+        "title": "3. Gegevensopslag en doorgifte",
+        "content": "Om uw gegevens te beschermen, hebben we onze primaire database (Cloud Firestore) geconfigureerd in de Europese Unie (regio `eur3`). Hoewel we prioriteit geven aan diensten binnen de EU, kunnen sommige van onze subverwerkers (zoals Google) gegevens internationaal doorgeven. Al deze doorgiften vinden plaats onder wettelijk conforme mechanismen, zoals Standard Contractual Clauses."
+      },
+      {
+        "title": "4. Gegevensbewaring en beveiliging",
+        "content": "We bewaren verzamelde informatie alleen zo lang als nodig is om onze diensten te leveren of zoals vereist door de wet. Inschrijvingsgegevens worden bijvoorbeeld bewaard totdat u zich afmeldt. We beschermen opgeslagen gegevens binnen commercieel aanvaardbare middelen om verlies, diefstal en onbevoegde toegang te voorkomen."
+      },
+      {
+        "title": "5. Uw rechten onder de AVG",
+        "content": "Als gebruiker heeft u de volgende rechten met betrekking tot uw persoonsgegevens:",
+        "list": [
+          "<strong>Recht op informatie:</strong> U heeft het recht om te weten hoe uw gegevens worden verzameld en gebruikt.",
+          "<strong>Recht op inzage:</strong> U kunt een kopie opvragen van de informatie die wij over u bewaren.",
+          "<strong>Recht op rectificatie:</strong> U kunt onjuiste persoonsgegevens laten corrigeren.",
+          "<strong>Recht op gegevenswissing (\"Recht om vergeten te worden\"):</strong> U kunt verzoeken dat wij uw persoonsgegevens verwijderen.",
+          "<strong>Recht op beperking van de verwerking:</strong> U kunt het gebruik van uw gegevens beperken.",
+          "<strong>Recht op overdraagbaarheid van gegevens:</strong> U heeft het recht om uw gegevens in een machineleesbaar formaat te ontvangen.",
+          "<strong>Recht van bezwaar:</strong> U kunt bezwaar maken tegen de verwerking van uw persoonsgegevens."
+        ],
+        "footer": "Om een van deze rechten uit te oefenen, kunt u contact opnemen via het onderstaande e-mailadres voor gegevensbescherming."
+      },
+      {
+        "title": "6. Neem contact met ons op",
+        "content": "Voor vragen of opmerkingen over uw privacy, of om uw AVG-rechten uit te oefenen, kunt u contact opnemen met onze Functionaris voor Gegevensbescherming via:"
+      }
+    ],
+    "effectiveDate": "Dit beleid is van kracht vanaf 30 juli 2024."
   }
 }
