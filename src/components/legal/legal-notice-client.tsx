@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Download, Building, MapPin, Mail, Phone, User, FileText, Landmark, KeyRound } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { Dictionary } from '@/lib/get-dictionary';
+import { WavyLines } from '@/components/landing/wavy-lines';
 
 type LegalNoticeClientProps = {
   profile: JSONContent['public_company_profile'];
@@ -44,16 +45,25 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
   }, [profile]);
 
   return (
-    <div className="bg-gradient-to-b from-accent/10 to-primary/10 py-16 sm:py-24">
-      <div className="container mx-auto max-w-6xl px-4 md:px-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start mb-8">
+    <div 
+      className="relative min-h-screen py-16 sm:py-24 overflow-hidden"
+      style={{
+        background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
+      }}
+    >
+      <WavyLines />
+      <div className="container relative z-10 mx-auto max-w-6xl px-4 md:px-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start mb-12">
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
               {dict.legal.title}
             </h1>
+            <p className="mt-4 text-muted-foreground max-w-xl text-lg">
+              Official company identification and contact details for Tovy.
+            </p>
           </div>
           {downloadHref && (
-            <Button asChild variant="link" className="mt-4 sm:mt-0">
+            <Button asChild variant="outline" className="mt-6 sm:mt-0 bg-white/5 border-white/10 hover:bg-white/10 text-white">
               <a href={downloadHref} download="company-profile.json">
                 <Download className="mr-2 h-4 w-4" />
                 {dict.common.downloadJson}
@@ -65,9 +75,9 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column */}
           <div className="lg:col-span-1 space-y-8">
-            <Card className="bg-card/80 backdrop-blur-sm border-none shadow-xl">
+            <Card className="bg-card/40 backdrop-blur-md border-none shadow-2xl">
               <CardHeader>
-                <CardTitle>{dict.legal.companyDetails}</CardTitle>
+                <CardTitle className="text-xl">{dict.legal.companyDetails}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <InfoLine
@@ -94,15 +104,15 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
               </CardContent>
             </Card>
 
-            <Card className="bg-card/80 backdrop-blur-sm border-none shadow-xl">
+            <Card className="bg-card/40 backdrop-blur-md border-none shadow-2xl">
               <CardHeader>
-                <CardTitle>{dict.legal.contactInfo}</CardTitle>
+                <CardTitle className="text-xl">{dict.legal.contactInfo}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <InfoLine
                   icon={<Mail className="h-5 w-5" />}
                   label={dict.legal.email}
-                  value={<a href={`mailto:${profile.contact_details.email}`} className="underline hover:text-primary">{profile.contact_details.email}</a>}
+                  value={<a href={`mailto:${profile.contact_details.email}`} className="underline hover:text-primary transition-colors">{profile.contact_details.email}</a>}
                 />
                 <InfoLine
                   icon={<Phone className="h-5 w-5" />}
@@ -115,35 +125,37 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
 
           {/* Right Column */}
           <div className="lg:col-span-2 space-y-8">
-            <Card className="bg-card/80 backdrop-blur-sm border-none shadow-xl">
+            <Card className="bg-card/40 backdrop-blur-md border-none shadow-2xl">
               <CardHeader>
-                <CardTitle>{dict.legal.registry}</CardTitle>
+                <CardTitle className="text-xl">{dict.legal.registry}</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <InfoLine
                   icon={<Landmark className="h-5 w-5" />}
                   label={dict.legal.commercialRegistry}
-                  value={<p>Dutch Chamber of Commerce (Kamer van Koophandel)</p>}
+                  value={<p>Dutch Chamber of Commerce (KvK)</p>}
                 />
                 <InfoLine
                   icon={<KeyRound className="h-5 w-5" />}
                   label={dict.legal.kvkNumber}
                   value={<p>{profile.primary_identifiers.commercial_registry_number}</p>}
                 />
-                <InfoLine
-                  icon={<FileText className="h-5 w-5" />}
-                  label={dict.legal.vatNumber}
-                  value={<p>{profile.primary_identifiers.vat_id_number}</p>}
-                />
+                <div className="md:col-span-2">
+                  <InfoLine
+                    icon={<FileText className="h-5 w-5" />}
+                    label={dict.legal.vatNumber}
+                    value={<p className="text-lg font-mono tracking-wider">{profile.primary_identifiers.vat_id_number}</p>}
+                  />
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-card/80 backdrop-blur-sm border-none shadow-xl">
+            <Card className="bg-card/40 backdrop-blur-md border-none shadow-2xl">
               <CardHeader>
-                <CardTitle>{dict.legal.disclaimer}</CardTitle>
-                <CardDescription>{dict.legal.disclaimerSubtitle}</CardDescription>
+                <CardTitle className="text-xl">{dict.legal.disclaimer}</CardTitle>
+                <CardDescription className="text-muted-foreground/80">{dict.legal.disclaimerSubtitle}</CardDescription>
               </CardHeader>
-              <CardContent className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground/80">
+              <CardContent className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground/80 leading-relaxed">
                 <p>{dict.legal.disclaimerContent}</p>
               </CardContent>
             </Card>
