@@ -97,12 +97,11 @@ export function AboutSection() {
           </div>
         </ScrollReveal>
         
-        <ScrollReveal>
-          <div className="relative mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {pillars.map((pillar) => (
+        <div className="relative mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {pillars.map((pillar, index) => (
+            <ScrollReveal key={pillar.title} delay={`delay-[${index * 150}ms] duration-700`}>
               <Card 
-                key={pillar.title} 
-                className="text-center transition-all hover:shadow-2xl hover:-translate-y-1 bg-card border-white/5 shadow-xl"
+                className="h-full flex flex-col bg-card border-white/10 shadow-xl hover:shadow-2xl hover:border-primary/40 transition-all duration-300 hover:-translate-y-2 text-center"
                 style={{ '--pillar-color': pillar.color, '--pillar-shadow-color': `${pillar.color}1A` } as React.CSSProperties}
               >
                 <CardHeader className="items-center">
@@ -114,13 +113,13 @@ export function AboutSection() {
                   </div>
                   <CardTitle className="mt-4">{pillar.title}</CardTitle>
                 </CardHeader>
-                <CardDescription className="p-6 pt-0 text-muted-foreground/90">
+                <CardDescription className="p-6 pt-0 text-muted-foreground/90 flex-grow">
                   {pillar.description}
                 </CardDescription>
               </Card>
-            ))}
-          </div>
-        </ScrollReveal>
+            </ScrollReveal>
+          ))}
+        </div>
       </div>
     </section>
   );
