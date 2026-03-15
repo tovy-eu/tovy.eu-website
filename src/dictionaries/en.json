@@ -1,0 +1,26 @@
+
+{
+  "common": {
+    "workWithUs": "Work with us",
+    "readBlog": "Read our blog",
+    "shareIdea": "Share your idea",
+    "privacyPolicy": "Privacy Policy",
+    "legalNotice": "Legal Notice",
+    "allRightsReserved": "All rights reserved.",
+    "stayUpToDate": "Stay up-to-date",
+    "newsletterDesc": "Receive newsletters on what is happening at Tovy.",
+    "subscribe": "Subscribe",
+    "subscribing": "Subscribing...",
+    "emailPlaceholder": "Enter your email here",
+    "agreeTo": "I agree to the"
+  },
+  "hero": {
+    "title": "We build the AI foundation of your business.",
+    "subtitle": "We design and implement production-ready tech solutions, ensuring your business scales reliably."
+  },
+  "navigation": {
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact"
+  }
+}

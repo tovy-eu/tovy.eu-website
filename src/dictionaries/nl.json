@@ -1,0 +1,26 @@
+
+{
+  "common": {
+    "workWithUs": "Werk met ons",
+    "readBlog": "Lees onze blog",
+    "shareIdea": "Deel je idee",
+    "privacyPolicy": "Privacybeleid",
+    "legalNotice": "Colofon",
+    "allRightsReserved": "Alle rechten voorbehouden.",
+    "stayUpToDate": "Blijf op de hoogte",
+    "newsletterDesc": "Ontvang nieuwsbrieven over wat er bij Tovy gebeurt.",
+    "subscribe": "Inschrijven",
+    "subscribing": "Inschrijven...",
+    "emailPlaceholder": "Voer hier je e-mailadres in",
+    "agreeTo": "Ik ga akkoord met het"
+  },
+  "hero": {
+    "title": "Wij bouwen de AI-fundering van uw bedrijf.",
+    "subtitle": "Wij ontwerpen en implementeren productieklare technologische oplossingen, zodat uw bedrijf betrouwbaar kan schalen."
+  },
+  "navigation": {
+    "blog": "Blog",
+    "about": "Over ons",
+    "contact": "Contact"
+  }
+}
