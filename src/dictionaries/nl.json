@@ -69,6 +69,16 @@
       }
     }
   },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Artikelen over bedrijfsautomatisering en cognitieve vrijheid door Tovy.",
+    "noPosts": "Geen blogberichten gevonden. Kom binnenkort terug!",
+    "readingTime": "min leestijd",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "featured": "Uitgelicht bericht",
+    "by": "door"
+  },
   "navigation": {
     "blog": "Blog",
     "about": "Over ons",

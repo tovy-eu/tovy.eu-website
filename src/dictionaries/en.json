@@ -69,6 +69,16 @@
       }
     }
   },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Articles on business automation and cognitive freedom by Tovy.",
+    "noPosts": "No blog posts found. Check back soon!",
+    "readingTime": "min read",
+    "previous": "Previous",
+    "next": "Next",
+    "featured": "Featured Post",
+    "by": "by"
+  },
   "navigation": {
     "blog": "Blog",
     "about": "About",
