@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -8,11 +7,10 @@ import { cn } from '@/lib/utils';
 import { Cookie } from 'lucide-react';
 import { getConsent, updateConsent } from '@/lib/consent';
 
-export function CookieBanner() {
+export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
-    // This code only runs on the client
     const consent = getConsent();
     if (consent === null) {
       setShowBanner(true);

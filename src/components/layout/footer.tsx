@@ -25,12 +25,10 @@ const socialLinks = [
   },
 ];
 
-export function Footer() {
+export default function Footer({ lang }: { lang?: string }) {
   const [year, setYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
-    // This ensures the year is set on the client after hydration,
-    // avoiding a server-client mismatch.
     setYear(new Date().getFullYear());
   }, []);
 

@@ -11,7 +11,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export function Header() {
+export default function Header({ lang }: { lang?: string }) {
   return (
     <header
       className={cn(
@@ -20,7 +20,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-16 w-full items-center justify-between px-4 md:px-8 max-w-6xl">
         {/* Left: Logo */}
-        <Link href="/" className="font-bold text-3xl">
+        <Link href={lang ? `/${lang}/` : "/"} className="font-bold text-3xl">
           <span>TOV</span>
           <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
         </Link>
