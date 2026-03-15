@@ -25,9 +25,8 @@ const serviceLines = [
     icon: <CloudCog className="h-8 w-8" />,
     description: "Designing secure, cost-optimized cloud environments for data workloads.",
     stack: [
-      { tool: "Azure Data Factory" },
-      { tool: "Azure Synapse/SQL DB" },
-      { tool: "Azure Blob/ADLS" },
+      { tool: "Azure, GCP, AWS" },
+      { tool: "Datawarehousing" },
     ],
     color: "#566FFF"
   },
@@ -39,20 +38,18 @@ const serviceLines = [
     stack: [
       { tool: "Databricks" },
       { tool: "dbt" },
-      { tool: "SQL / SSMS" },
+      { tool: "SQL" },
       { tool: "Python" },
     ],
     color: "#A792FF"
   },
   {
-    id: "application_development",
-    title: "Full-Stack Data Applications",
+    id: "analytics_automation",
+    title: "Analytics & Automation",
     icon: <CodeXml className="h-8 w-8" />,
-    description: "Building custom interfaces and internal tools to operationalize data.",
+    description: "Building dashboarding or automations to operationalize data.",
     stack: [
       { tool: "TypeScript / JavaScript" },
-      { tool: "Web & App Dev" },
-      { tool: "API Integration" },
     ],
     color: "#FFB8FA"
   },
@@ -82,7 +79,7 @@ export function EngineeringSection() {
           {serviceLines.map((service, index) => (
             <ScrollReveal key={service.id} delay={`duration-${300 + index * 200}`}>
               <Card 
-                className="h-full flex flex-col bg-card/80 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 text-center"
+                className="h-full flex flex-col bg-card border-border/50 shadow-xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 text-center"
                 style={{ '--pillar-color': service.color, '--pillar-shadow-color': `${service.color}1A` } as React.CSSProperties}
               >
                 <CardHeader className="items-center">

@@ -1,4 +1,3 @@
-
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BrainCircuit, Rocket, Sparkles, Feather } from "lucide-react";
 import React from 'react';
@@ -103,7 +102,7 @@ export function AboutSection() {
             {pillars.map((pillar) => (
               <Card 
                 key={pillar.title} 
-                className="text-center transition-all hover:shadow-lg hover:-translate-y-1 bg-card/80 backdrop-blur-sm"
+                className="text-center transition-all hover:shadow-lg hover:-translate-y-1 bg-card border-border/50 shadow-xl"
                 style={{ '--pillar-color': pillar.color, '--pillar-shadow-color': `${pillar.color}1A` } as React.CSSProperties}
               >
                 <CardHeader className="items-center">
