@@ -164,7 +164,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
 
   if (formSubmitted) {
     return (
-      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm opacity-90">
+      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-none shadow-none">
         <CardHeader className="text-center">
           <CheckCircle className="mx-auto h-16 w-16 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent mb-4" />
           <CardTitle className="text-2xl">{dict.projectForm.success.title}</CardTitle>
@@ -217,7 +217,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                             setTimeout(() => nextStep(), 200);
                           }}
                           className={cn(
-                            "h-10 w-10 shrink-0 flex items-center justify-center border rounded-md transition-all text-sm",
+                            "h-10 w-10 shrink-0 flex items-center justify-center rounded-md transition-all text-sm border-none",
                             formField.value === String(value)
                               ? "bg-primary text-primary-foreground ring-2 ring-primary ring-offset-2 ring-offset-background"
                               : "bg-muted hover:bg-muted/80"
@@ -268,15 +268,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                           setTimeout(() => nextStep(), 200);
                         }}
                         className={cn(
-                          "w-full flex items-center justify-between text-left p-3 border rounded-md transition-all",
+                          "w-full flex items-center justify-between text-left p-3 rounded-md transition-all border-none",
                           formField.value === option.label
-                            ? "bg-primary/10 border-primary ring-2 ring-primary ring-offset-2 ring-offset-background"
+                            ? "bg-primary/10 ring-2 ring-primary ring-offset-2 ring-offset-background"
                             : "bg-muted/50 hover:bg-muted"
                         )}
                       >
                         <div className="flex items-center gap-3">
                           {option.hint && (
-                            <div className="flex items-center justify-center h-6 w-6 border rounded-sm text-xs text-muted-foreground bg-background">
+                            <div className="flex items-center justify-center h-6 w-6 border-none rounded-sm text-xs text-muted-foreground bg-background">
                               {option.hint}
                             </div>
                           )}
@@ -423,7 +423,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm opacity-90">
+    <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-none shadow-none">
       <CardHeader>
         <Progress value={(step / totalSteps) * 100} className="w-full h-2" />
       </CardHeader>
