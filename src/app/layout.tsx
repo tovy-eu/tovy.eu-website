@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk } from 'next/font/google';
+import { Geist } from 'next/font/google';
 import './globals.css';
 import './pain-solution-texture.css';
 import { Toaster } from "@/components/ui/toaster"
@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   description: 'We build smart data ecosystems that take work off your hands, creating a world where technology gives people more time, focus, and freedom to grow.',
 };
 
-const spaceGrotesk = Space_Grotesk({
+const geistSans = Geist({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-geist-sans',
 });
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ scrollBehavior: 'smooth' }} data-scroll-behavior="smooth">
-      <body className={cn("font-sans antialiased flex flex-col min-h-screen", spaceGrotesk.variable)}>
+      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
         <Script id="google-consent-mode" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
