@@ -59,7 +59,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
               {dict.legal.title}
             </h1>
             <p className="mt-4 text-muted-foreground max-w-xl text-lg">
-              Official company identification and contact details for Tovy.
+              {dict.legal.subtitle}
             </p>
           </div>
           {downloadHref && (
