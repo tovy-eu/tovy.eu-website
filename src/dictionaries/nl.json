@@ -3,80 +3,80 @@
     "workWithUs": "Werk met ons",
     "readBlog": "Lees onze blog",
     "shareIdea": "Deel je idee",
-    "privacyPolicy": "Privacybeleid",
-    "legalNotice": "Colofon",
+    "privacyPolicy": "Privacyverklaring",
+    "legalNotice": "Juridische informatie",
     "allRightsReserved": "Alle rechten voorbehouden.",
     "stayUpToDate": "Blijf op de hoogte",
-    "newsletterDesc": "Ontvang nieuwsbrieven over wat er bij Tovy gebeurt.",
-    "subscribe": "Inschrijven",
-    "subscribing": "Inschrijven...",
-    "emailPlaceholder": "Voer hier je e-mailadres in",
-    "agreeTo": "Ik ga akkoord met het",
-    "downloadJson": "Downloaden als JSON"
+    "newsletterDesc": "Ontvang nieuws over wat er gebeurt bij Tovy.",
+    "subscribe": "Aanmelden",
+    "subscribing": "Bezig met aanmelden...",
+    "emailPlaceholder": "Vul hier je e-mailadres in",
+    "agreeTo": "Ik ga akkoord met de",
+    "downloadJson": "Download als JSON"
   },
   "hero": {
-    "title": "Wij bouwen de AI-fundering van uw bedrijf.",
-    "subtitle": "Wij ontwerpen en implementeren productieklare technologische oplossingen, zodat uw bedrijf betrouwbaar kan schalen."
+    "title": "Wij bouwen de AI‑basis van jouw organisatie.",
+    "subtitle": "Wij ontwerpen en realiseren data oplossingen, zodat jouw organisatie betrouwbaar kan groeien."
   },
   "about": {
-    "strategy": "Tovy Strategie",
+    "strategy": "Tovy's strategie",
     "title": "Wat we doen en waarom.",
-    "mission": "Onze missie is om slimme data-ecosystemen te bouwen die u werk uit handen nemen. Wij verlangen naar een wereld waarin technologie mensen meer tijd, focus en vrijheid geeft om te groeien.",
-    "pillarsTitle": "Onze Pijlers voor Succes",
+    "mission": "Onze missie is het bouwen van slimme data-ecosystemen die werk uit handen nemen. We streven naar een wereld waarin technologie mensen meer tijd, focus en ruimte geeft om te groeien.",
+    "pillarsTitle": "Onze kernwaarden",
     "pillars": {
       "tech": {
-        "title": "Technologische Expertise",
-        "desc": "Wij houden van tech, data en AI. We zijn op de hoogte van de snelle veranderingen in de sector."
+        "title": "Techneut zijn",
+        "desc": "We houden van technologie, data en AI. We blijven op de hoogte van de snelle ontwikkelingen in het vak."
       },
       "optimization": {
         "title": "Optimalisatie",
-        "desc": "Elk procesontwerp is gericht op efficiëntie en automatisering. We richten ons op het verwijderen van tijdrovende, inefficiënte taken."
+        "desc": "Elk procesontwerp richt zich op efficiëntie en automatisering. We streven naar het verminderen van tijdrovende, inefficiënte taken."
       },
       "freedom": {
         "title": "Vrijheid",
-        "desc": "Onze oplossingen zijn gebouwd om de cognitieve belasting te verminderen. We maken tijd vrij voor mensen om na te denken, te innoveren en te groeien."
+        "desc": "Onze oplossingen verlagen de mentale belasting. Zo creëren we tijd om te denken, vernieuwen en groeien."
       },
       "innovation": {
         "title": "Innovatie",
-        "desc": "Wij ontwerpen aanpasbare, toekomstbestendige systemen die meegroeien met uw bedrijf."
+        "desc": "We bouwen wendbare, toekomstbestendige systemen die met jouw organisatie meegroeien."
       }
     }
   },
   "engineering": {
-    "strategy": "Hoe Wij Engineeren",
-    "title": "End-to-End Data-ecosystemen",
-    "subtitle": "Van ruwe data-inname in Azure tot op maat gemaakte eindgebruikersapplicaties.",
+    "strategy": "Onze werkwijze",
+    "title": "End‑to‑end data‑ecosystemen",
+    "subtitle": "Van ruwe data in de cloud tot op maat gemaakte toepassingen voor businessprocessen.",
     "services": {
       "strategic": {
-        "title": "Strategisch Ontwerp",
-        "desc": "Doordenken van technologie-, data- en AI-strategieën om aan te sluiten bij uw bedrijfsdoelstellingen.",
+        "title": "Strategisch ontwerp",
+        "desc": "We denken mee over technologie-, data- en AI‑strategieën die aansluiten op jouw organisatiedoelen.",
         "tools": ["Roadmapping", "Architectuur", "Haalbaarheid"]
       },
       "cloud": {
-        "title": "Cloud Infrastructuur",
-        "desc": "Ontwerpen van veilige, kosten-geoptimaliseerde cloudomgevingen voor dataworkloads.",
+        "title": "Cloudinfrastructuur",
+        "desc": "We ontwerpen veilige en kostenefficiënte cloudomgevingen voor dataworkloads.",
         "tools": ["Azure, GCP, AWS", "Datawarehousing"]
       },
       "data": {
         "title": "Data Engineering",
-        "desc": "Architeren van schaalbare pijplijnen en datawarehouses met behulp van de Modern Data Stack.",
+        "desc": "We bouwen schaalbare ETLs en datawarehousing volgens de Modern Data Stack.",
         "tools": ["Databricks", "dbt", "SQL", "Python"]
       },
       "analytics": {
-        "title": "Analytics & Automatisering",
-        "desc": "Bouwen van dashboards of automatiseringen om data operationeel inzetbaar te maken.",
+        "title": "Analyse & Automatisering",
+        "desc": "We maken dashboards en automatiseringen om data echt in de operatie te brengen.",
         "tools": ["TypeScript / JavaScript"]
       }
     }
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Artikelen over bedrijfsautomatisering en cognitieve vrijheid door Tovy.",
-    "noPosts": "Geen blogberichten gevonden. Kom binnenkort terug!",
+    "subtitle": "Artikelen van Tovy over bedrijfsautomatisering en cognitieve vrijheid.",
+    "noPosts": "Geen blogartikelen gevonden. Kom later terug!",
     "readingTime": "min leestijd",
     "previous": "Vorige",
     "next": "Volgende",
-    "featured": "Uitgelicht bericht",
+    "featured": "Uitgelicht",
     "by": "door"
   },
   "navigation": {
@@ -85,141 +85,141 @@
     "contact": "Contact"
   },
   "privacy": {
-    "title": "Privacybeleid",
-    "intro": "Uw privacy is belangrijk voor ons. Het is het beleid van Tovy om uw privacy te respecteren met betrekking tot alle informatie die we van u verzamelen via onze website. Dit beleid is in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG/GDPR).",
+    "title": "Privacyverklaring",
+    "intro": "Jouw privacy is belangrijk voor ons. Het is het beleid van Tovy om jouw privacy te respecteren bij het verzamelen van gegevens via onze website. Dit beleid voldoet aan de Algemene Verordening Gegevensbescherming (AVG).",
     "sections": [
       {
         "title": "1. Verwerkingsverantwoordelijke",
-        "content": "Tovy is de verwerkingsverantwoordelijke voor de persoonlijke informatie die via deze website wordt verzameld. Voor vragen kunt u contact met ons opnemen via"
+        "content": "Tovy is de verwerkingsverantwoordelijke voor de persoonsgegevens die via deze website worden verzameld. Voor vragen kun je contact met ons opnemen via"
       },
       {
-        "title": "2. Informatie die we verzamelen en hoe we deze gebruiken",
-        "content": "We vragen alleen om persoonlijke informatie wanneer we deze echt nodig hebben om u een dienst te kunnen leveren. We verzamelen deze op eerlijke en rechtmatige wijze, met uw medeweten en expliciete toestemming. De rechtsgronden voor onze verwerking zijn primair toestemming, contractuele noodzaak en gerechtvaardigd belang.",
+        "title": "2. Welke informatie we verzamelen en hoe we deze gebruiken",
+        "content": "We vragen alleen om persoonsgegevens wanneer deze echt nodig zijn om jou een dienst te kunnen leveren. We verzamelen deze gegevens op eerlijke en wettelijke wijze, met jouw kennis en uitdrukkelijke toestemming. De wettelijke grondslagen zijn voornamelijk toestemming, contractuele noodzaak en gerechtvaardigd belang.",
         "list": [
-          "<strong>Project Intake Formulier:</strong> We verzamelen uw naam, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore en worden gebruikt om uw projectaanvraag te beoordelen en te beantwoorden. De rechtsgrond is de intentie om een overeenkomst aan te gaan.",
-          "<strong>Nieuwsbrief Inschrijving:</strong> We verzamelen uw e-mailadres wanneer u zich inschrijft voor onze nieuwsbrief. Deze gegevens worden opgeslagen in Google Cloud Firestore en uitsluitend gebruikt voor het verzenden van nieuwsbrieven. De rechtsgrond is uw expliciete toestemming.",
-          "<strong>Server Logs:</strong> Onze webserver, gehost door Firebase Hosting, registreert automatisch verzoeken, waaronder uw IP-adres, browsertype en de pagina's die u bezoekt. Deze gegevens worden gebruikt voor beveiligingsmonitoring en diagnostiek. De rechtsgrond is ons gerechtvaardigd belang bij het onderhouden van een veilige en functionele website.",
-          "<strong>Cookies:</strong> We gebruiken essentiële cookies om uw toestemmingsvoorkeuren met betrekking tot tracking te beheren. We gebruiken geen niet-essentiële cookies of tracking cookies (zoals die voor Google Analytics) zonder uw expliciete voorafgaande toestemming via onze cookiebanner."
+          "<strong>Projectaanvraagformulier:</strong> We verzamelen je naam, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore en gebruikt om je aanvraag te beoordelen en beantwoorden. De grondslag is de intentie om een overeenkomst aan te gaan.",
+          "<strong>Nieuwsbriefinschrijving:</strong> We verzamelen je e-mailadres wanneer je je aanmeldt voor onze nieuwsbrief. Deze gegevens worden opgeslagen in Google Cloud Firestore en uitsluitend gebruikt om je nieuwsbrieven te sturen. De grondslag is jouw expliciete toestemming.",
+          "<strong>Serverlogs:</strong> Onze webserver, gehost door Firebase Hosting, registreert automatisch verzoeken zoals IP-adres, browsertype en bezochte pagina’s. Deze gegevens worden gebruikt voor beveiligingsdoeleinden en diagnostiek. De grondslag is ons gerechtvaardigd belang om een veilige en functionele website te onderhouden.",
+          "<strong>Cookies:</strong> We gebruiken noodzakelijke cookies om jouw voorkeuren voor toestemmingen te beheren. We gebruiken geen niet‑essentiële of trackingcookies (zoals Google Analytics) zonder jouw voorafgaande uitdrukkelijke toestemming via onze cookiebanner."
         ]
       },
       {
-        "title": "3. Gegevensopslag en doorgifte",
-        "content": "Om uw gegevens te beschermen, hebben we onze primaire database (Cloud Firestore) geconfigureerd in de Europese Unie (regio `eur3`). Hoewel we prioriteit geven aan diensten binnen de EU, kunnen sommige van onze subverwerkers (zoals Google) gegevens internationaal doorgeven. Al deze doorgiften vinden plaats onder wettelijk conforme mechanismen, zoals Standard Contractual Clauses."
+        "title": "3. Gegevenslocatie en doorgifte",
+        "content": "Onze primaire database (Cloud Firestore) is geconfigureerd binnen de Europese Unie (regio ‘eur3’). Hoewel we EU‑diensten prefereren, kunnen sommige onderaannemers (zoals Google) gegevens internationaal doorgeven. Deze doorgiftes gebeuren uitsluitend via wettelijk toegestane mechanismen, zoals Standard Contractual Clauses."
       },
       {
-        "title": "4. Gegevensbewaring en beveiliging",
-        "content": "We bewaren verzamelde informatie alleen zo lang als nodig is om onze diensten te leveren of zoals vereist door de wet. Inschrijvingsgegevens worden bijvoorbeeld bewaard totdat u zich afmeldt. We beschermen opgeslagen gegevens binnen commercieel aanvaardbare middelen om verlies, diefstal en onbevoegde toegang te voorkomen."
+        "title": "4. Bewaartermijnen en beveiliging",
+        "content": "We bewaren persoonsgegevens alleen zolang dit nodig is voor onze diensten of wettelijk verplicht is. Zo bewaren we nieuwsbriefgegevens totdat je je uitschrijft. We beschermen opgeslagen gegevens met commercieel gangbare beveiligingsmaatregelen."
       },
       {
-        "title": "5. Uw rechten onder de AVG",
-        "content": "Als gebruiker heeft u de volgende rechten met betrekking tot uw persoonsgegevens:",
+        "title": "5. Jouw rechten onder de AVG",
+        "content": "Je hebt als gebruiker de volgende rechten met betrekking tot jouw persoonsgegevens:",
         "list": [
-          "<strong>Recht op informatie:</strong> U heeft het recht om te weten hoe uw gegevens worden verzameld en gebruikt.",
-          "<strong>Recht op inzage:</strong> U kunt een kopie opvragen van de informatie die wij over u bewaren.",
-          "<strong>Recht op rectificatie:</strong> U kunt onjuiste persoonsgegevens laten corrigeren.",
-          "<strong>Recht op gegevenswissing (\"Recht om vergeten te worden\"):</strong> U kunt verzoeken dat wij uw persoonsgegevens verwijderen.",
-          "<strong>Recht op beperking van de verwerking:</strong> U kunt het gebruik van uw gegevens beperken.",
-          "<strong>Recht op overdraagbaarheid van gegevens:</strong> U heeft het recht om uw gegevens in een machineleesbaar formaat te ontvangen.",
-          "<strong>Recht van bezwaar:</strong> U kunt bezwaar maken tegen de verwerking van uw persoonsgegevens."
+          "<strong>Recht op informatie:</strong> Je mag weten hoe wij jouw gegevens verzamelen en gebruiken.",
+          "<strong>Recht op inzage:</strong> Je kunt een kopie opvragen van de gegevens die wij over je hebben.",
+          "<strong>Recht op rectificatie:</strong> Je kunt onjuiste gegevens laten corrigeren.",
+          "<strong>Recht op verwijdering (‘recht om vergeten te worden’):</strong> Je mag vragen dat wij jouw gegevens verwijderen.",
+          "<strong>Recht op beperking:</strong> Je kunt vragen om de verwerking tijdelijk te beperken.",
+          "<strong>Recht op overdraagbaarheid:</strong> Je mag je gegevens in een machine‑leesbaar formaat ontvangen.",
+          "<strong>Recht van bezwaar:</strong> Je kunt bezwaar maken tegen de verwerking van jouw gegevens."
         ],
-        "footer": "Om een van deze rechten uit te oefenen, kunt u contact opnemen via het onderstaande e-mailadres voor gegevensbescherming."
+        "footer": "Om deze rechten uit te oefenen kun je contact met ons opnemen via ons privacy‑emailadres hieronder."
       },
       {
-        "title": "6. Neem contact met ons op",
-        "content": "Voor vragen of opmerkingen over uw privacy, of om uw AVG-rechten uit te oefenen, kunt u contact opnemen met onze Functionaris voor Gegevensbescherming via:"
+        "title": "6. Contact",
+        "content": "Voor vragen over je privacy of het uitoefenen van je AVG‑rechten kun je contact opnemen met onze Functionaris Gegevensbescherming via:"
       }
     ],
-    "effectiveDate": "Dit beleid is van kracht vanaf 30 juli 2024."
+    "effectiveDate": "Dit beleid is van kracht sinds 30 juli 2024."
   },
   "legal": {
-    "title": "Colofon",
-    "subtitle": "Officiële bedrijfsidentificatie en contactgegevens voor Tovy.",
+    "title": "Juridische informatie",
+    "subtitle": "Officiële bedrijfs- en contactgegevens van Tovy.",
     "companyDetails": "Bedrijfsgegevens",
     "companyName": "Bedrijfsnaam",
-    "representedBy": "Vertegenwoordigd door (Eigenaar)",
+    "representedBy": "Vertegenwoordigd door (eigenaar)",
     "address": "Adres",
-    "contactInfo": "Contactinformatie",
-    "email": "E-mail",
+    "contactInfo": "Contactgegevens",
+    "email": "E‑mail",
     "phone": "Telefoon",
-    "registry": "Register & Identificatie",
+    "registry": "Registratie & identificatie",
     "commercialRegistry": "Handelsregister",
-    "kvkNumber": "KvK-nummer",
-    "vatNumber": "BTW-identificatienummer",
+    "kvkNumber": "KvK‑nummer",
+    "vatNumber": "Btw‑nummer",
     "disclaimer": "Disclaimer",
-    "disclaimerSubtitle": "Onze verantwoordelijkheid met betrekking tot de inhoud van de website.",
-    "disclaimerContent": "De inhoud van onze pagina's is met de grootste zorg samengesteld. Wij kunnen echter geen garantie geven voor de juistheid, volledigheid of actualiteit van de inhoud. Volgens de wettelijke bepalingen zijn wij bovendien verantwoordelijk voor onze eigen inhoud op deze webpagina's. In dit verband wijzen wij u erop dat wij niet verplicht zijn om de verzonden of opgeslagen informatie van derden te controleren, of omstandigheden te onderzoeken die duiden op illegale activiteiten.",
+    "disclaimerSubtitle": "Onze verantwoordelijkheid voor inhoud op deze website.",
+    "disclaimerContent": "De inhoud van onze pagina’s is met grote zorg samengesteld. Toch kunnen we de juistheid, volledigheid en actualiteit ervan niet garanderen. Volgens wettelijke bepalingen zijn wij verantwoordelijk voor onze eigen inhoud. We zijn echter niet verplicht om door derden aangeleverde of opgeslagen informatie actief te controleren of onderzoek te doen naar aanwijzingen voor illegale activiteiten.",
     "nederland": "Nederland"
   },
   "projectForm": {
-    "title": "Start Je AI-Project",
-    "subtitle": "Deel je projectdetails met Tovy om schone, snelle en betrouwbare AI-systemen te bouwen.",
+    "title": "Start jouw project",
+    "subtitle": "Deel je projectdetails met Tovy zodat we snelle, betrouwbare en heldere systemen voor je kunnen bouwen.",
     "success": {
       "title": "Bedankt!",
-      "description": "Je projectaanvraag is ingediend. We nemen zo snel mogelijk contact met je op.",
-      "backHome": "Terug naar Homepage"
+      "description": "Je projectaanvraag is verzonden. We nemen snel contact met je op.",
+      "backHome": "Terug naar home"
     },
     "steps": {
       "maturity": {
-        "label": "Hoe geavanceerd is je Data Maturity?*",
-        "description": "Dit helpt ons je huidige datacapaciteiten te begrijpen.",
+        "label": "Hoe volwassen is jullie datavolwassenheid?",
+        "description": "Dit helpt ons jullie huidige situatie te begrijpen.",
         "low": "Net begonnen",
-        "mid": "Data beheren",
+        "mid": "We onderhouden data",
         "high": "Eigen oplossingen gebouwd"
       },
       "companySize": {
-        "label": "Wat is je bedrijfsgrootte?*",
-        "description": "Dit helpt ons de schaal van je organisatie te begrijpen.",
-        "options": ["Solo", "1-10 medewerkers", "11-50 medewerkers", "51-200 medewerkers", "201+ medewerkers"]
+        "label": "Wat is de grootte van jullie organisatie?",
+        "description": "Dit helpt ons de schaal van jullie organisatie in te schatten.",
+        "options": ["Solo", "1–10 medewerkers", "11–50 medewerkers", "51–200 medewerkers", "201+ medewerkers"]
       },
       "engineeringTeam": {
-        "label": "Heb je een intern engineeringteam?*",
-        "description": "Dit helpt ons te weten of we samenwerken met je ontwikkelaars.",
+        "label": "Is er een eigen engineeringteam?",
+        "description": "Helpt ons te bepalen hoe we samenwerken met jullie ontwikkelaars.",
         "options": {
           "yes": "Ja",
           "no": "Nee"
         }
       },
       "details": {
-        "label": "Vertel ons over je automatiseringsvraag of project*",
-        "focusLabel": "In één zin, wat hoop je te bouwen of te verbeteren?",
-        "focusPlaceholder": "bijv. Een AI-chatbot voor klantondersteuning...",
-        "challengesLabel": "Wat zijn de belangrijkste uitdagingen waar je nu voor staat?",
-        "challengesPlaceholder": "bijv. Ons supportteam is overbelast en reactietijden zijn traag.",
-        "visionLabel": "Wat is je visie op hoe deze oplossing moet werken?",
-        "visionPlaceholder": "bijv. We willen een AI die vragen kan beantwoorden en weet wanneer te escaleren."
+        "label": "Vertel ons over jullie automatiseringsuitdaging of project",
+        "focusLabel": "In één zin: wat wil je bouwen of verbeteren?",
+        "focusPlaceholder": "Bijvoorbeeld: Een AI‑assistent die klantvragen afhandelt...",
+        "challengesLabel": "Wat zijn de belangrijkste uitdagingen op dit moment?",
+        "challengesPlaceholder": "Bijvoorbeeld: Ons supportteam is overbelast en reactietijden zijn hoog.",
+        "visionLabel": "Hoe ziet jullie ideale oplossing eruit?",
+        "visionPlaceholder": "Bijvoorbeeld: We willen een AI die veelgestelde vragen kan beantwoorden en weet wanneer het moet doorschakelen."
       },
       "budget": {
-        "label": "Wat is je budgetverwachting?*",
-        "description": "Onze projecten starten doorgaans vanaf €2.500 voor MVP's of pilots.",
+        "label": "Hoe ziet jullie budget eruit?",
+        "description": "Onze projecten starten doorgaans vanaf €2.500, voor MVP’s of eerste versies.",
         "options": {
           "yes": "Ja, dat past",
-          "no": "Nee, nu nog niet"
+          "no": "Nee, nog niet"
         }
       },
       "timeline": {
-        "label": "Hoe snel wil je beginnen?*",
-        "description": "We kunnen een werkende versie leveren binnen 10 werkdagen.",
+        "label": "Wanneer willen jullie beginnen?",
+        "description": "We kunnen binnen 10 werkdagen een werkende versie opleveren.",
         "options": {
-          "yes": "Ja, we zijn klaar om snel te starten",
-          "no": "Nog niet, we bereiden ons intern voor"
+          "yes": "Zo snel mogelijk",
+          "no": "Nog niet, we zijn ons aan het voorbereiden"
         }
       },
       "contact": {
-        "label": "Hoe kunnen we je bereiken?*",
-        "description": "Geef je contact- en bedrijfsgegevens door.",
+        "label": "Hoe kunnen we jullie bereiken?",
+        "description": "Vul hier jullie contact- en bedrijfsgegevens in.",
         "firstName": "Voornaam *",
         "lastName": "Achternaam *",
         "phone": "Telefoonnummer",
-        "email": "E-mail *",
+        "email": "E‑mail *",
         "company": "Bedrijf *",
-        "consent": "Ik ga akkoord met het Privacybeleid."
+        "consent": "Ik ga akkoord met de privacyverklaring."
       }
     },
     "buttons": {
       "previous": "Vorige",
       "next": "Volgende",
-      "submit": "Verzend Project",
-      "submitting": "Verzenden..."
+      "submit": "Project indienen",
+      "submitting": "Bezig met verzenden..."
     }
   }
 }
