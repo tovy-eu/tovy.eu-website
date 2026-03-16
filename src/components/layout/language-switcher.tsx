@@ -1,3 +1,4 @@
+
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
@@ -27,6 +28,7 @@ const NLFlag = () => (
 
 /**
  * A minimalistic language switcher component using flags.
+ * Updated with a larger hit area (h-11 = 44px) for better mobile accessibility.
  */
 export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps) {
   const pathname = usePathname();
@@ -55,7 +57,7 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
       variant="ghost"
       size="sm"
       onClick={toggleLanguage}
-      className="h-9 px-2 rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-2 overflow-hidden border-none"
+      className="h-11 px-3 rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-2 overflow-hidden border-none"
       aria-label={`Switch to ${currentLang === 'en' ? 'Dutch' : 'English'}`}
     >
       {currentLang === "en" ? <GBFlag /> : <NLFlag />}

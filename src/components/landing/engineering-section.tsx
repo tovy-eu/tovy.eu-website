@@ -46,7 +46,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
 
   return (
     <section 
-      className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-16 sm:py-24"
+      className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-12 sm:py-24"
     >
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <ScrollReveal>
@@ -63,7 +63,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
           </div>
         </ScrollReveal>
 
-        <div className="relative mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="relative mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {serviceLines.map((service, index) => (
             <ScrollReveal key={service.id} delay={`delay-[${index * 150}ms] duration-700`}>
               <Card 
@@ -80,15 +80,15 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                   >
                     {React.cloneElement(service.icon, { style: { color: `var(--pillar-color)` } })}
                   </div>
-                  <CardTitle className="mt-4 min-h-[3.5rem] flex items-center justify-center">{service.title}</CardTitle>
+                  <CardTitle className="mt-4 min-h-[3.5rem] flex items-center justify-center text-lg md:text-xl">{service.title}</CardTitle>
                 </CardHeader>
-                <CardDescription className="px-6 pb-4 flex-grow text-muted-foreground/90 flex items-center justify-center min-h-[5rem] z-0">
+                <CardDescription className="px-6 pb-4 flex-grow text-muted-foreground/90 flex items-center justify-center min-h-[5rem] z-0 text-sm md:text-base">
                   {service.description}
                 </CardDescription>
                 <CardContent className="flex flex-col justify-center items-center pb-6 z-0">
                   <div className="flex flex-wrap justify-center gap-2">
                     {service.stack.map(item => (
-                      <Badge key={item.tool} variant="secondary">{item.tool}</Badge>
+                      <Badge key={item.tool} variant="secondary" className="px-2 py-0.5 text-[10px] md:text-xs">{item.tool}</Badge>
                     ))}
                   </div>
                 </CardContent>

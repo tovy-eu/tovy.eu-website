@@ -1,3 +1,4 @@
+
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BrainCircuit, Rocket, Sparkles, Feather } from "lucide-react";
 import React from 'react';
@@ -34,7 +35,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
 
   return (
     <section 
-      className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-16 sm:py-24"
+      className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-12 sm:py-24"
     >
       <div className="relative mx-auto max-w-6xl px-4 md:px-8">
         <div className="absolute inset-0 z-0 overflow-hidden hidden lg:block">
@@ -83,7 +84,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="mx-auto max-w-4xl text-center mt-8 md:mt-12">
+          <div className="mx-auto max-w-4xl text-center mt-6 md:mt-12">
             <p className="text-base md:text-lg leading-relaxed text-foreground/80">
               {dict.about.mission}
             </p>
@@ -91,7 +92,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="mt-16 text-center">
+          <div className="mt-12 md:mt-16 text-center">
             <h3 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
               {dict.about.pillarsTitle}
             </h3>
@@ -110,10 +111,10 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                 
                 <CardHeader className="items-center z-0 p-6 pb-2">
                   <div 
-                    className="p-3 md:p-4 rounded-lg"
+                    className="p-4 rounded-lg"
                     style={{ backgroundColor: `var(--pillar-shadow-color)`}}
                   >
-                    {React.cloneElement(pillar.icon as React.ReactElement, { className: "h-6 w-6 md:h-8 md:w-8", style: { color: `var(--pillar-color)` } })}
+                    {React.cloneElement(pillar.icon as React.ReactElement, { className: "h-7 w-7 md:h-8 md:w-8", style: { color: `var(--pillar-color)` } })}
                   </div>
                   <CardTitle className="mt-4 text-lg md:text-xl">{pillar.title}</CardTitle>
                 </CardHeader>
