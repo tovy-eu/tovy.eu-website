@@ -105,8 +105,19 @@
     }
   }
 
+  @keyframes kitt-line-sweep {
+    0% { transform: translateX(-150%); opacity: 0; }
+    15% { opacity: 1; }
+    40% { transform: translateX(150%); opacity: 1; }
+    55%, 100% { transform: translateX(150%); opacity: 0; }
+  }
+
   .animate-kitt-glow {
     animation: kitt-pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-kitt-line-sweep {
+    animation: kitt-line-sweep 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
 

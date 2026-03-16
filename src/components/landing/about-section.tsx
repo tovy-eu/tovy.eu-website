@@ -38,7 +38,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
         
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-xs md:text-sm font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-widest">
+            <h2 className="text-[10px] md:text-xs font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.2em]">
               {dict.about.strategy}
             </h2>
             <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white">
@@ -50,9 +50,16 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
           </div>
         </ScrollReveal>
 
-        <div className="mt-20 relative mx-auto max-w-3xl">
+        <div className="mt-20 relative mx-auto max-w-2xl">
           {/* Connecting Line (Desktop) */}
-          <div className="absolute top-7 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent hidden lg:block" />
+          <div className="absolute top-7 left-[10%] right-[10%] h-[3px] bg-white/10 hidden lg:block overflow-hidden rounded-full">
+            <div 
+              className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-primary to-transparent blur-sm animate-kitt-line-sweep"
+            />
+            <div 
+              className="absolute inset-y-0 w-1/4 bg-white/20 blur-md animate-kitt-line-sweep"
+            />
+          </div>
           
           <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-0 relative z-10">
             {pillars.map((pillar, index) => (
