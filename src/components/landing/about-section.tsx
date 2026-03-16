@@ -11,28 +11,28 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
       title: dict.about.pillars.tech.title,
       description: dict.about.pillars.tech.desc,
       color: "#2B5EFF",
-      delay: "0s"
+      delay: "-4s" // Peak at 0s (Left)
     },
     {
       icon: <Rocket />,
       title: dict.about.pillars.optimization.title,
       description: dict.about.pillars.optimization.desc,
       color: "#566FFF",
-      delay: "-1.33s"
+      delay: "-2.66s" // Peak at 1.34s (Mid-left)
     },
     {
       icon: <Feather />,
       title: dict.about.pillars.freedom.title,
       description: dict.about.pillars.freedom.desc,
       color: "#A792FF",
-      delay: "-2.66s"
+      delay: "-1.33s" // Peak at 2.67s (Mid-right)
     },
     {
       icon: <Sparkles />,
       title: dict.about.pillars.innovation.title,
       description: dict.about.pillars.innovation.desc,
       color: "#FFB8FA",
-      delay: "-4s"
+      delay: "0s" // Peak at 4s (Right)
     }
   ];
 
@@ -55,13 +55,13 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
         </ScrollReveal>
 
         <div className="mt-20 relative mx-auto max-w-2xl">
-          {/* Connecting Line (Desktop) - Lower intensity */}
-          <div className="absolute top-7 left-[10%] right-[10%] h-[2px] bg-white/5 hidden lg:block overflow-hidden rounded-full">
+          {/* Thicker Connecting Line (Desktop) with synchronized sweep */}
+          <div className="absolute top-7 left-[10%] right-[10%] h-[3px] bg-white/5 hidden lg:block overflow-hidden rounded-full">
             <div 
-              className="absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-primary/40 to-transparent blur-md animate-kitt-line-sweep"
+              className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-primary/30 to-transparent blur-md animate-kitt-line-sweep"
             />
             <div 
-              className="absolute inset-y-0 w-1/5 bg-white/10 blur-sm animate-kitt-line-sweep"
+              className="absolute inset-y-0 w-1/4 bg-white/10 blur-sm animate-kitt-line-sweep"
             />
           </div>
           
