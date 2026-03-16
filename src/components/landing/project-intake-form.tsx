@@ -201,13 +201,13 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
               <FormItem>
                 <div className="flex items-center gap-4">
                   <span className="text-primary font-semibold">{stepIndex + 1} →</span>
-                  <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
+                  <FormLabel className="text-xl md:text-2xl font-semibold">{label}</FormLabel>
                 </div>
-                {description && <p className="text-muted-foreground mt-2">{description}</p>}
+                {description && <p className="text-muted-foreground mt-2 text-sm md:text-base">{description}</p>}
                 
                 <FormControl>
-                  <div>
-                    <div className="flex justify-between gap-1 my-4 overflow-x-auto pb-2">
+                  <div className="mt-6">
+                    <div className="grid grid-cols-4 sm:grid-cols-6 md:flex md:justify-between gap-2 md:gap-1">
                       {Array.from({ length: 11 }, (_, i) => i).map(value => (
                         <button
                           key={value}
@@ -217,9 +217,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                             setTimeout(() => nextStep(), 200);
                           }}
                           className={cn(
-                            "h-10 w-10 shrink-0 flex items-center justify-center rounded-md transition-all text-sm border-0 focus:outline-none focus:ring-2 focus:ring-primary",
+                            "h-12 w-full md:h-10 md:w-10 flex items-center justify-center rounded-md transition-all text-sm border-0 focus:outline-none focus:ring-2 focus:ring-primary",
                             formField.value === String(value)
-                              ? "bg-primary text-primary-foreground shadow-lg"
+                              ? "bg-primary text-primary-foreground shadow-lg scale-105"
                               : "bg-white/5 hover:bg-white/10"
                           )}
                         >
@@ -227,9 +227,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                         </button>
                       ))}
                     </div>
-                    <div className="flex justify-between text-xs text-muted-foreground mt-2">
+                    <div className="flex justify-between text-[10px] md:text-xs text-muted-foreground mt-4 px-1">
                       <span>{dict.projectForm.steps.maturity.low}</span>
-                      <span>{dict.projectForm.steps.maturity.mid}</span>
+                      <span className="hidden sm:inline">{dict.projectForm.steps.maturity.mid}</span>
                       <span>{dict.projectForm.steps.maturity.high}</span>
                     </div>
                   </div>
@@ -253,12 +253,12 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
               <FormItem>
                 <div className="flex items-center gap-4">
                   <span className="text-primary font-semibold">{stepIndex + 1} →</span>
-                  <FormLabel className="text-2xl font-semibold">{label}</FormLabel>
+                  <FormLabel className="text-xl md:text-2xl font-semibold">{label}</FormLabel>
                 </div>
-                {description && <p className="text-muted-foreground mt-2">{description}</p>}
+                {description && <p className="text-muted-foreground mt-2 text-sm md:text-base">{description}</p>}
                 
                 <FormControl>
-                  <div className="space-y-3 pt-4 max-w-sm">
+                  <div className="space-y-3 pt-6 max-w-sm">
                     {options[fieldName].map(option => (
                       <button
                         key={option.label}
@@ -268,7 +268,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                           setTimeout(() => nextStep(), 200);
                         }}
                         className={cn(
-                          "w-full flex items-center justify-between text-left p-3 rounded-md transition-all border-0 focus:outline-none focus:ring-2 focus:ring-primary",
+                          "w-full flex items-center justify-between text-left p-4 rounded-md transition-all border-0 focus:outline-none focus:ring-2 focus:ring-primary min-h-[56px]",
                           formField.value === option.label
                             ? "bg-primary/20 shadow-inner"
                             : "bg-white/5 hover:bg-white/10"
@@ -276,11 +276,11 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                       >
                         <div className="flex items-center gap-3">
                           {option.hint && (
-                            <div className="flex items-center justify-center h-6 w-6 rounded-sm text-xs text-muted-foreground bg-black/20">
+                            <div className="flex items-center justify-center h-6 w-6 rounded-sm text-[10px] font-bold text-muted-foreground bg-black/20">
                               {option.hint}
                             </div>
                           )}
-                          <span className="font-medium">{option.label}</span>
+                          <span className="font-medium text-sm md:text-base">{option.label}</span>
                         </div>
                         {formField.value === option.label && <Check className="h-5 w-5 text-primary" />}
                       </button>
@@ -305,32 +305,32 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
               <FormItem>
                 <div className="flex items-center gap-4">
                   <span className="text-primary font-semibold">{stepIndex + 1} →</span>
-                  <FormLabel className="text-2xl font-semibold">{dict.projectForm.steps.details.label}</FormLabel>
+                  <FormLabel className="text-xl md:text-2xl font-semibold">{dict.projectForm.steps.details.label}</FormLabel>
                 </div>
-                <p className="text-muted-foreground mt-2">{dict.projectForm.steps.details.focusLabel}</p>
+                <p className="text-muted-foreground mt-2 text-sm md:text-base">{dict.projectForm.steps.details.focusLabel}</p>
                 <FormControl>
                   <Textarea 
                     placeholder={dict.projectForm.steps.details.focusPlaceholder} 
                     {...field} 
-                    className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
+                    className="text-base md:text-lg mt-4 min-h-[100px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
                   />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <div className={cn("pt-8 transition-opacity duration-500", showChallenges ? "opacity-100" : "opacity-0 invisible")}>
+          <div className={cn("pt-4 md:pt-8 transition-opacity duration-500", showChallenges ? "opacity-100" : "opacity-0 invisible")}>
             <FormField
               control={form.control}
               name="challenges"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xl font-semibold">{dict.projectForm.steps.details.challengesLabel}</FormLabel>
+                  <FormLabel className="text-lg md:text-xl font-semibold">{dict.projectForm.steps.details.challengesLabel}</FormLabel>
                   <FormControl>
                     <Textarea 
                       placeholder={dict.projectForm.steps.details.challengesPlaceholder} 
                       {...field} 
-                      className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
+                      className="text-base md:text-lg mt-4 min-h-[100px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
                     />
                   </FormControl>
                   <FormMessage />
@@ -338,18 +338,18 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
               )}
             />
           </div>
-          <div className={cn("pt-8 transition-opacity duration-500", showVision ? "opacity-100" : "opacity-0 invisible")}>
+          <div className={cn("pt-4 md:pt-8 transition-opacity duration-500", showVision ? "opacity-100" : "opacity-0 invisible")}>
             <FormField
               control={form.control}
               name="vision"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xl font-semibold">{dict.projectForm.steps.details.visionLabel}</FormLabel>
+                  <FormLabel className="text-lg md:text-xl font-semibold">{dict.projectForm.steps.details.visionLabel}</FormLabel>
                    <FormControl>
                     <Textarea 
                       placeholder={dict.projectForm.steps.details.visionPlaceholder} 
                       {...field} 
-                      className="text-lg mt-4 min-h-[100px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
+                      className="text-base md:text-lg mt-4 min-h-[100px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
                     />
                   </FormControl>
                   <FormMessage />
@@ -367,9 +367,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           <div>
             <div className="flex items-center gap-4">
               <span className="text-primary font-semibold">{stepIndex + 1} →</span>
-              <h2 className="text-2xl font-semibold">{label}</h2>
+              <h2 className="text-xl md:text-2xl font-semibold">{label}</h2>
             </div>
-            {description && <p className="text-muted-foreground mt-2">{description}</p>}
+            {description && <p className="text-muted-foreground mt-2 text-sm md:text-base">{description}</p>}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField control={form.control} name="firstName" render={({ field }) => (
@@ -416,7 +416,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                   />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>
+                  <FormLabel className="text-sm">
                     {dict.common.agreeTo}{" "}
                     <Link href={`/${lang}/privacy-policy/`} target="_blank" className="underline hover:text-primary">
                       {dict.common.privacyPolicy}
@@ -437,12 +437,12 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
 
   return (
     <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-0 shadow-none">
-      <CardHeader>
-        <Progress value={(step / totalSteps) * 100} className="w-full h-2" />
+      <CardHeader className="p-4 md:p-6 pb-2">
+        <Progress value={(step / totalSteps) * 100} className="w-full h-1.5 md:h-2" />
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
-          <CardContent className="min-h-[600px] flex items-center">
+          <CardContent className="min-h-[350px] md:min-h-[500px] lg:min-h-[600px] flex items-center p-4 md:p-6">
             <div className="w-full">
               {formSteps.map((_, index) => (
                 <div key={`step-${index}`}>
@@ -451,20 +451,20 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
               ))}
             </div>
           </CardContent>
-          <CardFooter className="flex justify-between mt-4 min-h-[52px]">
-            <Button type="button" variant="ghost" onClick={prevStep} disabled={step === 0} className="hover:bg-white/5">
-              <ArrowLeft className="mr-2 h-4 w-4" /> {dict.projectForm.buttons.previous}
+          <CardFooter className="flex justify-between p-4 md:p-6 mt-2 md:mt-4 min-h-[64px] border-t border-white/5">
+            <Button type="button" variant="ghost" onClick={prevStep} disabled={step === 0} className="hover:bg-white/5 text-sm">
+              <ArrowLeft className="mr-1 md:mr-2 h-4 w-4" /> {dict.projectForm.buttons.previous}
             </Button>
             
             <div className="flex justify-end flex-grow">
               {(currentField === 'projectDetails' || currentField === 'contactDetails' || step < totalSteps - 1) && (
-                <Button type="button" onClick={nextStep} disabled={isPending || step === totalSteps - 1}>
-                  {dict.projectForm.buttons.next} <ArrowRight className="ml-2 h-4 w-4" />
+                <Button type="button" onClick={nextStep} disabled={isPending || step === totalSteps - 1} className="text-sm">
+                  {dict.projectForm.buttons.next} <ArrowRight className="ml-1 md:ml-2 h-4 w-4" />
                 </Button>
               )}
 
               {step === totalSteps - 1 && (
-                <Button type="button" onClick={form.handleSubmit(onSubmit)} size="lg" disabled={isPending}>
+                <Button type="button" onClick={form.handleSubmit(onSubmit)} size="lg" disabled={isPending} className="text-sm px-6">
                   {isPending ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {dict.projectForm.buttons.submitting}
