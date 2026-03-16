@@ -10,25 +10,31 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
       icon: <BrainCircuit />,
       title: dict.about.pillars.tech.title,
       description: dict.about.pillars.tech.desc,
-      color: "#2B5EFF"
+      color: "#2B5EFF",
+      // Delay mapped to ping-pong: 0% -> 50% -> 100% of the 4s duration
+      // Icons are at 0, 33%, 66%, 100% distance
+      delay: "0s"
     },
     {
       icon: <Rocket />,
       title: dict.about.pillars.optimization.title,
       description: dict.about.pillars.optimization.desc,
-      color: "#566FFF"
+      color: "#566FFF",
+      delay: "-0.66s" // Hits roughly at 1/3 of the half-cycle
     },
     {
       icon: <Feather />,
       title: dict.about.pillars.freedom.title,
       description: dict.about.pillars.freedom.desc,
-      color: "#A792FF"
+      color: "#A792FF",
+      delay: "-1.33s" // Hits roughly at 2/3 of the half-cycle
     },
     {
       icon: <Sparkles />,
       title: dict.about.pillars.innovation.title,
       description: dict.about.pillars.innovation.desc,
-      color: "#FFB8FA"
+      color: "#FFB8FA",
+      delay: "-2s" // Hits at the peak (50% mark of 4s)
     }
   ];
 
@@ -52,7 +58,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
 
         <div className="mt-20 relative mx-auto max-w-2xl">
           {/* Connecting Line (Desktop) */}
-          <div className="absolute top-7 left-[10%] right-[10%] h-[3px] bg-white/10 hidden lg:block overflow-hidden rounded-full">
+          <div className="absolute top-7 left-[10%] right-[10%] h-[3px] bg-white/5 hidden lg:block overflow-hidden rounded-full">
             <div 
               className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-primary to-transparent blur-sm animate-kitt-line-sweep"
             />
@@ -72,14 +78,14 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                   {/* Icon Circle */}
                   <div 
                     className="relative flex items-center justify-center w-14 h-14 rounded-full bg-card/80 backdrop-blur-md border border-white/5 shadow-2xl transition-all duration-500 mb-4 overflow-visible"
-                    style={{ '--glow-color': pillar.color } as React.CSSProperties}
+                    style={{ '--glow-color': pillar.color, color: pillar.color } as React.CSSProperties}
                   >
-                    {/* KITT Glow Effect */}
+                    {/* KITT Glow Effect - Ping Pong logic handled via animation-delay */}
                     <div 
-                      className="absolute inset-0 rounded-full blur-xl opacity-0 animate-kitt-glow pointer-events-none" 
+                      className="absolute inset-0 rounded-full blur-xl opacity-0 animate-kitt-scan pointer-events-none" 
                       style={{ 
                         backgroundColor: pillar.color,
-                        animationDelay: `${index * 0.8}s`
+                        animationDelay: pillar.delay
                       }} 
                     />
                     
