@@ -121,11 +121,11 @@
   }
 
   .animate-kitt-scan {
-    animation: kitt-scan 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: kitt-scan 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   .animate-kitt-line-sweep {
-    animation: kitt-line-sweep-ping-pong 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: kitt-line-sweep-ping-pong 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 }
 
