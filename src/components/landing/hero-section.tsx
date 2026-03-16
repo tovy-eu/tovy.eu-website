@@ -23,7 +23,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
 
   return (
     <section 
-      className="relative w-full flex flex-col items-center justify-center min-h-[80vh] text-center py-20 md:py-32 overflow-hidden"
+      className="relative w-full flex flex-col items-center justify-center min-h-[80vh] text-center py-16 px-4 md:py-32 overflow-hidden"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
@@ -31,27 +31,27 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
       <WavyLines />
       <div
         className={cn(
-          'transition-all ease-in-out duration-700 delay-300 z-10 max-w-4xl px-4 flex flex-col items-center justify-center flex-grow',
+          'transition-all ease-in-out duration-700 delay-300 z-10 max-w-4xl flex flex-col items-center justify-center flex-grow',
           isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         )}
       >
         <h1 
-          className="text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
-          style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}
+          className="text-3xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1]"
+          style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.2)' }}
         >
           {dict.hero.title}
         </h1>
-        <p className="mt-6 text-lg leading-8 text-white/80 sm:text-xl">
+        <p className="mt-6 text-base leading-relaxed text-white/80 sm:text-lg sm:leading-8 md:text-xl max-w-2xl">
           {dict.hero.subtitle}
         </p>
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button asChild size="lg" className="font-semibold text-lg">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+          <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-lg">
             <Link href={`/${lang}/project-request/`}>
               {dict.common.workWithUs}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="font-semibold text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white">
+          <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white">
             <Link href={`/${lang}/blog/`}>
               <BookOpen className="mr-2 h-5 w-5" />
               {dict.common.readBlog}

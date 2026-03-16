@@ -1,4 +1,3 @@
-
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BrainCircuit, Rocket, Sparkles, Feather } from "lucide-react";
 import React from 'react';
@@ -74,18 +73,18 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
         </div>
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
+            <h2 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
               {dict.about.strategy}
             </h2>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
               {dict.about.title}
             </h2>
           </div>
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="mx-auto max-w-4xl text-center mt-12">
-            <p className="text-lg leading-8 text-foreground/80">
+          <div className="mx-auto max-w-4xl text-center mt-8 md:mt-12">
+            <p className="text-base md:text-lg leading-relaxed text-foreground/80">
               {dict.about.mission}
             </p>
           </div>
@@ -93,13 +92,13 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
 
         <ScrollReveal>
           <div className="mt-16 text-center">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
+            <h3 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
               {dict.about.pillarsTitle}
             </h3>
           </div>
         </ScrollReveal>
         
-        <div className="relative mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="relative mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {pillars.map((pillar, index) => (
             <ScrollReveal key={pillar.title} delay={`delay-[${index * 150}ms] duration-700`}>
               <Card 
@@ -109,16 +108,16 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                 {/* Glass Reflection Shine */}
                 <div className="absolute inset-0 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg] pointer-events-none z-10" />
                 
-                <CardHeader className="items-center z-0">
+                <CardHeader className="items-center z-0 p-6 pb-2">
                   <div 
-                    className="p-4 rounded-lg"
+                    className="p-3 md:p-4 rounded-lg"
                     style={{ backgroundColor: `var(--pillar-shadow-color)`}}
                   >
-                    {React.cloneElement(pillar.icon as React.ReactElement, { style: { color: `var(--pillar-color)` } })}
+                    {React.cloneElement(pillar.icon as React.ReactElement, { className: "h-6 w-6 md:h-8 md:w-8", style: { color: `var(--pillar-color)` } })}
                   </div>
-                  <CardTitle className="mt-4">{pillar.title}</CardTitle>
+                  <CardTitle className="mt-4 text-lg md:text-xl">{pillar.title}</CardTitle>
                 </CardHeader>
-                <CardDescription className="p-6 pt-0 text-muted-foreground/90 flex-grow z-0">
+                <CardDescription className="p-6 pt-2 text-sm md:text-base text-muted-foreground/90 flex-grow z-0">
                   {pillar.description}
                 </CardDescription>
               </Card>
