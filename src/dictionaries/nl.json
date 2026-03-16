@@ -19,10 +19,10 @@
     "subtitle": "Wij ontwerpen en realiseren data oplossingen, zodat jouw organisatie betrouwbaar kan groeien."
   },
   "about": {
-    "strategy": "Tovy's strategie",
+    "strategy": "TOVY'S STRATEGIE",
     "title": "Wat we doen en waarom.",
     "mission": "Onze missie is het bouwen van slimme data-ecosystemen die werk uit handen nemen. We streven naar een wereld waarin technologie mensen meer tijd, focus en ruimte geeft om te groeien.",
-    "pillarsTitle": "Onze kernwaarden",
+    "pillarsTitle": "ONZE KERNWAARDEN",
     "pillars": {
       "tech": {
         "title": "Techneut zijn",
@@ -43,7 +43,7 @@
     }
   },
   "engineering": {
-    "strategy": "Onze werkwijze",
+    "strategy": "ONZE WERKWIJZE",
     "title": "End‑to‑end data‑ecosystemen",
     "subtitle": "Van ruwe data in de cloud tot op maat gemaakte toepassingen voor businessprocessen.",
     "services": {
@@ -96,10 +96,10 @@
         "title": "2. Welke informatie we verzamelen en hoe we deze gebruiken",
         "content": "We vragen alleen om persoonsgegevens wanneer deze echt nodig zijn om jou een dienst te kunnen leveren. We verzamelen deze gegevens op eerlijke en wettelijke wijze, met jouw kennis en uitdrukkelijke toestemming. De wettelijke grondslagen zijn voornamelijk toestemming, contractuele noodzaak en gerechtvaardigd belang.",
         "list": [
-          "<strong>Projectaanvraagformulier:</strong> We verzamelen je naam, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore en gebruikt om je aanvraag te beoordelen en beantwoorden. De grondslag is de intentie om een overeenkomst aan te gaan.",
-          "<strong>Nieuwsbriefinschrijving:</strong> We verzamelen je e-mailadres wanneer je je aanmeldt voor onze nieuwsbrief. Deze gegevens worden opgeslagen in Google Cloud Firestore en uitsluitend gebruikt om je nieuwsbrieven te sturen. De grondslag is jouw expliciete toestemming.",
+          "<strong>Projectaanvraagformulier:</strong> We verzamelen je naam, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore and gebruikt om je aanvraag te beoordelen en beantwoorden. De grondslag is de intentie om een overeenkomst aan te gaan.",
+          "<strong>Nieuwsbriefinschrijving:</strong> We verzamelen je e-mailadres wanneer je je aanmeldt voor onze nieuwsbrief. Deze gegevens worden opgeslagen in Google Cloud Firestore and uitsluitend gebruikt om je nieuwsbrieven te sturen. De grondslag is jouw expliciete toestemming.",
           "<strong>Serverlogs:</strong> Onze webserver, gehost door Firebase Hosting, registreert automatisch verzoeken zoals IP-adres, browsertype en bezochte pagina’s. Deze gegevens worden gebruikt voor beveiligingsdoeleinden en diagnostiek. De grondslag is ons gerechtvaardigd belang om een veilige en functionele website te onderhouden.",
-          "<strong>Cookies:</strong> We gebruiken noodzakelijke cookies om jouw voorkeuren voor toestemmingen te beheren. We gebruiken geen niet‑essentiële of trackingcookies (zoals Google Analytics) zonder jouw voorafgaande uitdrukkelijke toestemming via onze cookiebanner."
+          "<strong>Cookies:</strong> We gebruiken noodzakelijke cookies om jouw voorkeuren voor toestemmingen te beheren. We gebruiken geen niet‑essentiële of trackingcookies (zoals Google Analytics) zonder jouw voorafgaande uitdrukkelijke toestemming via onze cookie banner."
         ]
       },
       {

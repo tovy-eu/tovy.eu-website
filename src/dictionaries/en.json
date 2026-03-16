@@ -19,10 +19,10 @@
     "subtitle": "We design and implement production-ready tech solutions, ensuring your business scales reliably."
   },
   "about": {
-    "strategy": "Tovy Strategy",
+    "strategy": "TOVY STRATEGY",
     "title": "What and why we do this.",
     "mission": "Our mission is to build smart data ecosystems that take work off your hands. We desire a world where technology gives people more time, focus, and freedom to grow.",
-    "pillarsTitle": "Our Pillars of Success",
+    "pillarsTitle": "OUR PILLARS OF SUCCESS",
     "pillars": {
       "tech": {
         "title": "Tech Savviness",
@@ -43,7 +43,7 @@
     }
   },
   "engineering": {
-    "strategy": "How We Engineer",
+    "strategy": "OUR ENGINEERING STRATEGY",
     "title": "End-to-End Data Ecosystems",
     "subtitle": "From raw ingestion in Azure to custom end-user applications.",
     "services": {
