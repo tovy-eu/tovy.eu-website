@@ -1,32 +1,31 @@
-
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BrainCircuit, Rocket, Sparkles, Feather } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
+import { cn } from "@/lib/utils";
 
 export function AboutSection({ dict }: { dict: Dictionary }) {
   const pillars = [
     {
-      icon: <BrainCircuit className="h-8 w-8" />,
+      icon: <BrainCircuit />,
       title: dict.about.pillars.tech.title,
       description: dict.about.pillars.tech.desc,
       color: "#2B5EFF"
     },
     {
-      icon: <Rocket className="h-8 w-8" />,
+      icon: <Rocket />,
       title: dict.about.pillars.optimization.title,
       description: dict.about.pillars.optimization.desc,
       color: "#566FFF"
     },
     {
-      icon: <Feather className="h-8 w-8" />,
+      icon: <Feather />,
       title: dict.about.pillars.freedom.title,
       description: dict.about.pillars.freedom.desc,
       color: "#A792FF"
     },
     {
-      icon: <Sparkles className="h-8 w-8" />,
+      icon: <Sparkles />,
       title: dict.about.pillars.innovation.title,
       description: dict.about.pillars.innovation.desc,
       color: "#FFB8FA"
@@ -34,97 +33,72 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
   ];
 
   return (
-    <section 
-      className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-12 sm:py-24"
-    >
+    <section className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-16 sm:py-24 overflow-hidden">
       <div className="relative mx-auto max-w-6xl px-4 md:px-8">
-        <div className="absolute inset-0 z-0 overflow-hidden hidden lg:block">
-          <svg
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto"
-            width="1150"
-            height="600"
-            viewBox="0 0 1150 600"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#2B5EFF" />
-                <stop offset="33%" stopColor="#566FFF" />
-                <stop offset="66%" stopColor="#A792FF" />
-                <stop offset="100%" stopColor="#FFB8FA" />
-              </linearGradient>
-              <filter id="path-glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-            <path
-              d="M50 400 C 250 400 300 300 425 300 C 550 300 600 500 725 500 C 850 500 900 400 1100 400"
-              stroke="url(#path-gradient)"
-              strokeWidth="2"
-              fill="none"
-              className="animated-wavy-line opacity-50"
-              style={{ filter: "url(#path-glow)" }}
-            />
-          </svg>
-        </div>
+        
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
+            <h2 className="text-xs md:text-sm font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-widest">
               {dict.about.strategy}
             </h2>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+            <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white">
               {dict.about.title}
             </h2>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <div className="mx-auto max-w-4xl text-center mt-6 md:mt-12">
-            <p className="text-base md:text-lg leading-relaxed text-foreground/80">
+            <p className="mt-6 text-base md:text-lg leading-relaxed text-foreground/80 max-w-3xl mx-auto">
               {dict.about.mission}
             </p>
           </div>
         </ScrollReveal>
 
-        <ScrollReveal>
-          <div className="mt-12 md:mt-16 text-center">
-            <h3 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
-              {dict.about.pillarsTitle}
-            </h3>
-          </div>
-        </ScrollReveal>
-        
-        <div className="relative mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {pillars.map((pillar, index) => (
-            <ScrollReveal key={pillar.title} delay={`delay-[${index * 150}ms] duration-700`}>
-              <Card 
-                className="relative h-full flex flex-col bg-card/60 backdrop-blur-md border-none shadow-xl transition-all duration-300 hover:-translate-y-2 text-center overflow-hidden group"
-                style={{ '--pillar-color': pillar.color, '--pillar-shadow-color': `${pillar.color}1A` } as React.CSSProperties}
+        <div className="mt-20 relative">
+          {/* Connecting Line (Desktop) */}
+          <div className="absolute top-1/2 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent hidden lg:block -translate-y-8" />
+          
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-4 relative z-10">
+            {pillars.map((pillar, index) => (
+              <ScrollReveal 
+                key={pillar.title} 
+                delay={`delay-[${index * 100}ms] duration-700`}
+                className="flex-1 w-full"
               >
-                {/* Glass Reflection Shine */}
-                <div className="absolute inset-0 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg] pointer-events-none z-10" />
-                
-                <CardHeader className="items-center z-0 p-6 pb-2">
+                <div className="group relative flex flex-col items-center lg:items-start text-center lg:text-left">
+                  {/* Icon Circle */}
                   <div 
-                    className="p-4 rounded-lg"
-                    style={{ backgroundColor: `var(--pillar-shadow-color)`}}
+                    className="relative flex items-center justify-center w-14 h-14 rounded-full bg-card/80 backdrop-blur-md border border-white/5 shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 mb-4"
+                    style={{ '--glow-color': pillar.color } as React.CSSProperties}
                   >
-                    {React.cloneElement(pillar.icon as React.ReactElement, { className: "h-7 w-7 md:h-8 md:w-8", style: { color: `var(--pillar-color)` } })}
+                    <div className="absolute inset-0 rounded-full blur-md opacity-0 group-hover:opacity-20 bg-[var(--glow-color)] transition-opacity" />
+                    {React.cloneElement(pillar.icon as React.ReactElement, { 
+                      className: "h-6 w-6 transition-colors duration-300", 
+                      style: { color: pillar.color } 
+                    })}
                   </div>
-                  <CardTitle className="mt-4 text-lg md:text-xl">{pillar.title}</CardTitle>
-                </CardHeader>
-                <CardDescription className="p-6 pt-2 text-sm md:text-base text-muted-foreground/90 flex-grow z-0">
-                  {pillar.description}
-                </CardDescription>
-              </Card>
-            </ScrollReveal>
-          ))}
+
+                  {/* Text Content */}
+                  <div className="space-y-1">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-white/90">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-xs md:text-sm text-muted-foreground/80 leading-snug max-w-[180px]">
+                      {pillar.description}
+                    </p>
+                  </div>
+
+                  {/* Mobile Connector (Line below icons) */}
+                  {index < pillars.length - 1 && (
+                    <div className="h-8 w-px bg-gradient-to-b from-white/10 to-transparent lg:hidden my-2" />
+                  )}
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
+
+        <ScrollReveal className="mt-16 text-center">
+          <h3 className="text-[10px] md:text-xs font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.2em]">
+            {dict.about.pillarsTitle}
+          </h3>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-
 {
   "common": {
     "workWithUs": "Work with us",
@@ -26,20 +25,20 @@
     "pillarsTitle": "OUR PILLARS OF SUCCESS",
     "pillars": {
       "tech": {
-        "title": "Tech Savviness",
-        "desc": "We love tech, data and AI. We are up-to-date with the rapid changes in the industry."
+        "title": "Tech Savvy",
+        "desc": "Latest in AI & Data."
       },
       "optimization": {
         "title": "Optimization",
-        "desc": "Every process design aims for efficiency and automation. We target removal of tedious, inefficient tasks."
+        "desc": "Efficient processes."
       },
       "freedom": {
         "title": "Freedom",
-        "desc": "Our solutions are built to reduce cognitive load. We free up people's time to think, innovate, and grow."
+        "desc": "Less cognitive load."
       },
       "innovation": {
         "title": "Innovation",
-        "desc": "We design adaptable, future-ready systems that evolve with your business."
+        "desc": "Future-ready systems."
       }
     }
   },

@@ -1,4 +1,3 @@
-
 {
   "common": {
     "workWithUs": "Werk met ons",
@@ -26,20 +25,20 @@
     "pillarsTitle": "ONZE KERNWAARDEN",
     "pillars": {
       "tech": {
-        "title": "Techneut zijn",
-        "desc": "We houden van technologie, data en AI. We blijven op de hoogte van de snelle ontwikkelingen in het vak."
+        "title": "Techneut",
+        "desc": "Nieuwste in AI & Data."
       },
       "optimization": {
         "title": "Optimalisatie",
-        "desc": "Elk procesontwerp richt zich op efficiëntie en automatisering. We streven naar het verminderen van tijdrovende, inefficiënte taken."
+        "desc": "Efficiënte processen."
       },
       "freedom": {
         "title": "Vrijheid",
-        "desc": "Onze oplossingen verlagen de mentale belasting. Zo creëren we tijd om te denken, vernieuwen en groeien."
+        "desc": "Minder mentale druk."
       },
       "innovation": {
         "title": "Innovatie",
-        "desc": "We bouwen wendbare, toekomstbestendige systemen die met jouw organisatie meegroeien."
+        "desc": "Toekomstbestendig."
       }
     }
   },
