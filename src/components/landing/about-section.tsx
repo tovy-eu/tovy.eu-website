@@ -11,8 +11,8 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
       title: dict.about.pillars.tech.title,
       description: dict.about.pillars.tech.desc,
       color: "#2B5EFF",
-      // Delay mapped to ping-pong: 0% -> 50% -> 100% of the 4s duration
-      // Icons are at 0, 33%, 66%, 100% distance
+      // Delay mapped to ping-pong: 0% -> 50% -> 100% of the 8s duration
+      // Icons are at 0, 33%, 66%, 100% distance on the outward trip (0s to 4s)
       delay: "0s"
     },
     {
@@ -20,21 +20,21 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
       title: dict.about.pillars.optimization.title,
       description: dict.about.pillars.optimization.desc,
       color: "#566FFF",
-      delay: "-0.66s" // Hits roughly at 1/3 of the half-cycle
+      delay: "-1.33s" // Hits at 1/3 of the 4s half-cycle
     },
     {
       icon: <Feather />,
       title: dict.about.pillars.freedom.title,
       description: dict.about.pillars.freedom.desc,
       color: "#A792FF",
-      delay: "-1.33s" // Hits roughly at 2/3 of the half-cycle
+      delay: "-2.66s" // Hits at 2/3 of the 4s half-cycle
     },
     {
       icon: <Sparkles />,
       title: dict.about.pillars.innovation.title,
       description: dict.about.pillars.innovation.desc,
       color: "#FFB8FA",
-      delay: "-2s" // Hits at the peak (50% mark of 4s)
+      delay: "-4s" // Hits at the peak (50% mark of 8s)
     }
   ];
 
