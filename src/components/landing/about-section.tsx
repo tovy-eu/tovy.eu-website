@@ -34,7 +34,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
 
   return (
     <section className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-16 sm:py-24 overflow-hidden">
-      <div className="relative mx-auto max-w-6xl px-4 md:px-8">
+      <div className="relative mx-auto max-w-5xl px-4 md:px-8">
         
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
@@ -50,43 +50,53 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
           </div>
         </ScrollReveal>
 
-        <div className="mt-20 relative">
+        <div className="mt-20 relative mx-auto max-w-3xl">
           {/* Connecting Line (Desktop) */}
-          <div className="absolute top-1/2 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent hidden lg:block -translate-y-8" />
+          <div className="absolute top-7 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent hidden lg:block" />
           
-          <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-4 relative z-10">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-0 relative z-10">
             {pillars.map((pillar, index) => (
               <ScrollReveal 
                 key={pillar.title} 
                 delay={`delay-[${index * 100}ms] duration-700`}
                 className="flex-1 w-full"
               >
-                <div className="group relative flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div className="group relative flex flex-col items-center text-center px-2">
                   {/* Icon Circle */}
                   <div 
-                    className="relative flex items-center justify-center w-14 h-14 rounded-full bg-card/80 backdrop-blur-md border border-white/5 shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 mb-4"
+                    className="relative flex items-center justify-center w-14 h-14 rounded-full bg-card/80 backdrop-blur-md border border-white/5 shadow-2xl transition-all duration-500 mb-4 overflow-visible"
                     style={{ '--glow-color': pillar.color } as React.CSSProperties}
                   >
-                    <div className="absolute inset-0 rounded-full blur-md opacity-0 group-hover:opacity-20 bg-[var(--glow-color)] transition-opacity" />
+                    {/* KITT Glow Effect */}
+                    <div 
+                      className="absolute inset-0 rounded-full blur-xl opacity-0 animate-kitt-glow pointer-events-none" 
+                      style={{ 
+                        backgroundColor: pillar.color,
+                        animationDelay: `${index * 0.8}s`
+                      }} 
+                    />
+                    
+                    <div className="absolute inset-0 rounded-full blur-md opacity-0 group-hover:opacity-30 bg-[var(--glow-color)] transition-opacity" />
+                    
                     {React.cloneElement(pillar.icon as React.ReactElement, { 
-                      className: "h-6 w-6 transition-colors duration-300", 
+                      className: "h-6 w-6 relative z-10 transition-colors duration-300", 
                       style: { color: pillar.color } 
                     })}
                   </div>
 
                   {/* Text Content */}
                   <div className="space-y-1">
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-white/90">
+                    <h3 className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/90">
                       {pillar.title}
                     </h3>
-                    <p className="text-xs md:text-sm text-muted-foreground/80 leading-snug max-w-[180px]">
+                    <p className="text-[10px] md:text-[11px] text-muted-foreground/70 leading-relaxed max-w-[120px] mx-auto">
                       {pillar.description}
                     </p>
                   </div>
 
-                  {/* Mobile Connector (Line below icons) */}
+                  {/* Mobile Connector */}
                   {index < pillars.length - 1 && (
-                    <div className="h-8 w-px bg-gradient-to-b from-white/10 to-transparent lg:hidden my-2" />
+                    <div className="h-6 w-px bg-gradient-to-b from-white/10 to-transparent lg:hidden my-2" />
                   )}
                 </div>
               </ScrollReveal>
