@@ -51,7 +51,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
+            <h2 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
               {dict.engineering.strategy}
             </h2>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">

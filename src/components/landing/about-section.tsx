@@ -93,7 +93,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
 
         <ScrollReveal>
           <div className="mt-12 md:mt-16 text-center">
-            <h3 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
+            <h3 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
               {dict.about.pillarsTitle}
             </h3>
           </div>
