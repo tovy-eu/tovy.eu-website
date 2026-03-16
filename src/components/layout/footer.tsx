@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -17,12 +18,12 @@ const socialLinks = [
   {
     name: "GitHub",
     url: "https://github.com/tovy-engineering",
-    icon: <Github className="h-4 w-4" />,
+    icon: <Github className="h-5 w-5" />,
   },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/company/tovy",
-    icon: <Linkedin className="h-4 w-4" />,
+    icon: <Linkedin className="h-5 w-5" />,
   },
 ];
 
@@ -39,15 +40,15 @@ export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Di
 
   return (
     <footer className="w-full border-t border-border/40 bg-card/80 backdrop-blur-sm">
-      <div className="container mx-auto flex flex-col items-center gap-6 py-8 max-w-6xl px-4 md:px-8">
+      <div className="container mx-auto flex flex-col items-center gap-8 py-10 max-w-6xl px-4 md:px-8">
         
-        {/* Social Icons */}
-        <div className="flex items-center gap-2">
+        {/* Social Icons - Optimized for touch with h-11 (44px) */}
+        <div className="flex items-center gap-4">
           <TooltipProvider>
             {socialLinks.map((link) => (
               <Tooltip key={link.name}>
                 <TooltipTrigger asChild>
-                  <Button asChild variant="ghost" size="icon">
+                  <Button asChild variant="ghost" className="h-11 w-11 rounded-full">
                     <Link href={link.url} target="_blank" aria-label={link.name}>
                       {link.icon}
                     </Link>
@@ -61,25 +62,25 @@ export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Di
           </TooltipProvider>
         </div>
         
-        {/* Center: Links */}
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-          <Link href={`/${lang}/privacy-policy/`} className="hover:text-primary transition-colors">
+        {/* Center: Links - Increased vertical gap for mobile readability */}
+        <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-x-6 gap-y-4 text-sm text-muted-foreground">
+          <Link href={`/${lang}/privacy-policy/`} className="hover:text-primary transition-colors py-2 px-1">
             {privacyText}
           </Link>
           <div className="h-4 w-px bg-border hidden sm:block"></div>
-          <Link href={`/${lang}/legal-notice/`} className="hover:text-primary transition-colors">
+          <Link href={`/${lang}/legal-notice/`} className="hover:text-primary transition-colors py-2 px-1">
             {legalText}
           </Link>
           <div className="h-4 w-px bg-border hidden sm:block"></div>
-          <Link href={`mailto:${companyProfile.public_company_profile.contact_details.email}`} className="hover:text-primary transition-colors">
+          <Link href={`mailto:${companyProfile.public_company_profile.contact_details.email}`} className="hover:text-primary transition-colors py-2 px-1">
             {companyProfile.public_company_profile.contact_details.email}
           </Link>
           <div className="h-4 w-px bg-border hidden sm:block"></div>
-          <span>{companyProfile.public_company_profile.primary_identifiers.vat_id_number}</span>
+          <span className="py-2 px-1">{companyProfile.public_company_profile.primary_identifiers.vat_id_number}</span>
         </div>
         
         {/* Bottom: Copyright */}
-        <div className="text-sm text-muted-foreground">
+        <div className="text-sm text-muted-foreground text-center">
           © {year} {companyProfile.public_company_profile.entity_name}. {rightsText}
         </div>
       </div>
