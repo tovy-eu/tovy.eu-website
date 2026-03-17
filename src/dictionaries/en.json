@@ -43,7 +43,7 @@
     }
   },
   "engineering": {
-    "strategy": "OUR ENGINEERING STRATEGY",
+    "strategy": "OUR WAY OF WORKING",
     "title": "End-to-End Data Ecosystems",
     "subtitle": "From raw ingestion in Azure to custom end-user applications.",
     "services": {
@@ -160,19 +160,19 @@
     },
     "steps": {
       "maturity": {
-        "label": "How advanced is your Data Maturity?*",
+        "label": "How advanced is your Data Maturity?",
         "description": "This helps us understand your current data capabilities.",
         "low": "Just starting",
         "mid": "Managing data",
         "high": "Built custom solutions"
       },
       "companySize": {
-        "label": "What is your company size?*",
+        "label": "What is your company size?",
         "description": "This helps us understand the scale of your organization.",
         "options": ["Solo", "1-10 employees", "11-50 employees", "51-200 employees", "201+ employees"]
       },
       "engineeringTeam": {
-        "label": "Do you have an in-house engineering team?*",
+        "label": "Do you have an in-house engineering team?",
         "description": "This helps us know if we'll be partnering with your developers.",
         "options": {
           "yes": "Yes",
@@ -180,7 +180,7 @@
         }
       },
       "details": {
-        "label": "Tell us about your automation gap or project*",
+        "label": "Tell us about your automation gap or project",
         "focusLabel": "In one sentence, what are you hoping to build or improve?",
         "focusPlaceholder": "e.g., An AI chatbot to handle customer support inquiries...",
         "challengesLabel": "What are the main challenges you're facing right now?",
