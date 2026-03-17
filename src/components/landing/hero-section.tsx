@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import { WavyLines } from './wavy-lines';
 import { usePathname } from 'next/navigation';
 import type { Dictionary } from '@/lib/get-dictionary';
+import { CONFIG } from '@/lib/config';
 
 export function HeroSection({ dict }: { dict: Dictionary }) {
   const [isMounted, setIsMounted] = useState(false);
@@ -52,12 +53,15 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white h-12">
-            <Link href={`/${lang}/blog/`}>
-              <BookOpen className="mr-2 h-5 w-5" />
-              {dict.common.readBlog}
-            </Link>
-          </Button>
+          
+          {CONFIG.enableBlog && (
+            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white h-12">
+              <Link href={`/${lang}/blog/`}>
+                <BookOpen className="mr-2 h-5 w-5" />
+                {dict.common.readBlog}
+              </Link>
+            </Button>
+          )}
         </div>
       </div>
     </section>

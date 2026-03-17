@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getDictionary } from '@/lib/get-dictionary';
+import { CONFIG } from '@/lib/config';
 
 type Props = {
   params: Promise<{ lang: string; slug: string }>;
@@ -46,6 +47,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPost({ params }: Props) {
+  if (!CONFIG.enableBlog) {
+    notFound();
+  }
+
   const { lang, slug } = await params;
   const dict = await getDictionary(lang);
   const postData = await getPostData(slug);

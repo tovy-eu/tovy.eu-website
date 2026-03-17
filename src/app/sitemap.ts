@@ -1,5 +1,7 @@
+
 import { getSortedPostsData } from '@/lib/blog'
 import { MetadataRoute } from 'next'
+import { CONFIG } from '@/lib/config';
 
 export const dynamic = 'force-static';
 
@@ -10,11 +12,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     '',
-    '/blog',
     '/project-request',
     '/privacy-policy',
     '/legal-notice',
   ];
+
+  if (CONFIG.enableBlog) {
+    routes.push('/blog');
+  }
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
@@ -29,15 +34,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     });
 
-    // Add localized routes for all blog posts
-    posts.forEach((post) => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${lang}/blog/${post.id}/`,
-        lastModified: new Date(post.date),
-        changeFrequency: 'monthly',
-        priority: 0.7,
+    // Add localized routes for all blog posts if blog is enabled
+    if (CONFIG.enableBlog) {
+      posts.forEach((post) => {
+        sitemapEntries.push({
+          url: `${baseUrl}/${lang}/blog/${post.id}/`,
+          lastModified: new Date(post.date),
+          changeFrequency: 'monthly',
+          priority: 0.7,
+        });
       });
-    });
+    }
   });
 
   return sitemapEntries;
