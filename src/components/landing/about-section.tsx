@@ -54,9 +54,16 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
           </div>
         </ScrollReveal>
 
-        <div className="mt-16 md:mt-20 relative mx-auto max-w-3xl">
+        <div className="mt-16 md:mt-24 relative mx-auto max-w-3xl">
+          {/* Header for pillars - moved above visuals */}
+          <ScrollReveal className="text-center mb-10 md:mb-12">
+            <h3 className="text-[10px] md:text-xs font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.2em]">
+              {dict.about.pillarsTitle}
+            </h3>
+          </ScrollReveal>
+
           {/* Thicker Connecting Line (Always Horizontal) with synchronized sweep */}
-          <div className="absolute top-5 md:top-7 left-[8%] right-[8%] h-[3px] bg-white/5 overflow-hidden rounded-full">
+          <div className="absolute top-[88px] md:top-[108px] left-[8%] right-[8%] h-[3px] bg-white/5 overflow-hidden rounded-full">
             <div 
               className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-primary/20 to-transparent blur-md animate-kitt-line-sweep"
             />
@@ -109,12 +116,6 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
             ))}
           </div>
         </div>
-
-        <ScrollReveal className="mt-12 md:mt-16 text-center">
-          <h3 className="text-[10px] md:text-xs font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.2em]">
-            {dict.about.pillarsTitle}
-          </h3>
-        </ScrollReveal>
       </div>
     </section>
   );
