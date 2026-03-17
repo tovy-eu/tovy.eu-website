@@ -404,7 +404,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           </div>
           <FormField control={form.control} name="company" render={({ field }) => (
             <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.company}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
-          )} />
+            )} />
           <FormField
             control={form.control}
             name="consent"
@@ -414,7 +414,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
-                    className="h-4 w-4 border-primary/20"
+                    className="h-4 w-4"
                   />
                 </FormControl>
                 <div className="space-y-1 leading-none">
