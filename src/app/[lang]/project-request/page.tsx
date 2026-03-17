@@ -22,13 +22,13 @@ export default async function ProjectRequestPage({ params }: Props) {
   
   return (
     <div 
-      className="relative flex min-h-screen flex-col items-center justify-center py-12 overflow-hidden"
+      className="relative flex h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden p-4 md:p-8"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
     >
       <WavyLines />
-      <div className="container z-10">
+      <div className="w-full max-w-2xl z-10 flex flex-col justify-center">
         <ProjectIntakeForm dict={dict} />
       </div>
     </div>
