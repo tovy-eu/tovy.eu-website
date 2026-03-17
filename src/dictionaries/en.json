@@ -1,6 +1,7 @@
+
 {
   "common": {
-    "workWithUs": "Work with us",
+    "workWithUs": "Start Project",
     "readBlog": "Read our blog",
     "shareIdea": "Share your idea",
     "privacyPolicy": "Privacy Policy",
@@ -68,6 +69,10 @@
         "tools": ["TypeScript / JavaScript"]
       }
     }
+  },
+  "testimonials": {
+    "title": "Trusted by Innovative Teams",
+    "subtitle": "Discover how we help businesses scale with clarity and automation."
   },
   "blog": {
     "title": "Blog",
