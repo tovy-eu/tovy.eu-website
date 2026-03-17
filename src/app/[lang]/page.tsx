@@ -1,8 +1,10 @@
+
 import { HeroSection } from "@/components/landing/hero-section";
 import { AboutSection } from "@/components/landing/about-section";
 import { SectionDivider } from "@/components/landing/section-divider";
 import { SubscriptionForm } from "@/components/blog/subscription-form";
 import { EngineeringSection } from "@/components/landing/engineering-section";
+import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { getDictionary } from "@/lib/get-dictionary";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
@@ -20,6 +22,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <SectionDivider />
 
       <EngineeringSection dict={dict} />
+
+      <SectionDivider />
+
+      <TestimonialsSection dict={dict} />
 
       <div className="w-full">
         <SectionDivider />

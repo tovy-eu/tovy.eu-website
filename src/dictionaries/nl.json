@@ -1,3 +1,4 @@
+
 {
   "common": {
     "workWithUs": "Werk met ons",
@@ -68,6 +69,10 @@
         "tools": ["TypeScript / JavaScript"]
       }
     }
+  },
+  "testimonials": {
+    "title": "Vertrouwd door Innovatieve Teams",
+    "subtitle": "Ontdek hoe wij bedrijven helpen schalen met helderheid en automatisering."
   },
   "blog": {
     "title": "Blog",

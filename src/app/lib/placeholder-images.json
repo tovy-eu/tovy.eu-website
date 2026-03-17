@@ -1,0 +1,15 @@
+
+{
+  "testimonials": [
+    {
+      "id": "techflow-logo",
+      "url": "https://picsum.photos/seed/techflow/200/80",
+      "hint": "tech logo"
+    },
+    {
+      "id": "brightscale-logo",
+      "url": "https://picsum.photos/seed/brightscale/200/80",
+      "hint": "business logo"
+    }
+  ]
+}
