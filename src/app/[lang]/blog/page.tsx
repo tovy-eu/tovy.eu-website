@@ -10,6 +10,8 @@ import { SectionDivider } from '@/components/landing/section-divider';
 import { Badge } from '@/components/ui/badge';
 import { BookOpen } from 'lucide-react';
 import { getDictionary } from '@/lib/get-dictionary';
+import { notFound } from 'next/navigation';
+import { CONFIG } from '@/lib/config';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -21,6 +23,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 }
 
 export default async function BlogHome({ params }: { params: Promise<{ lang: string }> }) {
+  if (!CONFIG.enableBlog) {
+    notFound();
+  }
+
   const { lang } = await params;
   const dict = await getDictionary(lang);
   const allPostsData = getSortedPostsData();
@@ -106,7 +112,7 @@ export default async function BlogHome({ params }: { params: Promise<{ lang: str
                 <CardHeader>
                   <CardTitle className="text-xl lg:text-2xl group-hover:text-primary transition-colors text-foreground">{title}</CardTitle>
                   <CardDescription>
-                    <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'LLLL d, yyyy')}</time> &bull; {dict.blog.by} {author}
+                    <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'LLLL d, yyyy')}</time> &bull; {author}
                     {readingTime && <span className="flex items-center gap-1 mt-1"><BookOpen className="h-4 w-4" /> {readingTime} {dict.blog.readingTime}</span>}
                   </CardDescription>
                 </CardHeader>

@@ -13,6 +13,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import type { Dictionary } from "@/lib/get-dictionary";
+import { CONFIG } from "@/lib/config";
 
 /**
  * The primary navigation header for the application.
@@ -36,22 +37,24 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
         </Link>
         
         <div className="flex items-center gap-1 sm:gap-3">
-          {/* Blog Access - Increased size to h-11 (44px) for touch targets */}
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" asChild className="h-11 w-11 rounded-full hover:bg-white/10">
-                  <Link href={`/${lang}/blog/`}>
-                    <BookOpen className="h-5 w-5" />
-                    <span className="sr-only">{blogText}</span>
-                  </Link>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{blogText}</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          {/* Blog Access - Conditionally rendered */}
+          {CONFIG.enableBlog && (
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="ghost" size="icon" asChild className="h-11 w-11 rounded-full hover:bg-white/10">
+                    <Link href={`/${lang}/blog/`}>
+                      <BookOpen className="h-5 w-5" />
+                      <span className="sr-only">{blogText}</span>
+                    </Link>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{blogText}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          )}
 
           {/* Main CTA - Collapses to icon, sized at h-11 for touch targets */}
           <Button asChild size="sm" className="h-11 px-3 sm:px-5">
