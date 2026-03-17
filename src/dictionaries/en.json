@@ -189,7 +189,7 @@
         "visionPlaceholder": "e.g., We want an AI that can answer common questions and knows when to escalate."
       },
       "budget": {
-        "label": "What's your budget outlook?*",
+        "label": "What's your budget outlook?",
         "description": "Our projects typically start from €2.500, covering MVPs or initial builds.",
         "options": {
           "yes": "Yes, that fits",
@@ -197,7 +197,7 @@
         }
       },
       "timeline": {
-        "label": "How soon do you want to start?*",
+        "label": "How soon do you want to start?",
         "description": "We can deliver a working version in 10 working days.",
         "options": {
           "yes": "Yes, we're ready to start soon",
@@ -205,7 +205,7 @@
         }
       },
       "contact": {
-        "label": "How can we reach you?*",
+        "label": "How can we reach you?",
         "description": "Please provide your contact and company information.",
         "firstName": "First Name *",
         "lastName": "Last Name *",
