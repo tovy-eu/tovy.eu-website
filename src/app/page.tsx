@@ -1,28 +1,32 @@
 
-'use client';
-
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-
 /**
  * Root redirection page. 
- * Since middleware is not supported in 'output: export', we use a client-side redirect.
+ * Optimized for static export by using an inline script to detect language and redirect 
+ * as early as possible, avoiding the React hydration delay and "Loading..." flicker.
  */
 export default function RootPage() {
-  const router = useRouter();
-
-  useEffect(() => {
-    // Detect browser language
-    const preferredLanguage = navigator.language.split('-')[0];
-    const supportedLanguages = ['en', 'nl'];
-    const targetLang = supportedLanguages.includes(preferredLanguage) ? preferredLanguage : 'en';
-    
-    router.replace(`/${targetLang}/`);
-  }, [router]);
-
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-background">
-      <div className="animate-pulse text-primary font-bold text-2xl">Loading...</div>
+    <div className="flex h-screen w-full items-center justify-center bg-[#0C0F12]">
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              try {
+                var lang = navigator.language.split('-')[0];
+                var supported = ['en', 'nl'];
+                var target = supported.indexOf(lang) !== -1 ? lang : 'en';
+                window.location.replace('/' + target + '/');
+              } catch (e) {
+                window.location.replace('/en/');
+              }
+            })();
+          `,
+        }}
+      />
+      {/* 
+        The page is intentionally left blank of text to prevent a "Loading..." flicker.
+        The background color matches the site's theme for a seamless transition.
+      */}
     </div>
   );
 }
