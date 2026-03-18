@@ -38,26 +38,26 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         )}
       >
         <h1 
-          className="text-3xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15]"
+          className="text-2xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.2] sm:leading-[1.15]"
           style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.2)' }}
         >
           {dict.hero.title}
         </h1>
-        <p className="mt-6 text-base leading-relaxed text-white/80 sm:text-lg sm:leading-8 md:text-xl max-w-2xl">
+        <p className="mt-6 text-sm leading-relaxed text-white/80 sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto px-4 sm:px-0">
           {dict.hero.subtitle}
         </p>
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-          <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-lg h-12">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
+          <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-11 sm:h-12">
             <Link href={`/${lang}/project-request/`}>
               {dict.common.workWithUs}
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
             </Link>
           </Button>
           
           {CONFIG.enableBlog && (
-            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white h-12">
+            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-base sm:text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white h-11 sm:h-12">
               <Link href={`/${lang}/blog/`}>
-                <BookOpen className="mr-2 h-5 w-5" />
+                <BookOpen className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 {dict.common.readBlog}
               </Link>
             </Button>
