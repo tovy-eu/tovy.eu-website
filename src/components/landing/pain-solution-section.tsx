@@ -14,11 +14,11 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
     <section className="relative w-full py-16 sm:py-24 overflow-hidden bg-background">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
         <ScrollReveal>
-          <div className="text-center mb-16">
-            <h2 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary via-[#A792FF] to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-xs sm:text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary via-[#A792FF] to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
               {dict.painSolution.title}
             </h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl text-white">
+            <p className="mt-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
               {dict.painSolution.subtitle}
             </p>
           </div>
@@ -27,26 +27,26 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
           {/* Pain Section (The Old Way) */}
           <ScrollReveal delay="duration-700" className="flex">
-            <div className="relative w-full p-8 rounded-2xl bg-white/5 border border-white/5 overflow-hidden group">
+            <div className="relative w-full p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/5 overflow-hidden group">
               {/* Subtle Noise Texture Overlay */}
               <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
               
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2 rounded-lg bg-red-500/10 text-red-400">
-                    <AlertCircle className="h-6 w-6" />
+                    <AlertCircle className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">{dict.painSolution.pain.title}</h3>
-                    <p className="text-sm text-muted-foreground/60 font-medium">{dict.painSolution.pain.subtitle}</p>
+                    <h3 className="text-lg sm:text-xl font-bold text-white leading-none">{dict.painSolution.pain.title}</h3>
+                    <p className="text-[10px] sm:text-sm text-muted-foreground/60 font-medium mt-1">{dict.painSolution.pain.subtitle}</p>
                   </div>
                 </div>
 
-                <ul className="space-y-6">
+                <ul className="space-y-4 sm:space-y-6">
                   {painItems.map((item, i) => (
-                    <li key={i} className="flex items-start gap-4">
-                      <XCircle className="h-5 w-5 text-red-500/40 shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground/80 leading-relaxed">{item}</span>
+                    <li key={i} className="flex items-start gap-3 sm:gap-4">
+                      <XCircle className="h-4 w-4 sm:h-5 sm:w-5 text-red-500/40 shrink-0 mt-0.5" />
+                      <span className="text-xs sm:text-sm md:text-base text-muted-foreground/80 leading-relaxed">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -56,7 +56,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
 
           {/* Solution Section (The Tovy Way) */}
           <ScrollReveal delay="delay-[200ms] duration-700" className="flex">
-            <div className="relative w-full p-8 rounded-2xl bg-card/40 backdrop-blur-md border border-primary/20 overflow-hidden shadow-2xl shadow-primary/5 group">
+            <div className="relative w-full p-6 sm:p-8 rounded-2xl bg-card/40 backdrop-blur-md border border-primary/20 overflow-hidden shadow-2xl shadow-primary/5 group">
               {/* Animated Light Beam with Core Value Colors */}
               <div className="absolute -inset-1 bg-gradient-to-r from-[#2B5EFF]/10 via-[#A792FF]/10 to-[#FFB8FA]/10 blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-1000" />
               
@@ -66,14 +66,14 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                     className="p-2 rounded-lg bg-primary/10"
                     style={{ color: "#2B5EFF" }}
                   >
-                    <Zap className="h-6 w-6" />
+                    <Zap className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold bg-gradient-to-r from-[#2B5EFF] via-[#A792FF] to-[#FFB8FA] bg-clip-text text-transparent">
+                    <h3 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-[#2B5EFF] via-[#A792FF] to-[#FFB8FA] bg-clip-text text-transparent leading-none">
                       {dict.painSolution.solution.title}
                     </h3>
                     <p 
-                      className="text-sm font-medium opacity-80"
+                      className="text-[10px] sm:text-sm font-medium opacity-80 mt-1"
                       style={{ color: "#A792FF" }}
                     >
                       {dict.painSolution.solution.subtitle}
@@ -81,14 +81,14 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                   </div>
                 </div>
 
-                <ul className="space-y-6">
+                <ul className="space-y-4 sm:space-y-6">
                   {solutionItems.map((item, i) => (
-                    <li key={i} className="flex items-start gap-4 group/item">
+                    <li key={i} className="flex items-start gap-3 sm:gap-4 group/item">
                       <CheckCircle2 
-                        className="h-5 w-5 shrink-0 mt-0.5 transition-colors duration-300" 
+                        className="h-4 w-4 sm:h-5 sm:w-5 shrink-0 mt-0.5 transition-colors duration-300" 
                         style={{ color: i % 2 === 0 ? "#2B5EFF" : "#A792FF" }}
                       />
-                      <span className="text-foreground leading-relaxed font-medium">
+                      <span className="text-xs sm:text-sm md:text-base text-foreground leading-relaxed font-medium">
                         {item}
                       </span>
                     </li>
