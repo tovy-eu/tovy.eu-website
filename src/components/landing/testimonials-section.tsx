@@ -19,11 +19,11 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
     <section className="py-16 sm:py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         <ScrollReveal>
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <h2 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
               {dict.testimonials.title}
             </h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl text-white">
+            <p className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white max-w-3xl mx-auto leading-tight md:leading-snug">
               {dict.testimonials.subtitle}
             </p>
           </div>
