@@ -5,13 +5,13 @@
 
 @layer base {
   :root {
-    --background: 222 20% 6%;
+    --background: 222 45% 1%;
     --foreground: 210 40% 98%;
-    --card: 224 20% 4%;
+    --card: 224 71% 4%;
     --card-foreground: 210 40% 98%;
-    --popover: 222 20% 6%;
+    --popover: 222 45% 11%;
     --popover-foreground: 210 40% 98%;
-    --primary: 226 100% 42%;
+    --primary: 226 100% 58%;
     --primary-foreground: 210 40% 98%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -20,27 +20,27 @@
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
     /* Updated to PRD Spec Accent Gradient: #3BE2B0 (Mint Green) */
-    --accent-gradient-stop: 304 73% 56%;
+    --accent-gradient-stop: 304 20% 50%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 213 100% 42%;
-    --chart-1: 220 100% 42%;
-    --chart-2: 160 73% 56%;
+    --ring: 213 25% 80%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
     --radius: 0.5rem;
   }
   .dark {
-    --background: 222 20% 4%;
+    --background: 222 84% 4%;
     --foreground: 210 40% 98%;
-    --card: 224 20% 2%;
+    --card: 224 70% 2%;
     --card-foreground: 210 40% 98%;
-    --popover: 226 20% 4%;
+    --popover: 226 80% 4%;
     --popover-foreground: 210 40% 98%;
-    --primary: 35 100% 42%;
+    --primary: 35 90% 55%;
     --primary-foreground: 222 20% 6%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
