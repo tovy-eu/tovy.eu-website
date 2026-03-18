@@ -20,10 +20,10 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center mb-12 md:mb-16">
-            <h2 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
+            <h1 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
               {dict.testimonials.title}
-            </h2>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl text-white">
+            </h1>
+            <h2 className="mt-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
               {dict.testimonials.subtitle}
             </h2>
           </div>
