@@ -12,8 +12,11 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
     return null;
   }
 
+  // Duplicate the testimonials data to ensure a seamless infinite loop
+  const duplicatedTestimonials = [...testimonialsData, ...testimonialsData, ...testimonialsData];
+
   return (
-    <section className="py-16 sm:py-24 bg-background">
+    <section className="py-16 sm:py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         <ScrollReveal>
           <div className="text-center mb-16">
@@ -25,24 +28,30 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
             </p>
           </div>
         </ScrollReveal>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonialsData.map((testimonial, index) => {
+      <div className="relative mt-8 group">
+        {/* Infinite scrolling marquee container */}
+        <div className="flex animate-marquee whitespace-nowrap gap-8 py-4 px-4 md:px-0">
+          {duplicatedTestimonials.map((testimonial, index) => {
             const logoData = placeholderImages.testimonials.find(img => img.id === testimonial.logoId);
             return (
-              <ScrollReveal key={index} delay={`delay-[${index * 200}ms]`}>
-                <Card className="bg-card/40 backdrop-blur-md border-white/5 h-full flex flex-col justify-between">
+              <div 
+                key={index} 
+                className="w-[300px] sm:w-[350px] md:w-[450px] shrink-0"
+              >
+                <Card className="bg-card/40 backdrop-blur-md border-white/5 h-full flex flex-col justify-between whitespace-normal transition-all duration-300 hover:border-primary/20 hover:bg-card/60">
                   <CardContent className="pt-8 flex flex-col h-full">
-                    <p className="text-lg italic text-foreground/90 mb-8 leading-relaxed">
+                    <p className="text-base md:text-lg italic text-foreground/90 mb-8 leading-relaxed">
                       "{testimonial.quote}"
                     </p>
                     <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-6">
                       <div>
-                        <p className="font-bold text-white">{testimonial.author}</p>
-                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                        <p className="font-bold text-white text-sm md:text-base">{testimonial.author}</p>
+                        <p className="text-xs md:text-sm text-muted-foreground">{testimonial.role}</p>
                       </div>
                       {logoData && (
-                        <div className="relative h-8 w-24 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                        <div className="relative h-6 w-20 md:h-8 md:w-24 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                           <Image
                             src={logoData.url}
                             alt={`${testimonial.role} logo`}
@@ -55,10 +64,14 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
                     </div>
                   </CardContent>
                 </Card>
-              </ScrollReveal>
+              </div>
             );
           })}
         </div>
+        
+        {/* Gradient overlays for smooth fading at edges */}
+        <div className="absolute inset-y-0 left-0 w-16 md:w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-16 md:w-48 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
       </div>
     </section>
   );
