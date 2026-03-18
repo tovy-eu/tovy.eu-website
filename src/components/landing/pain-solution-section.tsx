@@ -56,7 +56,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
 
           {/* Solution Section (The Tovy Way) */}
           <ScrollReveal delay="delay-[200ms] duration-700" className="flex">
-            <div className="relative w-full p-6 sm:p-8 rounded-2xl bg-card/40 backdrop-blur-md border border-primary/20 overflow-hidden shadow-2xl shadow-primary/5 group">
+            <div className="relative w-full p-6 sm:p-8 rounded-2xl bg-card/40 backdrop-blur-md border border-white/10 overflow-hidden shadow-2xl shadow-primary/5 group">
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6">
                   {/* Branded Logo Marker typographic signature */}

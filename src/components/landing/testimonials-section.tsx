@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Image from 'next/image';
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,13 +18,13 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
   return (
     <section className="py-16 sm:py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-        <ScrollReveal threshold={0.1}>
+        <ScrollReveal threshold={0.01}>
           <div className="mx-auto max-w-4xl text-center mb-12 md:mb-16">
             <h1 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
               {dict.testimonials.title}
             </h1>
-            <div className="mx-auto max-w-2xl mt-2">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-white leading-tight text-balance">
+            <div className="mx-auto max-w-2xl mt-2 px-4">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-white leading-tight text-balance whitespace-normal">
                 {dict.testimonials.subtitle}
               </h2>
             </div>
