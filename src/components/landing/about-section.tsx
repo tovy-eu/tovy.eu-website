@@ -42,9 +42,9 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
         
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-[10px] md:text-xs font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.2em]">
+            <h1 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
               {dict.about.strategy}
-            </h2>
+            </h1>
             <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white">
               {dict.about.title}
             </h2>
@@ -57,9 +57,9 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
         <div className="mt-16 md:mt-24 relative mx-auto max-w-3xl">
           {/* Header for pillars - moved above visuals */}
           <ScrollReveal className="text-center mb-10 md:mb-12">
-            <h3 className="text-[10px] md:text-xs font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.2em]">
+            <h2 className="text-[10px] md:text-xs font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.2em]">
               {dict.about.pillarsTitle}
-            </h3>
+            </h2>
           </ScrollReveal>
 
           {/* Thicker Connecting Line (Always Horizontal) with synchronized sweep */}

@@ -15,9 +15,8 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-xs sm:text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary via-[#A792FF] to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
-              {dict.painSolution.title}
-            </h2>
+            <h1 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">              {dict.painSolution.title}
+            </h1>
             <p className="mt-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
               {dict.painSolution.subtitle}
             </p>
