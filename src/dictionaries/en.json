@@ -19,6 +19,30 @@
     "title": "We build the AI foundation of your business.",
     "subtitle": "We design and implement production-ready tech solutions, ensuring your business scales reliably."
   },
+  "painSolution": {
+    "title": "Chaos vs. Clarity",
+    "subtitle": "AI should simplify, not complicate.",
+    "pain": {
+      "title": "The Old Way",
+      "subtitle": "Fragmented & Fragile",
+      "items": [
+        "Manual data entry and human error",
+        "Siloed systems that don't talk",
+        "Constant maintenance headaches",
+        "Stagnant growth due to bottlenecks"
+      ]
+    },
+    "solution": {
+      "title": "The Tovy Way",
+      "subtitle": "Unified & Automated",
+      "items": [
+        "Seamless AI-driven automation",
+        "Integrated data ecosystems",
+        "Reliable, self-healing systems",
+        "Scalable foundation for the future"
+      ]
+    }
+  },
   "about": {
     "strategy": "TOVY STRATEGY",
     "title": "What and why we do this.",

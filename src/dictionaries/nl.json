@@ -19,6 +19,30 @@
     "title": "Wij bouwen de AI‑basis van jouw organisatie.",
     "subtitle": "Wij ontwerpen en realiseren data oplossingen, zodat jouw organisatie betrouwbaar kan groeien."
   },
+  "painSolution": {
+    "title": "Chaos vs. Helderheid",
+    "subtitle": "AI moet vereenvoudigen, niet compliceren.",
+    "pain": {
+      "title": "De Oude Methode",
+      "subtitle": "Gefragmenteerd & Kwetsbaar",
+      "items": [
+        "Handmatige data-invoer en menselijke fouten",
+        "Geïsoleerde systemen die niet communiceren",
+        "Constante onderhoudszorgen",
+        "Stagnatie door technische bottlenecks"
+      ]
+    },
+    "solution": {
+      "title": "De Tovy Aanpak",
+      "subtitle": "Geünificeerd & Geautomatiseerd",
+      "items": [
+        "Naadloze AI-gestuurde automatisering",
+        "Geïntegreerde data-ecosystemen",
+        "Betrouwbare, zelfherstellende systemen",
+        "Schaalbare basis voor de toekomst"
+      ]
+    }
+  },
   "about": {
     "strategy": "TOVY'S STRATEGIE",
     "title": "Wat we doen en waarom.",

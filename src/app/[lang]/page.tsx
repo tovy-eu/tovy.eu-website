@@ -1,6 +1,7 @@
 
 import { HeroSection } from "@/components/landing/hero-section";
 import { AboutSection } from "@/components/landing/about-section";
+import { PainSolutionSection } from "@/components/landing/pain-solution-section";
 import { SectionDivider } from "@/components/landing/section-divider";
 import { SubscriptionForm } from "@/components/blog/subscription-form";
 import { EngineeringSection } from "@/components/landing/engineering-section";
@@ -14,6 +15,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   return (
     <div className="flex flex-col items-center">
       <HeroSection dict={dict} />
+
+      <SectionDivider />
+
+      <PainSolutionSection dict={dict} />
 
       <SectionDivider />
       
