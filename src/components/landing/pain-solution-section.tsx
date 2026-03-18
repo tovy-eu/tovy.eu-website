@@ -1,7 +1,7 @@
 
 'use client';
 
-import { XCircle, CheckCircle2, AlertCircle, Zap } from "lucide-react";
+import { XCircle, CheckCircle2, AlertCircle } from "lucide-react";
 import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { cn } from "@/lib/utils";
@@ -57,20 +57,14 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
           {/* Solution Section (The Tovy Way) */}
           <ScrollReveal delay="delay-[200ms] duration-700" className="flex">
             <div className="relative w-full p-6 sm:p-8 rounded-2xl bg-card/40 backdrop-blur-md border border-primary/20 overflow-hidden shadow-2xl shadow-primary/5 group">
-              {/* Animated Light Beam with Core Value Colors */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#2B5EFF]/10 via-[#A792FF]/10 to-[#FFB8FA]/10 blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-1000" />
-              
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6">
-                  {/* Branded Logo Marker instead of icon */}
+                  {/* Branded Logo Marker typographic signature */}
                   <div className="font-bold text-xl sm:text-2xl tracking-tighter shrink-0 select-none flex items-center">
                     <span>TOV</span>
                     <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
                   </div>
                   <div>
-                    <h3 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-[#2B5EFF] via-[#A792FF] to-[#FFB8FA] bg-clip-text text-transparent leading-none">
-                      {dict.painSolution.solution.title}
-                    </h3>
                     <p 
                       className="text-[10px] sm:text-sm font-medium opacity-80 mt-1"
                       style={{ color: "#A792FF" }}
@@ -85,7 +79,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                     <li key={i} className="flex items-start gap-3 sm:gap-4 group/item">
                       <CheckCircle2 
                         className="h-4 w-4 sm:h-5 sm:w-5 shrink-0 mt-0.5 transition-colors duration-300" 
-                        style={{ color: i % 2 === 0 ? "#2B5EFF" : "#A792FF" }}
+                        style={{ color: "#22C55E" }}
                       />
                       <span className="text-xs sm:text-sm md:text-base text-foreground leading-relaxed font-medium">
                         {item}
