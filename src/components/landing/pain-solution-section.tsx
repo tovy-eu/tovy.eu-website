@@ -36,9 +36,9 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                   <div className="p-2 rounded-lg bg-red-500/10 text-red-400">
                     <AlertCircle className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
-                  <div>
+                  <div className="flex items-baseline gap-2">
                     <h3 className="text-lg sm:text-xl font-bold text-white leading-none">{dict.painSolution.pain.title}</h3>
-                    <p className="text-[10px] sm:text-sm text-muted-foreground/60 font-medium mt-1">{dict.painSolution.pain.subtitle}</p>
+                    <p className="text-[10px] sm:text-sm text-muted-foreground/60 font-medium shrink-0">{dict.painSolution.pain.subtitle}</p>
                   </div>
                 </div>
 
@@ -64,7 +64,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                     <span>TOV</span>
                     <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
                   </div>
-                  <div>
+                  <div className="flex items-baseline gap-2">
                     <p 
                       className="text-[10px] sm:text-sm font-medium opacity-80 mt-1"
                       style={{ color: "#A792FF" }}
