@@ -21,10 +21,10 @@
   },
   "painSolution": {
     "title": "Chaos vs. Clarity",
-    "subtitle": "AI should simplify, not complicate.",
+    "subtitle": "Data should simplify, not complicate.",
     "pain": {
       "title": "The Old Way",
-      "subtitle": "Fragmented & Fragile",
+      "subtitle": "Fragmented",
       "items": [
         "Manual data entry and human error",
         "Siloed systems that don't talk",
@@ -34,11 +34,10 @@
     },
     "solution": {
       "title": "The Tovy Way",
-      "subtitle": "Unified & Automated",
       "items": [
-        "Seamless AI-driven automation",
+        "Seamless automation",
         "Integrated data ecosystems",
-        "Reliable, self-healing systems",
+        "Reliable systems",
         "Scalable foundation for the future"
       ]
     }
@@ -51,7 +50,7 @@
     "pillars": {
       "tech": {
         "title": "Tech Savvy",
-        "desc": "Latest in AI & Data."
+        "desc": "Latest in Data & AI."
       },
       "optimization": {
         "title": "Optimization",
@@ -180,8 +179,8 @@
     "nederland": "Netherlands"
   },
   "projectForm": {
-    "title": "Start Your AI Project",
-    "subtitle": "Share your project details with Tovy to build clean, fast, and reliable AI systems.",
+    "title": "Start Your Project",
+    "subtitle": "Share your project details with Tovy to build clean, fast, and reliable systems.",
     "success": {
       "title": "Thank You!",
       "description": "Your project request has been submitted. We will contact you shortly.",

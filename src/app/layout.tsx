@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/toaster"
 import { cn } from '@/lib/utils';
 import CookieBanner from '@/components/layout/cookie-banner';
 import Script from 'next/script';
-import { HubSpotNavigationTracker } from '@/components/layout/hubspot-tracker';
 
 export const metadata: Metadata = {
   title: 'Tovy | Smart Data Ecosystems for Business Growth',
@@ -42,21 +41,10 @@ export default function RootLayout({
           `}
         </Script>
         
-        <HubSpotNavigationTracker />
-        <main className="flex-grow flex flex-col">
-          {children}
-        </main>
+        {children}
+        
         <Toaster />
         <CookieBanner />
-
-        {/* HubSpot Tracking Code */}
-        <Script
-          id="hs-script-loader"
-          strategy="afterInteractive"
-          src="//js-eu1.hs-scripts.com/147968095.js"
-          async
-          defer
-        />
       </body>
     </html>
   );
