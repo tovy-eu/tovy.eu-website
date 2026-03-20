@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -31,6 +30,12 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
     --radius: 0.5rem;
+
+    /* Brand Pillar Colors */
+    --brand-1: 226 100% 58%; /* #2B5EFF */
+    --brand-2: 230 100% 67%; /* #566FFF */
+    --brand-3: 253 100% 79%; /* #A792FF */
+    --brand-4: 305 100% 86%; /* #FFB8FA */
   }
   .dark {
     --background: 222.2 84% 4.9%;
