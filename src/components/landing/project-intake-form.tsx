@@ -214,6 +214,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           step_number: step + 1,
           step_name: formSteps[step].field,
         });
+
+        // Specific Funnel Event: User finished describing their project (Step 3)
+        // This is index 3: "projectDetails"
+        if (step === 3) {
+          window.gtag('event', 'completed_step_three', {
+            event_category: 'conversion',
+            event_label: 'Project Details Shared'
+          });
+        }
       }
 
       if (step < totalSteps - 1) {
