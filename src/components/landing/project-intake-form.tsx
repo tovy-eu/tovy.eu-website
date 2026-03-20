@@ -159,10 +159,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const onSubmit = (data: ProjectRequestData) => {
     startTransition(async () => {
       try {
-        // Generate a unique professional project ID (e.g., TOVY-2025-X9Z)
-        const year = new Date().getFullYear();
-        const randomPart = Math.random().toString(36).substring(2, 5).toUpperCase();
-        const generatedId = `TOVY-${year}-${randomPart}`;
+        // Generate a unique professional project ID using a timestamp (e.g., TOVY-1712345678901)
+        const timestamp = Date.now();
+        const generatedId = `TOVY-${timestamp}`;
         setProjectId(generatedId);
 
         await addDoc(collection(db, "project_requests"), {
