@@ -15,37 +15,42 @@
   "tech": [
     {
       "id": "azure",
-      "url": "/images/tech/azure-logo.png",
+      "url": "/images/tech/azure.webp",
       "hint": "Microsoft Azure logo"
     },
     {
       "id": "databricks",
-      "url": "/images/tech/databricks-logo.png",
+      "url": "/images/tech/databricks.png",
       "hint": "Databricks logo"
     },
     {
-      "id": "dbt",
-      "url": "/images/tech/dbt-logo.png",
+      "id": "powerbi",
+      "url": "/images/tech/power-bi.png",
       "hint": "dbt logo"
     },
     {
       "id": "sap",
-      "url": "/images/tech/sap-logo.png",
+      "url": "/images/tech/sap.png",
       "hint": "SAP logo"
     },
     {
       "id": "oracle",
-      "url": "/images/tech/oracle-logo.png",
+      "url": "/images/tech/oracle.png",
       "hint": "Oracle logo"
     },
     {
       "id": "python",
-      "url": "/images/tech/python-logo.png",
+      "url": "/images/tech/python.webp",
       "hint": "Python logo"
     },
     {
-      "id": "snowflake",
-      "url": "/images/tech/snowflake-logo.png",
+      "id": "gcp",
+      "url": "/images/tech/gcp.webp",
+      "hint": "Snowflake logo"
+    },
+    {
+      "id": "sql",
+      "url": "/images/tech/sql.png",
       "hint": "Snowflake logo"
     }
   ]
