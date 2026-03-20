@@ -53,37 +53,45 @@ export default function RootLayout({
   return (
     <html lang="en" style={{ scrollBehavior: 'smooth' }} data-scroll-behavior="smooth">
       <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
-        {/* Google tag (gtag.js) */}
+        {/* Google Analytics Initialization - Must be synchronous and early */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              
+              // Immediate localStorage check to prevent "denied-then-granted" flicker
+              var consentState = 'denied';
+              try {
+                var stored = localStorage.getItem('tovy-cookie-consent');
+                if (stored) {
+                  var decision = JSON.parse(stored);
+                  if (decision && decision.granted) {
+                    consentState = 'granted';
+                  }
+                }
+              } catch (e) {}
+
+              gtag('consent', 'default', {
+                'analytics_storage': consentState,
+                'ad_storage': consentState,
+                'ad_user_data': consentState,
+                'ad_personalization': consentState,
+                'wait_for_update': 500
+              });
+
+              gtag('js', new Date());
+            `
+          }}
+        />
+
+        {/* Load Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ESH71F3XK7"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            
-            // Check localStorage for existing consent to prevent "denied-then-granted" flip
-            var consentState = 'denied';
-            try {
-              var stored = localStorage.getItem('tovy-cookie-consent');
-              if (stored) {
-                var decision = JSON.parse(stored);
-                if (decision && decision.granted) {
-                  consentState = 'granted';
-                }
-              }
-            } catch (e) {}
-
-            gtag('consent', 'default', {
-              'analytics_storage': consentState,
-              'ad_storage': consentState,
-              'ad_user_data': consentState,
-              'ad_personalization': consentState,
-              'wait_for_update': 500
-            });
-
-            gtag('js', new Date());
             gtag('config', 'G-ESH71F3XK7');
           `}
         </Script>
