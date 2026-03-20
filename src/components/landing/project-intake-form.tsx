@@ -283,7 +283,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                             setTimeout(() => nextStep(), 200);
                           }}
                           className={cn(
-                            "h-10 w-full md:h-10 md:w-10 flex items-center justify-center rounded-md transition-all text-sm border-0 focus:outline-none focus:ring-1 focus:ring-primary",
+                            "h-10 w-full md:h-10 md:w-10 flex items-center justify-center rounded-md transition-all text-sm border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                             formField.value === String(value)
                               ? "bg-primary text-primary-foreground shadow-lg scale-105"
                               : "bg-white/5 hover:bg-white/10"
@@ -334,7 +334,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                           setTimeout(() => nextStep(), 200);
                         }}
                         className={cn(
-                          "w-full flex items-center justify-between text-left p-3 rounded-md transition-all border-0 focus:outline-none focus:ring-1 focus:ring-primary min-h-[48px]",
+                          "w-full flex items-center justify-between text-left p-3 rounded-md transition-all border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background min-h-[48px]",
                           formField.value === option.label
                             ? "bg-primary/20 shadow-inner"
                             : "bg-white/5 hover:bg-white/10"
