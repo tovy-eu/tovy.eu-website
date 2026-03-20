@@ -37,11 +37,6 @@ const NLFlag = () => (
   </svg>
 );
 
-/**
- * A minimalistic language switcher component using flags.
- * Updated with a larger hit area (h-11 = 44px) for better mobile accessibility.
- * Now includes descriptive ARIA labels to clearly announce the language switching action.
- */
 export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps) {
   const pathname = usePathname();
   const router = useRouter();
@@ -58,15 +53,14 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
         event_category: 'engagement',
         event_label: 'Language Toggle',
         target_language: targetLang,
-        source_language: currentLang
+        source_language: currentLang,
+        is_language_switch: true // Parameter to help identify and filter this specific view event
       });
     }
     
-    // Replace the language segment (e.g., /en/blog -> /nl/blog)
     if (segments[1] === "en" || segments[1] === "nl") {
       segments[1] = targetLang;
     } else {
-      // Prepend the language if it's missing (fallback)
       segments.splice(1, 0, targetLang);
     }
     

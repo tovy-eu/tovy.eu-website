@@ -52,54 +52,52 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        {/* Google Analytics & Consent Mode v2 Initialization - Inline for immediate execution in head */}
-        <script
+      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
+        {/* Google Analytics & Consent Mode v2 Initialization */}
+        <Script
+          id="google-analytics-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               
               /* 1. Set default consent state */
-              gtag('consent', 'default', {
-                'analytics_storage': 'denied',
-                'ad_storage': 'denied',
-                'ad_user_data': 'denied',
-                'ad_personalization': 'denied',
-                'wait_for_update': 500
-              });
-
-              /* 2. Check for existing consent immediately from localStorage */
+              var storedConsent = null;
               try {
                 var stored = localStorage.getItem('tovy-cookie-consent');
                 if (stored) {
                   var decision = JSON.parse(stored);
                   if (decision && decision.granted) {
-                    gtag('consent', 'update', {
-                      'analytics_storage': 'granted',
-                      'ad_storage': 'granted',
-                      'ad_user_data': 'granted',
-                      'ad_personalization': 'granted'
-                    });
+                    storedConsent = 'granted';
+                  } else if (decision) {
+                    storedConsent = 'denied';
                   }
                 }
               } catch (e) {}
 
-              /* 3. Initialize tag logic */
+              gtag('consent', 'default', {
+                'analytics_storage': storedConsent || 'denied',
+                'ad_storage': storedConsent || 'denied',
+                'ad_user_data': storedConsent || 'denied',
+                'ad_personalization': storedConsent || 'denied',
+                'wait_for_update': 500
+              });
+
+              /* 2. Initialize tag logic */
               gtag('js', new Date());
               gtag('config', 'G-VL0FR2B3DH', {
-                'send_page_view': true
+                'send_page_view': true,
+                'cookie_flags': 'SameSite=None;Secure'
               });
             `
           }}
         />
-        {/* Load Google tag library with beforeInteractive to ensure it's available before body scripts */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-VL0FR2B3DH"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
-      </head>
-      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
+        
         {children}
         <Toaster />
         <CookieBanner />
