@@ -1,4 +1,3 @@
-
 import { getPostData, getSortedPostsData } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
@@ -12,6 +11,7 @@ import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getDictionary } from '@/lib/get-dictionary';
 import { CONFIG } from '@/lib/config';
+import { BlogPostAnalytics } from '@/components/blog/blog-post-analytics';
 
 type Props = {
   params: Promise<{ lang: string; slug: string }>;
@@ -63,6 +63,9 @@ export default async function BlogPost({ params }: Props) {
 
   return (
     <div className="container mx-auto max-w-3xl py-12 px-4 md:px-8">
+      {/* Client-side analytics component to track the view */}
+      <BlogPostAnalytics slug={slug} title={postData.title} />
+
       <Card className="overflow-hidden bg-card/40 backdrop-blur-md border-none">
         {image && (
           <div className="relative w-full aspect-video">
