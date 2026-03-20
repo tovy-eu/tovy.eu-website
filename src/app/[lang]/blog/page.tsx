@@ -70,8 +70,11 @@ export default async function BlogHome({ params }: { params: Promise<{ lang: str
       
       {/* Featured Post */}
       <div className="mb-16">
-        <Link href={`/${lang}/blog/${featuredPost.id}`} className="block group">
-          <Card className="grid md:grid-cols-2 overflow-hidden transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 bg-card/40 backdrop-blur-md border-none">
+        <Link 
+          href={`/${lang}/blog/${featuredPost.id}`} 
+          className="block group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+        >
+          <Card className="grid md:grid-cols-2 overflow-hidden transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 bg-card/40 backdrop-blur-md border-none group-focus-visible:bg-card/60">
             {featuredImage && (
               <div className="relative w-full aspect-video md:aspect-auto">
                 <Image
@@ -109,8 +112,12 @@ export default async function BlogHome({ params }: { params: Promise<{ lang: str
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
         {otherPosts.map(({ id, date, title, excerpt, author, image, tags, readingTime }) => {
           return (
-            <Link href={`/${lang}/blog/${id}`} key={id} className="block group">
-              <Card className="h-full flex flex-col transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 overflow-hidden bg-card/40 backdrop-blur-md border-none">
+            <Link 
+              href={`/${lang}/blog/${id}`} 
+              key={id} 
+              className="block group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+            >
+              <Card className="h-full flex flex-col transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 overflow-hidden bg-card/40 backdrop-blur-md border-none group-focus-visible:bg-card/60">
                 {image && (
                   <div className="relative w-full aspect-video">
                     <Image
