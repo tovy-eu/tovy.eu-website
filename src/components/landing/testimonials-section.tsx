@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Image from 'next/image';
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,16 +8,18 @@ import fs from 'fs';
 import path from 'path';
 
 export function TestimonialsSection({ dict }: { dict: Dictionary }) {
-  // Safely check for the existence of the testimonials data file to prevent build errors
-  const filePath = path.join(process.cwd(), 'src/content/testimonials/data.json');
+  // Use a safer check for Node-specific environment to prevent crashes in Edge or browser runtimes
   let testimonialsData: any[] = [];
   
-  if (fs.existsSync(filePath)) {
+  if (typeof process !== 'undefined' && process.cwd) {
     try {
-      const fileContent = fs.readFileSync(filePath, 'utf8');
-      testimonialsData = JSON.parse(fileContent);
+      const filePath = path.join(process.cwd(), 'src/content/testimonials/data.json');
+      if (fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        testimonialsData = JSON.parse(fileContent);
+      }
     } catch (error) {
-      console.error("Failed to parse testimonials data:", error);
+      // Gracefully handle missing directory or parsing errors
     }
   }
 
@@ -27,7 +28,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
     return null;
   }
 
-  // Duplicate the testimonials data to ensure a seamless infinite loop
+  // Duplicate the testimonials data for infinite loop
   const duplicatedTestimonials = [...testimonialsData, ...testimonialsData, ...testimonialsData];
 
   return (
@@ -46,7 +47,6 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
       </div>
 
       <div className="relative mt-8 group">
-        {/* Infinite scrolling marquee container */}
         <div className="flex animate-marquee whitespace-nowrap gap-8 py-4 px-4 md:px-0">
           {duplicatedTestimonials.map((testimonial, index) => {
             const logoData = placeholderImages.testimonials.find(img => img.id === testimonial.logoId);
@@ -84,7 +84,6 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
           })}
         </div>
         
-        {/* Gradient overlays for smooth fading at edges */}
         <div className="absolute inset-y-0 left-0 w-12 sm:w-24 md:w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-12 sm:w-24 md:w-48 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
       </div>
