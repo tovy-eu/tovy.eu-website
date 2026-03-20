@@ -1,4 +1,3 @@
-
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
@@ -29,6 +28,7 @@ const NLFlag = () => (
 /**
  * A minimalistic language switcher component using flags.
  * Updated with a larger hit area (h-11 = 44px) for better mobile accessibility.
+ * Now includes analytics tracking for language switching.
  */
 export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps) {
   const pathname = usePathname();
@@ -39,6 +39,16 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
     
     const segments = pathname.split("/");
     const targetLang = currentLang === "en" ? "nl" : "en";
+
+    // Analytics tracking for language switch
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'language_switched', {
+        event_category: 'engagement',
+        event_label: 'Language Toggle',
+        target_language: targetLang,
+        source_language: currentLang
+      });
+    }
     
     // Replace the language segment (e.g., /en/blog -> /nl/blog)
     if (segments[1] === "en" || segments[1] === "nl") {
