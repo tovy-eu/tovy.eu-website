@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { BookOpen, Plus } from "lucide-react";
 import LanguageSwitcher from "./language-switcher";
+import { usePathname } from "next/navigation";
 import {
   Tooltip,
   TooltipContent,
@@ -14,13 +15,38 @@ import {
 import type { Dictionary } from "@/lib/get-dictionary";
 import { CONFIG } from "@/lib/config";
 
-/**
- * The primary navigation header for the application.
- * Optimized with larger touch targets for mobile accessibility.
- */
 export default function Header({ lang = "en", dict }: { lang?: string; dict?: Dictionary }) {
+  const pathname = usePathname();
   const shareIdeaText = dict?.common.shareIdea || "Share your idea";
   const blogText = dict?.navigation.blog || "Blog";
+  
+  const homePath = `/${lang}/`;
+  const isAtHome = pathname === homePath;
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    // If already on the home page, scroll to top instead of navigating (prevents a new page view in GA)
+    if (isAtHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'logo_home_refresh', {
+          event_category: 'navigation',
+          event_label: 'Logo click at home',
+          is_refresh: true
+        });
+      }
+    } else {
+      // If navigating from another page, tag the event
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'logo_home_return', {
+          event_category: 'navigation',
+          event_label: 'Logo click return home',
+          from_path: pathname
+        });
+      }
+    }
+  };
 
   const handleCtaClick = () => {
     if (typeof window !== 'undefined' && window.gtag) {
@@ -48,13 +74,17 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
     >
       <div className="container mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 md:px-8 max-w-6xl">
         {/* Left: Logo */}
-        <Link href={`/${lang}/`} className="font-bold text-2xl sm:text-3xl tracking-tight transition-transform hover:scale-105 active:scale-95">
+        <Link 
+          href={homePath} 
+          onClick={handleLogoClick}
+          className="font-bold text-2xl sm:text-3xl tracking-tight transition-transform hover:scale-105 active:scale-95"
+        >
           <span>TOV</span>
           <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
         </Link>
         
         <div className="flex items-center gap-1 sm:gap-3">
-          {/* Blog Access - Conditionally rendered */}
+          {/* Blog Access */}
           {CONFIG.enableBlog && (
             <TooltipProvider>
               <Tooltip>
@@ -73,7 +103,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
             </TooltipProvider>
           )}
 
-          {/* Main CTA - Collapses to icon, sized at h-11 for touch targets */}
+          {/* Main CTA */}
           <Button asChild size="sm" className="h-11 px-3 sm:px-5" onClick={handleCtaClick}>
             <Link href={`/${lang}/project-request/`}>
               <Plus className="h-5 w-5 sm:hidden" />
@@ -81,7 +111,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
             </Link>
           </Button>
 
-          {/* Minimalistic Language Toggle */}
+          {/* Language Toggle */}
           <LanguageSwitcher currentLang={lang} />
         </div>
       </div>
