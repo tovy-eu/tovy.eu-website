@@ -74,6 +74,14 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
           email: validatedEmail,
           timestamp: new Date(),
         });
+
+        // Analytics tracking for newsletter signup
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'newsletter_signup', {
+            event_category: 'conversion',
+            event_label: 'Newsletter Subscription'
+          });
+        }
         
         toast({
           title: "Success!",
