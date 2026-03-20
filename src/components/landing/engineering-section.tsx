@@ -6,6 +6,7 @@ import { CloudCog, CodeXml, DatabaseZap, DraftingCompass } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
+import { SectionHeader } from "./section-header";
 
 export function EngineeringSection({ dict }: { dict: Dictionary }) {
   const serviceLines = [
@@ -48,19 +49,11 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
       className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-12 sm:py-24"
     >
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-        <ScrollReveal>
-          <div className="mx-auto max-w-4xl text-center">
-            <h1 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
-              {dict.engineering.strategy}
-            </h1>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              {dict.engineering.title}
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-foreground/80">
-              {dict.engineering.subtitle}
-            </p>
-          </div>
-        </ScrollReveal>
+        <SectionHeader 
+          badge={dict.engineering.strategy}
+          title={dict.engineering.title}
+          description={dict.engineering.subtitle}
+        />
 
         <div className="relative mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {serviceLines.map((service, index) => (

@@ -2,7 +2,7 @@ import { BrainCircuit, Rocket, Sparkles, Feather } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
-import { cn } from "@/lib/utils";
+import { SectionHeader } from "./section-header";
 
 export function AboutSection({ dict }: { dict: Dictionary }) {
   const pillars = [
@@ -40,19 +40,11 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
     <section className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/10 py-16 sm:py-24 overflow-hidden">
       <div className="relative mx-auto max-w-5xl px-4 md:px-8">
         
-        <ScrollReveal>
-          <div className="mx-auto max-w-4xl text-center">
-            <h1 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
-              {dict.about.strategy}
-            </h1>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white">
-              {dict.about.title}
-            </h2>
-            <p className="mt-6 text-base md:text-lg leading-relaxed text-foreground/80 max-w-3xl mx-auto">
-              {dict.about.mission}
-            </p>
-          </div>
-        </ScrollReveal>
+        <SectionHeader 
+          badge={dict.about.strategy}
+          title={dict.about.title}
+          description={dict.about.mission}
+        />
 
         <div className="mt-16 md:mt-24 relative mx-auto max-w-3xl">
           {/* Header for pillars - moved above visuals */}
