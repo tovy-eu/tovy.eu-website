@@ -1,4 +1,3 @@
-
 'use client';
 
 // A simple client-side utility for managing GDPR consent and Google Consent Mode v2.
@@ -42,6 +41,13 @@ export function updateConsent(granted: boolean) {
   // Update Google Consent Mode via the gtag function.
   if (typeof window.gtag === 'function') {
     window.gtag('consent', 'update', consentState);
+    
+    // Tracking the decision for compliance reporting
+    window.gtag('event', 'cookie_consent_decision', {
+      event_category: 'compliance',
+      event_label: 'Cookie Banner Interaction',
+      decision: granted ? 'accept' : 'decline'
+    });
   }
 
   // Store the user's decision in local storage.
