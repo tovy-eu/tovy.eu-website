@@ -3,7 +3,7 @@
 import { XCircle, CheckCircle2, AlertCircle } from "lucide-react";
 import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
-import { cn } from "@/lib/utils";
+import { SectionHeader } from "./section-header";
 
 export function PainSolutionSection({ dict }: { dict: Dictionary }) {
   const painItems = dict.painSolution.pain.items;
@@ -12,16 +12,12 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
   return (
     <section className="relative w-full py-16 sm:py-24 overflow-hidden bg-background">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
-        <ScrollReveal>
-          <div className="text-center mb-12 sm:mb-16">
-            <h1 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
-              {dict.painSolution.title}
-            </h1>
-            <p className="mt-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
-              {dict.painSolution.subtitle}
-            </p>
-          </div>
-        </ScrollReveal>
+        <SectionHeader 
+          badge={dict.painSolution.title}
+          title={dict.painSolution.subtitle}
+          className="mb-12 sm:mb-16"
+          titleClassName="md:text-3xl lg:text-4xl"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
           {/* Pain Section (The Old Way) */}
