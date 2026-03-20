@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import placeholderImages from "@/app/lib/placeholder-images.json";
 import type { Dictionary } from '@/lib/get-dictionary';
+import { cn } from '@/lib/utils';
 
 export function TechMarquee({ dict }: { dict: Dictionary }) {
   const techLogos = placeholderImages.tech;
@@ -18,22 +19,32 @@ export function TechMarquee({ dict }: { dict: Dictionary }) {
       </div>
       <div className="relative flex items-center">
         <div className="flex animate-marquee whitespace-nowrap gap-12 sm:gap-20 items-center">
-          {duplicatedLogos.map((logo, index) => (
-            <div 
-              key={`${logo.id}-${index}`} 
-              className="relative flex items-center justify-center h-8 w-28 sm:h-10 sm:w-36 opacity-20 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100 flex-shrink-0"
-            >
-              <div className="relative w-full h-full max-w-[80%] max-h-[80%]">
-                <Image
-                  src={logo.url}
-                  alt={`${logo.id} logo`}
-                  fill
-                  className="object-contain"
-                  data-ai-hint={logo.hint}
-                />
+          {duplicatedLogos.map((logo, index) => {
+            const isBig = ['gcp', 'databricks', 'powerbi'].includes(logo.id);
+            
+            return (
+              <div 
+                key={`${logo.id}-${index}`} 
+                className={cn(
+                  "relative flex items-center justify-center h-8 w-28 sm:h-10 sm:w-36 opacity-20 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100 flex-shrink-0",
+                  isBig && "sm:w-44" // Provide more horizontal room for high-priority logos
+                )}
+              >
+                <div className={cn(
+                  "relative w-full h-full transition-all duration-300",
+                  isBig ? "max-w-full max-h-full scale-110" : "max-w-[80%] max-h-[80%]"
+                )}>
+                  <Image
+                    src={logo.url}
+                    alt={`${logo.id} logo`}
+                    fill
+                    className="object-contain"
+                    data-ai-hint={logo.hint}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         
         {/* Subtle Edge Fades for professional "trusted dashboard" feel */}
