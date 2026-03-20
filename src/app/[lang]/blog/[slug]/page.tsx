@@ -33,6 +33,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const postData = await getPostData(slug);
+  const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
   
   if (!postData) {
     return {
@@ -40,9 +41,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   
+  const ogImage = postData.image || defaultOgImage;
+
   return {
-    title: `${postData.title} | Tovy`,
+    title: postData.title,
     description: postData.excerpt,
+    openGraph: {
+      title: `${postData.title} | Tovy Blog`,
+      description: postData.excerpt,
+      type: 'article',
+      publishedTime: postData.date,
+      authors: [postData.author],
+      images: [{ url: ogImage }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: postData.title,
+      description: postData.excerpt,
+      images: [ogImage],
+    },
   };
 }
 
