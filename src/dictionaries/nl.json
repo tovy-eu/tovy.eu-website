@@ -13,7 +13,15 @@
     "subscribing": "Bezig met aanmelden...",
     "emailPlaceholder": "Vul hier je e-mailadres in",
     "agreeTo": "Ik ga akkoord met de",
-    "downloadJson": "Download als JSON"
+    "downloadJson": "Download als JSON",
+    "submissionFailed": "Verzending mislukt",
+    "alreadySubscribed": "Al aangemeld",
+    "alreadySubscribedDesc": "Dit e-mailadres staat al op onze lijst. Bedankt!",
+    "success": "Succes!",
+    "subscriptionSuccess": "Bedankt voor je aanmelding voor onze nieuwsbrief.",
+    "errorOccurred": "Er is een fout opgetreden",
+    "errorTryAgain": "Aanmelden mislukt. Probeer het later opnieuw.",
+    "submissionErrorDesc": "Er is een fout opgetreden bij het verzenden. Probeer het later opnieuw."
   },
   "hero": {
     "title": "Wij bouwen de AI‑basis van jouw organisatie.",

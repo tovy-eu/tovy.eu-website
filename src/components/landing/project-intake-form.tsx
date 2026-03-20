@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useTransition, useEffect } from "react";
@@ -176,8 +177,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
       } catch (error) {
         console.error("Failed to submit project request:", error);
         toast({
-          title: "Submission Failed",
-          description: "There was an error submitting your request. Please try again later.",
+          title: dict?.common.submissionFailed || "Submission Failed",
+          description: dict?.common.submissionErrorDesc || "There was an error submitting your request. Please try again later.",
           variant: "destructive",
         });
       }
