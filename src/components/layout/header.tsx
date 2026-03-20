@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -22,6 +21,15 @@ import { CONFIG } from "@/lib/config";
 export default function Header({ lang = "en", dict }: { lang?: string; dict?: Dictionary }) {
   const shareIdeaText = dict?.common.shareIdea || "Share your idea";
   const blogText = dict?.navigation.blog || "Blog";
+
+  const handleCtaClick = () => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'cta_click', {
+        event_category: 'engagement',
+        event_label: 'Header CTA'
+      });
+    }
+  };
 
   return (
     <header
@@ -57,7 +65,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
           )}
 
           {/* Main CTA - Collapses to icon, sized at h-11 for touch targets */}
-          <Button asChild size="sm" className="h-11 px-3 sm:px-5">
+          <Button asChild size="sm" className="h-11 px-3 sm:px-5" onClick={handleCtaClick}>
             <Link href={`/${lang}/project-request/`}>
               <Plus className="h-5 w-5 sm:hidden" />
               <span className="hidden sm:inline font-semibold">{shareIdeaText}</span>
