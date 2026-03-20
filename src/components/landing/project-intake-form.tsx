@@ -125,6 +125,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           ...data,
           timestamp: new Date(),
         });
+        
+        // Final conversion event
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'project_request_success', {
+            event_category: 'conversion',
+            event_label: 'Project Form Submitted'
+          });
+        }
+
         setFormSubmitted(true);
       } catch (error) {
         console.error("Failed to submit project request:", error);
@@ -150,12 +159,22 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     const isValid = await form.trigger(fieldsToValidate);
 
     if (isValid) {
-      // Trigger analytics event when moving past the first step
-      if (step === 0 && typeof window !== 'undefined' && window.gtag) {
-        window.gtag('event', 'project_request_started', {
+      // Analytics tracking
+      if (typeof window !== 'undefined' && window.gtag) {
+        // Trigger analytics event when moving past the first step
+        if (step === 0) {
+          window.gtag('event', 'project_request_started', {
+            event_category: 'conversion',
+            event_label: 'Data Maturity Selection',
+            value: form.getValues('maturity')
+          });
+        }
+
+        // Trigger step completion event for all steps
+        window.gtag('event', 'project_request_step_complete', {
           event_category: 'conversion',
-          event_label: 'Data Maturity Selection',
-          value: form.getValues('maturity')
+          step_number: step + 1,
+          step_name: formSteps[step].field,
         });
       }
 
