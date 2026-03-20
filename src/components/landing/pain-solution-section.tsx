@@ -23,8 +23,13 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
           {/* Pain Section (The Old Way) */}
           <ScrollReveal delay="duration-700" className="flex">
             <div className="relative w-full p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/5 overflow-hidden group">
-              {/* Subtle Noise Texture Overlay */}
-              <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+              {/* Reliable Inline Noise Texture Overlay */}
+              <div 
+                className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+                style={{ 
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
+                }}
+              />
               
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6">
@@ -49,7 +54,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
             </div>
           </ScrollReveal>
 
-          {/* Solution Section (The Tovy Way) - Unified with footer color, no border */}
+          {/* Solution Section (The Tovy Way) */}
           <ScrollReveal delay="delay-[200ms] duration-700" className="flex">
             <div className="relative w-full p-6 sm:p-8 rounded-2xl bg-card/80 backdrop-blur-sm border-none overflow-hidden shadow-2xl shadow-primary/5 group">
               <div className="relative z-10">
@@ -61,8 +66,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                   </div>
                   <div className="flex items-baseline gap-2">
                     <p 
-                      className="text-[10px] sm:text-sm font-medium opacity-80 mt-1"
-                      style={{ color: "hsl(var(--brand-3))" }}
+                      className="text-[10px] sm:text-sm font-medium opacity-80 mt-1 text-primary"
                     >
                       {dict.painSolution.solution.subtitle}
                     </p>
@@ -73,8 +77,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                   {solutionItems.map((item, i) => (
                     <li key={i} className="flex items-start gap-3 sm:gap-4 group/item">
                       <CheckCircle2 
-                        className="h-4 w-4 sm:h-5 sm:w-5 shrink-0 mt-0.5 transition-colors duration-300" 
-                        style={{ color: "#22C55E" }}
+                        className="h-4 w-4 sm:h-5 sm:w-5 shrink-0 mt-0.5 transition-colors duration-300 text-green-500" 
                       />
                       <span className="text-xs sm:text-sm md:text-base text-foreground leading-relaxed font-medium">
                         {item}
