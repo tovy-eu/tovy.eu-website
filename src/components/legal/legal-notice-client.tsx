@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -44,6 +43,15 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
     };
   }, [profile]);
 
+  const handleDownloadClick = () => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'json_download', {
+        event_category: 'engagement',
+        event_label: 'Download Company Profile'
+      });
+    }
+  };
+
   return (
     <div 
       className="relative min-h-screen py-16 sm:py-24 overflow-hidden"
@@ -64,7 +72,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
             </p>
           </div>
           {downloadHref && (
-            <Button asChild variant="outline" className="bg-white/5 border-white/10 hover:bg-white/10 text-white shrink-0">
+            <Button asChild variant="outline" className="bg-white/5 border-white/10 hover:bg-white/10 text-white shrink-0" onClick={handleDownloadClick}>
               <a href={downloadHref} download="company-profile.json">
                 <Download className="mr-2 h-4 w-4" />
                 {dict.common.downloadJson}
