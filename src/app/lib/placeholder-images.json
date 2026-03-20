@@ -20,32 +20,32 @@
     },
     {
       "id": "databricks",
-      "url": "https://picsum.photos/seed/databricks/200/80",
+      "url": "/images/tech/databricks-logo.png",
       "hint": "Databricks logo"
     },
     {
       "id": "dbt",
-      "url": "https://picsum.photos/seed/dbt/200/80",
+      "url": "/images/tech/dbt-logo.png",
       "hint": "dbt logo"
     },
     {
       "id": "sap",
-      "url": "https://picsum.photos/seed/sap/200/80",
+      "url": "/images/tech/sap-logo.png",
       "hint": "SAP logo"
     },
     {
       "id": "oracle",
-      "url": "https://picsum.photos/seed/oracle/200/80",
+      "url": "/images/tech/oracle-logo.png",
       "hint": "Oracle logo"
     },
     {
       "id": "python",
-      "url": "https://picsum.photos/seed/python/200/80",
+      "url": "/images/tech/python-logo.png",
       "hint": "Python logo"
     },
     {
       "id": "snowflake",
-      "url": "https://picsum.photos/seed/snowflake/200/80",
+      "url": "/images/tech/snowflake-logo.png",
       "hint": "Snowflake logo"
     }
   ]
