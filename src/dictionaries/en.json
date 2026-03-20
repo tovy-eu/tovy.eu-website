@@ -193,6 +193,7 @@
     "success": {
       "title": "Thank You!",
       "description": "Your project request has been submitted. We will contact you shortly.",
+      "idLabel": "Project ID",
       "backHome": "Back to Homepage"
     },
     "steps": {

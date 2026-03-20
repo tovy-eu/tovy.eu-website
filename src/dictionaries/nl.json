@@ -194,6 +194,7 @@
     "success": {
       "title": "Bedankt!",
       "description": "Je projectaanvraag is verzonden. We nemen snel contact met je op.",
+      "idLabel": "Project ID",
       "backHome": "Terug naar home"
     },
     "steps": {
