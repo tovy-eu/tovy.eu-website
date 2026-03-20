@@ -63,12 +63,23 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             
-            // Set default consent to 'denied' as required for EU users
+            // Check localStorage for existing consent to prevent "denied-then-granted" flip
+            var consentState = 'denied';
+            try {
+              var stored = localStorage.getItem('tovy-cookie-consent');
+              if (stored) {
+                var decision = JSON.parse(stored);
+                if (decision && decision.granted) {
+                  consentState = 'granted';
+                }
+              }
+            } catch (e) {}
+
             gtag('consent', 'default', {
-              'analytics_storage': 'denied',
-              'ad_storage': 'denied',
-              'ad_user_data': 'denied',
-              'ad_personalization': 'denied',
+              'analytics_storage': consentState,
+              'ad_storage': consentState,
+              'ad_user_data': consentState,
+              'ad_personalization': consentState,
               'wait_for_update': 500
             });
 
