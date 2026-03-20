@@ -150,6 +150,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     const isValid = await form.trigger(fieldsToValidate);
 
     if (isValid) {
+      // Trigger analytics event when moving past the first step
+      if (step === 0 && typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'project_request_started', {
+          event_category: 'conversion',
+          event_label: 'Data Maturity Selection',
+          value: form.getValues('maturity')
+        });
+      }
+
       if (step < totalSteps - 1) {
         setStep(s => s + 1);
       } else {
