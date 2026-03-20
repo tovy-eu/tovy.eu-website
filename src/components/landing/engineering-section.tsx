@@ -15,7 +15,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
       icon: <DraftingCompass className="h-8 w-8" />,
       description: dict.engineering.services.strategic.desc,
       stack: dict.engineering.services.strategic.tools.map(tool => ({ tool })),
-      color: "#2B5EFF"
+      color: "hsl(var(--brand-1))"
     },
     {
       id: "cloud_infrastructure",
@@ -23,7 +23,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
       icon: <CloudCog className="h-8 w-8" />,
       description: dict.engineering.services.cloud.desc,
       stack: dict.engineering.services.cloud.tools.map(tool => ({ tool })),
-      color: "#566FFF"
+      color: "hsl(var(--brand-2))"
     },
     {
       id: "data_engineering",
@@ -31,7 +31,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
       icon: <DatabaseZap className="h-8 w-8" />,
       description: dict.engineering.services.data.desc,
       stack: dict.engineering.services.data.tools.map(tool => ({ tool })),
-      color: "#A792FF"
+      color: "hsl(var(--brand-3))"
     },
     {
       id: "analytics_automation",
@@ -39,7 +39,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
       icon: <CodeXml className="h-8 w-8" />,
       description: dict.engineering.services.analytics.desc,
       stack: dict.engineering.services.analytics.tools.map(tool => ({ tool })),
-      color: "#FFB8FA"
+      color: "hsl(var(--brand-4))"
     },
   ];
 
@@ -67,7 +67,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
             <ScrollReveal key={service.id} delay={`delay-[${index * 150}ms] duration-700`}>
               <Card 
                 className="relative h-full flex flex-col bg-card/80 backdrop-blur-sm border-none shadow-xl transition-all duration-300 hover:-translate-y-2 text-center overflow-hidden group"
-                style={{ '--pillar-color': service.color, '--pillar-shadow-color': `${service.color}1A` } as React.CSSProperties}
+                style={{ '--pillar-color': service.color, '--pillar-shadow-color': `hsl(var(--brand-${index + 1}) / 0.1)` } as React.CSSProperties}
               >
                 {/* Glass Reflection Shine */}
                 <div className="absolute inset-0 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg] pointer-events-none z-10" />

@@ -10,28 +10,28 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
       icon: <BrainCircuit />,
       title: dict.about.pillars.tech.title,
       description: dict.about.pillars.tech.desc,
-      color: "#2B5EFF",
+      color: "hsl(var(--brand-1))",
       delay: "-4s" // Peak at 0s (Left)
     },
     {
       icon: <Rocket />,
       title: dict.about.pillars.optimization.title,
       description: dict.about.pillars.optimization.desc,
-      color: "#566FFF",
+      color: "hsl(var(--brand-2))",
       delay: "-2.66s" // Peak at 1.34s (Mid-left)
     },
     {
       icon: <Feather />,
       title: dict.about.pillars.freedom.title,
       description: dict.about.pillars.freedom.desc,
-      color: "#A792FF",
+      color: "hsl(var(--brand-3))",
       delay: "-1.33s" // Peak at 2.67s (Mid-right)
     },
     {
       icon: <Sparkles />,
       title: dict.about.pillars.innovation.title,
       description: dict.about.pillars.innovation.desc,
-      color: "#FFB8FA",
+      color: "hsl(var(--brand-4))",
       delay: "0s" // Peak at 4s (Right)
     }
   ];

@@ -66,7 +66,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                   <div className="flex items-baseline gap-2">
                     <p 
                       className="text-[10px] sm:text-sm font-medium opacity-80 mt-1"
-                      style={{ color: "#A792FF" }}
+                      style={{ color: "hsl(var(--brand-3))" }}
                     >
                       {dict.painSolution.solution.subtitle}
                     </p>
