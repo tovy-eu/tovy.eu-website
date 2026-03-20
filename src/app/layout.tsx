@@ -60,26 +60,30 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               
-              /* 1. Check for existing consent immediately */
-              var consentState = 'denied';
+              /* 1. Set default consent state */
+              gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'wait_for_update': 500
+              });
+
+              /* 2. Check for existing consent immediately from localStorage */
               try {
                 var stored = localStorage.getItem('tovy-cookie-consent');
                 if (stored) {
                   var decision = JSON.parse(stored);
                   if (decision && decision.granted) {
-                    consentState = 'granted';
+                    gtag('consent', 'update', {
+                      'analytics_storage': 'granted',
+                      'ad_storage': 'granted',
+                      'ad_user_data': 'granted',
+                      'ad_personalization': 'granted'
+                    });
                   }
                 }
               } catch (e) {}
-
-              /* 2. Set default consent state */
-              gtag('consent', 'default', {
-                'analytics_storage': consentState,
-                'ad_storage': consentState,
-                'ad_user_data': consentState,
-                'ad_personalization': consentState,
-                'wait_for_update': 500
-              });
 
               /* 3. Initialize tag logic */
               gtag('js', new Date());
