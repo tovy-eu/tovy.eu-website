@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -22,6 +21,15 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     }, 100);
     return () => clearTimeout(timer);
   }, []);
+
+  const handleCtaClick = () => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'cta_click', {
+        event_category: 'engagement',
+        event_label: 'Hero CTA'
+      });
+    }
+  };
 
   return (
     <section 
@@ -47,7 +55,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           {dict.hero.subtitle}
         </p>
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
-          <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-11 sm:h-12">
+          <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-11 sm:h-12" onClick={handleCtaClick}>
             <Link href={`/${lang}/project-request/`}>
               {dict.common.workWithUs}
               <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
