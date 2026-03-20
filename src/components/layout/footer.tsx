@@ -34,6 +34,15 @@ export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Di
     setYear(new Date().getFullYear());
   }, []);
 
+  const handleSocialClick = (platform: string) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'social_link_click', {
+        event_category: 'engagement',
+        event_label: platform
+      });
+    }
+  };
+
   const privacyText = dict?.common.privacyPolicy || "Privacy Policy";
   const legalText = dict?.common.legalNotice || "Legal Notice";
   const rightsText = dict?.common.allRightsReserved || "All rights reserved.";
@@ -48,7 +57,12 @@ export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Di
             {socialLinks.map((link) => (
               <Tooltip key={link.name}>
                 <TooltipTrigger asChild>
-                  <Button asChild variant="ghost" className="h-11 w-11 rounded-full">
+                  <Button 
+                    asChild 
+                    variant="ghost" 
+                    className="h-11 w-11 rounded-full"
+                    onClick={() => handleSocialClick(link.name)}
+                  >
                     <Link href={link.url} target="_blank" aria-label={link.name}>
                       {link.icon}
                     </Link>
