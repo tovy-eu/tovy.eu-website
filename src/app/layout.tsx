@@ -83,7 +83,7 @@ export default function RootLayout({
 
               // 3. Initialize tag logic
               gtag('js', new Date());
-              gtag('config', 'G-ESH71F3XK7', {
+              gtag('config', 'G-VL0FR2B3DH', {
                 'send_page_view': true
               });
             `
@@ -91,7 +91,7 @@ export default function RootLayout({
         />
         {/* Load Google tag (gtag.js) library */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-ESH71F3XK7"
+          src="https://www.googletagmanager.com/gtag/js?id=G-VL0FR2B3DH"
           strategy="afterInteractive"
         />
       </head>
