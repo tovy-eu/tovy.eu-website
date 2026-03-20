@@ -159,7 +159,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const onSubmit = (data: ProjectRequestData) => {
     startTransition(async () => {
       try {
-        // Generate a unique professional project ID
+        // Generate a unique professional project ID (e.g., TOVY-2025-X9Z)
         const year = new Date().getFullYear();
         const randomPart = Math.random().toString(36).substring(2, 5).toUpperCase();
         const generatedId = `TOVY-${year}-${randomPart}`;
@@ -225,7 +225,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         });
 
         // Specific Funnel Event: User finished describing their project (Step 3)
-        // This is index 3: "projectDetails"
         if (step === 3) {
           window.gtag('event', 'completed_step_three', {
             event_category: 'conversion',
