@@ -13,7 +13,15 @@
     "subscribing": "Subscribing...",
     "emailPlaceholder": "Enter your email here",
     "agreeTo": "I agree to the",
-    "downloadJson": "Download as JSON"
+    "downloadJson": "Download as JSON",
+    "submissionFailed": "Submission Failed",
+    "alreadySubscribed": "Already Subscribed",
+    "alreadySubscribedDesc": "This email address is already on our list. Thank you!",
+    "success": "Success!",
+    "subscriptionSuccess": "Thank you for subscribing to our newsletter.",
+    "errorOccurred": "An Error Occurred",
+    "errorTryAgain": "Could not subscribe at this time. Please try again later.",
+    "submissionErrorDesc": "There was an error submitting your request. Please try again later."
   },
   "hero": {
     "title": "We build the AI foundation of your business.",

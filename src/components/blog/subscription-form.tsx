@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useTransition } from 'react';
@@ -45,7 +46,7 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
     if (!result.success) {
       const errorMessage = result.error.errors[0].message;
       toast({
-        title: "Submission Failed",
+        title: dict?.common.submissionFailed || "Submission Failed",
         description: errorMessage,
         variant: "destructive",
       });
@@ -62,8 +63,8 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
 
         if (!querySnapshot.empty) {
           toast({
-            title: "Already Subscribed",
-            description: "This email address is already on our list. Thank you!",
+            title: dict?.common.alreadySubscribed || "Already Subscribed",
+            description: dict?.common.alreadySubscribedDesc || "This email address is already on our list. Thank you!",
           });
           setEmail('');
           setConsent(false);
@@ -84,8 +85,8 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
         }
         
         toast({
-          title: "Success!",
-          description: "Thank you for subscribing to our newsletter.",
+          title: dict?.common.success || "Success!",
+          description: dict?.common.subscriptionSuccess || "Thank you for subscribing to our newsletter.",
         });
         setEmail('');
         setConsent(false);
@@ -93,8 +94,8 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
       } catch (error) {
         console.error("Subscription error:", error);
         toast({
-          title: "An Error Occurred",
-          description: "Could not subscribe at this time. Please try again later.",
+          title: dict?.common.errorOccurred || "An Error Occurred",
+          description: dict?.common.errorTryAgain || "Could not subscribe at this time. Please try again later.",
           variant: "destructive",
         });
       }
