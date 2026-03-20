@@ -51,16 +51,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ scrollBehavior: 'smooth' }} data-scroll-behavior="smooth">
-      <head>
-        {/* Google Analytics & Consent Mode v2 Initialization */}
+    <html lang="en" className="scroll-smooth">
+      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
+        {/* Google Analytics & Consent Mode v2 Initialization - Inline for immediate execution */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               
-              // 1. Check for existing consent immediately to prevent flicker
+              /* 1. Check for existing consent immediately to prevent flicker */
               var consentState = 'denied';
               try {
                 var stored = localStorage.getItem('tovy-cookie-consent');
@@ -72,7 +72,7 @@ export default function RootLayout({
                 }
               } catch (e) {}
 
-              // 2. Set default consent state
+              /* 2. Set default consent state */
               gtag('consent', 'default', {
                 'analytics_storage': consentState,
                 'ad_storage': consentState,
@@ -81,7 +81,7 @@ export default function RootLayout({
                 'wait_for_update': 500
               });
 
-              // 3. Initialize tag logic
+              /* 3. Initialize tag logic */
               gtag('js', new Date());
               gtag('config', 'G-VL0FR2B3DH', {
                 'send_page_view': true
@@ -89,13 +89,12 @@ export default function RootLayout({
             `
           }}
         />
-        {/* Load Google tag (gtag.js) library */}
+        {/* Load Google tag (gtag.js) library with appropriate strategy */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-VL0FR2B3DH"
           strategy="afterInteractive"
         />
-      </head>
-      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
+        
         {children}
         <Toaster />
         <CookieBanner />
