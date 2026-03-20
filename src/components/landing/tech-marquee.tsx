@@ -10,7 +10,7 @@ export function TechMarquee({ dict }: { dict: Dictionary }) {
   const duplicatedLogos = [...techLogos, ...techLogos, ...techLogos];
 
   return (
-    <div className="w-full py-10 bg-background/30 border-y border-white/5 overflow-hidden">
+    <div className="w-full py-10 bg-background/30 border-b border-white/5 overflow-hidden">
       <div className="container mx-auto px-4 mb-6">
           <p className="text-[10px] font-bold tracking-[0.3em] text-center text-muted-foreground/40 uppercase">
               {dict.common.techStack}
