@@ -52,15 +52,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ scrollBehavior: 'smooth' }} data-scroll-behavior="smooth">
-      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
-        {/* Google Analytics Initialization - Must be synchronous and early */}
+      <head>
+        {/* Google Analytics & Consent Mode v2 Initialization */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               
-              // Immediate localStorage check to prevent "denied-then-granted" flicker
+              // 1. Check for existing consent immediately to prevent flicker
               var consentState = 'denied';
               try {
                 var stored = localStorage.getItem('tovy-cookie-consent');
@@ -72,6 +72,7 @@ export default function RootLayout({
                 }
               } catch (e) {}
 
+              // 2. Set default consent state
               gtag('consent', 'default', {
                 'analytics_storage': consentState,
                 'ad_storage': consentState,
@@ -80,24 +81,22 @@ export default function RootLayout({
                 'wait_for_update': 500
               });
 
+              // 3. Initialize tag logic
               gtag('js', new Date());
+              gtag('config', 'G-ESH71F3XK7', {
+                'send_page_view': true
+              });
             `
           }}
         />
-
-        {/* Load Google tag (gtag.js) */}
+        {/* Load Google tag (gtag.js) library */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ESH71F3XK7"
           strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            gtag('config', 'G-ESH71F3XK7');
-          `}
-        </Script>
-        
+      </head>
+      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
         {children}
-        
         <Toaster />
         <CookieBanner />
       </body>
