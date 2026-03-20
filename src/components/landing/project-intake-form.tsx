@@ -27,6 +27,8 @@ interface ProjectIntakeFormProps {
   dict: Dictionary;
 }
 
+const STORAGE_KEY = "tovy_project_form_progress";
+
 export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const [step, setStep] = useState(0);
   const { toast } = useToast();
@@ -94,6 +96,40 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   
   const projectFocus = form.watch("projectFocus");
   const challenges = form.watch("challenges");
+  const allValues = form.watch();
+
+  // Load progress from localStorage on mount
+  useEffect(() => {
+    const savedProgress = localStorage.getItem(STORAGE_KEY);
+    if (savedProgress) {
+      try {
+        const { step: savedStep, data: savedData } = JSON.parse(savedProgress);
+        setStep(savedStep);
+        form.reset(savedData);
+      } catch (e) {
+        console.error("Failed to load form progress", e);
+      }
+    }
+  }, [form]);
+
+  // Save progress to localStorage whenever step or data changes
+  useEffect(() => {
+    if (!formSubmitted) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ step, data: allValues }));
+    }
+  }, [step, allValues, formSubmitted]);
+
+  // Prevent accidental navigation
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (form.formState.isDirty && !formSubmitted) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [form.formState.isDirty, formSubmitted]);
 
   useEffect(() => {
     if (projectFocus) {
@@ -134,6 +170,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           });
         }
 
+        // Clear saved progress on success
+        localStorage.removeItem(STORAGE_KEY);
         setFormSubmitted(true);
       } catch (error) {
         console.error("Failed to submit project request:", error);
