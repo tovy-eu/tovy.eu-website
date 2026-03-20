@@ -53,7 +53,12 @@ export default function RootLayout({
   return (
     <html lang="en" style={{ scrollBehavior: 'smooth' }} data-scroll-behavior="smooth">
       <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
-        <Script id="google-consent-mode" strategy="afterInteractive">
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ESH71F3XK7"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -66,6 +71,9 @@ export default function RootLayout({
               'ad_personalization': 'denied',
               'wait_for_update': 500
             });
+
+            gtag('js', new Date());
+            gtag('config', 'G-ESH71F3XK7');
           `}
         </Script>
         
