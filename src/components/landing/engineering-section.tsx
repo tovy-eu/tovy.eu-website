@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Badge } from "@/components/ui/badge";
@@ -67,7 +66,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
           {serviceLines.map((service, index) => (
             <ScrollReveal key={service.id} delay={`delay-[${index * 150}ms] duration-700`}>
               <Card 
-                className="relative h-full flex flex-col bg-card/40 backdrop-blur-md border-none shadow-xl transition-all duration-300 hover:-translate-y-2 text-center overflow-hidden group"
+                className="relative h-full flex flex-col bg-card/80 backdrop-blur-sm border-none shadow-xl transition-all duration-300 hover:-translate-y-2 text-center overflow-hidden group"
                 style={{ '--pillar-color': service.color, '--pillar-shadow-color': `${service.color}1A` } as React.CSSProperties}
               >
                 {/* Glass Reflection Shine */}

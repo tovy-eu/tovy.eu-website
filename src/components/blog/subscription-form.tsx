@@ -103,7 +103,7 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
 
   return (
     <div className="mx-4 md:mx-0">
-      <div className="p-8 rounded-lg bg-card/40 backdrop-blur-md shadow-xl border-none overflow-hidden relative">
+      <div className="p-8 rounded-lg bg-card/80 backdrop-blur-sm shadow-xl border-none overflow-hidden relative">
         <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
           {stayUpToDateText}
         </h3>
