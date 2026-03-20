@@ -52,15 +52,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
-        {/* Google Analytics & Consent Mode v2 Initialization - Inline for immediate execution */}
+      <head>
+        {/* Google Analytics & Consent Mode v2 Initialization - Inline for immediate execution in head */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               
-              /* 1. Check for existing consent immediately to prevent flicker */
+              /* 1. Check for existing consent immediately */
               var consentState = 'denied';
               try {
                 var stored = localStorage.getItem('tovy-cookie-consent');
@@ -89,12 +89,13 @@ export default function RootLayout({
             `
           }}
         />
-        {/* Load Google tag (gtag.js) library with appropriate strategy */}
+        {/* Load Google tag library with beforeInteractive to ensure it's available before body scripts */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-VL0FR2B3DH"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
-        
+      </head>
+      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
         {children}
         <Toaster />
         <CookieBanner />
