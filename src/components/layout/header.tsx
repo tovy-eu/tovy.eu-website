@@ -31,6 +31,15 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
     }
   };
 
+  const handleBlogClick = () => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'read_blog_click', {
+        event_category: 'engagement',
+        event_label: 'Header Blog Link'
+      });
+    }
+  };
+
   return (
     <header
       className={cn(
@@ -50,7 +59,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" asChild className="h-11 w-11 rounded-full hover:bg-white/10">
+                  <Button variant="ghost" size="icon" asChild className="h-11 w-11 rounded-full hover:bg-white/10" onClick={handleBlogClick}>
                     <Link href={`/${lang}/blog/`}>
                       <BookOpen className="h-5 w-5" />
                       <span className="sr-only">{blogText}</span>

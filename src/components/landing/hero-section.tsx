@@ -31,6 +31,15 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     }
   };
 
+  const handleBlogClick = () => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'read_blog_click', {
+        event_category: 'engagement',
+        event_label: 'Hero Blog Link'
+      });
+    }
+  };
+
   return (
     <section 
       className="relative w-full flex flex-col items-center justify-center min-h-[75vh] text-center py-12 px-4 md:py-32 overflow-hidden"
@@ -63,7 +72,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           </Button>
           
           {CONFIG.enableBlog && (
-            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-base sm:text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white h-11 sm:h-12">
+            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-base sm:text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white h-11 sm:h-12" onClick={handleBlogClick}>
               <Link href={`/${lang}/blog/`}>
                 <BookOpen className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 {dict.common.readBlog}
