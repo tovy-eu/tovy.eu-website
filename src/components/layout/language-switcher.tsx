@@ -8,7 +8,13 @@ interface LanguageSwitcherProps {
 }
 
 const GBFlag = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-5 h-auto rounded-[1px] shadow-sm">
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 60 30" 
+    className="w-5 h-auto rounded-[1px] shadow-sm"
+    aria-hidden="true"
+    role="img"
+  >
     <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
     <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
     <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4"/>
@@ -18,7 +24,13 @@ const GBFlag = () => (
 );
 
 const NLFlag = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2" className="w-5 h-auto rounded-[1px] shadow-sm">
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 3 2" 
+    className="w-5 h-auto rounded-[1px] shadow-sm"
+    aria-hidden="true"
+    role="img"
+  >
     <rect width="3" height="2" fill="#21468B"/>
     <rect width="3" height="1.333" fill="#fff"/>
     <rect width="3" height="0.666" fill="#AE1C28"/>
@@ -28,7 +40,7 @@ const NLFlag = () => (
 /**
  * A minimalistic language switcher component using flags.
  * Updated with a larger hit area (h-11 = 44px) for better mobile accessibility.
- * Now includes analytics tracking for language switching.
+ * Now includes descriptive ARIA labels to clearly announce the language switching action.
  */
 export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps) {
   const pathname = usePathname();
@@ -62,16 +74,18 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
     router.push(newPath);
   };
 
+  const targetLangName = currentLang === "en" ? "Dutch" : "English";
+
   return (
     <Button
       variant="ghost"
       size="sm"
       onClick={toggleLanguage}
       className="h-11 px-3 rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-2 overflow-hidden border-none"
-      aria-label={`Switch to ${currentLang === 'en' ? 'Dutch' : 'English'}`}
+      aria-label={`Switch to ${targetLangName}`}
     >
       {currentLang === "en" ? <GBFlag /> : <NLFlag />}
-      <span className="sr-only">{currentLang === "en" ? "English" : "Dutch"}</span>
+      <span className="sr-only">Switch to {targetLangName}</span>
     </Button>
   );
 }
