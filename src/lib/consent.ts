@@ -31,6 +31,7 @@ export function updateConsent(granted: boolean) {
   }
 
   // Define the consent state to be updated.
+  // Including all 4 mandatory parameters for Google Consent Mode v2.
   const consentState = {
     analytics_storage: granted ? 'granted' : 'denied',
     ad_storage: granted ? 'granted' : 'denied',
