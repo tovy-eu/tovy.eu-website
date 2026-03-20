@@ -34,6 +34,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const [step, setStep] = useState(0);
   const { toast } = useToast();
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [projectId, setProjectId] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
@@ -158,8 +159,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const onSubmit = (data: ProjectRequestData) => {
     startTransition(async () => {
       try {
+        // Generate a unique professional project ID
+        const year = new Date().getFullYear();
+        const randomPart = Math.random().toString(36).substring(2, 5).toUpperCase();
+        const generatedId = `TOVY-${year}-${randomPart}`;
+        setProjectId(generatedId);
+
         await addDoc(collection(db, "project_requests"), {
           ...data,
+          projectId: generatedId,
           timestamp: new Date(),
         });
         
@@ -244,9 +252,19 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         <CardHeader className="text-center">
           <CheckCircle className="mx-auto h-12 w-12 md:h-16 md:w-16 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent mb-4" />
           <CardTitle className="text-xl md:text-2xl">{dict.projectForm.success.title}</CardTitle>
-          <CardDescription>
+          <CardDescription className="max-w-md mx-auto">
             {dict.projectForm.success.description}
           </CardDescription>
+          {projectId && (
+            <div className="mt-6 p-4 rounded-lg bg-white/5 border border-white/10">
+              <p className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-1">
+                {dict.projectForm.success.idLabel}
+              </p>
+              <p className="text-xl md:text-2xl font-mono font-bold text-primary">
+                {projectId}
+              </p>
+            </div>
+          )}
         </CardHeader>
         <CardFooter className="flex justify-center mt-4">
           <Button asChild variant="outline" className="border-0 bg-white/5 hover:bg-white/10">
