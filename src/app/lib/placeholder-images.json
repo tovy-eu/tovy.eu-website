@@ -11,5 +11,42 @@
       "url": "https://picsum.photos/seed/brightscale/200/80",
       "hint": "business logo"
     }
+  ],
+  "tech": [
+    {
+      "id": "azure",
+      "url": "https://picsum.photos/seed/azure/200/80",
+      "hint": "Microsoft Azure logo"
+    },
+    {
+      "id": "databricks",
+      "url": "https://picsum.photos/seed/databricks/200/80",
+      "hint": "Databricks logo"
+    },
+    {
+      "id": "dbt",
+      "url": "https://picsum.photos/seed/dbt/200/80",
+      "hint": "dbt logo"
+    },
+    {
+      "id": "sap",
+      "url": "https://picsum.photos/seed/sap/200/80",
+      "hint": "SAP logo"
+    },
+    {
+      "id": "oracle",
+      "url": "https://picsum.photos/seed/oracle/200/80",
+      "hint": "Oracle logo"
+    },
+    {
+      "id": "python",
+      "url": "https://picsum.photos/seed/python/200/80",
+      "hint": "Python logo"
+    },
+    {
+      "id": "snowflake",
+      "url": "https://picsum.photos/seed/snowflake/200/80",
+      "hint": "Snowflake logo"
+    }
   ]
 }

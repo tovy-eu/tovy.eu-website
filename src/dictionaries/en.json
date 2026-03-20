@@ -21,7 +21,8 @@
     "subscriptionSuccess": "Thank you for subscribing to our newsletter.",
     "errorOccurred": "An Error Occurred",
     "errorTryAgain": "Could not subscribe at this time. Please try again later.",
-    "submissionErrorDesc": "There was an error submitting your request. Please try again later."
+    "submissionErrorDesc": "There was an error submitting your request. Please try again later.",
+    "techStack": "Technologies we work with"
   },
   "hero": {
     "title": "We build the AI foundation of your business.",
