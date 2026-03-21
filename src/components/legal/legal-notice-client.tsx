@@ -7,6 +7,7 @@ import { Download, Building, MapPin, Mail, Phone, User, FileText, Landmark, KeyR
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { Dictionary } from '@/lib/get-dictionary';
 import { WavyLines } from '@/components/landing/wavy-lines';
+import { trackEvent } from '@/lib/analytics';
 
 type LegalNoticeClientProps = {
   profile: JSONContent['public_company_profile'];
@@ -44,12 +45,11 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
   }, [profile]);
 
   const handleDownloadClick = () => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'json_download', {
-        event_category: 'engagement',
-        event_label: 'Download Company Profile'
-      });
-    }
+    trackEvent({
+      name: 'json_download',
+      event_category: 'engagement',
+      event_label: 'Download Company Profile'
+    });
   };
 
   return (
@@ -61,7 +61,6 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
     >
       <WavyLines />
       <div className="container relative z-10 mx-auto max-w-5xl px-4 md:px-8">
-        {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
@@ -81,9 +80,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
           )}
         </div>
 
-        {/* Info Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {/* Company Identification */}
           <Card className="bg-card/40 backdrop-blur-md border-white/5 shadow-2xl flex flex-col">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-2 text-primary mb-1">
@@ -105,7 +102,6 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
             </CardContent>
           </Card>
 
-          {/* Contact & Location */}
           <Card className="bg-card/40 backdrop-blur-md border-white/5 shadow-2xl flex flex-col">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-2 text-primary mb-1">
@@ -140,7 +136,6 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
           </Card>
         </div>
 
-        {/* Registry & Identifiers */}
         <Card className="bg-card/40 backdrop-blur-md border-white/5 shadow-2xl mb-8">
           <CardHeader className="pb-4">
             <div className="flex items-center gap-2 text-primary mb-1">
@@ -169,7 +164,6 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
           </CardContent>
         </Card>
 
-        {/* Disclaimer Section */}
         <Card className="bg-card/20 backdrop-blur-sm border-white/5 border-dashed">
           <CardHeader>
             <CardTitle className="text-base text-foreground/80">{dict.legal.disclaimer}</CardTitle>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -13,6 +12,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import type { Dictionary } from "@/lib/get-dictionary";
+import { trackEvent } from "@/lib/analytics";
 
 const socialLinks = [
   {
@@ -35,12 +35,11 @@ export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Di
   }, []);
 
   const handleSocialClick = (platform: string) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'social_link_click', {
-        event_category: 'engagement',
-        event_label: platform
-      });
-    }
+    trackEvent({
+      name: 'social_link_click',
+      event_category: 'engagement',
+      event_label: platform
+    });
   };
 
   const privacyText = dict?.common.privacyPolicy || "Privacy Policy";
@@ -51,7 +50,6 @@ export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Di
     <footer className="w-full border-t border-border/40 bg-card/80 backdrop-blur-sm">
       <div className="container mx-auto flex flex-col items-center gap-8 py-10 max-w-6xl px-4 md:px-8">
         
-        {/* Social Icons - Optimized for touch with h-11 (44px) */}
         <div className="flex items-center gap-4">
           <TooltipProvider>
             {socialLinks.map((link) => (
@@ -76,7 +74,6 @@ export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Di
           </TooltipProvider>
         </div>
         
-        {/* Center: Links - Increased vertical gap for mobile readability */}
         <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-x-6 gap-y-4 text-sm text-muted-foreground">
           <Link href={`/${lang}/privacy-policy/`} className="hover:text-primary transition-colors py-2 px-1">
             {privacyText}
@@ -93,7 +90,6 @@ export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Di
           <span className="py-2 px-1">{companyProfile.public_company_profile.primary_identifiers.vat_id_number}</span>
         </div>
         
-        {/* Bottom: Copyright */}
         <div className="text-sm text-muted-foreground text-center">
           © {year} {companyProfile.public_company_profile.entity_name}. {rightsText}
         </div>
