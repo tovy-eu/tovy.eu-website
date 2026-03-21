@@ -9,6 +9,7 @@ import { WavyLines } from './wavy-lines';
 import { usePathname } from 'next/navigation';
 import type { Dictionary } from '@/lib/get-dictionary';
 import { CONFIG } from '@/lib/config';
+import { trackEvent } from '@/lib/analytics';
 
 export function HeroSection({ dict }: { dict: Dictionary }) {
   const [isMounted, setIsMounted] = useState(false);
@@ -23,21 +24,19 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
   }, []);
 
   const handleCtaClick = () => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'cta_click', {
-        event_category: 'engagement',
-        event_label: 'Hero CTA'
-      });
-    }
+    trackEvent({
+      name: 'cta_click',
+      event_category: 'engagement',
+      event_label: 'Hero CTA'
+    });
   };
 
   const handleBlogClick = () => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'read_blog_click', {
-        event_category: 'engagement',
-        event_label: 'Hero Blog Link'
-      });
-    }
+    trackEvent({
+      name: 'read_blog_click',
+      event_category: 'engagement',
+      event_label: 'Hero Blog Link'
+    });
   };
 
   return (

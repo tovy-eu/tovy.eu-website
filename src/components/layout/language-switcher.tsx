@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/analytics";
 
 interface LanguageSwitcherProps {
   currentLang: string;
@@ -47,16 +48,14 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
     const segments = pathname.split("/");
     const targetLang = currentLang === "en" ? "nl" : "en";
 
-    // Analytics tracking for language switch
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'language_switched', {
-        event_category: 'engagement',
-        event_label: 'Language Toggle',
-        target_language: targetLang,
-        source_language: currentLang,
-        is_language_switch: true // Parameter to help identify and filter this specific view event
-      });
-    }
+    trackEvent({
+      name: 'language_switched',
+      event_category: 'engagement',
+      event_label: 'Language Toggle',
+      target_language: targetLang,
+      source_language: currentLang,
+      is_language_switch: true
+    });
     
     if (segments[1] === "en" || segments[1] === "nl") {
       segments[1] = targetLang;

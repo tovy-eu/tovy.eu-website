@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useTransition, useEffect } from "react";
@@ -23,6 +22,7 @@ import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home } from "lucide
 import { cn } from "@/lib/utils";
 import { Checkbox } from "../ui/checkbox";
 import type { Dictionary } from "@/lib/get-dictionary";
+import { trackEvent } from "@/lib/analytics";
 
 interface ProjectIntakeFormProps {
   dict: Dictionary;
@@ -100,7 +100,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const challenges = form.watch("challenges");
   const allValues = form.watch();
 
-  // Load progress from localStorage on mount
   useEffect(() => {
     const savedProgress = localStorage.getItem(STORAGE_KEY);
     if (savedProgress) {
@@ -114,14 +113,12 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     }
   }, [form]);
 
-  // Save progress to localStorage whenever step or data changes
   useEffect(() => {
     if (!formSubmitted) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ step, data: allValues }));
     }
   }, [step, allValues, formSubmitted]);
 
-  // Prevent accidental navigation
   useEffect(() => {
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
       if (form.formState.isDirty && !formSubmitted) {
@@ -159,7 +156,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const onSubmit = (data: ProjectRequestData) => {
     startTransition(async () => {
       try {
-        // Generate a unique professional project ID using a timestamp (e.g., TOVY-1712345678901)
         const timestamp = Date.now();
         const generatedId = `TOVY-${timestamp}`;
         setProjectId(generatedId);
@@ -170,15 +166,12 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           timestamp: new Date(),
         });
         
-        // Final conversion event
-        if (typeof window !== 'undefined' && window.gtag) {
-          window.gtag('event', 'project_request_success', {
-            event_category: 'conversion',
-            event_label: 'Project Form Submitted'
-          });
-        }
+        trackEvent({
+          name: 'project_request_success',
+          event_category: 'conversion',
+          event_label: 'Project Form Submitted'
+        });
 
-        // Clear saved progress on success
         localStorage.removeItem(STORAGE_KEY);
         setFormSubmitted(true);
       } catch (error) {
@@ -205,31 +198,28 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     const isValid = await form.trigger(fieldsToValidate);
 
     if (isValid) {
-      // Analytics tracking
-      if (typeof window !== 'undefined' && window.gtag) {
-        // Trigger analytics event when moving past the first step
-        if (step === 0) {
-          window.gtag('event', 'project_request_started', {
-            event_category: 'conversion',
-            event_label: 'Data Maturity Selection',
-            value: form.getValues('maturity')
-          });
-        }
-
-        // Trigger step completion event for all steps
-        window.gtag('event', 'project_request_step_complete', {
+      if (step === 0) {
+        trackEvent({
+          name: 'project_request_started',
           event_category: 'conversion',
-          step_number: step + 1,
-          step_name: formSteps[step].field,
+          event_label: 'Data Maturity Selection',
+          value: form.getValues('maturity')
         });
+      }
 
-        // Specific Funnel Event: User finished describing their project (Step 3)
-        if (step === 3) {
-          window.gtag('event', 'completed_step_three', {
-            event_category: 'conversion',
-            event_label: 'Project Details Shared'
-          });
-        }
+      trackEvent({
+        name: 'project_request_step_complete',
+        event_category: 'conversion',
+        step_number: step + 1,
+        step_name: formSteps[step].field,
+      });
+
+      if (step === 3) {
+        trackEvent({
+          name: 'completed_step_three',
+          event_category: 'conversion',
+          event_label: 'Project Details Shared'
+        });
       }
 
       if (step < totalSteps - 1) {

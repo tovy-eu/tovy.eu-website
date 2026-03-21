@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useTransition } from 'react';
@@ -15,6 +14,7 @@ import { Send, Loader2 } from "lucide-react";
 import { Checkbox } from '../ui/checkbox';
 import { Label } from '../ui/label';
 import type { Dictionary } from '@/lib/get-dictionary';
+import { trackEvent } from '@/lib/analytics';
 
 const subscriptionSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -76,13 +76,11 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
           timestamp: new Date(),
         });
 
-        // Analytics tracking for newsletter signup
-        if (typeof window !== 'undefined' && window.gtag) {
-          window.gtag('event', 'newsletter_signup', {
-            event_category: 'conversion',
-            event_label: 'Newsletter Subscription'
-          });
-        }
+        trackEvent({
+          name: 'newsletter_signup',
+          event_category: 'conversion',
+          event_label: 'Newsletter Subscription'
+        });
         
         toast({
           title: dict?.common.success || "Success!",
