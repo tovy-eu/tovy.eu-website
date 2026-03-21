@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 import './globals.css';
@@ -8,6 +7,7 @@ import { cn } from '@/lib/utils';
 import CookieBanner from '@/components/layout/cookie-banner';
 import Script from 'next/script';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { WebVitals } from '@/components/layout/web-vitals';
 
 const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
 
@@ -91,6 +91,9 @@ export default function RootLayout({
         
         {/* Optimized Google Analytics Component */}
         <GoogleAnalytics gaId="G-VL0FR2B3DH" />
+        
+        {/* Captures and reports performance metrics */}
+        <WebVitals />
         
         {children}
         <Toaster />
