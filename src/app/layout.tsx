@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 import './globals.css';
@@ -6,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { cn } from '@/lib/utils';
 import CookieBanner from '@/components/layout/cookie-banner';
 import Script from 'next/script';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
 
@@ -53,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
-        {/* Google Analytics & Consent Mode v2 Initialization */}
+        {/* Consent Mode v2 Initialization Script - Runs before GA fires */}
         <Script
           id="google-analytics-init"
           strategy="beforeInteractive"
@@ -62,41 +64,33 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               
-              /* 1. Set default consent state */
-              var storedConsent = null;
+              /* 1. Set default consent state immediately from localStorage if available */
+              var storedConsent = 'denied';
               try {
                 var stored = localStorage.getItem('tovy-cookie-consent');
                 if (stored) {
                   var decision = JSON.parse(stored);
                   if (decision && decision.granted) {
                     storedConsent = 'granted';
-                  } else if (decision) {
-                    storedConsent = 'denied';
                   }
                 }
               } catch (e) {}
 
               gtag('consent', 'default', {
-                'analytics_storage': storedConsent || 'denied',
-                'ad_storage': storedConsent || 'denied',
-                'ad_user_data': storedConsent || 'denied',
-                'ad_personalization': storedConsent || 'denied',
+                'analytics_storage': storedConsent,
+                'ad_storage': storedConsent,
+                'ad_user_data': storedConsent,
+                'ad_personalization': storedConsent,
                 'wait_for_update': 500
               });
 
-              /* 2. Initialize tag logic */
               gtag('js', new Date());
-              gtag('config', 'G-VL0FR2B3DH', {
-                'send_page_view': true,
-                'cookie_flags': 'SameSite=None;Secure'
-              });
             `
           }}
         />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-VL0FR2B3DH"
-          strategy="afterInteractive"
-        />
+        
+        {/* Optimized Google Analytics Component */}
+        <GoogleAnalytics gaId="G-VL0FR2B3DH" />
         
         {children}
         <Toaster />
