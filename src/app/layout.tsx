@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { cn } from '@/lib/utils';
 import CookieBanner from '@/components/layout/cookie-banner';
 import Script from 'next/script';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleTagManager } from '@next/third-parties/google';
 import { WebVitals } from '@/components/layout/web-vitals';
 
 const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
@@ -54,17 +54,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <GoogleTagManager gtmId="GTM-TSG26723" />
       <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
-        {/* Consent Mode v2 Initialization Script - Runs before GA fires */}
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-TSG26723"
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+
+        {/* Consent Mode v2 Initialization Script - Runs before tags fire */}
         <Script
-          id="google-analytics-init"
+          id="google-consent-init"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               
-              /* 1. Set default consent state immediately from localStorage if available */
+              /* Set default consent state immediately from localStorage if available */
               var storedConsent = 'denied';
               try {
                 var stored = localStorage.getItem('tovy-cookie-consent');
@@ -83,14 +94,9 @@ export default function RootLayout({
                 'ad_personalization': storedConsent,
                 'wait_for_update': 500
               });
-
-              gtag('js', new Date());
             `
           }}
         />
-        
-        {/* Optimized Google Analytics Component */}
-        <GoogleAnalytics gaId="G-VL0FR2B3DH" />
         
         {/* Captures and reports performance metrics */}
         <WebVitals />
