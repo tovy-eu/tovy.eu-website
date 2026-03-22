@@ -1,6 +1,6 @@
 /**
- * @fileOverview Type-safe Google Analytics utility for Tovy.
- * Enforces a strict schema for all tracking events to ensure data consistency.
+ * @fileOverview Type-safe Data Layer utility for Tovy.
+ * Routes all events to Google Tag Manager via the window.dataLayer.
  */
 
 type AnalyticsEvent =
@@ -21,12 +21,16 @@ type AnalyticsEvent =
   | { name: 'web_vitals'; event_category: 'performance'; event_label: string; value: number; metric_id: string; non_interaction: boolean };
 
 /**
- * Tracks a custom event in Google Analytics.
+ * Pushes a custom event to the GTM Data Layer.
  * @param event The event object conforming to the AnalyticsEvent schema.
  */
 export const trackEvent = (event: AnalyticsEvent) => {
-  if (typeof window !== 'undefined' && window.gtag) {
+  if (typeof window !== 'undefined' && window.dataLayer) {
     const { name, ...params } = event;
-    window.gtag('event', name, params);
+    // Standard GTM dataLayer push pattern
+    window.dataLayer.push({
+      event: name,
+      ...params
+    });
   }
 };
