@@ -54,9 +54,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <GoogleTagManager gtmId="GTM-TSG26723" />
+      <head>
+        {/* Content Security Policy (CSP) optimized for GTM and Static Export */}
+        <meta 
+          httpEquiv="Content-Security-Policy" 
+          content="
+            default-src 'self';
+            script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com;
+            style-src 'self' 'unsafe-inline';
+            img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://images.unsplash.com https://picsum.photos;
+            connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net https://region1.google-analytics.com;
+            frame-src 'self' https://www.googletagmanager.com;
+            font-src 'self' data:;
+          "
+        />
+      </head>
       <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
-        {/* Google Tag Manager (noscript) */}
+        <GoogleTagManager gtmId="GTM-TSG26723" />
+        
+        {/* Google Tag Manager (noscript) fallback */}
         <noscript>
           <iframe 
             src="https://www.googletagmanager.com/ns.html?id=GTM-TSG26723"
@@ -99,7 +115,6 @@ export default function RootLayout({
           }}
         />
         
-        {/* Captures and reports performance metrics */}
         <WebVitals />
         
         {children}
