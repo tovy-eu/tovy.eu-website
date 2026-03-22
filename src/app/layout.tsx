@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   },
   description: 'We build smart data ecosystems that take work off your hands, creating a world where technology gives people more time, focus, and freedom to grow.',
   metadataBase: new URL('https://tovy.eu'),
+  other: {
+    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://images.unsplash.com https://picsum.photos; connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net https://region1.google-analytics.com; frame-src 'self' https://www.googletagmanager.com; font-src 'self' data:;",
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -53,22 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        {/* Content Security Policy (CSP) optimized for GTM and Static Export */}
-        <meta 
-          httpEquiv="Content-Security-Policy" 
-          content="
-            default-src 'self';
-            script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com;
-            style-src 'self' 'unsafe-inline';
-            img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://images.unsplash.com https://picsum.photos;
-            connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net https://region1.google-analytics.com;
-            frame-src 'self' https://www.googletagmanager.com;
-            font-src 'self' data:;
-          "
-        />
-      </head>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
         <GoogleTagManager gtmId="GTM-TSG26723" />
         
