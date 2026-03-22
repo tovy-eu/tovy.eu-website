@@ -74,6 +74,7 @@ export default function RootLayout({
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
+              window.gtag = gtag;
               
               /* Set default consent state immediately from localStorage if available */
               var storedConsent = 'denied';
