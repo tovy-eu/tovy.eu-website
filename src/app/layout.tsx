@@ -55,16 +55,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
-        {/* CSP Meta Tag - Expanded connect-src and img-src for Firebase and Google services */}
-        <meta 
-          httpEquiv="Content-Security-Policy" 
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://images.unsplash.com https://picsum.photos; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://*.googletagmanager.com https://*.googleapis.com https://*.firebase.com https://*.firebaseio.com; frame-src 'self' https://www.googletagmanager.com https://*.googletagmanager.com; font-src 'self' data:;" 
-        />
-        
         {/* Consent Mode v2 Initialization */}
         <Script
           id="gtm-consent-init"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
