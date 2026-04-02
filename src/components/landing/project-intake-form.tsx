@@ -154,10 +154,12 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
 
 
   const onSubmit = (data: ProjectRequestData) => {
+    console.log("Submitting project request form...", data);
     startTransition(async () => {
       try {
         const timestamp = Date.now();
         const generatedId = `TOVY-${timestamp}`;
+        console.log("Generated Project ID:", generatedId);
         setProjectId(generatedId);
 
         await addDoc(collection(db, "project_requests"), {
@@ -166,6 +168,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           timestamp: new Date(),
         });
         
+        console.log("Project request successfully written to Firestore.");
         trackEvent({
           name: 'project_request_success',
           event_category: 'conversion',
@@ -174,11 +177,11 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
 
         localStorage.removeItem(STORAGE_KEY);
         setFormSubmitted(true);
-      } catch (error) {
+      } catch (error: any) {
         console.error("Failed to submit project request:", error);
         toast({
           title: dict?.common.submissionFailed || "Submission Failed",
-          description: dict?.common.submissionErrorDesc || "There was an error submitting your request. Please try again later.",
+          description: error.message || (dict?.common.submissionErrorDesc || "There was an error submitting your request. Please try again later."),
           variant: "destructive",
         });
       }
@@ -227,6 +230,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
       } else {
         form.handleSubmit(onSubmit)();
       }
+    } else {
+      console.warn("Validation failed for fields:", fieldsToValidate);
     }
   };
 

@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import CookieBanner from '@/components/layout/cookie-banner';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { WebVitals } from '@/components/layout/web-vitals';
+import Script from 'next/script';
 
 const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
 
@@ -53,45 +54,50 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <head>
-        {/* Content Security Policy Meta Tag - Best for static exports */}
-        <meta 
-          httpEquiv="Content-Security-Policy" 
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://images.unsplash.com https://picsum.photos; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://*.googletagmanager.com; frame-src 'self' https://www.googletagmanager.com https://*.googletagmanager.com; font-src 'self' data:;" 
-        />
-        
-        {/* Consent Mode v2 Initialization - Standard script tag for synchronous execution */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              window.gtag = gtag;
-              
-              var storedConsent = 'denied';
-              try {
-                var stored = localStorage.getItem('tovy-cookie-consent');
-                if (stored) {
-                  var decision = JSON.parse(stored);
-                  if (decision && decision.granted) {
-                    storedConsent = 'granted';
-                  }
+      {/* 
+        In Next.js App Router, we avoid a manual <head> tag when using the Metadata API.
+        Meta tags like CSP or scripts for early execution are placed here and moved automatically to the head.
+      */}
+      <meta 
+        httpEquiv="Content-Security-Policy" 
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://images.unsplash.com https://picsum.photos; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://*.googletagmanager.com; frame-src 'self' https://www.googletagmanager.com https://*.googletagmanager.com; font-src 'self' data:;" 
+      />
+      
+      {/* Consent Mode v2 Initialization - strategy="beforeInteractive" ensures it runs early */}
+      <Script
+        id="gtm-consent-init"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            
+            var storedConsent = 'denied';
+            try {
+              var stored = localStorage.getItem('tovy-cookie-consent');
+              if (stored) {
+                var decision = JSON.parse(stored);
+                if (decision && decision.granted) {
+                  storedConsent = 'granted';
                 }
-              } catch (e) {}
+              }
+            } catch (e) {}
 
-              gtag('consent', 'default', {
-                'analytics_storage': storedConsent,
-                'ad_storage': storedConsent,
-                'ad_user_data': storedConsent,
-                'ad_personalization': storedConsent,
-                'wait_for_update': 500
-              });
-            `
-          }}
-        />
-      </head>
-      <GoogleTagManager gtmId="GTM-TSG26723" />
+            gtag('consent', 'default', {
+              'analytics_storage': storedConsent,
+              'ad_storage': storedConsent,
+              'ad_user_data': storedConsent,
+              'ad_personalization': storedConsent,
+              'wait_for_update': 500
+            });
+          `
+        }}
+      />
+      
       <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
+        <GoogleTagManager gtmId="GTM-TSG26723" />
+        
         {/* Google Tag Manager (noscript) fallback */}
         <noscript>
           <iframe 

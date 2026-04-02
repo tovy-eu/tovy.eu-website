@@ -41,10 +41,12 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log("Submitting newsletter form for:", email);
 
     const result = subscriptionSchema.safeParse({ email, consent });
     if (!result.success) {
       const errorMessage = result.error.errors[0].message;
+      console.warn("Newsletter validation failed:", errorMessage);
       toast({
         title: dict?.common.submissionFailed || "Submission Failed",
         description: errorMessage,
@@ -57,11 +59,15 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
 
     startTransition(async () => {
       try {
+        console.log("Adding newsletter doc to Firestore...");
         const subscriptionsRef = collection(db, "subscriptions");
+        
+        // Check for duplicates
         const q = query(subscriptionsRef, where("email", "==", validatedEmail));
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
+          console.log("Email already exists in subscriptions.");
           toast({
             title: dict?.common.alreadySubscribed || "Already Subscribed",
             description: dict?.common.alreadySubscribedDesc || "This email address is already on our list. Thank you!",
@@ -76,6 +82,7 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
           timestamp: new Date(),
         });
 
+        console.log("Newsletter subscription successful.");
         trackEvent({
           name: 'newsletter_signup',
           event_category: 'conversion',
@@ -89,11 +96,11 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
         setEmail('');
         setConsent(false);
 
-      } catch (error) {
-        console.error("Subscription error:", error);
+      } catch (error: any) {
+        console.error("Subscription error details:", error);
         toast({
           title: dict?.common.errorOccurred || "An Error Occurred",
-          description: dict?.common.errorTryAgain || "Could not subscribe at this time. Please try again later.",
+          description: error.message || (dict?.common.errorTryAgain || "Could not subscribe at this time. Please try again later."),
           variant: "destructive",
         });
       }
