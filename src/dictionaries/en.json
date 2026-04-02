@@ -1,4 +1,3 @@
-
 {
   "common": {
     "workWithUs": "Start Project",
@@ -88,12 +87,12 @@
       "cloud": {
         "title": "Cloud Infrastructure",
         "desc": "Designing secure, cost-optimized cloud environments for data workloads.",
-        "tools": ["Azure, GCP, AWS", "Datawarehousing"]
+        "tools": ["GCP, AWS", "Datawarehousing"]
       },
       "data": {
         "title": "Data Engineering",
         "desc": "Architecting scalable pipelines and data warehouses using the Modern Data Stack.",
-        "tools": ["Databricks", "dbt", "SQL", "Python"]
+        "tools": ["dbt", "SQL", "Python"]
       },
       "analytics": {
         "title": "Analytics & Automation",

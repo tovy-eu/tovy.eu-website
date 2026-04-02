@@ -232,6 +232,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
       }
     } else {
       console.warn("Validation failed for fields:", fieldsToValidate);
+      console.log("Current Form Errors:", form.formState.errors);
     }
   };
 
