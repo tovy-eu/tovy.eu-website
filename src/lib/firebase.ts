@@ -2,7 +2,6 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getAnalytics, isSupported } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,7 +20,7 @@ const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Initialize Firebase Analytics
-const analytics = isSupported().then(yes => yes ? getAnalytics(app) : null);
+// Note: Manual Analytics initialization is removed to avoid conflicts with Google Tag Manager
+// and to prevent network errors caused by CSP blocking analytics fetch requests.
 
-export { app, auth, db, analytics };
+export { app, auth, db };
