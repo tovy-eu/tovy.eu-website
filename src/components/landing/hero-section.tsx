@@ -13,6 +13,7 @@ import { trackEvent } from '@/lib/analytics';
 
 export function HeroSection({ dict }: { dict: Dictionary }) {
   const [isMounted, setIsMounted] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
 
@@ -20,7 +21,16 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     const timer = setTimeout(() => {
       setIsMounted(true);
     }, 100);
-    return () => clearTimeout(timer);
+
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const handleCtaClick = () => {
@@ -39,6 +49,9 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     });
   };
 
+  // Kinetic Typography: Shift weight from 700 to 900 based on scroll (over first 500px)
+  const dynamicWeight = Math.min(900, 700 + (scrollY / 500) * 200);
+
   return (
     <section 
       className="relative w-full flex flex-col items-center justify-center min-h-[75vh] text-center py-12 px-4 md:py-32 overflow-hidden"
@@ -55,7 +68,11 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
       >
         <h1 
           className="text-2xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.2] sm:leading-[1.15]"
-          style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.2)' }}
+          style={{ 
+            textShadow: '0 0 15px rgba(255, 255, 255, 0.2)',
+            fontWeight: dynamicWeight,
+            fontVariationSettings: `'wght' ${dynamicWeight}`
+          }}
         >
           {dict.hero.title}
         </h1>
