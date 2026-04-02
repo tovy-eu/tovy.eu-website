@@ -60,8 +60,8 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
           {serviceLines.map((service, index) => (
             <ScrollReveal key={service.id} delay={`delay-[${index * 100}ms] duration-700`}>
               <div className="relative h-full w-full p-[1px] overflow-hidden rounded-lg group">
-                {/* Slow Rotating Border (Corporate Identity) - 15s cycle for ultimate minimalism */}
-                <div className="absolute inset-[-1000%] animate-[spin_15s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,hsl(var(--primary))_0%,hsl(var(--accent-gradient-stop))_50%,hsl(var(--primary))_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                {/* Ultra-Slow Rotating Border - 60s cycle for extreme minimalism */}
+                <div className="absolute inset-[-1000%] animate-[spin_60s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,hsl(var(--primary))_0%,hsl(var(--accent-gradient-stop))_50%,hsl(var(--primary))_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
                 {/* Minimalist Glassy Content Container - Deep opaque background to keep inside clean */}
                 <div className="relative h-full w-full bg-card/95 backdrop-blur-xl border border-white/5 rounded-[calc(var(--radius)-1px)] p-4 flex flex-col transition-all duration-300 group-hover:bg-card">
@@ -77,7 +77,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                     </h3>
                   </div>
                   
-                  <p className="text-[11px] md:text-xs text-white/80 leading-relaxed mb-4 flex-grow font-medium">
+                  <p className="text-xs md:text-sm text-white/90 leading-relaxed mb-4 flex-grow font-medium">
                     {service.description}
                   </p>
                   
