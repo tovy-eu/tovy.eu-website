@@ -4,33 +4,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
 import placeholderImages from "@/app/lib/placeholder-images.json";
-import fs from 'fs';
-import path from 'path';
+import testimonialsData from '@/content/testimonials-template/data.json';
 
+/**
+ * TestimonialsSection component.
+ * Displays a scrolling marquee of customer testimonials.
+ * Uses direct JSON import for stability in static exports.
+ */
 export function TestimonialsSection({ dict }: { dict: Dictionary }) {
-  let testimonialsData: any[] = [];
-  
-  // Use a safer check for Node-specific environment to prevent crashes in Edge or browser runtimes
-  if (typeof process !== 'undefined' && process.cwd) {
-    try {
-      // Check both the production and template locations to be robust
-      const possiblePaths = [
-        path.join(process.cwd(), 'src/content/testimonials/data.json'),
-        path.join(process.cwd(), 'src/content/testimonials-template/data.json')
-      ];
-
-      for (const filePath of possiblePaths) {
-        if (fs.existsSync(filePath)) {
-          const fileContent = fs.readFileSync(filePath, 'utf8');
-          testimonialsData = JSON.parse(fileContent);
-          if (testimonialsData.length > 0) break;
-        }
-      }
-    } catch (error) {
-      console.error("Error loading testimonials data:", error);
-    }
-  }
-
   // If no data is found, the section is not rendered
   if (!testimonialsData || testimonialsData.length === 0) {
     return null;

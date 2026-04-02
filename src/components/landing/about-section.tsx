@@ -32,6 +32,13 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
     }
   ];
 
+  const getDelayClass = (index: number) => {
+    if (index === 0) return "duration-700";
+    const delays = [0, 100, 200, 300, 500, 700, 1000];
+    const delayValue = index * 100;
+    return delays.includes(delayValue) ? `delay-${delayValue} duration-700` : `duration-700`;
+  };
+
   return (
     <section className="pain-solution-container relative w-full bg-gradient-to-b from-background to-accent/5 py-24 sm:py-32 overflow-hidden">
       <div className="relative mx-auto max-w-5xl px-4 md:px-8">
@@ -47,7 +54,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
             {pillars.map((pillar, index) => (
               <ScrollReveal 
                 key={pillar.title} 
-                delay={`delay-[${index * 100}ms] duration-700`}
+                delay={getDelayClass(index)}
                 className="flex flex-col items-center text-center group"
               >
                 <div 
