@@ -12,7 +12,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
     {
       id: "strategic_design",
       title: dict.engineering.services.strategic.title,
-      icon: <DraftingCompass className="h-4 w-4" />,
+      icon: <DraftingCompass />,
       description: dict.engineering.services.strategic.desc,
       stack: dict.engineering.services.strategic.tools.map(tool => ({ tool })),
       color: "hsl(var(--brand-1))"
@@ -20,7 +20,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
     {
       id: "cloud_infrastructure",
       title: dict.engineering.services.cloud.title,
-      icon: <CloudCog className="h-4 w-4" />,
+      icon: <CloudCog />,
       description: dict.engineering.services.cloud.desc,
       stack: dict.engineering.services.cloud.tools.map(tool => ({ tool })),
       color: "hsl(var(--brand-2))"
@@ -28,7 +28,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
     {
       id: "data_engineering",
       title: dict.engineering.services.data.title,
-      icon: <DatabaseZap className="h-4 w-4" />,
+      icon: <DatabaseZap />,
       description: dict.engineering.services.data.desc,
       stack: dict.engineering.services.data.tools.map(tool => ({ tool })),
       color: "hsl(var(--brand-3))"
@@ -36,7 +36,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
     {
       id: "analytics_automation",
       title: dict.engineering.services.analytics.title,
-      icon: <CodeXml className="h-4 w-4" />,
+      icon: <CodeXml />,
       description: dict.engineering.services.analytics.desc,
       stack: dict.engineering.services.analytics.tools.map(tool => ({ tool })),
       color: "hsl(var(--brand-4))"
@@ -60,36 +60,35 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
           {serviceLines.map((service, index) => (
             <ScrollReveal key={service.id} delay={`delay-[${index * 100}ms] duration-700`}>
               <div className="relative h-full w-full p-[1px] overflow-hidden rounded-lg group">
-                {/* Rotating Border Gradient (Corporate Identity) */}
-                <div className="absolute inset-[-1000%] animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,hsl(var(--primary))_0%,hsl(var(--accent-gradient-stop))_50%,hsl(var(--primary))_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Slow Rotating Border (Corporate Identity) */}
+                <div className="absolute inset-[-1000%] animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,hsl(var(--primary))_0%,hsl(var(--accent-gradient-stop))_50%,hsl(var(--primary))_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
-                {/* Glassy Content Container */}
-                <div className="relative h-full w-full bg-card/40 backdrop-blur-xl border border-white/5 rounded-[calc(var(--radius)-1px)] p-4 flex flex-col transition-all duration-300 group-hover:bg-card/60 group-hover:border-transparent">
-                  <div className="flex items-start gap-3 mb-3">
+                {/* Minimalist Glassy Content Container - Opaque background to prevent inner coloring */}
+                <div className="relative h-full w-full bg-card/90 backdrop-blur-xl border border-white/5 rounded-[calc(var(--radius)-1px)] p-4 flex flex-col transition-all duration-300 group-hover:bg-card">
+                  <div className="flex items-center gap-2 mb-2.5">
                     <div 
-                      className="p-1.5 rounded-md bg-white/5 border border-white/5 transition-colors group-hover:bg-white/10"
+                      className="transition-colors"
                       style={{ color: service.color }}
                     >
-                      {React.cloneElement(service.icon as React.ReactElement, { className: "h-4 w-4" })}
+                      {React.cloneElement(service.icon as React.ReactElement, { className: "h-3.5 w-3.5" })}
                     </div>
-                    <h3 className="text-xs md:text-sm font-bold tracking-tight text-white/90">
+                    <h3 className="text-[11px] md:text-xs font-bold tracking-tight text-white/90 uppercase">
                       {service.title}
                     </h3>
                   </div>
                   
-                  <p className="text-[10px] md:text-[11px] text-muted-foreground/70 leading-relaxed mb-4 flex-grow">
+                  <p className="text-[9px] md:text-[10px] text-muted-foreground/60 leading-relaxed mb-4 flex-grow">
                     {service.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-1 mt-auto">
                     {service.stack.map(item => (
-                      <Badge 
+                      <span 
                         key={item.tool} 
-                        variant="secondary" 
-                        className="bg-white/5 hover:bg-white/10 text-[8px] md:text-[9px] font-medium tracking-wide uppercase px-1.5 py-0 border-none text-muted-foreground/60"
+                        className="text-[8px] font-bold tracking-widest uppercase text-muted-foreground/40"
                       >
                         {item.tool}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
                 </div>
