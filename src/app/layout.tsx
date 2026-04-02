@@ -53,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
         {/* CSP Meta Tag - Expanded connect-src and img-src for Firebase and Google services */}
         <meta 
