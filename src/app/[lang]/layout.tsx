@@ -24,9 +24,9 @@ export default async function LocalizedLayout({
       <JsonLd type="ProfessionalService" data={getCompanySchema(dict)} />
       <ScrollProgress />
       <Header lang={lang} dict={dict} />
-      <div className="flex-grow flex flex-col">
+      <main id="main-content" className="flex-grow flex flex-col">
         {children}
-      </div>
+      </main>
       <Footer lang={lang} dict={dict} />
     </>
   );
