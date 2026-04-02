@@ -1,4 +1,3 @@
-
 {
   "testimonials": [
     {
@@ -13,16 +12,6 @@
     }
   ],
   "tech": [
-    {
-      "id": "azure",
-      "url": "/images/tech/azure.webp",
-      "hint": "Microsoft Azure logo"
-    },
-    {
-      "id": "databricks",
-      "url": "/images/tech/databricks.png",
-      "hint": "Databricks logo"
-    },
     {
       "id": "powerbi",
       "url": "/images/tech/power-bi.png",
