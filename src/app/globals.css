@@ -24,18 +24,13 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
     --radius: 0.5rem;
 
     /* Brand Pillar Colors */
-    --brand-1: 226 100% 58%; /* #2B5EFF */
-    --brand-2: 230 100% 67%; /* #566FFF */
-    --brand-3: 253 100% 79%; /* #A792FF */
-    --brand-4: 305 100% 86%; /* #FFB8FA */
+    --brand-1: 226 100% 58%;
+    --brand-2: 230 100% 67%;
+    --brand-3: 253 100% 79%;
+    --brand-4: 305 100% 86%;
   }
 }
 
@@ -89,20 +84,6 @@
     }
   }
 
-  @keyframes kitt-line-sweep-ping-pong {
-    0%, 100% { 
-      transform: translateX(-100%); 
-      opacity: 0; 
-    }
-    10%, 90% {
-      opacity: 0.5;
-    }
-    50% { 
-      transform: translateX(100%); 
-      opacity: 0.5; 
-    }
-  }
-
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -127,14 +108,6 @@
     animation: check-bounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
 
-  .animate-kitt-scan {
-    animation: kitt-scan 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .animate-kitt-line-sweep {
-    animation: kitt-line-sweep-ping-pong 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  }
-
   .animate-marquee {
     animation: marquee 60s linear infinite;
   }
@@ -144,9 +117,7 @@
   }
 }
 
-
 @layer components {
-  /* Phone Input custom styles */
   .PhoneInputInput {
     @apply rounded-s-none !border-s-0 bg-background text-foreground;
   }
@@ -161,18 +132,5 @@
 
   .PhoneInputCountrySelect {
     @apply bg-background border-border text-foreground;
-  }
-
-  .PhoneInputCountrySelect-menu {
-    @apply bg-background text-muted-foreground border border-border rounded-md shadow-lg;
-  }
-
-  .PhoneInputCountrySelect-option:hover {
-    @apply bg-accent;
-  }
-
-  .PhoneInputCountrySelect-option--selected,
-  .PhoneInputCountrySelect-option--selected:hover {
-    @apply bg-primary/20 text-foreground;
   }
 }
