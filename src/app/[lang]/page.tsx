@@ -33,7 +33,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
       <div className="w-full">
         <SectionDivider />
-        <div className="py-16 sm:py-24 container mx-auto max-w-2xl">
+        <div className="py-24 sm:py-32 container mx-auto max-w-2xl">
           <SubscriptionForm dict={dict} />
         </div>
       </div>
