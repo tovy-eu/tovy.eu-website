@@ -99,6 +99,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
           <Button asChild size="sm" className="h-11 px-3 sm:px-5" onClick={handleCtaClick}>
             <Link href={`/${lang}/project-request/`}>
               <Lightbulb className="h-5 w-5 sm:hidden" />
+              <span className="sr-only">{shareIdeaText}</span>
               <span className="hidden sm:inline font-semibold">{shareIdeaText}</span>
             </Link>
           </Button>
