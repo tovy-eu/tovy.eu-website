@@ -56,10 +56,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        {/* Content Security Policy to allow essential Google and Firebase services */}
+        {/* Comprehensive Content Security Policy to support Firebase, GTM, and Analytics */}
         <meta
           httpEquiv="Content-Security-Policy"
-          content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://apis.google.com https://*.googleapis.com https://*.firebaseapp.com; object-src 'none';"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://apis.google.com https://*.googleapis.com https://*.firebaseapp.com; connect-src 'self' https://*.googleapis.com https://*.firebase.io https://*.google-analytics.com https://*.googletagmanager.com https://*.firebasedatabase.app; img-src 'self' data: https://images.unsplash.com https://picsum.photos https://*.google-analytics.com https://*.googletagmanager.com; frame-src 'self' https://*.firebaseapp.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' data: https://fonts.gstatic.com; object-src 'none';"
         />
         {/* Preconnect to critical origins early to reduce connection latency */}
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
