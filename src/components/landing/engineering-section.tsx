@@ -68,13 +68,13 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
             >
               <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
                 
-                {/* Fluidity Gradient Overlay (On Hover) */}
+                {/* Fluidity Gradient Layer (The "Border") */}
                 <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-r from-primary/40 via-[hsl(var(--accent-gradient-stop))/40] to-primary/40 bg-[length:200%_auto] animate-[gradient-flow_20s_linear_infinite]" 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_20s_linear_infinite]" 
                 />
                 
-                {/* Content Container - Minimalist Glassy Style */}
-                <div className="relative h-full w-full bg-card/80 backdrop-blur-2xl border border-white/5 rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl">
+                {/* Inner Content Layer - Fixed Dark Blue */}
+                <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent">
                   <div className="flex items-center gap-3 mb-4">
                     <div 
                       className="transition-colors"
@@ -87,7 +87,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                     </h3>
                   </div>
                   
-                  <p className="text-sm md:text-base text-white leading-relaxed mb-6 flex-grow font-medium">
+                  <p className="text-sm md:text-base text-white/95 leading-relaxed mb-6 flex-grow font-medium">
                     {service.description}
                   </p>
                   
@@ -95,7 +95,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                     {service.stack.map(item => (
                       <span 
                         key={item.tool} 
-                        className="text-[9px] md:text-[10px] font-bold tracking-[0.25em] uppercase text-white/10"
+                        className="text-[9px] md:text-[10px] font-bold tracking-[0.25em] uppercase text-white/20"
                       >
                         {item.tool}
                       </span>
