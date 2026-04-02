@@ -56,8 +56,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="preconnect" href="https://picsum.photos" />
+        {/* Preconnect to critical origins early to reduce connection latency */}
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://picsum.photos" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://picsum.photos" />
       </head>
       <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
         {/* Consent Mode v2 Initialization - Loaded afterInteractive to avoid blocking first paint */}
