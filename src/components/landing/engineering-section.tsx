@@ -72,7 +72,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                 <div className="absolute inset-[-1000%] animate-[spin_120s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,hsl(var(--primary))_0%,hsl(var(--accent-gradient-stop))_50%,hsl(var(--primary))_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
                 {/* Minimalist Glassy Content Container */}
-                <div className="relative h-full w-full bg-card/95 backdrop-blur-xl border border-white/5 rounded-[calc(1rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 group-hover:bg-card">
+                <div className="relative h-full w-full bg-card/40 backdrop-blur-xl border border-white/10 rounded-[calc(1rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 group-hover:bg-card/60 shadow-2xl">
                   <div className="flex items-center gap-3 mb-4">
                     <div 
                       className="transition-colors"

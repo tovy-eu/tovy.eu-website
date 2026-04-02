@@ -22,7 +22,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
           {/* Pain Section (The Old Way) */}
           <ScrollReveal delay="duration-700" className="flex">
-            <div className="relative w-full p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/5 overflow-hidden group">
+            <div className="relative w-full p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/5 overflow-hidden group shadow-xl">
               {/* Reliable Inline Noise Texture Overlay */}
               <div 
                 className="absolute inset-0 opacity-[0.03] pointer-events-none" 
@@ -56,7 +56,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
 
           {/* Solution Section (The Tovy Way) */}
           <ScrollReveal delay="delay-[200ms] duration-700" className="flex">
-            <div className="relative w-full p-6 sm:p-8 rounded-2xl bg-card/80 backdrop-blur-sm border-none overflow-hidden shadow-2xl shadow-primary/5 group">
+            <div className="relative w-full p-6 sm:p-8 rounded-2xl bg-card/40 backdrop-blur-xl border border-white/10 overflow-hidden shadow-2xl shadow-primary/5 group">
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6">
                   {/* Branded Logo Marker typographic signature */}

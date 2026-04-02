@@ -233,7 +233,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
 
   if (formSubmitted) {
     return (
-      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-0 shadow-none flex flex-col items-center justify-center p-8 animate-scale-in">
+      <Card className="w-full max-w-2xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-8 animate-scale-in">
         <CardHeader className="text-center">
           <CheckCircle className="mx-auto h-12 w-12 md:h-16 md:w-16 text-primary mb-4 animate-check-bounce" />
           <CardTitle className="text-xl md:text-2xl">{dict.projectForm.success.title}</CardTitle>
@@ -517,7 +517,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-0 shadow-none overflow-hidden flex flex-col h-full max-h-[90vh] md:max-h-none">
+    <Card className="w-full max-w-2xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden flex flex-col h-full max-h-[90vh] md:max-h-none">
       <CardHeader className="p-4 pb-2">
         <Progress value={(step / totalSteps) * 100} className="w-full h-1.5" />
       </CardHeader>
@@ -532,8 +532,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
               ))}
             </div>
           </CardContent>
-          <CardFooter className="flex justify-between p-4 border-t border-white/5 shrink-0">
-            <Button type="button" variant="ghost" onClick={prevStep} disabled={step === 0} className="hover:bg-white/5 text-xs h-9">
+          <CardFooter className="flex justify-between p-4 border-t border-white/10 shrink-0">
+            <Button type="button" variant="ghost" onClick={prevStep} disabled={step === 0} className="hover:bg-white/10 text-xs h-9">
               <ArrowLeft className="mr-1 h-3 w-3" /> {dict.projectForm.buttons.previous}
             </Button>
             

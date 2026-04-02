@@ -74,7 +74,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                 <div className="group relative flex flex-col items-center text-center px-1">
                   {/* Icon Circle - Unified with footer color */}
                   <div 
-                    className="relative flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-card/80 backdrop-blur-sm border border-white/5 shadow-xl transition-all duration-500 mb-3 md:mb-4 overflow-visible"
+                    className="relative flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-card/40 backdrop-blur-xl border border-white/10 shadow-xl transition-all duration-500 mb-3 md:mb-4 overflow-visible"
                     style={{ '--glow-color': pillar.color, color: pillar.color } as React.CSSProperties}
                   >
                     {/* Minimalistic Sequential Glow */}

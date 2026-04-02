@@ -106,7 +106,7 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
 
   return (
     <div className="mx-4 md:mx-0">
-      <div className="p-8 rounded-lg bg-card/80 backdrop-blur-sm shadow-xl border-none overflow-hidden relative transition-all duration-500">
+      <div className="p-8 rounded-lg bg-card/40 backdrop-blur-xl shadow-2xl border border-white/10 overflow-hidden relative transition-all duration-500">
         <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
           {stayUpToDateText}
         </h3>
@@ -128,7 +128,7 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
                 type="email"
                 autoComplete="email" 
                 placeholder={emailPlaceholderText} 
-                className="rounded-md bg-background/50 border-border focus:scale-[1.01] transition-transform" 
+                className="rounded-md bg-white/5 border-white/10 focus:scale-[1.01] transition-transform" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isPending}
