@@ -1,13 +1,16 @@
 
+import dynamic from 'next/dynamic';
 import { HeroSection } from "@/components/landing/hero-section";
-import { AboutSection } from "@/components/landing/about-section";
-import { PainSolutionSection } from "@/components/landing/pain-solution-section";
 import { SectionDivider } from "@/components/landing/section-divider";
-import { SubscriptionForm } from "@/components/blog/subscription-form";
-import { EngineeringSection } from "@/components/landing/engineering-section";
-import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { getDictionary } from "@/lib/get-dictionary";
 import { JsonLd, getServicesSchema, getFaqSchema } from "@/components/layout/json-ld";
+
+// Dynamically import below-the-fold sections to reduce unused JS on initial load
+const PainSolutionSection = dynamic(() => import("@/components/landing/pain-solution-section").then(mod => mod.PainSolutionSection));
+const AboutSection = dynamic(() => import("@/components/landing/about-section").then(mod => mod.AboutSection));
+const EngineeringSection = dynamic(() => import("@/components/landing/engineering-section").then(mod => mod.EngineeringSection));
+const TestimonialsSection = dynamic(() => import("@/components/landing/testimonials-section").then(mod => mod.TestimonialsSection));
+const SubscriptionForm = dynamic(() => import("@/components/blog/subscription-form").then(mod => mod.SubscriptionForm));
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
