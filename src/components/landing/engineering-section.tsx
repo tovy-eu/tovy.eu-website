@@ -60,24 +60,24 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
           {serviceLines.map((service, index) => (
             <ScrollReveal key={service.id} delay={`delay-[${index * 100}ms] duration-700`}>
               <div className="relative h-full w-full p-[1px] overflow-hidden rounded-lg group">
-                {/* Slow Rotating Border (Corporate Identity) */}
+                {/* Slow Rotating Border (Corporate Identity) - 8s cycle */}
                 <div className="absolute inset-[-1000%] animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,hsl(var(--primary))_0%,hsl(var(--accent-gradient-stop))_50%,hsl(var(--primary))_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
-                {/* Minimalist Glassy Content Container - Opaque background to prevent inner coloring */}
-                <div className="relative h-full w-full bg-card/90 backdrop-blur-xl border border-white/5 rounded-[calc(var(--radius)-1px)] p-4 flex flex-col transition-all duration-300 group-hover:bg-card">
+                {/* Minimalist Glassy Content Container - Deep opaque background to keep inside clean */}
+                <div className="relative h-full w-full bg-card/95 backdrop-blur-xl border border-white/5 rounded-[calc(var(--radius)-1px)] p-4 flex flex-col transition-all duration-300 group-hover:bg-card">
                   <div className="flex items-center gap-2 mb-2.5">
                     <div 
                       className="transition-colors"
                       style={{ color: service.color }}
                     >
-                      {React.cloneElement(service.icon as React.ReactElement, { className: "h-3.5 w-3.5" })}
+                      {React.cloneElement(service.icon as React.ReactElement, { className: "h-4 w-4" })}
                     </div>
-                    <h3 className="text-[11px] md:text-xs font-bold tracking-tight text-white/90 uppercase">
+                    <h3 className="text-xs md:text-sm font-bold tracking-tight text-white uppercase">
                       {service.title}
                     </h3>
                   </div>
                   
-                  <p className="text-[9px] md:text-[10px] text-muted-foreground/60 leading-relaxed mb-4 flex-grow">
+                  <p className="text-[11px] md:text-xs text-white/80 leading-relaxed mb-4 flex-grow font-medium">
                     {service.description}
                   </p>
                   
@@ -85,7 +85,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                     {service.stack.map(item => (
                       <span 
                         key={item.tool} 
-                        className="text-[8px] font-bold tracking-widest uppercase text-muted-foreground/40"
+                        className="text-[9px] font-bold tracking-widest uppercase text-white/30"
                       >
                         {item.tool}
                       </span>
