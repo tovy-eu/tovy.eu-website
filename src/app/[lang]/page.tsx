@@ -1,3 +1,4 @@
+
 import { HeroSection } from "@/components/landing/hero-section";
 import { AboutSection } from "@/components/landing/about-section";
 import { PainSolutionSection } from "@/components/landing/pain-solution-section";
@@ -6,6 +7,7 @@ import { SubscriptionForm } from "@/components/blog/subscription-form";
 import { EngineeringSection } from "@/components/landing/engineering-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { getDictionary } from "@/lib/get-dictionary";
+import { JsonLd, getServicesSchema, getFaqSchema } from "@/components/layout/json-ld";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -13,6 +15,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
   return (
     <div className="flex flex-col items-center">
+      {/* Machine Experience (MX) Structured Data */}
+      <JsonLd type="Service" data={getServicesSchema(dict)} />
+      <JsonLd type="FAQPage" data={getFaqSchema(dict)} />
+
       <HeroSection dict={dict} />
 
       <SectionDivider />
