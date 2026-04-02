@@ -55,7 +55,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
           </ScrollReveal>
 
           {/* Solution Section (The Tovy Way) */}
-          <ScrollReveal delay="delay-[200ms] duration-700" className="flex">
+          <ScrollReveal delay="delay-200 duration-700" className="flex">
             <div className="relative w-full p-8 sm:p-10 rounded-3xl bg-card/40 backdrop-blur-2xl border border-white/10 overflow-hidden shadow-2xl shadow-primary/5 group">
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-8">
