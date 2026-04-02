@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { BookOpen, Plus } from "lucide-react";
+import { BookOpen, Lightbulb } from "lucide-react";
 import LanguageSwitcher from "./language-switcher";
 import { usePathname } from "next/navigation";
 import {
@@ -98,7 +98,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
 
           <Button asChild size="sm" className="h-11 px-3 sm:px-5" onClick={handleCtaClick}>
             <Link href={`/${lang}/project-request/`}>
-              <Plus className="h-5 w-5 sm:hidden" />
+              <Lightbulb className="h-5 w-5 sm:hidden" />
               <span className="hidden sm:inline font-semibold">{shareIdeaText}</span>
             </Link>
           </Button>
