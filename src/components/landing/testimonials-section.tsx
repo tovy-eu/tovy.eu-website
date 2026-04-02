@@ -8,18 +8,26 @@ import fs from 'fs';
 import path from 'path';
 
 export function TestimonialsSection({ dict }: { dict: Dictionary }) {
-  // Use a safer check for Node-specific environment to prevent crashes in Edge or browser runtimes
   let testimonialsData: any[] = [];
   
+  // Use a safer check for Node-specific environment to prevent crashes in Edge or browser runtimes
   if (typeof process !== 'undefined' && process.cwd) {
     try {
-      const filePath = path.join(process.cwd(), 'src/content/testimonials/data.json');
-      if (fs.existsSync(filePath)) {
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        testimonialsData = JSON.parse(fileContent);
+      // Check both the production and template locations to be robust
+      const possiblePaths = [
+        path.join(process.cwd(), 'src/content/testimonials/data.json'),
+        path.join(process.cwd(), 'src/content/testimonials-template/data.json')
+      ];
+
+      for (const filePath of possiblePaths) {
+        if (fs.existsSync(filePath)) {
+          const fileContent = fs.readFileSync(filePath, 'utf8');
+          testimonialsData = JSON.parse(fileContent);
+          if (testimonialsData.length > 0) break;
+        }
       }
     } catch (error) {
-      // Gracefully handle missing directory or parsing errors
+      console.error("Error loading testimonials data:", error);
     }
   }
 
@@ -52,7 +60,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
             const logoData = placeholderImages.testimonials.find(img => img.id === testimonial.logoId);
             return (
               <div 
-                key={index} 
+                key={`${testimonial.author}-${index}`} 
                 className="w-[280px] sm:w-[350px] md:w-[450px] shrink-0"
               >
                 <Card className="bg-card/40 backdrop-blur-md border-white/5 h-full flex flex-col justify-between whitespace-normal transition-all duration-300 hover:border-primary/20 hover:bg-card/60">
