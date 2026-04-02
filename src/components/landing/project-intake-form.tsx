@@ -217,14 +217,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         step_name: formSteps[step].field,
       });
 
-      if (step === 3) {
-        trackEvent({
-          name: 'completed_step_three',
-          event_category: 'conversion',
-          event_label: 'Project Details Shared'
-        });
-      }
-
       if (step < totalSteps - 1) {
         setStep(s => s + 1);
       } else {
@@ -232,7 +224,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
       }
     } else {
       console.warn("Validation failed for fields:", fieldsToValidate);
-      console.log("Current Form Errors:", form.formState.errors);
     }
   };
 
@@ -242,15 +233,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
 
   if (formSubmitted) {
     return (
-      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-0 shadow-none flex flex-col items-center justify-center p-8">
+      <Card className="w-full max-w-2xl mx-auto bg-card/80 backdrop-blur-sm border-0 shadow-none flex flex-col items-center justify-center p-8 animate-scale-in">
         <CardHeader className="text-center">
-          <CheckCircle className="mx-auto h-12 w-12 md:h-16 md:w-16 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent mb-4" />
+          <CheckCircle className="mx-auto h-12 w-12 md:h-16 md:w-16 text-primary mb-4 animate-check-bounce" />
           <CardTitle className="text-xl md:text-2xl">{dict.projectForm.success.title}</CardTitle>
           <CardDescription className="max-w-md mx-auto">
             {dict.projectForm.success.description}
           </CardDescription>
           {projectId && (
-            <div className="mt-6 p-4 rounded-lg bg-white/5 border border-white/10">
+            <div className="mt-6 p-4 rounded-lg bg-white/5 border border-white/10 transition-all hover:scale-105 duration-300">
               <p className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-1">
                 {dict.projectForm.success.idLabel}
               </p>
@@ -308,7 +299,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                             "h-10 w-full md:h-10 md:w-10 flex items-center justify-center rounded-md transition-all text-sm border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                             formField.value === String(value)
                               ? "bg-primary text-primary-foreground shadow-lg scale-105"
-                              : "bg-white/5 hover:bg-white/10"
+                              : "bg-white/5 hover:bg-white/10 hover:scale-105 active:scale-95"
                           )}
                         >
                           {value}
@@ -358,8 +349,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                         className={cn(
                           "w-full flex items-center justify-between text-left p-3 rounded-md transition-all border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background min-h-[48px]",
                           formField.value === option.label
-                            ? "bg-primary/20 shadow-inner"
-                            : "bg-white/5 hover:bg-white/10"
+                            ? "bg-primary/20 shadow-inner scale-102"
+                            : "bg-white/5 hover:bg-white/10 hover:scale-102 active:scale-98"
                         )}
                       >
                         <div className="flex items-center gap-3">
@@ -370,7 +361,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                           )}
                           <span className="font-medium text-xs md:text-sm">{option.label}</span>
                         </div>
-                        {formField.value === option.label && <Check className="h-4 w-4 text-primary" />}
+                        {formField.value === option.label && <Check className="h-4 w-4 text-primary animate-check-bounce" />}
                       </button>
                     ))}
                   </div>
@@ -400,7 +391,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                   <Textarea 
                     placeholder={dict.projectForm.steps.details.focusPlaceholder} 
                     {...field} 
-                    className="text-sm md:text-base mt-2 min-h-[60px] md:min-h-[80px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
+                    className="text-sm md:text-base mt-2 min-h-[60px] md:min-h-[80px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all duration-300" 
                   />
                 </FormControl>
                 <FormMessage />
@@ -418,7 +409,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                     <Textarea 
                       placeholder={dict.projectForm.steps.details.challengesPlaceholder} 
                       {...field} 
-                      className="text-sm md:text-base mt-2 min-h-[60px] md:min-h-[80px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
+                      className="text-sm md:text-base mt-2 min-h-[60px] md:min-h-[80px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all duration-300" 
                     />
                   </FormControl>
                   <FormMessage />
@@ -437,7 +428,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                     <Textarea 
                       placeholder={dict.projectForm.steps.details.visionPlaceholder} 
                       {...field} 
-                      className="text-sm md:text-base mt-2 min-h-[60px] md:min-h-[80px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" 
+                      className="text-sm md:text-base mt-2 min-h-[60px] md:min-h-[80px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all duration-300" 
                     />
                   </FormControl>
                   <FormMessage />
@@ -461,10 +452,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             <FormField control={form.control} name="firstName" render={({ field }) => (
-              <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.firstName}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
+              <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.firstName}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="lastName" render={({ field }) => (
-              <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.lastName}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
+              <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.lastName}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
@@ -478,7 +469,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                     <PhoneInput
                       international
                       defaultCountry="NL"
-                      className="[&_input]:h-9 md:[&_input]:h-10 [&_input]:w-full [&_input]:rounded-md [&_input]:border-0 [&_input]:bg-white/5 [&_input]:px-3 [&_input]:py-2 [&_input]:text-sm focus-visible:[&_input]:outline-none focus-visible:[&_input]:ring-1 focus-visible:[&_input]:ring-primary"
+                      className="[&_input]:h-9 md:[&_input]:h-10 [&_input]:w-full [&_input]:rounded-md [&_input]:border-0 [&_input]:bg-white/5 [&_input]:px-3 [&_input]:py-2 [&_input]:text-sm focus-visible:[&_input]:outline-none focus-visible:[&_input]:ring-1 focus-visible:[&_input]:ring-primary transition-all"
                       {...field}
                     />
                   </FormControl>
@@ -487,11 +478,11 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
               )}
             />
             <FormField control={form.control} name="email" render={({ field }) => (
-              <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.email}</FormLabel><FormControl><Input type="email" {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
+              <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.email}</FormLabel><FormControl><Input type="email" {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <FormField control={form.control} name="company" render={({ field }) => (
-            <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.company}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary" /></FormControl><FormMessage /></FormItem>
+            <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.company}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
             )} />
           <FormField
             control={form.control}
@@ -508,7 +499,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                 <div className="space-y-1 leading-none">
                   <FormLabel className="text-[10px] md:text-xs">
                     {dict.common.agreeTo}{" "}
-                    <Link href={`/${lang}/privacy-policy/`} target="_blank" className="underline hover:text-primary">
+                    <Link href={`/${lang}/privacy-policy/`} target="_blank" className="underline hover:text-primary transition-colors">
                       {dict.common.privacyPolicy}
                     </Link>
                     .
@@ -563,7 +554,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                 </Button>
               )}
             </div>
-            <button type="submit" className="hidden" disabled={isPending}></button>
           </CardFooter>
         </form>
       </Form>
