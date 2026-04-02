@@ -31,7 +31,6 @@ export function SectionHeader({
       const centerOffset = Math.abs(rect.top + rect.height / 2 - viewportHeight / 2);
       
       // Calculate weight based on proximity to center of viewport
-      // As it reaches center, weight shifts from 600 to 900
       const proximity = Math.max(0, 1 - centerOffset / (viewportHeight / 1.5));
       const newWeight = 600 + (proximity * 300);
       
@@ -39,7 +38,7 @@ export function SectionHeader({
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial call
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -48,13 +47,13 @@ export function SectionHeader({
     <ScrollReveal>
       <div ref={headerRef} className={cn("mx-auto max-w-4xl text-center", className)}>
         {badge && (
-          <h1 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
+          <h1 className="text-xs md:text-sm font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-4">
             {badge}
           </h1>
         )}
         <h2 
           className={cn(
-            "mt-2 text-2xl tracking-tight sm:text-3xl md:text-4xl text-white transition-all duration-300 ease-out",
+            "text-3xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl text-white transition-all duration-300 ease-out leading-[1.1]",
             titleClassName
           )}
           style={{ 
@@ -65,7 +64,7 @@ export function SectionHeader({
           {title}
         </h2>
         {description && (
-          <p className="mt-6 text-base md:text-lg leading-relaxed text-foreground/80 max-w-3xl mx-auto">
+          <p className="mt-8 text-base md:text-xl leading-relaxed text-foreground/70 max-w-3xl mx-auto font-medium">
             {description}
           </p>
         )}
