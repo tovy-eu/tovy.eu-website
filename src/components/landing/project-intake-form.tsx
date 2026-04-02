@@ -519,7 +519,11 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   return (
     <Card className="w-full max-w-2xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden flex flex-col h-full max-h-[90vh] md:max-h-none">
       <CardHeader className="p-4 pb-2">
-        <Progress value={(step / totalSteps) * 100} className="w-full h-1.5" />
+        <Progress 
+          value={(step / totalSteps) * 100} 
+          className="w-full h-1.5" 
+          aria-label="Project form progress"
+        />
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col flex-1 overflow-hidden">

@@ -36,6 +36,7 @@ export function ScrollProgress() {
         aria-valuenow={progress}
         aria-valuemin={0}
         aria-valuemax={100}
+        aria-label="Page scroll progress"
       />
     </div>
   );
