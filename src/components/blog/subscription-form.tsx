@@ -10,11 +10,12 @@ import { usePathname } from 'next/navigation';
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Send, Loader2 } from "lucide-react";
+import { Send, Loader2, CheckCircle } from "lucide-react";
 import { Checkbox } from '../ui/checkbox';
 import { Label } from '../ui/label';
 import type { Dictionary } from '@/lib/get-dictionary';
 import { trackEvent } from '@/lib/analytics';
+import { cn } from '@/lib/utils';
 
 const subscriptionSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -27,6 +28,7 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
   const [email, setEmail] = useState('');
   const [consent, setConsent] = useState(false);
   const [isPending, startTransition] = useTransition();
+  const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
@@ -41,15 +43,12 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Submitting newsletter form for:", email);
-
+    
     const result = subscriptionSchema.safeParse({ email, consent });
     if (!result.success) {
-      const errorMessage = result.error.errors[0].message;
-      console.warn("Newsletter validation failed:", errorMessage);
       toast({
         title: dict?.common.submissionFailed || "Submission Failed",
-        description: errorMessage,
+        description: result.error.errors[0].message,
         variant: "destructive",
       });
       return;
@@ -59,15 +58,11 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
 
     startTransition(async () => {
       try {
-        console.log("Adding newsletter doc to Firestore...");
         const subscriptionsRef = collection(db, "subscriptions");
-        
-        // Check for duplicates
         const q = query(subscriptionsRef, where("email", "==", validatedEmail));
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
-          console.log("Email already exists in subscriptions.");
           toast({
             title: dict?.common.alreadySubscribed || "Already Subscribed",
             description: dict?.common.alreadySubscribedDesc || "This email address is already on our list. Thank you!",
@@ -82,13 +77,13 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
           timestamp: new Date(),
         });
 
-        console.log("Newsletter subscription successful.");
         trackEvent({
           name: 'newsletter_signup',
           event_category: 'conversion',
           event_label: 'Newsletter Subscription'
         });
         
+        setIsSuccess(true);
         toast({
           title: dict?.common.success || "Success!",
           description: dict?.common.subscriptionSuccess || "Thank you for subscribing to our newsletter.",
@@ -96,8 +91,10 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
         setEmail('');
         setConsent(false);
 
+        // Reset success state after a delay
+        setTimeout(() => setIsSuccess(false), 5000);
+
       } catch (error: any) {
-        console.error("Subscription error details:", error);
         toast({
           title: dict?.common.errorOccurred || "An Error Occurred",
           description: error.message || (dict?.common.errorTryAgain || "Could not subscribe at this time. Please try again later."),
@@ -109,49 +106,57 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
 
   return (
     <div className="mx-4 md:mx-0">
-      <div className="p-8 rounded-lg bg-card/80 backdrop-blur-sm shadow-xl border-none overflow-hidden relative">
+      <div className="p-8 rounded-lg bg-card/80 backdrop-blur-sm shadow-xl border-none overflow-hidden relative transition-all duration-500">
         <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
           {stayUpToDateText}
         </h3>
         <p className="mt-2 text-muted-foreground">
-          {newsletterDescText}
+          {isSuccess ? dict?.common.subscriptionSuccess || "Thank you for subscribing!" : newsletterDescText}
         </p>
-        <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4 w-full max-w-md">
-          <div className="flex w-full items-center space-x-2">
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email" 
-              placeholder={emailPlaceholderText} 
-              className="rounded-md bg-background/50 border-border" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={isPending}
-            />
-            <Button type="submit" className="rounded-md whitespace-nowrap" disabled={isPending}>
-              {isPending ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {subscribingText}
-                </>
-              ) : (
-                <>
-                  {subscribeText} <Send className="ml-2 h-4 w-4" />
-                </>
-              )}
-            </Button>
+
+        {isSuccess ? (
+          <div className="mt-6 flex items-center gap-3 text-primary animate-scale-in">
+            <CheckCircle className="h-8 w-8 animate-check-bounce" />
+            <span className="font-semibold">{dict?.common.success || "Success!"}</span>
           </div>
-           <div className="flex items-center space-x-2">
-            <Checkbox id="subscription-consent" checked={consent} onCheckedChange={(checked) => setConsent(checked as boolean)} disabled={isPending} />
-            <Label htmlFor="subscription-consent" className="text-sm text-muted-foreground">
-              {agreeToText}{" "}
-              <Link href={`/${lang}/privacy-policy/`} target="_blank" className="underline hover:text-primary">
-                {privacyPolicyText}
-              </Link>
-              .
-            </Label>
-          </div>
-        </form>
+        ) : (
+          <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4 w-full max-w-md animate-scale-in">
+            <div className="flex w-full items-center space-x-2">
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email" 
+                placeholder={emailPlaceholderText} 
+                className="rounded-md bg-background/50 border-border focus:scale-[1.01] transition-transform" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isPending}
+              />
+              <Button type="submit" className="rounded-md whitespace-nowrap" disabled={isPending}>
+                {isPending ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {subscribingText}
+                  </>
+                ) : (
+                  <>
+                    {subscribeText} <Send className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </div>
+             <div className="flex items-center space-x-2">
+              <Checkbox id="subscription-consent" checked={consent} onCheckedChange={(checked) => setConsent(checked as boolean)} disabled={isPending} />
+              <Label htmlFor="subscription-consent" className="text-sm text-muted-foreground cursor-pointer">
+                {agreeToText}{" "}
+                <Link href={`/${lang}/privacy-policy/`} target="_blank" className="underline hover:text-primary transition-colors">
+                  {privacyPolicyText}
+                </Link>
+                .
+              </Label>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );

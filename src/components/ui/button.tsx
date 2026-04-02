@@ -9,15 +9,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-lg shadow-primary/30 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-[length:200%_auto] hover:animate-gradient-flow",
+        default: "bg-primary text-primary-foreground shadow-lg shadow-primary/30 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-[length:200%_auto] hover:animate-gradient-flow hover:scale-[1.02] active:scale-[0.98] hover:shadow-xl hover:shadow-primary/40",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 hover:scale-[1.02] active:scale-[0.98]",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:scale-[1.02] active:scale-[0.98]",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:scale-[1.02] active:scale-[0.98]",
+        ghost: "hover:bg-accent hover:text-accent-foreground hover:scale-[1.02] active:scale-[0.98]",
+        link: "text-primary underline-offset-4 hover:underline hover:scale-[1.02]",
       },
       size: {
         default: "h-10 px-4 py-2",
