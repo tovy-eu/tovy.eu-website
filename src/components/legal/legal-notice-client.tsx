@@ -54,7 +54,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
 
   return (
     <div 
-      className="relative min-h-screen py-16 sm:py-24 overflow-hidden"
+      className="relative min-h-screen py-24 sm:py-32 overflow-hidden"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}

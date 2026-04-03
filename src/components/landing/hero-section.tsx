@@ -54,7 +54,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
 
   return (
     <section 
-      className="relative w-full flex flex-col items-center justify-center min-h-[75vh] text-center py-12 px-4 md:py-32 overflow-hidden"
+      className="relative w-full flex flex-col items-center justify-center min-h-screen text-center py-20 px-4 md:py-32 overflow-hidden"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
@@ -62,7 +62,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
       <WavyLines />
       <div
         className={cn(
-          'transition-all ease-in-out duration-700 delay-300 z-10 max-w-4xl flex flex-col items-center justify-center flex-grow',
+          'transition-all ease-in-out duration-700 delay-300 z-10 max-w-4xl flex flex-col items-center justify-center',
           isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         )}
       >

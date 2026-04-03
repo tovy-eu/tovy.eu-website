@@ -22,7 +22,7 @@ export default async function ProjectRequestPage({ params }: Props) {
   
   return (
     <div 
-      className="relative flex h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden p-4 md:p-8"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 md:p-8 pt-20 md:pt-24"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
