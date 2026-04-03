@@ -17,7 +17,7 @@ import { trackEvent } from "@/lib/analytics";
 const socialLinks = [
   {
     name: "GitHub",
-    url: "https://github.com/tovy-engineering",
+    url: "https://github.com/tovy-eu",
     icon: <Github className="h-5 w-5" />,
   },
   {
