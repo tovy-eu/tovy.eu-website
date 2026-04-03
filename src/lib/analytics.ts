@@ -12,6 +12,7 @@ type AnalyticsEvent =
   | { name: 'project_request_step_complete'; event_category: string; step_number: number; step_name: string }
   | { name: 'completed_step_three'; event_category: string; event_label: string }
   | { name: 'project_request_success'; event_category: string; event_label: string }
+  | { name: 'book_meeting_click'; event_category: string; event_label: string }
   | { name: 'language_switched'; event_category: string; event_label: string; target_language: string; source_language: string; is_language_switch: boolean }
   | { name: 'json_download'; event_category: string; event_label: string }
   | { name: 'social_link_click'; event_category: string; event_label: string }

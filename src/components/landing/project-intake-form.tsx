@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useTransition, useEffect } from "react";
@@ -18,7 +19,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
-import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home } from "lucide-react";
+import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home, CalendarDays } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Checkbox } from "../ui/checkbox";
 import type { Dictionary } from "@/lib/get-dictionary";
@@ -159,7 +160,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
       try {
         const timestamp = Date.now();
         const generatedId = `TOVY-${timestamp}`;
-        console.log("Generated Project ID:", generatedId);
         setProjectId(generatedId);
 
         await addDoc(collection(db, "project_requests"), {
@@ -168,7 +168,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           timestamp: new Date(),
         });
         
-        console.log("Project request successfully written to Firestore.");
         trackEvent({
           name: 'project_request_success',
           event_category: 'conversion',
@@ -222,13 +221,19 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
       } else {
         form.handleSubmit(onSubmit)();
       }
-    } else {
-      console.warn("Validation failed for fields:", fieldsToValidate);
     }
   };
 
   const prevStep = () => {
     setStep(s => Math.max(s - 1, 0));
+  };
+
+  const handleBookMeeting = () => {
+    trackEvent({
+      name: 'book_meeting_click',
+      event_category: 'conversion',
+      event_label: 'Post-submission meeting'
+    });
   };
 
   if (formSubmitted) {
@@ -240,21 +245,37 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           <CardDescription className="max-w-md mx-auto">
             {dict.projectForm.success.description}
           </CardDescription>
+        </CardHeader>
+        
+        <div className="mt-8 mb-4 p-6 rounded-2xl bg-primary/10 border border-primary/20 text-center max-w-sm w-full transition-all hover:bg-primary/15">
+          <h4 className="font-bold text-lg mb-2 text-white">
+            {dict.projectForm.success.bookMeeting}
+          </h4>
+          <p className="text-sm text-muted-foreground mb-6">
+            {dict.projectForm.success.bookMeetingDesc}
+          </p>
+          <Button asChild className="w-full shadow-xl shadow-primary/20" onClick={handleBookMeeting}>
+            <a href="https://calendly.com/tovy-eu/discovery" target="_blank" rel="noopener noreferrer">
+              <CalendarDays className="mr-2 h-4 w-4" />
+              {dict.projectForm.success.bookMeeting}
+            </a>
+          </Button>
+        </div>
+
+        <CardFooter className="flex flex-col items-center justify-center mt-4 gap-4">
           {projectId && (
-            <div className="mt-6 p-4 rounded-lg bg-white/5 border border-white/10 transition-all hover:scale-105 duration-300">
-              <p className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-1">
+            <div className="p-2 px-4 rounded-lg bg-white/5 border border-white/10 opacity-50 text-center">
+              <p className="text-[9px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-0.5">
                 {dict.projectForm.success.idLabel}
               </p>
-              <p className="text-xl md:text-2xl font-mono font-bold text-primary">
+              <p className="text-xs font-mono font-medium text-muted-foreground">
                 {projectId}
               </p>
             </div>
           )}
-        </CardHeader>
-        <CardFooter className="flex justify-center mt-4">
-          <Button asChild variant="outline" className="border-0 bg-white/5 hover:bg-white/10">
+          <Button asChild variant="ghost" className="hover:bg-white/10 text-muted-foreground text-xs">
             <Link href={`/${lang}/`}>
-              <Home className="mr-2 h-4 w-4" />
+              <Home className="mr-2 h-3 w-3" />
               {dict.projectForm.success.backHome}
             </Link>
           </Button>
