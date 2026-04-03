@@ -11,7 +11,8 @@
     "downloadJson": "Download als JSON",
     "submissionFailed": "Verzending mislukt",
     "submissionErrorDesc": "Er is een fout opgetreden bij het verzenden. Probeer het later opnieuw.",
-    "techStack": "Technologieën waar we mee werken"
+    "techStack": "Technologieën waar we mee werken",
+    "scrollToExplore": "Scroll om te ontdekken"
   },
   "hero": {
     "title": "De AI-basis & Data Ecosystemen voor Schalende Teams",
