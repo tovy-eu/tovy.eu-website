@@ -4,6 +4,10 @@ import { SectionDivider } from "@/components/landing/section-divider";
 import { getDictionary } from "@/lib/get-dictionary";
 import { JsonLd, getServicesSchema, getFaqSchema } from "@/components/layout/json-ld";
 
+export async function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'nl' }];
+}
+
 // Dynamically import below-the-fold sections to reduce unused JS on initial load
 const PainSolutionSection = dynamic(() => import("@/components/landing/pain-solution-section").then(mod => mod.PainSolutionSection));
 const AboutSection = dynamic(() => import("@/components/landing/about-section").then(mod => mod.AboutSection));
