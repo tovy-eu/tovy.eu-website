@@ -1,4 +1,3 @@
-
 /**
  * Root redirection page. 
  * Optimized for static export by using an inline script to detect language and redirect 
@@ -6,7 +5,7 @@
  */
 export default function RootPage() {
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-[#0C0F12]">
+    <div className="flex h-screen w-full items-center justify-center bg-[#0a1120]">
       <script
         dangerouslySetInnerHTML={{
           __html: `
