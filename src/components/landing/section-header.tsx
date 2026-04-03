@@ -32,7 +32,7 @@ export function SectionHeader({
       
       // Calculate weight based on proximity to center of viewport
       const proximity = Math.max(0, 1 - centerOffset / (viewportHeight / 1.5));
-      const newWeight = 600 + (proximity * 300);
+      const newWeight = 700 + (proximity * 200);
       
       setWeight(newWeight);
     };
@@ -53,12 +53,13 @@ export function SectionHeader({
         )}
         <h2 
           className={cn(
-            "text-3xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl text-white transition-all duration-300 ease-out leading-[1.1]",
+            "text-2xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white transition-all duration-300 ease-out leading-[1.2] sm:leading-[1.15]",
             titleClassName
           )}
           style={{ 
             fontWeight: weight,
-            fontVariationSettings: `'wght' ${weight}`
+            fontVariationSettings: `'wght' ${weight}`,
+            textShadow: '0 0 15px rgba(255, 255, 255, 0.2)'
           }}
         >
           {title}

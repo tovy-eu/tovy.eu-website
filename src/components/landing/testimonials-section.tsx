@@ -5,6 +5,7 @@ import type { Dictionary } from "@/lib/get-dictionary";
 import placeholderImages from "@/app/lib/placeholder-images.json";
 import testimonialsData from '@/content/testimonials-template/data.json';
 import { WavyLines } from './wavy-lines';
+import { SectionHeader } from './section-header';
 
 /**
  * TestimonialsSection component.
@@ -27,19 +28,16 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
         background: 'radial-gradient(ellipse 80% 50% at 50% 120%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
     >
-      <WavyLines />
+      <div className="absolute inset-0 z-0 opacity-20 rotate-180">
+        <WavyLines />
+      </div>
       
       <div className="container relative z-10 mx-auto px-4 md:px-8 max-w-7xl">
-        <ScrollReveal threshold={0.1}>
-          <div className="mx-auto max-w-4xl text-center mb-12 md:mb-16">
-            <h1 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
-              {dict.testimonials.title}
-            </h1>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl text-white leading-tight text-balance">
-              {dict.testimonials.subtitle}
-            </h2>
-          </div>
-        </ScrollReveal>
+        <SectionHeader 
+          badge={dict.testimonials.title}
+          title={dict.testimonials.subtitle}
+          className="mb-12 md:mb-16"
+        />
       </div>
 
       <div className="relative z-10 mt-8 group">
