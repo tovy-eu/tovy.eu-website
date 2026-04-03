@@ -10,7 +10,7 @@ import { SectionHeader } from './section-header';
 /**
  * TestimonialsSection component.
  * Displays a scrolling marquee of customer testimonials with a glassmorphism design.
- * Uses direct JSON import for stability in static exports.
+ * Optimized for mobile display with proper overflow containment.
  */
 export function TestimonialsSection({ dict }: { dict: Dictionary }) {
   // If no data is found, the section is not rendered
@@ -18,8 +18,8 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
     return null;
   }
 
-  // Duplicate the testimonials data for infinite loop
-  const duplicatedTestimonials = [...testimonialsData, ...testimonialsData, ...testimonialsData];
+  // Duplicate the testimonials data once for a perfect infinite loop (translateX -50%)
+  const duplicatedTestimonials = [...testimonialsData, ...testimonialsData];
 
   return (
     <section 
@@ -40,14 +40,15 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
         />
       </div>
 
-      <div className="relative z-10 mt-8 group">
-        <div className="flex animate-marquee whitespace-nowrap gap-8 py-4 px-4 md:px-0">
+      <div className="relative z-10 mt-8 group overflow-hidden">
+        {/* Marquee Track */}
+        <div className="flex animate-marquee w-fit gap-6 sm:gap-8 py-4">
           {duplicatedTestimonials.map((testimonial, index) => {
             const logoData = placeholderImages.testimonials.find(img => img.id === testimonial.logoId);
             return (
               <div 
                 key={`${testimonial.author}-${index}`} 
-                className="w-[280px] sm:w-[350px] md:w-[450px] shrink-0"
+                className="w-[280px] sm:w-[350px] md:w-[450px] shrink-0 px-2 sm:px-0"
               >
                 <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
                   
@@ -56,8 +57,8 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_20s_linear_infinite]" 
                   />
                   
-                  {/* Inner Content Layer - Matches Engineering, About, and Solution Cards */}
-                  <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent whitespace-normal">
+                  {/* Inner Content Layer */}
+                  <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent">
                     <p className="text-sm sm:text-base md:text-lg italic text-foreground/90 mb-8 leading-relaxed">
                       "{testimonial.quote}"
                     </p>
@@ -85,9 +86,9 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
           })}
         </div>
         
-        {/* Subtle Edge Fades for professional marquee feel */}
-        <div className="absolute inset-y-0 left-0 w-12 sm:w-24 md:w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-12 sm:w-24 md:w-48 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        {/* Subtle Edge Fades */}
+        <div className="absolute inset-y-0 left-0 w-12 sm:w-24 md:w-48 bg-gradient-to-r from-background to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-12 sm:w-24 md:w-48 bg-gradient-to-l from-background to-transparent z-20 pointer-events-none" />
       </div>
     </section>
   );
