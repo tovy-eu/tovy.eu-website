@@ -1,3 +1,4 @@
+
 {
   "common": {
     "workWithUs": "Start Project",
@@ -13,8 +14,8 @@
     "techStack": "Technologies we work with"
   },
   "hero": {
-    "title": "We build the AI foundation of your business.",
-    "subtitle": "We design and implement production-ready tech solutions, ensuring your business scales reliably."
+    "title": "Production-Ready AI Foundations for Scaling Teams.",
+    "subtitle": "We engineer the automated data ecosystems that eliminate manual bottlenecks, turning fragmented information into scalable business growth."
   },
   "painSolution": {
     "title": "Chaos vs. Clarity",

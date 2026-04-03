@@ -1,3 +1,4 @@
+
 {
   "common": {
     "workWithUs": "Werk met ons",
@@ -13,8 +14,8 @@
     "techStack": "Technologieën waar we mee werken"
   },
   "hero": {
-    "title": "Wij bouwen de AI‑basis van jouw organisatie.",
-    "subtitle": "Wij ontwerpen en realiseren data oplossingen, zodat jouw organisatie betrouwbaar kan groeien."
+    "title": "Productierijpe AI-foundations voor Groeiende Teams.",
+    "subtitle": "Wij bouwen de geautomatiseerde data-ecosystemen die handmatige bottlenecks elimineren en data omzetten in schaalbare groei."
   },
   "painSolution": {
     "title": "Chaos vs. Helderheid",
