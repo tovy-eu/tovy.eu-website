@@ -1,4 +1,3 @@
-
 import dynamic from 'next/dynamic';
 import { HeroSection } from "@/components/landing/hero-section";
 import { SectionDivider } from "@/components/landing/section-divider";
@@ -10,7 +9,6 @@ const PainSolutionSection = dynamic(() => import("@/components/landing/pain-solu
 const AboutSection = dynamic(() => import("@/components/landing/about-section").then(mod => mod.AboutSection));
 const EngineeringSection = dynamic(() => import("@/components/landing/engineering-section").then(mod => mod.EngineeringSection));
 const TestimonialsSection = dynamic(() => import("@/components/landing/testimonials-section").then(mod => mod.TestimonialsSection));
-const SubscriptionForm = dynamic(() => import("@/components/blog/subscription-form").then(mod => mod.SubscriptionForm));
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -39,13 +37,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <SectionDivider />
 
       <TestimonialsSection dict={dict} />
-
-      <div className="w-full">
-        <SectionDivider />
-        <div className="py-24 sm:py-32 container mx-auto max-w-2xl">
-          <SubscriptionForm dict={dict} />
-        </div>
-      </div>
     </div>
   );
 }

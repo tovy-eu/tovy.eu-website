@@ -4,7 +4,6 @@ import { getSortedPostsData } from '@/lib/blog';
 import { format } from 'date-fns';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import type { Metadata } from 'next';
-import { SubscriptionForm } from '@/components/blog/subscription-form';
 import { SectionDivider } from '@/components/landing/section-divider';
 import { Badge } from '@/components/ui/badge';
 import { BookOpen } from 'lucide-react';
@@ -154,12 +153,6 @@ export default async function BlogHome({ params }: { params: Promise<{ lang: str
 
       <div className="my-16">
         <SectionDivider />
-      </div>
-
-      <div className="w-full flex justify-center">
-        <div className="w-full max-w-2xl">
-          <SubscriptionForm dict={dict} />
-        </div>
       </div>
     </div>
   );

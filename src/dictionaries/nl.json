@@ -6,20 +6,9 @@
     "privacyPolicy": "Privacyverklaring",
     "legalNotice": "Juridische informatie",
     "allRightsReserved": "Alle rechten voorbehouden.",
-    "stayUpToDate": "Blijf op de hoogte",
-    "newsletterDesc": "Ontvang nieuws over wat er gebeurt bij Tovy.",
-    "subscribe": "Aanmelden",
-    "subscribing": "Bezig met aanmelden...",
-    "emailPlaceholder": "Vul hier je e-mailadres in",
     "agreeTo": "Ik ga akkoord met de",
     "downloadJson": "Download als JSON",
     "submissionFailed": "Verzending mislukt",
-    "alreadySubscribed": "Al aangemeld",
-    "alreadySubscribedDesc": "Dit e-mailadres staat al op onze lijst. Bedankt!",
-    "success": "Succes!",
-    "subscriptionSuccess": "Bedankt voor je aanmelding voor onze nieuwsbrief.",
-    "errorOccurred": "Er is een fout opgetreden",
-    "errorTryAgain": "Aanmelden mislukt. Probeer het later opnieuw.",
     "submissionErrorDesc": "Er is een fout opgetreden bij het verzenden. Probeer het later opnieuw.",
     "techStack": "Technologieën waar we mee werken"
   },
@@ -134,7 +123,6 @@
         "content": "We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and explicit consent. The legal bases for our processing are primarily consent, contractual necessity, and legitimate interest.",
         "list": [
           "<strong>Projectaanvraagformulier:</strong> We verzamelen je naam, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore and gebruikt om je aanvraag te beoordelen en beantwoorden. De grondslag is de intentie om een overeenkomst aan te gaan.",
-          "<strong>Nieuwsbriefinschrijving:</strong> We verzamelen je e-mailadres wanneer je je aanmeldt voor onze nieuwsbrief. Deze gegevens worden opgeslagen in Google Cloud Firestore and uitsluitend gebruikt om je nieuwsbrieven te sturen. De grondslag is jouw expliciete toestemming.",
           "<strong>Serverlogs:</strong> Onze webserver, gehost door Firebase Hosting, registreert automatisch verzoeken zoals IP-adres, browsertype en bezochte pagina’s. Deze gegevens worden gebruikt voor beveiligingsdoeleinden en diagnostiek. De grondslag is ons gerechtvaardigd belang om een veilige en functionele website te onderhouden.",
           "<strong>Cookies:</strong> We gebruiken noodzakelijke cookies om jouw voorkeuren voor toestemmingen te beheren. We gebruiken geen niet‑essentiële of trackingcookies (zoals Google Analytics) zonder jouw voorafgaande uitdrukkelijke toestemming via onze cookie banner."
         ]
@@ -145,7 +133,7 @@
       },
       {
         "title": "4. Bewaartermijnen en beveiliging",
-        "content": "We bewaren persoonsgegevens alleen zolang dit nodig is voor onze diensten of wettelijk verplicht is. Zo bewaren we nieuwsbriefgegevens totdat je je uitschrijft. We beschermen opgeslagen gegevens met commercieel gangbare beveiligingsmaatregelen."
+        "content": "We bewaren persoonsgegevens alleen zolang dit nodig is voor onze diensten of wettelijk verplicht is. We beschermen opgeslagen gegevens met commercieel gangbare beveiligingsmaatregelen."
       },
       {
         "title": "5. Jouw rechten onder de AVG",

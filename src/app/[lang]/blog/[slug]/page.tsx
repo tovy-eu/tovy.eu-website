@@ -1,7 +1,6 @@
 import { getPostData, getSortedPostsData } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
-import { SubscriptionForm } from '@/components/blog/subscription-form';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -143,10 +142,6 @@ export default async function BlogPost({ params }: Props) {
             </Link>
           </Button>
         ) : <div />}
-      </div>
-
-      <div className="mt-12">
-        <SubscriptionForm dict={dict} />
       </div>
     </div>
   );

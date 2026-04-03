@@ -4,7 +4,6 @@
  */
 
 type AnalyticsEvent =
-  | { name: 'newsletter_signup'; event_category: string; event_label: string }
   | { name: 'cta_click'; event_category: string; event_label: string }
   | { name: 'read_blog_click'; event_category: string; event_label: string }
   | { name: 'logo_home_refresh'; event_category: string; event_label: string; is_refresh: boolean }

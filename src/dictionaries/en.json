@@ -6,20 +6,9 @@
     "privacyPolicy": "Privacy Policy",
     "legalNotice": "Legal Notice",
     "allRightsReserved": "All rights reserved.",
-    "stayUpToDate": "Stay up-to-date",
-    "newsletterDesc": "Receive newsletters on what is happening at Tovy.",
-    "subscribe": "Subscribe",
-    "subscribing": "Subscribing...",
-    "emailPlaceholder": "Enter your email here",
     "agreeTo": "I agree to the",
     "downloadJson": "Download as JSON",
     "submissionFailed": "Submission Failed",
-    "alreadySubscribed": "Already Subscribed",
-    "alreadySubscribedDesc": "This email address is already on our list. Thank you!",
-    "success": "Success!",
-    "subscriptionSuccess": "Thank you for subscribing to our newsletter.",
-    "errorOccurred": "An Error Occurred",
-    "errorTryAgain": "Could not subscribe at this time. Please try again later.",
     "submissionErrorDesc": "There was an error submitting your request. Please try again later.",
     "techStack": "Technologies we work with"
   },
@@ -133,7 +122,6 @@
         "content": "We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and explicit consent. The legal bases for our processing are primarily consent, contractual necessity, and legitimate interest.",
         "list": [
           "<strong>Project Intake Form:</strong> We collect your name, contact details (email, phone), company information, and project details. This data is stored in Google Cloud Firestore and is used to evaluate and respond to your project request. The legal basis is the intention to enter into a contract.",
-          "<strong>Newsletter Subscription:</strong> We collect your email address when you subscribe to our newsletter. This data is stored in Google Cloud Firestore and used solely for sending you newsletters. The legal basis is your explicit consent.",
           "<strong>Server Logs:</strong> Our web server, hosted by Firebase Hosting, automatically logs requests, which may include your IP address, browser type, and the pages you visit. This data is used for security monitoring and diagnostics. The legal basis is our legitimate interest in maintaining a secure and functional website.",
           "<strong>Cookies:</strong> We use essential cookies to manage your consent preferences regarding tracking. We do not use non-essential or tracking cookies (like those for Google Analytics) without your explicit prior consent via our cookie banner."
         ]
@@ -144,7 +132,7 @@
       },
       {
         "title": "4. Data Retention and Security",
-        "content": "We retain collected information only for as long as necessary to provide our services or as required by law. For example, subscription data is kept until you unsubscribe. We protect stored data within commercially acceptable means to prevent loss, theft, and unauthorized access."
+        "content": "We retain collected information only for as long as necessary to provide our services or as required by law. We protect stored data within commercially acceptable means to prevent loss, theft, and unauthorized access."
       },
       {
         "title": "5. Your Rights Under GDPR",
