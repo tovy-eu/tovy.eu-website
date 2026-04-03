@@ -47,6 +47,21 @@
 }
 
 @layer utilities {
+  .pain-solution-container {
+    @apply relative overflow-hidden;
+  }
+
+  .pain-solution-container::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background-image:
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 2rem 2rem;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    z-index: 0;
+  }
+
   .animated-wavy-line {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
