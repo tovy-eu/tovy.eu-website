@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import { Card, CardContent } from "@/components/ui/card";
 import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
 import placeholderImages from "@/app/lib/placeholder-images.json";
@@ -8,7 +7,7 @@ import testimonialsData from '@/content/testimonials-template/data.json';
 
 /**
  * TestimonialsSection component.
- * Displays a scrolling marquee of customer testimonials.
+ * Displays a scrolling marquee of customer testimonials with a glassmorphism design.
  * Uses direct JSON import for stability in static exports.
  */
 export function TestimonialsSection({ dict }: { dict: Dictionary }) {
@@ -44,8 +43,15 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
                 key={`${testimonial.author}-${index}`} 
                 className="w-[280px] sm:w-[350px] md:w-[450px] shrink-0"
               >
-                <Card className="bg-card/40 backdrop-blur-md border-white/5 h-full flex flex-col justify-between whitespace-normal transition-all duration-300 hover:border-primary/20 hover:bg-card/60">
-                  <CardContent className="pt-8 flex flex-col h-full">
+                <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
+                  
+                  {/* Fluidity Gradient Layer (The "Border") */}
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_20s_linear_infinite]" 
+                  />
+                  
+                  {/* Inner Content Layer - Matches Engineering, About, and Solution Cards */}
+                  <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent whitespace-normal">
                     <p className="text-sm sm:text-base md:text-lg italic text-foreground/90 mb-8 leading-relaxed">
                       "{testimonial.quote}"
                     </p>
@@ -66,13 +72,14 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
                         </div>
                       )}
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </div>
             );
           })}
         </div>
         
+        {/* Subtle Edge Fades for professional marquee feel */}
         <div className="absolute inset-y-0 left-0 w-12 sm:w-24 md:w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-12 sm:w-24 md:w-48 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
       </div>
