@@ -51,8 +51,11 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     });
   };
 
-  // Kinetic Typography: Shift weight from 700 to 900 based on scroll (over first 500px)
+  // Kinetic Typography: Shift weight from 700 to 900 based on scroll
   const dynamicWeight = Math.min(900, 700 + (scrollY / 500) * 200);
+  
+  // Tracking Compensation: keeps the total word width stable to prevent line jumping
+  const dynamicTracking = -((dynamicWeight - 700) / 200) * 0.01 + 'em';
 
   return (
     <section 
@@ -69,11 +72,12 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         )}
       >
         <h1 
-          className="text-2xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.2] sm:leading-[1.15]"
+          className="text-2xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.2] sm:leading-[1.15] [text-wrap:balance]"
           style={{ 
             textShadow: '0 0 15px rgba(255, 255, 255, 0.2)',
             fontWeight: dynamicWeight,
-            fontVariationSettings: `'wght' ${dynamicWeight}`
+            fontVariationSettings: `'wght' ${dynamicWeight}`,
+            letterSpacing: dynamicTracking
           }}
         >
           {dict.hero.title}

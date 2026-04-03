@@ -154,6 +154,20 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     }
   }, [challenges]);
 
+  // Calendly Manual Initialization on success
+  useEffect(() => {
+    if (formSubmitted && submittedValues && (window as any).Calendly) {
+      const name = `${submittedValues.firstName} ${submittedValues.lastName}`.trim();
+      const email = submittedValues.email;
+      const calendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=615fbf&primary_color=365af6&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+      
+      (window as any).Calendly.initInlineWidget({
+        url: calendlyUrl,
+        parentElement: document.querySelector('.calendly-inline-widget'),
+      });
+    }
+  }, [formSubmitted, submittedValues]);
+
 
   const onSubmit = (data: ProjectRequestData) => {
     startTransition(async () => {
@@ -225,10 +239,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   };
 
   if (formSubmitted) {
-    const name = `${submittedValues?.firstName || ""} ${submittedValues?.lastName || ""}`.trim();
-    const email = submittedValues?.email || "";
-    const calendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=615fbf&primary_color=365af6&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
-
     return (
       <Card className="w-full max-w-3xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-4 md:p-8 animate-scale-in">
         <Script 
@@ -244,11 +254,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           </CardDescription>
         </CardHeader>
         
-        {/* Calendly Inline Widget with Pre-filled data */}
         <div className="w-full rounded-2xl overflow-hidden bg-black/20 border border-white/5 relative mb-6 min-h-[700px]">
           <div 
             className="calendly-inline-widget" 
-            data-url={calendlyUrl} 
             style={{ minWidth: '320px', height: '700px' }} 
           />
         </div>

@@ -15,7 +15,7 @@ interface SectionHeaderProps {
 
 /**
  * SectionHeader component with responsive typography and kinetic weight shift.
- * Optimized to ensure titles wrap correctly on mobile and don't overflow the viewport.
+ * Optimized with Tracking Compensation to prevent layout jumping on weight change.
  */
 export function SectionHeader({ 
   badge, 
@@ -48,6 +48,10 @@ export function SectionHeader({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Tracking compensation: as weight increases, characters expand.
+  // We slightly tighten tracking to keep the total line width nearly constant.
+  const dynamicTracking = -((weight - 700) / 200) * 0.015 + 'em';
+
   return (
     <ScrollReveal>
       <div ref={headerRef} className={cn("mx-auto max-w-4xl text-center px-4", className)}>
@@ -58,12 +62,13 @@ export function SectionHeader({
         )}
         <h2 
           className={cn(
-            "text-2xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white transition-all duration-300 ease-out leading-[1.2] sm:leading-[1.15] break-words",
+            "text-2xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white transition-none leading-[1.2] sm:leading-[1.15] break-words [text-wrap:balance]",
             titleClassName
           )}
           style={{ 
             fontWeight: weight,
             fontVariationSettings: `'wght' ${weight}`,
+            letterSpacing: dynamicTracking,
             textShadow: '0 0 15px rgba(255, 255, 255, 0.2)'
           }}
         >
