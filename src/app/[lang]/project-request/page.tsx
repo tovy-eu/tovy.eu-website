@@ -3,6 +3,10 @@ import { ProjectIntakeForm } from '@/components/landing/project-intake-form';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { getDictionary } from '@/lib/get-dictionary';
 
+export async function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'nl' }];
+}
+
 type Props = {
   params: Promise<{ lang: string }>;
 };
