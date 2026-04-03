@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -12,6 +13,10 @@ interface SectionHeaderProps {
   titleClassName?: string;
 }
 
+/**
+ * SectionHeader component with responsive typography and kinetic weight shift.
+ * Optimized to ensure titles wrap correctly on mobile and don't overflow the viewport.
+ */
 export function SectionHeader({ 
   badge, 
   title, 
@@ -45,15 +50,15 @@ export function SectionHeader({
 
   return (
     <ScrollReveal>
-      <div ref={headerRef} className={cn("mx-auto max-w-4xl text-center", className)}>
+      <div ref={headerRef} className={cn("mx-auto max-w-4xl text-center px-4", className)}>
         {badge && (
-          <h1 className="text-xs md:text-sm font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-4">
+          <h3 className="text-[10px] md:text-sm font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-4">
             {badge}
-          </h1>
+          </h3>
         )}
         <h2 
           className={cn(
-            "text-2xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white transition-all duration-300 ease-out leading-[1.2] sm:leading-[1.15]",
+            "text-2xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white transition-all duration-300 ease-out leading-[1.2] sm:leading-[1.15] break-words",
             titleClassName
           )}
           style={{ 
@@ -65,7 +70,7 @@ export function SectionHeader({
           {title}
         </h2>
         {description && (
-          <p className="mt-8 text-base md:text-xl leading-relaxed text-foreground/70 max-w-3xl mx-auto font-medium">
+          <p className="mt-6 md:mt-8 text-sm md:text-xl leading-relaxed text-foreground/70 max-w-3xl mx-auto font-medium">
             {description}
           </p>
         )}

@@ -11,10 +11,14 @@ type ScrollRevealProps = {
   delay?: string;
 };
 
+/**
+ * ScrollReveal component that triggers an animation when the component enters the viewport.
+ * Threshold is set to a low value (0.1) to ensure it triggers reliably on mobile devices.
+ */
 export const ScrollReveal = ({
   children,
   className,
-  threshold = 0.5,
+  threshold = 0.1,
   delay = 'duration-700',
 }: ScrollRevealProps) => {
   const ref = useRef<HTMLDivElement>(null);
