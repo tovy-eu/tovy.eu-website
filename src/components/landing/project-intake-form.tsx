@@ -20,7 +20,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
-import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home, CalendarDays } from "lucide-react";
+import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Checkbox } from "../ui/checkbox";
 import type { Dictionary } from "@/lib/get-dictionary";
@@ -36,7 +36,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const [step, setStep] = useState(0);
   const { toast } = useToast();
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [projectId, setProjectId] = useState<string | null>(null);
+  const [submittedValues, setSubmittedValues] = useState<ProjectRequestData | null>(null);
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
@@ -158,13 +158,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const onSubmit = (data: ProjectRequestData) => {
     startTransition(async () => {
       try {
-        const timestamp = Date.now();
-        const generatedId = `TOVY-${timestamp}`;
-        setProjectId(generatedId);
-
         await addDoc(collection(db, "project_requests"), {
           ...data,
-          projectId: generatedId,
           timestamp: new Date(),
         });
         
@@ -175,6 +170,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         });
 
         localStorage.removeItem(STORAGE_KEY);
+        setSubmittedValues(data);
         setFormSubmitted(true);
       } catch (error: any) {
         console.error("Failed to submit project request:", error);
@@ -229,6 +225,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   };
 
   if (formSubmitted) {
+    const name = `${submittedValues?.firstName || ""} ${submittedValues?.lastName || ""}`.trim();
+    const email = submittedValues?.email || "";
+    const calendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=615fbf&primary_color=365af6&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+
     return (
       <Card className="w-full max-w-3xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-4 md:p-8 animate-scale-in">
         <Script 
@@ -244,11 +244,11 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           </CardDescription>
         </CardHeader>
         
-        {/* Calendly Inline Widget */}
+        {/* Calendly Inline Widget with Pre-filled data */}
         <div className="w-full rounded-2xl overflow-hidden bg-black/20 border border-white/5 relative mb-6 min-h-[700px]">
           <div 
             className="calendly-inline-widget" 
-            data-url="https://calendly.com/tovy-info?background_color=080c1b&text_color=615fbf&primary_color=365af6" 
+            data-url={calendlyUrl} 
             style={{ minWidth: '320px', height: '700px' }} 
           />
         </div>
