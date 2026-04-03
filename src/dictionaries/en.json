@@ -14,8 +14,8 @@
     "techStack": "Technologies we work with"
   },
   "hero": {
-    "title": "Laying the AI foundation for companies looking to scale",
-    "subtitle": "We engineer data systems that enable automation, turning information silos into scalable business growth."
+    "title": "AI Foundations & Data Ecosystems for Scaling Teams",
+    "subtitle": "We engineer the data systems that enable automation, turning fragmented silos into a unified foundation for sustainable business growth."
   },
   "painSolution": {
     "title": "Silos vs. Centralised",
@@ -250,5 +250,13 @@
       "submit": "Submit Project",
       "submitting": "Submitting..."
     }
+  },
+  "notFound": {
+    "badge": "Error 404",
+    "titlePart1": "Lost in the",
+    "titlePart2": "Data Silos?",
+    "description": "The page you are looking for has been moved, deleted, or never existed. Let's get you back to the foundation.",
+    "returnHome": "Return Home",
+    "startProject": "Start a Project"
   }
 }
