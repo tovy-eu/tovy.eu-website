@@ -159,7 +159,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     if (formSubmitted && submittedValues) {
       const name = `${submittedValues.firstName} ${submittedValues.lastName}`.trim();
       const email = submittedValues.email;
-      const calendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=615fbf&primary_color=365af6&hide_gdpr_banner=1&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+      const calendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=ffffff&primary_color=365af6&hide_gdpr_banner=1&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
 
       const initCalendly = () => {
         if ((window as any).Calendly) {
