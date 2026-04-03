@@ -14,30 +14,30 @@
     "techStack": "Technologies we work with"
   },
   "hero": {
-    "title": "Production-Ready AI Foundations for Scaling Teams.",
-    "subtitle": "We engineer the automated data ecosystems that eliminate manual bottlenecks, turning fragmented information into scalable business growth."
+    "title": "Laying the AI foundation for companies looking to scale.",
+    "subtitle": "We engineer data systems that enable automation, turning information silos into scalable business growth."
   },
   "painSolution": {
     "title": "Chaos vs. Clarity",
     "subtitle": "Data should simplify, not complicate.",
     "pain": {
       "title": "The Old Way",
-      "subtitle": "Fragmented",
+      "subtitle": "",
       "items": [
         "Manual data entry and human error",
-        "Siloed systems that don't talk",
-        "Constant maintenance headaches",
-        "Stagnant growth due to bottlenecks"
+        "Systems that don't talk",
+        "Constant maintenance",
+        "No growth due to bottlenecks"
       ]
     },
     "solution": {
       "title": "The Tovy Way",
-      "subtitle": "Unified & Automated",
+      "subtitle": "Automated",
       "items": [
         "Seamless automation",
-        "Integrated data ecosystems",
+        "Integrated data",
         "Reliable systems",
-        "Scalable foundation for the future"
+        "Scalable foundation"
       ]
     }
   },
@@ -183,7 +183,9 @@
       "title": "Thank You!",
       "description": "Your project request has been submitted. We will contact you shortly.",
       "idLabel": "Project ID",
-      "backHome": "Back to Homepage"
+      "backHome": "Back to Homepage",
+      "bookMeeting": "Book a Discovery Call",
+      "bookMeetingDesc": "Want to skip the wait? Schedule a quick 15-minute intro call right now."
     },
     "steps": {
       "maturity": {

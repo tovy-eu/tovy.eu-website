@@ -14,30 +14,30 @@
     "techStack": "Technologieën waar we mee werken"
   },
   "hero": {
-    "title": "Productierijpe AI-foundations voor Groeiende Teams.",
-    "subtitle": "Wij bouwen de geautomatiseerde data-ecosystemen die handmatige bottlenecks elimineren en data omzetten in schaalbare groei."
+    "title": "De AI basis voor bedrijven die willen schalen.",
+    "subtitle": "Wij bouwen de data fundering voor automatisering en informatie silos omzetten naar schaalbare groei."
   },
   "painSolution": {
-    "title": "Chaos vs. Helderheid",
+    "title": "Silos` vs. Gecentraliseerd",
     "subtitle": "AI moet vereenvoudigen, niet compliceren.",
     "pain": {
       "title": "De Oude Methode",
-      "subtitle": "Gefragmenteerd & Kwetsbaar",
+      "subtitle": "",
       "items": [
         "Handmatige data-invoer en menselijke fouten",
-        "Geïsoleerde systemen die niet communiceren",
-        "Constante onderhoudszorgen",
-        "Stagnatie door technische bottlenecks"
+        "Systemen die niet communiceren",
+        "Constant onderhoud",
+        "Geen groei door hindering"
       ]
     },
     "solution": {
       "title": "De Tovy Aanpak",
-      "subtitle": "Geünificeerd & Geautomatiseerd",
+      "subtitle": "Geautomatiseerd",
       "items": [
-        "Naadloze AI-gestuurde automatisering",
-        "Geïntegreerde data-ecosystemen",
-        "Betrouwbare, zelfherstellende systemen",
-        "Schaalbare basis voor de toekomst"
+        "Aansluitende business processen",
+        "Geïntegreerde data",
+        "Betrouwbare systemen",
+        "Schaalbare basis"
       ]
     }
   },
@@ -183,7 +183,9 @@
       "title": "Bedankt!",
       "description": "Je projectaanvraag is verzonden. We nemen snel contact met je op.",
       "idLabel": "Project ID",
-      "backHome": "Terug naar home"
+      "backHome": "Terug naar home",
+      "bookMeeting": "Plan een kennismaking",
+      "bookMeetingDesc": "Wil je niet wachten? Plan direct een korte introductie van 15 minuten in."
     },
     "steps": {
       "maturity": {
