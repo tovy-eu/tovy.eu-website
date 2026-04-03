@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
+import { getAuth, Auth } from "firebase/auth";
+import { getFirestore, Firestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,13 +14,28 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
+let app: FirebaseApp;
+let auth: Auth;
+let db: Firestore;
 
-// Initialize Firebase
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-// Note: Manual Analytics initialization is removed to avoid conflicts with Google Tag Manager
-// and to prevent network errors caused by CSP blocking analytics fetch requests.
+// Initialize Firebase with safety checks for missing config (common during build/dev without .env)
+try {
+  if (!getApps().length) {
+    if (!firebaseConfig.projectId) {
+      console.warn("Firebase Project ID is missing. Firebase features may not work correctly.");
+      // Provide a mock/minimal config to prevent total crash during static generation
+      app = initializeApp({ ...firebaseConfig, projectId: "placeholder-id" });
+    } else {
+      app = initializeApp(firebaseConfig);
+    }
+  } else {
+    app = getApp();
+  }
+  
+  auth = getAuth(app);
+  db = getFirestore(app);
+} catch (error) {
+  console.error("Error initializing Firebase:", error);
+}
 
 export { app, auth, db };
