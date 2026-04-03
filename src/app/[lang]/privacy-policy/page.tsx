@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import companyProfile from '@/content/company-profile.json';
 import { getDictionary } from '@/lib/get-dictionary';
@@ -18,7 +17,7 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
   const email = companyProfile.public_company_profile.contact_details.email;
 
   return (
-    <div className="container mx-auto max-w-4xl py-12 px-4 md:px-8">
+    <div className="container mx-auto max-w-4xl py-24 px-4 md:px-8">
       <h1 className="text-3xl font-bold mb-6">{dict.privacy.title}</h1>
       <div className="space-y-6 text-muted-foreground">
         <p>{dict.privacy.intro}</p>

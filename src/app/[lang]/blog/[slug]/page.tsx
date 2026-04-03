@@ -78,7 +78,7 @@ export default async function BlogPost({ params }: Props) {
   const image = postData.image;
 
   return (
-    <div className="container mx-auto max-w-3xl py-12 px-4 md:px-8">
+    <div className="container mx-auto max-w-3xl py-24 px-4 md:px-8">
       {/* Client-side analytics component to track the view */}
       <BlogPostAnalytics slug={slug} title={postData.title} />
 

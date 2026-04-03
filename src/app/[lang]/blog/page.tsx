@@ -45,7 +45,7 @@ export default async function BlogHome({ params }: { params: Promise<{ lang: str
 
   if (allPostsData.length === 0) {
     return (
-      <div className="container mx-auto max-w-5xl py-12 px-4 md:px-8 text-center">
+      <div className="container mx-auto max-w-5xl py-24 px-4 md:px-8 text-center">
         <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
           {dict.blog.title}
         </h1>
@@ -59,7 +59,7 @@ export default async function BlogHome({ params }: { params: Promise<{ lang: str
   const featuredImage = featuredPost.image;
 
   return (
-    <div className="container mx-auto max-w-5xl py-12 px-4 md:px-8">
+    <div className="container mx-auto max-w-5xl py-24 px-4 md:px-8">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
           {dict.blog.title}
