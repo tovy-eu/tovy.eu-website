@@ -1,3 +1,4 @@
+
 'use client';
 
 import { XCircle, CheckCircle2, AlertCircle } from "lucide-react";
@@ -21,7 +22,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
           {/* Pain Section (The Old Way) */}
           <ScrollReveal delay="duration-700" className="flex">
-            <div className="relative w-full p-6 sm:p-7 rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden group shadow-2xl">
+            <div className="relative w-full p-5 sm:p-6 rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden group shadow-2xl">
               {/* Ultra-subtle Noise Texture */}
               <div 
                 className="absolute inset-0 opacity-[0.015] pointer-events-none" 
@@ -63,7 +64,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
               />
               
               {/* Inner Content Layer - Matches Engineering Section */}
-              <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-6 sm:p-7 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
+              <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-5 sm:p-6 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
                 
                 {/* Light coming from the right side - matches Hero aesthetic */}
                 <div 
