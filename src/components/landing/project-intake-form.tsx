@@ -12,6 +12,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { db } from "@/lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
+import Script from "next/script";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -155,7 +156,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
 
 
   const onSubmit = (data: ProjectRequestData) => {
-    console.log("Submitting project request form...", data);
     startTransition(async () => {
       try {
         const timestamp = Date.now();
@@ -228,18 +228,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     setStep(s => Math.max(s - 1, 0));
   };
 
-  const handleBookMeeting = () => {
-    trackEvent({
-      name: 'book_meeting_click',
-      event_category: 'conversion',
-      event_label: 'Post-submission meeting'
-    });
-  };
-
   if (formSubmitted) {
     return (
-      <Card className="w-full max-w-2xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-8 animate-scale-in">
-        <CardHeader className="text-center">
+      <Card className="w-full max-w-3xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-4 md:p-8 animate-scale-in">
+        <Script 
+          src="https://assets.calendly.com/assets/external/widget.js" 
+          strategy="afterInteractive" 
+        />
+        
+        <CardHeader className="text-center pb-6">
           <CheckCircle className="mx-auto h-12 w-12 md:h-16 md:w-16 text-primary mb-4 animate-check-bounce" />
           <CardTitle className="text-xl md:text-2xl">{dict.projectForm.success.title}</CardTitle>
           <CardDescription className="max-w-md mx-auto">
@@ -247,32 +244,16 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           </CardDescription>
         </CardHeader>
         
-        <div className="mt-8 mb-4 p-6 rounded-2xl bg-primary/10 border border-primary/20 text-center max-w-sm w-full transition-all hover:bg-primary/15">
-          <h4 className="font-bold text-lg mb-2 text-white">
-            {dict.projectForm.success.bookMeeting}
-          </h4>
-          <p className="text-sm text-muted-foreground mb-6">
-            {dict.projectForm.success.bookMeetingDesc}
-          </p>
-          <Button asChild className="w-full shadow-xl shadow-primary/20" onClick={handleBookMeeting}>
-            <a href="https://calendly.com/tovy-eu/discovery" target="_blank" rel="noopener noreferrer">
-              <CalendarDays className="mr-2 h-4 w-4" />
-              {dict.projectForm.success.bookMeeting}
-            </a>
-          </Button>
+        {/* Calendly Inline Widget */}
+        <div className="w-full rounded-2xl overflow-hidden bg-black/20 border border-white/5 relative mb-6 min-h-[700px]">
+          <div 
+            className="calendly-inline-widget" 
+            data-url="https://calendly.com/tovy-info?background_color=080c1b&text_color=615fbf&primary_color=365af6" 
+            style={{ minWidth: '320px', height: '700px' }} 
+          />
         </div>
 
-        <CardFooter className="flex flex-col items-center justify-center mt-4 gap-4">
-          {projectId && (
-            <div className="p-2 px-4 rounded-lg bg-white/5 border border-white/10 opacity-50 text-center">
-              <p className="text-[9px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-0.5">
-                {dict.projectForm.success.idLabel}
-              </p>
-              <p className="text-xs font-mono font-medium text-muted-foreground">
-                {projectId}
-              </p>
-            </div>
-          )}
+        <CardFooter className="flex flex-col items-center justify-center gap-4">
           <Button asChild variant="ghost" className="hover:bg-white/10 text-muted-foreground text-xs">
             <Link href={`/${lang}/`}>
               <Home className="mr-2 h-3 w-3" />
