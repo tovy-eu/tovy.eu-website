@@ -47,7 +47,7 @@ export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Di
   const rightsText = dict?.common.allRightsReserved || "All rights reserved.";
 
   return (
-    <footer className="w-full border-t border-white/10 bg-card/40 backdrop-blur-xl">
+    <footer className="w-full border-t border-white/10 bg-background backdrop-blur-xl">
       <div className="container mx-auto flex flex-col items-center gap-8 py-10 max-w-6xl px-4 md:px-8">
         
         <div className="flex items-center gap-4">

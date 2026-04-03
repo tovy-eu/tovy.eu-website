@@ -64,7 +64,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full bg-card/40 backdrop-blur-xl border-b border-white/10 shadow-sm"
+        "sticky top-0 z-50 w-full bg-background backdrop-blur-xl border-b border-white/10 shadow-sm"
       )}
     >
       <div className="container mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 md:px-8 max-w-6xl">
