@@ -19,8 +19,8 @@
     "subtitle": "Wij bouwen de data-fundering voor automatisering en zetten gefragmenteerde silo's om in een uniforme basis voor duurzame bedrijfsgroei."
   },
   "painSolution": {
-    "title": "Silos` vs. Gecentraliseerd",
-    "subtitle": "AI moet vereenvoudigen, niet compliceren.",
+    "title": "Silos vs. Gecentraliseerd",
+    "subtitle": "Data moet vereenvoudigen, niet compliceren.",
     "pain": {
       "title": "De Oude Methode",
       "subtitle": "",
@@ -118,7 +118,7 @@
     "sections": [
       {
         "title": "1. Verwerkingsverantwoordelijke",
-        "content": "Tovy is the data controller for the personal information collected through this website. For any questions, you can contact us at"
+        "content": "Tovy is de data controller for the personal information collected through this website. For any questions, you can contact us at"
       },
       {
         "title": "2. Welke informatie we verzamelen en hoe we deze gebruiken",
@@ -182,7 +182,7 @@
     "subtitle": "Deel je projectdetails met Tovy zodat we snelle, betrouwbare en heldere systemen voor je kunnen bouwen.",
     "success": {
       "title": "Bedankt!",
-      "description": "Je projectaanvraag is verzonden. We nemen snel contact met je op.",
+      "description": "Je projectaanvraag is verzonden. We nemen snel contact met je op of plan direct hieronder een afspraak in. Vrijdagen hebben de voorkeur.",
       "idLabel": "Project ID",
       "backHome": "Terug naar home",
       "bookMeeting": "Plan een kennismaking",

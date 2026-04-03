@@ -154,7 +154,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     }
   }, [challenges]);
 
-  // Robust Calendly Manual Initialization on success
+  // Manual Calendly Initialization with Polling
   useEffect(() => {
     if (formSubmitted && submittedValues) {
       const name = `${submittedValues.firstName} ${submittedValues.lastName}`.trim();
@@ -172,16 +172,14 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         return false;
       };
 
-      // Attempt immediate initialization
-      if (!initCalendly()) {
-        // If script isn't quite ready, poll for it every 100ms
-        const interval = setInterval(() => {
-          if (initCalendly()) {
-            clearInterval(interval);
-          }
-        }, 100);
-        return () => clearInterval(interval);
-      }
+      // Poll until the script is ready
+      const interval = setInterval(() => {
+        if (initCalendly()) {
+          clearInterval(interval);
+        }
+      }, 100);
+      
+      return () => clearInterval(interval);
     }
   }, [formSubmitted, submittedValues]);
 
@@ -257,7 +255,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
 
   return (
     <div className="w-full">
-      {/* Load script in background while user fills the form */}
       <Script 
         src="https://assets.calendly.com/assets/external/widget.js" 
         strategy="lazyOnload" 
