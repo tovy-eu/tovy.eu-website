@@ -16,7 +16,6 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
           badge={dict.painSolution.title}
           title={dict.painSolution.subtitle}
           className="mb-16 sm:mb-20"
-          titleClassName="md:text-4xl lg:text-5xl"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-stretch">
