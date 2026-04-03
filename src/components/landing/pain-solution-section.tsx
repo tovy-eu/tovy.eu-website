@@ -21,7 +21,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
           {/* Pain Section (The Old Way) */}
           <ScrollReveal delay="duration-700" className="flex">
-            <div className="relative w-full p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden group shadow-2xl">
+            <div className="relative w-full p-6 sm:p-7 rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden group shadow-2xl">
               {/* Ultra-subtle Noise Texture */}
               <div 
                 className="absolute inset-0 opacity-[0.015] pointer-events-none" 
@@ -31,17 +31,17 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
               />
               
               <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-4 mb-5">
                   <div className="p-2 rounded-xl bg-red-500/10 text-red-400">
                     <AlertCircle className="h-5 w-5" />
                   </div>
                   <div className="flex flex-col">
-                    <h3 className="text-lg font-bold text-white leading-tight">{dict.painSolution.pain.title}</h3>
-                    <p className="text-[10px] text-muted-foreground/50 font-medium uppercase tracking-widest">{dict.painSolution.pain.subtitle}</p>
+                    <h3 className="text-base font-bold text-white leading-tight">{dict.painSolution.pain.title}</h3>
+                    <p className="text-[9px] text-muted-foreground/50 font-medium uppercase tracking-widest">{dict.painSolution.pain.subtitle}</p>
                   </div>
                 </div>
 
-                <ul className="space-y-4">
+                <ul className="space-y-3">
                   {painItems.map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <XCircle className="h-4 w-4 text-red-500/30 shrink-0 mt-0.5" />
@@ -63,9 +63,18 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
               />
               
               {/* Inner Content Layer - Matches Engineering Section */}
-              <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-6 sm:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent">
+              <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-6 sm:p-7 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
+                
+                {/* Light coming from the right side - matches Hero aesthetic */}
+                <div 
+                  className="absolute inset-0 pointer-events-none opacity-30 transition-opacity duration-500 group-hover:opacity-50"
+                  style={{
+                    background: 'radial-gradient(ellipse 70% 80% at 110% 50%, rgba(120,119,198,0.25), hsla(0,0%,100%,0))'
+                  }}
+                />
+
                 <div className="relative z-10">
-                  <div className="flex items-center gap-4 mb-6">
+                  <div className="flex items-center gap-4 mb-5">
                     {/* Branded Logo Marker */}
                     <div className="font-bold text-xl tracking-tighter shrink-0 select-none flex items-center transition-transform duration-300 group-hover:scale-110">
                       <span>TOV</span>
@@ -77,7 +86,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                     </h3>
                   </div>
 
-                  <ul className="space-y-4">
+                  <ul className="space-y-3">
                     {solutionItems.map((item, i) => (
                       <li key={i} className="flex items-start gap-3 group/item">
                         <CheckCircle2 
