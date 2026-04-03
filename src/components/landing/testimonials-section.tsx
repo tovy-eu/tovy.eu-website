@@ -4,6 +4,7 @@ import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
 import placeholderImages from "@/app/lib/placeholder-images.json";
 import testimonialsData from '@/content/testimonials-template/data.json';
+import { WavyLines } from './wavy-lines';
 
 /**
  * TestimonialsSection component.
@@ -20,8 +21,15 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
   const duplicatedTestimonials = [...testimonialsData, ...testimonialsData, ...testimonialsData];
 
   return (
-    <section className="py-16 sm:py-24 bg-background overflow-hidden">
-      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+    <section 
+      className="relative py-16 sm:py-24 bg-background overflow-hidden"
+      style={{
+        background: 'radial-gradient(ellipse 80% 50% at 50% 120%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
+      }}
+    >
+      <WavyLines />
+      
+      <div className="container relative z-10 mx-auto px-4 md:px-8 max-w-7xl">
         <ScrollReveal threshold={0.1}>
           <div className="mx-auto max-w-4xl text-center mb-12 md:mb-16">
             <h1 className="text-sm md:text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-wider">
@@ -34,7 +42,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
         </ScrollReveal>
       </div>
 
-      <div className="relative mt-8 group">
+      <div className="relative z-10 mt-8 group">
         <div className="flex animate-marquee whitespace-nowrap gap-8 py-4 px-4 md:px-0">
           {duplicatedTestimonials.map((testimonial, index) => {
             const logoData = placeholderImages.testimonials.find(img => img.id === testimonial.logoId);
