@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import companyProfile from '@/content/company-profile.json';
 import { getDictionary } from '@/lib/get-dictionary';
 
+export async function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'nl' }];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const dict = await getDictionary(lang);

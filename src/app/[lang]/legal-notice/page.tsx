@@ -1,8 +1,11 @@
-
 import type { Metadata } from 'next';
 import companyProfile from '@/content/company-profile.json';
 import LegalNoticeClient from '@/components/legal/legal-notice-client';
 import { getDictionary } from '@/lib/get-dictionary';
+
+export async function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'nl' }];
+}
 
 type Props = {
   params: Promise<{ lang: string }>;
