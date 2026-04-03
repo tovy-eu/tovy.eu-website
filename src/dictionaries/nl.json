@@ -14,8 +14,8 @@
     "techStack": "Technologieën waar we mee werken"
   },
   "hero": {
-    "title": "De AI basis voor bedrijven die willen schalen.",
-    "subtitle": "Wij bouwen de data fundering voor automatisering en informatie silos omzetten naar schaalbare groei."
+    "title": "De AI-basis & Data Ecosystemen voor Schalende Teams",
+    "subtitle": "Wij bouwen de data-fundering voor automatisering en zetten gefragmenteerde silo's om in een uniforme basis voor duurzame bedrijfsgroei."
   },
   "painSolution": {
     "title": "Silos` vs. Gecentraliseerd",
@@ -250,5 +250,13 @@
       "submit": "Project indienen",
       "submitting": "Bezig met verzenden..."
     }
+  },
+  "notFound": {
+    "badge": "Fout 404",
+    "titlePart1": "Verdwaald in de",
+    "titlePart2": "Data Silo's?",
+    "description": "De pagina die je zoekt is verplaatst, verwijderd of heeft nooit bestaan. Laten we je terugbrengen naar de basis.",
+    "returnHome": "Terug naar Home",
+    "startProject": "Project Starten"
   }
 }
