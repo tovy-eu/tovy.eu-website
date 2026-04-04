@@ -10,37 +10,5 @@
       "url": "https://picsum.photos/seed/brightscale/200/80",
       "hint": "business logo"
     }
-  ],
-  "tech": [
-    {
-      "id": "powerbi",
-      "url": "/images/tech/power-bi.png",
-      "hint": "dbt logo"
-    },
-    {
-      "id": "sap",
-      "url": "/images/tech/sap.png",
-      "hint": "SAP logo"
-    },
-    {
-      "id": "oracle",
-      "url": "/images/tech/oracle.png",
-      "hint": "Oracle logo"
-    },
-    {
-      "id": "python",
-      "url": "/images/tech/python.webp",
-      "hint": "Python logo"
-    },
-    {
-      "id": "gcp",
-      "url": "/images/tech/gcp.webp",
-      "hint": "Snowflake logo"
-    },
-    {
-      "id": "sql",
-      "url": "/images/tech/sql.png",
-      "hint": "Snowflake logo"
-    }
   ]
 }
