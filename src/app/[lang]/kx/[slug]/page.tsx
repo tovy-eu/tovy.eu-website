@@ -1,7 +1,7 @@
 
 import { getPostData, getSortedPostsData } from '@/lib/blog';
 import { notFound } from 'next/navigation';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -77,6 +77,8 @@ export default async function KxResource({ params }: Props) {
   }
   
   const image = postData.image;
+  const dateObj = new Date(postData.date);
+  const displayDate = isValid(dateObj) ? format(dateObj, 'LLLL d, yyyy') : 'Recently';
 
   return (
     <div className="container mx-auto max-w-3xl py-24 px-4 md:px-8">
@@ -103,7 +105,7 @@ export default async function KxResource({ params }: Props) {
             <div>
               <span>{dict.blog.by} {postData.author}</span>
               <span>&bull;</span>
-              <time dateTime={new Date(postData.date).toISOString()}>{format(new Date(postData.date), 'LLLL d, yyyy')}</time>
+              <time dateTime={isValid(dateObj) ? dateObj.toISOString() : undefined}>{displayDate}</time>
               {postData.readingTime && 
                 <>
                   <span>&bull;</span>

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getSortedPostsData } from '@/lib/blog';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import type { Metadata } from 'next';
 import { SectionDivider } from '@/components/landing/section-divider';
@@ -63,6 +63,17 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
   const otherPosts = allPostsData.slice(1);
   const featuredImage = featuredPost.image;
 
+  // Helper to safely format dates
+  const formatDate = (dateString: string) => {
+    const d = new Date(dateString);
+    return isValid(d) ? format(d, 'LLLL d, yyyy') : 'Recently';
+  };
+
+  const safeISODate = (dateString: string) => {
+    const d = new Date(dateString);
+    return isValid(d) ? d.toISOString() : undefined;
+  };
+
   return (
     <div className="container mx-auto max-w-5xl py-24 px-4 md:px-8">
       <div className="text-center mb-12">
@@ -97,7 +108,7 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
                 </CardTitle>
                 <CardDescription asChild>
                   <div>
-                    <time dateTime={new Date(featuredPost.date).toISOString()}>{format(new Date(featuredPost.date), 'LLLL d, yyyy')}</time> &bull; {dict.blog.by} {featuredPost.author}
+                    <time dateTime={safeISODate(featuredPost.date)}>{formatDate(featuredPost.date)}</time> &bull; {dict.blog.by} {featuredPost.author}
                     {featuredPost.readingTime && <span className="flex items-center gap-1 mt-1"><BookOpen className="h-4 w-4" /> {featuredPost.readingTime} {dict.blog.readingTime}</span>}
                   </div>
                 </CardDescription>
@@ -143,7 +154,7 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
                   </CardTitle>
                   <CardDescription asChild>
                     <div>
-                      <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'LLLL d, yyyy')}</time> &bull; {author}
+                      <time dateTime={safeISODate(date)}>{formatDate(date)}</time> &bull; {author}
                       {readingTime && <span className="flex items-center gap-1 mt-1"><BookOpen className="h-4 w-4" /> {readingTime} {dict.blog.readingTime}</span>}
                     </div>
                   </CardDescription>
