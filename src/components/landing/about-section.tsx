@@ -78,22 +78,22 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
           badge={dict.about.strategy}
           title={dict.about.title}
           description={dict.about.mission}
-          className="mb-16 md:mb-24"
+          className="mb-12 md:mb-16"
         />
 
-        <div className="relative grid grid-cols-2 gap-4 md:gap-6 max-w-xl mx-auto">
+        <div className="relative grid grid-cols-2 gap-3 md:gap-4 max-w-sm mx-auto">
           {pillars.map((pillar, index) => (
             <ScrollReveal 
               key={pillar.id} 
               delay={getDelayClass(index)}
               className="h-full"
             >
-              <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
+              <div className="relative h-full w-full p-[1px] overflow-hidden rounded-2xl group transition-all duration-500">
                 <div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
                 />
                 
-                <div className="relative aspect-square w-full bg-card/90 backdrop-blur-xl rounded-[calc(1.5rem-1px)] p-6 md:p-10 flex flex-col items-center justify-center text-center transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
+                <div className="relative aspect-square w-full bg-card/90 backdrop-blur-xl rounded-[calc(1rem-1px)] p-4 md:p-6 flex flex-col items-center justify-center text-center transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
                   
                   {/* Fancy Hover Glow */}
                   <div 
@@ -101,18 +101,18 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                     style={{ background: `radial-gradient(circle at center, ${pillar.color}, transparent 70%)` }}
                   />
 
-                  <div className="mb-6 md:mb-8 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+                  <div className="mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1">
                     {React.cloneElement(pillar.icon as React.ReactElement, { 
-                      className: "h-10 w-10 md:h-14 md:w-14", 
+                      className: "h-8 w-8 md:h-10 md:w-10", 
                       style: { color: pillar.color } 
                     })}
                   </div>
 
-                  <div className="space-y-3 relative z-10">
-                    <h3 className="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/90 leading-tight">
+                  <div className="space-y-2 relative z-10">
+                    <h3 className="text-[10px] md:text-xs font-bold uppercase tracking-[0.25em] text-white/90 leading-tight">
                       {pillar.title}
                     </h3>
-                    <p className="text-[10px] md:text-xs text-muted-foreground/60 leading-relaxed font-medium max-w-[180px] mx-auto">
+                    <p className="text-[9px] md:text-[10px] text-muted-foreground/60 leading-relaxed font-medium max-w-[140px] mx-auto">
                       {pillar.description}
                     </p>
                   </div>
@@ -122,7 +122,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
           ))}
           
           {/* Decorative central connection element */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 pointer-events-none hidden md:block">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 pointer-events-none hidden md:block">
              <div className="absolute inset-0 bg-primary/20 blur-xl animate-pulse" />
              <div className="absolute inset-0 border border-white/5 rounded-full backdrop-blur-md bg-background/40" />
           </div>
