@@ -165,8 +165,8 @@ export default async function KxResource({ params }: Props) {
                     : 'Laten we een fundament bouwen dat je team meer tijd, focus en ruimte geeft om te groeien.'}
                 </p>
                 <div className="flex justify-center">
-                  <Magnetic strength={0.2}>
-                    <Button asChild size="lg" className="px-10 h-14 shadow-2xl font-bold text-lg">
+                  <Magnetic strength={0.25}>
+                    <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-12 sm:h-14 shadow-2xl px-10">
                       <Link href={`/${lang}/project-request/`}>
                         {dict.common.workWithUs}
                         <ArrowRight className="ml-2 h-5 w-5" />
