@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -53,7 +54,8 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
   const dynamicWeight = Math.min(900, 700 + (scrollY / 500) * 200);
   
   // Tracking Compensation: keeps the total word width stable to prevent line jumping
-  const dynamicTracking = -((dynamicWeight - 700) / 200) * 0.01 + 'em';
+  // Increased to -0.03em for better stability
+  const dynamicTracking = -((dynamicWeight - 700) / 200) * 0.03 + 'em';
 
   return (
     <section 
@@ -70,11 +72,11 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         )}
       >
         <h1 
-          className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.2] sm:leading-[1.15] [text-wrap:balance]"
+          className="text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] sm:leading-[1.1] transition-[font-variation-settings,letter-spacing] duration-300 ease-out"
           style={{ 
-            textShadow: '0 0 15px rgba(255, 255, 255, 0.2)',
-            fontWeight: dynamicWeight,
-            fontVariationSettings: `'wght' ${dynamicWeight}`,
+            textShadow: '0 0 15px rgba(255, 255, 255, 0.1)',
+            fontWeight: Math.round(dynamicWeight),
+            fontVariationSettings: `'wght' ${Math.round(dynamicWeight)}`,
             letterSpacing: dynamicTracking
           }}
         >
