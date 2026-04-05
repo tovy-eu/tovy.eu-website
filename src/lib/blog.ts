@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-const postsDirectory = path.join(process.cwd(), 'src/content/blog');
+const postsDirectory = path.join(process.cwd(), 'src/content/kx');
 
 function getReadingTime(content: string) {
   if (!content) return 0;

@@ -37,7 +37,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     trackEvent({
       name: 'read_blog_click',
       event_category: 'engagement',
-      event_label: 'Hero Blog Link'
+      event_label: 'Hero KX Link'
     });
   };
 
@@ -76,7 +76,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           
           {CONFIG.enableBlog && (
             <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-base sm:text-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:text-white h-12 sm:h-14" onClick={handleBlogClick}>
-              <Link href={`/${lang}/blog/`}>
+              <Link href={`/${lang}/kx/`}>
                 <BookOpen className="mr-2 h-5 w-5" />
                 {dict.common.readBlog}
               </Link>

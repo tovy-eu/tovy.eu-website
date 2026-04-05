@@ -2,7 +2,7 @@
 {
   "common": {
     "workWithUs": "Start Project",
-    "readBlog": "Read our blog",
+    "readBlog": "Explore KX Hub",
     "shareIdea": "Share your idea",
     "privacyPolicy": "Privacy Policy",
     "legalNotice": "Legal Notice",
@@ -98,17 +98,17 @@
     "subtitle": "Discover how we help businesses scale."
   },
   "blog": {
-    "title": "Blog",
-    "subtitle": "Articles on business automation and cognitive freedom by Tovy.",
-    "noPosts": "No blog posts found. Check back soon!",
+    "title": "KX Hub",
+    "subtitle": "Technical resources, insights, and engineering documentation by Tovy.",
+    "noPosts": "No resources found in the KX hub. Check back soon!",
     "readingTime": "min read",
     "previous": "Previous",
     "next": "Next",
-    "featured": "Featured Post",
+    "featured": "Featured Resource",
     "by": "by"
   },
   "navigation": {
-    "blog": "Blog",
+    "blog": "KX Hub",
     "about": "About",
     "contact": "Contact"
   },

@@ -1,24 +1,25 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
 /**
- * A reading progress indicator specifically for blog posts.
+ * A reading progress indicator specifically for KX resources.
  * Positioned at the bottom of the header to help users gauge their progress.
- * It detects blog post pages by checking the URL structure.
+ * It detects KX resource pages by checking the URL structure.
  */
 export function ScrollProgress() {
   const [progress, setProgress] = useState(0);
   const pathname = usePathname();
   
-  // Detect if we are on a blog post page (e.g., /en/blog/some-slug)
-  // Segments: ['en', 'blog', 'slug'] -> length 3
-  const isBlogPost = pathname ? pathname.split('/').filter(Boolean).length >= 3 && pathname.includes('/blog/') : false;
+  // Detect if we are on a KX resource page (e.g., /en/kx/some-slug)
+  // Segments: ['en', 'kx', 'slug'] -> length 3
+  const isKxPage = pathname ? pathname.split('/').filter(Boolean).length >= 3 && pathname.includes('/kx/') : false;
 
   useEffect(() => {
-    // Only track scroll progress if we are on a blog post
-    if (!isBlogPost) return;
+    // Only track scroll progress if we are on a KX page
+    if (!isKxPage) return;
 
     const updateScrollProgress = () => {
       const scrollHeight = document.documentElement.scrollHeight;
@@ -35,9 +36,9 @@ export function ScrollProgress() {
     updateScrollProgress(); // Initial check on mount/path change
 
     return () => window.removeEventListener('scroll', updateScrollProgress);
-  }, [isBlogPost, pathname]);
+  }, [isKxPage, pathname]);
 
-  if (!isBlogPost) return null;
+  if (!isKxPage) return null;
 
   return (
     <div className="fixed top-20 md:top-24 left-0 w-full h-[2px] z-[60] pointer-events-none">
@@ -48,7 +49,7 @@ export function ScrollProgress() {
         aria-valuenow={progress}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label="Blog reading progress"
+        aria-label="KX reading progress"
       />
     </div>
   );
