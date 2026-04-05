@@ -1,3 +1,4 @@
+
 {
   "testimonials": [
     {
@@ -10,5 +11,16 @@
       "url": "https://picsum.photos/seed/brightscale/200/80",
       "hint": "business logo"
     }
+  ],
+  "tech": [
+    { "id": "gcp", "url": "https://picsum.photos/seed/gcp/150/60", "hint": "google cloud" },
+    { "id": "aws", "url": "https://picsum.photos/seed/aws/150/60", "hint": "amazon aws" },
+    { "id": "azure", "url": "https://picsum.photos/seed/azure/150/60", "hint": "microsoft azure" },
+    { "id": "dbt", "url": "https://picsum.photos/seed/dbt/150/60", "hint": "dbt logo" },
+    { "id": "snowflake", "url": "https://picsum.photos/seed/snowflake/150/60", "hint": "snowflake logo" },
+    { "id": "databricks", "url": "https://picsum.photos/seed/databricks/150/60", "hint": "databricks logo" },
+    { "id": "python", "url": "https://picsum.photos/seed/python/150/60", "hint": "python language" },
+    { "id": "typescript", "url": "https://picsum.photos/seed/ts/150/60", "hint": "typescript" },
+    { "id": "powerbi", "url": "https://picsum.photos/seed/pbi/150/60", "hint": "power bi" }
   ]
 }
