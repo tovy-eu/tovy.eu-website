@@ -7,10 +7,12 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import type { Metadata } from 'next';
 import { SectionDivider } from '@/components/landing/section-divider';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, ArrowRight } from 'lucide-react';
 import { getDictionary } from '@/lib/get-dictionary';
 import { notFound } from 'next/navigation';
 import { CONFIG } from '@/lib/config';
+import { WavyLines } from '@/components/landing/wavy-lines';
+import { SectionHeader } from '@/components/landing/section-header';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'nl' }];
@@ -48,22 +50,6 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
   const dict = await getDictionary(lang);
   const allPostsData = getSortedPostsData();
 
-  if (allPostsData.length === 0) {
-    return (
-      <div className="container mx-auto max-w-5xl py-24 px-4 md:px-8 text-center">
-        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
-          {dict.blog.title}
-        </h1>
-        <p className="text-lg text-muted-foreground mt-4">{dict.blog.noPosts}</p>
-      </div>
-    );
-  }
-
-  const featuredPost = allPostsData[0];
-  const otherPosts = allPostsData.slice(1);
-  const featuredImage = featuredPost.image;
-
-  // Helper to safely format dates
   const formatDate = (dateString: string) => {
     const d = new Date(dateString);
     return isValid(d) ? format(d, 'LLLL d, yyyy') : 'Recently';
@@ -74,109 +60,135 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
     return isValid(d) ? d.toISOString() : undefined;
   };
 
-  return (
-    <div className="container mx-auto max-w-5xl py-24 px-4 md:px-8">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
-          {dict.blog.title}
-        </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{dict.blog.subtitle}</p>
+  if (allPostsData.length === 0) {
+    return (
+      <div 
+        className="relative flex flex-col items-center justify-center min-h-screen py-24 px-4 overflow-hidden"
+        style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))' }}
+      >
+        <WavyLines />
+        <div className="relative z-10 text-center">
+          <SectionHeader 
+            badge="KX Hub"
+            title={dict.blog.title}
+            description={dict.blog.noPosts}
+          />
+        </div>
       </div>
+    );
+  }
+
+  const featuredPost = allPostsData[0];
+  const otherPosts = allPostsData.slice(1);
+
+  return (
+    <div 
+      className="relative flex flex-col min-h-screen py-24 px-4 md:px-8 overflow-hidden"
+      style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))' }}
+    >
+      <WavyLines />
       
-      {/* Featured Resource */}
-      <div className="mb-16">
-        <Link 
-          href={`/${lang}/kx/${featuredPost.id}`} 
-          className="block group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-        >
-          <Card className="grid md:grid-cols-2 overflow-hidden transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 bg-card/40 backdrop-blur-md border-none group-focus-visible:bg-card/60">
-            {featuredImage && (
-              <div className="relative w-full aspect-video md:aspect-auto">
+      <div className="container relative z-10 mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <SectionHeader 
+            badge="Knowledge Exchange"
+            title={dict.blog.title}
+            description={dict.blog.subtitle}
+          />
+        </div>
+        
+        {/* Featured Resource */}
+        <div className="mb-16">
+          <Link 
+            href={`/${lang}/kx/${featuredPost.id}/`} 
+            className="block group rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+          >
+            <Card className="grid md:grid-cols-2 overflow-hidden transition-all duration-500 ease-in-out hover:shadow-[0_0_30px_rgba(43,94,255,0.2)] bg-card/40 backdrop-blur-xl border border-white/10 group-focus-visible:bg-card/60 rounded-3xl">
+              <div className="relative w-full aspect-video md:aspect-auto overflow-hidden">
                 <Image
-                  src={featuredImage}
+                  src={featuredPost.image}
                   alt={featuredPost.title}
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:bg-gradient-to-r md:from-transparent md:to-transparent" />
               </div>
-            )}
-            <div className="flex flex-col p-6">
-              <CardHeader>
-                <CardTitle className="text-2xl lg:text-3xl group-hover:text-primary transition-colors text-foreground" asChild>
-                  <h2>{featuredPost.title}</h2>
-                </CardTitle>
-                <CardDescription asChild>
-                  <div>
-                    <time dateTime={safeISODate(featuredPost.date)}>{formatDate(featuredPost.date)}</time> &bull; {dict.blog.by} {featuredPost.author}
-                    {featuredPost.readingTime && <span className="flex items-center gap-1 mt-1"><BookOpen className="h-4 w-4" /> {featuredPost.readingTime} {dict.blog.readingTime}</span>}
+              <div className="flex flex-col p-8 md:p-10">
+                <CardHeader className="p-0 mb-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-[10px] font-bold tracking-[0.3em] text-primary uppercase">{dict.blog.featured}</span>
                   </div>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <p className="text-muted-foreground">{featuredPost.excerpt}</p>
-                {featuredPost.tags && featuredPost.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 pt-4">
-                    {featuredPost.tags.map(tag => (
-                      <Badge key={tag} variant="secondary">{tag}</Badge>
+                  <CardTitle className="text-2xl md:text-3xl lg:text-4xl font-bold group-hover:text-primary transition-colors text-white leading-tight" asChild>
+                    <h2>{featuredPost.title}</h2>
+                  </CardTitle>
+                  <CardDescription className="flex items-center gap-2 flex-wrap text-white/50 pt-2" asChild>
+                    <div>
+                      <time dateTime={safeISODate(featuredPost.date)}>{formatDate(featuredPost.date)}</time>
+                      <span>&bull;</span>
+                      <span>{featuredPost.author}</span>
+                    </div>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0 flex-grow">
+                  <p className="text-white/70 leading-relaxed line-clamp-3 mb-6">{featuredPost.excerpt}</p>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {featuredPost.tags?.map(tag => (
+                      <Badge key={tag} variant="secondary" className="bg-white/5 border-white/10 text-white/80">{tag}</Badge>
                     ))}
                   </div>
-                )}
-              </CardContent>
-            </div>
-          </Card>
-        </Link>
-      </div>
+                </CardContent>
+                <div className="mt-auto flex items-center text-primary font-bold text-sm tracking-wider uppercase group-hover:gap-2 transition-all">
+                  Read Resource <ArrowRight className="ml-2 h-4 w-4" />
+                </div>
+              </div>
+            </Card>
+          </Link>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        {otherPosts.map(({ id, date, title, excerpt, author, image, tags, readingTime }) => {
-          return (
-            <Link 
-              href={`/${lang}/kx/${id}`} 
-              key={id} 
-              className="block group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-            >
-              <Card className="h-full flex flex-col transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 overflow-hidden bg-card/40 backdrop-blur-md border-none group-focus-visible:bg-card/60">
-                {image && (
-                  <div className="relative w-full aspect-video">
+        {otherPosts.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {otherPosts.map(({ id, date, title, excerpt, author, image, tags, readingTime }) => (
+              <Link 
+                href={`/${lang}/kx/${id}/`} 
+                key={id} 
+                className="block group rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+              >
+                <Card className="h-full flex flex-col transition-all duration-500 ease-in-out hover:shadow-[0_0_20px_rgba(43,94,255,0.15)] overflow-hidden bg-card/30 backdrop-blur-xl border border-white/5 group-focus-visible:bg-card/50 rounded-2xl">
+                  <div className="relative w-full aspect-video overflow-hidden">
                     <Image
                       src={image}
                       alt={title}
                       fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
-                )}
-                <CardHeader>
-                  <CardTitle className="text-xl lg:text-2xl group-hover:text-primary transition-colors text-foreground" asChild>
-                    <h2>{title}</h2>
-                  </CardTitle>
-                  <CardDescription asChild>
-                    <div>
-                      <time dateTime={safeISODate(date)}>{formatDate(date)}</time> &bull; {author}
-                      {readingTime && <span className="flex items-center gap-1 mt-1"><BookOpen className="h-4 w-4" /> {readingTime} {dict.blog.readingTime}</span>}
-                    </div>
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p className="text-muted-foreground">{excerpt}</p>
-                  {tags && tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 pt-4">
-                      {tags.map(tag => (
-                        <Badge key={tag} variant="secondary">{tag}</Badge>
+                  <CardHeader className="p-6 pb-2">
+                    <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors text-white line-clamp-2 leading-tight" asChild>
+                      <h3>{title}</h3>
+                    </CardTitle>
+                    <CardDescription className="text-xs text-white/40 pt-1" asChild>
+                      <time dateTime={safeISODate(date)}>{formatDate(date)}</time>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-6 pt-2 flex-grow">
+                    <p className="text-white/60 text-sm leading-relaxed line-clamp-3 mb-4">{excerpt}</p>
+                    <div className="flex flex-wrap gap-1.5 mt-auto">
+                      {tags?.slice(0, 2).map(tag => (
+                        <Badge key={tag} variant="secondary" className="bg-white/5 border-white/10 text-[10px] py-0">{tag}</Badge>
                       ))}
                     </div>
-                  )}
-                </CardContent>
-              </Card>
-            </Link>
-          );
-        })}
-      </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        )}
 
-      <div className="my-16">
-        <SectionDivider />
+        <div className="my-16">
+          <SectionDivider />
+        </div>
       </div>
     </div>
   );
