@@ -21,7 +21,7 @@ import { Magnetic } from "@/components/ui/magnetic";
 export default function Header({ lang = "en", dict }: { lang?: string; dict?: Dictionary }) {
   const pathname = usePathname();
   const shareIdeaText = dict?.common.shareIdea || "Share your idea";
-  const blogText = dict?.navigation.blog || "Blog";
+  const blogText = dict?.navigation.blog || "KX Hub";
   
   const homePath = `/${lang}/`;
   const isAtHome = pathname === homePath;
@@ -59,7 +59,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
     trackEvent({
       name: 'read_blog_click',
       event_category: 'engagement',
-      event_label: 'Header Blog Link'
+      event_label: 'Header KX Hub Link'
     });
   };
 
@@ -86,7 +86,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button variant="ghost" size="icon" asChild className="h-11 w-11 rounded-full hover:bg-white/10" onClick={handleBlogClick}>
-                    <Link href={`/${lang}/blog/`}>
+                    <Link href={`/${lang}/kx/`}>
                       <BookOpen className="h-5 w-5" />
                       <span className="sr-only">{blogText}</span>
                     </Link>

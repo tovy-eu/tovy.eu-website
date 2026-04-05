@@ -2,7 +2,7 @@
 {
   "common": {
     "workWithUs": "Werk met ons",
-    "readBlog": "Lees onze blog",
+    "readBlog": "Verken KX Hub",
     "shareIdea": "Deel je idee",
     "privacyPolicy": "Privacyverklaring",
     "legalNotice": "Juridische informatie",
@@ -98,17 +98,17 @@
     "subtitle": "Ontdek hoe wij bedrijven helpen schalen met helderheid en automatisering."
   },
   "blog": {
-    "title": "Blog",
-    "subtitle": "Artikelen van Tovy over bedrijfsautomatisering en cognitieve vrijheid.",
-    "noPosts": "Geen blogartikelen gevonden. Kom later terug!",
+    "title": "KX Hub",
+    "subtitle": "Technische bronnen, inzichten en documentatie door Tovy.",
+    "noPosts": "Geen bronnen gevonden in de KX hub. Kom later terug!",
     "readingTime": "min leestijd",
     "previous": "Vorige",
     "next": "Volgende",
-    "featured": "Uitgelicht",
+    "featured": "Uitgelichte bron",
     "by": "door"
   },
   "navigation": {
-    "blog": "Blog",
+    "blog": "KX Hub",
     "about": "Over ons",
     "contact": "Contact"
   },

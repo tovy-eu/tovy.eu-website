@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   if (CONFIG.enableBlog) {
-    routes.push('/blog');
+    routes.push('/kx');
   }
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
@@ -29,16 +29,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       sitemapEntries.push({
         url: `${baseUrl}/${lang}${route}/`,
         lastModified: new Date(),
-        changeFrequency: route === '/blog' ? 'weekly' : 'monthly',
+        changeFrequency: route === '/kx' ? 'weekly' : 'monthly',
         priority: route === '' ? 1.0 : 0.8,
       });
     });
 
-    // Add localized routes for all blog posts if blog is enabled
+    // Add localized routes for all resources if KX is enabled
     if (CONFIG.enableBlog) {
       posts.forEach((post) => {
         sitemapEntries.push({
-          url: `${baseUrl}/${lang}/blog/${post.id}/`,
+          url: `${baseUrl}/${lang}/kx/${post.id}/`,
           lastModified: new Date(post.date),
           changeFrequency: 'monthly',
           priority: 0.7,
