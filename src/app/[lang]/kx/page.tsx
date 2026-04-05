@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getSortedPostsData } from '@/lib/blog';
 import { format, isValid } from 'date-fns';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import type { Metadata } from 'next';
 import { SectionDivider } from '@/components/landing/section-divider';
 import { Badge } from '@/components/ui/badge';
@@ -25,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
 
   return {
-    title: dict.blog.title,
+    title: `${dict.blog.title} | Tovy Hub`,
     description: dict.blog.subtitle,
     openGraph: {
       title: `${dict.blog.title} | Tovy`,
@@ -70,7 +69,7 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
         <WavyLines />
         <div className="relative z-10 text-center">
           <SectionHeader 
-            badge="KX Hub"
+            badge="Knowledge Exchange"
             title={dict.blog.title}
             description={dict.blog.noPosts}
           />
@@ -89,17 +88,16 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
       <div className="container relative z-10 mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <SectionHeader 
-            badge="Knowledge Exchange"
+            badge="KX Hub"
             title={dict.blog.title}
             description={dict.blog.subtitle}
           />
         </div>
         
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        {/* Bento Grid Layout synchronized with Engineering Section styling */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-16">
           {allPostsData.map((post, index) => {
             const isFeatured = index === 0;
-            const isMedium = index === 1 || index === 2;
             
             return (
               <Link 
@@ -107,80 +105,82 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
                 key={post.id} 
                 className={cn(
                   "block group rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background",
-                  isFeatured ? "md:col-span-2 md:row-span-2" : "md:col-span-1"
+                  isFeatured ? "md:col-span-2" : "md:col-span-1"
                 )}
               >
-                <Card className="h-full flex flex-col overflow-hidden transition-all duration-500 ease-in-out hover:shadow-[0_0_30px_rgba(43,94,255,0.2)] bg-card/40 backdrop-blur-xl border border-white/10 group-focus-visible:bg-card/60 rounded-3xl">
-                  <div className={cn(
-                    "relative w-full overflow-hidden",
-                    isFeatured ? "aspect-[16/10] md:aspect-auto md:flex-grow" : "aspect-video"
-                  )}>
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes={isFeatured ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
-                      priority={isFeatured}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl transition-all duration-500">
+                  {/* Animated Border Gradient Layer */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" />
+                  
+                  {/* Inner Content Layer with Engineering Section Visuals */}
+                  <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(1.5rem-1px)] flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
                     
-                    {isFeatured && (
-                      <div className="absolute top-6 left-6">
-                        <Badge className="bg-primary/20 backdrop-blur-md border-primary/20 text-primary-foreground text-[10px] uppercase tracking-wider px-3 py-1">
-                          {dict.blog.featured}
-                        </Badge>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col p-6 md:p-8">
-                    <CardHeader className="p-0 mb-4">
-                      <CardTitle className={cn(
-                        "font-bold group-hover:text-primary transition-colors text-white leading-tight mb-2",
-                        isFeatured ? "text-2xl md:text-3xl lg:text-4xl" : "text-xl"
-                      )} asChild>
-                        <h3 dangerouslySetInnerHTML={{ __html: post.title }} />
-                      </CardTitle>
-                      <CardDescription className="flex items-center gap-2 flex-wrap text-white/40 text-xs" asChild>
-                        <div>
-                          <time dateTime={safeISODate(post.date)}>{formatDate(post.date)}</time>
-                          <span>&bull;</span>
-                          <span>{post.author}</span>
-                          {post.readingTime && (
-                            <>
-                              <span>&bull;</span>
-                              <span className="flex items-center gap-1">
-                                <BookOpen className="h-3 w-3" /> {post.readingTime} {dict.blog.readingTime}
-                              </span>
-                            </>
-                          )}
+                    {/* Image Header */}
+                    <div className={cn(
+                      "relative w-full overflow-hidden",
+                      isFeatured ? "aspect-[21/9]" : "aspect-video"
+                    )}>
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        sizes={isFeatured ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+                        priority={isFeatured}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      
+                      {isFeatured && (
+                        <div className="absolute top-4 left-4 md:top-6 md:left-6">
+                          <Badge className="bg-primary/20 backdrop-blur-md border-primary/20 text-primary-foreground text-[10px] uppercase tracking-wider px-3 py-1">
+                            {dict.blog.featured}
+                          </Badge>
                         </div>
-                      </CardDescription>
-                    </CardHeader>
+                      )}
+                    </div>
 
-                    <CardContent className="p-0 flex-grow">
+                    {/* Text Content */}
+                    <div className="flex flex-col p-6 md:p-8 flex-grow">
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="text-primary">
+                          <BookOpen className="h-4 w-4" />
+                        </div>
+                        <p className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-white/40 uppercase">
+                          <time dateTime={safeISODate(post.date)}>{formatDate(post.date)}</time>
+                          <span className="mx-2">&bull;</span>
+                          <span>{post.author}</span>
+                        </p>
+                      </div>
+
+                      <h3 className={cn(
+                        "font-bold group-hover:text-primary transition-colors text-white leading-tight mb-4",
+                        isFeatured ? "text-2xl md:text-3xl lg:text-4xl" : "text-xl"
+                      )}>
+                        {post.title}
+                      </h3>
+
                       <p className={cn(
-                        "text-white/60 leading-relaxed mb-6",
-                        isFeatured ? "line-clamp-4 text-base" : "line-clamp-3 text-sm"
+                        "text-white/70 leading-relaxed mb-6 flex-grow",
+                        isFeatured ? "line-clamp-3 text-base" : "line-clamp-2 text-sm"
                       )}>
                         {post.excerpt}
                       </p>
                       
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {post.tags?.slice(0, isFeatured ? 4 : 2).map(tag => (
-                          <Badge key={tag} variant="secondary" className="bg-white/5 border-white/10 text-[10px] text-white/80 px-2 py-0">
-                            {tag}
-                          </Badge>
-                        ))}
+                      <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-6">
+                        <div className="flex flex-wrap gap-2">
+                          {post.tags?.slice(0, 2).map(tag => (
+                            <span key={tag} className="text-[9px] md:text-[10px] font-bold tracking-[0.25em] uppercase text-white/30">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="flex items-center text-primary font-bold text-[10px] tracking-widest uppercase gap-2">
+                          {lang === 'en' ? 'Read' : 'Lees'} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </div>
                       </div>
-                    </CardContent>
-
-                    <div className="mt-auto flex items-center text-primary font-bold text-[10px] md:text-xs tracking-widest uppercase group-hover:gap-2 transition-all">
-                      Read Resource <ArrowRight className="ml-2 h-4 w-4" />
                     </div>
                   </div>
-                </Card>
+                </div>
               </Link>
             );
           })}
