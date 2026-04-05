@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useRef } from "react";
@@ -82,36 +83,36 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
           className="mb-16"
         />
 
-        <div className="relative grid grid-cols-2 gap-3 md:gap-6 max-w-4xl mx-auto">
+        <div className="relative grid grid-cols-2 gap-2 md:gap-4 max-w-3xl mx-auto">
           {pillars.map((pillar, index) => (
             <ScrollReveal 
               key={pillar.id} 
               delay={getDelayClass(index)}
               className="h-full"
             >
-              <div className="relative h-full w-full p-[1px] overflow-hidden rounded-2xl group transition-all duration-500">
+              <div className="relative h-full w-full p-[1px] overflow-hidden rounded-xl group transition-all duration-500">
                 <div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
                 />
                 
-                <div className="relative h-full w-full bg-card backdrop-blur-xl rounded-[calc(1rem-1px)] p-4 md:p-6 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent text-center items-center">
+                <div className="relative h-full w-full bg-card backdrop-blur-xl rounded-[calc(0.75rem-1px)] p-3 md:p-5 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent text-center items-center">
                   <div 
-                    className="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 border border-white/5 shadow-xl transition-all duration-500 mb-4 group-hover:scale-105 group-hover:border-primary/20"
+                    className="relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-lg bg-white/5 border border-white/5 shadow-xl transition-all duration-500 mb-3 group-hover:scale-105 group-hover:border-primary/20"
                     style={{ color: pillar.color } as React.CSSProperties}
                   >
-                    <div className="absolute inset-0 rounded-xl blur-md opacity-0 group-hover:opacity-10 bg-current transition-opacity" />
+                    <div className="absolute inset-0 rounded-lg blur-md opacity-0 group-hover:opacity-10 bg-current transition-opacity" />
                     
                     {React.cloneElement(pillar.icon as React.ReactElement, { 
-                      className: "h-5 w-5 md:h-6 md:w-6 relative z-10 transition-colors duration-300", 
+                      className: "h-4 w-4 md:h-5 md:w-5 relative z-10 transition-colors duration-300", 
                       style: { color: pillar.color } 
                     })}
                   </div>
 
-                  <div className="space-y-2">
-                    <h3 className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white/90 leading-tight">
+                  <div className="space-y-1">
+                    <h3 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/90 leading-tight">
                       {pillar.title}
                     </h3>
-                    <p className="text-xs md:text-sm text-muted-foreground/70 leading-relaxed font-medium">
+                    <p className="text-[10px] md:text-xs text-muted-foreground/70 leading-relaxed font-medium">
                       {pillar.description}
                     </p>
                   </div>
