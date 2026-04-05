@@ -12,7 +12,7 @@ The application is built around the following key features:
   - **Hero Section**: An impactful introduction with a strong headline and dual CTAs ("Work with us" and "Explore KX Hub").
   - **About Section**: Details the company's core values (Technology, Optimization, Freedom, Innovation).
   - **Solutions Showcase**: A carousel to display case studies or past projects.
-  - **Tech Marquee**: A scrolling display of industry-standard technologies Tovy works with.
+  - **Final CTA Section**: A high-impact closing section to drive project inquiries.
 - **Project Intake Form**: A multi-step, user-friendly form at `/project-request` to capture detailed client requirements. It asks sequential questions to qualify leads effectively.
 - **KX Hub**: A professional resource center at `/kx` for publishing technical insights and documentation. It includes a bento-grid listing page and individual resource pages.
 - **Reading Progress**: A horizontal progress bar on KX resource pages to help users gauge their progress.

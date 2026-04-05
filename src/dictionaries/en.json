@@ -1,4 +1,3 @@
-
 {
   "common": {
     "workWithUs": "Start Project",
@@ -11,7 +10,6 @@
     "downloadJson": "Download as JSON",
     "submissionFailed": "Submission Failed",
     "submissionErrorDesc": "There was an error submitting your request. Please try again later.",
-    "techStack": "Technologies we work with",
     "scrollToExplore": "Scroll to explore"
   },
   "hero": {
