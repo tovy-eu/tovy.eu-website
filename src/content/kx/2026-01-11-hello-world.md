@@ -1,11 +1,20 @@
-
 ---
-title: 'Welcome to KX'
+title: 'Hello World: The Tovy Foundation'
 date: '2026-01-11'
 author: 'Giel Nijkamp'
-summary: 'Introduction to Tovy Knowledge Exchange Hub'
+summary: 'An introduction to the Tovy philosophy of smart data ecosystems.'
 image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630'
-tags: ['KX', 'Resources', 'Engineering']
+tags: ['Philosophy', 'Data Engineering', 'Automation']
 ---
 
-Welcome to the Tovy Knowledge Exchange (KX) Hub. This is where we share technical insights, resource documentation, and strategic engineering articles to help teams scale their data foundations.
+Welcome to Tovy. Our journey starts with a simple premise: technology should give people more freedom, not more work.
+
+In the coming months, this KX (Knowledge Exchange) Hub will serve as our primary repository for technical insights, architectural patterns, and strategic engineering documentation. We believe that by sharing how we build smart data ecosystems, we help the entire industry move away from fragmented silos and toward unified, automated foundations.
+
+Stay tuned for deep dives into:
+- Modern Data Stack (MDS) implementation
+- AI-driven business process automation
+- Cloud infrastructure optimization
+- Real-world case studies in smart automation
+
+Welcome to the foundation of your scaling journey.
