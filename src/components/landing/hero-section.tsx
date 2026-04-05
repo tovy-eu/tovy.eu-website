@@ -13,7 +13,6 @@ import { trackEvent } from '@/lib/analytics';
 
 export function HeroSection({ dict }: { dict: Dictionary }) {
   const [isMounted, setIsMounted] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
 
@@ -21,16 +20,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     const timer = setTimeout(() => {
       setIsMounted(true);
     }, 100);
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   const handleCtaClick = () => {
@@ -49,13 +39,6 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     });
   };
 
-  // Kinetic Typography: Shift weight from 700 to 900 based on scroll
-  const dynamicWeight = Math.min(900, 700 + (scrollY / 500) * 200);
-  
-  // Tracking Compensation: keeps the total word width stable to prevent line jumping
-  // Increased to -0.085em for maximum stability as weight increases
-  const dynamicTracking = -((dynamicWeight - 700) / 200) * 0.085 + 'em';
-
   return (
     <section 
       className="relative w-full flex flex-col items-center justify-center min-h-screen text-center py-24 px-4 md:py-32 overflow-hidden"
@@ -71,20 +54,15 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         )}
       >
         <h1 
-          className="text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] sm:leading-[1.1] transition-[font-variation-settings,letter-spacing] duration-300 ease-out"
-          style={{ 
-            textShadow: '0 0 15px rgba(255, 255, 255, 0.1)',
-            fontWeight: Math.round(dynamicWeight),
-            fontVariationSettings: `'wght' ${Math.round(dynamicWeight)}`,
-            letterSpacing: dynamicTracking
-          }}
+          className="text-4xl font-bold text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] tracking-tight"
+          style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.1)' }}
         >
           {dict.hero.title}
         </h1>
         <p className="mt-8 text-lg leading-relaxed text-white/80 md:text-xl lg:text-2xl max-w-2xl mx-auto px-4 sm:px-0 font-medium">
           {dict.hero.subtitle}
         </p>
-        <div className="mt-20 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
+        <div className="mt-20 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
           <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-12 sm:h-14 shadow-2xl" onClick={handleCtaClick}>
             <Link href={`/${lang}/project-request/`}>
               {dict.common.workWithUs}
