@@ -17,18 +17,5 @@ service cloud.firestore {
     match /project_requests/{requestId} {
       allow create: if true;
     }
-
-    /**
-     * @description Allow anyone to subscribe to the newsletter.
-     * @path /subscriptions/{subId}
-     * @principle Unauthenticated users can add their email.
-     *            Privacy: Reading existing subscriptions is strictly forbidden.
-     */
-    match /subscriptions/{subId} {
-      allow create: if true;
-      // Note: SubscriptionForm uses a query to check for duplicates. 
-      // To support this securely without allowing full reads, consider 
-      // using the email as the document ID and check 'exists()'.
-    }
   }
 }
