@@ -1,4 +1,3 @@
-
 import { getPostData, getSortedPostsData } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { format, isValid } from 'date-fns';
@@ -13,6 +12,7 @@ import { getDictionary } from '@/lib/get-dictionary';
 import { CONFIG } from '@/lib/config';
 import { BlogPostAnalytics } from '@/components/blog/blog-post-analytics';
 import { WavyLines } from '@/components/landing/wavy-lines';
+import { Magnetic } from '@/components/ui/magnetic';
 
 type Props = {
   params: Promise<{ lang: string; slug: string }>;
@@ -148,10 +148,34 @@ export default async function KxResource({ params }: Props) {
                 prose-p:text-white/70 prose-p:leading-relaxed 
                 prose-strong:text-white prose-a:text-primary hover:prose-a:text-primary/80 
                 prose-blockquote:border-primary prose-blockquote:bg-white/5 prose-blockquote:p-6 prose-blockquote:rounded-r-lg
-                prose-img:rounded-2xl prose-img:shadow-2xl"
+                prose-img:rounded-2xl prose-img:shadow-2xl mb-16"
                 dangerouslySetInnerHTML={{ __html: postData.contentHtml }} 
               />
             </article>
+
+            {/* CTA Section */}
+            <div className="mt-16 pt-16 border-t border-white/5 text-center">
+              <div className="max-w-xl mx-auto">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  {lang === 'en' ? 'Ready to scale your data ecosystem?' : 'Klaar om je data-ecosysteem op te schalen?'}
+                </h3>
+                <p className="text-white/60 mb-10 text-lg leading-relaxed">
+                  {lang === 'en' 
+                    ? 'Let’s build a foundation that gives your team more time, focus, and freedom to grow.' 
+                    : 'Laten we een fundament bouwen dat je team meer tijd, focus en ruimte geeft om te groeien.'}
+                </p>
+                <div className="flex justify-center">
+                  <Magnetic strength={0.2}>
+                    <Button asChild size="lg" className="px-10 h-14 shadow-2xl font-bold text-lg">
+                      <Link href={`/${lang}/project-request/`}>
+                        {dict.common.workWithUs}
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Link>
+                    </Button>
+                  </Magnetic>
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
         
