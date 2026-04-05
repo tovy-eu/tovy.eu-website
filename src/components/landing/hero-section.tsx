@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -54,8 +53,8 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
   const dynamicWeight = Math.min(900, 700 + (scrollY / 500) * 200);
   
   // Tracking Compensation: keeps the total word width stable to prevent line jumping
-  // Increased to -0.03em for better stability
-  const dynamicTracking = -((dynamicWeight - 700) / 200) * 0.03 + 'em';
+  // Increased to -0.085em for maximum stability as weight increases
+  const dynamicTracking = -((dynamicWeight - 700) / 200) * 0.085 + 'em';
 
   return (
     <section 

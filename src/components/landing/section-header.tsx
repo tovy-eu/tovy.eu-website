@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -49,8 +48,8 @@ export function SectionHeader({
   }, []);
 
   // Tracking compensation: as weight increases, characters expand.
-  // We tighten tracking significantly (-0.035em at max weight) to keep the total line width stable.
-  const dynamicTracking = -((weight - 700) / 200) * 0.035 + 'em';
+  // Tightened tracking aggressively (-0.085em at max weight) to keep the total line width stable.
+  const dynamicTracking = -((weight - 700) / 200) * 0.085 + 'em';
 
   return (
     <ScrollReveal>
