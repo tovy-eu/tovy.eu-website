@@ -1,11 +1,9 @@
-
 import dynamic from 'next/dynamic';
 import { HeroSection } from "@/components/landing/hero-section";
 import { SectionDivider } from "@/components/landing/section-divider";
 import { getDictionary } from "@/lib/get-dictionary";
 import { JsonLd, getServicesSchema, getFaqSchema } from "@/components/layout/json-ld";
 import type { Metadata } from 'next';
-import { TechMarquee } from '@/components/landing/tech-marquee';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'nl' }];
@@ -42,8 +40,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <JsonLd type="FAQPage" data={getFaqSchema(dict)} />
 
       <HeroSection dict={dict} />
-
-      <TechMarquee dict={dict} />
 
       <SectionDivider />
 
