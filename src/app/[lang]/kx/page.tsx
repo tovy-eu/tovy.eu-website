@@ -13,6 +13,7 @@ import { notFound } from 'next/navigation';
 import { CONFIG } from '@/lib/config';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { SectionHeader } from '@/components/landing/section-header';
+import { cn } from '@/lib/utils';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'nl' }];
@@ -78,9 +79,6 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
     );
   }
 
-  const featuredPost = allPostsData[0];
-  const otherPosts = allPostsData.slice(1);
-
   return (
     <div 
       className="relative flex flex-col min-h-screen py-24 px-4 md:px-8 overflow-hidden"
@@ -97,94 +95,96 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
           />
         </div>
         
-        {/* Featured Resource */}
-        <div className="mb-16">
-          <Link 
-            href={`/${lang}/kx/${featuredPost.id}/`} 
-            className="block group rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-          >
-            <Card className="grid md:grid-cols-2 overflow-hidden transition-all duration-500 ease-in-out hover:shadow-[0_0_30px_rgba(43,94,255,0.2)] bg-card/40 backdrop-blur-xl border border-white/10 group-focus-visible:bg-card/60 rounded-3xl">
-              <div className="relative w-full aspect-video md:aspect-auto overflow-hidden">
-                <Image
-                  src={featuredPost.image}
-                  alt={featuredPost.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:bg-gradient-to-r md:from-transparent md:to-transparent" />
-              </div>
-              <div className="flex flex-col p-8 md:p-10">
-                <CardHeader className="p-0 mb-4">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-[10px] font-bold tracking-[0.3em] text-primary uppercase">{dict.blog.featured}</span>
-                  </div>
-                  <CardTitle className="text-2xl md:text-3xl lg:text-4xl font-bold group-hover:text-primary transition-colors text-white leading-tight" asChild>
-                    <h2>{featuredPost.title}</h2>
-                  </CardTitle>
-                  <CardDescription className="flex items-center gap-2 flex-wrap text-white/50 pt-2" asChild>
-                    <div>
-                      <time dateTime={safeISODate(featuredPost.date)}>{formatDate(featuredPost.date)}</time>
-                      <span>&bull;</span>
-                      <span>{featuredPost.author}</span>
-                    </div>
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-0 flex-grow">
-                  <p className="text-white/70 leading-relaxed line-clamp-3 mb-6">{featuredPost.excerpt}</p>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {featuredPost.tags?.map(tag => (
-                      <Badge key={tag} variant="secondary" className="bg-white/5 border-white/10 text-white/80">{tag}</Badge>
-                    ))}
-                  </div>
-                </CardContent>
-                <div className="mt-auto flex items-center text-primary font-bold text-sm tracking-wider uppercase group-hover:gap-2 transition-all">
-                  Read Resource <ArrowRight className="ml-2 h-4 w-4" />
-                </div>
-              </div>
-            </Card>
-          </Link>
-        </div>
-
-        {otherPosts.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {otherPosts.map(({ id, date, title, excerpt, author, image, tags, readingTime }) => (
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {allPostsData.map((post, index) => {
+            const isFeatured = index === 0;
+            const isMedium = index === 1 || index === 2;
+            
+            return (
               <Link 
-                href={`/${lang}/kx/${id}/`} 
-                key={id} 
-                className="block group rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                href={`/${lang}/kx/${post.id}/`} 
+                key={post.id} 
+                className={cn(
+                  "block group rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background",
+                  isFeatured ? "md:col-span-2 md:row-span-2" : "md:col-span-1"
+                )}
               >
-                <Card className="h-full flex flex-col transition-all duration-500 ease-in-out hover:shadow-[0_0_20px_rgba(43,94,255,0.15)] overflow-hidden bg-card/30 backdrop-blur-xl border border-white/5 group-focus-visible:bg-card/50 rounded-2xl">
-                  <div className="relative w-full aspect-video overflow-hidden">
+                <Card className="h-full flex flex-col overflow-hidden transition-all duration-500 ease-in-out hover:shadow-[0_0_30px_rgba(43,94,255,0.2)] bg-card/40 backdrop-blur-xl border border-white/10 group-focus-visible:bg-card/60 rounded-3xl">
+                  <div className={cn(
+                    "relative w-full overflow-hidden",
+                    isFeatured ? "aspect-[16/10] md:aspect-auto md:flex-grow" : "aspect-video"
+                  )}>
                     <Image
-                      src={image}
-                      alt={title}
+                      src={post.image}
+                      alt={post.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes={isFeatured ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+                      priority={isFeatured}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    
+                    {isFeatured && (
+                      <div className="absolute top-6 left-6">
+                        <Badge className="bg-primary/20 backdrop-blur-md border-primary/20 text-primary-foreground text-[10px] uppercase tracking-wider px-3 py-1">
+                          {dict.blog.featured}
+                        </Badge>
+                      </div>
+                    )}
                   </div>
-                  <CardHeader className="p-6 pb-2">
-                    <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors text-white line-clamp-2 leading-tight" asChild>
-                      <h3>{title}</h3>
-                    </CardTitle>
-                    <CardDescription className="text-xs text-white/40 pt-1" asChild>
-                      <time dateTime={safeISODate(date)}>{formatDate(date)}</time>
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="p-6 pt-2 flex-grow">
-                    <p className="text-white/60 text-sm leading-relaxed line-clamp-3 mb-4">{excerpt}</p>
-                    <div className="flex flex-wrap gap-1.5 mt-auto">
-                      {tags?.slice(0, 2).map(tag => (
-                        <Badge key={tag} variant="secondary" className="bg-white/5 border-white/10 text-[10px] py-0">{tag}</Badge>
-                      ))}
+
+                  <div className="flex flex-col p-6 md:p-8">
+                    <CardHeader className="p-0 mb-4">
+                      <CardTitle className={cn(
+                        "font-bold group-hover:text-primary transition-colors text-white leading-tight mb-2",
+                        isFeatured ? "text-2xl md:text-3xl lg:text-4xl" : "text-xl"
+                      )} asChild>
+                        <h3 dangerouslySetInnerHTML={{ __html: post.title }} />
+                      </CardTitle>
+                      <CardDescription className="flex items-center gap-2 flex-wrap text-white/40 text-xs" asChild>
+                        <div>
+                          <time dateTime={safeISODate(post.date)}>{formatDate(post.date)}</time>
+                          <span>&bull;</span>
+                          <span>{post.author}</span>
+                          {post.readingTime && (
+                            <>
+                              <span>&bull;</span>
+                              <span className="flex items-center gap-1">
+                                <BookOpen className="h-3 w-3" /> {post.readingTime} {dict.blog.readingTime}
+                              </span>
+                            </>
+                          )}
+                        </div>
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="p-0 flex-grow">
+                      <p className={cn(
+                        "text-white/60 leading-relaxed mb-6",
+                        isFeatured ? "line-clamp-4 text-base" : "line-clamp-3 text-sm"
+                      )}>
+                        {post.excerpt}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {post.tags?.slice(0, isFeatured ? 4 : 2).map(tag => (
+                          <Badge key={tag} variant="secondary" className="bg-white/5 border-white/10 text-[10px] text-white/80 px-2 py-0">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+
+                    <div className="mt-auto flex items-center text-primary font-bold text-[10px] md:text-xs tracking-widest uppercase group-hover:gap-2 transition-all">
+                      Read Resource <ArrowRight className="ml-2 h-4 w-4" />
                     </div>
-                  </CardContent>
+                  </div>
                 </Card>
               </Link>
-            ))}
-          </div>
-        )}
+            );
+          })}
+        </div>
 
         <div className="my-16">
           <SectionDivider />
