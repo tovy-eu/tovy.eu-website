@@ -82,36 +82,36 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
           className="mb-16"
         />
 
-        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="relative grid grid-cols-2 gap-3 md:gap-6 max-w-4xl mx-auto">
           {pillars.map((pillar, index) => (
             <ScrollReveal 
               key={pillar.id} 
               delay={getDelayClass(index)}
               className="h-full"
             >
-              <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
+              <div className="relative h-full w-full p-[1px] overflow-hidden rounded-2xl group transition-all duration-500">
                 <div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
                 />
                 
-                <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent text-center items-center">
+                <div className="relative h-full w-full bg-card backdrop-blur-xl rounded-[calc(1rem-1px)] p-4 md:p-6 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent text-center items-center">
                   <div 
-                    className="relative flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/5 shadow-xl transition-all duration-500 mb-6 group-hover:scale-105 group-hover:border-primary/20"
+                    className="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 border border-white/5 shadow-xl transition-all duration-500 mb-4 group-hover:scale-105 group-hover:border-primary/20"
                     style={{ color: pillar.color } as React.CSSProperties}
                   >
-                    <div className="absolute inset-0 rounded-2xl blur-md opacity-0 group-hover:opacity-10 bg-current transition-opacity" />
+                    <div className="absolute inset-0 rounded-xl blur-md opacity-0 group-hover:opacity-10 bg-current transition-opacity" />
                     
                     {React.cloneElement(pillar.icon as React.ReactElement, { 
-                      className: "h-6 w-6 md:h-7 md:w-7 relative z-10 transition-colors duration-300", 
+                      className: "h-5 w-5 md:h-6 md:w-6 relative z-10 transition-colors duration-300", 
                       style: { color: pillar.color } 
                     })}
                   </div>
 
-                  <div className="space-y-3">
-                    <h3 className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-white/90 leading-tight">
+                  <div className="space-y-2">
+                    <h3 className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white/90 leading-tight">
                       {pillar.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground/70 leading-relaxed font-medium">
+                    <p className="text-xs md:text-sm text-muted-foreground/70 leading-relaxed font-medium">
                       {pillar.description}
                     </p>
                   </div>

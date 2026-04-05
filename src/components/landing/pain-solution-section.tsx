@@ -48,7 +48,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
           {/* Pain Section (The Old Way) */}
           <ScrollReveal delay="duration-700" className="flex">
-            <div className="relative w-full p-5 sm:p-6 rounded-3xl bg-card/95 backdrop-blur-xl border border-white/10 overflow-hidden group shadow-2xl">
+            <div className="relative w-full p-5 sm:p-6 rounded-3xl bg-card border border-white/10 overflow-hidden group shadow-2xl">
               <div 
                 className="absolute inset-0 opacity-[0.015] pointer-events-none" 
                 style={{ 
@@ -86,7 +86,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
               />
               
-              <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-5 sm:p-6 flex flex-col transition-all duration-300 shadow-2xl border border-white/10 group-hover:border-transparent overflow-hidden">
+              <div className="relative h-full w-full bg-card rounded-[calc(1.5rem-1px)] p-5 sm:p-6 flex flex-col transition-all duration-300 shadow-2xl border border-white/10 group-hover:border-transparent overflow-hidden">
                 <div 
                   className="absolute inset-0 pointer-events-none opacity-40 transition-opacity duration-500 group-hover:opacity-60"
                   style={{
