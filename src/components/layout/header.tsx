@@ -64,7 +64,8 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
   return (
     <header
       className={cn(
-        "fixed top-0 z-50 w-full bg-gradient-to-b from-background via-background/95 to-background/80 backdrop-blur-xl border-b border-white/10 shadow-sm"
+        "fixed top-0 z-50 w-full backdrop-blur-xl border-b border-white/10 shadow-sm transition-all duration-300",
+        "bg-gradient-to-b from-background via-background/90 to-background/60"
       )}
     >
       <div className="container mx-auto flex h-20 md:h-24 w-full items-center justify-between px-4 sm:px-6 md:px-8 max-w-6xl pt-[env(safe-area-inset-top,0.5rem)] md:pt-0">
