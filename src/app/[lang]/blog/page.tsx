@@ -91,10 +91,14 @@ export default async function BlogHome({ params }: { params: Promise<{ lang: str
             )}
             <div className="flex flex-col p-6">
               <CardHeader>
-                <CardTitle className="text-2xl lg:text-3xl group-hover:text-primary transition-colors text-foreground">{featuredPost.title}</CardTitle>
-                <CardDescription>
-                  <time dateTime={new Date(featuredPost.date).toISOString()}>{format(new Date(featuredPost.date), 'LLLL d, yyyy')}</time> &bull; {dict.blog.by} {featuredPost.author}
-                   {featuredPost.readingTime && <span className="flex items-center gap-1 mt-1"><BookOpen className="h-4 w-4" /> {featuredPost.readingTime} {dict.blog.readingTime}</span>}
+                <CardTitle className="text-2xl lg:text-3xl group-hover:text-primary transition-colors text-foreground" asChild>
+                  <h2>{featuredPost.title}</h2>
+                </CardTitle>
+                <CardDescription asChild>
+                  <div>
+                    <time dateTime={new Date(featuredPost.date).toISOString()}>{format(new Date(featuredPost.date), 'LLLL d, yyyy')}</time> &bull; {dict.blog.by} {featuredPost.author}
+                    {featuredPost.readingTime && <span className="flex items-center gap-1 mt-1"><BookOpen className="h-4 w-4" /> {featuredPost.readingTime} {dict.blog.readingTime}</span>}
+                  </div>
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-grow">
@@ -133,10 +137,14 @@ export default async function BlogHome({ params }: { params: Promise<{ lang: str
                   </div>
                 )}
                 <CardHeader>
-                  <CardTitle className="text-xl lg:text-2xl group-hover:text-primary transition-colors text-foreground">{title}</CardTitle>
-                  <CardDescription>
-                    <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'LLLL d, yyyy')}</time> &bull; {author}
-                    {readingTime && <span className="flex items-center gap-1 mt-1"><BookOpen className="h-4 w-4" /> {readingTime} {dict.blog.readingTime}</span>}
+                  <CardTitle className="text-xl lg:text-2xl group-hover:text-primary transition-colors text-foreground" asChild>
+                    <h2>{title}</h2>
+                  </CardTitle>
+                  <CardDescription asChild>
+                    <div>
+                      <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'LLLL d, yyyy')}</time> &bull; {author}
+                      {readingTime && <span className="flex items-center gap-1 mt-1"><BookOpen className="h-4 w-4" /> {readingTime} {dict.blog.readingTime}</span>}
+                    </div>
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow">

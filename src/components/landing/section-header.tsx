@@ -12,6 +12,10 @@ interface SectionHeaderProps {
   titleClassName?: string;
 }
 
+/**
+ * SectionHeader component with standardized heading hierarchy.
+ * Uses h2 for titles and a styled paragraph for overline badges to avoid skipping levels.
+ */
 export function SectionHeader({ 
   badge, 
   title, 
@@ -23,9 +27,9 @@ export function SectionHeader({
     <ScrollReveal>
       <div className={cn("mx-auto max-w-4xl text-center px-4", className)}>
         {badge && (
-          <h3 className="text-[10px] md:text-sm font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-4">
+          <p className="text-[10px] md:text-sm font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-4">
             {badge}
-          </h3>
+          </p>
         )}
         <h2 
           className={cn(
