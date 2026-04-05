@@ -51,10 +51,10 @@
     content: '';
     @apply absolute inset-0 pointer-events-none;
     background-image:
-      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
-    background-size: 2.5rem 2.5rem;
-    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+      linear-gradient(to right, hsl(var(--primary) / 0.15) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--primary) / 0.15) 1px, transparent 1px);
+    background-size: 3rem 3rem;
+    mask-image: radial-gradient(circle at center, black, transparent 90%);
     z-index: 0;
     will-change: transform;
   }
