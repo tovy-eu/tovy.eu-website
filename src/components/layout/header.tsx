@@ -67,7 +67,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
         "fixed top-0 z-50 w-full bg-background/80 backdrop-blur-xl border-b border-white/10 shadow-sm"
       )}
     >
-      <div className="container mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 md:px-8 max-w-6xl">
+      <div className="container mx-auto flex h-20 md:h-24 w-full items-center justify-between px-4 sm:px-6 md:px-8 max-w-6xl pt-[env(safe-area-inset-top,0.5rem)] md:pt-0">
         <Link 
           href={homePath} 
           onClick={handleLogoClick}
