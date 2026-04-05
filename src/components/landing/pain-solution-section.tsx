@@ -1,19 +1,29 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { XCircle, CheckCircle2, AlertCircle } from "lucide-react";
 import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { SectionHeader } from "./section-header";
 
 export function PainSolutionSection({ dict }: { dict: Dictionary }) {
+  const gridRef = useRef<HTMLDivElement>(null);
   const painItems = dict.painSolution.pain.items;
   const solutionItems = dict.painSolution.solution.items;
-  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (gridRef.current) {
+            const scrollY = window.scrollY;
+            gridRef.current.style.transform = `translateY(${scrollY * 0.1}px) translateZ(0)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -21,12 +31,11 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
 
   return (
     <section className="relative w-full py-20 sm:py-28 overflow-hidden bg-background">
-      {/* Parallax Grid Background */}
+      {/* Parallax Grid Background - Optimized with Ref */}
       <div 
+        ref={gridRef}
         className="parallax-grid-bg"
-        style={{ 
-          transform: `translateY(${scrollY * 0.1}px)`
-        }}
+        style={{ willChange: 'transform' }}
       />
 
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
@@ -74,10 +83,10 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
           <ScrollReveal delay="delay-200 duration-700" className="flex">
             <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
               <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_20s_linear_infinite]" 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
               />
               
-              <div className="relative h-full w-full bg-card/80 backdrop-blur-3xl rounded-[calc(1.5rem-1px)] p-5 sm:p-6 flex flex-col transition-all duration-300 shadow-2xl border border-white/10 group-hover:border-transparent overflow-hidden">
+              <div className="relative h-full w-full bg-card/80 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-5 sm:p-6 flex flex-col transition-all duration-300 shadow-2xl border border-white/10 group-hover:border-transparent overflow-hidden">
                 <div 
                   className="absolute inset-0 pointer-events-none opacity-40 transition-opacity duration-500 group-hover:opacity-60"
                   style={{

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { BrainCircuit, Rocket, Sparkles, Feather } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
@@ -9,11 +9,21 @@ import { SectionHeader } from "./section-header";
 import { cn } from "@/lib/utils";
 
 export function AboutSection({ dict }: { dict: Dictionary }) {
-  const [scrollY, setScrollY] = useState(0);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (gridRef.current) {
+            const scrollY = window.scrollY;
+            gridRef.current.style.transform = `translateY(${scrollY * 0.05}px) translateZ(0)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -57,12 +67,11 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
 
   return (
     <section className="relative w-full bg-gradient-to-b from-background to-accent/5 py-24 sm:py-32 overflow-hidden">
-      {/* Parallax Grid Background */}
+      {/* Parallax Grid Background - Optimized with Ref */}
       <div 
+        ref={gridRef}
         className="parallax-grid-bg"
-        style={{ 
-          transform: `translateY(${scrollY * 0.05}px)`
-        }}
+        style={{ willChange: 'transform' }}
       />
 
       <div className="relative mx-auto max-w-6xl px-4 md:px-8 z-10">
@@ -82,10 +91,10 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
             >
               <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
                 <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_20s_linear_infinite]" 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
                 />
                 
-                <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent text-center items-center">
+                <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent text-center items-center">
                   <div 
                     className="relative flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/5 shadow-xl transition-all duration-500 mb-6 group-hover:scale-105 group-hover:border-primary/20"
                     style={{ color: pillar.color } as React.CSSProperties}
