@@ -1,10 +1,10 @@
 
-import type { Organization, Service, WebSite, ProfessionalService, FAQPage } from 'schema-dts';
+import type { Organization, Service, WebSite, ProfessionalService, FAQPage, BreadcrumbList } from 'schema-dts';
 import companyProfile from '@/content/company-profile.json';
 import type { Dictionary } from '@/lib/get-dictionary';
 
 interface JsonLdProps {
-  type: 'Organization' | 'ProfessionalService' | 'Service' | 'WebSite' | 'FAQPage';
+  type: 'Organization' | 'ProfessionalService' | 'Service' | 'WebSite' | 'FAQPage' | 'BreadcrumbList';
   data: any;
 }
 
@@ -53,6 +53,21 @@ export function getCompanySchema(dict: Dictionary): ProfessionalService {
       '@type': 'Person',
       name: profile.business_context.proprietor_name,
     },
+  };
+}
+
+/**
+ * Generates Breadcrumb schema for navigation depth.
+ */
+export function getBreadcrumbSchema(items: { name: string; item: string }[]): BreadcrumbList {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: `https://tovy.eu${item.item}`,
+    })),
   };
 }
 

@@ -1,3 +1,4 @@
+
 import { getPostData, getSortedPostsData } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { format, isValid } from 'date-fns';
@@ -13,6 +14,7 @@ import { CONFIG } from '@/lib/config';
 import { BlogPostAnalytics } from '@/components/blog/blog-post-analytics';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { Magnetic } from '@/components/ui/magnetic';
+import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 
 type Props = {
   params: Promise<{ lang: string; slug: string }>;
@@ -32,7 +34,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { lang, slug } = await params;
   const postData = await getPostData(slug);
   const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
   
@@ -47,6 +49,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: postData.title,
     description: postData.excerpt,
+    alternates: {
+      canonical: `/${lang}/kx/${slug}/`,
+      languages: {
+        'en': `/en/kx/${slug}/`,
+        'nl': `/nl/kx/${slug}/`,
+      },
+    },
     openGraph: {
       title: `${postData.title} | Tovy KX Hub`,
       description: postData.excerpt,
@@ -81,11 +90,18 @@ export default async function KxResource({ params }: Props) {
   const dateObj = new Date(postData.date);
   const displayDate = isValid(dateObj) ? format(dateObj, 'LLLL d, yyyy') : 'Recently';
 
+  const breadcrumbs = [
+    { name: 'Home', item: `/${lang}/` },
+    { name: 'KX Hub', item: `/${lang}/kx/` },
+    { name: postData.title, item: `/${lang}/kx/${slug}/` },
+  ];
+
   return (
     <div 
       className="relative flex flex-col min-h-screen py-24 px-4 md:px-8 overflow-hidden"
       style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))' }}
     >
+      <JsonLd type="BreadcrumbList" data={getBreadcrumbSchema(breadcrumbs)} />
       <WavyLines />
       
       <div className="container relative z-10 mx-auto max-w-4xl">
@@ -109,7 +125,7 @@ export default async function KxResource({ params }: Props) {
                 alt={postData.title}
                 fill
                 className="object-cover"
-                priority
+                priority // LCP optimization for the main article image
                 sizes="(max-width: 1200px) 100vw, 1200px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
