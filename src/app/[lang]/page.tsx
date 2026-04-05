@@ -1,11 +1,26 @@
+
 import dynamic from 'next/dynamic';
 import { HeroSection } from "@/components/landing/hero-section";
 import { SectionDivider } from "@/components/landing/section-divider";
 import { getDictionary } from "@/lib/get-dictionary";
 import { JsonLd, getServicesSchema, getFaqSchema } from "@/components/layout/json-ld";
+import type { Metadata } from 'next';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'nl' }];
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  return {
+    alternates: {
+      canonical: `/${lang}/`,
+      languages: {
+        'en': '/en/',
+        'nl': '/nl/',
+      },
+    },
+  };
 }
 
 // Dynamically import below-the-fold sections to reduce unused JS on initial load
