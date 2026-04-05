@@ -56,12 +56,14 @@
     mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
     z-index: 0;
     will-change: transform;
+    transform: translateZ(0);
   }
 
   .animated-wavy-line {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
     animation: move-wavy-line 10s linear infinite, pulse-glow 4s ease-in-out infinite alternate;
+    transform: translateZ(0);
   }
   
   @keyframes move-wavy-line {
@@ -116,6 +118,7 @@
 
   .animate-marquee {
     animation: marquee 60s linear infinite;
+    transform: translateZ(0);
   }
 
   .animate-marquee:hover {
@@ -124,6 +127,7 @@
 
   .animate-scroll-line {
     animation: scroll-line 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    transform: translateZ(0);
   }
 }
 

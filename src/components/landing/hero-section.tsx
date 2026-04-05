@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -58,7 +57,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
 
   return (
     <section 
-      className="relative w-full flex flex-col items-center justify-center min-h-screen text-center py-20 px-4 md:py-32 overflow-hidden"
+      className="relative w-full flex flex-col items-center justify-center min-h-screen text-center py-24 px-4 md:py-32 overflow-hidden"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
@@ -71,7 +70,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         )}
       >
         <h1 
-          className="text-2xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.2] sm:leading-[1.15] [text-wrap:balance]"
+          className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.2] sm:leading-[1.15] [text-wrap:balance]"
           style={{ 
             textShadow: '0 0 15px rgba(255, 255, 255, 0.2)',
             fontWeight: dynamicWeight,
@@ -81,21 +80,21 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         >
           {dict.hero.title}
         </h1>
-        <p className="mt-6 text-sm leading-relaxed text-white/80 sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto px-4 sm:px-0">
+        <p className="mt-8 text-lg leading-relaxed text-white/80 md:text-xl lg:text-2xl max-w-2xl mx-auto px-4 sm:px-0 font-medium">
           {dict.hero.subtitle}
         </p>
-        <div className="mt-16 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
-          <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-11 sm:h-12" onClick={handleCtaClick}>
+        <div className="mt-20 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
+          <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-12 sm:h-14 shadow-2xl" onClick={handleCtaClick}>
             <Link href={`/${lang}/project-request/`}>
               {dict.common.workWithUs}
-              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
           
           {CONFIG.enableBlog && (
-            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-base sm:text-lg bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white h-11 sm:h-12" onClick={handleBlogClick}>
+            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-base sm:text-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:text-white h-12 sm:h-14" onClick={handleBlogClick}>
               <Link href={`/${lang}/blog/`}>
-                <BookOpen className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                <BookOpen className="mr-2 h-5 w-5" />
                 {dict.common.readBlog}
               </Link>
             </Button>
