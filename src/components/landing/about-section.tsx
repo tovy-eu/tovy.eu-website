@@ -62,7 +62,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
         className="parallax-grid-bg"
         style={{ 
           transform: `translateY(${scrollY * 0.05}px)`,
-          opacity: 0.1 
+          opacity: 0.15 
         }}
       />
 
