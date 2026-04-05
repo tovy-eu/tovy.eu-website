@@ -23,22 +23,22 @@
     "subtitle": "Data moet vereenvoudigen, niet compliceren.",
     "pain": {
       "title": "De Oude Methode",
-      "subtitle": "",
+      "subtitle": "Handmatig & Gefragmenteerd",
       "items": [
-        "Handmatige data-invoer en menselijke fouten",
-        "Systemen die niet communiceren",
-        "Constant onderhoud",
-        "Geen groei door hindering"
+        "Handmatige invoer & menselijke fouten",
+        "Systemen die niet met elkaar praten",
+        "Constant reactief onderhoud",
+        "Groei beperkt door data-knelpunten"
       ]
     },
     "solution": {
       "title": "De Tovy Aanpak",
-      "subtitle": "Geautomatiseerd",
+      "subtitle": "Unified & Automated",
       "items": [
-        "Aansluitende business processen",
-        "Geïntegreerde data",
-        "Betrouwbare systemen",
-        "Schaalbare basis"
+        "100% Geautomatiseerde data-invoer",
+        "Unified Data Fabric integratie",
+        "Betrouwbaar & Onderhoudsvrij",
+        "Schaalbare groei-fundering"
       ]
     }
   },
