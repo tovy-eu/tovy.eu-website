@@ -81,7 +81,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
           className="mb-16 md:mb-24"
         />
 
-        <div className="relative grid grid-cols-2 gap-4 md:gap-6 max-w-2xl mx-auto">
+        <div className="relative grid grid-cols-2 gap-4 md:gap-6 max-w-xl mx-auto">
           {pillars.map((pillar, index) => (
             <ScrollReveal 
               key={pillar.id} 
@@ -121,7 +121,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
             </ScrollReveal>
           ))}
           
-          {/* Decorative central connection element for the "fancy" look */}
+          {/* Decorative central connection element */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 pointer-events-none hidden md:block">
              <div className="absolute inset-0 bg-primary/20 blur-xl animate-pulse" />
              <div className="absolute inset-0 border border-white/5 rounded-full backdrop-blur-md bg-background/40" />
