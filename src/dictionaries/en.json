@@ -23,22 +23,22 @@
     "subtitle": "Data should simplify, not complicate.",
     "pain": {
       "title": "The Old Way",
-      "subtitle": "",
+      "subtitle": "Manual & Fragmented",
       "items": [
-        "Manual data entry and human error",
-        "Systems that don't talk",
-        "Constant maintenance",
-        "No growth due to bottlenecks"
+        "Manual data entry & human error",
+        "Systems that don't talk to each other",
+        "Constant reactive maintenance",
+        "Growth limited by data bottlenecks"
       ]
     },
     "solution": {
       "title": "The Tovy Way",
       "subtitle": "Unified & Automated",
       "items": [
-        "Seamless automation",
-        "Integrated data",
-        "Reliable systems",
-        "Scalable foundation"
+        "100% Automated data ingestion",
+        "Unified Data Fabric integration",
+        "Reliable & Hands-off infrastructure",
+        "Scalable foundation for growth"
       ]
     }
   },
