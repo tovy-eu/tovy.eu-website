@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -48,19 +47,16 @@
 }
 
 @layer utilities {
-  .pain-solution-container {
-    @apply relative overflow-hidden;
-  }
-
-  .pain-solution-container::before {
+  .parallax-grid-bg {
     content: '';
     @apply absolute inset-0 pointer-events-none;
     background-image:
-      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
-    background-size: 2rem 2rem;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 2.5rem 2.5rem;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
     z-index: 0;
+    will-change: transform;
   }
 
   .animated-wavy-line {
@@ -84,20 +80,10 @@
     }
   }
 
-  @keyframes kitt-scan {
-    0%, 100% {
-      opacity: 0.05;
-      transform: scale(1);
-    }
-    20%, 80% {
-      opacity: 0.05;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.3;
-      transform: scale(1.05);
-      filter: brightness(1.1) drop-shadow(0 0 4px currentColor);
-    }
+  @keyframes gradient-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   @keyframes scroll-line {

@@ -1,6 +1,6 @@
-
 'use client';
 
+import { useState, useEffect } from "react";
 import { XCircle, CheckCircle2, AlertCircle } from "lucide-react";
 import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
@@ -9,9 +9,27 @@ import { SectionHeader } from "./section-header";
 export function PainSolutionSection({ dict }: { dict: Dictionary }) {
   const painItems = dict.painSolution.pain.items;
   const solutionItems = dict.painSolution.solution.items;
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section className="relative w-full py-20 sm:py-28 overflow-hidden bg-background">
+      {/* Parallax Grid Background */}
+      <div 
+        className="parallax-grid-bg"
+        style={{ 
+          transform: `translateY(${scrollY * 0.1}px)`,
+          opacity: 0.15 
+        }}
+      />
+
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
         <SectionHeader 
           badge={dict.painSolution.title}
@@ -23,7 +41,6 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
           {/* Pain Section (The Old Way) */}
           <ScrollReveal delay="duration-700" className="flex">
             <div className="relative w-full p-5 sm:p-6 rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden group shadow-2xl">
-              {/* Ultra-subtle Noise Texture */}
               <div 
                 className="absolute inset-0 opacity-[0.015] pointer-events-none" 
                 style={{ 
@@ -33,7 +50,6 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
               
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-5">
-                  {/* Improved contrast for red badge */}
                   <div className="p-2 rounded-xl bg-red-500/20 text-red-300 ring-1 ring-red-500/30">
                     <AlertCircle className="h-5 w-5" />
                   </div>
@@ -46,7 +62,6 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                 <ul className="space-y-4">
                   {painItems.map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      {/* Better legibility for red X */}
                       <XCircle className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
                       <span className="text-sm text-muted-foreground/80 leading-relaxed font-medium">{item}</span>
                     </li>
@@ -59,16 +74,11 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
           {/* Solution Section (The Tovy Way) */}
           <ScrollReveal delay="delay-200 duration-700" className="flex">
             <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
-              
-              {/* Fluidity Gradient Layer (The "Border") */}
               <div 
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_20s_linear_infinite]" 
               />
               
-              {/* Inner Content Layer - Enhanced Premium Feel */}
               <div className="relative h-full w-full bg-card/80 backdrop-blur-3xl rounded-[calc(1.5rem-1px)] p-5 sm:p-6 flex flex-col transition-all duration-300 shadow-2xl border border-white/10 group-hover:border-transparent overflow-hidden">
-                
-                {/* More pronounced premium radial glow */}
                 <div 
                   className="absolute inset-0 pointer-events-none opacity-40 transition-opacity duration-500 group-hover:opacity-60"
                   style={{
@@ -78,7 +88,6 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-4 mb-5">
-                    {/* Branded Logo Marker */}
                     <div className="font-bold text-xl tracking-tighter shrink-0 select-none flex items-center transition-transform duration-300 group-hover:scale-110">
                       <span className="text-white">TOV</span>
                       <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
