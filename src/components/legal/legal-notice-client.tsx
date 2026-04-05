@@ -85,7 +85,9 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
             <CardHeader className="pb-4">
               <div className="flex items-center gap-2 text-primary mb-1">
                 <Building className="h-5 w-5" />
-                <CardTitle className="text-lg">{dict.legal.companyDetails}</CardTitle>
+                <CardTitle className="text-lg" asChild>
+                  <h2>{dict.legal.companyDetails}</h2>
+                </CardTitle>
               </div>
             </CardHeader>
             <CardContent className="space-y-6 flex-grow">
@@ -106,7 +108,9 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
             <CardHeader className="pb-4">
               <div className="flex items-center gap-2 text-primary mb-1">
                 <MapPin className="h-5 w-5" />
-                <CardTitle className="text-lg">{dict.legal.contactInfo}</CardTitle>
+                <CardTitle className="text-lg" asChild>
+                  <h2>{dict.legal.contactInfo}</h2>
+                </CardTitle>
               </div>
             </CardHeader>
             <CardContent className="space-y-6 flex-grow">
@@ -140,7 +144,9 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
           <CardHeader className="pb-4">
             <div className="flex items-center gap-2 text-primary mb-1">
               <KeyRound className="h-5 w-5" />
-              <CardTitle className="text-lg">{dict.legal.registry}</CardTitle>
+              <CardTitle className="text-lg" asChild>
+                <h2>{dict.legal.registry}</h2>
+              </CardTitle>
             </div>
           </CardHeader>
           <CardContent>
@@ -166,8 +172,12 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
 
         <Card className="bg-card/20 backdrop-blur-sm border-white/5 border-dashed">
           <CardHeader>
-            <CardTitle className="text-base text-foreground/80">{dict.legal.disclaimer}</CardTitle>
-            <CardDescription className="text-muted-foreground/60">{dict.legal.disclaimerSubtitle}</CardDescription>
+            <CardTitle className="text-base text-foreground/80" asChild>
+              <h2>{dict.legal.disclaimer}</h2>
+            </CardTitle>
+            <CardDescription className="text-muted-foreground/60" asChild>
+              <p>{dict.legal.disclaimerSubtitle}</p>
+            </CardDescription>
           </CardHeader>
           <CardContent className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground/60 leading-relaxed italic">
             <p>{dict.legal.disclaimerContent}</p>

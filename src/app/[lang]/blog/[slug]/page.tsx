@@ -95,17 +95,21 @@ export default async function BlogPost({ params }: Props) {
           </div>
         )}
         <CardHeader className="border-b border-white/5">
-          <CardTitle className="text-4xl">{postData.title}</CardTitle>
-          <CardDescription className="text-lg pt-2 flex items-center gap-2 flex-wrap">
-            <span>{dict.blog.by} {postData.author}</span>
-            <span>&bull;</span>
-            <time dateTime={new Date(postData.date).toISOString()}>{format(new Date(postData.date), 'LLLL d, yyyy')}</time>
-            {postData.readingTime && 
-              <>
-                <span>&bull;</span>
-                <span className="flex items-center gap-1"><BookOpen className="h-4 w-4" /> {postData.readingTime} {dict.blog.readingTime}</span>
-              </>
-            }
+          <CardTitle className="text-4xl" asChild>
+            <h1>{postData.title}</h1>
+          </CardTitle>
+          <CardDescription className="text-lg pt-2 flex items-center gap-2 flex-wrap" asChild>
+            <div>
+              <span>{dict.blog.by} {postData.author}</span>
+              <span>&bull;</span>
+              <time dateTime={new Date(postData.date).toISOString()}>{format(new Date(postData.date), 'LLLL d, yyyy')}</time>
+              {postData.readingTime && 
+                <>
+                  <span>&bull;</span>
+                  <span className="flex items-center gap-1"><BookOpen className="h-4 w-4" /> {postData.readingTime} {dict.blog.readingTime}</span>
+                </>
+              }
+            </div>
           </CardDescription>
            {postData.tags && postData.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 pt-2">
