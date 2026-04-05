@@ -1,3 +1,4 @@
+
 import dynamic from 'next/dynamic';
 import { HeroSection } from "@/components/landing/hero-section";
 import { SectionDivider } from "@/components/landing/section-divider";
@@ -27,7 +28,6 @@ const PainSolutionSection = dynamic(() => import("@/components/landing/pain-solu
 const AboutSection = dynamic(() => import("@/components/landing/about-section").then(mod => mod.AboutSection));
 const EngineeringSection = dynamic(() => import("@/components/landing/engineering-section").then(mod => mod.EngineeringSection));
 const TestimonialsSection = dynamic(() => import("@/components/landing/testimonials-section").then(mod => mod.TestimonialsSection));
-const FinalCtaSection = dynamic(() => import("@/components/landing/final-cta-section").then(mod => mod.FinalCtaSection));
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -56,10 +56,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <SectionDivider />
 
       <TestimonialsSection dict={dict} />
-
-      <SectionDivider />
-
-      <FinalCtaSection dict={dict} />
     </div>
   );
 }
