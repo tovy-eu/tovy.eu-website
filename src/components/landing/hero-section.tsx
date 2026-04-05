@@ -11,7 +11,6 @@ import { usePathname } from 'next/navigation';
 import type { Dictionary } from '@/lib/get-dictionary';
 import { CONFIG } from '@/lib/config';
 import { trackEvent } from '@/lib/analytics';
-import { ScrollIndicator } from './scroll-indicator';
 
 export function HeroSection({ dict }: { dict: Dictionary }) {
   const [isMounted, setIsMounted] = useState(false);
@@ -85,7 +84,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         <p className="mt-6 text-sm leading-relaxed text-white/80 sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto px-4 sm:px-0">
           {dict.hero.subtitle}
         </p>
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
+        <div className="mt-16 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
           <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-11 sm:h-12" onClick={handleCtaClick}>
             <Link href={`/${lang}/project-request/`}>
               {dict.common.workWithUs}
@@ -103,8 +102,6 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           )}
         </div>
       </div>
-
-      <ScrollIndicator label={dict.common.scrollToExplore} />
     </section>
   );
 }
