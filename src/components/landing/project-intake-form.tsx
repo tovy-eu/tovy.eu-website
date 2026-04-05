@@ -13,6 +13,7 @@ import { usePathname } from "next/navigation";
 import { db } from "@/lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import Script from "next/script";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -25,6 +26,7 @@ import { cn } from "@/lib/utils";
 import { Checkbox } from "../ui/checkbox";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { trackEvent } from "@/lib/analytics";
+import { Magnetic } from "@/components/ui/magnetic";
 
 interface ProjectIntakeFormProps {
   dict: Dictionary;
@@ -297,153 +299,141 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           </CardHeader>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col flex-1 overflow-hidden">
-              <CardContent className="flex-1 overflow-y-auto p-4 md:p-6 flex items-center">
-                <div className="w-full">
-                  {formSteps.map((_, index) => {
-                    const { field, label, description } = formSteps[index];
-                    const isVisible = step === index;
-                    const commonProps = {
-                      className: cn(!isVisible && "hidden")
-                    };
-                  
-                    if (field === 'maturity') {
-                      return (
-                        <div key={field} {...commonProps}>
-                          <FormField
-                            control={form.control}
-                            name="maturity"
-                            render={({ field: formField }) => (
-                              <FormItem>
-                                <div className="flex items-center gap-3">
-                                  <span className="text-primary font-semibold text-sm md:text-base">{index + 1} →</span>
-                                  <FormLabel className="text-lg md:text-2xl font-semibold leading-tight">{label}</FormLabel>
-                                </div>
-                                {description && <p className="text-muted-foreground mt-1 text-xs md:text-sm">{description}</p>}
-                                
-                                <FormControl>
-                                  <div className="mt-4 md:mt-6">
-                                    <div className="grid grid-cols-4 sm:grid-cols-6 md:flex md:justify-between gap-1.5 md:gap-1">
-                                      {Array.from({ length: 11 }, (_, i) => i).map(value => (
+              <CardContent className="flex-1 overflow-y-auto p-4 md:p-6 flex items-center relative">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={step}
+                    initial={{ opacity: 0, x: 20, scale: 0.98 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    exit={{ opacity: 0, x: -20, scale: 0.98 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30, mass: 0.8 }}
+                    className="w-full"
+                  >
+                    {formSteps.map((_, index) => {
+                      const { field, label, description } = formSteps[index];
+                      const isVisible = step === index;
+                      if (!isVisible) return null;
+                    
+                      if (field === 'maturity') {
+                        return (
+                          <div key={field}>
+                            <FormField
+                              control={form.control}
+                              name="maturity"
+                              render={({ field: formField }) => (
+                                <FormItem>
+                                  <div className="flex items-center gap-3">
+                                    <span className="text-primary font-semibold text-sm md:text-base">{index + 1} →</span>
+                                    <FormLabel className="text-lg md:text-2xl font-semibold leading-tight">{label}</FormLabel>
+                                  </div>
+                                  {description && <p className="text-muted-foreground mt-1 text-xs md:text-sm">{description}</p>}
+                                  
+                                  <FormControl>
+                                    <div className="mt-4 md:mt-6">
+                                      <div className="grid grid-cols-4 sm:grid-cols-6 md:flex md:justify-between gap-1.5 md:gap-1">
+                                        {Array.from({ length: 11 }, (_, i) => i).map(value => (
+                                          <button
+                                            key={value}
+                                            type="button"
+                                            onClick={() => {
+                                              formField.onChange(String(value));
+                                              setTimeout(() => nextStep(), 200);
+                                            }}
+                                            className={cn(
+                                              "h-10 w-full md:h-10 md:w-10 flex items-center justify-center rounded-md transition-all text-sm border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                                              formField.value === String(value)
+                                                ? "bg-primary text-primary-foreground shadow-lg scale-105"
+                                                : "bg-white/5 hover:bg-white/10 hover:scale-105 active:scale-95"
+                                            )}
+                                          >
+                                            {value}
+                                          </button>
+                                        ))}
+                                      </div>
+                                      <div className="flex justify-between text-[10px] md:text-xs text-muted-foreground mt-3 px-1">
+                                        <span>{dict.projectForm.steps.maturity.low}</span>
+                                        <span className="hidden sm:inline">{dict.projectForm.steps.maturity.mid}</span>
+                                        <span>{dict.projectForm.steps.maturity.high}</span>
+                                      </div>
+                                    </div>
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          </div>
+                        );
+                      }
+                    
+                      if (['companySize', 'engineeringTeam', 'budgetReadiness', 'timelineReadiness'].includes(field)) {
+                        const fieldName = field as 'companySize' | 'engineeringTeam' | 'budgetReadiness' | 'timelineReadiness';
+                        return (
+                          <div key={field}>
+                            <FormField
+                              control={form.control}
+                              name={fieldName}
+                              render={({ field: formField }) => (
+                                <FormItem>
+                                  <div className="flex items-center gap-3">
+                                    <span className="text-primary font-semibold text-sm md:text-base">{index + 1} →</span>
+                                    <FormLabel className="text-lg md:text-2xl font-semibold leading-tight">{label}</FormLabel>
+                                  </div>
+                                  {description && <p className="text-muted-foreground mt-1 text-xs md:text-sm">{description}</p>}
+                                  
+                                  <FormControl>
+                                    <div className="space-y-2 pt-4 max-w-sm">
+                                      {options[fieldName].map(option => (
                                         <button
-                                          key={value}
+                                          key={option.label}
                                           type="button"
                                           onClick={() => {
-                                            formField.onChange(String(value));
+                                            formField.onChange(option.label);
                                             setTimeout(() => nextStep(), 200);
                                           }}
                                           className={cn(
-                                            "h-10 w-full md:h-10 md:w-10 flex items-center justify-center rounded-md transition-all text-sm border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                                            formField.value === String(value)
-                                              ? "bg-primary text-primary-foreground shadow-lg scale-105"
-                                              : "bg-white/5 hover:bg-white/10 hover:scale-105 active:scale-95"
+                                            "w-full flex items-center justify-between text-left p-3 rounded-md transition-all border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background min-h-[48px]",
+                                            formField.value === option.label
+                                              ? "bg-primary/20 shadow-inner scale-102"
+                                              : "bg-white/5 hover:bg-white/10 hover:scale-102 active:scale-98"
                                           )}
                                         >
-                                          {value}
+                                          <div className="flex items-center gap-3">
+                                            {option.hint && (
+                                              <div className="flex items-center justify-center h-5 w-5 rounded-sm text-[9px] font-bold text-muted-foreground bg-black/20">
+                                                {option.hint}
+                                              </div>
+                                            )}
+                                            <span className="font-medium text-xs md:text-sm">{option.label}</span>
+                                          </div>
+                                          {formField.value === option.label && <Check className="h-4 w-4 text-primary animate-check-bounce" />}
                                         </button>
                                       ))}
                                     </div>
-                                    <div className="flex justify-between text-[10px] md:text-xs text-muted-foreground mt-3 px-1">
-                                      <span>{dict.projectForm.steps.maturity.low}</span>
-                                      <span className="hidden sm:inline">{dict.projectForm.steps.maturity.mid}</span>
-                                      <span>{dict.projectForm.steps.maturity.high}</span>
-                                    </div>
-                                  </div>
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                      );
-                    }
-                  
-                    if (['companySize', 'engineeringTeam', 'budgetReadiness', 'timelineReadiness'].includes(field)) {
-                      const fieldName = field as 'companySize' | 'engineeringTeam' | 'budgetReadiness' | 'timelineReadiness';
-                      return (
-                        <div key={field} {...commonProps}>
-                          <FormField
-                            control={form.control}
-                            name={fieldName}
-                            render={({ field: formField }) => (
-                              <FormItem>
-                                <div className="flex items-center gap-3">
-                                  <span className="text-primary font-semibold text-sm md:text-base">{index + 1} →</span>
-                                  <FormLabel className="text-lg md:text-2xl font-semibold leading-tight">{label}</FormLabel>
-                                </div>
-                                {description && <p className="text-muted-foreground mt-1 text-xs md:text-sm">{description}</p>}
-                                
-                                <FormControl>
-                                  <div className="space-y-2 pt-4 max-w-sm">
-                                    {options[fieldName].map(option => (
-                                      <button
-                                        key={option.label}
-                                        type="button"
-                                        onClick={() => {
-                                          formField.onChange(option.label);
-                                          setTimeout(() => nextStep(), 200);
-                                        }}
-                                        className={cn(
-                                          "w-full flex items-center justify-between text-left p-3 rounded-md transition-all border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background min-h-[48px]",
-                                          formField.value === option.label
-                                            ? "bg-primary/20 shadow-inner scale-102"
-                                            : "bg-white/5 hover:bg-white/10 hover:scale-102 active:scale-98"
-                                        )}
-                                      >
-                                        <div className="flex items-center gap-3">
-                                          {option.hint && (
-                                            <div className="flex items-center justify-center h-5 w-5 rounded-sm text-[9px] font-bold text-muted-foreground bg-black/20">
-                                              {option.hint}
-                                            </div>
-                                          )}
-                                          <span className="font-medium text-xs md:text-sm">{option.label}</span>
-                                        </div>
-                                        {formField.value === option.label && <Check className="h-4 w-4 text-primary animate-check-bounce" />}
-                                      </button>
-                                    ))}
-                                  </div>
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                      );
-                    }
-                  
-                    if (field === 'projectDetails') {
-                      return (
-                        <div key={field} {...commonProps} className={cn("space-y-4 md:space-y-6", !isVisible && "hidden")}>
-                          <FormField
-                            control={form.control}
-                            name="projectFocus"
-                            render={({ field }) => (
-                              <FormItem>
-                                <div className="flex items-center gap-3">
-                                  <span className="text-primary font-semibold text-sm md:text-base">{index + 1} →</span>
-                                  <FormLabel className="text-lg md:text-xl font-semibold leading-tight">{dict.projectForm.steps.details.label}</FormLabel>
-                                </div>
-                                <p className="text-muted-foreground mt-1 text-xs md:text-sm">{dict.projectForm.steps.details.focusLabel}</p>
-                                <FormControl>
-                                  <Textarea 
-                                    placeholder={dict.projectForm.steps.details.focusPlaceholder} 
-                                    {...field} 
-                                    className="text-sm md:text-base mt-2 min-h-[60px] md:min-h-[80px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all duration-300" 
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <div className={cn("transition-all duration-500", showChallenges ? "opacity-100 h-auto" : "opacity-0 invisible h-0 overflow-hidden")}>
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          </div>
+                        );
+                      }
+                    
+                      if (field === 'projectDetails') {
+                        return (
+                          <div key={field} className="space-y-4 md:space-y-6">
                             <FormField
                               control={form.control}
-                              name="challenges"
+                              name="projectFocus"
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel className="text-sm md:text-base font-semibold">{dict.projectForm.steps.details.challengesLabel}</FormLabel>
+                                  <div className="flex items-center gap-3">
+                                    <span className="text-primary font-semibold text-sm md:text-base">{index + 1} →</span>
+                                    <FormLabel className="text-lg md:text-xl font-semibold leading-tight">{dict.projectForm.steps.details.label}</FormLabel>
+                                  </div>
+                                  <p className="text-muted-foreground mt-1 text-xs md:text-sm">{dict.projectForm.steps.details.focusLabel}</p>
                                   <FormControl>
                                     <Textarea 
-                                      placeholder={dict.projectForm.steps.details.challengesPlaceholder} 
+                                      placeholder={dict.projectForm.steps.details.focusPlaceholder} 
                                       {...field} 
                                       className="text-sm md:text-base mt-2 min-h-[60px] md:min-h-[80px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all duration-300" 
                                     />
@@ -452,106 +442,141 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                                 </FormItem>
                               )}
                             />
-                          </div>
-                          <div className={cn("transition-all duration-500", showVision ? "opacity-100 h-auto" : "opacity-0 invisible h-0 overflow-hidden")}>
-                            <FormField
-                              control={form.control}
-                              name="vision"
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel className="text-sm md:text-base font-semibold">{dict.projectForm.steps.details.visionLabel}</FormLabel>
-                                   <FormControl>
-                                    <Textarea 
-                                      placeholder={dict.projectForm.steps.details.visionPlaceholder} 
-                                      {...field} 
-                                      className="text-sm md:text-base mt-2 min-h-[60px] md:min-h-[80px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all duration-300" 
-                                    />
-                                  </FormControl>
-                                  <FormMessage />
-                                </FormItem>
+                            <AnimatePresence>
+                              {showChallenges && (
+                                <motion.div 
+                                  initial={{ opacity: 0, y: 10 }} 
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: 10 }}
+                                >
+                                  <FormField
+                                    control={form.control}
+                                    name="challenges"
+                                    render={({ field }) => (
+                                      <FormItem>
+                                        <FormLabel className="text-sm md:text-base font-semibold">{dict.projectForm.steps.details.challengesLabel}</FormLabel>
+                                        <FormControl>
+                                          <Textarea 
+                                            placeholder={dict.projectForm.steps.details.challengesPlaceholder} 
+                                            {...field} 
+                                            className="text-sm md:text-base mt-2 min-h-[60px] md:min-h-[80px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all duration-300" 
+                                          />
+                                        </FormControl>
+                                        <FormMessage />
+                                      </FormItem>
+                                    )}
+                                  />
+                                </motion.div>
                               )}
-                            />
+                            </AnimatePresence>
+                            <AnimatePresence>
+                              {showVision && (
+                                <motion.div 
+                                  initial={{ opacity: 0, y: 10 }} 
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: 10 }}
+                                >
+                                  <FormField
+                                    control={form.control}
+                                    name="vision"
+                                    render={({ field }) => (
+                                      <FormItem>
+                                        <FormLabel className="text-sm md:text-base font-semibold">{dict.projectForm.steps.details.visionLabel}</FormLabel>
+                                         <FormControl>
+                                          <Textarea 
+                                            placeholder={dict.projectForm.steps.details.visionPlaceholder} 
+                                            {...field} 
+                                            className="text-sm md:text-base mt-2 min-h-[60px] md:min-h-[80px] bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all duration-300" 
+                                          />
+                                        </FormControl>
+                                        <FormMessage />
+                                      </FormItem>
+                                    )}
+                                  />
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
                           </div>
-                        </div>
-                      );
-                    }
-                  
-                    if (field === 'contactDetails') {
-                      return (
-                        <div key={field} {...commonProps} className={cn("space-y-4 md:space-y-5", !isVisible && "hidden")}>
-                          <div>
-                            <div className="flex items-center gap-3">
-                              <span className="text-primary font-semibold text-sm md:text-base">{index + 1} →</span>
-                              <h2 className="text-lg md:text-xl font-semibold leading-tight">{label}</h2>
+                        );
+                      }
+                    
+                      if (field === 'contactDetails') {
+                        return (
+                          <div key={field} className="space-y-4 md:space-y-5">
+                            <div>
+                              <div className="flex items-center gap-3">
+                                <span className="text-primary font-semibold text-sm md:text-base">{index + 1} →</span>
+                                <h2 className="text-lg md:text-xl font-semibold leading-tight">{label}</h2>
+                              </div>
+                              {description && <p className="text-muted-foreground mt-1 text-xs md:text-sm">{description}</p>}
                             </div>
-                            {description && <p className="text-muted-foreground mt-1 text-xs md:text-sm">{description}</p>}
-                          </div>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-                            <FormField control={form.control} name="firstName" render={({ field }) => (
-                              <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.firstName}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
-                            )} />
-                            <FormField control={form.control} name="lastName" render={({ field }) => (
-                              <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.lastName}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
-                            )} />
-                          </div>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                              <FormField control={form.control} name="firstName" render={({ field }) => (
+                                <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.firstName}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
+                              )} />
+                              <FormField control={form.control} name="lastName" render={({ field }) => (
+                                <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.lastName}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
+                              )} />
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                              <FormField
+                                control={form.control}
+                                name="phone"
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="text-xs">{dict.projectForm.steps.contact.phone}</FormLabel>
+                                    <FormControl>
+                                      <PhoneInput
+                                        international
+                                        defaultCountry="NL"
+                                        className="[&_input]:h-9 md:[&_input]:h-10 [&_input]:w-full [&_input]:rounded-md [&_input]:border-0 [&_input]:bg-white/5 [&_input]:px-3 [&_input]:py-2 [&_input]:text-sm focus-visible:[&_input]:outline-none focus-visible:[&_input]:ring-1 focus-visible:[&_input]:ring-primary transition-all"
+                                        {...field}
+                                      />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField control={form.control} name="email" render={({ field }) => (
+                                <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.email}</FormLabel><FormControl><Input type="email" {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
+                              )} />
+                            </div>
+                            <FormField control={form.control} name="company" render={({ field }) => (
+                              <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.company}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
+                              )} />
                             <FormField
                               control={form.control}
-                              name="phone"
+                              name="consent"
                               render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel className="text-xs">{dict.projectForm.steps.contact.phone}</FormLabel>
+                                <FormItem className="flex flex-row items-start space-x-2 space-y-0">
                                   <FormControl>
-                                    <PhoneInput
-                                      international
-                                      defaultCountry="NL"
-                                      className="[&_input]:h-9 md:[&_input]:h-10 [&_input]:w-full [&_input]:rounded-md [&_input]:border-0 [&_input]:bg-white/5 [&_input]:px-3 [&_input]:py-2 [&_input]:text-sm focus-visible:[&_input]:outline-none focus-visible:[&_input]:ring-1 focus-visible:[&_input]:ring-primary transition-all"
-                                      {...field}
+                                    <Checkbox
+                                      checked={field.value}
+                                      onCheckedChange={field.onChange}
+                                      className="h-4 w-4"
                                     />
                                   </FormControl>
-                                  <FormMessage />
+                                  <div className="space-y-1 leading-none">
+                                    <FormLabel className="text-[10px] md:text-xs">
+                                      {dict.common.agreeTo}{" "}
+                                      <Link href={`/${lang}/privacy-policy/`} target="_blank" className="underline hover:text-primary transition-colors">
+                                        {dict.common.privacyPolicy}
+                                      </Link>
+                                      .
+                                    </FormLabel>
+                                    <FormMessage />
+                                  </div>
                                 </FormItem>
                               )}
                             />
-                            <FormField control={form.control} name="email" render={({ field }) => (
-                              <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.email}</FormLabel><FormControl><Input type="email" {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
-                            )} />
                           </div>
-                          <FormField control={form.control} name="company" render={({ field }) => (
-                            <FormItem><FormLabel className="text-xs">{dict.projectForm.steps.contact.company}</FormLabel><FormControl><Input {...field} className="h-9 md:h-10 text-sm bg-white/5 border-0 shadow-none focus-visible:ring-1 focus-visible:ring-primary transition-all" /></FormControl><FormMessage /></FormItem>
-                            )} />
-                          <FormField
-                            control={form.control}
-                            name="consent"
-                            render={({ field }) => (
-                              <FormItem className="flex flex-row items-start space-x-2 space-y-0">
-                                <FormControl>
-                                  <Checkbox
-                                    checked={field.value}
-                                    onCheckedChange={field.onChange}
-                                    className="h-4 w-4"
-                                  />
-                                </FormControl>
-                                <div className="space-y-1 leading-none">
-                                  <FormLabel className="text-[10px] md:text-xs">
-                                    {dict.common.agreeTo}{" "}
-                                    <Link href={`/${lang}/privacy-policy/`} target="_blank" className="underline hover:text-primary transition-colors">
-                                      {dict.common.privacyPolicy}
-                                    </Link>
-                                    .
-                                  </FormLabel>
-                                  <FormMessage />
-                                </div>
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                      );
-                    }
-                  
-                    return null;
-                  })}
-                </div>
+                        );
+                      }
+                    
+                      return null;
+                    })}
+                  </motion.div>
+                </AnimatePresence>
               </CardContent>
               <CardFooter className="flex justify-between p-4 border-t border-white/10 shrink-0">
                 <Button type="button" variant="ghost" onClick={prevStep} disabled={step === 0} className="hover:bg-white/10 text-xs h-9">
@@ -566,13 +591,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                   )}
 
                   {step === totalSteps - 1 && (
-                    <Button type="button" onClick={form.handleSubmit(onSubmit)} size="sm" disabled={isPending} className="text-xs px-6 h-9">
-                      {isPending ? (
-                        <>
-                          <Loader2 className="mr-2 h-3 w-3 animate-spin" /> {dict.projectForm.buttons.submitting}
-                        </>
-                      ) : dict.projectForm.buttons.submit}
-                    </Button>
+                    <Magnetic strength={0.2}>
+                      <Button type="button" onClick={form.handleSubmit(onSubmit)} size="sm" disabled={isPending} className="text-xs px-6 h-9">
+                        {isPending ? (
+                          <>
+                            <Loader2 className="mr-2 h-3 w-3 animate-spin" /> {dict.projectForm.buttons.submitting}
+                          </>
+                        ) : dict.projectForm.buttons.submit}
+                      </Button>
+                    </Magnetic>
                   )}
                 </div>
               </CardFooter>
