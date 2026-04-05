@@ -12,6 +12,7 @@ import type { Dictionary } from '@/lib/get-dictionary';
 import { CONFIG } from '@/lib/config';
 import { trackEvent } from '@/lib/analytics';
 import { Magnetic } from '@/components/ui/magnetic';
+import { ScrollIndicator } from './scroll-indicator';
 
 export function HeroSection({ dict }: { dict: Dictionary }) {
   const [isMounted, setIsMounted] = useState(false);
@@ -84,6 +85,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           )}
         </div>
       </div>
+      <ScrollIndicator label={dict.common.scrollToExplore} />
     </section>
   );
 }
