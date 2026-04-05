@@ -20,7 +20,7 @@ export function getSortedPostsData() {
     return [];
   }
   
-  // Only process .md files to avoid "Invalid time value" from hidden system files
+  // Only process .md files to avoid hidden system files or incompatible formats
   const fileNames = fs.readdirSync(postsDirectory).filter(file => file.endsWith('.md'));
   
   const allPostsData = fileNames.map(fileName => {
@@ -38,7 +38,12 @@ export function getSortedPostsData() {
       readingTime,
       ...(matterResult.data as { date: string; title: string, author: string, image: string, tags: string[] }),
     };
-  }).filter(post => !!post.date); // Ensure only posts with a valid date field are included
+  }).filter(post => {
+    // Ensure only posts with a valid date string are included
+    if (!post.date) return false;
+    const dateObj = new Date(post.date);
+    return !isNaN(dateObj.getTime());
+  });
 
   return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
