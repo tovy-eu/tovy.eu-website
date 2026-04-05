@@ -1,15 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 /**
- * A subtle scroll progress indicator fixed to the top of the viewport.
- * Helps users visualize how far they've scrolled through long pages.
+ * A reading progress indicator specifically for blog posts.
+ * Positioned at the bottom of the header to help users gauge their progress.
+ * It detects blog post pages by checking the URL structure.
  */
 export function ScrollProgress() {
   const [progress, setProgress] = useState(0);
+  const pathname = usePathname();
+  
+  // Detect if we are on a blog post page (e.g., /en/blog/some-slug)
+  // Segments: ['en', 'blog', 'slug'] -> length 3
+  const isBlogPost = pathname ? pathname.split('/').filter(Boolean).length >= 3 && pathname.includes('/blog/') : false;
 
   useEffect(() => {
+    // Only track scroll progress if we are on a blog post
+    if (!isBlogPost) return;
+
     const updateScrollProgress = () => {
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = document.documentElement.clientHeight;
@@ -22,21 +32,23 @@ export function ScrollProgress() {
     };
 
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
-    updateScrollProgress(); // Initial check
+    updateScrollProgress(); // Initial check on mount/path change
 
     return () => window.removeEventListener('scroll', updateScrollProgress);
-  }, []);
+  }, [isBlogPost, pathname]);
+
+  if (!isBlogPost) return null;
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[3px] z-[100] pointer-events-none">
+    <div className="fixed top-20 md:top-24 left-0 w-full h-[2px] z-[60] pointer-events-none">
       <div 
-        className="h-full bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] transition-all duration-150 ease-out shadow-[0_0_10px_rgba(43,94,255,0.5)]"
+        className="h-full bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] transition-all duration-150 ease-out shadow-[0_0_10px_rgba(43,94,255,0.4)]"
         style={{ width: `${progress}%` }}
         role="progressbar"
         aria-valuenow={progress}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label="Page scroll progress"
+        aria-label="Blog reading progress"
       />
     </div>
   );
