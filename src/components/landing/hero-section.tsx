@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -10,6 +11,7 @@ import { usePathname } from 'next/navigation';
 import type { Dictionary } from '@/lib/get-dictionary';
 import { CONFIG } from '@/lib/config';
 import { trackEvent } from '@/lib/analytics';
+import { Magnetic } from '@/components/ui/magnetic';
 
 export function HeroSection({ dict }: { dict: Dictionary }) {
   const [isMounted, setIsMounted] = useState(false);
@@ -63,12 +65,14 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           {dict.hero.subtitle}
         </p>
         <div className="mt-20 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
-          <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-12 sm:h-14 shadow-2xl" onClick={handleCtaClick}>
-            <Link href={`/${lang}/project-request/`}>
-              {dict.common.workWithUs}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
+          <Magnetic strength={0.25} className="w-full sm:w-auto">
+            <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-12 sm:h-14 shadow-2xl" onClick={handleCtaClick}>
+              <Link href={`/${lang}/project-request/`}>
+                {dict.common.workWithUs}
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </Magnetic>
           
           {CONFIG.enableBlog && (
             <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-base sm:text-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:text-white h-12 sm:h-14" onClick={handleBlogClick}>

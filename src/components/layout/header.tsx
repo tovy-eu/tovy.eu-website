@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -15,6 +16,7 @@ import {
 import type { Dictionary } from "@/lib/get-dictionary";
 import { CONFIG } from "@/lib/config";
 import { trackEvent } from "@/lib/analytics";
+import { Magnetic } from "@/components/ui/magnetic";
 
 export default function Header({ lang = "en", dict }: { lang?: string; dict?: Dictionary }) {
   const pathname = usePathname();
@@ -97,13 +99,15 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
             </TooltipProvider>
           )}
 
-          <Button asChild size="sm" className="h-11 px-3 sm:px-5" onClick={handleCtaClick}>
-            <Link href={`/${lang}/project-request/`}>
-              <Lightbulb className="h-5 w-5 sm:hidden" />
-              <span className="sr-only">{shareIdeaText}</span>
-              <span className="hidden sm:inline font-semibold">{shareIdeaText}</span>
-            </Link>
-          </Button>
+          <Magnetic strength={0.2}>
+            <Button asChild size="sm" className="h-11 px-3 sm:px-5" onClick={handleCtaClick}>
+              <Link href={`/${lang}/project-request/`}>
+                <Lightbulb className="h-5 w-5 sm:hidden" />
+                <span className="sr-only">{shareIdeaText}</span>
+                <span className="hidden sm:inline font-semibold">{shareIdeaText}</span>
+              </Link>
+            </Button>
+          </Magnetic>
 
           <LanguageSwitcher currentLang={lang} />
         </div>
