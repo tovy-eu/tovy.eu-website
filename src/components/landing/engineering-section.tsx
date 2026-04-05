@@ -73,8 +73,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
       <div 
         className="parallax-grid-bg"
         style={{ 
-          transform: `translateY(${scrollY * 0.08}px)`,
-          opacity: 0.15 
+          transform: `translateY(${scrollY * 0.08}px)`
         }}
       />
 

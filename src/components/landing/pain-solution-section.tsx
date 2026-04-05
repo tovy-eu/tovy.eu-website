@@ -25,8 +25,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
       <div 
         className="parallax-grid-bg"
         style={{ 
-          transform: `translateY(${scrollY * 0.1}px)`,
-          opacity: 0.18 
+          transform: `translateY(${scrollY * 0.1}px)`
         }}
       />
 
