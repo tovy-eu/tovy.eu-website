@@ -26,7 +26,7 @@
     "techStack": "HET TOVY TOOLCHAIN"
   },
   "hero": {
-    "title": "Het Data & AI fundament voor de groei van jouw bedrijf",
+    "title": "Het data & AI fundament voor de groei van jouw bedrijf",
     "subtitle": "Tovy bouwt data-systemen voor automatisering en zet silo's om in een basis voor schaalbaarheid."
   },
   "painSolution": {
@@ -93,12 +93,12 @@
         "tools": ["Azure", "GCP", "AWS", "On-premise"]
       },
       "data": {
-        "title": "Data Engineering",
+        "title": "Data engineering",
         "desc": "Tovy bouwt schaalbare pipelines en datawarehousing met een moderne data stack.",
         "tools": ["dbt", "SQL", "Python"]
       },
       "analytics": {
-        "title": "Analyse & Automatisering",
+        "title": "Analyse & automatisering",
         "desc": "Tovy ontwikkelt data-analyses, operationele dashboards en automatiseringen om data optimaal in te zetten.",
         "tools": ["Python", "SQL", "Power BI", "TypeScript"]
       }
@@ -129,11 +129,11 @@
     "intro": "Privacy is belangrijk voor Tovy. Het is het beleid van Tovy om de privacy van gebruikers te respecteren bij het verzamelen van gegevens via de website. Dit beleid voldoet aan de Algemene Verordening Gegevensbescherming (AVG).",
     "sections": [
       {
-        "title": "1. Verwerkingsverantwoordelijke",
+        "title": "Verwerkingsverantwoordelijke",
         "content": "Tovy treedt op als de verwerkingsverantwoordelijke voor de persoonsgegevens die via deze website worden verzameld. Voor vragen kan contact worden opgenomen met Tovy via"
       },
       {
-        "title": "2. Gegevensverzameling en Gebruik",
+        "title": "Gegevensverzameling en Gebruik",
         "content": "Tovy vraagt alleen om persoonsgegevens wanneer dit noodzakelijk is om een dienst te verlenen. De organisatie verzamelt gegevens op een eerlijke en wettelijke manier, met medeweten en expliciete toestemming van de gebruiker. De rechtsgronden voor verwerking zijn primair toestemming, contractuele noodzaak en gerechtvaardigd belang.",
         "list": [
           "<strong>Projectaanvraagformulier:</strong> Tovy verzamelt namen, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore en gebruikt om aanvragen te beoordelen en te beantwoorden. De grondslag is de intentie om een overeenkomst aan te gaan.",
@@ -142,15 +142,15 @@
         ]
       },
       {
-        "title": "3. Gegevenslocatie en Doorgifte",
+        "title": "Gegevenslocatie en Doorgifte",
         "content": "Om gegevens te beschermen, heeft Tovy de primaire database (Cloud Firestore) geconfigureerd binnen de Europese Unie (regio ‘eur3’). Hoewel de organisatie de voorkeur geeft aan EU‑diensten, kunnen sommige onderaannemers (zoals Google) gegevens internationaal doorgeven. Deze doorgiftes gebeuren uitsluitend via wettelijk toegestane mechanismen, zoals Standard Contractual Clauses."
       },
       {
-        "title": "4. Bewaartermijnen en Beveiliging",
+        "title": "Bewaartermijnen en Beveiliging",
         "content": "Tovy bewaart persoonsgegevens alleen zolang dit nodig is voor de dienstverlening of wettelijk verplicht is. De organisatie beschermt opgeslagen gegevens met commercieel gangbare beveiligingsmaatregelen om verlies, diefstal en onbevoegde toegang te voorkomen."
       },
       {
-        "title": "5. Rechten onder de AVG",
+        "title": "Rechten onder de AVG",
         "content": "Onder de AVG hebben gebruikers de volgende rechten met betrekking tot hun persoonsgegevens:",
         "list": [
           "<strong>Recht op informatie:</strong> Het recht om te weten hoe gegevens worden verzameld en gebruikt.",
@@ -164,7 +164,7 @@
         "footer": "Om deze rechten uit te oefenen, kan contact worden opgenomen met het privacy‑emailadres hieronder."
       },
       {
-        "title": "6. Contact",
+        "title": "Contact",
         "content": "Voor vragen over privacy of het uitoefenen van AVG‑rechten kan contact met Tovy worden opgenomen via de Functionaris Gegevensbescherming:"
       }
     ],
@@ -190,7 +190,7 @@
     "nederland": "Nederland"
   },
   "projectForm": {
-    "title": "Project Intake",
+    "title": "Project form",
     "subtitle": "Deel projectdetails met Tovy voor de bouw van betrouwbare data-ecosystemen.",
     "success": {
       "title": "Bedankt",
@@ -205,7 +205,7 @@
     },
     "steps": {
       "workEmail": {
-        "label": "Werk-e-mailadres",
+        "label": "E-mailadres van jouw bedrijf",
         "description": "Gebruik een zakelijk e-mailadres voor de lead-identiteit."
       },
       "companySize": {
@@ -214,7 +214,7 @@
         "options": ["<50", "50–250", "250–1.000", "1.000+", "Ik weet het niet zeker"]
       },
       "objectives": {
-        "label": "Technische & Zakelijke Doelen",
+        "label": "Technische & zakelijke doelen",
         "description": "Selecteer de belangrijkste doelen voor deze opdracht.",
         "options": {
           "scratch": "Nieuw data/AI platform vanaf nul opbouwen.",
@@ -226,7 +226,7 @@
         }
       },
       "infrastructure": {
-        "label": "Huidige Data-infrastructuur",
+        "label": "Huidige data-infrastructuur",
         "description": "Identificeer de omgeving waar de data momenteel verblijft.",
         "options": {
           "cloud": "Cloud (AWS / Azure / GCP)",
@@ -237,7 +237,7 @@
         }
       },
       "bottlenecks": {
-        "label": "Operationele Knelpunten",
+        "label": "Operationele knelpunten",
         "description": "Wat zijn de belangrijkste pijnpunten die aangepakt moeten worden?",
         "options": {
           "silos": "Data Silo's / Slechte datakwaliteit",
@@ -254,7 +254,7 @@
         "options": ["Onmiddellijk", "1–3 Maanden", "3+ Maanden", "Alleen verkennen / Geen vaste datum"]
       },
       "budget": {
-        "label": "Geschat Investeringsbudget",
+        "label": "Geschat investeringsbudget",
         "description": "Dit helpt bij de initiële economische kwalificatie.",
         "options": ["<$20k", "$20k–$50k", "$50k–$100k", "$100k+", "Op zoek naar een offerte"]
       },

@@ -1,9 +1,9 @@
 
 {
   "common": {
-    "workWithUs": "Start Project",
+    "workWithUs": "Start project",
     "readBlog": "Explore KX Hub",
-    "shareIdea": "Start Project",
+    "shareIdea": "Start project",
     "privacyPolicy": "Privacy Policy",
     "legalNotice": "Legal Notice",
     "allRightsReserved": "All rights reserved.",
@@ -83,29 +83,29 @@
     "subtitle": "From raw data ingestion to custom end-user applications.",
     "services": {
       "strategic": {
-        "title": "Strategic Design",
+        "title": "Strategic design",
         "desc": "Tovy develops tech, data, and AI strategies to align with business goals.",
         "tools": ["Roadmapping", "Architecture", "Feasibility"]
       },
       "cloud": {
-        "title": "Cloud Infrastructure",
+        "title": "Cloud infrastructure",
         "desc": "Tovy designs secure, cost-optimized cloud environments for data workloads.",
         "tools": ["GCP, AWS", "Datawarehousing"]
       },
       "data": {
-        "title": "Data Engineering",
+        "title": "Data engineering",
         "desc": "Tovy architects scalable pipelines and data warehouses using the Modern Data Stack.",
         "tools": ["dbt", "SQL", "Python"]
       },
       "analytics": {
-        "title": "Analytics & Automation",
+        "title": "Analytics & automation",
         "desc": "Tovy builds dashboarding and automations to operationalize data.",
         "tools": ["TypeScript / JavaScript"]
       }
     }
   },
   "testimonials": {
-    "title": "Trusted by Innovative Teams",
+    "title": "Trusted by innovative teams",
     "subtitle": "Discover how Tovy helps businesses scale."
   },
   "blog": {
@@ -115,7 +115,7 @@
     "readingTime": "min read",
     "previous": "Previous",
     "next": "Next",
-    "featured": "Featured Resource",
+    "featured": "Featured resource",
     "by": "by"
   },
   "navigation": {
@@ -125,15 +125,15 @@
     "contact": "Contact"
   },
   "privacy": {
-    "title": "Privacy Policy",
+    "title": "Privacy policy",
     "intro": "Privacy is important to Tovy. It is Tovy's policy to respect user privacy regarding any information collected across the website. This policy is compliant with the General Data Protection Regulation (GDPR).",
     "sections": [
       {
-        "title": "1. Data Controller",
+        "title": "Data controller",
         "content": "Tovy acts as the data controller for the personal information collected through this website. For any questions, contact can be established via"
       },
       {
-        "title": "2. Information Collection and Usage",
+        "title": "Information collection and usage",
         "content": "Tovy only asks for personal information when it is truly required to provide a service. The organization collects data by fair and lawful means, with the user's knowledge and explicit consent. The legal bases for processing are primarily consent, contractual necessity, and legitimate interest.",
         "list": [
           "<strong>Project Intake Form:</strong> Tovy collects names, contact details (email, phone), company information, and project details. This data is stored in Google Cloud Firestore and is used to evaluate and respond to project requests. The legal basis is the intention to enter into a contract.",
@@ -142,15 +142,15 @@
         ]
       },
       {
-        "title": "3. Data Residency and Transfers",
+        "title": "Data residency and transfers",
         "content": "To protect data, Tovy has configured the primary database (Cloud Firestore) to be located within the European Union (regio 'eur3'). While the organization prioritizes EU-based services, some subprocessors (such as Google) may transfer data internationally. All such transfers are conducted under legally compliant mechanisms, such as Standard Contractual Clauses."
       },
       {
-        "title": "4. Data Retention and Security",
+        "title": "Data retention and security",
         "content": "Tovy retains collected information only for as long as necessary to provide services or as required by law. The company protects stored data within commercially acceptable means to prevent loss, theft, and unauthorized access."
       },
       {
-        "title": "5. User Rights Under GDPR",
+        "title": "User rights under GDPR",
         "content": "Under the GDPR, users have the following rights regarding personal data:",
         "list": [
           "<strong>Right to be informed:</strong> The right to know how data is collected and used.",
@@ -164,7 +164,7 @@
         "footer": "To exercise any of these rights, please contact the data protection contact email below."
       },
       {
-        "title": "6. Contact Information",
+        "title": "Contact information",
         "content": "For questions regarding privacy or to exercise GDPR rights, the Data Protection Officer at Tovy can be contacted at:"
       }
     ],
@@ -173,14 +173,14 @@
   "legal": {
     "title": "Legal Notice",
     "subtitle": "Official company identification and contact details for Tovy.",
-    "companyDetails": "Company Details",
-    "companyName": "Company Name",
+    "companyDetails": "Company details",
+    "companyName": "Company name",
     "representedBy": "Represented by (Proprietor)",
     "address": "Address",
-    "contactInfo": "Contact Information",
+    "contactInfo": "Contact information",
     "email": "Email",
     "phone": "Phone",
-    "registry": "Registry & Identification",
+    "registry": "Registry & Iientification",
     "commercialRegistry": "Commercial Registry",
     "kvkNumber": "KvK Number (Registration Number)",
     "vatNumber": "VAT Identification Number",
@@ -190,7 +190,7 @@
     "nederland": "Netherlands"
   },
   "projectForm": {
-    "title": "Project Intake",
+    "title": "Project form",
     "subtitle": "Share project requirements with Tovy to build reliable, high-scale data ecosystems.",
     "success": {
       "title": "Thank You",
