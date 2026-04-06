@@ -109,10 +109,10 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                   </div>
 
                   <div className="space-y-1 relative z-10">
-                    <h3 className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.25em] text-white/90 leading-tight">
+                    <h3 className="text-[10px] md:text-[11px] font-bold text-white/90 leading-tight">
                       {pillar.title}
                     </h3>
-                    <p className="text-[7px] md:text-[8px] text-muted-foreground/60 leading-relaxed font-medium max-w-[80px] mx-auto">
+                    <p className="text-[8px] md:text-[9px] text-muted-foreground leading-relaxed font-medium max-w-[100px] mx-auto">
                       {pillar.description}
                     </p>
                   </div>

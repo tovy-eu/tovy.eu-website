@@ -58,20 +58,20 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
               
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-2.5 rounded-xl bg-white/5 text-muted-foreground/40 ring-1 ring-white/10">
+                  <div className="p-2.5 rounded-xl bg-white/5 text-muted-foreground ring-1 ring-white/10">
                     <AlertCircle className="h-6 w-6" />
                   </div>
                   <div className="flex flex-col">
-                    <h3 className="text-lg font-bold text-white/60 leading-tight">{dict.painSolution.pain.title}</h3>
-                    <p className="text-[10px] text-muted-foreground/40 font-bold uppercase tracking-widest">{dict.painSolution.pain.subtitle}</p>
+                    <h3 className="text-lg font-bold text-white/70 leading-tight">{dict.painSolution.pain.title}</h3>
+                    <p className="text-[11px] text-muted-foreground/80 font-bold">{dict.painSolution.pain.subtitle}</p>
                   </div>
                 </div>
 
                 <ul className="space-y-4">
                   {painItems.map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <XCircle className="h-5 w-5 text-muted-foreground/30 shrink-0 mt-0.5" />
-                      <span className="text-sm md:text-base text-muted-foreground/60 leading-relaxed font-medium">{item}</span>
+                      <XCircle className="h-5 w-5 text-muted-foreground/60 shrink-0 mt-0.5" />
+                      <span className="text-sm md:text-base text-muted-foreground/80 leading-relaxed font-medium">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -101,7 +101,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                       <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
                     </div>
                     <div className="h-5 w-px bg-white/20 mx-2" />
-                    <h3 className="text-[10px] md:text-xs font-bold text-primary uppercase tracking-[0.2em] drop-shadow-[0_0_8px_rgba(43,94,255,0.4)]">
+                    <h3 className="text-xs md:text-sm font-bold text-primary drop-shadow-[0_0_8px_rgba(43,94,255,0.4)]">
                       {dict.painSolution.solution.subtitle}
                     </h3>
                   </div>
