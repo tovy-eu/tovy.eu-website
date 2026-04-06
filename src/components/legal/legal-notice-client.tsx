@@ -4,11 +4,12 @@
 import { useState, useEffect } from 'react';
 import type { JSONContent } from '@/lib/definitions';
 import { Button } from '@/components/ui/button';
-import { Download, Building, MapPin, Mail, Phone, User, FileText, Landmark, KeyRound, ShieldCheck } from 'lucide-react';
+import { Download, Building, MapPin, Mail, Phone, User, FileText, Landmark, KeyRound, ShieldCheck, ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { Dictionary } from '@/lib/get-dictionary';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { trackEvent } from '@/lib/analytics';
+import Link from 'next/link';
 
 type LegalNoticeClientProps = {
   profile: JSONContent['public_company_profile'];
@@ -22,11 +23,11 @@ type InfoLineProps = {
 }
 
 const InfoLine = ({ icon, label, value }: InfoLineProps) => (
-  <div className="flex items-start gap-4">
-    <div className="text-primary mt-1 shrink-0">{icon}</div>
+  <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20 transition-all duration-300 group">
+    <div className="text-primary mt-1 shrink-0 transition-transform group-hover:scale-110">{icon}</div>
     <div className="min-w-0">
-      <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground/60 mb-1">{label}</p>
-      <div className="text-foreground font-medium break-words">{value}</div>
+      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-1">{label}</p>
+      <div className="text-white/90 font-semibold break-words group-hover:text-white transition-colors">{value}</div>
     </div>
   </div>
 );
@@ -62,17 +63,26 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
     >
       <WavyLines />
       <div className="container relative z-10 mx-auto max-w-5xl px-4 md:px-8">
+        <div className="mb-8">
+          <Button asChild variant="ghost" className="hover:bg-white/10 text-white/60 hover:text-white transition-colors">
+            <Link href="/">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Link>
+          </Button>
+        </div>
+
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent leading-tight">
               {dict.legal.title}
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
+            <p className="mt-4 text-white/60 text-lg leading-relaxed">
               {dict.legal.subtitle}
             </p>
           </div>
           {downloadHref && (
-            <Button asChild variant="outline" className="bg-white/5 border-white/10 hover:bg-white/10 text-white shrink-0" onClick={handleDownloadClick}>
+            <Button asChild variant="outline" className="bg-white/5 border-white/10 hover:bg-white/10 text-white shrink-0 h-12 px-6" onClick={handleDownloadClick}>
               <a href={downloadHref} download="company-profile.json">
                 <Download className="mr-2 h-4 w-4" />
                 {dict.common.downloadJson}
@@ -82,20 +92,20 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <Card className="bg-card/40 backdrop-blur-md border-white/5 shadow-2xl flex flex-col">
-            <CardHeader className="pb-4">
-              <div className="flex items-center gap-2 text-primary mb-1">
+          <Card className="bg-card/40 backdrop-blur-2xl border-white/10 shadow-2xl flex flex-col rounded-3xl overflow-hidden">
+            <CardHeader className="p-8 pb-4 border-b border-white/5">
+              <div className="flex items-center gap-3 text-primary mb-1">
                 <Building className="h-5 w-5" />
-                <CardTitle className="text-lg" asChild>
+                <CardTitle className="text-xl font-bold text-white" asChild>
                   <h2>{dict.legal.companyDetails}</h2>
                 </CardTitle>
               </div>
             </CardHeader>
-            <CardContent className="space-y-6 flex-grow">
+            <CardContent className="p-8 space-y-4 flex-grow">
               <InfoLine
                 icon={<ShieldCheck className="h-5 w-5" />}
                 label={dict.legal.companyName}
-                value={<p className="text-lg font-bold">{profile.entity_name} <span className="text-sm font-normal text-muted-foreground">({profile.legal_structure})</span></p>}
+                value={<p className="text-lg font-bold text-white">{profile.entity_name} <span className="text-sm font-normal text-white/40">({profile.legal_structure})</span></p>}
               />
               <InfoLine
                 icon={<User className="h-5 w-5" />}
@@ -105,22 +115,22 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
             </CardContent>
           </Card>
 
-          <Card className="bg-card/40 backdrop-blur-md border-white/5 shadow-2xl flex flex-col">
-            <CardHeader className="pb-4">
-              <div className="flex items-center gap-2 text-primary mb-1">
+          <Card className="bg-card/40 backdrop-blur-2xl border-white/10 shadow-2xl flex flex-col rounded-3xl overflow-hidden">
+            <CardHeader className="p-8 pb-4 border-b border-white/5">
+              <div className="flex items-center gap-3 text-primary mb-1">
                 <MapPin className="h-5 w-5" />
-                <CardTitle className="text-lg" asChild>
+                <CardTitle className="text-xl font-bold text-white" asChild>
                   <h2>{dict.legal.contactInfo}</h2>
                 </CardTitle>
               </div>
             </CardHeader>
-            <CardContent className="space-y-6 flex-grow">
+            <CardContent className="p-8 space-y-4 flex-grow">
               <InfoLine
                 icon={<Mail className="h-5 w-5" />}
                 label={dict.legal.email}
-                value={<a href={`mailto:${profile.contact_details.email}`} className="underline hover:text-primary transition-colors">{profile.contact_details.email}</a>}
+                value={<a href={`mailto:${profile.contact_details.email}`} className="text-primary hover:text-primary/80 transition-colors underline underline-offset-4">{profile.contact_details.email}</a>}
               />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <InfoLine
                   icon={<Phone className="h-5 w-5" />}
                   label={dict.legal.phone}
@@ -141,17 +151,17 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
           </Card>
         </div>
 
-        <Card className="bg-card/40 backdrop-blur-md border-white/5 shadow-2xl mb-8">
-          <CardHeader className="pb-4">
-            <div className="flex items-center gap-2 text-primary mb-1">
+        <Card className="bg-card/40 backdrop-blur-2xl border-white/10 shadow-2xl mb-8 rounded-3xl overflow-hidden">
+          <CardHeader className="p-8 pb-4 border-b border-white/5">
+            <div className="flex items-center gap-3 text-primary mb-1">
               <KeyRound className="h-5 w-5" />
-              <CardTitle className="text-lg" asChild>
+              <CardTitle className="text-xl font-bold text-white" asChild>
                 <h2>{dict.legal.registry}</h2>
               </CardTitle>
             </div>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <CardContent className="p-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <InfoLine
                 icon={<Landmark className="h-5 w-5" />}
                 label={dict.legal.commercialRegistry}
@@ -160,27 +170,27 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
               <InfoLine
                 icon={<FileText className="h-5 w-5" />}
                 label={dict.legal.kvkNumber}
-                value={<p className="font-mono text-lg">{profile.primary_identifiers.commercial_registry_number}</p>}
+                value={<p className="font-mono text-xl text-primary">{profile.primary_identifiers.commercial_registry_number}</p>}
               />
               <InfoLine
                 icon={<ShieldCheck className="h-5 w-5" />}
                 label={dict.legal.vatNumber}
-                value={<p className="font-mono text-lg">{profile.primary_identifiers.vat_id_number}</p>}
+                value={<p className="font-mono text-xl text-primary">{profile.primary_identifiers.vat_id_number}</p>}
               />
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-card/20 backdrop-blur-sm border-white/5 border-dashed">
-          <CardHeader>
-            <CardTitle className="text-base text-foreground/80" asChild>
+        <Card className="bg-card/20 backdrop-blur-xl border-white/5 border-dashed rounded-3xl">
+          <CardHeader className="p-8">
+            <CardTitle className="text-base text-white/80" asChild>
               <h2>{dict.legal.disclaimer}</h2>
             </CardTitle>
-            <CardDescription className="text-muted-foreground/60" asChild>
+            <CardDescription className="text-white/40" asChild>
               <p>{dict.legal.disclaimerSubtitle}</p>
             </CardDescription>
           </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground/60 leading-relaxed italic">
+          <CardContent className="px-8 pb-8 prose prose-sm dark:prose-invert max-w-none text-white/40 leading-relaxed italic">
             <p>{dict.legal.disclaimerContent}</p>
           </CardContent>
         </Card>
