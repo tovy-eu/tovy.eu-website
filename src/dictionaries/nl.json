@@ -1,9 +1,8 @@
-
 {
   "common": {
     "workWithUs": "Start project",
     "readBlog": "Verken KX Hub",
-    "shareIdea": "Deel je idee",
+    "shareIdea": "Start project",
     "privacyPolicy": "Privacyverklaring",
     "legalNotice": "Juridische informatie",
     "allRightsReserved": "Alle rechten voorbehouden.",
@@ -11,7 +10,19 @@
     "downloadJson": "Download als JSON",
     "submissionFailed": "Verzending mislukt",
     "submissionErrorDesc": "Er is een fout opgetreden bij het verzenden. Probeer het later opnieuw.",
-    "scrollToExplore": "Scroll"
+    "scrollToExplore": "Scroll",
+    "emailPlaceholder": "werk@bedrijf.nl",
+    "success": "Succes",
+    "errorOccurred": "Fout",
+    "errorTryAgain": "Probeer het later opnieuw.",
+    "subscriptionSuccess": "Bedankt voor de aanmelding.",
+    "alreadySubscribed": "Al aangemeld",
+    "alreadySubscribedDesc": "Je staat al op de lijst.",
+    "stayUpToDate": "Blijf op de hoogte",
+    "newsletterDesc": "Ontvang technische inzichten van Tovy.",
+    "subscribe": "Aanmelden",
+    "subscribing": "Bezig met aanmelden...",
+    "techStack": "HET TOVY TOOLCHAIN"
   },
   "hero": {
     "title": "Het Data & AI fundament voor de groei van jouw bedrijf",
@@ -178,77 +189,84 @@
     "nederland": "Nederland"
   },
   "projectForm": {
-    "title": "Start jouw project",
-    "subtitle": "Deel projectdetails met Tovy voor de bouw van snelle, betrouwbare en heldere systemen.",
+    "title": "Project Intake",
+    "subtitle": "Deel projectdetails met Tovy voor de bouw van betrouwbare data-ecosystemen.",
     "success": {
-      "title": "Bedankt!",
-      "description": "De projectaanvraag is verzonden. Tovy neemt spoedig contact op; daarnaast kan direct hieronder een afspraak worden ingepland. Vrijdagen hebben de voorkeur.",
-      "idLabel": "Project ID",
+      "title": "Bedankt",
+      "description": "Tovy heeft de aanvraag ontvangen. Een eerste beoordeling is in gang gezet; plan hieronder een kennismaking om het proces te versnellen.",
       "backHome": "Terug naar home",
-      "bookMeeting": "Plan een kennismaking",
-      "bookMeetingDesc": "Plan direct een korte introductie van 15 minuten in om wachttijd te voorkomen."
+      "bookMeeting": "Plan kennismaking"
     },
     "steps": {
-      "maturity": {
-        "label": "Wat is het huidige niveau van datavolwassenheid?",
-        "description": "Dit helpt Tovy om de huidige situatie van de organisatie te begrijpen.",
-        "low": "Net begonnen",
-        "mid": "Onderhoud van data",
-        "high": "Eigen oplossingen gebouwd"
+      "workEmail": {
+        "label": "Werk-e-mailadres",
+        "description": "Gebruik een zakelijk e-mailadres voor de lead-identiteit."
       },
       "companySize": {
-        "label": "Wat is de grootte van de organisatie?",
-        "description": "Dit helpt Tovy de schaal van de organisatie in te schatten.",
-        "options": ["Solo", "1–10 medewerkers", "11–50 medewerkers", "51–200 medewerkers", "201+ medewerkers"]
+        "label": "Bedrijfsgrootte",
+        "description": "Dit helpt Tovy bij de eerste inschatting.",
+        "options": ["<50", "50–250", "250–1.000", "1.000+", "Ik weet het niet zeker"]
       },
-      "engineeringTeam": {
-        "label": "Is er een eigen engineeringteam aanwezig?",
-        "description": "Dit bepaalt hoe Tovy samenwerkt met de interne ontwikkelaars.",
+      "objectives": {
+        "label": "Technische & Zakelijke Doelen",
+        "description": "Selecteer de belangrijkste doelen voor deze opdracht.",
         "options": {
-          "yes": "Ja",
-          "no": "Nee"
+          "scratch": "Nieuw data/AI platform vanaf nul opbouwen.",
+          "scaling": "Bestaande cloud of on-prem infrastructuur schalen/optimaliseren.",
+          "automating": "Handmatige workflows of full-stack ontwikkeling automatiseren.",
+          "modernizing": "Legacy-systemen moderniseren / Cloud migratie.",
+          "analytics": "Dashboarding en geavanceerde data-analyse.",
+          "other": "Overig"
         }
       },
-      "details": {
-        "label": "Beschrijf de automatiseringsuitdaging of het project",
-        "focusLabel": "Wat is het beoogde doel of de verbetering?",
-        "focusPlaceholder": "Bijvoorbeeld: Een AI‑assistent die klantvragen afhandelt...",
-        "challengesLabel": "Wat zijn de belangrijkste uitdagingen op dit moment?",
-        "challengesPlaceholder": "Bijvoorbeeld: Het supportteam is overbelast en reactietijden zijn hoog.",
-        "visionLabel": "Hoe ziet de ideale oplossing eruit?",
-        "visionPlaceholder": "Bijvoorbeeld: Een AI die veelgestelde vragen beantwoordt en weet wanneer door te schakelen."
-      },
-      "budget": {
-        "label": "Hoe ziet het budget eruit?",
-        "description": "Tovy-projecten starten doorgaans vanaf €2.500, voor MVP’s of eerste versies.",
+      "infrastructure": {
+        "label": "Huidige Data-infrastructuur",
+        "description": "Identificeer de omgeving waar de data momenteel verblijft.",
         "options": {
-          "yes": "Ja, dat past",
-          "no": "Nee, nog niet"
+          "cloud": "Cloud (AWS / Azure / GCP)",
+          "onprem": "On-Premise (Lokale servers/datacenters)",
+          "legacy": "Legacy (Mainframes, lokale databases, of veel spreadsheets)",
+          "saas": "SaaS-only (Salesforce, HubSpot, etc.)",
+          "unsure": "Niet zeker / Technische beoordeling nodig"
+        }
+      },
+      "bottlenecks": {
+        "label": "Operationele Knelpunten",
+        "description": "Wat zijn de belangrijkste pijnpunten die aangepakt moeten worden?",
+        "options": {
+          "silos": "Data Silo's / Slechte datakwaliteit",
+          "deployment": "Trage ontwikkeling of engineering cycli",
+          "overhead": "Hoge handmatige overhead / Repetitieve taken",
+          "insights": "Gebrek aan realtime inzichten of dashboards",
+          "security": "Beveiliging / Compliance zorgen",
+          "other": "Overig"
         }
       },
       "timeline": {
-        "label": "Wanneer is de beoogde startdatum?",
-        "description": "Tovy kan binnen 10 werkdagen een werkende versie opleveren.",
-        "options": {
-          "yes": "Zo snel mogelijk",
-          "no": "Nog niet, in voorbereiding"
-        }
+        "label": "Projecttijdlijn",
+        "description": "Wanneer is de beoogde startdatum?",
+        "options": ["Onmiddellijk", "1–3 Maanden", "3+ Maanden", "Alleen verkennen / Geen vaste datum"]
+      },
+      "budget": {
+        "label": "Geschat Investeringsbudget",
+        "description": "Dit helpt bij de initiële economische kwalificatie.",
+        "options": ["<$20k", "$20k–$50k", "$50k–$100k", "$100k+", "Op zoek naar een offerte"]
       },
       "contact": {
-        "label": "Hoe kan Tovy contact opnemen?",
-        "description": "Vul hier de contact- en bedrijfsgegevens in.",
+        "label": "Contactgegevens",
+        "description": "Laatste details voor de opvolging.",
         "firstName": "Voornaam *",
         "lastName": "Achternaam *",
+        "company": "Bedrijf *",
         "phone": "Telefoonnummer",
         "email": "E‑mail *",
-        "company": "Bedrijf *",
         "consent": "Ik ga akkoord met de privacyverklaring."
       }
     },
     "buttons": {
       "previous": "Vorige",
       "next": "Volgende",
-      "submit": "Project indienen",
+      "submit": "Aanvraag indienen",
       "submitting": "Bezig met verzenden..."
     }
   },
