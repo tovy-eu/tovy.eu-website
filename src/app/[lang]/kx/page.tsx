@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { getSortedPostsData } from '@/lib/blog';
 import { format, isValid } from 'date-fns';
 import type { Metadata } from 'next';
-import { SectionDivider } from '@/components/landing/section-divider';
 import { Badge } from '@/components/ui/badge';
 import { BookOpen, ArrowRight } from 'lucide-react';
 import { getDictionary } from '@/lib/get-dictionary';
@@ -193,10 +192,6 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
               </Link>
             );
           })}
-        </div>
-
-        <div className="my-16">
-          <SectionDivider />
         </div>
       </div>
     </div>
