@@ -112,12 +112,12 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                     >
                       {React.cloneElement(service.icon as React.ReactElement, { className: "h-5 w-5" })}
                     </div>
-                    <h3 className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-white/90 uppercase">
+                    <h3 className="text-sm md:text-base font-bold text-white/90">
                       {service.title}
                     </h3>
                   </div>
                   
-                  <p className="text-sm md:text-base text-white/95 leading-relaxed mb-6 flex-grow font-medium">
+                  <p className="text-sm md:text-base text-white leading-relaxed mb-6 flex-grow font-medium">
                     {service.description}
                   </p>
                   
@@ -125,7 +125,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                     {service.stack.map(item => (
                       <span 
                         key={item.tool} 
-                        className="text-[9px] md:text-[10px] font-bold tracking-[0.25em] uppercase text-white/20"
+                        className="text-[10px] md:text-[11px] font-bold tracking-wider text-muted-foreground/80"
                       >
                         {item.tool}
                       </span>
