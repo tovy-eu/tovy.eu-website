@@ -1,3 +1,4 @@
+
 {
   "common": {
     "workWithUs": "Start project",
@@ -194,8 +195,13 @@
     "success": {
       "title": "Bedankt",
       "description": "Tovy heeft de aanvraag ontvangen. Een eerste beoordeling is in gang gezet; plan hieronder een kennismaking om het proces te versnellen.",
+      "titlePathB": "Beoordeling in gang",
+      "descriptionPathB": "Tovy beoordeelt momenteel de technische en strategische vereisten van het project. Een specialist neemt contact op als er extra context nodig is.",
+      "titlePathC": "Kennis Hub",
+      "descriptionPathC": "Op basis van de verstrekte informatie is de Tovy Knowledge Exchange Hub het meest geschikte startpunt. Ontdek daar technische documentatie en casestudies.",
       "backHome": "Terug naar home",
-      "bookMeeting": "Plan kennismaking"
+      "bookMeeting": "Plan kennismaking",
+      "exploreHub": "Verken Hub"
     },
     "steps": {
       "workEmail": {

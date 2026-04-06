@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useTransition, useEffect } from "react";
@@ -18,10 +19,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home } from "lucide-react";
+import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { trackEvent } from "@/lib/analytics";
@@ -33,11 +33,14 @@ interface ProjectIntakeFormProps {
 
 const STORAGE_KEY = "tovy_project_form_progress";
 
+type RoutingPath = 'A' | 'B' | 'C';
+
 export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const [step, setStep] = useState(0);
   const { toast } = useToast();
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [submittedValues, setSubmittedValues] = useState<ProjectRequestData | null>(null);
+  const [routingPath, setRoutingPath] = useState<RoutingPath>('B');
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
@@ -62,9 +65,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   };
 
   const singleOptions = {
-    companySize: dict.projectForm.steps.companySize.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i) })),
-    timeline: dict.projectForm.steps.timeline.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i) })),
-    budget: dict.projectForm.steps.budget.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i) })),
+    companySize: dict.projectForm.steps.companySize.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
+    timeline: dict.projectForm.steps.timeline.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
+    budget: dict.projectForm.steps.budget.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
   };
 
   const currentField = formSteps[step].field as keyof ProjectRequestData | "contactDetails";
@@ -111,9 +114,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     }
   }, [step, allValues, formSubmitted]);
 
-  // Calendly Initialization
+  // Calendly Initialization (Only for Path A)
   useEffect(() => {
-    if (formSubmitted && submittedValues) {
+    if (formSubmitted && submittedValues && routingPath === 'A') {
       const name = `${submittedValues.firstName} ${submittedValues.lastName}`.trim();
       const email = submittedValues.workEmail;
       const calendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=ffffff&primary_color=365af6&hide_gdpr_banner=1&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
@@ -135,23 +138,67 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
       
       return () => clearInterval(interval);
     }
-  }, [formSubmitted, submittedValues]);
+  }, [formSubmitted, submittedValues, routingPath]);
+
+  const calculateScore = (data: ProjectRequestData): { score: number, path: RoutingPath } => {
+    let score = 0;
+    
+    // 1. Email Domain
+    const publicEmailDomains = ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com", "aol.com", "zoho.com", "mail.com", "protonmail.com", "gmx.com"];
+    const domain = data.workEmail.split('@')[1]?.toLowerCase();
+    score += publicEmailDomains.includes(domain) ? -10 : 5;
+
+    // 2. Company Size
+    const companySizeIndex = singleOptions.companySize.findIndex(o => o.label === data.companySize);
+    const sizeScores = [0, 4, 7, 10, 3]; // indices: 0:<50, 1:50-250, 2:250-1000, 3:1000+, 4:unsure
+    if (companySizeIndex !== -1) score += sizeScores[companySizeIndex];
+
+    // 3. Timeline
+    const timelineIndex = singleOptions.timeline.findIndex(o => o.label === data.timeline);
+    const timelineScores = [5, 3, 1, -5]; // indices: 0:Immediate, 1:1-3M, 2:3M+, 3:Exploring
+    if (timelineIndex !== -1) score += timelineScores[timelineIndex];
+
+    // 4. Budget
+    const budgetIndex = singleOptions.budget.findIndex(o => o.label === data.budget);
+    const budgetScores = [-10, 5, 10, 15, 2]; // indices: 0:<20k, 1:20-50k, 2:50-100k, 3:100k+, 4:Seeking quote
+    if (budgetIndex !== -1) score += budgetScores[budgetIndex];
+
+    // Hard Overrides
+    // If Company Size > 250 AND Budget > $50k -> Path A
+    const isLargeCompany = companySizeIndex === 2 || companySizeIndex === 3;
+    const isLargeBudget = budgetIndex === 2 || budgetIndex === 3;
+    if (isLargeCompany && isLargeBudget) return { score, path: 'A' };
+
+    // If Infrastructure contains "Legacy/Mainframe" AND Company Size > 250 -> Path A
+    const hasLegacy = data.infrastructure.some(i => i.toLowerCase().includes('legacy'));
+    if (hasLegacy && isLargeCompany) return { score, path: 'A' };
+
+    // Thresholds
+    if (score >= 18) return { score, path: 'A' };
+    if (score >= 5) return { score, path: 'B' };
+    return { score, path: 'C' };
+  };
 
   const onSubmit = (data: ProjectRequestData) => {
     startTransition(async () => {
       try {
+        const { score, path } = calculateScore(data);
+        
         await addDoc(collection(db, "project_requests"), {
           ...data,
           timestamp: new Date(),
+          lead_score: score,
+          routing_path: path,
         });
         
         trackEvent({
           name: 'project_request_success',
           event_category: 'conversion',
-          event_label: 'Project Form Submitted'
+          event_label: `Path ${path} Submission`,
         });
 
         localStorage.removeItem(STORAGE_KEY);
+        setRoutingPath(path);
         setSubmittedValues(data);
         setFormSubmitted(true);
       } catch (error: any) {
@@ -200,17 +247,33 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         <Card className="w-full max-w-3xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-4 md:p-8 animate-scale-in">
           <CardHeader className="text-center pb-6">
             <CheckCircle className="mx-auto h-12 w-12 text-primary mb-4 animate-check-bounce" />
-            <CardTitle className="text-xl md:text-2xl">{dict.projectForm.success.title}</CardTitle>
-            <CardDescription className="max-w-md mx-auto">{dict.projectForm.success.description}</CardDescription>
+            <CardTitle className="text-xl md:text-2xl">
+              {routingPath === 'A' ? dict.projectForm.success.title : (routingPath === 'B' ? dict.projectForm.success.titlePathB : dict.projectForm.success.titlePathC)}
+            </CardTitle>
+            <CardDescription className="max-w-md mx-auto">
+              {routingPath === 'A' ? dict.projectForm.success.description : (routingPath === 'B' ? dict.projectForm.success.descriptionPathB : dict.projectForm.success.descriptionPathC)}
+            </CardDescription>
           </CardHeader>
-          <div className="w-full rounded-2xl overflow-hidden bg-black/20 border border-white/5 mb-6 min-h-[700px]">
-            <div className="calendly-inline-widget" style={{ minWidth: '320px', height: '700px' }} />
-          </div>
-          <CardFooter>
+          
+          {routingPath === 'A' && (
+            <div className="w-full rounded-2xl overflow-hidden bg-black/20 border border-white/5 mb-6 min-h-[700px]">
+              <div className="calendly-inline-widget" style={{ minWidth: '320px', height: '700px' }} />
+            </div>
+          )}
+
+          <div className="flex flex-col sm:flex-row gap-4 mt-4">
+            {routingPath === 'C' && (
+              <Button asChild className="font-bold">
+                <Link href={`/${lang}/kx/`}>
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  {dict.projectForm.success.exploreHub}
+                </Link>
+              </Button>
+            )}
             <Button asChild variant="ghost" className="hover:bg-white/10 text-muted-foreground text-xs">
               <Link href={`/${lang}/`}><Home className="mr-2 h-3 w-3" />{dict.projectForm.success.backHome}</Link>
             </Button>
-          </CardFooter>
+          </div>
         </Card>
       ) : (
         <Card className="w-full max-w-2xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden flex flex-col">
@@ -324,12 +387,12 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                               ))}
                               {field === 'objectives' && (
                                 <FormField control={form.control} name="objectivesOther" render={({ field: f }) => (
-                                  <Input {...f} placeholder="Other goal..." className="bg-white/5 border-white/10" />
+                                  <Input {...f} placeholder="Other goal..." className="bg-white/5 border-white/10 mt-2" />
                                 )} />
                               )}
                               {field === 'bottlenecks' && (
                                 <FormField control={form.control} name="bottlenecksOther" render={({ field: f }) => (
-                                  <Input {...f} placeholder="Other pain point..." className="bg-white/5 border-white/10" />
+                                  <Input {...f} placeholder="Other pain point..." className="bg-white/5 border-white/10 mt-2" />
                                 )} />
                               )}
                             </div>
