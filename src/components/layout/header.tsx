@@ -79,14 +79,14 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
         <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-1 z-0">
           <Link 
             href={`${homePath}#about`} 
-            className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest px-4 py-3 min-h-[44px] flex items-center"
+            className="text-sm font-bold text-white/60 hover:text-white transition-colors px-4 py-3 min-h-[44px] flex items-center"
             onClick={() => handleLinkClick("About")}
           >
             {aboutText}
           </Link>
           <Link 
             href={`${homePath}#services`} 
-            className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest px-4 py-3 min-h-[44px] flex items-center"
+            className="text-sm font-bold text-white/60 hover:text-white transition-colors px-4 py-3 min-h-[44px] flex items-center"
             onClick={() => handleLinkClick("Services")}
           >
             {servicesText}
@@ -94,7 +94,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
           {CONFIG.enableBlog && (
             <Link 
               href={`/${lang}/kx/`} 
-              className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest px-4 py-3 min-h-[44px] flex items-center"
+              className="text-sm font-bold text-white/60 hover:text-white transition-colors px-4 py-3 min-h-[44px] flex items-center"
               onClick={() => handleLinkClick("KX Hub")}
             >
               {blogText}
@@ -106,7 +106,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
           <Magnetic strength={0.2}>
             <Button asChild size="sm" className="h-10 md:h-11 px-4 md:px-6" onClick={handleCtaClick}>
               <Link href={`/${lang}/project-request/`}>
-                <span className="font-bold uppercase tracking-wider text-[10px] md:text-xs">{shareIdeaText}</span>
+                <span className="font-bold text-sm">{shareIdeaText}</span>
               </Link>
             </Button>
           </Magnetic>
