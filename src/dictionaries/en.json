@@ -10,32 +10,32 @@
     "agreeTo": "I agree to the",
     "downloadJson": "Download as JSON",
     "submissionFailed": "Submission Failed",
-    "submissionErrorDesc": "There was an error submitting your request. Please try again later.",
+    "submissionErrorDesc": "An error occurred during submission. Please try again later.",
     "scrollToExplore": "Scroll"
   },
   "hero": {
-    "title": "The data & AI foundation for your business growth",
+    "title": "The data & AI foundation for business growth",
     "subtitle": "Tovy engineers data systems that enable automation, turning silos into a scalable foundation."
   },
   "painSolution": {
-    "title": "Silos vs. Centralised",
+    "title": "Silos vs. Centralized",
     "subtitle": "Data should simplify, not complicate.",
     "pain": {
       "title": "The Old Way",
       "subtitle": "Silos",
       "items": [
         "Manual data entry & human error",
-        "Systems that don't talk to each other",
+        "Systems that lack integration",
         "Constant reactive maintenance",
         "Growth limited by data bottlenecks"
       ]
     },
     "solution": {
       "title": "The Tovy Way",
-      "subtitle": "Centralised",
+      "subtitle": "Centralized",
       "items": [
         "100% Automated data ingestion",
-        "Integrated data",
+        "Integrated data architecture",
         "Reliable & hands-off infrastructure",
         "Scalable foundation for growth"
       ]
@@ -44,61 +44,61 @@
   "about": {
     "strategy": "TOVY STRATEGY",
     "title": "What and why.",
-    "mission": "Tovy's mission is to build smart data ecosystems that take work off your hands. Tovy desires a world where technology gives people more time, focus, and freedom to grow.",
-    "pillarsTitle": "OUR CORE VALUES",
+    "mission": "Tovy's mission is to build smart data ecosystems that reduce manual workload. Tovy desires a world where technology provides people with more time, focus, and freedom to grow.",
+    "pillarsTitle": "CORE VALUES",
     "pillars": {
       "tech": {
         "title": "Tech Savvy",
-        "desc": "Always up-to-date with Data & AI trends."
+        "desc": "Staying current with Data & AI trends."
       },
       "optimization": {
         "title": "Optimization",
-        "desc": "an aim for efficient processes."
+        "desc": "Aiming for efficient processes."
       },
       "freedom": {
         "title": "Freedom",
-        "desc": "The pursuit for less cognitive load."
+        "desc": "Pursuing a reduction in cognitive load."
       },
       "innovation": {
         "title": "Innovation",
-        "desc": "Future-ready systems."
+        "desc": "Building future-ready systems."
       }
     }
   },
   "engineering": {
-    "strategy": "THE TOVY WAY OF WORKING",
+    "strategy": "THE TOVY METHODOLOGY",
     "title": "End-to-end data ecosystems",
     "subtitle": "From raw data ingestion to custom end-user applications.",
     "services": {
       "strategic": {
-        "title": "Strategic design",
-        "desc": "Thinking through tech, data, and AI strategies to align with your business goals.",
+        "title": "Strategic Design",
+        "desc": "Tovy develops tech, data, and AI strategies to align with business goals.",
         "tools": ["Roadmapping", "Architecture", "Feasibility"]
       },
       "cloud": {
         "title": "Cloud Infrastructure",
-        "desc": "Designing secure, cost-optimized cloud environments for data workloads.",
+        "desc": "Tovy designs secure, cost-optimized cloud environments for data workloads.",
         "tools": ["GCP, AWS", "Datawarehousing"]
       },
       "data": {
         "title": "Data Engineering",
-        "desc": "Architecting scalable pipelines and data warehouses using the Modern Data Stack.",
+        "desc": "Tovy architects scalable pipelines and data warehouses using the Modern Data Stack.",
         "tools": ["dbt", "SQL", "Python"]
       },
       "analytics": {
         "title": "Analytics & Automation",
-        "desc": "Building dashboarding or automations to operationalize data.",
+        "desc": "Tovy builds dashboarding and automations to operationalize data.",
         "tools": ["TypeScript / JavaScript"]
       }
     }
   },
   "testimonials": {
     "title": "Trusted by Innovative Teams",
-    "subtitle": "Discover how we help businesses scale."
+    "subtitle": "Discover how Tovy helps businesses scale."
   },
   "blog": {
     "title": "KX Hub",
-    "subtitle": "Technical resources, insights, and engineering documentation by Tovy.",
+    "subtitle": "Technical resources, insights, and engineering documentation provided by Tovy.",
     "noPosts": "No resources found in the KX hub. Check back soon!",
     "readingTime": "min read",
     "previous": "Previous",
@@ -114,46 +114,46 @@
   },
   "privacy": {
     "title": "Privacy Policy",
-    "intro": "Your privacy is important to us. It is Tovy's policy to respect your privacy regarding any information we may collect from you across our website. This policy is compliant with the General Data Protection Regulation (GDPR).",
+    "intro": "Privacy is important to Tovy. It is Tovy's policy to respect user privacy regarding any information collected across the website. This policy is compliant with the General Data Protection Regulation (GDPR).",
     "sections": [
       {
         "title": "1. Data Controller",
-        "content": "Tovy is the data controller for the personal information collected through this website. For any questions, you can contact us at"
+        "content": "Tovy acts as the data controller for the personal information collected through this website. For any questions, contact can be established via"
       },
       {
-        "title": "2. Information We Collect and How We Use It",
-        "content": "We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and explicit consent. The legal bases for our processing are primarily consent, contractual necessity, and legitimate interest.",
+        "title": "2. Information Collection and Usage",
+        "content": "Tovy only asks for personal information when it is truly required to provide a service. The organization collects data by fair and lawful means, with the user's knowledge and explicit consent. The legal bases for processing are primarily consent, contractual necessity, and legitimate interest.",
         "list": [
-          "<strong>Project Intake Form:</strong> We collect your name, contact details (email, phone), company information, and project details. This data is stored in Google Cloud Firestore and is used to evaluate and respond to your project request. The legal basis is the intention to enter into a contract.",
-          "<strong>Server Logs:</strong> Our web server, hosted by Firebase Hosting, automatically logs requests, which may include your IP address, browser type, and the pages you visit. This data is used for security monitoring and diagnostics. The legal basis is our legitimate interest in maintaining a secure and functional website.",
-          "<strong>Cookies:</strong> We use essential cookies to manage your consent preferences regarding tracking. We do not use non-essential or tracking cookies (like those for Google Analytics) without your explicit prior consent via our cookie banner."
+          "<strong>Project Intake Form:</strong> Tovy collects names, contact details (email, phone), company information, and project details. This data is stored in Google Cloud Firestore and is used to evaluate and respond to project requests. The legal basis is the intention to enter into a contract.",
+          "<strong>Server Logs:</strong> The web server, hosted by Firebase Hosting, automatically logs requests, which may include IP addresses, browser types, and visited pages. This data is used for security monitoring and diagnostics. The legal basis is the legitimate interest of Tovy in maintaining a secure and functional website.",
+          "<strong>Cookies:</strong> Tovy uses essential cookies to manage consent preferences regarding tracking. The company does not use non-essential or tracking cookies (such as those for Google Analytics) without explicit prior consent via the cookie banner."
         ]
       },
       {
         "title": "3. Data Residency and Transfers",
-        "content": "To protect your data, we have configured our primary database (Cloud Firestore) to be located within the European Union (`eur3` multi-region). While we prioritize EU-based services, some of our subprocessors (like Google) may transfer data internationally. All such transfers are conducted under legally compliant mechanisms, such as Standard Contractual Clauses."
+        "content": "To protect data, Tovy has configured the primary database (Cloud Firestore) to be located within the European Union (regio 'eur3'). While the organization prioritizes EU-based services, some subprocessors (such as Google) may transfer data internationally. All such transfers are conducted under legally compliant mechanisms, such as Standard Contractual Clauses."
       },
       {
         "title": "4. Data Retention and Security",
-        "content": "We retain collected information only for as long as necessary to provide our services or as required by law. We protect stored data within commercially acceptable means to prevent loss, theft, and unauthorized access."
+        "content": "Tovy retains collected information only for as long as necessary to provide services or as required by law. The company protects stored data within commercially acceptable means to prevent loss, theft, and unauthorized access."
       },
       {
-        "title": "5. Your Rights Under GDPR",
-        "content": "As a user, you have the following rights regarding your personal data:",
+        "title": "5. User Rights Under GDPR",
+        "content": "Under the GDPR, users have the following rights regarding personal data:",
         "list": [
-          "<strong>Right to be informed:</strong> You have the right to know how your data is collected and used.",
-          "<strong>Right of access:</strong> You can request a copy of the information we hold about you.",
-          "<strong>Right to rectification:</strong> You can have inaccurate personal data corrected.",
-          "<strong>Right to erasure (\"Right to be Forgotten\"):</strong> You can request that we delete your personal data.",
-          "<strong>Right to restrict processing:</strong> You can limit how we use your data.",
-          "<strong>Right to data portability:</strong> You have the right to receive your data in a machine-readable format.",
-          "<strong>Right to object:</strong> You can object to the processing of your personal data."
+          "<strong>Right to be informed:</strong> The right to know how data is collected and used.",
+          "<strong>Right of access:</strong> The right to request a copy of the information held by Tovy.",
+          "<strong>Right to rectification:</strong> The right to have inaccurate personal data corrected.",
+          "<strong>Right to erasure (\"Right to be Forgotten\"):</strong> The right to request the deletion of personal data.",
+          "<strong>Right to restrict processing:</strong> The right to limit how data is used.",
+          "<strong>Right to data portability:</strong> The right to receive data in a machine-readable format.",
+          "<strong>Right to object:</strong> The right to object to the processing of personal data."
         ],
-        "footer": "To exercise any of these rights, please contact us at our data protection contact email below."
+        "footer": "To exercise any of these rights, please contact the data protection contact email below."
       },
       {
-        "title": "6. Contact Us",
-        "content": "For any questions or concerns regarding your privacy, or to exercise your GDPR rights, you may contact our Data Protection Officer at:"
+        "title": "6. Contact Information",
+        "content": "For questions regarding privacy or to exercise GDPR rights, the Data Protection Officer at Tovy can be contacted at:"
       }
     ],
     "effectiveDate": "This policy is effective as of July 30, 2024."
@@ -173,70 +173,70 @@
     "kvkNumber": "KvK Number (Registration Number)",
     "vatNumber": "VAT Identification Number",
     "disclaimer": "Disclaimer",
-    "disclaimerSubtitle": "Our responsibility regarding website content.",
-    "disclaimerContent": "The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents' accuracy, completeness or topicality. According to statutory provisions, we are furthermore responsible for our own content on these web pages. In this matter, please note that we are not obliged to monitor the transmitted or saved information of third parties, or investigate circumstances pointing to illegal activity.",
+    "disclaimerSubtitle": "Responsibility regarding website content.",
+    "disclaimerContent": "The contents of these pages have been created with the utmost care. However, Tovy cannot guarantee the accuracy, completeness, or topicality of the content. According to statutory provisions, Tovy is responsible for its own content on these web pages. Please note that Tovy is not obliged to monitor transmitted or saved information from third parties, or to investigate circumstances pointing to illegal activity.",
     "nederland": "Netherlands"
   },
   "projectForm": {
     "title": "Start Your Project",
-    "subtitle": "Share your project details with Tovy to build clean, fast, and reliable systems.",
+    "subtitle": "Share project details with Tovy to build clean, fast, and reliable systems.",
     "success": {
       "title": "Thank You!",
-      "description": "Your project request has been submitted. We will contact you shortly or schedule a meeting directly below. Fridays have preference.",
+      "description": "The project request has been submitted. Tovy will provide contact shortly; alternatively, a meeting can be scheduled directly below. Fridays have preference.",
       "idLabel": "Project ID",
       "backHome": "Back to Homepage",
       "bookMeeting": "Book a Discovery Call",
-      "bookMeetingDesc": "Want to skip the wait? Schedule a quick 15-minute intro call right now."
+      "bookMeetingDesc": "Schedule a 15-minute intro call directly to avoid waiting."
     },
     "steps": {
       "maturity": {
-        "label": "How advanced is your Data Maturity?",
-        "description": "This helps us understand your current data capabilities.",
+        "label": "What is the current level of Data Maturity?",
+        "description": "This helps Tovy understand existing data capabilities.",
         "low": "Just starting",
         "mid": "Managing data",
         "high": "Built custom solutions"
       },
       "companySize": {
-        "label": "What is your company size?",
-        "description": "This helps us understand the scale of your organization.",
+        "label": "What is the company size?",
+        "description": "This assists Tovy in understanding the scale of the organization.",
         "options": ["Solo", "1-10 employees", "11-50 employees", "51-200 employees", "201+ employees"]
       },
       "engineeringTeam": {
-        "label": "Do you have an in-house engineering team?",
-        "description": "This helps us know if we'll be partnering with your developers.",
+        "label": "Is there an in-house engineering team?",
+        "description": "This indicates whether Tovy will partner with internal developers.",
         "options": {
           "yes": "Yes",
           "no": "No"
         }
       },
       "details": {
-        "label": "Tell us about your automation gap or project",
-        "focusLabel": "In one sentence, what are you hoping to build or improve?",
+        "label": "Describe the automation gap or project",
+        "focusLabel": "In one sentence, what is the intended goal or improvement?",
         "focusPlaceholder": "e.g., An AI chatbot to handle customer support inquiries...",
-        "challengesLabel": "What are the main challenges you're facing right now?",
-        "challengesPlaceholder": "e.g., Our support team is overwhelmed and response times are slow.",
-        "visionLabel": "What's your vision for how this solution will work?",
-        "visionPlaceholder": "e.g., We want an AI that can answer common questions and knows when to escalate."
+        "challengesLabel": "What are the primary challenges currently faced?",
+        "challengesPlaceholder": "e.g., The support team is overwhelmed and response times are slow.",
+        "visionLabel": "What is the vision for the operation of this solution?",
+        "visionPlaceholder": "e.g., An AI that answers common questions and escalates when necessary."
       },
       "budget": {
-        "label": "What's your budget outlook?",
-        "description": "Our projects typically start from €2.500, covering MVPs or initial builds.",
+        "label": "What is the budget outlook?",
+        "description": "Tovy projects typically start from €2.500, covering MVPs or initial builds.",
         "options": {
           "yes": "Yes, that fits",
           "no": "No, not right now"
         }
       },
       "timeline": {
-        "label": "How soon do you want to start?",
-        "description": "We can deliver a working version in 10 working days.",
+        "label": "How soon is the intended start date?",
+        "description": "Tovy can deliver a working version in 10 working days.",
         "options": {
-          "yes": "Yes, we're ready to start soon",
-          "no": "Not yet, we're still preparing"
+          "yes": "Ready to start soon",
+          "no": "Still in preparation"
         }
       },
       "contact": {
-        "label": "How can we reach you?",
-        "description": "Please provide your contact and company information.",
+        "label": "How can Tovy reach the applicant?",
+        "description": "Please provide contact and company information.",
         "firstName": "First Name *",
         "lastName": "Last Name *",
         "phone": "Phone Number",
@@ -256,7 +256,7 @@
     "badge": "Error 404",
     "titlePart1": "Lost in the",
     "titlePart2": "Data Silos?",
-    "description": "The page you are looking for has been moved, deleted, or never existed. Let's get you back to the foundation.",
+    "description": "The page being sought has been moved, deleted, or never existed. Tovy can guide the way back to the foundation.",
     "returnHome": "Return Home",
     "startProject": "Start a Project"
   }
