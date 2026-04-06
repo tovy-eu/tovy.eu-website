@@ -70,7 +70,7 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
 
   const breadcrumbs = [
     { name: 'Home', item: `/${lang}/` },
-    { name: 'KX Hub', item: `/${lang}/kx/` },
+    { name: 'Knowledge Exchange Hub', item: `/${lang}/kx/` },
   ];
 
   if (allPostsData.length === 0) {
@@ -82,7 +82,7 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
         <WavyLines />
         <div className="relative z-10 text-center">
           <SectionHeader 
-            badge="Knowledge Exchange"
+            badge="Knowledge Exchange Hub"
             title={dict.blog.title}
             description={dict.blog.noPosts}
           />
@@ -102,7 +102,7 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
       <div className="container relative z-10 mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <SectionHeader 
-            badge="KX Hub"
+            badge="Knowledge Exchange Hub"
             title={dict.blog.title}
             description={dict.blog.subtitle}
           />

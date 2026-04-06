@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: `${postData.title} | Tovy KX Hub`,
+      title: `${postData.title} | Tovy Knowledge Exchange Hub`,
       description: postData.excerpt,
       type: 'article',
       publishedTime: postData.date,
@@ -92,7 +92,7 @@ export default async function KxResource({ params }: Props) {
 
   const breadcrumbs = [
     { name: 'Home', item: `/${lang}/` },
-    { name: 'KX Hub', item: `/${lang}/kx/` },
+    { name: 'Knowledge Exchange Hub', item: `/${lang}/kx/` },
     { name: postData.title, item: `/${lang}/kx/${slug}/` },
   ];
 
@@ -112,7 +112,7 @@ export default async function KxResource({ params }: Props) {
           <Button asChild variant="ghost" className="hover:bg-white/10 text-white/60 hover:text-white transition-colors">
             <Link href={`/${lang}/kx/`}>
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to KX Hub
+              Back to Knowledge Exchange Hub
             </Link>
           </Button>
         </div>
