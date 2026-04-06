@@ -1,3 +1,4 @@
+
 {
   "common": {
     "workWithUs": "Start Project",
@@ -194,8 +195,13 @@
     "success": {
       "title": "Thank You",
       "description": "Tovy has received the project request. An initial review is underway; schedule a discovery call below to expedite the process.",
+      "titlePathB": "Reviewing Requirements",
+      "descriptionPathB": "Tovy is currently reviewing the technical and strategic requirements of the project. A specialist will reach out if additional context is needed.",
+      "titlePathC": "Resource Library",
+      "descriptionPathC": "Based on the provided scope, the Tovy Knowledge Exchange Hub is the most suitable starting point. Explore technical documentation and case studies there.",
       "backHome": "Back to Home",
-      "bookMeeting": "Schedule Discovery Call"
+      "bookMeeting": "Schedule Discovery Call",
+      "exploreHub": "Explore Hub"
     },
     "steps": {
       "workEmail": {
