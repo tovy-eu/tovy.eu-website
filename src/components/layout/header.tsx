@@ -69,24 +69,24 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
         <Link 
           href={homePath} 
           onClick={handleLogoClick}
-          className="font-bold text-2xl sm:text-3xl tracking-tight transition-transform hover:scale-105 active:scale-95 shrink-0"
+          className="font-bold text-2xl sm:text-3xl tracking-tight transition-transform hover:scale-105 active:scale-95 shrink-0 py-2"
         >
           <span>TOV</span>
           <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-1">
           <Link 
             href={`${homePath}#about`} 
-            className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest"
+            className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest px-4 py-3 min-h-[44px] flex items-center"
             onClick={() => handleLinkClick("About")}
           >
             {aboutText}
           </Link>
           <Link 
             href={`${homePath}#services`} 
-            className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest"
+            className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest px-4 py-3 min-h-[44px] flex items-center"
             onClick={() => handleLinkClick("Services")}
           >
             {servicesText}
@@ -94,7 +94,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
           {CONFIG.enableBlog && (
             <Link 
               href={`/${lang}/kx/`} 
-              className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest"
+              className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest px-4 py-3 min-h-[44px] flex items-center"
               onClick={() => handleLinkClick("KX Hub")}
             >
               {blogText}
@@ -104,7 +104,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
 
         <div className="flex items-center gap-2 sm:gap-4">
           <Magnetic strength={0.2}>
-            <Button asChild size="sm" className="h-10 px-4 md:px-6" onClick={handleCtaClick}>
+            <Button asChild size="sm" className="h-10 md:h-11 px-4 md:px-6" onClick={handleCtaClick}>
               <Link href={`/${lang}/project-request/`}>
                 <span className="font-bold uppercase tracking-wider text-[10px] md:text-xs">{shareIdeaText}</span>
               </Link>
