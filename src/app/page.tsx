@@ -1,7 +1,8 @@
+
 /**
  * Root redirection page. 
  * Optimized for static export by using an inline script to detect language and redirect 
- * as early as possible, avoiding the React hydration delay and "Loading..." flicker.
+ * as early as possible. This approach is safest for 'output: export' environments.
  */
 export default function RootPage() {
   return (
