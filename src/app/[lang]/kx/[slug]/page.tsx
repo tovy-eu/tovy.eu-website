@@ -98,7 +98,7 @@ export default async function KxResource({ params }: Props) {
 
   return (
     <div 
-      className="relative flex flex-col min-h-screen py-24 px-4 md:px-8 overflow-hidden"
+      className="relative flex flex-col min-h-screen pt-32 md:pt-40 pb-24 px-4 md:px-8 overflow-hidden"
       style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))' }}
     >
       <JsonLd type="BreadcrumbList" data={getBreadcrumbSchema(breadcrumbs)} />

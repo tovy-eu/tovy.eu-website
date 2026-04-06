@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -54,7 +55,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
 
   return (
     <div 
-      className="relative min-h-screen py-24 sm:py-32 overflow-hidden"
+      className="relative min-h-screen pt-32 md:pt-40 pb-24 sm:pb-32 overflow-hidden"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}

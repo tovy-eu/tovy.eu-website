@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { ProjectIntakeForm } from '@/components/landing/project-intake-form';
 import { WavyLines } from '@/components/landing/wavy-lines';
@@ -26,7 +27,7 @@ export default async function ProjectRequestPage({ params }: Props) {
   
   return (
     <div 
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 md:p-8 pt-20 md:pt-24"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 md:p-8 pt-32 md:pt-40 pb-24"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
