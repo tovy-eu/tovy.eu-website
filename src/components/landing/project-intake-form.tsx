@@ -114,9 +114,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     }
   }, [step, allValues, formSubmitted]);
 
-  // Calendly Initialization (Only for Path A)
+  // Calendly Initialization (For Path A and Path B)
   useEffect(() => {
-    if (formSubmitted && submittedValues && routingPath === 'A') {
+    if (formSubmitted && submittedValues && (routingPath === 'A' || routingPath === 'B')) {
       const name = `${submittedValues.firstName} ${submittedValues.lastName}`.trim();
       const email = submittedValues.workEmail;
       const calendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=ffffff&primary_color=365af6&hide_gdpr_banner=1&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
@@ -248,14 +248,14 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           <CardHeader className="text-center pb-6">
             <CheckCircle className="mx-auto h-12 w-12 text-primary mb-4 animate-check-bounce" />
             <CardTitle className="text-xl md:text-2xl">
-              {routingPath === 'A' ? dict.projectForm.success.title : (routingPath === 'B' ? dict.projectForm.success.titlePathB : dict.projectForm.success.titlePathC)}
+              {(routingPath === 'A' || routingPath === 'B') ? dict.projectForm.success.title : dict.projectForm.success.titlePathC}
             </CardTitle>
             <CardDescription className="max-w-md mx-auto">
-              {routingPath === 'A' ? dict.projectForm.success.description : (routingPath === 'B' ? dict.projectForm.success.descriptionPathB : dict.projectForm.success.descriptionPathC)}
+              {(routingPath === 'A' || routingPath === 'B') ? dict.projectForm.success.description : dict.projectForm.success.descriptionPathC}
             </CardDescription>
           </CardHeader>
           
-          {routingPath === 'A' && (
+          {(routingPath === 'A' || routingPath === 'B') && (
             <div className="w-full rounded-2xl overflow-hidden bg-black/20 border border-white/5 mb-6 min-h-[700px]">
               <div className="calendly-inline-widget" style={{ minWidth: '320px', height: '700px' }} />
             </div>
