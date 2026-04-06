@@ -1,11 +1,10 @@
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-const postsDirectory = path.join(process.cwd(), 'src/content/kx');
+const basePostsDirectory = path.join(process.cwd(), 'src/content/kx');
 
 function getReadingTime(content: string) {
   if (!content) return 0;
@@ -15,17 +14,30 @@ function getReadingTime(content: string) {
   return Math.ceil(wordCount / wordsPerMinute);
 }
 
-export function getSortedPostsData() {
+/**
+ * Retrieves sorted posts for a specific language.
+ * Defaults to 'en' if the language directory doesn't exist.
+ */
+export function getSortedPostsData(lang: string = 'en') {
+  const postsDirectory = path.join(basePostsDirectory, lang);
+  
   if (!fs.existsSync(postsDirectory)) {
+    // Fallback to base directory for backwards compatibility or return empty
+    if (fs.existsSync(basePostsDirectory)) {
+       const baseFiles = fs.readdirSync(basePostsDirectory).filter(file => file.endsWith('.md'));
+       if (baseFiles.length > 0) return processFiles(basePostsDirectory, baseFiles);
+    }
     return [];
   }
   
-  // Only process .md files to avoid hidden system files or incompatible formats
   const fileNames = fs.readdirSync(postsDirectory).filter(file => file.endsWith('.md'));
-  
+  return processFiles(postsDirectory, fileNames);
+}
+
+function processFiles(dir: string, fileNames: string[]) {
   const allPostsData = fileNames.map(fileName => {
     const id = fileName.replace(/\.md$/, '');
-    const fullPath = path.join(postsDirectory, fileName);
+    const fullPath = path.join(dir, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents);
     
@@ -39,7 +51,6 @@ export function getSortedPostsData() {
       ...(matterResult.data as { date: string; title: string, author: string, image: string, tags: string[] }),
     };
   }).filter(post => {
-    // Ensure only posts with a valid date string are included
     if (!post.date) return false;
     const dateObj = new Date(post.date);
     return !isNaN(dateObj.getTime());
@@ -54,14 +65,22 @@ export function getSortedPostsData() {
   });
 }
 
-export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
+/**
+ * Retrieves specific post data for a slug and language.
+ */
+export async function getPostData(id: string, lang: string = 'en') {
+  let fullPath = path.join(basePostsDirectory, lang, `${id}.md`);
   
+  // Fallback for root files
+  if (!fs.existsSync(fullPath)) {
+    fullPath = path.join(basePostsDirectory, `${id}.md`);
+  }
+
   if (!fs.existsSync(fullPath)) {
     return null;
   }
   
-  const sortedPosts = getSortedPostsData();
+  const sortedPosts = getSortedPostsData(lang);
   const postIndex = sortedPosts.findIndex(p => p.id === id);
   
   const fileContents = fs.readFileSync(fullPath, 'utf8');

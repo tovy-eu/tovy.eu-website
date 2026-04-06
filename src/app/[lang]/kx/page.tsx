@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { getSortedPostsData } from '@/lib/blog';
@@ -55,7 +54,7 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
 
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  const allPostsData = getSortedPostsData();
+  const allPostsData = getSortedPostsData(lang);
 
   const formatDate = (dateString: string) => {
     const d = new Date(dateString);
@@ -135,7 +134,7 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                         sizes={isFeatured ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
-                        priority={isFeatured} // LCP optimization for the featured post
+                        priority={isFeatured} 
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       

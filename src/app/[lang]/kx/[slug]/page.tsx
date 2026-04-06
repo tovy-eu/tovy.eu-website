@@ -1,4 +1,3 @@
-
 import { getPostData, getSortedPostsData } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { format, isValid } from 'date-fns';
@@ -21,11 +20,11 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const posts = getSortedPostsData();
   const langs = ['en', 'nl'];
-  
   const params = [];
+  
   for (const lang of langs) {
+    const posts = getSortedPostsData(lang);
     for (const post of posts) {
       params.push({ lang, slug: post.id });
     }
@@ -35,7 +34,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug } = await params;
-  const postData = await getPostData(slug);
+  const postData = await getPostData(slug, lang);
   const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
   
   if (!postData) {
@@ -80,7 +79,7 @@ export default async function KxResource({ params }: Props) {
 
   const { lang, slug } = await params;
   const dict = await getDictionary(lang);
-  const postData = await getPostData(slug);
+  const postData = await getPostData(slug, lang);
 
   if (!postData) {
     notFound();
@@ -105,14 +104,13 @@ export default async function KxResource({ params }: Props) {
       <WavyLines />
       
       <div className="container relative z-10 mx-auto max-w-4xl">
-        {/* Client-side analytics component to track the view */}
         <BlogPostAnalytics slug={slug} title={postData.title} />
 
         <div className="mb-8">
           <Button asChild variant="ghost" className="hover:bg-white/10 text-white/60 hover:text-white transition-colors">
             <Link href={`/${lang}/kx/`}>
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to 
+              {lang === 'en' ? 'Back to Hub' : 'Terug naar Hub'}
             </Link>
           </Button>
         </div>
@@ -125,7 +123,7 @@ export default async function KxResource({ params }: Props) {
                 alt={postData.title}
                 fill
                 className="object-cover"
-                priority // LCP optimization for the main article image
+                priority 
                 sizes="(max-width: 1200px) 100vw, 1200px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
@@ -169,16 +167,15 @@ export default async function KxResource({ params }: Props) {
               />
             </article>
 
-            {/* CTA Section */}
             <div className="mt-16 pt-16 border-t border-white/5 text-center">
               <div className="max-w-xl mx-auto">
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  {lang === 'en' ? 'Ready to scale your data ecosystem?' : 'Klaar om je data-ecosysteem op te schalen?'}
+                  {lang === 'en' ? 'Ready to scale your data ecosystem?' : 'Klaar om uw data-ecosysteem op te schalen?'}
                 </h3>
                 <p className="text-white/60 mb-10 text-lg leading-relaxed">
                   {lang === 'en' 
                     ? 'Let’s build a foundation that gives your team more time, focus, and freedom to grow.' 
-                    : 'Laten we een fundament bouwen dat je team meer tijd, focus en ruimte geeft om te groeien.'}
+                    : 'Laten we een fundament bouwen dat uw team meer tijd, focus en ruimte geeft om te groeien.'}
                 </p>
                 <div className="flex justify-center">
                   <Magnetic strength={0.25}>
@@ -199,7 +196,9 @@ export default async function KxResource({ params }: Props) {
           {postData.previousPost ? (
             <Link href={`/${lang}/kx/${postData.previousPost.id}/`} className="group">
               <Card className="h-full bg-card/20 backdrop-blur-md border border-white/5 hover:border-primary/50 transition-all p-6 group-hover:bg-card/40">
-                <p className="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">Previous</p>
+                <p className="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">
+                  {lang === 'en' ? 'Previous' : 'Vorige'}
+                </p>
                 <h4 className="text-white font-bold group-hover:text-primary transition-colors line-clamp-2">{postData.previousPost.title}</h4>
               </Card>
             </Link>
@@ -208,7 +207,9 @@ export default async function KxResource({ params }: Props) {
           {postData.nextPost ? (
             <Link href={`/${lang}/kx/${postData.nextPost.id}/`} className="group">
               <Card className="h-full bg-card/20 backdrop-blur-md border border-white/5 hover:border-primary/50 transition-all p-6 text-right group-hover:bg-card/40">
-                <p className="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">Next</p>
+                <p className="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">
+                  {lang === 'en' ? 'Next' : 'Volgende'}
+                </p>
                 <h4 className="text-white font-bold group-hover:text-primary transition-colors line-clamp-2">{postData.nextPost.title}</h4>
               </Card>
             </Link>
