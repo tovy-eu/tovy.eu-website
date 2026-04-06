@@ -46,11 +46,11 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
-          {/* Pain Section (The Old Way) - Greied out for less visual weight */}
+          {/* Pain Section (The Old Way) - De-emphasized but accessible */}
           <ScrollReveal delay="duration-700" className="flex">
-            <div className="relative w-full p-6 sm:p-8 rounded-3xl bg-card/40 border border-white/5 overflow-hidden group shadow-xl opacity-80">
+            <div className="relative w-full p-6 sm:p-8 rounded-3xl bg-card/60 border border-white/10 overflow-hidden group shadow-xl transition-all duration-500 hover:bg-card/70">
               <div 
-                className="absolute inset-0 opacity-[0.01] pointer-events-none" 
+                className="absolute inset-0 opacity-[0.02] pointer-events-none" 
                 style={{ 
                   backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
                 }}
@@ -58,20 +58,20 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
               
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-2.5 rounded-xl bg-white/5 text-muted-foreground ring-1 ring-white/10">
+                  <div className="p-2.5 rounded-xl bg-white/10 text-muted-foreground ring-1 ring-white/20">
                     <AlertCircle className="h-6 w-6" />
                   </div>
                   <div className="flex flex-col">
-                    <h3 className="text-lg font-bold text-white/70 leading-tight">{dict.painSolution.pain.title}</h3>
-                    <p className="text-[11px] text-muted-foreground/80 font-bold">{dict.painSolution.pain.subtitle}</p>
+                    <h3 className="text-lg font-bold text-white/80 leading-tight">{dict.painSolution.pain.title}</h3>
+                    <p className="text-[11px] text-muted-foreground font-bold tracking-wider uppercase">{dict.painSolution.pain.subtitle}</p>
                   </div>
                 </div>
 
                 <ul className="space-y-4">
                   {painItems.map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <XCircle className="h-5 w-5 text-muted-foreground/60 shrink-0 mt-0.5" />
-                      <span className="text-sm md:text-base text-muted-foreground/80 leading-relaxed font-medium">{item}</span>
+                      <XCircle className="h-5 w-5 text-muted-foreground/70 shrink-0 mt-0.5" />
+                      <span className="text-sm md:text-base text-muted-foreground font-medium leading-relaxed">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -79,7 +79,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
             </div>
           </ScrollReveal>
 
-          {/* Solution Section (The Tovy Way) - High visual weight */}
+          {/* Solution Section (The Tovy Way) - Primary focus */}
           <ScrollReveal delay="delay-200 duration-700" className="flex">
             <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
               <div 
