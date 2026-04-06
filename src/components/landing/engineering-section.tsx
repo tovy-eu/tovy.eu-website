@@ -117,21 +117,22 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                       {service.title}
                     </h3>
                   </div>
-                  
-                  <p className="text-sm md:text-base text-white leading-relaxed mb-6 flex-grow font-medium">
-                    {service.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-3 mt-auto">
+
+                  {/* Technical Stack - Moved to Top */}
+                  <div className="flex flex-wrap gap-3 mb-6">
                     {service.stack.map(item => (
                       <span 
                         key={item.tool} 
-                        className="text-[10px] md:text-[11px] font-bold tracking-widest text-muted-foreground/80 uppercase"
+                        className="text-[9px] md:text-[10px] font-bold tracking-[0.2em] text-primary/80 uppercase px-2 py-1 rounded bg-primary/5 border border-primary/10"
                       >
                         {item.tool}
                       </span>
                     ))}
                   </div>
+                  
+                  <p className="text-sm md:text-base text-white/80 leading-relaxed font-medium">
+                    {service.description}
+                  </p>
                 </div>
               </div>
             </ScrollReveal>
