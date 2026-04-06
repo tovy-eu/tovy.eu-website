@@ -4,15 +4,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { BookOpen, Lightbulb } from "lucide-react";
 import LanguageSwitcher from "./language-switcher";
 import { usePathname } from "next/navigation";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { CONFIG } from "@/lib/config";
 import { trackEvent } from "@/lib/analytics";
@@ -20,8 +13,10 @@ import { Magnetic } from "@/components/ui/magnetic";
 
 export default function Header({ lang = "en", dict }: { lang?: string; dict?: Dictionary }) {
   const pathname = usePathname();
-  const shareIdeaText = dict?.common.shareIdea || "Share your idea";
+  const shareIdeaText = dict?.common.shareIdea || "Start Project";
   const blogText = dict?.navigation.blog || "KX Hub";
+  const aboutText = dict?.navigation.about || "About";
+  const servicesText = dict?.navigation.services || "Services";
   
   const homePath = `/${lang}/`;
   const isAtHome = pathname === homePath;
@@ -55,11 +50,11 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
     });
   };
 
-  const handleBlogClick = () => {
+  const handleLinkClick = (label: string) => {
     trackEvent({
       name: 'read_blog_click',
-      event_category: 'engagement',
-      event_label: 'Header KX Hub Link'
+      event_category: 'navigation',
+      event_label: `Header ${label} Link`
     });
   };
 
@@ -74,37 +69,44 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
         <Link 
           href={homePath} 
           onClick={handleLogoClick}
-          className="font-bold text-2xl sm:text-3xl tracking-tight transition-transform hover:scale-105 active:scale-95"
+          className="font-bold text-2xl sm:text-3xl tracking-tight transition-transform hover:scale-105 active:scale-95 shrink-0"
         >
           <span>TOV</span>
           <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
         </Link>
         
-        <div className="flex items-center gap-1 sm:gap-3">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
+          <Link 
+            href={`${homePath}#about`} 
+            className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest"
+            onClick={() => handleLinkClick("About")}
+          >
+            {aboutText}
+          </Link>
+          <Link 
+            href={`${homePath}#services`} 
+            className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest"
+            onClick={() => handleLinkClick("Services")}
+          >
+            {servicesText}
+          </Link>
           {CONFIG.enableBlog && (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" asChild className="h-11 w-11 rounded-full hover:bg-white/10" onClick={handleBlogClick}>
-                    <Link href={`/${lang}/kx/`}>
-                      <BookOpen className="h-5 w-5" />
-                      <span className="sr-only">{blogText}</span>
-                    </Link>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{blogText}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            <Link 
+              href={`/${lang}/kx/`} 
+              className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest"
+              onClick={() => handleLinkClick("KX Hub")}
+            >
+              {blogText}
+            </Link>
           )}
+        </nav>
 
+        <div className="flex items-center gap-2 sm:gap-4">
           <Magnetic strength={0.2}>
-            <Button asChild size="sm" className="h-11 px-3 sm:px-5" onClick={handleCtaClick}>
+            <Button asChild size="sm" className="h-10 px-4 md:px-6" onClick={handleCtaClick}>
               <Link href={`/${lang}/project-request/`}>
-                <Lightbulb className="h-5 w-5 sm:hidden" />
-                <span className="sr-only">{shareIdeaText}</span>
-                <span className="hidden sm:inline font-semibold">{shareIdeaText}</span>
+                <span className="font-bold uppercase tracking-wider text-[10px] md:text-xs">{shareIdeaText}</span>
               </Link>
             </Button>
           </Magnetic>

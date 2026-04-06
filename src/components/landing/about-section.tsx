@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useRef } from "react";
@@ -65,7 +66,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
   };
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-background to-accent/5 py-24 sm:py-32 overflow-hidden">
+    <section id="about" className="relative w-full bg-gradient-to-b from-background to-accent/5 py-24 sm:py-32 overflow-hidden scroll-mt-20 md:scroll-mt-24">
       {/* Parallax Grid Background */}
       <div 
         ref={gridRef}
@@ -90,7 +91,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
             >
               <div className="relative h-full w-full p-[1px] overflow-hidden rounded-xl group transition-all duration-500">
                 <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow:15s_linear_infinite]" 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
                 />
                 
                 <div className="relative aspect-square w-full bg-card/90 backdrop-blur-xl rounded-[calc(0.75rem-1px)] p-3 flex flex-col items-center justify-center text-center transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
@@ -109,7 +110,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                   </div>
 
                   <div className="space-y-1 relative z-10">
-                    <h3 className="text-[10px] md:text-[11px] font-bold text-white/90 leading-tight">
+                    <h3 className="text-[10px] md:text-[11px] font-bold text-white/90 leading-tight uppercase tracking-wider">
                       {pillar.title}
                     </h3>
                     <p className="text-[8px] md:text-[9px] text-muted-foreground leading-relaxed font-medium max-w-[100px] mx-auto">
