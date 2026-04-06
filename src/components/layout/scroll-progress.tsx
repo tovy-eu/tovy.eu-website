@@ -5,21 +5,21 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
 /**
- * A reading progress indicator specifically for KX resources.
- * Positioned at the bottom of the header to help users gauge their progress.
- * It detects KX resource pages by checking the URL structure.
+ * A reading progress indicator for the landing page and KX resources.
+ * Positioned at the bottom of the header to help users gauge their exploration progress.
  */
 export function ScrollProgress() {
   const [progress, setProgress] = useState(0);
   const pathname = usePathname();
   
-  // Detect if we are on a KX resource page (e.g., /en/kx/some-slug)
-  // Segments: ['en', 'kx', 'slug'] -> length 3
-  const isKxPage = pathname ? pathname.split('/').filter(Boolean).length >= 3 && pathname.includes('/kx/') : false;
+  // Detect if we are on a page where progress tracking is desired
+  // This includes the landing page (length 1) and KX hub resources (length >= 3)
+  const isKxPage = pathname ? pathname.includes('/kx/') : false;
+  const isLandingPage = pathname ? pathname.split('/').filter(Boolean).length === 1 : false;
+  const showProgress = isKxPage || isLandingPage;
 
   useEffect(() => {
-    // Only track scroll progress if we are on a KX page
-    if (!isKxPage) return;
+    if (!showProgress) return;
 
     const updateScrollProgress = () => {
       const scrollHeight = document.documentElement.scrollHeight;
@@ -36,9 +36,9 @@ export function ScrollProgress() {
     updateScrollProgress(); // Initial check on mount/path change
 
     return () => window.removeEventListener('scroll', updateScrollProgress);
-  }, [isKxPage, pathname]);
+  }, [showProgress, pathname]);
 
-  if (!isKxPage) return null;
+  if (!showProgress) return null;
 
   return (
     <div className="fixed top-20 md:top-24 left-0 w-full h-[3px] z-[60] pointer-events-none">
@@ -49,7 +49,7 @@ export function ScrollProgress() {
         aria-valuenow={progress}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label="KX reading progress"
+        aria-label="Reading progress"
       />
     </div>
   );
