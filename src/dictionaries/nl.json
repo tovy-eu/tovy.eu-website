@@ -15,17 +15,17 @@
   },
   "hero": {
     "title": "Het Data & AI fundament voor de groei van jouw bedrijf",
-    "subtitle": "Tovy bouwt data-systemen voor automatisering en zetten silo's om in een basis voor schaalbaarheid."
+    "subtitle": "Tovy bouwt data-systemen voor automatisering en zet silo's om in een basis voor schaalbaarheid."
   },
   "painSolution": {
-    "title": "Silos vs. Gecentraliseerd",
+    "title": "Silo's vs. Gecentraliseerd",
     "subtitle": "Data moet versimpelen, niet compliceren.",
     "pain": {
       "title": "De Oude Methode",
-      "subtitle": "Silos",
+      "subtitle": "Silo's",
       "items": [
         "Handmatige invoer & menselijke fouten",
-        "Systemen die niet met elkaar praten",
+        "Systemen zonder integratie",
         "Constant reactief onderhoud",
         "Groei beperkt door data-knelpunten"
       ]
@@ -35,16 +35,16 @@
       "subtitle": "Gecentraliseerd",
       "items": [
         "100% automatisch ingevoerde data",
-        "Geïntegreerde data",
-        "Betrouwbaar en onderhoudsvrij",
-        "Schaalbare basis"
+        "Geïntegreerde data-architectuur",
+        "Betrouwbare en onderhoudsvrije infrastructuur",
+        "Schaalbare basis voor groei"
       ]
     }
   },
   "about": {
     "strategy": "TOVY'S STRATEGIE",
     "title": "Wat en waarom.",
-    "mission": "Onze missie is het bouwen van slimme data-ecosystemen die werk uit handen nemen. Tovy streeft naar een wereld waarin technologie mensen meer tijd, focus en ruimte geeft om te groeien.",
+    "mission": "De missie van Tovy is het bouwen van slimme data-ecosystemen die werk uit handen nemen. Tovy streeft naar een wereld waarin technologie mensen meer tijd, focus en ruimte geeft om te groeien.",
     "pillarsTitle": "KERNWAARDEN",
     "pillars": {
       "tech": {
@@ -53,15 +53,15 @@
       },
       "optimization": {
         "title": "Optimalisatie",
-        "desc": "Mikken op efficiënte processen."
+        "desc": "Gericht op efficiënte processen."
       },
       "freedom": {
         "title": "Vrijheid",
-        "desc": "Streven naar minder mentale druk."
+        "desc": "Streven naar minder cognitieve druk."
       },
       "innovation": {
         "title": "Innovatie",
-        "desc": "Hebben het oog op de toekomst."
+        "desc": "Ontwikkelen van toekomstbestendige systemen."
       }
     }
   },
@@ -72,33 +72,33 @@
     "services": {
       "strategic": {
         "title": "Strategisch ontwerp",
-        "desc": "Tovy denkt mee over technologie-, data- en AI‑strategieën die aansluiten op jouw organisatiedoelen.",
+        "desc": "Tovy ontwikkelt technologie-, data- en AI‑strategieën die aansluiten op de organisatiedoelen.",
         "tools": ["Roadmapping", "Architectuur", "Haalbaarheid"]
       },
       "cloud": {
         "title": "Infrastructuur",
-        "desc": "Tovy ontwerpt veilige en efficiënte oplossingen voor dataworkloads, zowel on-premise als in de cloud.",
+        "desc": "Tovy ontwerpt veilige en efficiënte cloud-oplossingen voor dataworkloads.",
         "tools": ["Azure", "GCP", "AWS", "On-premise"]
       },
       "data": {
         "title": "Data Engineering",
-        "desc": "Tovy bouwt ETLs en datawarehousing met een moderne data stack.",
-        "tools": ["dbt", "TSQL", "Python"]
+        "desc": "Tovy bouwt schaalbare pipelines en datawarehousing met een moderne data stack.",
+        "tools": ["dbt", "SQL", "Python"]
       },
       "analytics": {
         "title": "Analyse & Automatisering",
-        "desc": "Tovy maakt data-analyses, operationele dashboards, en automatiseringen om data echt tot zijn recht te brengen.",
+        "desc": "Tovy ontwikkelt data-analyses, operationele dashboards en automatiseringen om data optimaal in te zetten.",
         "tools": ["Python", "SQL", "Power BI", "TypeScript"]
       }
     }
   },
   "testimonials": {
     "title": "Vertrouwd door innovatieve teams",
-    "subtitle": "Ontdek hoe wij bedrijven helpen schalen met automatisering."
+    "subtitle": "Ontdek hoe Tovy bedrijven helpt te schalen met automatisering."
   },
   "blog": {
     "title": "KX Hub",
-    "subtitle": "Technische bronnen, inzichten, en documentatie door Tovy. Hier worden zaken gedeeld die relevant zijn voor jouw bedrijf",
+    "subtitle": "Technische bronnen, inzichten en documentatie verstrekt door Tovy.",
     "noPosts": "Geen bronnen gevonden in de KX hub. Kom later terug!",
     "readingTime": "min leestijd",
     "previous": "Vorige",
@@ -114,46 +114,46 @@
   },
   "privacy": {
     "title": "Privacyverklaring",
-    "intro": "Jouw privacy is belangrijk voor ons. Het is het beleid van Tovy om jouw privacy te respecteren bij het verzamelen van gegevens via onze website. Dit beleid voldoet aan de Algemene Verordening Gegevensbescherming (AVG).",
+    "intro": "Privacy is belangrijk voor Tovy. Het is het beleid van Tovy om de privacy van gebruikers te respecteren bij het verzamelen van gegevens via de website. Dit beleid voldoet aan de Algemene Verordening Gegevensbescherming (AVG).",
     "sections": [
       {
-        "title": "Verwerkingsverantwoordelijke",
-        "content": "Tovy is de data controller for the personal information collected through this website. For any questions, you can contact us at"
+        "title": "1. Verwerkingsverantwoordelijke",
+        "content": "Tovy treedt op als de verwerkingsverantwoordelijke voor de persoonsgegevens die via deze website worden verzameld. Voor vragen kan contact worden opgenomen met Tovy via"
       },
       {
-        "title": "Welke informatie Tovy verzamelt en hoe Tovy deze gebruikt",
-        "content": "Tovy only asks for personal information when Tovy truly needs it to provide a service to you. Tovy collects it by fair and lawful means, with your knowledge and explicit consent. The legal bases for our processing are primarily consent, contractual necessity, and legitimate interest.",
+        "title": "2. Gegevensverzameling en Gebruik",
+        "content": "Tovy vraagt alleen om persoonsgegevens wanneer dit noodzakelijk is om een dienst te verlenen. De organisatie verzamelt gegevens op een eerlijke en wettelijke manier, met medeweten en expliciete toestemming van de gebruiker. De rechtsgronden voor verwerking zijn primair toestemming, contractuele noodzaak en gerechtvaardigd belang.",
         "list": [
-          "<strong>Projectaanvraagformulier:</strong> Tovy verzamelt je naam, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore and gebruikt om je aanvraag te beoordelen en beantwoorden. De grondslag is de intentie om een overeenkomst aan te gaan.",
-          "<strong>Serverlogs:</strong> Onze webserver, gehost door Firebase Hosting, registreert automatisch verzoeken zoals IP-adres, browsertype en bezochte pagina’s. Deze gegevens worden gebruikt voor beveiligingsdoeleinden en diagnostiek. De grondslag is ons gerechtvaardigd belang om een veilige en functionele website te onderhouden.",
-          "<strong>Cookies:</strong> Tovy gebruikt noodzakelijke cookies om jouw voorkeuren voor toestemmingen te beheren. We gebruiken geen niet‑essentiële of trackingcookies (zoals Google Analytics) zonder jouw voorafgaande uitdrukkelijke toestemming via onze cookie banner."
+          "<strong>Projectaanvraagformulier:</strong> Tovy verzamelt namen, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore en gebruikt om aanvragen te beoordelen en te beantwoorden. De grondslag is de intentie om een overeenkomst aan te gaan.",
+          "<strong>Serverlogs:</strong> De webserver, gehost door Firebase Hosting, registreert automatisch verzoeken zoals IP-adressen, browsertypes en bezochte pagina’s. Deze gegevens worden gebruikt voor beveiligingsdoeleinden en diagnostiek. De grondslag is het gerechtvaardigd belang van Tovy om een veilige en functionele website te onderhouden.",
+          "<strong>Cookies:</strong> Tovy gebruikt noodzakelijke cookies om voorkeuren voor toestemmingen te beheren. De organisatie gebruikt geen niet‑essentiële of trackingcookies (zoals Google Analytics) zonder expliciete voorafgaande toestemming via de cookiebanner."
         ]
       },
       {
-        "title": "Gegevenslocatie en doorgifte",
-        "content": "Onze primaire database (Cloud Firestore) is geconfigureerd binnen de Europese Unie (regio ‘eur3’). Hoewel we EU‑diensten prefereren, kunnen sommige onderaannemers (zoals Google) gegevens internationaal doorgeven. Deze doorgiftes gebeuren uitsluitend via wettelijk toegestane mechanismen, zoals Standard Contractual Clauses."
+        "title": "3. Gegevenslocatie en Doorgifte",
+        "content": "Om gegevens te beschermen, heeft Tovy de primaire database (Cloud Firestore) geconfigureerd binnen de Europese Unie (regio ‘eur3’). Hoewel de organisatie de voorkeur geeft aan EU‑diensten, kunnen sommige onderaannemers (zoals Google) gegevens internationaal doorgeven. Deze doorgiftes gebeuren uitsluitend via wettelijk toegestane mechanismen, zoals Standard Contractual Clauses."
       },
       {
-        "title": "Bewaartermijnen en beveiliging",
-        "content": "We bewaren persoonsgegevens alleen zolang dit nodig is voor onze diensten of wettelijk verplicht is. We beschermen opgeslagen gegevens met commercieel gangbare beveiligingsmaatregelen."
+        "title": "4. Bewaartermijnen en Beveiliging",
+        "content": "Tovy bewaart persoonsgegevens alleen zolang dit nodig is voor de dienstverlening of wettelijk verplicht is. De organisatie beschermt opgeslagen gegevens met commercieel gangbare beveiligingsmaatregelen om verlies, diefstal en onbevoegde toegang te voorkomen."
       },
       {
-        "title": "Jouw rechten onder de AVG",
-        "content": "Je hebt als gebruiker de volgende rechten met betrekking tot jouw persoonsgegevens:",
+        "title": "5. Rechten onder de AVG",
+        "content": "Onder de AVG hebben gebruikers de volgende rechten met betrekking tot hun persoonsgegevens:",
         "list": [
-          "<strong>Recht op informatie:</strong> Je mag weten hoe wij jouw gegevens verzamelen en gebruiken.",
-          "<strong>Recht op inzage:</strong> Je kunt een kopie opvragen van de gegevens die wij over je hebben.",
-          "<strong>Recht op rectificatie:</strong> Je kunt onjuiste gegevens laten corrigeren.",
-          "<strong>Recht op verwijdering (‘recht om vergeten te worden’):</strong> Je mag vragen dat wij jouw gegevens verwijderen.",
-          "<strong>Recht op beperking:</strong> Je kunt vragen om de verwerking tijdelijk te beperken.",
-          "<strong>Recht op overdraagbaarheid:</strong> Je mag je gegevens in een machine‑leesbaar formaat ontvangen.",
-          "<strong>Recht van bezwaar:</strong> Je kunt bezwaar maken tegen de verwerking van jouw gegevens."
+          "<strong>Recht op informatie:</strong> Het recht om te weten hoe gegevens worden verzameld en gebruikt.",
+          "<strong>Recht op inzage:</strong> Het recht om een kopie op te vragen van de informatie die Tovy over de gebruiker heeft.",
+          "<strong>Recht op rectificatie:</strong> Het recht om onjuiste gegevens te laten corrigeren.",
+          "<strong>Recht op verwijdering (‘recht om vergeten te worden’):</strong> Het recht om te verzoeken dat Tovy de gegevens verwijdert.",
+          "<strong>Recht op beperking:</strong> Het recht om te vragen de verwerking tijdelijk te beperken.",
+          "<strong>Recht op overdraagbaarheid:</strong> Het recht om gegevens in een machine‑leesbaar formaat te ontvangen.",
+          "<strong>Recht van bezwaar:</strong> Het recht om bezwaar te maken tegen de verwerking van persoonsgegevens."
         ],
-        "footer": "Om deze rechten uit te oefenen kun je contact met ons opnemen via ons privacy‑emailadres hieronder."
+        "footer": "Om deze rechten uit te oefenen, kan contact worden opgenomen met het privacy‑emailadres hieronder."
       },
       {
-        "title": "Contact",
-        "content": "Voor vragen over je privacy of het uitoefenen van je AVG‑rechten kun je contact opnemen met onze Functionaris Gegevensbescherming via:"
+        "title": "6. Contact",
+        "content": "Voor vragen over privacy of het uitoefenen van AVG‑rechten kan contact met Tovy worden opgenomen via de Functionaris Gegevensbescherming:"
       }
     ],
     "effectiveDate": "Dit beleid is van kracht sinds 30 juli 2024."
@@ -173,70 +173,70 @@
     "kvkNumber": "KvK‑nummer",
     "vatNumber": "Btw‑nummer",
     "disclaimer": "Disclaimer",
-    "disclaimerSubtitle": "Onze verantwoordelijkheid voor inhoud op deze website.",
-    "disclaimerContent": "De inhoud van onze pagina’s is met grote zorg samengesteld. Toch kunnen we de juistheid, volledigheid en actualiteit ervan niet garanderen. Volgens wettelijke bepalingen zijn wij verantwoordelijk voor onze eigen inhoud. We zijn echter niet verplicht om door derden aangeleverde of opgeslagen informatie actief te controleren of onderzoek te doen naar aanwijzingen voor illegale activiteiten.",
+    "disclaimerSubtitle": "Verantwoordelijkheid voor de inhoud op deze website.",
+    "disclaimerContent": "De inhoud van deze pagina’s is met grote zorg samengesteld. Tovy kan echter de juistheid, volledigheid en actualiteit ervan niet garanderen. Volgens wettelijke bepalingen is Tovy verantwoordelijk voor de eigen inhoud op deze webpagina's. Tovy is niet verplicht om door derden aangeleverde of opgeslagen informatie actief te controleren of onderzoek te doen naar aanwijzingen voor illegale activiteiten.",
     "nederland": "Nederland"
   },
   "projectForm": {
     "title": "Start jouw project",
-    "subtitle": "Deel je projectdetails met Tovy zodat we snelle, betrouwbare en heldere systemen voor je kunnen bouwen.",
+    "subtitle": "Deel projectdetails met Tovy voor de bouw van snelle, betrouwbare en heldere systemen.",
     "success": {
       "title": "Bedankt!",
-      "description": "Je projectaanvraag is verzonden. We nemen snel contact met je op of plan direct hieronder een afspraak in. Vrijdagen hebben de voorkeur.",
+      "description": "De projectaanvraag is verzonden. Tovy neemt spoedig contact op; daarnaast kan direct hieronder een afspraak worden ingepland. Vrijdagen hebben de voorkeur.",
       "idLabel": "Project ID",
       "backHome": "Terug naar home",
       "bookMeeting": "Plan een kennismaking",
-      "bookMeetingDesc": "Wil je niet wachten? Plan direct een korte introductie van 15 minuten in."
+      "bookMeetingDesc": "Plan direct een korte introductie van 15 minuten in om wachttijd te voorkomen."
     },
     "steps": {
       "maturity": {
-        "label": "Hoe volwassen is jullie datavolwassenheid?",
-        "description": "Dit helpt ons jullie huidige situatie te begrijpen.",
+        "label": "Wat is het huidige niveau van datavolwassenheid?",
+        "description": "Dit helpt Tovy om de huidige situatie van de organisatie te begrijpen.",
         "low": "Net begonnen",
-        "mid": "We onderhouden data",
+        "mid": "Onderhoud van data",
         "high": "Eigen oplossingen gebouwd"
       },
       "companySize": {
-        "label": "Wat is de grootte van jullie organisatie?",
-        "description": "Dit helpt ons de schaal van jullie organisatie in te schatten.",
+        "label": "Wat is de grootte van de organisatie?",
+        "description": "Dit helpt Tovy de schaal van de organisatie in te schatten.",
         "options": ["Solo", "1–10 medewerkers", "11–50 medewerkers", "51–200 medewerkers", "201+ medewerkers"]
       },
       "engineeringTeam": {
-        "label": "Is er een eigen engineeringteam?",
-        "description": "Helpt ons te bepalen hoe we samenwerken met jullie ontwikkelaars.",
+        "label": "Is er een eigen engineeringteam aanwezig?",
+        "description": "Dit bepaalt hoe Tovy samenwerkt met de interne ontwikkelaars.",
         "options": {
           "yes": "Ja",
           "no": "Nee"
         }
       },
       "details": {
-        "label": "Vertel ons over jullie automatiseringsuitdaging of project",
-        "focusLabel": "In één zin: wat wil je bouwen of verbeteren?",
+        "label": "Beschrijf de automatiseringsuitdaging of het project",
+        "focusLabel": "Wat is het beoogde doel of de verbetering?",
         "focusPlaceholder": "Bijvoorbeeld: Een AI‑assistent die klantvragen afhandelt...",
         "challengesLabel": "Wat zijn de belangrijkste uitdagingen op dit moment?",
-        "challengesPlaceholder": "Bijvoorbeeld: Ons supportteam is overbelast en reactietijden zijn hoog.",
-        "visionLabel": "Hoe ziet jullie ideale oplossing eruit?",
-        "visionPlaceholder": "Bijvoorbeeld: We willen een AI die veelgestelde vragen kan beantwoorden en weet wanneer het moet doorschakelen."
+        "challengesPlaceholder": "Bijvoorbeeld: Het supportteam is overbelast en reactietijden zijn hoog.",
+        "visionLabel": "Hoe ziet de ideale oplossing eruit?",
+        "visionPlaceholder": "Bijvoorbeeld: Een AI die veelgestelde vragen beantwoordt en weet wanneer door te schakelen."
       },
       "budget": {
-        "label": "Hoe ziet jullie budget eruit?",
-        "description": "Onze projecten starten doorgaans vanaf €2.500, voor MVP’s of eerste versies.",
+        "label": "Hoe ziet het budget eruit?",
+        "description": "Tovy-projecten starten doorgaans vanaf €2.500, voor MVP’s of eerste versies.",
         "options": {
           "yes": "Ja, dat past",
           "no": "Nee, nog niet"
         }
       },
       "timeline": {
-        "label": "Wanneer willen jullie beginnen?",
-        "description": "We kunnen binnen 10 werkdagen een werkende versie opleveren.",
+        "label": "Wanneer is de beoogde startdatum?",
+        "description": "Tovy kan binnen 10 werkdagen een werkende versie opleveren.",
         "options": {
           "yes": "Zo snel mogelijk",
-          "no": "Nog niet, we zijn ons aan het voorbereiden"
+          "no": "Nog niet, in voorbereiding"
         }
       },
       "contact": {
-        "label": "Hoe kunnen we jullie bereiken?",
-        "description": "Vul hier jullie contact- en bedrijfsgegevens in.",
+        "label": "Hoe kan Tovy contact opnemen?",
+        "description": "Vul hier de contact- en bedrijfsgegevens in.",
         "firstName": "Voornaam *",
         "lastName": "Achternaam *",
         "phone": "Telefoonnummer",
@@ -256,7 +256,7 @@
     "badge": "Fout 404",
     "titlePart1": "Verdwaald in de",
     "titlePart2": "Data Silo's?",
-    "description": "De pagina die je zoekt is verplaatst, verwijderd of heeft nooit bestaan. Laten we je terugbrengen naar de basis.",
+    "description": "De gezochte pagina is verplaatst, verwijderd of heeft nooit bestaan. Tovy kan de weg terug naar de basis wijzen.",
     "returnHome": "Terug naar Home",
     "startProject": "Project Starten"
   }
