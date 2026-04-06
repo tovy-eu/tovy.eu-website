@@ -1,21 +1,45 @@
-
 import { z } from "zod";
 import { isValidPhoneNumber } from "react-phone-number-input";
 
+/**
+ * List of common public email providers to exclude for professional email validation.
+ */
+const publicEmailDomains = [
+  "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com", "aol.com", "zoho.com", "mail.com", "protonmail.com", "gmx.com"
+];
+
 export const projectRequestSchema = z.object({
-  maturity: z.string({ required_error: "Please select a project maturity stage." }),
+  // Step 1: Lead Identity
+  workEmail: z.string().email("Please enter a valid email address.").refine(email => {
+    const domain = email.split('@')[1]?.toLowerCase();
+    return !publicEmailDomains.includes(domain);
+  }, { message: "Please use a professional business email address." }),
+  
+  // Step 2: Sizing
   companySize: z.string({ required_error: "Please select your company size." }),
-  engineeringTeam: z.string({ required_error: "Please select your engineering team size." }),
-  projectFocus: z.string().min(1, "Please provide the main focus of your project."),
-  challenges: z.string().min(1, "Please describe your main challenges."),
-  vision: z.string().min(1, "Please describe your vision for the project."),
-  budgetReadiness: z.string({ required_error: "Please select your budget readiness." }),
-  timelineReadiness: z.string({ required_error: "Please select your timeline readiness." }),
+  
+  // Step 3: Scope
+  objectives: z.array(z.string()).min(1, "Please select at least one objective."),
+  objectivesOther: z.string().optional(),
+  
+  // Step 4: Technical Context
+  infrastructure: z.array(z.string()).min(1, "Please select at least one infrastructure type."),
+  
+  // Step 5: Pain Points
+  bottlenecks: z.array(z.string()).min(1, "Please select at least one bottleneck."),
+  bottlenecksOther: z.string().optional(),
+  
+  // Step 6: Urgency
+  timeline: z.string({ required_error: "Please select a timeline." }),
+  
+  // Step 7: Economic Qualification
+  budget: z.string({ required_error: "Please select a budget range." }),
+  
+  // Contact details for follow-up
   firstName: z.string().min(1, "Please enter your first name."),
   lastName: z.string().min(1, "Please enter your last name."),
-  phone: z.string().refine(value => !value || isValidPhoneNumber(value), { message: "Please enter a valid phone number." }).optional(),
-  email: z.string().email("Please enter a valid email address."),
   company: z.string().min(1, "Please enter your company name."),
+  phone: z.string().refine(value => !value || isValidPhoneNumber(value), { message: "Please enter a valid phone number." }).optional(),
   consent: z.literal(true, {
     errorMap: () => ({ message: "You must agree to the privacy policy." }),
   }),
