@@ -65,18 +65,18 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
         "bg-gradient-to-b from-background via-background/90 to-background/60"
       )}
     >
-      <div className="container mx-auto flex h-20 md:h-24 w-full items-center justify-between px-4 sm:px-6 md:px-8 max-w-6xl pt-[env(safe-area-inset-top,0.5rem)] md:pt-0">
+      <div className="container mx-auto relative flex h-20 md:h-24 w-full items-center justify-between px-4 sm:px-6 md:px-8 max-w-6xl pt-[env(safe-area-inset-top,0.5rem)] md:pt-0">
         <Link 
           href={homePath} 
           onClick={handleLogoClick}
-          className="font-bold text-2xl sm:text-3xl tracking-tight transition-transform hover:scale-105 active:scale-95 shrink-0 py-2"
+          className="font-bold text-2xl sm:text-3xl tracking-tight transition-transform hover:scale-105 active:scale-95 shrink-0 py-2 relative z-10"
         >
           <span>TOV</span>
           <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
         </Link>
         
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
+        {/* Desktop Navigation - Mathematically Centered */}
+        <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-1 z-0">
           <Link 
             href={`${homePath}#about`} 
             className="text-sm font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest px-4 py-3 min-h-[44px] flex items-center"
@@ -102,7 +102,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
           )}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-4 relative z-10">
           <Magnetic strength={0.2}>
             <Button asChild size="sm" className="h-10 md:h-11 px-4 md:px-6" onClick={handleCtaClick}>
               <Link href={`/${lang}/project-request/`}>

@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
 
   return {
-    title: `${dict.blog.title} | Tovy Hub`,
+    title: `${dict.blog.title} | Knowledge Exchange`,
     description: dict.blog.subtitle,
     alternates: {
       canonical: `/${lang}/kx/`,
