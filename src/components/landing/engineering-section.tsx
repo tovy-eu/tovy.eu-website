@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useRef } from "react";
@@ -76,7 +77,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
   };
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-background to-accent/5 py-24 sm:py-32 overflow-hidden">
+    <section id="services" className="relative w-full bg-gradient-to-b from-background to-accent/5 py-24 sm:py-32 overflow-hidden scroll-mt-20 md:scroll-mt-24">
       {/* Parallax Grid Background - Optimized with Ref */}
       <div 
         ref={gridRef}
@@ -112,7 +113,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                     >
                       {React.cloneElement(service.icon as React.ReactElement, { className: "h-5 w-5" })}
                     </div>
-                    <h3 className="text-sm md:text-base font-bold text-white/90">
+                    <h3 className="text-sm md:text-base font-bold text-white/90 uppercase tracking-widest">
                       {service.title}
                     </h3>
                   </div>
@@ -125,7 +126,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                     {service.stack.map(item => (
                       <span 
                         key={item.tool} 
-                        className="text-[10px] md:text-[11px] font-bold tracking-wider text-muted-foreground/80"
+                        className="text-[10px] md:text-[11px] font-bold tracking-widest text-muted-foreground/80 uppercase"
                       >
                         {item.tool}
                       </span>
