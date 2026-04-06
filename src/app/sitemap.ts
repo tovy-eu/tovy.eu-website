@@ -1,4 +1,3 @@
-
 import { getSortedPostsData } from '@/lib/blog'
 import { MetadataRoute } from 'next'
 import { CONFIG } from '@/lib/config';
@@ -8,7 +7,6 @@ export const dynamic = 'force-static';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://tovy.eu'; 
   const languages = ['en', 'nl'];
-  const posts = getSortedPostsData();
 
   const routes = [
     '',
@@ -23,7 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
-  // Add localized routes for all main pages
   languages.forEach((lang) => {
     routes.forEach((route) => {
       sitemapEntries.push({
@@ -34,8 +31,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     });
 
-    // Add localized routes for all resources if KX is enabled
     if (CONFIG.enableBlog) {
+      const posts = getSortedPostsData(lang);
       posts.forEach((post) => {
         sitemapEntries.push({
           url: `${baseUrl}/${lang}/kx/${post.id}/`,
