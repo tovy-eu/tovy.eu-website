@@ -1,7 +1,7 @@
 
 {
   "common": {
-    "workWithUs": "Start Project",
+    "workWithUs": "Start project",
     "readBlog": "Verken KX Hub",
     "shareIdea": "Deel je idee",
     "privacyPolicy": "Privacyverklaring",
@@ -15,14 +15,14 @@
   },
   "hero": {
     "title": "Het Data & AI fundament voor de groei van jouw bedrijf",
-    "subtitle": "Wij bouwen de modulaire data-systemen voor automatisering en zetten gefragmenteerde silo's om in een uniforme basis voor duurzame schaalbaarheid."
+    "subtitle": "Tovy bouwt data-systemen voor automatisering en zetten silo's om in een basis voor schaalbaarheid."
   },
   "painSolution": {
     "title": "Silos vs. Gecentraliseerd",
-    "subtitle": "Data moet vereenvoudigen, niet compliceren.",
+    "subtitle": "Data moet versimpelen, niet compliceren.",
     "pain": {
       "title": "De Oude Methode",
-      "subtitle": "Handmatig & Gefragmenteerd",
+      "subtitle": "Silos",
       "items": [
         "Handmatige invoer & menselijke fouten",
         "Systemen die niet met elkaar praten",
@@ -31,74 +31,74 @@
       ]
     },
     "solution": {
-      "title": "De Tovy Aanpak",
-      "subtitle": "Unified & Automated",
+      "title": "De Tovy aanpak",
+      "subtitle": "Gecentraliseerd",
       "items": [
-        "100% Geautomatiseerde data-invoer",
-        "Unified Data Fabric integratie",
-        "Betrouwbaar & Onderhoudsvrij",
-        "Schaalbare groei-fundering"
+        "100% automatisch ingevoerde data",
+        "Geïntegreerde data",
+        "Betrouwbaar en onderhoudsvrij",
+        "Schaalbare basis"
       ]
     }
   },
   "about": {
     "strategy": "TOVY'S STRATEGIE",
-    "title": "Wat we doen en waarom.",
-    "mission": "Onze missie is het bouwen van slimme data-ecosystemen die werk uit handen nemen. We streven naar een wereld waarin technologie mensen meer tijd, focus en ruimte geeft om te groeien.",
-    "pillarsTitle": "ONZE KERNWAARDEN",
+    "title": "Wat en waarom.",
+    "mission": "Onze missie is het bouwen van slimme data-ecosystemen die werk uit handen nemen. Tovy streeft naar een wereld waarin technologie mensen meer tijd, focus en ruimte geeft om te groeien.",
+    "pillarsTitle": "KERNWAARDEN",
     "pillars": {
       "tech": {
-        "title": "Techneut",
-        "desc": "Nieuwste in AI & Data."
+        "title": "Technologie",
+        "desc": "Up-to-date met AI & data trends."
       },
       "optimization": {
         "title": "Optimalisatie",
-        "desc": "Efficiënte processen."
+        "desc": "Mikken op efficiënte processen."
       },
       "freedom": {
         "title": "Vrijheid",
-        "desc": "Minder mentale druk."
+        "desc": "Streven naar minder mentale druk."
       },
       "innovation": {
         "title": "Innovatie",
-        "desc": "Toekomstbestendig."
+        "desc": "Hebben het oog op de toekomst."
       }
     }
   },
   "engineering": {
-    "strategy": "ONZE WERKWIJZE",
+    "strategy": "DE TOVY WERKWIJZE",
     "title": "End‑to‑end data‑ecosystemen",
     "subtitle": "Van ruwe data in de cloud tot op maat gemaakte toepassingen voor businessprocessen.",
     "services": {
       "strategic": {
         "title": "Strategisch ontwerp",
-        "desc": "We denken mee over technologie-, data- en AI‑strategieën die aansluiten op jouw organisatiedoelen.",
+        "desc": "Tovy denkt mee over technologie-, data- en AI‑strategieën die aansluiten op jouw organisatiedoelen.",
         "tools": ["Roadmapping", "Architectuur", "Haalbaarheid"]
       },
       "cloud": {
-        "title": "Cloudinfrastructuur",
-        "desc": "We ontwerpen veilige en kostenefficiënte cloudomgevingen voor dataworkloads.",
-        "tools": ["GCP, AWS", "Datawarehousing"]
+        "title": "Infrastructuur",
+        "desc": "Tovy ontwerpt veilige en efficiënte oplossingen voor dataworkloads, zowel on-premise als in de cloud.",
+        "tools": ["Azure", "GCP", "AWS", "On-premise"]
       },
       "data": {
         "title": "Data Engineering",
-        "desc": "We bouwen schaalbare ETLs en datawarehousing volgens de Modern Data Stack.",
-        "tools": ["dbt", "SQL", "Python"]
+        "desc": "Tovy bouwt ETLs en datawarehousing met een moderne data stack.",
+        "tools": ["dbt", "TSQL", "Python"]
       },
       "analytics": {
         "title": "Analyse & Automatisering",
-        "desc": "We maken dashboards en automatiseringen om data echt in de operatie te brengen.",
-        "tools": ["TypeScript / JavaScript"]
+        "desc": "Tovy maakt data-analyses, operationele dashboards, en automatiseringen om data echt tot zijn recht te brengen.",
+        "tools": ["Python", "SQL", "Power BI", "TypeScript"]
       }
     }
   },
   "testimonials": {
-    "title": "Vertrouwd door Innovatieve Teams",
-    "subtitle": "Ontdek hoe wij bedrijven helpen schalen met helderheid en automatisering."
+    "title": "Vertrouwd door innovatieve teams",
+    "subtitle": "Ontdek hoe wij bedrijven helpen schalen met automatisering."
   },
   "blog": {
     "title": "KX Hub",
-    "subtitle": "Technische bronnen, inzichten en documentatie door Tovy.",
+    "subtitle": "Technische bronnen, inzichten, en documentatie door Tovy. Hier worden zaken gedeeld die relevant zijn voor jouw bedrijf",
     "noPosts": "Geen bronnen gevonden in de KX hub. Kom later terug!",
     "readingTime": "min leestijd",
     "previous": "Vorige",
@@ -117,28 +117,28 @@
     "intro": "Jouw privacy is belangrijk voor ons. Het is het beleid van Tovy om jouw privacy te respecteren bij het verzamelen van gegevens via onze website. Dit beleid voldoet aan de Algemene Verordening Gegevensbescherming (AVG).",
     "sections": [
       {
-        "title": "1. Verwerkingsverantwoordelijke",
+        "title": "Verwerkingsverantwoordelijke",
         "content": "Tovy is de data controller for the personal information collected through this website. For any questions, you can contact us at"
       },
       {
-        "title": "2. Welke informatie we verzamelen en hoe we deze gebruiken",
-        "content": "We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and explicit consent. The legal bases for our processing are primarily consent, contractual necessity, and legitimate interest.",
+        "title": "Welke informatie Tovy verzamelt en hoe Tovy deze gebruikt",
+        "content": "Tovy only asks for personal information when Tovy truly needs it to provide a service to you. Tovy collects it by fair and lawful means, with your knowledge and explicit consent. The legal bases for our processing are primarily consent, contractual necessity, and legitimate interest.",
         "list": [
-          "<strong>Projectaanvraagformulier:</strong> We verzamelen je naam, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore and gebruikt om je aanvraag te beoordelen en beantwoorden. De grondslag is de intentie om een overeenkomst aan te gaan.",
+          "<strong>Projectaanvraagformulier:</strong> Tovy verzamelt je naam, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore and gebruikt om je aanvraag te beoordelen en beantwoorden. De grondslag is de intentie om een overeenkomst aan te gaan.",
           "<strong>Serverlogs:</strong> Onze webserver, gehost door Firebase Hosting, registreert automatisch verzoeken zoals IP-adres, browsertype en bezochte pagina’s. Deze gegevens worden gebruikt voor beveiligingsdoeleinden en diagnostiek. De grondslag is ons gerechtvaardigd belang om een veilige en functionele website te onderhouden.",
-          "<strong>Cookies:</strong> We gebruiken noodzakelijke cookies om jouw voorkeuren voor toestemmingen te beheren. We gebruiken geen niet‑essentiële of trackingcookies (zoals Google Analytics) zonder jouw voorafgaande uitdrukkelijke toestemming via onze cookie banner."
+          "<strong>Cookies:</strong> Tovy gebruikt noodzakelijke cookies om jouw voorkeuren voor toestemmingen te beheren. We gebruiken geen niet‑essentiële of trackingcookies (zoals Google Analytics) zonder jouw voorafgaande uitdrukkelijke toestemming via onze cookie banner."
         ]
       },
       {
-        "title": "3. Gegevenslocatie en doorgifte",
+        "title": "Gegevenslocatie en doorgifte",
         "content": "Onze primaire database (Cloud Firestore) is geconfigureerd binnen de Europese Unie (regio ‘eur3’). Hoewel we EU‑diensten prefereren, kunnen sommige onderaannemers (zoals Google) gegevens internationaal doorgeven. Deze doorgiftes gebeuren uitsluitend via wettelijk toegestane mechanismen, zoals Standard Contractual Clauses."
       },
       {
-        "title": "4. Bewaartermijnen en beveiliging",
+        "title": "Bewaartermijnen en beveiliging",
         "content": "We bewaren persoonsgegevens alleen zolang dit nodig is voor onze diensten of wettelijk verplicht is. We beschermen opgeslagen gegevens met commercieel gangbare beveiligingsmaatregelen."
       },
       {
-        "title": "5. Jouw rechten onder de AVG",
+        "title": "Jouw rechten onder de AVG",
         "content": "Je hebt als gebruiker de volgende rechten met betrekking tot jouw persoonsgegevens:",
         "list": [
           "<strong>Recht op informatie:</strong> Je mag weten hoe wij jouw gegevens verzamelen en gebruiken.",
@@ -152,7 +152,7 @@
         "footer": "Om deze rechten uit te oefenen kun je contact met ons opnemen via ons privacy‑emailadres hieronder."
       },
       {
-        "title": "6. Contact",
+        "title": "Contact",
         "content": "Voor vragen over je privacy of het uitoefenen van je AVG‑rechten kun je contact opnemen met onze Functionaris Gegevensbescherming via:"
       }
     ],

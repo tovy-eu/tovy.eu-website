@@ -14,15 +14,15 @@
     "scrollToExplore": "Scroll"
   },
   "hero": {
-    "title": "Smart Data Ecosystems & AI Foundations for Business Growth",
-    "subtitle": "We engineer the modular data systems that enable automation, turning fragmented silos into a unified foundation for sustainable scaling."
+    "title": "The data & AI foundation for your business growth",
+    "subtitle": "Tovy engineers data systems that enable automation, turning silos into a scalable foundation."
   },
   "painSolution": {
     "title": "Silos vs. Centralised",
     "subtitle": "Data should simplify, not complicate.",
     "pain": {
       "title": "The Old Way",
-      "subtitle": "Manual & Fragmented",
+      "subtitle": "Silos",
       "items": [
         "Manual data entry & human error",
         "Systems that don't talk to each other",
@@ -32,32 +32,32 @@
     },
     "solution": {
       "title": "The Tovy Way",
-      "subtitle": "Unified & Automated",
+      "subtitle": "Centralised",
       "items": [
         "100% Automated data ingestion",
-        "Unified Data Fabric integration",
-        "Reliable & Hands-off infrastructure",
+        "Integrated data",
+        "Reliable & hands-off infrastructure",
         "Scalable foundation for growth"
       ]
     }
   },
   "about": {
     "strategy": "TOVY STRATEGY",
-    "title": "What and why we do this.",
-    "mission": "Our mission is to build smart data ecosystems that take work off your hands. We desire a world where technology gives people more time, focus, and freedom to grow.",
+    "title": "What and why.",
+    "mission": "Tovy's mission is to build smart data ecosystems that take work off your hands. Tovy desires a world where technology gives people more time, focus, and freedom to grow.",
     "pillarsTitle": "OUR CORE VALUES",
     "pillars": {
       "tech": {
         "title": "Tech Savvy",
-        "desc": "Latest in Data & AI."
+        "desc": "Always up-to-date with Data & AI trends."
       },
       "optimization": {
         "title": "Optimization",
-        "desc": "Efficient processes."
+        "desc": "an aim for efficient processes."
       },
       "freedom": {
         "title": "Freedom",
-        "desc": "Less cognitive load."
+        "desc": "The pursuit for less cognitive load."
       },
       "innovation": {
         "title": "Innovation",
@@ -66,12 +66,12 @@
     }
   },
   "engineering": {
-    "strategy": "OUR WAY OF WORKING",
-    "title": "End-to-End Data Ecosystems",
-    "subtitle": "From raw ingestion in Azure to custom end-user applications.",
+    "strategy": "THE TOVY WAY OF WORKING",
+    "title": "End-to-end data ecosystems",
+    "subtitle": "From raw data ingestion to custom end-user applications.",
     "services": {
       "strategic": {
-        "title": "Strategic Design",
+        "title": "Strategic design",
         "desc": "Thinking through tech, data, and AI strategies to align with your business goals.",
         "tools": ["Roadmapping", "Architecture", "Feasibility"]
       },
