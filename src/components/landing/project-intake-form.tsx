@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useTransition, useEffect } from "react";
@@ -24,7 +23,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/lib/get-dictionary";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, getVisitorId, getTraceId } from "@/lib/analytics";
 import { Magnetic } from "@/components/ui/magnetic";
 
 interface ProjectIntakeFormProps {
@@ -114,7 +113,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     }
   }, [step, allValues, formSubmitted]);
 
-  // Calendly Initialization (For Path A and Path B)
   useEffect(() => {
     if (formSubmitted && submittedValues && (routingPath === 'A' || routingPath === 'B')) {
       const name = `${submittedValues.firstName} ${submittedValues.lastName}`.trim();
@@ -143,37 +141,29 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const calculateScore = (data: ProjectRequestData): { score: number, path: RoutingPath } => {
     let score = 0;
     
-    // 1. Email Domain
     const publicEmailDomains = ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com", "aol.com", "zoho.com", "mail.com", "protonmail.com", "gmx.com"];
     const domain = data.workEmail.split('@')[1]?.toLowerCase();
     score += publicEmailDomains.includes(domain) ? -10 : 5;
 
-    // 2. Company Size
     const companySizeIndex = singleOptions.companySize.findIndex(o => o.label === data.companySize);
-    const sizeScores = [0, 4, 7, 10, 3]; // indices: 0:<50, 1:50-250, 2:250-1000, 3:1000+, 4:unsure
+    const sizeScores = [0, 4, 7, 10, 3];
     if (companySizeIndex !== -1) score += sizeScores[companySizeIndex];
 
-    // 3. Timeline
     const timelineIndex = singleOptions.timeline.findIndex(o => o.label === data.timeline);
-    const timelineScores = [5, 3, 1, -5]; // indices: 0:Immediate, 1:1-3M, 2:3M+, 3:Exploring
+    const timelineScores = [5, 3, 1, -5];
     if (timelineIndex !== -1) score += timelineScores[timelineIndex];
 
-    // 4. Budget
     const budgetIndex = singleOptions.budget.findIndex(o => o.label === data.budget);
-    const budgetScores = [-10, 5, 10, 15, 2]; // indices: 0:<20k, 1:20-50k, 2:50-100k, 3:100k+, 4:Seeking quote
+    const budgetScores = [-10, 5, 10, 15, 2];
     if (budgetIndex !== -1) score += budgetScores[budgetIndex];
 
-    // Hard Overrides
-    // If Company Size > 250 AND Budget > $50k -> Path A
     const isLargeCompany = companySizeIndex === 2 || companySizeIndex === 3;
     const isLargeBudget = budgetIndex === 2 || budgetIndex === 3;
     if (isLargeCompany && isLargeBudget) return { score, path: 'A' };
 
-    // If Infrastructure contains "Legacy/Mainframe" AND Company Size > 250 -> Path A
     const hasLegacy = data.infrastructure.some(i => i.toLowerCase().includes('legacy'));
     if (hasLegacy && isLargeCompany) return { score, path: 'A' };
 
-    // Thresholds
     if (score >= 18) return { score, path: 'A' };
     if (score >= 5) return { score, path: 'B' };
     return { score, path: 'C' };
@@ -189,6 +179,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           timestamp: new Date(),
           lead_score: score,
           routing_path: path,
+          visitor_id: getVisitorId(),
+          trace_id: getTraceId(),
         });
         
         trackEvent({
@@ -296,7 +288,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                       
                       const { field, label, description } = s;
 
-                      // Step 1: Work Email
                       if (field === 'workEmail') {
                         return (
                           <FormField key={field} control={form.control} name="workEmail" render={({ field: f }) => (
@@ -315,7 +306,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                         );
                       }
 
-                      // Step 2, 6, 7: Single Choice
                       if (['companySize', 'timeline', 'budget'].includes(field)) {
                         const opts = singleOptions[field as keyof typeof singleOptions];
                         return (
@@ -351,7 +341,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                         );
                       }
 
-                      // Step 3, 4, 5: Multiple Choice
                       if (['objectives', 'infrastructure', 'bottlenecks'].includes(field)) {
                         const opts = multiOptions[field as keyof typeof multiOptions];
                         return (
@@ -401,7 +390,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
                         );
                       }
 
-                      // Step 8: Contact Details
                       if (field === 'contactDetails') {
                         return (
                           <div key={field} className="space-y-6">
