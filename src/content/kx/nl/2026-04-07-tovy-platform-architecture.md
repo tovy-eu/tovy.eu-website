@@ -7,12 +7,11 @@ image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fi
 tags: ['Architectuur', 'Automatisering', 'Datakwaliteit', 'MX Design', 'Analytics']
 ---
 
-Bij Tovy werkt de technologie voor de gebruiker, niet andersom. Tovy.eu is ontworpen als een **Slim Data Ecosysteem** om het primaire knelpunt van moderne schaalvergroting op te lossen: handmatige overhead.
+Intern bij Tovy focussen we op de kern van technologie, namelijk dat deze met ons meewerkt in plaats van tegen ons. De website van Tovy is ontworpen als een online business card. Kort, krachtig en bevat geautomatiseerde processen om bezoekers om te zetten naar potentiele klanten.
 
 ---
 
-### 1. Het Doel: Verder dan Statische Informatie
-De meeste bedrijfswebsites fungeren als "datakerkhoven"—statische opslagplaatsen van informatie waar data vastzit in ongestructureerde formaten. Het Tovy-platform fungeert als een functioneel prototype waarbij elke interactie, zoals tweetalige toggles of multi-step intakeformulieren, gestructureerde en bruikbare data genereert.
+De meeste bedrijfswebsites fungeren als uithangbord of webship, maar bij Tovy wordt verder nagedacht. Iedere interactie, zoals klik, scroll of formulier wordt opgeslagen op gestructureerde wijze om de customer journey beter te begrijpen.
 
 Volgens [**Gartner**](https://www.gartner.com/en/information-technology/glossary/data-driven-decision-making) hebben organisaties die prioriteit geven aan datagestuurde besluitvorming een veel grotere kans om hun bedrijfsdoelen te overtreffen. De infrastructuur van Tovy behandelt elk websitebezoek als een startpunt voor bruikbare intelligentie, zodat het fundament voor groei vanaf de eerste klik wordt gelegd.
 

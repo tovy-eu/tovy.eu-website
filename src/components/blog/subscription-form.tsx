@@ -14,7 +14,7 @@ import { Send, Loader2, CheckCircle } from "lucide-react";
 import { Checkbox } from '../ui/checkbox';
 import { Label } from '../ui/label';
 import type { Dictionary } from '@/lib/get-dictionary';
-import { trackEvent } from '@/lib/analytics';
+import { trackEvent, getVisitorId, getTraceId } from '@/lib/analytics';
 import { cn } from '@/lib/utils';
 
 const subscriptionSchema = z.object({
@@ -75,6 +75,8 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
         await addDoc(subscriptionsRef, {
           email: validatedEmail,
           timestamp: new Date(),
+          visitor_id: getVisitorId(),
+          trace_id: getTraceId(),
         });
 
         trackEvent({

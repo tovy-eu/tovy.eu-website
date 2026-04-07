@@ -1,6 +1,7 @@
 /**
  * @fileOverview Type-safe Data Layer utility for Tovy.
  * Routes all events to Google Tag Manager via the window.dataLayer.
+ * Now includes Visitor ID and Trace ID for journey mapping.
  */
 
 type AnalyticsEvent =
@@ -21,15 +22,56 @@ type AnalyticsEvent =
   | { name: 'web_vitals'; event_category: 'performance'; event_label: string; value: number; metric_id: string; non_interaction: boolean };
 
 /**
+ * Generates a random unique identifier.
+ */
+const generateId = (length: number = 16): string => {
+  const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+};
+
+/**
+ * Retrieves or creates a persistent Visitor ID.
+ */
+export const getVisitorId = (): string => {
+  if (typeof window === 'undefined') return '';
+  let id = localStorage.getItem('tovy_visitor_id');
+  if (!id) {
+    id = generateId();
+    localStorage.setItem('tovy_visitor_id', id);
+  }
+  return id;
+};
+
+/**
+ * Retrieves or creates a session-based Trace ID.
+ */
+export const getTraceId = (): string => {
+  if (typeof window === 'undefined') return '';
+  let id = sessionStorage.getItem('tovy_trace_id');
+  if (!id) {
+    id = generateId();
+    sessionStorage.setItem('tovy_trace_id', id);
+  }
+  return id;
+};
+
+/**
  * Pushes a custom event to the GTM Data Layer.
+ * Automatically injects visitor_id and trace_id for sequence analysis.
  * @param event The event object conforming to the AnalyticsEvent schema.
  */
 export const trackEvent = (event: AnalyticsEvent) => {
   if (typeof window !== 'undefined' && window.dataLayer) {
     const { name, ...params } = event;
-    // Standard GTM dataLayer push pattern
+    
     window.dataLayer.push({
       event: name,
+      visitor_id: getVisitorId(),
+      trace_id: getTraceId(),
       ...params
     });
   }
