@@ -56,7 +56,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         )}
       >
         <h1 
-          className="text-4xl font-bold text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] tracking-tight"
+          className="text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] tracking-tight"
           style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.1)' }}
         >
           {dict.hero.title}

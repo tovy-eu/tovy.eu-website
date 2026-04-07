@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -41,7 +40,7 @@ export function ScrollProgress() {
   if (!showProgress) return null;
 
   return (
-    <div className="fixed top-20 md:top-24 left-0 w-full h-[3px] z-[60] pointer-events-none">
+    <div className="fixed top-16 md:top-20 left-0 w-full h-[3px] z-[60] pointer-events-none">
       <div 
         className="h-full bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] transition-all duration-150 ease-out shadow-[0_0_15px_rgba(43,94,255,0.6)]"
         style={{ width: `${progress}%` }}

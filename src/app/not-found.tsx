@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -72,7 +71,7 @@ export default function NotFound() {
         </div>
 
         <h1
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-tight"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight"
           style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.1)' }}
         >
           {t.titlePart1} <br />

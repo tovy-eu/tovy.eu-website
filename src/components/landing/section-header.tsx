@@ -33,7 +33,7 @@ export function SectionHeader({
         )}
         <h2 
           className={cn(
-            "text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] tracking-tight",
+            "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.1] tracking-tight",
             titleClassName
           )}
           style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.1)' }}
