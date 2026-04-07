@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useRef } from "react";
@@ -30,15 +31,15 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
   }, []);
 
   return (
-    <section className="relative w-full py-20 sm:py-28 overflow-hidden bg-background">
+    <section className="relative w-full min-h-screen flex flex-col justify-center py-20 overflow-hidden bg-background scroll-mt-16 md:scroll-mt-20">
       {/* Parallax Grid Background */}
       <div 
         ref={gridRef}
         className="parallax-grid-bg"
-        style={{ willChange: 'transform' }}
+        style={{ hide: 'transform' }}
       />
 
-      <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10 w-full">
         <SectionHeader 
           badge={dict.painSolution.title}
           title={dict.painSolution.subtitle}

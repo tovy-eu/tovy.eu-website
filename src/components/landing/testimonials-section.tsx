@@ -42,7 +42,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
 
   return (
     <section 
-      className="relative py-16 sm:py-24 bg-background overflow-hidden w-full"
+      className="relative min-h-screen flex flex-col justify-center py-16 bg-background overflow-hidden w-full scroll-mt-16 md:scroll-mt-20"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% 120%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
@@ -52,7 +52,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
         <WavyLines />
       </div>
       
-      <div className="container relative z-10 mx-auto px-4 md:px-8 max-w-7xl">
+      <div className="container relative z-10 mx-auto px-4 md:px-8 max-w-7xl w-full">
         <SectionHeader 
           badge={dict.testimonials.title}
           title={dict.testimonials.subtitle}
@@ -113,7 +113,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
       </div>
 
       {/* Hero-equivalent CTA Button */}
-      <div className="relative z-10 flex justify-center px-4">
+      <div className="relative z-10 flex justify-center px-4 w-full">
         <Magnetic strength={0.25} className="w-full sm:w-auto">
           <Button 
             asChild 

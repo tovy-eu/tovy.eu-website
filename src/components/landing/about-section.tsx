@@ -66,15 +66,15 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
   };
 
   return (
-    <section id="about" className="relative w-full bg-gradient-to-b from-background to-accent/5 py-24 sm:py-32 overflow-hidden scroll-mt-20 md:scroll-mt-24">
+    <section id="about" className="relative w-full min-h-screen flex flex-col justify-center bg-gradient-to-b from-background to-accent/5 py-24 overflow-hidden scroll-mt-16 md:scroll-mt-20">
       {/* Parallax Grid Background */}
       <div 
         ref={gridRef}
         className="parallax-grid-bg"
-        style={{ willChange: 'transform' }}
+        style={{ hide: 'transform' }}
       />
 
-      <div className="relative mx-auto max-w-6xl px-4 md:px-8 z-10">
+      <div className="relative mx-auto max-w-6xl px-4 md:px-8 z-10 w-full">
         <SectionHeader 
           badge={dict.about.strategy}
           title={dict.about.title}
