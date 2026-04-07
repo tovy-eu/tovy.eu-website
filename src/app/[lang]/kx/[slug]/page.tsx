@@ -135,7 +135,7 @@ export default async function KxResource({ params }: Props) {
                 <Badge key={tag} variant="secondary" className="bg-primary/20 border-primary/20 text-primary-foreground text-[10px] uppercase tracking-wider">{tag}</Badge>
               ))}
             </div>
-            <CardTitle className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6" asChild>
+            <CardTitle className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-6" asChild>
               <h1>{postData.title}</h1>
             </CardTitle>
             <CardDescription className="text-base md:text-lg flex items-center gap-4 flex-wrap text-white/50" asChild>
@@ -169,7 +169,7 @@ export default async function KxResource({ params }: Props) {
 
             <div className="mt-16 pt-16 border-t border-white/5 text-center">
               <div className="max-w-xl mx-auto">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
                   {lang === 'en' ? 'Ready to scale your data ecosystem?' : 'Klaar om uw data-ecosysteem op te schalen?'}
                 </h3>
                 <p className="text-white/60 mb-10 text-lg leading-relaxed">

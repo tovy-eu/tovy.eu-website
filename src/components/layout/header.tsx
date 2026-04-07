@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -65,7 +64,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
         "bg-gradient-to-b from-background via-background/90 to-background/60"
       )}
     >
-      <div className="container mx-auto relative flex h-20 md:h-24 w-full items-center justify-between px-4 sm:px-6 md:px-8 max-w-6xl pt-[env(safe-area-inset-top,0.5rem)] md:pt-0">
+      <div className="container mx-auto relative flex h-16 md:h-20 w-full items-center justify-between px-4 sm:px-6 md:px-8 max-w-6xl pt-[env(safe-area-inset-top,0.5rem)] md:pt-0">
         <Link 
           href={homePath} 
           onClick={handleLogoClick}
@@ -104,7 +103,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
 
         <div className="flex items-center gap-2 sm:gap-4 relative z-10">
           <Magnetic strength={0.2}>
-            <Button asChild size="sm" className="h-10 md:h-11 px-4 md:px-6" onClick={handleCtaClick}>
+            <Button asChild size="sm" className="h-9 md:h-10 px-4 md:px-6" onClick={handleCtaClick}>
               <Link href={`/${lang}/project-request/`}>
                 <span className="font-bold text-sm">{shareIdeaText}</span>
               </Link>
