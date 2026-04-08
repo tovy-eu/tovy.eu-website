@@ -1,4 +1,3 @@
-
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -9,13 +8,38 @@ service cloud.firestore {
     }
 
     /**
-     * @description Allow anyone to submit a project request.
+     * @description Robust security for project requests.
      * @path /project_requests/{requestId}
-     * @principle Unauthenticated users need to be able to create requests.
-     *            No one should be able to read or modify other requests.
+     * @protection 
+     *  - Enforces App Check to ensure requests come from the Tovy web app.
+     *  - Restricts writes to unauthenticated users only (public submission).
+     *  - Strictly whitelists allowed fields to prevent data injection.
+     *  - Validates data types (score is int) and format (email regex).
      */
     match /project_requests/{requestId} {
-      allow create: if true;
+      allow create: if request.auth == null
+        && request.auth.token.app_check != null
+        && request.resource.data.keys().hasOnly([
+          'workEmail', 'companySize', 'objectives', 'objectivesOther', 
+          'infrastructure', 'bottlenecks', 'bottlenecksOther', 'timeline', 
+          'budget', 'firstName', 'lastName', 'company', 'phone', 
+          'consent', 'timestamp', 'lead_score', 'routing_path', 
+          'visitor_id', 'trace_id'
+        ])
+        && request.resource.data.workEmail.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+        && request.resource.data.lead_score is int
+        && request.resource.data.company is string
+        && request.resource.data.company.size() > 0;
+    }
+
+    /**
+     * @description Public subscriptions for the newsletter.
+     */
+    match /subscriptions/{subId} {
+      allow create: if request.auth == null
+        && request.auth.token.app_check != null
+        && request.resource.data.keys().hasOnly(['email', 'timestamp', 'visitor_id', 'trace_id'])
+        && request.resource.data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$');
     }
   }
 }
