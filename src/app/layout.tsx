@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     default: 'Tovy | Smart Data Ecosystems for Business Growth',
     template: '%s | Tovy'
   },
-  description: 'We build smart data ecosystems that take work off your hands, creating a world where technology gives people more time, focus, and freedom to grow.',
+  description: 'Tovy builds smart data ecosystems that take work off your hands, creating a world where technology gives people more time, focus, and freedom to grow.',
   metadataBase: new URL('https://tovy.eu'),
   openGraph: {
     type: 'website',
