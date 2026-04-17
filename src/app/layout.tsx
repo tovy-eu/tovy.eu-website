@@ -54,18 +54,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <head>
-        {/* Machine Experience (MX) Connectivity Optimizations */}
-        <link rel="preconnect" href="https://firestore.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://metrics.tovy.ai" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://picsum.photos" crossOrigin="anonymous" />
-        
-        {/* DNS Prefetch for Lead Routing Domains */}
-        <link rel="dns-prefetch" href="https://calendly.com" />
-        <link rel="dns-prefetch" href="https://assets.calendly.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-      </head>
       <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
         <Script
           id="gtm-consent-init"
