@@ -162,12 +162,12 @@
         "content": "Onder de AVG hebben gebruikers de volgende rechten met betrekking tot hun persoonsgegevens:",
         "list": [
           "<strong>Recht op informatie:</strong> Het recht om te weten hoe gegevens worden verzameld en gebruikt.",
-          "<strong>Recht op inzage:</strong> Het recht om een kopie op te vragen van de informatie die Tovy over de gebruiker heeft.",
-          "<strong>Recht op rectificatie:</strong> Het recht om onjuiste gegevens te laten corrigeren.",
-          "<strong>Recht op verwijdering (‘recht om vergeten te worden’):</strong> Het recht om te verzoeken dat Tovy de gegevens verwijdert.",
-          "<strong>Recht op beperking:</strong> Het recht om te vragen de verwerking tijdelijk te beperken.",
-          "<strong>Recht op overdraagbaarheid:</strong> Het recht om gegevens in een machine‑leesbaar formaat te ontvangen.",
-          "<strong>Recht van bezwaar:</strong> Het recht om bezwaar te maken tegen de verwerking van persoonsgegevens."
+          "<strong>Recht op inzage:</b> Het recht om een kopie op te vragen van de informatie die Tovy over de gebruiker heeft.",
+          "<strong>Recht op rectificatie:</b> Het recht om onjuiste gegevens te laten corrigeren.",
+          "<strong>Recht op verwijdering (‘recht om vergeten te worden’):</b> Het recht om te verzoeken dat Tovy de gegevens verwijdert.",
+          "<strong>Recht op beperking:</b> Het recht om te vragen de verwerking tijdelijk te beperken.",
+          "<strong>Recht op overdraagbaarheid:</b> Het recht om gegevens in een machine‑leesbaar formaat te ontvangen.",
+          "<strong>Recht van bezwaar:</b> Het recht om bezwaar te maken tegen de verwerking van persoonsgegevens."
         ],
         "footer": "Om deze rechten uit te oefenen, kan contact worden opgenomen met het privacy‑emailadres hieronder."
       },
@@ -200,6 +200,10 @@
   "projectForm": {
     "title": "Project form",
     "subtitle": "Deel projectdetails met Tovy voor de bouw van betrouwbare data-ecosystemen.",
+    "intro": {
+      "title": "Laten we je datafundament bouwen",
+      "description": "Om de beste aanbeveling te kunnen doen, stellen we 7 snelle vragen over je projectdoelen en huidige situatie. Dit helpt ons te bepalen of we de juiste match zijn."
+    },
     "success": {
       "title": "Bedankt",
       "description": "Tovy heeft de aanvraag ontvangen. Een eerste beoordeling is in gang gezet; plan hieronder een kennismaking om het proces te versnellen.",
@@ -212,6 +216,17 @@
       "exploreHub": "Verken Hub"
     },
     "steps": {
+      "problemStatement": {
+        "label": "Probleem & Gewenste Oplossing",
+        "description": "Help ons de kern van het probleem te begrijpen en jouw visie op de oplossing.",
+        "hasProblemLabel": "Is er een specifiek, bestaand probleem dat je wilt oplossen?",
+        "problemDescriptionLabel": "Beschrijf het probleem en de impact ervan op je bedrijf. Denk hierbij aan wie, wat, wanneer en waar om de context te verduidelijken.",
+        "idealStateLabel": "Hoe zou de ideale oplossing eruitzien en welke resultaten zou deze moeten opleveren?",
+        "options": {
+          "yes": "Ja",
+          "no": "Nee"
+        }
+      },
       "workEmail": {
         "label": "E-mailadres van jouw bedrijf",
         "description": "Gebruik een zakelijk e-mailadres voor de lead-identiteit."
@@ -219,28 +234,20 @@
       "companySize": {
         "label": "Bedrijfsgrootte",
         "description": "Dit helpt Tovy bij de eerste inschatting.",
-        "options": ["<50", "50–250", "250–1.000", "1.000+", "Ik weet het niet zeker"]
+        "options": ["Zzp'er", "2-15", "16-49", "50–249", "250–999", "1.000+", "Ik weet het niet zeker"]
       },
-      "objectives": {
-        "label": "Technische & zakelijke doelen",
-        "description": "Selecteer de belangrijkste doelen voor deze opdracht.",
-        "options": {
-          "scratch": "Nieuw data/AI platform vanaf nul opbouwen.",
-          "scaling": "Bestaande cloud of on-prem infrastructuur schalen/optimaliseren.",
-          "automating": "Handmatige workflows of full-stack ontwikkeling automatiseren.",
-          "modernizing": "Legacy-systemen moderniseren / Cloud migratie.",
-          "analytics": "Dashboarding en geavanceerde data-analyse.",
-          "other": "Overig"
-        }
-      },
-      "infrastructure": {
+      "dataInfrastructure": {
         "label": "Huidige data-infrastructuur",
         "description": "Identificeer de omgeving waar de data momenteel verblijft.",
+        "hasDataTeamLabel": "Beschikt jouw organisatie over een toegewijd data-team of data-engineers?",
+        "hasCentralDatabaseLabel": "Heeft jouw organisatie een gecentraliseerde database of datawarehouse?",
+        "hasCloudPlatformLabel": "Maakt jouw organisatie gebruik van een cloudplatform (zoals AWS, Azure, GCP) voor dataopslag en -verwerking?",
+        "solutionsInUseLabel": "Welke data-oplossingen, ERP-systemen of belangrijke applicaties zijn momenteel in gebruik? (e.g. SAP, Salesforce, Microsoft Dynamics)",
         "options": {
-          "cloud": "Cloud (AWS / Azure / GCP)",
-          "onprem": "On-Premise (Lokale servers/datacenters)",
           "legacy": "Legacy (Mainframes, lokale databases, of veel spreadsheets)",
+          "onprem": "On-Premise (Lokale servers/datacenters)",
           "saas": "SaaS-only (Salesforce, HubSpot, etc.)",
+          "cloud": "Cloud (AWS / Azure / GCP)",
           "unsure": "Niet zeker / Technische beoordeling nodig"
         }
       },
@@ -249,9 +256,9 @@
         "description": "Wat zijn de belangrijkste pijnpunten die aangepakt moeten worden?",
         "options": {
           "silos": "Data Silo's / Slechte datakwaliteit",
-          "deployment": "Trage ontwikkeling of engineering cycli",
           "overhead": "Hoge handmatige overhead / Repetitieve taken",
           "insights": "Gebrek aan realtime inzichten of dashboards",
+          "deployment": "Trage ontwikkeling of engineering cycli",
           "security": "Beveiliging / Compliance zorgen",
           "other": "Overig"
         }
@@ -262,9 +269,9 @@
         "options": ["Onmiddellijk", "1–3 Maanden", "3+ Maanden", "Alleen verkennen / Geen vaste datum"]
       },
       "budget": {
-        "label": "Geschat investeringsbudget",
-        "description": "Dit helpt bij de initiële economische kwalificatie.",
-        "options": ["<$20k", "$20k–$50k", "$50k–$100k", "$100k+", "Op zoek naar een offerte"]
+        "label": "Minimum Budget Commitment",
+        "description": "Our standard projects are 6-week sprints with a fixed budget. Is there a minimum investment of €5,000 available for this initial engagement?",
+        "options": ["Yes, we have a budget of at least €5,000", "No, our budget is less than €5,000"]
       },
       "contact": {
         "label": "Contactgegevens",
@@ -280,6 +287,7 @@
     "buttons": {
       "previous": "Vorige",
       "next": "Volgende",
+      "start": "Start",
       "submit": "Aanvraag indienen",
       "submitting": "Bezig met verzenden..."
     }
