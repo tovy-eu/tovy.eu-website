@@ -59,7 +59,7 @@
     "mission": "Tovy's mission is to build smart data ecosystems that reduce manual workload. Tovy desires a world where technology gives individuals and teams more time, focus, and space to grow.",
     "ceo": {
       "name": "Giel Nijkamp",
-      "role": "Founder & CEO",
+      "role": "Founder",
       "specialization": "Data Engineer",
       "location": "Netherlands",
       "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
@@ -188,7 +188,7 @@
     "contactInfo": "Contact information",
     "email": "Email",
     "phone": "Phone",
-    "registry": "Registry & Iientification",
+    "registry": "Registry & Identification",
     "commercialRegistry": "Commercial Registry",
     "kvkNumber": "KvK Number (Registration Number)",
     "vatNumber": "VAT Identification Number",
