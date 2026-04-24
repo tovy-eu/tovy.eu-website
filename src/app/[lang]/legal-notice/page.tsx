@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const dict = await getDictionary(lang);
   return {
-    title: `${dict.legal.title} | Tovy`,
+    title: dict.legal.title,
     description: `Legal Notice and company information for Tovy.`,
   };
 }

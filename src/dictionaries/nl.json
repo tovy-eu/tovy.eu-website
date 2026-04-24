@@ -55,8 +55,16 @@
   },
   "about": {
     "strategy": "TOVY'S STRATEGIE",
-    "title": "Wat en waarom.",
-    "mission": "De missie van Tovy is het bouwen van slimme data-ecosystemen die werk uit handen nemen. Tovy streeft naar een wereld waarin technologie mensen meer tijd, focus en ruimte geeft om te groeien.",
+    "title": "Wie, wat en waarom.",
+    "mission": "De missie van Tovy is het bouwen van slimme data-ecosystemen die werk uit handen nemen. Tovy streeft naar een world waarin technologie mensen meer tijd, focus en ruimte geeft om te groeien.",
+    "ceo": {
+      "name": "Giel Nijkamp",
+      "role": "Oprichter & CEO",
+      "specialization": "Data Engineer",
+      "location": "Nederland",
+      "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
+      "bio": "Met zeven jaar ervaring—van systeembeheer tot complexe enterprise-implementaties—heb ik gezien dat standaardsoftware vaak tekortschiet bij complexe bedrijfsdata. Dit zorgt voor vertraging en onnodige knelpunten in de dagelijkse bedrijfsvoering.\n\nDoor mijn MSc in Supply Chain Management te combineren met vijf jaar technische ervaring, sla ik de brug tussen business en data engineering. Ik adviseer niet alleen over tools, maar bouw de fundamenten en automatiseringen die processen echt vereenvoudigen.\n\nIk ben Tovy gestart om betrouwbare systemen te bouwen die de techniek weer laten werken voor het bedrijf, in plaats van andersom. Zo krijg je de focus terug om echt te kunnen groeien."
+    },
     "pillarsTitle": "KERNWAARDEN",
     "pillars": {
       "tech": {
@@ -136,9 +144,9 @@
         "title": "Gegevensverzameling en Gebruik",
         "content": "Tovy vraagt alleen om persoonsgegevens wanneer dit noodzakelijk is om een dienst te verlenen. De organisatie verzamelt gegevens op een eerlijke en wettelijke manier, met medeweten en expliciete toestemming van de gebruiker. De rechtsgronden voor verwerking zijn primair toestemming, contractuele noodzaak en gerechtvaardigd belang.",
         "list": [
-          "<strong>Projectaanvraagformulier:</strong> Tovy verzamelt namen, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore en gebruikt om aanvragen te beoordelen en te beantwoorden. De grondslag is de intentie om een overeenkomst aan te gaan.",
+          "<strong>Projectaanvraagformulier:</strong> Tovy verzamelt namen, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore and gebruikt om aanvragen te beoordelen en te beantwoorden. De grondslag is de intentie om een overeenkomst aan te gaan.",
           "<strong>Serverlogs:</strong> De webserver, gehost door Firebase Hosting, registreert automatisch verzoeken zoals IP-adressen, browsertypes en bezochte pagina’s. Deze gegevens worden gebruikt voor beveiligingsdoeleinden en diagnostiek. De grondslag is het gerechtvaardigd belang van Tovy om een veilige en functionele website te onderhouden.",
-          "<strong>Cookies:</strong> Tovy gebruikt noodzakelijke cookies om voorkeuren voor toestemmingen te beheren. De organisatie gebruikt geen niet‑essentiële of trackingcookies (zoals Google Analytics) zonder expliciete voorafgaande toestemming via de cookiebanner."
+          "<strong>Cookies:</strong> Tovy gebruikt noodzakelijke cookies om voorkeuren voor toestemmingen te beheren. De organisatie gebruikt geen niet‑essentiële of trackingcookies (zoals Google Analytics) zonder expliciete voorafgaande toestemming via the cookie banner."
         ]
       },
       {

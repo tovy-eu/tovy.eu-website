@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const { lang } = await params;
   const dict = await getDictionary(lang);
   return {
-    title: `${dict.privacy.title} | Tovy`,
+    title: dict.privacy.title,
     description: dict.privacy.intro.substring(0, 160),
   };
 }

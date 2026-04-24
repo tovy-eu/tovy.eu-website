@@ -27,7 +27,7 @@
   },
   "hero": {
     "title": "The data & AI foundation for business growth",
-    "subtitle": "Tovy engineers data systems that enable automation, turning silos into a scalable foundation."
+    "subtitle": "Tovy builds data systems that enable automation. ."
   },
   "painSolution": {
     "title": "Silos vs. Centralized",
@@ -55,8 +55,16 @@
   },
   "about": {
     "strategy": "TOVY STRATEGY",
-    "title": "What and why.",
-    "mission": "Tovy's mission is to build smart data ecosystems that reduce manual workload. Tovy desires a world where technology provides people with more time, focus, and freedom to grow.",
+    "title": "Who, what and why.",
+    "mission": "Tovy's mission is to build smart data ecosystems that reduce manual workload. Tovy desires a world where technology gives individuals and teams more time, focus, and space to grow.",
+    "ceo": {
+      "name": "Giel Nijkamp",
+      "role": "Founder & CEO",
+      "specialization": "Data Engineer",
+      "location": "Netherlands",
+      "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
+      "bio": "With seven years in the field—spanning from hands-on system administration to orchestrating complex enterprise implementations—I have observed how standard software often buckles under the unique complexity of business data. This friction doesn't just slow down technology; it complicates your daily operations and creates bottlenecks.\n\nMy approach combines an MSc in Supply Chain Management with five years of deep technical implementation. This allows me to bridge the gap between business logic and data engineering. I don’t just implement tools; I architect the data foundations and automation workflows required to simplify your processes.\n\nTovy was founded to build clean, reliable systems that remove technical noise, giving you the control and focus needed to scale your business."
+    },
     "pillarsTitle": "CORE VALUES",
     "pillars": {
       "tech": {

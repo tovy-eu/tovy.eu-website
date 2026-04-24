@@ -9,19 +9,32 @@ interface LanguageSwitcherProps {
   currentLang: string;
 }
 
-const GBFlag = () => (
+const EUFlag = () => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 60 30" 
+    viewBox="0 0 810 540" 
     className="w-5 h-auto rounded-[1px] shadow-sm"
     aria-hidden="true"
     role="img"
   >
-    <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
-    <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
-    <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4"/>
-    <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
-    <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6"/>
+    <defs>
+      <path id="s" d="M0-1l.588 1.809L-1.002.583h1.944L-1.55 1.81z"/>
+    </defs>
+    <path fill="#003399" d="M0 0h810v540H0z"/>
+    <g fill="#ffcc00" transform="matrix(30 0 0 30 405 270)">
+      <use href="#s" y="-6"/>
+      <use href="#s" y="6"/>
+      <use href="#s" transform="rotate(-30) translate(0 -6) rotate(30)"/>
+      <use href="#s" transform="rotate(-60) translate(0 -6) rotate(60)"/>
+      <use href="#s" transform="rotate(30) translate(0 -6) rotate(-30)"/>
+      <use href="#s" transform="rotate(60) translate(0 -6) rotate(-60)"/>
+      <use href="#s" transform="rotate(90) translate(0 -6) rotate(-90)"/>
+      <use href="#s" transform="rotate(-90) translate(0 -6) rotate(90)"/>
+      <use href="#s" transform="rotate(120) translate(0 -6) rotate(-120)"/>
+      <use href="#s" transform="rotate(150) translate(0 -6) rotate(-150)"/>
+      <use href="#s" transform="rotate(-120) translate(0 -6) rotate(120)"/>
+      <use href="#s" transform="rotate(-150) translate(0 -6) rotate(150)"/>
+    </g>
   </svg>
 );
 
@@ -78,7 +91,7 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
       className="h-11 px-3 rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-2 overflow-hidden border-none"
       aria-label={`Switch to ${targetLangName}`}
     >
-      {currentLang === "en" ? <GBFlag /> : <NLFlag />}
+      {currentLang === "en" ? <EUFlag /> : <NLFlag />}
       <span className="sr-only">Switch to {targetLangName}</span>
     </Button>
   );
