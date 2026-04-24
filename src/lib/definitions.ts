@@ -1,38 +1,28 @@
 import { z } from "zod";
 import { isValidPhoneNumber } from "react-phone-number-input";
 
-/**
- * List of common public email providers to exclude for professional email validation.
- */
-const publicEmailDomains = [
-  "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com", "aol.com", "zoho.com", "mail.com", "protonmail.com", "gmx.com"
-];
-
 export const projectRequestSchema = z.object({
   // Step 1: Lead Identity
-  workEmail: z.string().email("Please enter a valid email address.").refine(email => {
-    const domain = email.split('@')[1]?.toLowerCase();
-    return !publicEmailDomains.includes(domain);
-  }, { message: "Please use a professional business email address." }),
+  email: z.string().email("Please enter a valid email address."),
   
   // Step 2: Sizing
   companySize: z.string({ required_error: "Please select your company size." }),
   
-  // Step 3: Scope
-  objectives: z.array(z.string()).min(1, "Please select at least one objective."),
-  objectivesOther: z.string().optional(),
+  // Step 3: Problem Statement
+  hasProblem: z.string({ required_error: "Please select an option." }),
+  problemDescription: z.string().optional(),
+  idealState: z.string().optional(),
   
-  // Step 4: Technical Context
-  infrastructure: z.array(z.string()).min(1, "Please select at least one infrastructure type."),
+  // Step 4: Data Infrastructure
+  hasDataTeam: z.string({ required_error: "Please select an option." }),
+  hasCentralDatabase: z.string({ required_error: "Please select an option." }),
+  hasCloudPlatform: z.string({ required_error: "Please select an option." }),
+  solutionsInUse: z.array(z.string()).optional(),
   
-  // Step 5: Pain Points
-  bottlenecks: z.array(z.string()).min(1, "Please select at least one bottleneck."),
-  bottlenecksOther: z.string().optional(),
-  
-  // Step 6: Urgency
+  // Step 5: Urgency
   timeline: z.string({ required_error: "Please select a timeline." }),
   
-  // Step 7: Economic Qualification
+  // Step 6: Economic Qualification
   budget: z.string({ required_error: "Please select a budget range." }),
   
   // Contact details for follow-up
@@ -43,7 +33,24 @@ export const projectRequestSchema = z.object({
   consent: z.literal(true, {
     errorMap: () => ({ message: "You must agree to the privacy policy." }),
   }),
-});
+}).refine((data) => {
+    if (data.hasProblem === 'yes') {
+      return data.problemDescription && data.problemDescription.trim().length > 0;
+    }
+    return true;
+  }, {
+    message: "Please describe the problem.",
+    path: ['problemDescription'],
+  })
+  .refine((data) => {
+    if (data.hasProblem === 'yes') {
+      return data.idealState && data.idealState.trim().length > 0;
+    }
+    return true;
+  }, {
+    message: "Please describe the ideal state.",
+    path: ['idealState'],
+  });
 
 export type ProjectRequestData = z.infer<typeof projectRequestSchema>;
 

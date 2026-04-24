@@ -200,6 +200,10 @@
   "projectForm": {
     "title": "Project form",
     "subtitle": "Share project requirements with Tovy to build reliable, high-scale data ecosystems.",
+    "intro": {
+      "title": "Let's build your data foundation",
+      "description": "To provide the best recommendation, we'll ask 7 quick questions about your project goals and current setup. This helps us determine if we're the right fit for you."
+    },
     "success": {
       "title": "Thank You",
       "description": "Tovy has received the project request. An initial review is underway; schedule a discovery call below to expedite the process.",
@@ -212,6 +216,17 @@
       "exploreHub": "Explore Hub"
     },
     "steps": {
+      "problemStatement": {
+        "label": "Problem & Desired Outcome",
+        "description": "Help us understand the core challenge and your vision for the solution.",
+        "hasProblemLabel": "Is there a specific, existing problem you are trying to resolve?",
+        "problemDescriptionLabel": "Please describe the problem and its impact on your business. Consider the who, what, when, and where to clarify the context.",
+        "idealStateLabel": "In a perfect world, what would the solution look like and what results would it achieve?",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
       "workEmail": {
         "label": "Work Email Address",
         "description": "Please provide a professional business email to establish lead identity."
@@ -219,41 +234,18 @@
       "companySize": {
         "label": "Company Size",
         "description": "This helps Tovy size the opportunity.",
-        "options": ["<50", "50–250", "250–1,000", "1,000+", "I'm not sure"]
+        "options": ["Sole Entrepreneur", "2-15", "16-49", "50–249", "250–999", "1,000+", "I'm not sure"]
       },
-      "objectives": {
-        "label": "Technical & Business Objectives",
-        "description": "Select the primary goals for this engagement.",
+      "dataInfrastructure": {
+        "label": "Data Infrastructure",
+        "description": "Help us understand your current data landscape.",
+        "hasDataTeamLabel": "Is there a (data) engineering team?",
+        "hasCentralDatabaseLabel": "Is there an existing database that owns all data throughout all systems of the company?",
+        "hasCloudPlatformLabel": "Is there a cloud platform in use (AWS / Azure / GCP)?",
+        "solutionsInUseLabel": "What solutions are currently in use? (e.g., specific software, tools, or platforms)",
         "options": {
-          "scratch": "Building a new data/AI platform from scratch.",
-          "scaling": "Scaling/optimizing existing cloud or on-prem infrastructure.",
-          "automating": "Automating manual workflows or full-stack development.",
-          "modernizing": "Modernizing legacy systems / Cloud migration.",
-          "analytics": "Dashboarding and advanced data analytics.",
-          "other": "Other"
-        }
-      },
-      "infrastructure": {
-        "label": "Current Data Infrastructure",
-        "description": "Identify the environment where the data currently resides.",
-        "options": {
-          "cloud": "Cloud (AWS / Azure / GCP)",
-          "onprem": "On-Premise (Local servers/Data centers)",
-          "legacy": "Legacy (Mainframes, local databases, or heavy spreadsheets)",
-          "saas": "SaaS-only (Salesforce, HubSpot, etc.)",
-          "unsure": "I’m not sure / Technical assessment needed"
-        }
-      },
-      "bottlenecks": {
-        "label": "Primary Operational Bottlenecks",
-        "description": "Identify the primary 'pain' points to be addressed.",
-        "options": {
-          "silos": "Data Silos / Poor Data Quality",
-          "deployment": "Slow Deployment or Engineering cycles",
-          "overhead": "High Manual Overhead / Repetitive tasks",
-          "insights": "Lack of Real-time Insights or Dashboards",
-          "security": "Security / Compliance concerns",
-          "other": "Other"
+          "yes": "Yes",
+          "no": "No"
         }
       },
       "timeline": {
@@ -262,9 +254,9 @@
         "options": ["Immediate", "1–3 Months", "3+ Months", "Just Exploring / No set date"]
       },
       "budget": {
-        "label": "Estimated Investment Budget",
-        "description": "This assists in initial economic qualification.",
-        "options": ["<$20k", "$20k–$50k", "$50k–$100k", "$100k+", "Seeking a quote"]
+        "label": "Budget Commitment",
+        "description": "Our standard projects are 6-week sprints with a fixed budget. Is there a minimum investment of €5,000 available for this initial engagement?",
+        "options": ["Yes", "No"]
       },
       "contact": {
         "label": "Contact Details",
@@ -280,6 +272,7 @@
     "buttons": {
       "previous": "Previous",
       "next": "Next",
+      "start": "Start",
       "submit": "Submit Request",
       "submitting": "Submitting..."
     }
