@@ -5,7 +5,6 @@ import { Toaster } from "@/components/ui/toaster"
 import { cn } from '@/lib/utils';
 import CookieBanner from '@/components/layout/cookie-banner';
 import { GoogleTagManager } from '@next/third-parties/google';
-import { WebVitals } from '@/components/layout/web-vitals';
 import Script from 'next/script';
 
 const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
@@ -96,9 +95,7 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        
-        <WebVitals />
-        
+                
         {children}
         <Toaster />
         <CookieBanner />
