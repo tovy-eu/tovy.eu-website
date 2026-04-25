@@ -18,8 +18,7 @@ type AnalyticsEvent =
   | { name: 'json_download'; event_category: string; event_label: string }
   | { name: 'social_link_click'; event_category: string; event_label: string }
   | { name: 'blog_post_view'; event_category: string; event_label: string; blog_slug: string; blog_title: string }
-  | { name: 'cookie_consent_decision'; event_category: string; event_label: string; decision: 'accept' | 'decline' }
-  | { name: 'web_vitals'; event_category: 'performance'; event_label: string; value: number; metric_id: string; non_interaction: boolean };
+  | { name: 'cookie_consent_decision'; event_category: string; event_label: string; decision: 'accept' | 'decline' };
 
 /**
  * Generates a random unique identifier.
