@@ -20,19 +20,6 @@ export function updateConsent(granted: boolean) {
     return;
   }
 
-  const consentValue = granted ? 'granted' : 'denied';
-
-  const consentState = {
-    analytics_storage: consentValue,
-    ad_storage: consentValue,
-    ad_user_data: consentValue,
-    ad_personalization: consentValue,
-  };
-
-  if (typeof window.gtag === 'function') {
-    window.gtag('consent', 'update', consentState);
-  }
-
   const consentDecision: Consent = {
     granted,
     timestamp: Date.now(),

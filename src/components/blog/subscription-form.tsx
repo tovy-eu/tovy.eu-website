@@ -74,16 +74,8 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
         await addDoc(subscriptionsRef, {
           email: validatedEmail,
           timestamp: new Date(),
-          visitor_id: getVisitorId(),
-          trace_id: getTraceId(),
         });
 
-        trackEvent({
-          name: 'newsletter_signup',
-          event_category: 'conversion',
-          event_label: 'Newsletter Subscription'
-        });
-        
         setIsSuccess(true);
         toast({
           title: dict?.common.success || "Success!",

@@ -203,14 +203,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           timestamp: new Date(),
           lead_score: score,
           routing_path: path,
-          visitor_id: getVisitorId(),
-          trace_id: getTraceId(),
-        });
-        
-        trackEvent({
-          name: 'project_request_success',
-          event_category: 'conversion',
-          event_label: `Path ${path} Submission`,
         });
 
         localStorage.removeItem(STORAGE_KEY);
@@ -251,13 +243,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     const isValid = await form.trigger(fieldsToValidate);
 
     if (isValid) {
-      trackEvent({
-        name: 'project_request_step_complete',
-        event_category: 'conversion',
-        step_number: step + 1,
-        step_name: formSteps[step].field,
-      });
-
       if (step < totalSteps - 1) {
         setStep(s => s + 1);
       } else {

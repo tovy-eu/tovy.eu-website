@@ -10,7 +10,6 @@ import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getDictionary } from '@/lib/get-dictionary';
 import { CONFIG } from '@/lib/config';
-import { BlogPostAnalytics } from '@/components/blog/blog-post-analytics';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { Magnetic } from '@/components/ui/magnetic';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
@@ -104,7 +103,6 @@ export default async function KxResource({ params }: Props) {
       <WavyLines />
       
       <div className="container relative z-10 mx-auto max-w-4xl">
-        <BlogPostAnalytics slug={slug} title={postData.title} />
 
         <div className="mb-8">
           <Button asChild variant="ghost" className="hover:bg-white/10 text-white/60 hover:text-white transition-colors">

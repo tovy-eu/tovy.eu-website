@@ -12,14 +12,6 @@ export function FinalCtaSection({ dict }: { dict: Dictionary }) {
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
 
-  const handleCtaClick = () => {
-    trackEvent({
-      name: 'cta_click',
-      event_category: 'engagement',
-      event_label: 'Final CTA Section'
-    });
-  };
-
   return (
     <section className="relative w-full py-24 px-4 overflow-hidden bg-background">
       <div 
@@ -43,7 +35,7 @@ export function FinalCtaSection({ dict }: { dict: Dictionary }) {
         
         <div className="flex justify-center">
           <Magnetic strength={0.25}>
-            <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-lg h-14 shadow-2xl px-10" onClick={handleCtaClick}>
+            <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-lg h-14 shadow-2xl px-10">
               <Link href={`/${lang}/project-request/`}>
                 {dict.common.workWithUs}
                 <ArrowRight className="ml-2 h-5 w-5" />
