@@ -25,7 +25,6 @@ import { MultiText } from "@/components/ui/multi-text";
 import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/lib/get-dictionary";
-import { trackEvent, getVisitorId, getTraceId } from "@/lib/analytics";
 import { Magnetic } from "@/components/ui/magnetic";
 
 interface ProjectIntakeFormProps {

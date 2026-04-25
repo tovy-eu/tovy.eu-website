@@ -7,7 +7,6 @@ import LanguageSwitcher from "./language-switcher";
 import { usePathname } from "next/navigation";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { CONFIG } from "@/lib/config";
-import { trackEvent } from "@/lib/analytics";
 import { Magnetic } from "@/components/ui/magnetic";
 
 export default function Header({ lang = "en", dict }: { lang?: string; dict?: Dictionary }) {
@@ -24,37 +23,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
     if (isAtHome) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      
-      trackEvent({
-        name: 'logo_home_refresh',
-        event_category: 'navigation',
-        event_label: 'Logo click at home',
-        is_refresh: true
-      });
-    } else {
-      trackEvent({
-        name: 'logo_home_return',
-        event_category: 'navigation',
-        event_label: 'Logo click return home',
-        from_path: pathname || ''
-      });
     }
-  };
-
-  const handleCtaClick = () => {
-    trackEvent({
-      name: 'cta_click',
-      event_category: 'engagement',
-      event_label: 'Header CTA'
-    });
-  };
-
-  const handleLinkClick = (label: string) => {
-    trackEvent({
-      name: 'read_blog_click',
-      event_category: 'navigation',
-      event_label: `Header ${label} Link`
-    });
   };
 
   return (
@@ -79,14 +48,12 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
           <Link 
             href={`${homePath}#about`} 
             className="text-sm font-bold text-white/60 hover:text-white transition-colors px-4 py-3 min-h-[44px] flex items-center"
-            onClick={() => handleLinkClick("About")}
           >
             {aboutText}
           </Link>
           <Link 
             href={`${homePath}#services`} 
             className="text-sm font-bold text-white/60 hover:text-white transition-colors px-4 py-3 min-h-[44px] flex items-center"
-            onClick={() => handleLinkClick("Services")}
           >
             {servicesText}
           </Link>
@@ -94,7 +61,6 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
             <Link 
               href={`/${lang}/kx/`} 
               className="text-sm font-bold text-white/60 hover:text-white transition-colors px-4 py-3 min-h-[44px] flex items-center"
-              onClick={() => handleLinkClick("KX Hub")}
             >
               {blogText}
             </Link>
@@ -103,7 +69,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
 
         <div className="flex items-center gap-2 sm:gap-4 relative z-10">
           <Magnetic strength={0.2}>
-            <Button asChild size="sm" className="h-9 md:h-10 px-4 md:px-6" onClick={handleCtaClick}>
+            <Button asChild size="sm" className="h-9 md:h-10 px-4 md:px-6">
               <Link href={`/${lang}/project-request/`}>
                 <span className="font-bold text-sm">{shareIdeaText}</span>
               </Link>

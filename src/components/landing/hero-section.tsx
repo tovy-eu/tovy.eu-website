@@ -9,7 +9,6 @@ import { WavyLines } from './wavy-lines';
 import { usePathname } from 'next/navigation';
 import type { Dictionary } from '@/lib/get-dictionary';
 import { CONFIG } from '@/lib/config';
-import { trackEvent } from '@/lib/analytics';
 import { Magnetic } from '@/components/ui/magnetic';
 import { ScrollIndicator } from './scroll-indicator';
 
@@ -24,22 +23,6 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     }, 100);
     return () => clearTimeout(timer);
   }, []);
-
-  const handleCtaClick = () => {
-    trackEvent({
-      name: 'cta_click',
-      event_category: 'engagement',
-      event_label: 'Hero CTA'
-    });
-  };
-
-  const handleBlogClick = () => {
-    trackEvent({
-      name: 'read_blog_click',
-      event_category: 'engagement',
-      event_label: 'Hero KX Link'
-    });
-  };
 
   return (
     <section 
@@ -66,7 +49,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         </p>
         <div className="mt-20 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
           <Magnetic strength={0.25} className="w-full sm:w-auto">
-            <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-12 sm:h-14 shadow-2xl" onClick={handleCtaClick}>
+            <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-12 sm:h-14 shadow-2xl">
               <Link href={`/${lang}/project-request/`}>
                 {dict.common.workWithUs}
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -75,7 +58,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           </Magnetic>
           
           {CONFIG.enableBlog && (
-            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-base sm:text-lg bg-white/5 text-white border-white/20 hover:bg-white/10 hover:text-white h-12 sm:h-14" onClick={handleBlogClick}>
+            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto font-semibold text-base sm:text-lg bg-white/5 text-white border-white/20 hover:bg-white/10 hover:text-white h-12 sm:h-14">
               <Link href={`/${lang}/kx/`}>
                 <BookOpen className="mr-2 h-5 w-5 text-primary" />
                 {dict.common.readBlog}

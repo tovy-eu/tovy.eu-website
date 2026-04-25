@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/ui/magnetic";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { usePathname } from "next/navigation";
-import { trackEvent } from "@/lib/analytics";
 
 export function FinalCtaSection({ dict }: { dict: Dictionary }) {
   const pathname = usePathname();

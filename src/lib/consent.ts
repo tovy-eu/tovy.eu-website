@@ -1,7 +1,5 @@
 'use client';
 
-import { trackEvent } from './analytics';
-
 const CONSENT_STORAGE_KEY = 'tovy-cookie-consent';
 
 type Consent = {
@@ -33,13 +31,6 @@ export function updateConsent(granted: boolean) {
 
   if (typeof window.gtag === 'function') {
     window.gtag('consent', 'update', consentState);
-    
-    trackEvent({
-      name: 'cookie_consent_decision',
-      event_category: 'compliance',
-      event_label: 'Cookie Banner Interaction',
-      decision: granted ? 'accept' : 'decline'
-    });
   }
 
   const consentDecision: Consent = {

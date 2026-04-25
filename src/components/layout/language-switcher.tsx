@@ -3,7 +3,6 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
 import Cookies from 'js-cookie';
 
 interface LanguageSwitcherProps {
@@ -65,15 +64,6 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
 
     // Set the language preference in a first-party cookie
     Cookies.set('NEXT_LOCALE', targetLang, { expires: 365, secure: true, sameSite: 'Lax' });
-
-    trackEvent({
-      name: 'language_switched',
-      event_category: 'engagement',
-      event_label: 'Language Toggle',
-      target_language: targetLang,
-      source_language: currentLang,
-      is_language_switch: true
-    });
     
     if (segments[1] === "en" || segments[1] === "nl") {
       segments[1] = targetLang;

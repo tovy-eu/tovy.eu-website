@@ -30,7 +30,6 @@
 
 - `src/app/`: Core routing and pre-rendered pages.
 - `src/content/`: Markdown-based localized KX Hub articles.
-- `src/lib/analytics.ts`: Type-safe tracking and ID generation.
 - `src/lib/definitions.ts`: Zod schemas for form validation and routing.
 - `src/components/landing/project-intake-form.tsx`: The qualification logic and UI.
 - `firebase.json`: CDN and edge caching configuration.
