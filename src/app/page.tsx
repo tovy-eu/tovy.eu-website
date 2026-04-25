@@ -12,11 +12,23 @@ export default function RootPage() {
           __html: `
             (function() {
               try {
-                var lang = navigator.language.split('-')[0];
+                var target = 'en'; // Default language
                 var supported = ['en', 'nl'];
-                var target = supported.indexOf(lang) !== -1 ? lang : 'en';
+                var cookieLang = (document.cookie.match(/^(?:.*;)?NEXT_LOCALE=([^;]+)(?:.*)?$/) || [, ''])[1];
+
+                if (cookieLang && supported.includes(cookieLang)) {
+                  target = cookieLang;
+                } else {
+                  var browserLang = navigator.language.split('-')[0];
+                  if (supported.includes(browserLang)) {
+                    target = browserLang;
+                  }
+                  // Set the cookie if not already set or invalid
+                  document.cookie = 'NEXT_LOCALE=' + target + '; Path=/; Max-Age=' + (365 * 24 * 60 * 60) + '; Secure; SameSite=Lax';
+                }
                 window.location.replace('/' + target + '/');
               } catch (e) {
+                // Fallback to English if any error occurs
                 window.location.replace('/en/');
               }
             })();

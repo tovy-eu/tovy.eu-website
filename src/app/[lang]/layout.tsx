@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
 /**
  * Setting dynamicParams to false ensures that any [lang] segment not 
- * defined in generateStaticParams (e.g., /fr/ or /abc/) will 
+ * defined in generateStaticParams (e.e.g., /fr/ or /abc/) will 
  * correctly trigger the 404 page instead of an error.
  */
 export const dynamicParams = false;
@@ -26,18 +26,20 @@ export default async function LocalizedLayout({
   children: React.ReactNode;
   params: Promise<{ lang: string }>;
 }>) {
-  const { lang } = await params;
-  const dict = await getDictionary(lang);
+  const resolvedParams = await params;
+  const urlLang = resolvedParams.lang;
+
+  const dict = await getDictionary(urlLang);
   
   return (
     <>
       <JsonLd type="ProfessionalService" data={getCompanySchema(dict)} />
       <ScrollProgress />
-      <Header lang={lang} dict={dict} />
+      <Header lang={urlLang} dict={dict} />
       <main id="main-content" className="flex-grow flex flex-col">
         {children}
       </main>
-      <Footer lang={lang} dict={dict} />
+      <Footer lang={urlLang} dict={dict} />
     </>
   );
 }
