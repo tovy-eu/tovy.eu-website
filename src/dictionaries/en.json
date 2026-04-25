@@ -93,22 +93,35 @@
       "strategic": {
         "title": "Strategic design",
         "desc": "Tovy develops tech, data, and AI strategies to align with business goals.",
-        "tools": ["Roadmapping", "Architecture", "Feasibility"]
+        "tools": [
+          "Roadmapping",
+          "Architecture",
+          "Feasibility"
+        ]
       },
       "cloud": {
         "title": "Cloud infrastructure",
         "desc": "Tovy designs secure, cost-optimized cloud environments for data workloads.",
-        "tools": ["GCP, AWS", "Datawarehousing"]
+        "tools": [
+          "GCP, AWS",
+          "Datawarehousing"
+        ]
       },
       "data": {
         "title": "Data engineering",
         "desc": "Tovy architects scalable pipelines and data warehouses using the Modern Data Stack.",
-        "tools": ["dbt", "SQL", "Python"]
+        "tools": [
+          "dbt",
+          "SQL",
+          "Python"
+        ]
       },
       "analytics": {
         "title": "Analytics & automation",
         "desc": "Tovy builds dashboarding and automations to operationalize data.",
-        "tools": ["TypeScript / JavaScript"]
+        "tools": [
+          "TypeScript / JavaScript"
+        ]
       }
     }
   },
@@ -229,12 +242,21 @@
       },
       "workEmail": {
         "label": "Work Email Address",
-        "description": "Please provide a professional business email to establish lead identity."
+        "description": "Please provide a professional business email to establish lead identity.",
+        "note": "Note: While personal emails are accepted, work email addresses are preferred and will be prioritized."
       },
       "companySize": {
         "label": "Company Size",
         "description": "This helps Tovy size the opportunity.",
-        "options": ["Sole Entrepreneur", "2-15", "16-49", "50–249", "250–999", "1,000+", "I'm not sure"]
+        "options": [
+          "Sole Entrepreneur",
+          "2-15",
+          "16-49",
+          "50–249",
+          "250–999",
+          "1,000+",
+          "I'm not sure"
+        ]
       },
       "dataInfrastructure": {
         "label": "Data Infrastructure",
@@ -251,12 +273,20 @@
       "timeline": {
         "label": "Project Timeline",
         "description": "When is the intended start date?",
-        "options": ["Immediate", "1–3 Months", "3+ Months", "Just Exploring / No set date"]
+        "options": [
+          "Immediate",
+          "1–3 Months",
+          "3+ Months",
+          "Just Exploring / No set date"
+        ]
       },
       "budget": {
         "label": "Budget Commitment",
         "description": "Our standard projects are 6-week sprints with a fixed budget. Is there a minimum investment of €5,000 available for this initial engagement?",
-        "options": ["Yes", "No"]
+        "options": [
+          "Yes",
+          "No"
+        ]
       },
       "contact": {
         "label": "Contact Details",

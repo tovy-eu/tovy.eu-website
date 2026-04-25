@@ -54,7 +54,7 @@
     }
   },
   "about": {
-    "strategy": "TOVY'S STRATEGIE",
+    "strategy": "TOVY'S STRATEGie",
     "title": "Wie, wat en waarom.",
     "mission": "De missie van Tovy is het bouwen van slimme data-ecosystemen die werk uit handen nemen. Tovy streeft naar een world waarin technologie mensen meer tijd, focus en ruimte geeft om te groeien.",
     "ceo": {
@@ -93,22 +93,40 @@
       "strategic": {
         "title": "Strategisch ontwerp",
         "desc": "Tovy ontwikkelt technologie-, data- en AI‑strategieën die aansluiten op de organisatiedoelen.",
-        "tools": ["Roadmapping", "Architectuur", "Haalbaarheid"]
+        "tools": [
+          "Roadmapping",
+          "Architectuur",
+          "Haalbaarheid"
+        ]
       },
       "cloud": {
         "title": "Infrastructuur",
         "desc": "Tovy ontwerpt veilige en efficiënte cloud-oplossingen voor dataworkloads.",
-        "tools": ["Azure", "GCP", "AWS", "On-premise"]
+        "tools": [
+          "Azure",
+          "GCP",
+          "AWS",
+          "On-premise"
+        ]
       },
       "data": {
         "title": "Data engineering",
         "desc": "Tovy bouwt schaalbare pipelines en datawarehousing met een moderne data stack.",
-        "tools": ["dbt", "SQL", "Python"]
+        "tools": [
+          "dbt",
+          "SQL",
+          "Python"
+        ]
       },
       "analytics": {
         "title": "Analyse & automatisering",
         "desc": "Tovy ontwikkelt data-analyses, operationele dashboards en automatiseringen om data optimaal in te zetten.",
-        "tools": ["Python", "SQL", "Power BI", "TypeScript"]
+        "tools": [
+          "Python",
+          "SQL",
+          "Power BI",
+          "TypeScript"
+        ]
       }
     }
   },
@@ -162,12 +180,12 @@
         "content": "Onder de AVG hebben gebruikers de volgende rechten met betrekking tot hun persoonsgegevens:",
         "list": [
           "<strong>Recht op informatie:</strong> Het recht om te weten hoe gegevens worden verzameld en gebruikt.",
-          "<strong>Recht op inzage:</b> Het recht om een kopie op te vragen van de informatie die Tovy over de gebruiker heeft.",
-          "<strong>Recht op rectificatie:</b> Het recht om onjuiste gegevens te laten corrigeren.",
-          "<strong>Recht op verwijdering (‘recht om vergeten te worden’):</b> Het recht om te verzoeken dat Tovy de gegevens verwijdert.",
-          "<strong>Recht op beperking:</b> Het recht om te vragen de verwerking tijdelijk te beperken.",
-          "<strong>Recht op overdraagbaarheid:</b> Het recht om gegevens in een machine‑leesbaar formaat te ontvangen.",
-          "<strong>Recht van bezwaar:</b> Het recht om bezwaar te maken tegen de verwerking van persoonsgegevens."
+          "<strong>Recht op inzage:</strong> Het recht om een kopie op te vragen van de informatie die Tovy over de gebruiker heeft.",
+          "<strong>Recht op rectificatie:</strong> Het recht om onjuiste gegevens te laten corrigeren.",
+          "<strong>Recht op verwijdering (‘recht om vergeten te worden’):</strong> Het recht om te verzoeken dat Tovy de gegevens verwijdert.",
+          "<strong>Recht op beperking:</strong> Het recht om te vragen de verwerking tijdelijk te beperken.",
+          "<strong>Recht op overdraagbaarheid:</strong> Het recht om gegevens in een machine‑leesbaar formaat te ontvangen.",
+          "<strong>Recht van bezwaar:</strong> Het recht om bezwaar te maken tegen de verwerking van persoonsgegevens."
         ],
         "footer": "Om deze rechten uit te oefenen, kan contact worden opgenomen met het privacy‑emailadres hieronder."
       },
@@ -198,89 +216,91 @@
     "nederland": "Nederland"
   },
   "projectForm": {
-    "title": "Project form",
-    "subtitle": "Deel projectdetails met Tovy voor de bouw van betrouwbare data-ecosystemen.",
+    "title": "Projectformulier",
+    "subtitle": "Deel projectvereisten met Tovy om betrouwbare, grootschalige data-ecosystemen te bouwen.",
     "intro": {
-      "title": "Laten we je datafundament bouwen",
-      "description": "Om de beste aanbeveling te kunnen doen, stellen we 7 snelle vragen over je projectdoelen en huidige situatie. Dit helpt ons te bepalen of we de juiste match zijn."
+      "title": "Laten we uw datafundament bouwen",
+      "description": "Om de beste aanbeveling te geven, stellen we 7 snelle vragen over uw projectdoelen en huidige opzet. Dit helpt ons te bepalen of we de juiste match voor u zijn."
     },
     "success": {
       "title": "Bedankt",
-      "description": "Tovy heeft de aanvraag ontvangen. Een eerste beoordeling is in gang gezet; plan hieronder een kennismaking om het proces te versnellen.",
-      "titlePathB": "Beoordeling in gang",
+      "description": "Tovy heeft het projectverzoek ontvangen. Een eerste beoordeling is gaande; plan hieronder een kennismakingsgesprek om het proces te versnellen.",
+      "titlePathB": "Beoordeling van vereisten",
       "descriptionPathB": "Tovy beoordeelt momenteel de technische en strategische vereisten van het project. Een specialist neemt contact op als er extra context nodig is.",
-      "titlePathC": "Kennis Hub",
-      "descriptionPathC": "Op basis van de verstrekte informatie is de Tovy Knowledge Exchange Hub het meest geschikte startpunt. Ontdek daar technische documentatie en casestudies.",
-      "backHome": "Terug naar home",
-      "bookMeeting": "Plan kennismaking",
-      "exploreHub": "Verken Hub"
+      "titlePathC": "Kennisbank",
+      "descriptionPathC": "Op basis van de verstrekte scope is de Tovy Knowledge Exchange Hub het meest geschikte startpunt. Verken daar technische documentatie en casestudy's.",
+      "backHome": "Terug naar de homepage",
+      "bookMeeting": "Plan een kennismakingsgesprek",
+      "exploreHub": "Verken de Hub"
     },
     "steps": {
       "problemStatement": {
-        "label": "Probleem & Gewenste Oplossing",
-        "description": "Help ons de kern van het probleem te begrijpen en jouw visie op de oplossing.",
-        "hasProblemLabel": "Is er een specifiek, bestaand probleem dat je wilt oplossen?",
-        "problemDescriptionLabel": "Beschrijf het probleem en de impact ervan op je bedrijf. Denk hierbij aan wie, wat, wanneer en waar om de context te verduidelijken.",
-        "idealStateLabel": "Hoe zou de ideale oplossing eruitzien en welke resultaten zou deze moeten opleveren?",
+        "label": "Probleem & Gewenste uitkomst",
+        "description": "Help ons de kernuitdaging en uw visie voor de oplossing te begrijpen.",
+        "hasProblemLabel": "Is er een specifiek, bestaand probleem dat u probeert op te lossen?",
+        "problemDescriptionLabel": "Beschrijf het probleem en de impact ervan op uw bedrijf. Overweeg wie, wat, wanneer en waar om de context te verduidelijken.",
+        "idealStateLabel": "Hoe zou de oplossing er in een perfecte wereld uitzien en welke resultaten zou deze bereiken?",
         "options": {
           "yes": "Ja",
           "no": "Nee"
         }
       },
       "workEmail": {
-        "label": "E-mailadres van jouw bedrijf",
-        "description": "Gebruik een zakelijk e-mailadres voor de lead-identiteit."
+        "label": "Zakelijk e-mailadres",
+        "description": "Geef een professioneel zakelijk e-mailadres op om de leadidentiteit vast te stellen.",
+        "note": "Let op: Hoewel persoonlijke e-mailadressen worden geaccepteerd, hebben zakelijke e-mailadressen de voorkeur en krijgen deze voorrang."
       },
       "companySize": {
         "label": "Bedrijfsgrootte",
-        "description": "Dit helpt Tovy bij de eerste inschatting.",
-        "options": ["Zzp'er", "2-15", "16-49", "50–249", "250–999", "1.000+", "Ik weet het niet zeker"]
+        "description": "Dit helpt Tovy de omvang van de mogelijkheid in te schatten.",
+        "options": [
+          "Zelfstandig ondernemer",
+          "2-15",
+          "16-49",
+          "50–249",
+          "250–999",
+          "1.000+",
+          "Ik weet het niet zeker"
+        ]
       },
       "dataInfrastructure": {
-        "label": "Huidige data-infrastructuur",
-        "description": "Identificeer de omgeving waar de data momenteel verblijft.",
-        "hasDataTeamLabel": "Beschikt jouw organisatie over een toegewijd data-team of data-engineers?",
-        "hasCentralDatabaseLabel": "Heeft jouw organisatie een gecentraliseerde database of datawarehouse?",
-        "hasCloudPlatformLabel": "Maakt jouw organisatie gebruik van een cloudplatform (zoals AWS, Azure, GCP) voor dataopslag en -verwerking?",
-        "solutionsInUseLabel": "Welke data-oplossingen, ERP-systemen of belangrijke applicaties zijn momenteel in gebruik? (e.g. SAP, Salesforce, Microsoft Dynamics)",
+        "label": "Data-infrastructuur",
+        "description": "Help ons uw huidige datalandschap te begrijpen.",
+        "hasDataTeamLabel": "Is er een (data) engineeringteam?",
+        "hasCentralDatabaseLabel": "Is er een bestaande database die alle gegevens in alle systemen van het bedrijf bezit?",
+        "hasCloudPlatformLabel": "Is er een cloudplatform in gebruik (AWS / Azure / GCP)?",
+        "solutionsInUseLabel": "Welke oplossingen zijn momenteel in gebruik? (bijv. specifieke software, tools of platforms)",
         "options": {
-          "legacy": "Legacy (Mainframes, lokale databases, of veel spreadsheets)",
-          "onprem": "On-Premise (Lokale servers/datacenters)",
-          "saas": "SaaS-only (Salesforce, HubSpot, etc.)",
-          "cloud": "Cloud (AWS / Azure / GCP)",
-          "unsure": "Niet zeker / Technische beoordeling nodig"
-        }
-      },
-      "bottlenecks": {
-        "label": "Operationele knelpunten",
-        "description": "Wat zijn de belangrijkste pijnpunten die aangepakt moeten worden?",
-        "options": {
-          "silos": "Data Silo's / Slechte datakwaliteit",
-          "overhead": "Hoge handmatige overhead / Repetitieve taken",
-          "insights": "Gebrek aan realtime inzichten of dashboards",
-          "deployment": "Trage ontwikkeling of engineering cycli",
-          "security": "Beveiliging / Compliance zorgen",
-          "other": "Overig"
+          "yes": "Ja",
+          "no": "Nee"
         }
       },
       "timeline": {
         "label": "Projecttijdlijn",
         "description": "Wanneer is de beoogde startdatum?",
-        "options": ["Onmiddellijk", "1–3 Maanden", "3+ Maanden", "Alleen verkennen / Geen vaste datum"]
+        "options": [
+          "Onmiddellijk",
+          "1–3 maanden",
+          "3+ maanden",
+          "Gewoon aan het verkennen / Geen vaste datum"
+        ]
       },
       "budget": {
-        "label": "Minimum Budget Commitment",
-        "description": "Our standard projects are 6-week sprints with a fixed budget. Is there a minimum investment of €5,000 available for this initial engagement?",
-        "options": ["Yes, we have a budget of at least €5,000", "No, our budget is less than €5,000"]
+        "label": "Budgettoezegging",
+        "description": "Onze standaardprojecten zijn sprints van 6 weken met een vast budget. Is er een minimale investering van €5.000 beschikbaar voor deze eerste opdracht?",
+        "options": [
+          "Ja",
+          "Nee"
+        ]
       },
       "contact": {
         "label": "Contactgegevens",
-        "description": "Laatste details voor de opvolging.",
+        "description": "Laatste informatie voor opvolging.",
         "firstName": "Voornaam *",
         "lastName": "Achternaam *",
         "company": "Bedrijf *",
         "phone": "Telefoonnummer",
-        "email": "E‑mail *",
+        "email": "E-mail *",
         "consent": "Ik ga akkoord met de privacyverklaring."
       }
     },
@@ -288,8 +308,8 @@
       "previous": "Vorige",
       "next": "Volgende",
       "start": "Start",
-      "submit": "Aanvraag indienen",
-      "submitting": "Bezig met verzenden..."
+      "submit": "Verzoek indienen",
+      "submitting": "Bezig met indienen..."
     }
   },
   "notFound": {
