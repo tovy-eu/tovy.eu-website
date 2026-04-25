@@ -22,7 +22,6 @@ import placeholderImages from "@/app/lib/placeholder-images.json";
 import testimonialsData from '@/content/testimonials-template/data.json';
 import { WavyLines } from './wavy-lines';
 import { SectionHeader } from './section-header';
-import { trackEvent } from "@/lib/analytics";
 
 /**
  * TestimonialsSection component.
@@ -37,14 +36,6 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
   if (!testimonialsData || testimonialsData.length === 0) {
     return null;
   }
-
-  const handleCtaClick = () => {
-    trackEvent({
-      name: 'cta_click',
-      event_category: 'engagement',
-      event_label: 'Testimonials CTA'
-    });
-  };
 
   return (
     <section 
@@ -135,7 +126,6 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
             asChild 
             size="lg" 
             className="w-full sm:w-auto font-semibold text-base sm:text-lg h-12 sm:h-14 shadow-2xl px-10"
-            onClick={handleCtaClick}
           >
             <Link href={`/${lang}/project-request/`}>
               {dict.common.workWithUs}

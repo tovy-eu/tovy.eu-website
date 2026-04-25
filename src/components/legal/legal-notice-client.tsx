@@ -8,7 +8,6 @@ import { Download, Building, MapPin, Mail, Phone, User, FileText, Landmark, KeyR
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { Dictionary } from '@/lib/get-dictionary';
 import { WavyLines } from '@/components/landing/wavy-lines';
-import { trackEvent } from '@/lib/analytics';
 import Link from 'next/link';
 
 type LegalNoticeClientProps = {

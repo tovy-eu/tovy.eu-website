@@ -13,7 +13,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import type { Dictionary } from "@/lib/get-dictionary";
-import { trackEvent } from "@/lib/analytics";
 
 const socialLinks = [
   {
@@ -35,14 +34,6 @@ export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Di
     setYear(new Date().getFullYear());
   }, []);
 
-  const handleSocialClick = (platform: string) => {
-    trackEvent({
-      name: 'social_link_click',
-      event_category: 'engagement',
-      event_label: platform
-    });
-  };
-
   const privacyText = dict?.common.privacyPolicy || "Privacy Policy";
   const legalText = dict?.common.legalNotice || "Legal Notice";
   const rightsText = dict?.common.allRightsReserved || "All rights reserved.";
@@ -60,7 +51,6 @@ export default function Footer({ lang = "en", dict }: { lang?: string; dict?: Di
                     asChild 
                     variant="ghost" 
                     className="h-12 w-12 rounded-full hover:bg-white/10"
-                    onClick={() => handleSocialClick(link.name)}
                   >
                     <Link href={link.url} target="_blank" aria-label={link.name}>
                       {link.icon}
