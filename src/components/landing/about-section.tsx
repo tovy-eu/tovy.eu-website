@@ -133,7 +133,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                     <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-2xl overflow-hidden border border-white/10 p-1 bg-white/5">
                       <div className="relative h-full w-full rounded-xl overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
                         <Image
-                          src="/images/people/ceo.jpg"
+                          src="/images/people/ceo.webp"
                           alt={dict.about.ceo.name}
                           fill
                           className="object-cover object-[center_40%]"
