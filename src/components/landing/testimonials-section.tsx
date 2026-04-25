@@ -6,7 +6,16 @@ import Image from 'next/image';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay"
+
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Magnetic } from "@/components/ui/magnetic";
 import type { Dictionary } from "@/lib/get-dictionary";
 import placeholderImages from "@/app/lib/placeholder-images.json";
@@ -28,9 +37,6 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
   if (!testimonialsData || testimonialsData.length === 0) {
     return null;
   }
-
-  // Duplicate the testimonials data once for a perfect infinite loop (translateX -50%)
-  const duplicatedTestimonials = [...testimonialsData, ...testimonialsData];
 
   const handleCtaClick = () => {
     trackEvent({
@@ -60,56 +66,66 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
         />
       </div>
 
-      {/* Marquee Container with explicit overflow clipping */}
-      <div className="relative z-10 mt-8 group overflow-hidden w-full mb-20">
-        {/* Marquee Track - Duplicated once for seamless -50% translation loop */}
-        <div className="flex animate-marquee w-fit gap-4 sm:gap-8 py-4 px-2">
-          {duplicatedTestimonials.map((testimonial, index) => {
-            const logoData = placeholderImages.testimonials.find(img => img.id === testimonial.logoId);
-            return (
-              <div 
-                key={`${testimonial.author}-${index}`} 
-                className="w-[260px] sm:w-[350px] md:w-[450px] shrink-0"
-              >
-                <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
-                  
-                  {/* Fluidity Gradient Layer (The "Border") */}
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_20s_linear_infinite]" 
-                  />
-                  
-                  {/* Inner Content Layer */}
-                  <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent">
-                    <p className="text-sm sm:text-base md:text-lg italic text-foreground/90 mb-8 leading-relaxed">
-                      "{testimonial.quote}"
-                    </p>
-                    <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-6">
-                      <div>
-                        <p className="font-bold text-white text-[11px] sm:text-sm md:text-base">{testimonial.author}</p>
-                        <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground">{testimonial.role}</p>
-                      </div>
-                      {logoData && (
-                        <div className="relative h-4 w-14 sm:h-6 sm:w-20 md:h-8 md:w-24 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                          <Image
-                            src={logoData.url}
-                            alt={`${testimonial.author} company logo`}
-                            fill
-                            className="object-contain"
-                            data-ai-hint={logoData.hint}
-                          />
+      {/* Carousel Container */}
+      <div className="relative z-10 mt-8 group w-full mb-20">
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          plugins={[
+            Autoplay({
+              delay: 5000,
+              stopOnInteraction: true,
+            }),
+          ]}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {testimonialsData.map((testimonial, index) => {
+              const logoData = placeholderImages.testimonials.find(img => img.id === testimonial.logoId);
+              return (
+                <CarouselItem key={`${testimonial.author}-${index}`} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
+                      
+                      {/* Fluidity Gradient Layer (The "Border") */}
+                      <div 
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_20s_linear_infinite]" 
+                      />
+                      
+                      {/* Inner Content Layer */}
+                      <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent">
+                        <p className="text-sm sm:text-base md:text-lg italic text-foreground/90 mb-8 leading-relaxed">
+                          "{testimonial.quote}"
+                        </p>
+                        <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-6">
+                          <div>
+                            <p className="font-bold text-white text-[11px] sm:text-sm md:text-base">{testimonial.author}</p>
+                            <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground">{testimonial.role}</p>
+                          </div>
+                          {logoData && (
+                            <div className="relative h-4 w-14 sm:h-6 sm:w-20 md:h-8 md:w-24 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
+                              <Image
+                                src={logoData.url}
+                                alt={`${testimonial.author} company logo`}
+                                fill
+                                className="object-contain"
+                                data-ai-hint={logoData.hint}
+                              />
+                            </div>
+                          )}
                         </div>
-                      )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        
-        {/* Subtle Edge Fades for professional depth */}
-        <div className="absolute inset-y-0 left-0 w-12 sm:w-24 md:w-48 bg-gradient-to-r from-background to-transparent z-20 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-12 sm:w-24 md:w-48 bg-gradient-to-l from-background to-transparent z-20 pointer-events-none" />
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
 
       {/* Hero-equivalent CTA Button */}
