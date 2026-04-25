@@ -23,11 +23,13 @@ export default function CookieBanner() {
   const handleAccept = () => {
     updateConsent(true);
     setShowBanner(false);
+    window.dispatchEvent(new Event('consent-changed'));
   };
 
   const handleDecline = () => {
     updateConsent(false);
     setShowBanner(false);
+    window.dispatchEvent(new Event('consent-changed'));
   };
 
   if (!showBanner) {
