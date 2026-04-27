@@ -26,7 +26,6 @@ import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home, BookOpen } fr
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { Magnetic } from "@/components/ui/magnetic";
-import { sendGTMEvent } from "@/lib/gtm";
 import { getVisitorId, getTraceId } from "@/lib/tracking";
 
 interface ProjectIntakeFormProps {
@@ -211,15 +210,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           trace_id: traceId,
         });
 
-        sendGTMEvent({
-          event: "project_request",
-          action: "form_submit",
-          category: "engagement",
-          label: "Project Intake Form",
-          trace_id: traceId,
-          visitor_id: visitorId,
-          lead_score: score,
-          routing_path: path,
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          'event': 'form_submission',
+          'form_name': 'Project Request'
         });
 
         localStorage.removeItem(STORAGE_KEY);
