@@ -70,6 +70,12 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
     } else {
       segments.splice(1, 0, targetLang);
     }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'language_switch',
+      'language': targetLang
+    });
     
     const newPath = segments.join("/") || "/";
     router.push(newPath);

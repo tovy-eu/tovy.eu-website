@@ -24,6 +24,10 @@ export default function CookieBanner() {
     updateConsent(true);
     setShowBanner(false);
     window.dispatchEvent(new Event('consent-changed'));
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'consent_given'
+    });
   };
 
   const handleDecline = () => {
