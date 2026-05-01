@@ -14,6 +14,9 @@ const GTM_SERVER_CONTAINER_URL = "https://www.googletagmanager.com";
 
 // The function will now load the secret from the .env file.
 export const metrics = onRequest({ cors: true }, async (request, response) => {
+  // Adding a log to force a redeployment
+  logger.info("Metrics function triggered");
+
   const isGtmPreview = request.query.id && (request.query.id as string).startsWith('GTM-');
 
   // Handle GTM preview mode requests
