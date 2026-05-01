@@ -1,18 +1,32 @@
 import { onRequest } from "firebase-functions/v2/https";
 import { logger } from "firebase-functions";
 import fetch from "node-fetch";
+import { defineString } from "firebase-functions/params";
 
-// These are the details for your GA4 property
-const MEASUREMENT_ID = "G-P3JJ2J5C3B";
-const API_SECRET = "TjOB82ukQ-Sgpdz2iYyH5g";
+// Define the secret so the function knows it needs to load it from the .env file.
+const apiSecret = defineString("API_SECRET");
 
-// This is the GTM container ID to which your server-side container will forward requests
+// The Measurement ID is not a secret and is safe to have in the code.
+const MEASUREMENT_ID = "G-VL0FR2B3DH";
+
+// This is the base URL for the GTM server
 const GTM_SERVER_CONTAINER_URL = "https://www.googletagmanager.com";
 
+// The function will now load the secret from the .env file.
 export const metrics = onRequest({ cors: true }, async (request, response) => {
-  // Check if the request is for the GTM preview script
-  if (request.path.startsWith("/gtm.js")) {
-    const gtmUrl = `${GTM_SERVER_CONTAINER_URL}${request.originalUrl.replace("/metrics", "")}`;
+  const isGtmPreview = request.query.id && (request.query.id as string).startsWith('GTM-');
+
+  // Handle GTM preview mode requests
+  if (isGtmPreview) {
+    let gtmUrl = GTM_SERVER_CONTAINER_URL;
+    const queryParams = new URLSearchParams(request.query as any).toString();
+
+    if (request.path.endsWith("/ns.html")) {
+      gtmUrl += `/ns.html?${queryParams}`;
+    } else {
+      gtmUrl += `/gtm.js?${queryParams}`;
+    }
+
     try {
       const gtmResponse = await fetch(gtmUrl);
       gtmResponse.headers.forEach((value, name) => {
@@ -20,17 +34,21 @@ export const metrics = onRequest({ cors: true }, async (request, response) => {
       });
       response.status(gtmResponse.status).send(gtmResponse.body);
     } catch (error) {
-      logger.error("Error fetching GTM script", error);
-      response.status(500).send("Error fetching GTM script.");
+      logger.error(`Error fetching GTM resource: ${gtmUrl}`, error);
+      response.status(500).send("Error fetching GTM resource.");
     }
-    return;
+    return; 
   }
 
-  // If it's not a GTM script request, handle it as an analytics hit
-  const ga4Url = `https://www.google-analytics.com/mp/collect?measurement_id=${MEASUREMENT_ID}&api_secret=${API_SECRET}`;
+  if (request.method !== "POST") {
+    response.status(204).send();
+    return;
+  }
+  
+  // Access the secret's value securely at runtime.
+  const ga4Url = `https://www.google-analytics.com/mp/collect?measurement_id=${MEASUREMENT_ID}&api_secret=${apiSecret.value()}`;
 
   try {
-    // Forward the request to Google Analytics
     const proxyResponse = await fetch(ga4Url, {
       method: "POST",
       headers: {
@@ -39,7 +57,6 @@ export const metrics = onRequest({ cors: true }, async (request, response) => {
       body: JSON.stringify(request.body),
     });
 
-    // Send GA's response back to the original client
     proxyResponse.headers.forEach((value, name) => {
         response.setHeader(name, value);
     });
