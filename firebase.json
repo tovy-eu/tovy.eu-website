@@ -1,4 +1,7 @@
 {
+  "functions": {
+    "source": "functions"
+  },
   "firestore": {
     "database": "(default)",
     "location": "eur3",
@@ -11,6 +14,12 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/metrics{,/**}",
+        "function": "metrics"
+      }
     ],
     "headers": [
       {
