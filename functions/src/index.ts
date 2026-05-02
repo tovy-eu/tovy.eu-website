@@ -1,72 +1,54 @@
 import { onRequest } from "firebase-functions/v2/https";
 import { logger } from "firebase-functions";
-import fetch from "node-fetch";
 import { defineString } from "firebase-functions/params";
 
-// Define the secret so the function knows it needs to load it from the .env file.
-const apiSecret = defineString("API_SECRET");
+const MEASUREMENT_ID = defineString("GA4_MEASUREMENT_ID");
 
-// The Measurement ID is not a secret and is safe to have in the code.
-const MEASUREMENT_ID = "G-VL0FR2B3DH";
+export const metrics = onRequest(
+    { secrets: ["GA4_API_SECRET"], memory: "512MiB" },
+    async (request, response) => {
+        logger.info("Metrics function triggered");
 
-// This is the base URL for the GTM server
-const GTM_SERVER_CONTAINER_URL = "https://www.googletagmanager.com";
+        const apiSecret = process.env.GA4_API_SECRET;
 
-// The function will now load the secret from the .env file.
-export const metrics = onRequest({ cors: true }, async (request, response) => {
-  // Adding a log to force a redeployment
-  logger.info("Metrics function triggered");
+        if (!apiSecret) {
+            logger.error("GA4_API_SECRET environment variable not set.");
+            response.status(500).send("Internal Server Error: Secret not configured.");
+            return;
+        }
 
-  const isGtmPreview = request.query.id && (request.query.id as string).startsWith('GTM-');
+        if (request.method !== "POST") {
+            response.status(204).send(); // Reverted to 204 as is standard for this method
+            return;
+        }
 
-  // Handle GTM preview mode requests
-  if (isGtmPreview) {
-    let gtmUrl = GTM_SERVER_CONTAINER_URL;
-    const queryParams = new URLSearchParams(request.query as any).toString();
+        const originalQuery = request.url.split('?')[1];
+       
+        let ga4Url = `https://www.google-analytics.com/mp/collect?measurement_id=${MEASUREMENT_ID.value()}&api_secret=${apiSecret}`;
 
-    if (request.path.endsWith("/ns.html")) {
-      gtmUrl += `/ns.html?${queryParams}`;
-    } else {
-      gtmUrl += `/gtm.js?${queryParams}`;
+        if (originalQuery) {
+            ga4Url += `&${originalQuery}`;
+        }
+     
+        try {
+            const proxyResponse = await fetch(ga4Url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": request.headers["content-type"] || "application/json",
+                },
+                body: request.rawBody,
+            });
+     
+            proxyResponse.headers.forEach((value: string, name: string) => {
+                response.setHeader(name, value);
+            });
+
+            const responseBody = await proxyResponse.text();
+            response.status(proxyResponse.status).send(responseBody);
+     
+        } catch (error) {
+            logger.error("Error proxying request to Google Analytics", error);
+            response.status(500).send("Error proxying request.");
+        }
     }
-
-    try {
-      const gtmResponse = await fetch(gtmUrl);
-      gtmResponse.headers.forEach((value, name) => {
-        response.setHeader(name, value);
-      });
-      response.status(gtmResponse.status).send(gtmResponse.body);
-    } catch (error) {
-      logger.error(`Error fetching GTM resource: ${gtmUrl}`, error);
-      response.status(500).send("Error fetching GTM resource.");
-    }
-    return; 
-  }
-
-  if (request.method !== "POST") {
-    response.status(204).send();
-    return;
-  }
-  
-  // Access the secret's value securely at runtime.
-  const ga4Url = `https://www.google-analytics.com/mp/collect?measurement_id=${MEASUREMENT_ID}&api_secret=${apiSecret.value()}`;
-
-  try {
-    const proxyResponse = await fetch(ga4Url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(request.body),
-    });
-
-    proxyResponse.headers.forEach((value, name) => {
-        response.setHeader(name, value);
-    });
-    response.status(proxyResponse.status).send(proxyResponse.body);
-
-  } catch (error) {
-    logger.error("Error proxying request to Google Analytics", error);
-    response.status(500).send("Error proxying request.");
-  }
-});
+);

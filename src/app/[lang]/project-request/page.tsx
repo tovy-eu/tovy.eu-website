@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const dict = await getDictionary(lang);
   return {
-    title: `${dict.projectForm.title} | Tovy`,
+    title: dict.projectForm.title,
     description: dict.projectForm.subtitle,
   };
 }
