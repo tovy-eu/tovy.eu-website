@@ -14,15 +14,10 @@ function getReadingTime(content: string) {
   return Math.ceil(wordCount / wordsPerMinute);
 }
 
-/**
- * Retrieves sorted posts for a specific language.
- * Defaults to 'en' if the language directory doesn't exist.
- */
 export function getSortedPostsData(lang: string = 'en') {
   const postsDirectory = path.join(basePostsDirectory, lang);
   
   if (!fs.existsSync(postsDirectory)) {
-    // Fallback to base directory for backwards compatibility or return empty
     if (fs.existsSync(basePostsDirectory)) {
        const baseFiles = fs.readdirSync(basePostsDirectory).filter(file => file.endsWith('.md'));
        if (baseFiles.length > 0) return processFiles(basePostsDirectory, baseFiles);
@@ -41,14 +36,14 @@ function processFiles(dir: string, fileNames: string[]) {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents);
     
-    const excerpt = matterResult.content.substring(0, 150).trim() + (matterResult.content.length > 150 ? '...' : '');
+    const excerpt = matterResult.data.summary || (matterResult.content.substring(0, 150).trim() + (matterResult.content.length > 150 ? '...' : ''));
     const readingTime = getReadingTime(matterResult.content);
 
     return {
       id,
       excerpt,
       readingTime,
-      ...(matterResult.data as { date: string; title: string, author: string, image: string, tags: string[] }),
+      ...(matterResult.data as { date: string; title: string, author: string, image: string, tags: string[], summary: string }),
     };
   }).filter(post => {
     if (!post.date) return false;
@@ -65,13 +60,9 @@ function processFiles(dir: string, fileNames: string[]) {
   });
 }
 
-/**
- * Retrieves specific post data for a slug and language.
- */
 export async function getPostData(id: string, lang: string = 'en') {
   let fullPath = path.join(basePostsDirectory, lang, `${id}.md`);
   
-  // Fallback for root files
   if (!fs.existsSync(fullPath)) {
     fullPath = path.join(basePostsDirectory, `${id}.md`);
   }
@@ -86,12 +77,17 @@ export async function getPostData(id: string, lang: string = 'en') {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const matterResult = matter(fileContents);
 
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
+  const contentParts = matterResult.content.split(/\n\s*\n/);
+  const introContent = contentParts.splice(0, 2).join('\n\n');
+  const restOfContent = contentParts.join('\n\n');
+
+  const processedIntro = await remark().use(html).process(introContent);
+  const introHtml = processedIntro.toString();
+
+  const processedContent = await remark().use(html).process(restOfContent);
   const contentHtml = processedContent.toString();
 
-  const excerpt = matterResult.content.substring(0, 160).trim() + '...';
+  const excerpt = matterResult.data.summary || (introContent.substring(0, 160).trim() + '...');
   const readingTime = getReadingTime(matterResult.content);
   
   const previousPost = postIndex > 0 ? sortedPosts[postIndex - 1] : null;
@@ -100,10 +96,11 @@ export async function getPostData(id: string, lang: string = 'en') {
   return {
     id,
     contentHtml,
+    introHtml,
     excerpt,
     readingTime,
     previousPost,
     nextPost,
-    ...(matterResult.data as { date: string; title: string, author: string, image: string, tags: string[] }),
+    ...(matterResult.data as { date: string; title: string, author: string, image: string, tags: string[], summary: string }),
   };
 }
