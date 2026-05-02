@@ -30,7 +30,7 @@ import { SectionHeader } from './section-header';
  */
 export function TestimonialsSection({ dict }: { dict: Dictionary }) {
   const pathname = usePathname();
-  const lang = pathname?.split('/')[1] || 'en';
+  const lang = pathname?.split('/')?.[1] ?? 'en';
 
   // If no data is found, the section is not rendered
   if (!testimonialsData || testimonialsData.length === 0) {
@@ -61,7 +61,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
       <div className="relative z-10 mt-8 group w-full mb-20">
         <Carousel
           opts={{
-            align: "start",
+            align: "center",
             loop: true,
           }}
           plugins={[
@@ -76,7 +76,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
             {testimonialsData.map((testimonial, index) => {
               const logoData = placeholderImages.testimonials.find(img => img.id === testimonial.logoId);
               return (
-                <CarouselItem key={`${testimonial.author}-${index}`} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={`${testimonial.author}-${index}`} className="pl-4 basis-3/4 md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
                     <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
                       
