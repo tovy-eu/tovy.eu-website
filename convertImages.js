@@ -13,8 +13,8 @@ async function convertImage(inputPath, outputPath) {
   }
 }
 
-// Convert public/images/blog/architecture-of-intent.png
+// Convert public/images/tovy-og-image.png
 convertImage(
-  path.join(__dirname, 'public/images/blog/architecture-of-intent.png'),
-  path.join(__dirname, 'public/images/blog/architecture-of-intent.webp')
+  path.join(__dirname, 'public/images/tovy-og-image.png'),
+  path.join(__dirname, 'public/images/tovy-og-image.webp')
 );

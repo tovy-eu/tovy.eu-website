@@ -12,13 +12,35 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
+  const dict = await getDictionary(lang);
+
+  const title = dict.hero.title;
+  const description = dict.hero.subtitle;
+
   return {
+    title,
+    description,
     alternates: {
       canonical: `/${lang}/`,
       languages: {
         'en': '/en/',
         'nl': '/nl/',
       },
+    },
+    openGraph: {
+      title,
+      description,
+      siteName: 'Tovy',
+      images: [
+        {
+          url: '/images/tovy-og-image.webp',
+          width: 1200,
+          height: 630,
+          alt: description,
+        },
+      ],
+      locale: lang,
+      type: 'website',
     },
   };
 }
