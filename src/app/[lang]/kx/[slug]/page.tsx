@@ -136,20 +136,32 @@ export default async function KxResource({ params }: Props) {
             <CardTitle className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-6" asChild>
               <h1>{postData.title}</h1>
             </CardTitle>
-            <CardDescription className="text-base md:text-lg flex items-center gap-4 flex-wrap text-white/50" asChild>
+            <CardDescription className="text-base md:text-lg flex flex-col gap-4 text-white/50">
               <div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <span className="font-bold text-white">{postData.author}</span>
                   <span>&bull;</span>
                   <time dateTime={isValid(dateObj) ? dateObj.toISOString() : undefined}>{displayDate}</time>
+                  {postData.readingTime && (
+                    <>
+                      <span>&bull;</span>
+                      <div className="flex items-center gap-2">
+                        <BookOpen className="h-4 w-4" />
+                        <span>{postData.readingTime} {dict.blog.readingTime}</span>
+                      </div>
+                    </>
+                  )}
                 </div>
-                {postData.readingTime && (
-                  <div className="flex items-center gap-2">
-                    <BookOpen className="h-4 w-4" />
-                    <span>{postData.readingTime} {dict.blog.readingTime}</span>
-                  </div>
-                )}
               </div>
+              {postData.introHtml && (
+                <div 
+                  className="prose dark:prose-invert prose-lg md:prose-xl max-w-none 
+                  prose-headings:text-white prose-headings:font-bold 
+                  prose-p:text-white/70 prose-p:leading-relaxed 
+                  prose-strong:text-white prose-a:text-primary hover:prose-a:text-primary/80"
+                  dangerouslySetInnerHTML={{ __html: postData.introHtml }}
+                />
+              )}
             </CardDescription>
           </CardHeader>
           <CardContent className="p-8 md:p-12 lg:p-16">
