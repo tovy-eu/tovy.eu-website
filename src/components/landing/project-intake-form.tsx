@@ -230,21 +230,29 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     });
   };
 
-  const nextStep = async () => {
+const nextStep = async () => {
+    const pushToDataLayer = (eventName: string) => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ 'event': eventName });
+    };
+
     if (step === -1) {
-      setStep(0);
-      return;
+        setStep(0);
+        pushToDataLayer('form_step_1');
+        return;
     }
-  
+
     let fieldsToValidate: (keyof ProjectRequestData | 'problemDescription' | 'idealState' | 'hasProblem' | 'hasDataTeam' | 'hasCentralDatabase' | 'hasCloudPlatform' | 'solutionsInUse' | 'bottlenecks' )[] = [];
 
+    const currentField = formSteps[step].field;
+
     if (currentField === 'contactDetails') {
-      fieldsToValidate = ['firstName', 'lastName', 'company', 'phone', 'consent'];
+        fieldsToValidate = ['firstName', 'lastName', 'company', 'phone', 'consent'];
     } else if (currentField === 'problemStatement') {
-      fieldsToValidate = ['hasProblem'];
-      if (form.getValues('hasProblem') === 'yes') {
-        fieldsToValidate.push('problemDescription', 'idealState');
-      }
+        fieldsToValidate = ['hasProblem'];
+        if (form.getValues('hasProblem') === 'yes') {
+            fieldsToValidate.push('problemDescription', 'idealState');
+        }
     } else if (currentField === 'dataInfrastructure') {
         fieldsToValidate = ['hasDataTeam', 'hasCentralDatabase', 'hasCloudPlatform'];
     } else {
@@ -254,13 +262,17 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     const isValid = await form.trigger(fieldsToValidate);
 
     if (isValid) {
-      if (step < totalSteps - 1) {
-        setStep(s => s + 1);
-      } else {
-        form.handleSubmit(onSubmit)();
-      }
+        if (step < totalSteps - 1) {
+            setStep(s => {
+                const newStep = s + 1;
+                pushToDataLayer(`form_step_${newStep + 1}`);
+                return newStep;
+            });
+        } else {
+            form.handleSubmit(onSubmit)();
+        }
     }
-  };
+};
 
   const prevStep = () => setStep(s => Math.max(s - 1, -1));
 

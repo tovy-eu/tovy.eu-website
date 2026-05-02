@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
 
   return {
-    title: `${dict.blog.title} | Knowledge Exchange`,
+    title: dict.blog.title,
     description: dict.blog.subtitle,
     alternates: {
       canonical: `/${lang}/kx/`,
@@ -33,14 +33,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       },
     },
     openGraph: {
-      title: `${dict.blog.title} | Tovy`,
+      title: dict.blog.title,
       description: dict.blog.subtitle,
       type: 'website',
       images: [{ url: defaultOgImage }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${dict.blog.title} | Tovy`,
+      title: dict.blog.title,
       description: dict.blog.subtitle,
       images: [defaultOgImage],
     },

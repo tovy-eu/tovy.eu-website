@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: `${postData.title} | Tovy Knowledge Exchange`,
+      title: postData.title,
       description: postData.excerpt,
       type: 'article',
       publishedTime: postData.date,
