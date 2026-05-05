@@ -96,26 +96,26 @@ export default async function KxResource({ params }: Props) {
 
   return (
     <div 
-      className="relative flex flex-col min-h-screen pt-32 md:pt-40 pb-24 px-4 md:px-8 overflow-hidden"
+      className="relative flex flex-col min-h-screen pt-16 md:pt-28 pb-8 overflow-hidden"
       style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))' }}
     >
       <JsonLd type="BreadcrumbList" data={getBreadcrumbSchema(breadcrumbs)} />
       <WavyLines />
       
-      <div className="container relative z-10 mx-auto max-w-4xl">
+      <div className="w-full md:container relative z-10 mx-auto max-w-4xl flex flex-col gap-4 md:gap-6">
 
-        <div className="mb-8">
-          <Button asChild variant="ghost" className="hover:bg-white/10 text-white/60 hover:text-white transition-colors">
-            <Link href={`/${lang}/kx/`}>
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              {lang === 'en' ? 'Back to Hub' : 'Terug naar Hub'}
-            </Link>
-          </Button>
-        </div>
-
-        <Card className="overflow-hidden bg-card/40 backdrop-blur-2xl border border-white/10 shadow-2xl rounded-3xl">
-          {image && (
+        <Card className="overflow-hidden bg-card/40 backdrop-blur-2xl border-y md:border border-white/10 shadow-2xl rounded-none md:rounded-3xl relative">
+          
+          {image ? (
             <div className="relative w-full aspect-video">
+              <div className="absolute top-4 left-4 md:top-8 md:left-8 z-20">
+                <Button asChild variant="secondary" className="bg-black/40 hover:bg-black/60 backdrop-blur-lg border border-white/10 text-white shadow-xl">
+                  <Link href={`/${lang}/kx/`}>
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    {lang === 'en' ? 'Back to Hub' : 'Terug naar Hub'}
+                  </Link>
+                </Button>
+              </div>
               <Image
                 src={image}
                 alt={postData.title}
@@ -126,26 +126,40 @@ export default async function KxResource({ params }: Props) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
             </div>
+          ) : (
+            <div className="p-6 md:p-12 pb-0">
+              <Button asChild variant="secondary" className="bg-white/5 hover:bg-white/10 backdrop-blur-lg border border-white/10 text-white transition-colors">
+                <Link href={`/${lang}/kx/`}>
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  {lang === 'en' ? 'Back to Hub' : 'Terug naar Hub'}
+                </Link>
+              </Button>
+            </div>
           )}
-          <CardHeader className="p-8 md:p-12 border-b border-white/5">
+
+          <CardHeader className="p-6 md:p-12 border-b border-white/5">
             <div className="flex flex-wrap gap-2 mb-6">
               {postData.tags?.map(tag => (
-                <Badge key={tag} variant="secondary" className="bg-primary/20 border-primary/20 text-primary-foreground text-[10px] uppercase tracking-wider">{tag}</Badge>
+                <Badge key={tag} variant="secondary" className="bg-primary/20 border-primary/20 text-primary-foreground text-[11px] font-bold uppercase tracking-widest px-3 py-1">{tag}</Badge>
               ))}
             </div>
-            <CardTitle className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-6" asChild>
+            <CardTitle 
+              className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-6"
+              style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.4)' }} 
+              asChild
+            >
               <h1>{postData.title}</h1>
             </CardTitle>
-            <CardDescription className="text-base md:text-lg flex flex-col gap-4 text-white/50">
+            <CardDescription className="text-base md:text-lg flex flex-col gap-6 text-white/70">
               <div>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-bold text-white">{postData.author}</span>
-                  <span>&bull;</span>
-                  <time dateTime={isValid(dateObj) ? dateObj.toISOString() : undefined}>{displayDate}</time>
+                <div className="flex items-center gap-3 flex-wrap font-medium">
+                  <span className="font-bold text-white/95">{postData.author}</span>
+                  <span className="text-white/30">&bull;</span>
+                  <time className="text-white/80" dateTime={isValid(dateObj) ? dateObj.toISOString() : undefined}>{displayDate}</time>
                   {postData.readingTime && (
                     <>
-                      <span>&bull;</span>
-                      <div className="flex items-center gap-2">
+                      <span className="text-white/30">&bull;</span>
+                      <div className="flex items-center gap-2 text-primary/90">
                         <BookOpen className="h-4 w-4" />
                         <span>{postData.readingTime} {dict.blog.readingTime}</span>
                       </div>
@@ -157,39 +171,46 @@ export default async function KxResource({ params }: Props) {
                 <div 
                   className="prose dark:prose-invert prose-lg md:prose-xl max-w-none 
                   prose-headings:text-white prose-headings:font-bold 
-                  prose-p:text-white/70 prose-p:leading-relaxed 
-                  prose-strong:text-white prose-a:text-primary hover:prose-a:text-primary/80"
+                  prose-p:text-white prose-p:font-medium prose-p:leading-relaxed 
+                  prose-strong:text-white prose-strong:font-bold
+                  prose-a:text-primary hover:prose-a:text-primary/80"
                   dangerouslySetInnerHTML={{ __html: postData.introHtml }}
                 />
               )}
             </CardDescription>
           </CardHeader>
-          <CardContent className="p-8 md:p-12 lg:p-16">
+          <CardContent className="p-6 md:p-12 lg:p-16">
             <article>
               <div 
                 className="prose dark:prose-invert prose-lg md:prose-xl max-w-none 
-                prose-headings:text-white prose-headings:font-bold 
-                prose-p:text-white/70 prose-p:leading-relaxed 
-                prose-strong:text-white prose-a:text-primary hover:prose-a:text-primary/80 
-                prose-blockquote:border-primary prose-blockquote:bg-white/5 prose-blockquote:p-6 prose-blockquote:rounded-r-lg
-                prose-img:rounded-2xl prose-img:shadow-2xl mb-16"
+                prose-headings:text-white prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:mt-10
+                prose-p:text-zinc-100 prose-p:leading-[1.85] prose-p:tracking-normal
+                prose-li:text-zinc-100 prose-li:leading-[1.85] 
+                prose-ul:marker:text-primary/70 prose-ol:marker:text-primary/70
+                prose-strong:text-white prose-strong:font-bold prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:bg-white/10 prose-strong:rounded-md
+                prose-a:font-semibold prose-a:text-white prose-a:underline prose-a:decoration-primary/70 prose-a:decoration-2 prose-a:underline-offset-4 hover:prose-a:text-primary hover:prose-a:bg-primary/10 hover:prose-a:rounded hover:prose-a:px-1 hover:prose-a:-mx-1 transition-all
+                prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-gradient-to-r prose-blockquote:from-primary/10 prose-blockquote:to-transparent prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:text-zinc-100 prose-blockquote:font-medium prose-blockquote:italic prose-blockquote:rounded-r-xl
+                prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-mono prose-code:text-[0.9em] prose-code:font-medium
+                prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 prose-pre:shadow-2xl prose-pre:rounded-2xl
+                prose-img:rounded-3xl prose-img:shadow-2xl prose-img:border prose-img:border-white/5 
+                prose-hr:border-white/10 mb-16"
                 dangerouslySetInnerHTML={{ __html: postData.contentHtml }} 
               />
             </article>
 
-            <div className="mt-16 pt-16 border-t border-white/5 text-center">
+            <div className="mt-8 pt-8 border-t border-white/5 text-center">
               <div className="max-w-xl mx-auto">
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+                <h3 className="text-lg md:text-xl font-bold text-white mb-2">
                   {lang === 'en' ? 'Ready to scale your data ecosystem?' : 'Klaar om uw data-ecosysteem op te schalen?'}
                 </h3>
-                <p className="text-white/60 mb-10 text-lg leading-relaxed">
+                <p className="text-white/60 mb-6 text-base leading-relaxed">
                   {lang === 'en' 
                     ? 'Let’s build a foundation that gives your team more time, focus, and freedom to grow.' 
                     : 'Laten we een fundament bouwen dat uw team meer tijd, focus en ruimte geeft om te groeien.'}
                 </p>
                 <div className="flex justify-center">
                   <Magnetic strength={0.25}>
-                    <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-12 sm:h-14 shadow-2xl px-10">
+                    <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base h-12 shadow-2xl px-8">
                       <Link href={`/${lang}/project-request/`}>
                         {dict.common.workWithUs}
                         <ArrowRight className="ml-2 h-5 w-5" />
@@ -202,7 +223,7 @@ export default async function KxResource({ params }: Props) {
           </CardContent>
         </Card>
         
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="px-4 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-6">
           {postData.previousPost ? (
             <Link href={`/${lang}/kx/${postData.previousPost.id}/`} className="group">
               <Card className="h-full bg-card/20 backdrop-blur-md border border-white/5 hover:border-primary/50 transition-all p-6 group-hover:bg-card/40">
