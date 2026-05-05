@@ -1,7 +1,7 @@
 {
   "common": {
     "workWithUs": "Start project",
-    "readBlog": "Verken KX Hub",
+    "readBlog": "Ontdek de Kennis-hub",
     "shareIdea": "Start project",
     "privacyPolicy": "Privacyverklaring",
     "legalNotice": "Juridische informatie",
@@ -15,9 +15,9 @@
     "success": "Succes",
     "errorOccurred": "Fout",
     "errorTryAgain": "Probeer het later opnieuw.",
-    "subscriptionSuccess": "Bedankt voor uw aanmelding.",
-    "alreadySubscribed": "Al aangemeld",
-    "alreadySubscribedDesc": "U staat al op de lijst.",
+    "subscriptionSuccess": "Bedankt voor je aanmelding.",
+    "alreadySubscribed": "Je bent al aangemeld",
+    "alreadySubscribedDesc": "Je staat al op de lijst.",
     "stayUpToDate": "Blijf op de hoogte",
     "newsletterDesc": "Ontvang technische inzichten van Tovy.",
     "subscribe": "Aanmelden",
@@ -25,8 +25,8 @@
     "techStack": "DE TOVY-TOOLCHAIN"
   },
   "hero": {
-    "title": "De data- en AI-basis voor de groei van uw bedrijf",
-    "subtitle": "Tovy bouwt de datasystemen die automatisering ontsluiten. Wij transformeren complexe datasilo’s naar gestroomlijnde, schaalbare processen. Bespaar tijd en benut het volledige groeipotentieel van uw onderneming."
+    "title": "De data- en AI-basis voor de groei van je bedrijf",
+    "subtitle": "Tovy bouwt de datasystemen die automatisering ontsluiten. Wij transformeren complexe datasilo’s naar gestroomlijnde, schaalbare processen. Bespaar tijd en benut het volledige groeipotentieel van je onderneming."
   },
   "painSolution": {
     "title": "Silo's vs. gecentraliseerd",
@@ -55,14 +55,14 @@
   "about": {
     "strategy": "TOVY'S STRATEGIE",
     "title": "Wie, wat en waarom.",
-    "mission": "De missie van Tovy is het bouwen van slimme data-ecosystemen die werk uit handen nemen. Tovy streeft naar een wereld waarin technologie mensen meer tijd, focus en ruimte geeft om te groeien.",
+    "mission": "De missie van Tovy is het bouwen van slimme data-systemen die werk uit handen nemen. Tovy streeft naar een wereld waarin technologie mensen meer tijd, focus en ruimte geeft om te groeien.",
     "ceo": {
       "name": "Giel Nijkamp",
       "role": "Oprichter",
       "specialization": "data-engineer",
       "location": "Nederland",
       "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
-      "bio": "Standaardsoftware loopt regelmatig vast bij complexe processen, wat leidt tot handmatig werk. Ik los dit op door een solide datafundament en de juiste automatisering te bouwen voor uw bedrijf. Van strategie tot operatie. Mijn aanpak combineert vier jaar ervaring in supplychainmanagement met een levenslange passie voor tech om operationele pijn te verminderen.\n\nTovy is opgericht om systemen te bouwen die nodig zijn om tijd terug te winnen en uw bedrijf te schalen."
+      "bio": "Gedreven door een levenslange passie voor tech en ervaring in diverse bedrijfsprocessen, zie ik vaak dezelfde pijn: standaardsoftware die vastloopt en dwingt tot inefficiënt handmatig werk. Ik heb Tovy opgericht om dit op te lossen. Van strategie tot operatie bouw ik het solide datafundament en de automatisering die je bedrijf nodig heeft om tijd terug te winnen en schaalbaar te groeien."
     },
     "pillarsTitle": "KERNWAARDEN",
     "pillars": {
@@ -86,31 +86,31 @@
   },
   "engineering": {
     "strategy": "DE TOVY-WERKWIJZE",
-    "title": "End-to-end-data-ecosystemen",
-    "subtitle": "Van ruwe data in de cloud tot op maat gemaakte toepassingen voor businessprocessen.",
+    "title": "End-to-end-data-systemen",
+    "subtitle": "Van ruwe data in de cloud tot op maat gemaakte toepassingen voor bedrijfsprocessen.",
     "services": {
       "strategic": {
         "title": "Strategisch ontwerp",
         "desc": "Tovy ontwikkelt technologie-, data- en AI-strategieën die aansluiten op de organisatiedoelen.",
         "tools": [
-          "Roadmapping",
+          "Roadmap-ontwikkeling",
           "Architectuur",
           "Haalbaarheid"
         ]
       },
       "cloud": {
         "title": "Infrastructuur",
-        "desc": "Tovy ontwerpt veilige en efficiënte cloudoplossingen voor dataworkloads.",
+        "desc": "Tovy ontwerpt veilige en efficiënte cloud-oplossingen voor data-workloads.",
         "tools": [
           "Azure",
           "GCP",
           "AWS",
-          "On-premise"
+          "In eigen beheer"
         ]
       },
       "data": {
-        "title": "Data engineering",
-        "desc": "Tovy bouwt schaalbare pipelines en datawarehousing met een moderne data stack.",
+        "title": "Data-engineering",
+        "desc": "Tovy bouwt schaalbare pipelines en datawarehousing met een moderne datastack.",
         "tools": [
           "dbt",
           "SQL",
@@ -134,9 +134,9 @@
     "subtitle": "Ontdek hoe Tovy bedrijven helpt te schalen met automatisering."
   },
   "blog": {
-    "title": "KX Hub",
+    "title": "Kennis-hub",
     "subtitle": "Technische bronnen, inzichten en documentatie door Tovy.",
-    "noPosts": "Geen bronnen gevonden in de KX Hub. Kom later terug!",
+    "noPosts": "Geen bronnen gevonden in de Kennis-hub. Kom later terug!",
     "readingTime": "min leestijd",
     "previous": "Vorige",
     "next": "Volgende",
@@ -144,7 +144,7 @@
     "by": "door"
   },
   "navigation": {
-    "blog": "KX Hub",
+    "blog": "Kennis-hub",
     "about": "Over ons",
     "services": "Diensten",
     "contact": "Contact"
@@ -155,7 +155,7 @@
     "sections": [
       {
         "title": "Verwerkingsverantwoordelijke",
-        "content": "Tovy is de verwerkingsverantwoordelijke voor de persoonsgegevens die via deze website worden verzameld. Voor vragen kunt u contact opnemen met Tovy via:"
+        "content": "Tovy is de verwerkingsverantwoordelijke voor de persoonsgegevens die via deze website worden verzameld. Voor vragen kun je contact opnemen met Tovy via:"
       },
       {
         "title": "Gegevensverzameling en gebruik",
@@ -168,7 +168,7 @@
       },
       {
         "title": "Gegevenslocatie en doorgifte",
-        "content": "Om gegevens te beschermen, is de primaire database (Cloud Firestore) geconfigureerd binnen de Europese Unie (regio ‘eur3’). Hoewel de organisatie de voorkeur geeft aan EU-diensten, kunnen sommige onderaannemers gegevens internationaal doorgeven. Dit gebeurt uitsluitend via wettelijk toegestane mechanismen, zoals Standard Contractual Clauses."
+        "content": "Om gegevens te beschermen, is de primaire database (Cloud Firestore) geconfigureerd binnen de Europese Unie (regio ‘eur3’). Hoewel de organisatie de voorkeur geeft aan EU-diensten, kunnen sommige onderaannemers gegevens internationaal doorgeven. Dit gebeurt uitsluitend via wettelijk toegestane mechanismen, zoals standaard contractbepalingen."
       },
       {
         "title": "Bewaartermijnen en beveiliging",
@@ -176,7 +176,7 @@
       },
       {
         "title": "Rechten onder de AVG",
-        "content": "Onder de AVG heeft u de volgende rechten met betrekking tot uw persoonsgegevens:",
+        "content": "Onder de AVG heb je de volgende rechten met betrekking tot je persoonsgegevens:",
         "list": [
           "<strong>Recht op informatie:</strong> Weten hoe gegevens worden verzameld en gebruikt",
           "<strong>Recht op inzage:</strong> Een kopie opvragen van de opgeslagen informatie",
@@ -186,7 +186,7 @@
           "<strong>Recht op overdraagbaarheid:</strong> Gegevens in een machineleesbaar formaat ontvangen",
           "<strong>Recht van bezwaar:</strong> Bezwaar maken tegen de verwerking van persoonsgegevens"
         ],
-        "footer": "Om deze rechten uit te oefenen, kunt u contact opnemen via het onderstaande e-mailadres."
+        "footer": "Om deze rechten uit te oefenen, kun je contact opnemen via het onderstaande e-mailadres."
       }
     ],
     "effectiveDate": "Dit beleid is van kracht sinds 30 juli 2024."
@@ -212,29 +212,29 @@
   },
   "projectForm": {
     "title": "Projectformulier",
-    "subtitle": "Deel uw projectvereisten met Tovy om schaalbare data-ecosystemen te bouwen.",
+    "subtitle": "Deel je projectvereisten met Tovy om schaalbare data-systemen te bouwen.",
     "intro": {
-      "title": "Bouw uw datafundament",
-      "description": "Om de juiste aanbeveling te geven, stellen we zeven korte vragen over uw projectdoelen. Dit helpt ons te bepalen of er een match is."
+      "title": "Bouw je datafundament",
+      "description": "Om de juiste aanbeveling te geven, stellen we zeven korte vragen over je projectdoelen. Dit helpt ons te bepalen of er een match is."
     },
     "success": {
       "title": "Bedankt",
-      "description": "Tovy heeft uw verzoek ontvangen. Plan hieronder een kennismakingsgesprek om het proces te versnellen.",
+      "description": "Tovy heeft je verzoek ontvangen. Plan hieronder een kennismakingsgesprek om het proces te versnellen.",
       "titlePathB": "Beoordeling vereisten",
       "descriptionPathB": "Tovy beoordeelt momenteel de technische en strategische vereisten. Wij nemen contact op als er extra context nodig is.",
-      "titlePathC": "Kennisbank",
-      "descriptionPathC": "Op basis van uw scope is de KX Hub het meest geschikte startpunt. Verken daar technische documentatie en casestudy's.",
+      "titlePathC": "Kennis-hub",
+      "descriptionPathC": "Op basis van je scope is de Kennis-hub het meest geschikte startpunt. Verken daar technische documentatie en casestudy's.",
       "backHome": "Terug naar homepage",
       "bookMeeting": "Plan kennismakingsgesprek",
-      "exploreHub": "Verken de Hub"
+      "exploreHub": "Ontdenk de Kennis-hub"
     },
     "steps": {
       "problemStatement": {
-        "label": "Probleem en gewenste uitkomst",
-        "description": "Help ons de kernuitdaging en uw visie voor de oplossing te begrijpen.",
-        "hasProblemLabel": "Is er een specifiek probleem dat u wilt oplossen?",
-        "problemDescriptionLabel": "Beschrijf het probleem en de impact op uw bedrijf (wie, wat, wanneer, waar).",
-        "idealStateLabel": "Hoe ziet de ideale oplossing eruit en welke resultaten verwacht u?",
+        "label": "Probleemstelling en gewenste uitkomst",
+        "description": "Help ons de uitdaging en je visie voor de oplossing te begrijpen.",
+        "hasProblemLabel": "Is er een specifiek probleem dat je wilt oplossen?",
+        "problemDescriptionLabel": "Beschrijf het probleem en de impact op je bedrijf (wie, wat, wanneer, waar).",
+        "idealStateLabel": "Hoe ziet de ideale oplossing eruit en welke resultaten verwacht je?",
         "options": {
           "yes": "Ja",
           "no": "Nee"
@@ -260,11 +260,11 @@
       },
       "dataInfrastructure": {
         "label": "Data-infrastructuur",
-        "description": "Help ons uw huidige datalandschap te begrijpen.",
+        "description": "Help ons je huidige datalandschap te begrijpen.",
         "hasDataTeamLabel": "Is er een (data)engineeringteam?",
-        "hasCentralDatabaseLabel": "Is er een centrale database voor alle systemen?",
-        "hasCloudPlatformLabel": "Maakt u gebruik van een cloudplatform (AWS / Azure / GCP)?",
-        "solutionsInUseLabel": "Welke software, tools of platforms gebruikt u momenteel?",
+        "hasCentralDatabaseLabel": "Is er een centrale database die gegevens uit meerdere systemen bevat?",
+        "hasCloudPlatformLabel": "Maak je gebruik van een cloud-platform (AWS / Azure / GCP)?",
+        "solutionsInUseLabel": "Welke software, tools of platforms gebruik je momenteel?",
         "options": {
           "yes": "Ja",
           "no": "Nee"
@@ -311,7 +311,7 @@
     "badge": "Fout 404",
     "titlePart1": "Verdwaald in de",
     "titlePart2": "datasilo's?",
-    "description": "De gezochte pagina is verplaatst, verwijderd of heeft nooit bestaan. Tovy wijst u graag de weg terug.",
+    "description": "De bezochte pagina is verplaatst, verwijderd of heeft nooit bestaan. Tovy wijst je graag de weg terug.",
     "returnHome": "Terug naar home",
     "startProject": "Project starten"
   }
