@@ -1,4 +1,3 @@
-
 import dynamic from 'next/dynamic';
 import { HeroSection } from "@/components/landing/hero-section";
 import { SectionDivider } from "@/components/landing/section-divider";
@@ -49,7 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 const PainSolutionSection = dynamic(() => import("@/components/landing/pain-solution-section").then(mod => mod.PainSolutionSection));
 const AboutSection = dynamic(() => import("@/components/landing/about-section").then(mod => mod.AboutSection));
 const EngineeringSection = dynamic(() => import("@/components/landing/engineering-section").then(mod => mod.EngineeringSection));
-const TestimonialsSection = dynamic(() => import("@/components/landing/testimonials-section").then(mod => mod.TestimonialsSection));
+// const TestimonialsSection = dynamic(() => import("@/components/landing/testimonials-section").then(mod => mod.TestimonialsSection));
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -75,9 +74,9 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
       <EngineeringSection dict={dict} />
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
 
-      <TestimonialsSection dict={dict} />
+      {/* <TestimonialsSection dict={dict} /> */}
     </div>
   );
 }
