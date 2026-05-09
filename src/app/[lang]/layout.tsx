@@ -3,7 +3,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { getDictionary } from '@/lib/get-dictionary';
 import { ScrollProgress } from '@/components/layout/scroll-progress';
-import { JsonLd, getCompanySchema } from '@/components/layout/json-ld';
+import { JsonLd, getCompanySchema, getPersonSchema } from '@/components/layout/json-ld';
 
 /**
  * generateStaticParams is required for dynamic routes when using 'output: export'.
@@ -34,6 +34,7 @@ export default async function LocalizedLayout({
   return (
     <>
       <JsonLd type="ProfessionalService" data={getCompanySchema(dict)} />
+      <JsonLd type="Person" data={getPersonSchema()} />
       <ScrollProgress />
       <Header lang={urlLang} dict={dict} />
       <main id="main-content" className="flex-grow flex flex-col">

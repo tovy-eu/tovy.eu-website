@@ -1,10 +1,11 @@
 
-import type { Organization, Service, WebSite, ProfessionalService, FAQPage, BreadcrumbList } from 'schema-dts';
+import type { Organization, Service, WebSite, ProfessionalService, FAQPage, BreadcrumbList, Person } from 'schema-dts';
 import companyProfile from '@/content/company-profile.json';
+import personProfile from '@/content/person.json';
 import type { Dictionary } from '@/lib/get-dictionary';
 
 interface JsonLdProps {
-  type: 'Organization' | 'ProfessionalService' | 'Service' | 'WebSite' | 'FAQPage' | 'BreadcrumbList';
+  type: 'Organization' | 'ProfessionalService' | 'Service' | 'WebSite' | 'FAQPage' | 'BreadcrumbList' | 'Person';
   data: any;
 }
 
@@ -26,6 +27,7 @@ export function JsonLd({ type, data }: JsonLdProps) {
  */
 export function getCompanySchema(dict: Dictionary): ProfessionalService {
   const profile = companyProfile.public_company_profile;
+  const person = personProfile.public_ceo_profile;
   return {
     '@type': 'ProfessionalService',
     '@id': 'https://tovy.eu/#organization',
@@ -47,13 +49,31 @@ export function getCompanySchema(dict: Dictionary): ProfessionalService {
       email: profile.contact_details.email,
     },
     vatID: profile.primary_identifiers.vat_id_number,
-    iso6523: profile.primary_identifiers.commercial_registry_number,
+    identifier: profile.primary_identifiers.commercial_registry_number,
     foundingDate: profile.business_context.start_date,
     founder: {
       '@type': 'Person',
-      name: profile.business_context.proprietor_name,
+      name: person.name,
     },
   };
+}
+
+/**
+ * Generates the Person schema for the CEO.
+ */
+export function getPersonSchema(): Person {
+    const person = personProfile.public_ceo_profile;
+    return {
+        '@type': 'Person',
+        name: person.name,
+        jobTitle: person.jobTitle,
+        image: person.image,
+        sameAs: person.sameAs,
+        worksFor: {
+            '@type': 'Organization',
+            name: companyProfile.public_company_profile.entity_name,
+        },
+    };
 }
 
 /**
@@ -113,33 +133,16 @@ export function getServicesSchema(dict: Dictionary): Service[] {
  * Generates FAQ schema to support Prompt-Optimized Search (MX).
  */
 export function getFaqSchema(dict: Dictionary): FAQPage {
+  const allQuestions = dict.faq.categories.flatMap(category => category.questions);
   return {
     '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is the starting budget for a project with Tovy?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: dict.projectForm.steps.budget.description,
-        },
+    mainEntity: allQuestions.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer.replace(/<[^>]*>?/gm, ''), // Strip HTML for JSON-LD
       },
-      {
-        '@type': 'Question',
-        name: 'How fast can Tovy deliver a working data solution?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: dict.projectForm.steps.timeline.description,
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Does Tovy offer consulting for startups?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes, Tovy provides strategic design and MVP builds starting from €2.500, specifically tailored for startups needing a reliable AI and Data foundation.',
-        },
-      },
-    ],
+    })),
   };
 }
