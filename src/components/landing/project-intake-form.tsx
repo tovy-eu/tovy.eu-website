@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition, useEffect } from "react";
+import { useState, useTransition, useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { projectRequestSchema, type ProjectRequestData } from "@/lib/definitions";
@@ -10,7 +10,7 @@ import "react-phone-number-input/style.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { db } from "@/lib/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import Script from "next/script";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -45,8 +45,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
+  const [formDocId, setFormDocId] = useState<string | null>(null);
 
-  const formSteps = [
+    const formSteps = useMemo(() => [
     { field: "email", label: dict.projectForm.steps.workEmail.label, description: dict.projectForm.steps.workEmail.description },
     { field: "companySize", label: dict.projectForm.steps.companySize.label, description: dict.projectForm.steps.companySize.description },
     { field: "problemStatement", label: dict.projectForm.steps.problemStatement.label, description: dict.projectForm.steps.problemStatement.description },
@@ -54,20 +55,17 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     { field: "timeline", label: dict.projectForm.steps.timeline.label, description: dict.projectForm.steps.timeline.description },
     { field: "budget", label: dict.projectForm.steps.budget.label, description: dict.projectForm.steps.budget.description },
     { field: "contactDetails", label: dict.projectForm.steps.contact.label, description: dict.projectForm.steps.contact.description },
-  ];
+  ], [dict]);
 
   const totalSteps = formSteps.length;
 
-  const singleOptions = {
+  const singleOptions = useMemo(() => ({
     companySize: dict.projectForm.steps.companySize.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
     timeline: dict.projectForm.steps.timeline.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
     budget: dict.projectForm.steps.budget.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
     hasProblem: Object.entries(dict.projectForm.steps.problemStatement.options).map(([key, label], i) => ({ key, label: label as string, hint: String.fromCharCode(65 + i) })),
     dataInfrastructure: Object.entries(dict.projectForm.steps.dataInfrastructure.options).map(([key, label], i) => ({ key, label: label as string, hint: String.fromCharCode(65 + i) })),
-};
-
-  const currentField = step >= 0 ? formSteps[step].field as keyof ProjectRequestData | "contactDetails" | "problemStatement" | "dataInfrastructure" : "intro";
-
+  }), [dict]);
 
   const form = useForm<ProjectRequestData>({
     resolver: zodResolver(projectRequestSchema),
@@ -95,6 +93,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   
   const allValues = form.watch();
   const hasProblemWatch = form.watch("hasProblem");
+  const companySizeWatch = form.watch("companySize");
+  const { setValue } = form;
 
   const isNextButtonDisabled = step > -1 && (() => {
     const field = formSteps[step].field;
@@ -112,6 +112,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
             }
             return !allValues.hasProblem;
         case 'dataInfrastructure':
+            if (companySizeWatch === singleOptions.companySize[0]?.label) {
+                return !allValues.hasCentralDatabase || !allValues.hasCloudPlatform
+            }
             return !allValues.hasDataTeam || !allValues.hasCentralDatabase || !allValues.hasCloudPlatform;
         case 'contactDetails':
             return !allValues.firstName || !allValues.lastName || !allValues.company || !allValues.consent;
@@ -126,9 +129,12 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     const savedProgress = localStorage.getItem(STORAGE_KEY);
     if (savedProgress) {
       try {
-        const { step: savedStep, data: savedData } = JSON.parse(savedProgress);
+        const { step: savedStep, data: savedData, docId: savedDocId } = JSON.parse(savedProgress);
         setStep(savedStep);
         form.reset(savedData);
+        if (savedDocId) {
+          setFormDocId(savedDocId);
+        }
       } catch (e) {
         console.error("Failed to load form progress", e);
       }
@@ -137,9 +143,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
 
   useEffect(() => {
     if (!formSubmitted) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ step, data: allValues }));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ step, data: allValues, docId: formDocId }));
     }
-  }, [step, allValues, formSubmitted]);
+  }, [step, allValues, formSubmitted, formDocId]);
 
   useEffect(() => {
     if (formSubmitted && submittedValues && (routingPath === 'A' || routingPath === 'B' || routingPath === 'C')) {
@@ -165,6 +171,13 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
       return () => clearInterval(interval);
     }
   }, [formSubmitted, submittedValues, routingPath]);
+
+  useEffect(() => {
+    const isSoleEntrepreneur = companySizeWatch === singleOptions.companySize[0]?.label;
+    if (isSoleEntrepreneur) {
+      setValue("hasDataTeam", "no");
+    }
+  }, [companySizeWatch, setValue, singleOptions.companySize]);
 
   const calculateScore = (data: ProjectRequestData): { score: number, path: RoutingPath } => {
     let score = 0;
@@ -194,6 +207,28 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     return { score, path: 'B' };
   };
 
+  const saveProgress = async () => {
+    const data = form.getValues();
+    if (data.email) {
+      try {
+        let docRef;
+        if (formDocId) {
+          docRef = doc(db, "project_requests", formDocId);
+          await setDoc(docRef, { ...data, last_updated: new Date() }, { merge: true });
+        } else {
+          const doc = await addDoc(collection(db, "project_requests"), {
+            ...data,
+            timestamp: new Date(),
+            status: "incomplete",
+          });
+          setFormDocId(doc.id);
+        }
+      } catch (error) {
+        console.error("Failed to save form progress", error);
+      }
+    }
+  };
+  
   const onSubmit = (data: ProjectRequestData) => {
     startTransition(async () => {
       try {
@@ -201,14 +236,16 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         const visitorId = getVisitorId();
         const traceId = getTraceId();
         
-        await addDoc(collection(db, "project_requests"), {
+        const docRef = doc(db, "project_requests", formDocId!);
+        await setDoc(docRef, {
           ...data,
           timestamp: new Date(),
           lead_score: score,
           routing_path: path,
           visitor_id: visitorId,
           trace_id: traceId,
-        });
+          status: "complete",
+        }, { merge: true });
 
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
@@ -262,6 +299,7 @@ const nextStep = async () => {
     const isValid = await form.trigger(fieldsToValidate);
 
     if (isValid) {
+        await saveProgress();
         if (step < totalSteps - 1) {
             setStep(s => {
                 const newStep = s + 1;
@@ -351,7 +389,7 @@ const nextStep = async () => {
                                 <Input {...f} placeholder={dict.common.emailPlaceholder} className="mt-6 bg-white/5 border-white/10 h-12" />
                               </FormControl>
                               <FormDescription>
-                                Note: While personal emails are accepted, work email addresses are preferred and will be prioritized.
+                                {dict.projectForm.steps.workEmail.note}
                               </FormDescription>
                               <FormMessage />
                             </FormItem>
@@ -452,6 +490,7 @@ const nextStep = async () => {
                       }
 
                       if (field === 'dataInfrastructure') {
+                        const isSoleEntrepreneur = companySizeWatch === singleOptions.companySize[0]?.label;
                         return (
                             <div key={field}>
                                 <div className="flex items-center gap-3 mb-2">
@@ -461,31 +500,33 @@ const nextStep = async () => {
                                 <p className="text-muted-foreground text-sm mb-6">{description}</p>
                                 
                                 <div className="space-y-6">
-                                    <FormField control={form.control} name="hasDataTeam" render={({ field: f }) => (
-                                        <FormItem>
-                                            <FormLabel>{dict.projectForm.steps.dataInfrastructure.hasDataTeamLabel}</FormLabel>
-                                            <div className="grid gap-2 mt-2 max-w-sm">
-                                                {singleOptions.dataInfrastructure.map(o => (
-                                                    <button
-                                                        key={o.key}
-                                                        type="button"
-                                                        onClick={() => f.onChange(o.key)}
-                                                        className={cn(
-                                                            "flex items-center justify-between p-4 rounded-xl border border-white/5 text-left transition-all",
-                                                            f.value === o.key ? "bg-primary/20 border-primary/50" : "bg-white/5 hover:bg-white/10"
-                                                        )}
-                                                    >
-                                                        <div className="flex items-center gap-3">
-                                                            <span className="text-[10px] font-bold text-white/40 bg-black/20 px-2 py-0.5 rounded">{o.hint}</span>
-                                                            <span className="font-semibold text-sm">{o.label}</span>
-                                                        </div>
-                                                        {f.value === o.key && <Check className="h-4 w-4 text-primary" />}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )} />
+                                    {!isSoleEntrepreneur && (
+                                        <FormField control={form.control} name="hasDataTeam" render={({ field: f }) => (
+                                            <FormItem>
+                                                <FormLabel>{dict.projectForm.steps.dataInfrastructure.hasDataTeamLabel}</FormLabel>
+                                                <div className="grid gap-2 mt-2 max-w-sm">
+                                                    {singleOptions.dataInfrastructure.map(o => (
+                                                        <button
+                                                            key={o.key}
+                                                            type="button"
+                                                            onClick={() => f.onChange(o.key)}
+                                                            className={cn(
+                                                                "flex items-center justify-between p-4 rounded-xl border border-white/5 text-left transition-all",
+                                                                f.value === o.key ? "bg-primary/20 border-primary/50" : "bg-white/5 hover:bg-white/10"
+                                                            )}
+                                                        >
+                                                            <div className="flex items-center gap-3">
+                                                                <span className="text-[10px] font-bold text-white/40 bg-black/20 px-2 py-0.5 rounded">{o.hint}</span>
+                                                                <span className="font-semibold text-sm">{o.label}</span>
+                                                            </div>
+                                                            {f.value === o.key && <Check className="h-4 w-4 text-primary" />}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )} />
+                                    )}
 
                                     <FormField control={form.control} name="hasCentralDatabase" render={({ field: f }) => (
                                         <FormItem>

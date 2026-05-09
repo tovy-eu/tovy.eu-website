@@ -288,7 +288,7 @@
     "steps": {
       "problemStatement": {
         "label": "Probleemstelling en gewenste uitkomst",
-        "description": "Help ons de uitdaging en je visie voor de oplossing te begrijpen.",
+        "description": "Help ons jouw uitdaging en visie te begrijpen. Zo kunnen de oplossing visualiseren.",
         "hasProblemLabel": "Is er een specifiek probleem dat je wilt oplossen?",
         "problemDescriptionLabel": "Beschrijf het probleem en de impact op je bedrijf (wie, wat, wanneer, waar).",
         "idealStateLabel": "Hoe ziet de ideale oplossing eruit en welke resultaten verwacht je?",
@@ -300,7 +300,7 @@
       "workEmail": {
         "label": "Zakelijk e-mailadres",
         "description": "Geef een professioneel zakelijk e-mailadres op.",
-        "note": "Let op: Zakelijke e-mailadressen hebben de voorkeur en krijgen voorrang bij de beoordeling."
+        "note": "Let op: Persoonlijke e-mailadressen zijn toegestaan, maar zakelijke e-mailadressen hebben de voorkeur en krijgen voorrang bij de beoordeling."
       },
       "companySize": {
         "label": "Bedrijfsgrootte",
