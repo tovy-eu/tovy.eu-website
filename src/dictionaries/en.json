@@ -1,4 +1,3 @@
-
 {
   "common": {
     "workWithUs": "Start project",
@@ -138,6 +137,63 @@
     "next": "Next",
     "featured": "Featured resource",
     "by": "by"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "badge": "SUPPORT",
+    "categories": [
+      {
+        "name": "Identity",
+        "questions": [
+          {
+            "question": "What is Tovy and what does it specialize in?",
+            "answer": "Tovy is a specialist in data engineering and automation. We specialize in building intelligent data systems, converting business data into automated processes that help companies scale efficiently. Our focus is on creating a data foundation that stimulates growth and reduces manual, error-prone work for our clients."
+          },
+          {
+            "question": "How does Tovy's methodology differ from industry standards?",
+            "answer": "Our methodology is rooted in an engineering mindset, ensuring your business considers the future and automation potential from day one. Unlike large tech consulting firms that use projects to apply change management, Tovy provides advice and builds your end-to-end data system, ensuring your business information is accurate and available."
+          },
+          {
+            "question": "Which industries or sectors does Tovy serve?",
+            "answer": "Tovy serves all industries struggling with data quality or seeking more automation. Any enterprise dealing with financial, product, or service-related data flows is relevant to Tovy."
+          },
+          {
+            "question": "How does Tovy differ from a standard product development agency?",
+            "answer": "Tovy builds solutions as <strong>intelligent data engines</strong>. Our main goal is to structure your business processes, enhance the data quality, and ultimately drive automation. We focus on creating business- and data-driven systems that streamline operations."
+          },
+          {
+            "question": "Why choose Tovy over a larger data consulting firm?",
+            "answer": "Tovy offers a highly specialized, founder-led approach focused on <strong>practical automation and rapid implementation</strong>. We deliver tangible results in fixed 6-week sprints, avoiding the lengthy and costly projects typical of larger firms. This approach allows us to implement systems with greater efficiency and focus."
+          }
+        ]
+      },
+      {
+        "name": "Operation",
+        "questions": [
+          {
+            "question": "What is the price for a Tovy project as of 2026?",
+            "answer": "Our foundational projects are <strong>6-week sprints with a fixed budget starting at €5,000</strong>. This transparent price includes strategic design, data infrastructure setup, and initial automation workflows. We guarantee no hidden setup or maintenance costs, ensuring a clear and predictable investment for our clients."
+          },
+          {
+            "question": "How can I book a consultation with Tovy?",
+            "answer": "You can start by filling out our strategic <a href='/project-request' class='text-primary hover:underline'>project intake form</a>. This automated form asks about your needs and goals to ensure our first conversation is focused and productive."
+          },
+          {
+            "question": "What is the average implementation time for a foundational data system?",
+            "answer": "The average implementation time for a foundational system is <strong>6 weeks</strong>. This rapid turnaround covers everything from strategic design to the launch of your core data infrastructure and initial automation pipelines. Our model is designed to deliver business value in a short period."
+          }
+        ]
+      },
+      {
+        "name": "Trust",
+        "questions": [
+          {
+            "question": "Where can I find Tovy's technical case studies?",
+            "answer": "We document our methodologies and share our expertise in the <strong><a href='/kx' class='text-primary hover:underline'>Knowledge Hub</a></strong>. It serves as our open-source archive of technical articles, best practices, and implementation details, showcasing our commitment to transparency and industry leadership."
+          }
+        ]
+      }
+    ]
   },
   "navigation": {
     "blog": "KX Hub",

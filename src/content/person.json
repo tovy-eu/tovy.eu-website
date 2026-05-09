@@ -1,0 +1,15 @@
+{
+  "public_ceo_profile": {
+    "@type": "Person",
+    "name": "Giel Nijkamp",
+    "jobTitle": "Founder",
+    "image": "https://tovy.eu/images/people/ceo.webp",
+    "sameAs": [
+      "https://www.linkedin.com/in/giel-nijkamp-ab370447/"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Tovy"
+    }
+  }
+}

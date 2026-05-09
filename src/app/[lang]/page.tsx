@@ -4,6 +4,7 @@ import { SectionDivider } from "@/components/landing/section-divider";
 import { getDictionary } from "@/lib/get-dictionary";
 import { JsonLd, getServicesSchema, getFaqSchema } from "@/components/layout/json-ld";
 import type { Metadata } from 'next';
+import FaqSection from '@/components/landing/faq-section';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'nl' }];
@@ -73,6 +74,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <SectionDivider />
 
       <EngineeringSection dict={dict} />
+
+      <SectionDivider />
+
+      <FaqSection dict={dict} />
 
       {/* <SectionDivider /> */}
 

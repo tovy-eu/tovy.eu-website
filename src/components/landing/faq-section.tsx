@@ -1,0 +1,52 @@
+
+import React from 'react';
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+  } from "@/components/ui/accordion"
+import type { Dictionary } from '@/lib/get-dictionary';
+import { SectionHeader } from './section-header';
+import { ScrollReveal } from '../scroll-reveal';
+  
+
+const FaqSection = ({ dict }: { dict: Dictionary }) => {
+    return (
+        <section className="relative w-full flex flex-col justify-center bg-gradient-to-b from-background to-accent/5 py-24 overflow-hidden scroll-mt-16 md:scroll-mt-20">
+            <div className="relative mx-auto max-w-4xl px-4 md:px-8 z-10 w-full">
+                <SectionHeader 
+                  badge={dict.faq.badge}
+                  title={dict.faq.title}
+                  className="mb-16"
+                />
+
+                <ScrollReveal delay="duration-700" className="flex">
+                    <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
+                        <div className="relative h-full w-full bg-card rounded-[calc(1.5rem-1px)] p-6 sm:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/10 group-hover:border-transparent overflow-hidden">
+                            <Accordion type="single" collapsible className="w-full">
+                                {dict.faq.categories.map((category, catIndex) => (
+                                    <React.Fragment key={catIndex}>
+                                        <h3 className="text-[11px] md:text-sm font-bold uppercase tracking-widest bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent mt-6 first:mt-0 mb-2">
+                                            {category.name}
+                                        </h3>
+                                        {category.questions.map((item, qIndex) => (
+                                            <AccordionItem key={qIndex} value={`item-${catIndex}-${qIndex}`}>
+                                                <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="prose prose-invert prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: item.answer }} />
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        ))}
+                                    </React.Fragment>
+                                ))}
+                            </Accordion>
+                        </div>
+                    </div>
+                </ScrollReveal>
+            </div>
+        </section>
+    );
+};
+
+export default FaqSection;

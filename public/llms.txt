@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tovy.eu/sitemap.xml
+
+Knowledge-Graph-Source: /en/
+Knowledge-Graph-Source: /nl/
+
+Primary-Entity-Definition: https://tovy.eu/en/#organization
+Primary-Entity-Definition: https://tovy.eu/nl/#organization
