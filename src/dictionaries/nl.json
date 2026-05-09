@@ -143,63 +143,63 @@
     "featured": "Uitgelichte bron",
     "by": "door"
   },
-    "faq": {
-      "title": "Veelgestelde vragen",
-      "badge": "ONDERSTEUNING",
-      "categories": [
-        {
-          "name": "Identiteit",
-          "questions": [
-            {
-              "question": "Wat is Tovy precies en waarin is het gespecialiseerd?",
-              "answer": "Tovy is een specialist in data-engineering en automatisering. Tovy is gespecialiseerd in het bouwen van intelligente datasystemen. Tovy zet bedrijfsdata om in geautomatiseerde processen die bedrijven helpen efficiënt op te schalen. Onze focus ligt op het creëren van een databasis die groei stimuleert en handmatig, foutgevoelig werk voor onze klanten verminderd."
-            },
-            {
-              "question": "Hoe verschilt de methodologie van Tovy van de industriestandaarden?",
-              "answer": "Onze methodologie is geworteld in de engineering-mindset, wat ervoor zorgt dat je bedrijf vanaf dag één rekening houdt met de toekomst en de potentie tot automatisering. In tegenstelling tot traditionele grote tech-consultingfirms die projecten aanpakken om change management toe te passen, geeft Tovy advies en bouwt jouw end-to-end datasysteem, zodate jouw bedrijfsinformatie klopt en beschikbaar is."
-            },
-            {
-              "question": "Welke industrieën of sectoren bedient Tovy?",
-              "answer": "Tovy bedient alle industrieën die worstelen met data kwaliteit of die opzoek zijn naar meer automatisering. Alle ondernemingen die dealen met geld-, product- of service-, de daarbijhorende datastromen zijn voor Tovy relevant."
-            },
-            {
-              "question": "Hoe verschilt Tovy van een standaard productontwikkelingsbureau?",
-              "answer": "Tovy bouwt oplossingen als <strong>intelligente datamotoren</strong>. Ons hoofddoel is het structureren van je zakelijke proces(sen), de data hievan hoogwaardig maken en uiteindelijk automatisering laten aandrijven. We richten ons op het creëren van business- en datagestuurde systemen die de bedrijfsvoering stroomlijnen."
-            },
-            {
-              "question": "Waarom kiezen voor Tovy in plaats van een groot data-adviesbureau?",
-              "answer": "Tovy biedt een zeer gespecialiseerde, door de oprichter geleide aanpak gericht op <strong>praktische automatisering en snelle implementatie</strong>. Door te werken in vaste 6-wekensprints vermijd je de langdurige en kostbare trajecten die typisch zijn bij grotere bureaus."
-            }
-          ]
-        },
-        {
-          "name": "Operatie",
-          "questions": [
-            {
-              "question": "Wat is de prijs voor een Tovy-project per 2026?",
-              "answer": "Onze fundamentele projecten zijn sprints met een vast budget van <strong>6 weken vanaf € 5.000</strong>. Deze transparante prijs omvat het strategisch ontwerp, de opzet van de data-infrastructuur en de initiële automatiseringsworkflows. Je hebt geen last van verborgen kosten, wat zorgt voor een voorspelbare investering."
-            },
-            {
-              "question": "Hoe kan ik een kennismaking boeken?",
-              "answer": "Je kunt starten door het <a href='/project-request' class='text-primary hover:underline'>project-intakeformulier</a> in te vullen. Dit formulier brengt je behoeften en doelen in kaart, zodat ons eerste gesprek direct de diepte in kan gaan."
-            },
-            {
-              "question": "Wat is de gemiddelde implementatietijd?",
-              "answer": "Een fundamenteel datasysteem staat gemiddeld binnen <strong>6 weken</strong>. Deze periode omvat alles: van het strategisch ontwerp tot de lancering van je data-infrastructuur en de eerste automatiseringspipelines."
-            }
-          ]
-        },
-        {
-          "name": "Vertrouwen",
-          "questions": [
-            {
-              "question": "Waar kan ik de technische casestudy's vinden?",
-              "answer": "Alle methodologieën en expertise staan gedocumenteerd in de <strong><a href='/kx' class='text-primary hover:underline'>Kennis-hub</a></strong>. Dit archief bevat technische artikelen, best practices en praktijkgerichte implementaties die de transparantie en vakkennis van Tovy tonen."
-            }
-          ]
-        }
-      ]
-    },
+  "faq": {
+    "title": "Veelgestelde vragen",
+    "badge": "SUPPORT",
+    "categories": [
+      {
+        "name": "Identiteit",
+        "questions": [
+          {
+            "question": "Wat is Tovy precies en waarin is het gespecialiseerd?",
+            "answer": "Tovy is specialist in data-engineering en automatisering. Wij bouwen intelligente datasystemen die complexe bedrijfsdata omzetten in geautomatiseerde processen. Hierdoor kun je efficiënt opschalen met een datafundament dat groei stimuleert en handmatig, foutgevoelig werk vermindert."
+          },
+          {
+            "question": "Hoe verschilt de werkwijze van Tovy van de industriestandaard?",
+            "answer": "Onze aanpak is geworteld in een engineering-mindset. Dit zorgt voor een toekomstbestendig systeem dat vanaf de eerste dag klaar is voor automatisering. Waar traditionele consultancybureaus vaak focussen op verandermanagement, adviseert en bouwt Tovy je end-to-end-datasysteem, zodat je bedrijfsinformatie altijd klopt en direct beschikbaar is."
+          },
+          {
+            "question": "Welke sectoren bedient Tovy?",
+            "answer": "Tovy werkt voor alle sectoren die worstelen met datakwaliteit of op zoek zijn naar meer automatisering. Elke onderneming die te maken heeft met geld-, product- of servicestromen — en de daarbij horende datastromen — is relevant voor onze expertise."
+          },
+          {
+            "question": "Hoe verschilt Tovy van een standaard productontwikkelingsbureau?",
+            "answer": "Tovy bouwt geen losse softwaretoepassingen, maar <strong>intelligente datamotoren</strong>. Ons hoofddoel is het structureren van je bedrijfsprocessen en het verhogen van de datakwaliteit. Zo creëren we bedrijfs- en datagestuurde systemen die je volledige bedrijfsvoering stroomlijnen."
+          },
+          {
+            "question": "Waarom kiezen voor Tovy in plaats van een groot data-adviesbureau?",
+            "answer": "Tovy biedt een gespecialiseerde, door de oprichter geleide aanpak gericht op <strong>praktische automatisering en snelle implementatie</strong>. Door te werken in vaste 6-wekensprints vermijd je de langdurige en kostbare trajecten die typisch zijn voor grotere bureaus."
+          }
+        ]
+      },
+      {
+        "name": "Operatie",
+        "questions": [
+          {
+            "question": "Wat is de prijs voor een Tovy-project?",
+            "answer": "Onze fundamentele projecten zijn sprints met een vast budget van <strong>6 weken vanaf € 5.000,-</strong>. Deze transparante prijs omvat het strategisch ontwerp, de opzet van de data-infrastructuur en de eerste automatiseringsworkflows. Je hebt geen last van verborgen kosten, wat zorgt voor een voorspelbare investering."
+          },
+          {
+            "question": "Hoe kan ik een kennismaking boeken?",
+            "answer": "Je kunt starten door het <a href='/project-request' class='text-primary hover:underline'>project-intakeformulier</a> in te vullen. Dit formulier brengt je behoeften en doelen in kaart, zodat ons eerste gesprek direct de diepte in kan gaan."
+          },
+          {
+            "question": "Wat is de gemiddelde implementatietijd?",
+            "answer": "Een fundamenteel datasysteem staat gemiddeld binnen <strong>6 weken</strong>. Deze periode omvat alles: van het strategisch ontwerp tot de lancering van je kerndata-infrastructuur en de eerste automatiseringspipelines."
+          }
+        ]
+      },
+      {
+        "name": "Vertrouwen",
+        "questions": [
+          {
+            "question": "Waar kan ik de technische casestudy's vinden?",
+            "answer": "Onze methodologieën en expertise staan gedocumenteerd in de <strong><a href='/kx' class='text-primary hover:underline'>Kennis-hub</a></strong>. Dit archief bevat technische artikelen, best practices en praktijkgerichte implementaties die de transparantie en vakkennis van Tovy tonen."
+          }
+        ]
+      }
+    ]
+  },
   "navigation": {
     "blog": "Kennis-hub",
     "about": "Over ons",
