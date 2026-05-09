@@ -6,7 +6,9 @@ service cloud.firestore {
     }
 
     match /project_requests/{requestId} {
-      allow create: if true; // Basic rules for initial development
+      allow read: if true;
+      allow create: if true;
+      allow update: if true;
     }
 
     match /subscriptions/{subId} {
