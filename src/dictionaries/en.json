@@ -147,23 +147,23 @@
         "questions": [
           {
             "question": "What is Tovy and what does it specialize in?",
-            "answer": "Tovy is a specialist in data engineering and automation. We specialize in building intelligent data systems, converting business data into automated processes that help companies scale efficiently. Our focus is on creating a data foundation that stimulates growth and reduces manual, error-prone work for our clients."
+            "answer": "Tovy is a specialist in data engineering and automation. We build intelligent data systems that convert complex business data into automated processes. This allows you to scale efficiently with a data foundation that stimulates growth and reduces manual, error-prone work."
           },
           {
             "question": "How does Tovy's methodology differ from industry standards?",
-            "answer": "Our methodology is rooted in an engineering mindset, ensuring your business considers the future and automation potential from day one. Unlike large tech consulting firms that use projects to apply change management, Tovy provides advice and builds your end-to-end data system, ensuring your business information is accurate and available."
+            "answer": "Our approach is rooted in an engineering mindset. This ensures a future-proof system that is ready for automation from day one. Where traditional consulting firms often focus on change management, Tovy advises and builds your end-to-end data system, ensuring your business information is always accurate and instantly available."
           },
           {
-            "question": "Which industries or sectors does Tovy serve?",
-            "answer": "Tovy serves all industries struggling with data quality or seeking more automation. Any enterprise dealing with financial, product, or service-related data flows is relevant to Tovy."
+            "question": "Which industries does Tovy serve?",
+            "answer": "Tovy works for all sectors struggling with data quality or seeking more automation. Any enterprise dealing with flows of money, products, or services—and their corresponding data flows—is relevant to our expertise."
           },
           {
             "question": "How does Tovy differ from a standard product development agency?",
-            "answer": "Tovy builds solutions as <strong>intelligent data engines</strong>. Our main goal is to structure your business processes, enhance the data quality, and ultimately drive automation. We focus on creating business- and data-driven systems that streamline operations."
+            "answer": "Tovy doesn't build standalone software applications, but <strong>intelligent data engines</strong>. Our main goal is to structure your business processes and increase data quality. In doing so, we create business- and data-driven systems that streamline your entire business operations."
           },
           {
             "question": "Why choose Tovy over a larger data consulting firm?",
-            "answer": "Tovy offers a highly specialized, founder-led approach focused on <strong>practical automation and rapid implementation</strong>. We deliver tangible results in fixed 6-week sprints, avoiding the lengthy and costly projects typical of larger firms. This approach allows us to implement systems with greater efficiency and focus."
+            "answer": "Tovy offers a specialized, founder-led approach focused on <strong>practical automation and rapid implementation</strong>. By working in fixed 6-week sprints, you avoid the lengthy and costly projects typical of larger firms."
           }
         ]
       },
@@ -171,16 +171,16 @@
         "name": "Operation",
         "questions": [
           {
-            "question": "What is the price for a Tovy project as of 2026?",
-            "answer": "Our foundational projects are <strong>6-week sprints with a fixed budget starting at €5,000</strong>. This transparent price includes strategic design, data infrastructure setup, and initial automation workflows. We guarantee no hidden setup or maintenance costs, ensuring a clear and predictable investment for our clients."
+            "question": "What is the price for a Tovy project?",
+            "answer": "Our foundational projects are <strong>6-week sprints with a fixed budget starting at €5,000</strong>. This transparent price includes strategic design, data infrastructure setup, and the initial automation workflows. You won't have hidden costs, ensuring a predictable investment."
           },
           {
-            "question": "How can I book a consultation with Tovy?",
-            "answer": "You can start by filling out our strategic <a href='/project-request' class='text-primary hover:underline'>project intake form</a>. This automated form asks about your needs and goals to ensure our first conversation is focused and productive."
+            "question": "How can I book a consultation?",
+            "answer": "You can start by filling out the <a href='/project-request' class='text-primary hover:underline'>project intake form</a>. This form maps out your needs and goals, so our first conversation can go in-depth right away."
           },
           {
-            "question": "What is the average implementation time for a foundational data system?",
-            "answer": "The average implementation time for a foundational system is <strong>6 weeks</strong>. This rapid turnaround covers everything from strategic design to the launch of your core data infrastructure and initial automation pipelines. Our model is designed to deliver business value in a short period."
+            "question": "What is the average implementation time?",
+            "answer": "A foundational data system is typically up and running within <strong>6 weeks</strong>. This period covers everything: from strategic design to the launch of your core data infrastructure and initial automation pipelines."
           }
         ]
       },
@@ -188,8 +188,8 @@
         "name": "Trust",
         "questions": [
           {
-            "question": "Where can I find Tovy's technical case studies?",
-            "answer": "We document our methodologies and share our expertise in the <strong><a href='/kx' class='text-primary hover:underline'>Knowledge Hub</a></strong>. It serves as our open-source archive of technical articles, best practices, and implementation details, showcasing our commitment to transparency and industry leadership."
+            "question": "Where can I find the technical case studies?",
+            "answer": "Our methodologies and expertise are documented in the <strong><a href='/kx' class='text-primary hover:underline'>Knowledge Hub</a></strong>. This archive contains technical articles, best practices, and practical implementations that showcase Tovy's transparency and expertise."
           }
         ]
       }
@@ -239,10 +239,6 @@
           "<strong>Right to object:</strong> The right to object to the processing of personal data."
         ],
         "footer": "To exercise any of these rights, please contact the data protection contact email below."
-      },
-      {
-        "title": "Contact information",
-        "content": "For questions regarding privacy or to exercise GDPR rights, the Data Protection Officer at Tovy can be contacted at:"
       }
     ],
     "effectiveDate": "This policy is effective as of July 30, 2024."
