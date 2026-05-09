@@ -2,7 +2,7 @@
 'use client';
 
 import { useEffect, useRef } from "react";
-import { XCircle, CheckCircle2, AlertCircle } from "lucide-react";
+import { XCircle, CheckCircle2 } from "lucide-react";
 import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { SectionHeader } from "./section-header";
@@ -36,7 +36,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
       <div 
         ref={gridRef}
         className="parallax-grid-bg"
-        style={{ hide: 'transform' }}
+        style={{ willChange: 'transform' }}
       />
 
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10 w-full">
@@ -47,7 +47,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
-          {/* Pain Section (The Old Way) - De-emphasized but accessible */}
+          {/* Pain Section (The Old Way) */}
           <ScrollReveal delay="duration-700" className="flex">
             <div className="relative w-full p-6 sm:p-8 rounded-3xl bg-card/60 border border-white/10 overflow-hidden group shadow-xl transition-all duration-500 hover:bg-card/70">
               <div 
@@ -59,13 +59,13 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
               
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-2.5 rounded-xl bg-white/10 text-muted-foreground ring-1 ring-white/20">
-                    <AlertCircle className="h-6 w-6" />
-                  </div>
-                  <div className="flex flex-col">
-                    <h3 className="text-lg font-bold text-white/80 leading-tight">{dict.painSolution.pain.title}</h3>
-                    <p className="text-[11px] text-muted-foreground font-bold tracking-wider uppercase">{dict.painSolution.pain.subtitle}</p>
-                  </div>
+                  <h3 className="font-bold text-2xl tracking-tighter shrink-0 select-none flex items-center text-white/80">
+                    {dict.painSolution.pain.title}
+                  </h3>
+                  <div className="h-5 w-px bg-white/20 mx-2" />
+                  <h3 className="text-xs md:text-sm font-bold text-muted-foreground uppercase tracking-wider">
+                    {dict.painSolution.pain.subtitle}
+                  </h3>
                 </div>
 
                 <ul className="space-y-4">
@@ -80,7 +80,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
             </div>
           </ScrollReveal>
 
-          {/* Solution Section (The Tovy Way) - Primary focus */}
+          {/* Solution Section (The Tovy Way) */}
           <ScrollReveal delay="delay-200 duration-700" className="flex">
             <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
               <div 
@@ -102,7 +102,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                       <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
                     </div>
                     <div className="h-5 w-px bg-white/20 mx-2" />
-                    <h3 className="text-xs md:text-sm font-bold text-primary drop-shadow-[0_0_8px_rgba(43,94,255,0.4)]">
+                    <h3 className="text-xs md:text-sm font-bold text-primary drop-shadow-[0_0_8px_rgba(43,94,255,0.4)] uppercase tracking-wider">
                       {dict.painSolution.solution.subtitle}
                     </h3>
                   </div>

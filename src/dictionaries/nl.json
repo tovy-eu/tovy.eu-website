@@ -152,23 +152,19 @@
         "questions": [
           {
             "question": "Wat is Tovy precies en waarin is het gespecialiseerd?",
-            "answer": "Tovy is specialist in data-engineering en automatisering. Wij bouwen intelligente datasystemen die complexe bedrijfsdata omzetten in geautomatiseerde processen. Hierdoor kun je efficiënt opschalen met een datafundament dat groei stimuleert en handmatig, foutgevoelig werk vermindert."
+            "answer": "Tovy is specialist in data-engineering met als focus automatisering. Wij bouwen intelligente datasystemen die complexe bedrijfsdata uit meerdere systemen extraheren, en deze transformeren naar inzichten en/of geautomatiseerde processen. Hierdoor kun je efficiënt jouw bedrijf opschalen met een datafundament dat groei stimuleert en handmatig, foutgevoelig werk vermindert."
           },
           {
             "question": "Hoe verschilt de werkwijze van Tovy van de industriestandaard?",
-            "answer": "Onze aanpak is geworteld in een engineering-mindset. Dit zorgt voor een toekomstbestendig systeem dat vanaf de eerste dag klaar is voor automatisering. Waar traditionele consultancybureaus vaak focussen op verandermanagement, adviseert en bouwt Tovy je end-to-end-datasysteem, zodat je bedrijfsinformatie altijd klopt en direct beschikbaar is."
+            "answer": "Onze aanpak is geworteld in een engineering-mindset. Dit zorgt voor een toekomstbestendig systeem dat vanaf de eerste dag klaar is voor automatisering. Tovy adviseert en bouwt jouw end-to-end-datasysteem, zodat je bedrijfsinformatie altijd klopt, direct beschikbaar is en voor je werkt in plaats van tegen je."
           },
           {
             "question": "Welke sectoren bedient Tovy?",
-            "answer": "Tovy werkt voor alle sectoren die worstelen met datakwaliteit of op zoek zijn naar meer automatisering. Elke onderneming die te maken heeft met geld-, product- of servicestromen — en de daarbij horende datastromen — is relevant voor onze expertise."
-          },
-          {
-            "question": "Hoe verschilt Tovy van een standaard productontwikkelingsbureau?",
-            "answer": "Tovy bouwt geen losse softwaretoepassingen, maar <strong>intelligente datamotoren</strong>. Ons hoofddoel is het structureren van je bedrijfsprocessen en het verhogen van de datakwaliteit. Zo creëren we bedrijfs- en datagestuurde systemen die je volledige bedrijfsvoering stroomlijnen."
+            "answer": "Tovy werkt voor alle sectoren die worstelen met datakwaliteit of databeheer binnen bedrijfsprocessen of op zoek zijn naar automatisering. Elke onderneming die te maken heeft met geld-, product- of servicestromen — en de daarbij horende informatie — is relevant voor onze expertise."
           },
           {
             "question": "Waarom kiezen voor Tovy in plaats van een groot data-adviesbureau?",
-            "answer": "Tovy biedt een gespecialiseerde, door de oprichter geleide aanpak gericht op <strong>praktische automatisering en snelle implementatie</strong>. Door te werken in vaste 6-wekensprints vermijd je de langdurige en kostbare trajecten die typisch zijn voor grotere bureaus."
+            "answer": "Tovy biedt een aanpak gericht op <strong>praktische automatisering en snelle implementatie</strong>. Door te werken in vaste blokken van 6 weken vermijd je de langdurige en kostbare trajecten die typisch zijn voor grotere bureaus."
           }
         ]
       },
