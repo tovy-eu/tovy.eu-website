@@ -1,4 +1,3 @@
-
 import { getPostData, getSortedPostsData } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { format, isValid } from 'date-fns';
@@ -13,7 +12,7 @@ import { getDictionary } from '@/lib/get-dictionary';
 import { CONFIG } from '@/lib/config';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { Magnetic } from '@/components/ui/magnetic';
-import { JsonLd, getBreadcrumbSchema, getArticleSchema } from '@/components/layout/json-ld';
+import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 
 type Props = {
   params: Promise<{ lang: string; slug: string }>;
@@ -101,7 +100,6 @@ export default async function KxResource({ params }: Props) {
       style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))' }}
     >
       <JsonLd type="BreadcrumbList" data={getBreadcrumbSchema(breadcrumbs)} />
-      <JsonLd type="Article" data={getArticleSchema(postData, lang)} />
       <WavyLines />
       
       {/* max-w-[680px] for desktop focus; px-0 ensures card touches edges on mobile */}

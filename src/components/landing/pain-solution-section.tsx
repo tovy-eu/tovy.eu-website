@@ -72,10 +72,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                   {painItems.map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <XCircle className="h-5 w-5 text-muted-foreground/70 shrink-0 mt-0.5" />
-                      <span 
-                        className="text-sm md:text-base text-muted-foreground font-medium leading-relaxed"
-                        dangerouslySetInnerHTML={{ __html: item }}
-                      />
+                      <span className="text-sm md:text-base text-muted-foreground font-medium leading-relaxed">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -116,10 +113,9 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                         <CheckCircle2 
                           className="h-5 w-5 shrink-0 mt-0.5 transition-colors duration-300 text-green-400 drop-shadow-[0_0_5px_rgba(74,222,128,0.4)]" 
                         />
-                        <span 
-                          className="text-sm md:text-base text-white leading-relaxed font-semibold"
-                          dangerouslySetInnerHTML={{ __html: item }}
-                        />
+                        <span className="text-sm md:text-base text-white leading-relaxed font-semibold">
+                          {item}
+                        </span>
                       </li>
                     ))}
                   </ul>

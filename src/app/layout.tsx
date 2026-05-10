@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { Geist } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { cn } from '@/lib/utils';
@@ -16,6 +15,12 @@ export const metadata: Metadata = {
   },
 };
 
+const geistSans = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist-sans',
+  display: 'swap',
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <body className={cn("font-sans antialiased flex flex-col min-h-screen", GeistSans.variable, GeistMono.variable)}>
+      <body className={cn("font-sans antialiased flex flex-col min-h-screen", geistSans.variable)}>
         <GtmScript />
         {children}
         <Toaster />

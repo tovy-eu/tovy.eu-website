@@ -3,19 +3,13 @@ title: 'A Website as an Engine: Why Technology Determines Business Value'
 date: '2026-05-02'
 author: 'Giel Nijkamp'
 summary: 'Building a smart website as a use case to demonstrate the power of Machine Experience (MX), automated lead qualification, and data quality.'
-description: "Discover how Tovy's website functions as an intelligent system, leveraging Machine Experience (MX), automated lead qualification, and stringent data quality to convert interactions into structured, usable data, thereby accelerating business value."
 image: '/images/blog/architecture-of-intent.webp'
 tags: ['Architecture', 'Automation', 'Data Quality', 'MX Design', 'Analytics', 'Strategy']
 ---
 
-A website becomes the start of the business value chain when it is engineered as an intelligent, autonomous system. Instead of a digital business card, this architecture converts every interaction directly into structured, usable data.
+In the world of professional services, a website is usually nothing more than a digital billboard. For an agency that advises on data and AI, this is a missed opportunity. After all, those who sell automation and *systems thinking* must first anchor these principles in their own foundations.
 
-The core of this approach consists of three pillars:
-1.  **Machine Experience (MX):** Data is optimized for AI agents and smart assistants, allowing potential clients' systems to interpret the value proposition.
-2.  **Automated Lead Qualification:** Forms and interactions are designed to automatically filter and prioritize leads, reducing manual effort.
-3.  **Data Quality:** Strict validation and structuring ensure that all collected data is immediately usable for internal data pipelines and analytics.
-
-This method embeds the principles of automation and *systems thinking* into the company's foundation, making the website an efficient start to the customer journey.
+Tovy's website is therefore not built as a business card, but as an **intelligent system**. The goal is simple: to convert human interaction directly into structured, usable data. This saves time, prevents errors, and accelerates the path from the initial question to a concrete solution.
 
 ## 1. Ready for Tomorrow's Economy: Machine Experience (MX)
 Many companies focus exclusively on the human visitor (**User Experience**). In 2026, that's only half the job. Your next major client will likely use an AI agent or a smart assistant to explore the market.

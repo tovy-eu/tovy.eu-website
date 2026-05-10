@@ -25,62 +25,62 @@
     "techStack": "THE TOVY TOOLCHAIN"
   },
   "hero": {
-    "title": "We Build Your <em>Data & AI Foundation</em> for Growth",
-    "subtitle": "Tovy designs and implements intelligent data systems that <em>automate processes</em>, <em>eliminate data silos</em>, and enable <em>scalable operations</em>. We help you reclaim time and unlock your company’s <em>full potential</em>."
+    "title": "The data & AI foundation for business growth",
+    "subtitle": "Tovy builds data systems that enable automation, moving you from complex data silos to streamlined, scalable business processes. Reclaim your time and unlock your company's true growth potential."
   },
   "painSolution": {
     "title": "Silos vs. Centralized",
-    "subtitle": "Data should <em>simplify</em>, not complicate.",
+    "subtitle": "Data should simplify, not complicate.",
     "pain": {
       "title": "The Old Way",
       "subtitle": "Silos",
       "items": [
-        "Manual data entry & inevitable <em>human error</em>",
-        "<em>Disconnected</em> systems that create friction",
-        "Constant, reactive, and <em>costly</em> maintenance",
-        "Growth that is <em>limited</em> by data bottlenecks"
+        "Manual data entry & human error",
+        "Systems that lack integration",
+        "Constant reactive maintenance",
+        "Growth limited by data bottlenecks"
       ]
     },
     "solution": {
       "title": "The Tovy Way",
       "subtitle": "Centralized",
       "items": [
-        "Up to <em>99% automated</em> data ingestion, reducing data entry errors",
-        "A <em>unified</em> and <em>integrated</em> data architecture",
-        "<em>Reliable</em>, <em>autonomous</em>, and <em>hands-off</em> infrastructure",
-        "A <em>scalable</em> and <em>future-proof</em> foundation for growth"
+        "100% Automated data ingestion",
+        "Integrated data architecture",
+        "Reliable & hands-off infrastructure",
+        "Scalable foundation for growth"
       ]
     }
   },
   "about": {
     "strategy": "TOVY STRATEGY",
     "title": "Who, what and why.",
-    "mission": "Tovy's mission is to build <em>intelligent data ecosystems</em> that reduce manual workloads, giving individuals and teams more <em>time</em>, <em>focus</em>, and <em>freedom to grow</em>.",
+    "mission": "Tovy's mission is to build smart data ecosystems that reduce manual workload. Tovy desires a world where technology gives individuals and teams more time, focus, and space to grow.",
     "ceo": {
       "name": "Giel Nijkamp",
       "role": "Founder",
       "specialization": "Data Engineer",
       "location": "Netherlands",
       "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
-      "bio": "With <em>5 years of experience</em> in business IT, including <em>3 years specializing in data engineering</em>, I have a proven track record of helping businesses save time and improve efficiency. My approach combines <em>2 years of supply chain experience</em> with a lifelong tech obsession to eliminate operational friction. My solutions have saved clients an average of <em>4 hours per week</em>, translating to significant cost savings and productivity gains.\n\nTovy was founded to build the <em>reliable systems</em> you need to reclaim your time and scale your business."
+      "bio": "Standard software often breaks when it meets complex business data which creating manual bottlenecks. I fix this by building data foundations and automation workflows from strategy to opeartions. My approach combines 4 years of supply chain experience with a lifelong tech obsession to eliminate operational friction.\n\nTovy was founded to build the reliable systems you need to reclaim your time and scale your business."
     },
     "pillarsTitle": "CORE VALUES",
     "pillars": {
       "tech": {
         "title": "Tech Savvy",
-        "desc": "Staying ahead of the curve with the latest data and AI trends."
+        "desc": "Staying current with Data & AI trends."
       },
       "optimization": {
         "title": "Optimization",
-        "desc": "A relentless drive for creating and maintaining efficient processes."
+        "desc": "Aiming for efficient processes."
       },
       "freedom": {
         "title": "Freedom",
-        "desc": "A deep-seated desire to reduce cognitive load and increase autonomy."
+        "desc": "Pursuing a reduction in cognitive load."
       },
       "innovation": {
         "title": "Innovation",
-        "desc": "A commitment to building future-proof systems that are built to last."
+        "desc": "Building future-ready systems."
       }
     }
   },
@@ -91,7 +91,7 @@
     "services": {
       "strategic": {
         "title": "Strategic design",
-        "desc": "Tovy develops <em>clear and actionable tech, data, and AI strategies</em> that are designed to align with your most important business goals, helping you save an average of <em>4 hours per week</em>.",
+        "desc": "Tovy develops tech, data, and AI strategies to align with business goals.",
         "tools": [
           "Roadmapping",
           "Architecture",
@@ -100,7 +100,7 @@
       },
       "cloud": {
         "title": "Cloud infrastructure",
-        "desc": "Tovy designs and implements <em>secure, scalable, and cost-optimized cloud environments</em> with <em>99.9% uptime</em>, that are tailor-made for your data workloads, reducing infrastructure costs by <em>15%</em>.",
+        "desc": "Tovy designs secure, cost-optimized cloud environments for data workloads.",
         "tools": [
           "GCP, AWS",
           "Datawarehousing"
@@ -108,7 +108,7 @@
       },
       "data": {
         "title": "Data engineering",
-        "desc": "Tovy architects and builds <em>robust and scalable data pipelines and warehouses</em> that can process over <em>100+ TBs of data per day</em> using the Modern Data Stack.",
+        "desc": "Tovy architects scalable pipelines and data warehouses using the Modern Data Stack.",
         "tools": [
           "dbt",
           "SQL",
@@ -117,7 +117,7 @@
       },
       "analytics": {
         "title": "Analytics & automation",
-        "desc": "Tovy builds <em>powerful and intuitive dashboarding and automations</em> that are designed to operationalize your data, saving an average of <em>4 hours per week</em>.",
+        "desc": "Tovy builds dashboarding and automations to operationalize data.",
         "tools": [
           "TypeScript / JavaScript"
         ]
@@ -147,19 +147,19 @@
         "questions": [
           {
             "question": "What is Tovy and what does it specialize in?",
-            "answer": "Tovy is a specialist in <em>data engineering and automation</em>. We build intelligent data systems that convert complex business data into automated processes. This allows you to scale efficiently with a data foundation that stimulates growth and reduces manual, error-prone work."
+            "answer": "Tovy is a specialist in data engineering and automation. We build intelligent data systems that convert complex business data into automated processes. This allows you to scale efficiently with a data foundation that stimulates growth and reduces manual, error-prone work."
           },
           {
             "question": "How does Tovy's methodology differ from industry standards?",
-            "answer": "Our approach is rooted in an <em>engineering mindset</em>. This ensures a future-proof system that is ready for automation from day one. Tovy advises and builds your end-to-end data system, ensuring your business information is always accurate, instantly available, and works for you instead of against you."
+            "answer": "Our approach is rooted in an engineering mindset. This ensures a future-proof system that is ready for automation from day one. Tovy advises and builds your end-to-end data system, ensuring your business information is always accurate, instantly available, and works for you instead of against you."
           },
           {
             "question": "Which industries does Tovy serve?",
-            "answer": "Tovy works for all sectors struggling with <em>data quality</em> or seeking more <em>automation</em>. Any enterprise dealing with flows of money, products, or services—and their corresponding data flows—is relevant to our expertise."
+            "answer": "Tovy works for all sectors struggling with data quality or seeking more automation. Any enterprise dealing with flows of money, products, or services—and their corresponding data flows—is relevant to our expertise."
           },
           {
             "question": "Why choose Tovy over a larger data consulting firm?",
-            "answer": "Tovy offers a specialized, founder-led approach focused on <em>practical automation and rapid implementation</em>. By working in fixed <em>6-week sprints</em>, you avoid the lengthy and costly projects typical of larger firms."
+            "answer": "Tovy offers a specialized, founder-led approach focused on <strong>practical automation and rapid implementation</strong>. By working in fixed 6-week sprints, you avoid the lengthy and costly projects typical of larger firms."
           }
         ]
       },
@@ -168,7 +168,7 @@
         "questions": [
           {
             "question": "What is the price for a Tovy project?",
-            "answer": "Our foundational projects are <em>6-week sprints with a fixed budget starting at €5,000</em>. This transparent price includes strategic design, data infrastructure setup, and the initial automation workflows. You won't have hidden costs, ensuring a predictable investment."
+            "answer": "Our foundational projects are <strong>6-week sprints with a fixed budget starting at €5,000</strong>. This transparent price includes strategic design, data infrastructure setup, and the initial automation workflows. You won't have hidden costs, ensuring a predictable investment."
           },
           {
             "question": "How can I book a consultation?",
@@ -176,7 +176,7 @@
           },
           {
             "question": "What is the average implementation time?",
-            "answer": "A foundational data system is typically up and running within <em>6 weeks</em>. This period covers everything: from strategic design to the launch of your core data infrastructure and initial automation pipelines."
+            "answer": "A foundational data system is typically up and running within <strong>6 weeks</strong>. This period covers everything: from strategic design to the launch of your core data infrastructure and initial automation pipelines."
           }
         ]
       },
@@ -301,7 +301,6 @@
           "2-15",
           "16-49",
           "50–249",
-
           "250–999",
           "1,000+",
           "I'm not sure"
