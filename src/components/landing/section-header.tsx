@@ -27,10 +27,9 @@ export function SectionHeader({
     <ScrollReveal>
       <div className={cn("mx-auto max-w-4xl text-center px-4", className)}>
         {badge && (
-          <p 
-            className="text-[11px] md:text-sm font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-widest mb-4"
-            dangerouslySetInnerHTML={{ __html: badge }}
-          />
+          <p className="text-[11px] md:text-sm font-bold leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-widest mb-4">
+            {badge}
+          </p>
         )}
         <h2 
           className={cn(
@@ -38,13 +37,13 @@ export function SectionHeader({
             titleClassName
           )}
           style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.1)' }}
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
+        >
+          {title}
+        </h2>
         {description && (
-          <p 
-            className="mt-6 md:mt-8 text-sm md:text-xl leading-relaxed text-foreground/85 max-w-3xl mx-auto font-medium"
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
+          <p className="mt-6 md:mt-8 text-sm md:text-xl leading-relaxed text-foreground/85 max-w-3xl mx-auto font-medium">
+            {description}
+          </p>
         )}
       </div>
     </ScrollReveal>

@@ -1,12 +1,11 @@
 
-import type { Organization, Service, WebSite, ProfessionalService, FAQPage, BreadcrumbList, Person, Article } from 'schema-dts';
+import type { Organization, Service, WebSite, ProfessionalService, FAQPage, BreadcrumbList, Person } from 'schema-dts';
 import companyProfile from '@/content/company-profile.json';
 import personProfile from '@/content/person.json';
 import type { Dictionary } from '@/lib/get-dictionary';
-import type { BlogPost } from '@/lib/blog';
 
 interface JsonLdProps {
-  type: 'Organization' | 'ProfessionalService' | 'Service' | 'WebSite' | 'FAQPage' | 'BreadcrumbList' | 'Person' | 'Article';
+  type: 'Organization' | 'ProfessionalService' | 'Service' | 'WebSite' | 'FAQPage' | 'BreadcrumbList' | 'Person';
   data: any;
 }
 
@@ -145,38 +144,5 @@ export function getFaqSchema(dict: Dictionary): FAQPage {
         text: item.answer.replace(/<[^>]*>?/gm, ''), // Strip HTML for JSON-LD
       },
     })),
-  };
-}
-
-/**
- * Generates Article schema for blog posts.
- */
-export function getArticleSchema(post: BlogPost, lang: string): Article {
-  const profile = companyProfile.public_company_profile;
-  const person = personProfile.public_ceo_profile;
-
-  return {
-    '@type': 'Article',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://tovy.eu/${lang}/kx/${post.slug}`,
-    },
-    headline: post.title,
-    image: `https://tovy.eu${post.image}`,
-    datePublished: post.date,
-    author: {
-      '@type': 'Person',
-      name: person.name,
-      url: `https://tovy.eu/${lang}/`,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: profile.entity_name,
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://tovy.eu/logo.png',
-      },
-    },
-    description: post.description,
   };
 }

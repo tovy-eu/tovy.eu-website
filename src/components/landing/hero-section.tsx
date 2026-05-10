@@ -41,12 +41,12 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         <h1 
           className="text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] tracking-tight"
           style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.1)' }}
-          dangerouslySetInnerHTML={{ __html: dict.hero.title }}
-        />
-        <p 
-          className="mt-8 text-lg leading-relaxed text-white/90 md:text-xl lg:text-2xl max-w-2xl mx-auto px-4 sm:px-0 font-medium"
-          dangerouslySetInnerHTML={{ __html: dict.hero.subtitle }}
-        />
+        >
+          {dict.hero.title}
+        </h1>
+        <p className="mt-8 text-lg leading-relaxed text-white/90 md:text-xl lg:text-2xl max-w-2xl mx-auto px-4 sm:px-0 font-medium">
+          {dict.hero.subtitle}
+        </p>
         <div className="mt-20 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
           <Magnetic strength={0.25} className="w-full sm:w-auto">
             <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-base sm:text-lg h-12 sm:h-14 shadow-2xl">

@@ -137,7 +137,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                           alt={dict.about.ceo.name}
                           fill
                           className="object-cover object-[center_40%]"
-                          
+                          priority
                         />
                       </div>
                     </div>
@@ -187,10 +187,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                   <Quote className="absolute -left-2 -top-2 h-8 w-8 text-primary rotate-180 drop-shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]" />
                   <div className="text-sm md:text-base text-white/80 leading-relaxed font-medium pl-8 space-y-4">
                     {dict.about.ceo.bio.split('\n\n').map((paragraph, i) => (
-                      <p 
-                        key={i} 
-                        dangerouslySetInnerHTML={{ __html: paragraph }}
-                      />
+                      <p key={i}>{paragraph}</p>
                     ))}
                   </div>
                 </div>
