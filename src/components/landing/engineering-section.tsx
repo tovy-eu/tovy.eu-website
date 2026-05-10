@@ -130,9 +130,10 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                     ))}
                   </div>
                   
-                  <p className="text-sm md:text-base text-white/80 leading-relaxed font-medium">
-                    {service.description}
-                  </p>
+                  <p 
+                    className="text-sm md:text-base text-white/80 leading-relaxed font-medium"
+                    dangerouslySetInnerHTML={{ __html: service.description }}
+                  />
                 </div>
               </div>
             </ScrollReveal>
