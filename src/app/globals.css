@@ -44,6 +44,9 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+  em {
+    @apply italic;
+  }
 }
 
 @layer utilities {

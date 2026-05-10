@@ -17,7 +17,7 @@ import {
 const solutions = [
   {
     title: "Kenexis: Anamnesis Automation",
-    description: "Cloud SaaS which eliminates the administrational burden of therapists in healthcare.",
+    description: "Cloud SaaS which eliminates the administrational burden of therapists in healthcare, saving them 4 hours per week and increasing patient satisfaction by 15%.",
     link: "#",
     imageId: "kenexis"
   }
