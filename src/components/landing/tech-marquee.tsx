@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import type { Dictionary } from '@/lib/get-dictionary';
 import { cn } from '@/lib/utils';
+import { SectionHeader } from './section-header';
 
 export function TechMarquee({ dict }: { dict: Dictionary }) {
   const techLogos = [
@@ -24,11 +25,13 @@ export function TechMarquee({ dict }: { dict: Dictionary }) {
   const duplicatedLogos = [...techLogos, ...techLogos, ...techLogos];
 
   return (
-    <div className="w-full py-10 bg-background/30 border-b border-white/5 overflow-hidden">
-      <div className="container mx-auto px-4 mb-8">
-          <p className="text-[10px] font-bold tracking-[0.3em] text-center text-muted-foreground/40 uppercase">
-              {dict.common.techStack}
-          </p>
+    <div className="w-full py-16 bg-background/30 border-b border-white/5 overflow-hidden">
+      <div className="container mx-auto px-4 mb-12">
+        <SectionHeader
+          badge={dict.common.techStack}
+          title={dict.marquee.title}
+          description={dict.marquee.subtitle}
+        />
       </div>
       <div className="relative flex items-center">
         <div className="flex animate-marquee whitespace-nowrap gap-12 sm:gap-20 items-center">

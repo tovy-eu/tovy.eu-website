@@ -109,8 +109,8 @@ export function getServicesSchema(dict: Dictionary): Service[] {
       description: dict.engineering.services.data.desc,
     },
     {
-      name: dict.engineering.services.analytics.title,
-      description: dict.engineering.services.analytics.desc,
+      name: dict.engineering.services.automation.title,
+      description: dict.engineering.services.automation.desc,
     },
   ];
 

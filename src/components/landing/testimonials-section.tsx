@@ -51,8 +51,8 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
       
       <div className="container relative z-10 mx-auto px-4 md:px-8 max-w-7xl w-full">
         <SectionHeader 
-          badge={dict.testimonials.title}
-          title={dict.testimonials.subtitle}
+          title={dict.testimonials.title}
+          description={dict.testimonials.subtitle}
           className="mb-12 md:mb-16"
         />
       </div>
