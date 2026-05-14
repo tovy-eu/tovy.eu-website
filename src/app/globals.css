@@ -147,4 +147,10 @@
   .PhoneInputCountrySelect {
     @apply bg-background border-border text-foreground;
   }
+
+  .tool-tag {
+    color: hsl(var(--service-color) / 0.8);
+    background-color: hsl(var(--service-color) / 0.1);
+    border-color: hsl(var(--service-color) / 0.15);
+  }
 }
