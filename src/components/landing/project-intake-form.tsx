@@ -148,27 +148,36 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   }, [step, allValues, formSubmitted, formDocId]);
 
   useEffect(() => {
+    // If the form is submitted, initialize the visible widget with user data
     if (formSubmitted && submittedValues && (routingPath === 'A' || routingPath === 'B' || routingPath === 'C')) {
       const name = `${submittedValues.firstName} ${submittedValues.lastName}`.trim();
       const email = submittedValues.email;
       const calendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=ffffff&primary_color=365af6&hide_gdpr_banner=1&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
 
       const initCalendly = () => {
-        if ((window as any).Calendly) {
-          (window as any).Calendly.initInlineWidget({
-            url: calendlyUrl,
-            parentElement: document.querySelector('.calendly-inline-widget'),
-          });
+        const parentElement = document.querySelector('.calendly-inline-widget.visible-widget');
+        if ((window as any).Calendly && parentElement) {
+          (window as any).Calendly.initInlineWidget({ url: calendlyUrl, parentElement });
           return true;
         }
         return false;
       };
-
-      const interval = setInterval(() => {
-        if (initCalendly()) clearInterval(interval);
-      }, 100);
-      
+      const interval = setInterval(() => { if (initCalendly()) clearInterval(interval) }, 100);
       return () => clearInterval(interval);
+    } 
+    // Otherwise, on initial load, initialize the hidden SEO widget for crawlers
+    else if (!formSubmitted) {
+        const genericCalendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=ffffff&primary_color=365af6&hide_gdpr_banner=1`;
+        const initSeoCalendly = () => {
+            const parentElement = document.querySelector('.calendly-inline-widget.seo-widget');
+            if ((window as any).Calendly && parentElement) {
+                (window as any).Calendly.initInlineWidget({ url: genericCalendlyUrl, parentElement });
+                return true;
+            }
+            return false;
+        };
+        const interval = setInterval(() => { if (initSeoCalendly()) clearInterval(interval) }, 100);
+        return () => clearInterval(interval);
     }
   }, [formSubmitted, submittedValues, routingPath]);
 
@@ -339,7 +348,7 @@ const nextStep = async () => {
           
           {(routingPath === 'A' || routingPath === 'B' || routingPath === 'C') && (
             <div className="w-full rounded-2xl overflow-hidden bg-black/20 border border-white/5 mb-6 min-h-[700px]">
-              <div className="calendly-inline-widget" style={{ minWidth: '320px', height: '700px' }} />
+              <div className="calendly-inline-widget visible-widget" style={{ minWidth: '320px', height: '700px' }} />
             </div>
           )}
 
@@ -351,6 +360,10 @@ const nextStep = async () => {
         </Card>
       ) : (
         <Card className="w-full max-w-2xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden flex flex-col">
+          <div 
+              className="calendly-inline-widget seo-widget" 
+              style={{ position: 'absolute', top: '-9999px', left: '-9999px', minWidth: '320px', height: '700px' }} 
+          />
           <CardHeader className="p-4 pb-2">
             <Progress value={((step + 1) / (totalSteps + 1)) * 100} className="w-full h-1.5" />
           </CardHeader>
@@ -619,7 +632,12 @@ const nextStep = async () => {
                             <FormField control={form.control} name="consent" render={({ field: f }) => (
                               <FormItem className="flex items-center space-x-2 space-y-0">
                                 <Checkbox checked={f.value} onCheckedChange={f.onChange} />
-                                <FormLabel className="text-xs cursor-pointer">{dict.projectForm.steps.contact.consent}</FormLabel>
+                                <FormLabel className="text-xs cursor-pointer">
+                                  {dict.projectForm.steps.contact.consentPreLink}{' '}
+                                  <Link href={`/${lang}/privacy-policy`} className="underline" target="_blank">
+                                    {dict.projectForm.steps.contact.consentLinkText}
+                                  </Link>
+                                </FormLabel>
                               </FormItem>
                             )} />
                           </div>

@@ -9,27 +9,35 @@
     "agreeTo": "Ik ga akkoord met de",
     "downloadJson": "Download als JSON",
     "submissionFailed": "Verzending mislukt",
-    "submissionErrorDesc": "Er is een fout opgetreden bij de verzending. Probeer het later opnieuw.",
+    "submissionErrorDesc": "Er is een fout opgetreden bij de verzending. Probeert u het later opnieuw.",
     "scrollToExplore": "Scroll",
     "emailPlaceholder": "werk@bedrijf.nl",
     "success": "Succes",
     "errorOccurred": "Fout",
-    "errorTryAgain": "Probeer het later opnieuw.",
-    "subscriptionSuccess": "Bedankt voor je aanmelding.",
-    "alreadySubscribed": "Je bent al aangemeld",
-    "alreadySubscribedDesc": "Je staat al op de lijst.",
+    "errorTryAgain": "Probeert u het later opnieuw.",
+    "subscriptionSuccess": "Bedankt voor uw aanmelding.",
+    "alreadySubscribed": "U bent al aangemeld",
+    "alreadySubscribedDesc": "U staat al op de lijst.",
     "stayUpToDate": "Blijf op de hoogte",
     "newsletterDesc": "Ontvang technische inzichten van Tovy.",
     "subscribe": "Aanmelden",
     "subscribing": "Bezig met aanmelden...",
-    "techStack": "DE TOVY-TOOLCHAIN"
+    "techStack": "De Tovy-toolchain"
+  },
+  "footer": {
+    "slogan-line-1": "De basis voor rust en controle",
+    "slogan-line-2": "in uw datalandschap.",
+    "legal": "Juridisch",
+    "legal-notice": "Juridische informatie",
+    "privacy-policy": "Privacyverklaring",
+    "connect": "Contact"
   },
   "hero": {
     "title": "De basis voor rust en controle in uw datalandschap",
     "subtitle": "Tovy bouwt de intelligente datasystemen die chaos omzetten in helderheid. Wij vervangen handmatige processen door naadloze automatisering, zodat u weer volledige controle krijgt en kunt focussen op groei."
   },
   "painSolution": {
-    "title": "Chaos vs. Helderheid",
+    "title": "Chaos vs. helderheid",
     "subtitle": "Technologie moet versimpelen, niet compliceren.",
     "pain": {
       "title": "De traditionele aanpak",
@@ -42,7 +50,7 @@
       ]
     },
     "solution": {
-      "title": "De Tovy aanpak",
+      "title": "De Tovy-aanpak",
       "subtitle": "Helderheid",
       "items": [
         "Geautomatiseerde, betrouwbare data-invoer",
@@ -53,9 +61,9 @@
     }
   },
   "about": {
-    "section": "Onze Filosofie",
+    "section": "Onze filosofie",
     "title": "Wie, wat en waarom",
-    "mission": "Tovy is opgericht om rust en controle te brengen in complexe data-omgevingen. Wij geloven dat technologie pas echt voor je werkt als het een gevoel van kalmte en overzicht creëert, zodat u kunt focussen op wat echt belangrijk is.",
+    "mission": "Tovy is opgericht om rust en controle te brengen in complexe data-omgevingen. Wij geloven dat technologie pas echt voor u werkt als het een gevoel van kalmte en overzicht creëert, zodat u kunt focussen op wat echt belangrijk is.",
     "ceo": {
       "name": "Giel Nijkamp",
       "role": "Oprichter & Data-engineer",
@@ -64,7 +72,7 @@
       "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
       "bio": "Mijn passie is het creëren van systemen die rust en helderheid brengen. Ik heb te vaak gezien hoe slimme ondernemers vastlopen in de chaos van data. Voor mij is 'Vrijheid' de kern: de vrijheid om te ondernemen zonder geremd te worden door technologie. Dat betekent dat ik u direct toegang geef tot de kern, zonder onnodige lagen. Ik bouw het fundament dat u controle geeft, zodat u zich kunt richten op wat echt telt: de groei van uw bedrijf. Het mooiste van mijn werk? Het moment waarop een klant ziet dat de data klopt, de processen lopen en er eindelijk tijd is voor innovatie. Dat is de impact die ik wil maken."
     },
-    "pillarsTitle": "Onze Pijlers",
+    "pillarsTitle": "Onze pijlers",
     "pillars": {
       "tech": {
         "title": "Technologie",
@@ -114,7 +122,7 @@
         ]
       },
       "data": {
-        "title": "Data & Analytics",
+        "title": "Data & analytics",
         "desc": "Wij bouwen de infrastructuur die uw losse databronnen (zoals ERP, webshop en financiële software) samenbrengt tot één betrouwbaar, centraal data-platform. Dit geeft u de heldere, consistente inzichten die nodig zijn voor kalme en weloverwogen besluitvorming.",
         "points": [
           "Eén centrale bron van waarheid voor al uw data.",
@@ -129,7 +137,7 @@
         ]
       },
       "automation": {
-        "title": "AI & Automatisering",
+        "title": "AI & automatisering",
         "desc": "Wij vervangen repetitieve, handmatige taken door slimme, geautomatiseerde workflows. Dit bespaart niet alleen tijd, maar elimineert ook de kans op fouten, wat leidt tot een efficiënter, rustiger en meer schaalbaar bedrijfsproces.",
         "tools": [
           "LLM-integraties",
@@ -146,7 +154,7 @@
   "blog": {
     "title": "Kennis-hub",
     "subtitle": "Technische bronnen en inzichten die helderheid scheppen in complexe materie.",
-    "noPosts": "Geen bronnen gevonden in de Kennis-hub. Kom later terug!",
+    "noPosts": "Geen bronnen gevonden in de Kennis-hub. Komt u later terug!",
     "readingTime": "min leestijd",
     "previous": "Vorige",
     "next": "Volgende",
@@ -214,19 +222,19 @@
   },
   "privacy": {
     "title": "Privacyverklaring",
-    "intro": "Privacy is belangrijk voor Tovy. Het beleid van Tovy is om de privacy van gebruikers te respecteren bij het verzamelen van gegevens via de website. Dit beleid voldoet aan de Algemene verordening gegevensbescherming (AVG).",
+    "intro": "Privacy is belangrijk voor Tovy. Het beleid van Tovy is om uw privacy te respecteren bij het verzamelen van gegevens via de website. Dit beleid voldoet aan de Algemene verordening gegevensbescherming (AVG).",
     "sections": [
       {
         "title": "Verwerkingsverantwoordelijke",
-        "content": "Tovy is de verwerkingsverantwoordelijke voor de persoonsgegevens die via deze website worden verzameld. Voor vragen kun je contact opnemen met Tovy via:"
+        "content": "Tovy is de verwerkingsverantwoordelijke voor de persoonsgegevens die via deze website worden verzameld. Voor vragen kunt u contact opnemen met Tovy via:"
       },
       {
         "title": "Gegevensverzameling en gebruik",
-        "content": "Tovy vraagt alleen om persoonsgegevens wanneer dit noodzakelijk is om een dienst te verlenen. De organisatie verzamelt gegevens op een rechtmatige manier, met medeweten en expliciete toestemming van de gebruiker. De rechtsgronden voor verwerking zijn toestemming, contractuele noodzaak en gerechtvaardigd belang.",
+        "content": "Tovy vraagt alleen om persoonsgegevens wanneer dit noodzakelijk is om een dienst te verlenen. De organisatie verzamelt gegevens op een rechtmatige manier, met uw medeweten en expliciete toestemming. De rechtsgronden voor verwerking zijn toestemming, contractuele noodzaak en gerechtvaardigd belang.",
         "list": [
           "<strong>Projectaanvraagformulier:</strong> Tovy verzamelt namen, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore en gebruikt om aanvragen te beoordelen. De grondslag is de intentie om een overeenkomst aan te gaan.",
           "<strong>Serverlogs:</strong> De webserver, gehost door Firebase Hosting, registreert automatisch verzoeken zoals IP-adressen, browsertypes en bezochte pagina’s. De grondslag is het gerechtvaardigd belang om een veilige website te onderhouden.",
-          "<strong>Cookies:</strong> Tovy gebruikt noodzakelijke cookies om voorkearen voor toestemming te beheren. De organisatie gebruikt geen trackingcookies zonder expliciete voorafgaande toestemming via de cookiebanner."
+          "<strong>Cookies:</strong> Tovy gebruikt noodzakelijke cookies om uw voorkeuren voor toestemming te beheren. De organisatie gebruikt geen trackingcookies zonder uw expliciete voorafgaande toestemming via de cookiebanner."
         ]
       },
       {
@@ -239,9 +247,9 @@
       },
       {
         "title": "Rechten onder de AVG",
-        "content": "Onder de AVG heb je de volgende rechten met betrekking tot je persoonsgegevens:",
+        "content": "Onder de AVG heeft u de volgende rechten met betrekking tot uw persoonsgegevens:",
         "list": [
-          "<strong>Recht op informatie:</strong> Weten hoe gegevens worden verzameld en gebruikt",
+          "<strong>Recht op informatie:</strong> Weten hoe uw gegevens worden verzameld en gebruikt",
           "<strong>Recht op inzage:</strong> Een kopie opvragen van de opgeslagen informatie",
           "<strong>Recht op rectificatie:</strong> Onjuiste gegevens laten corrigeren",
           "<strong>Recht op verwijdering:</strong> Verzoeken om gegevens te wissen",
@@ -249,7 +257,7 @@
           "<strong>Recht op overdraagbaarheid:</strong> Gegevens in een machineleesbaar formaat ontvangen",
           "<strong>Recht van bezwaar:</strong> Bezwaar maken tegen de verwerking van persoonsgegevens"
         ],
-        "footer": "Om deze rechten uit te oefenen, kun je contact opnemen via het onderstaande e-mailadres."
+        "footer": "Om deze rechten uit te oefenen, kunt u contact opnemen via het onderstaande e-mailadres."
       }
     ],
     "effectiveDate": "Dit beleid is van kracht sinds 30 juli 2024."
@@ -270,34 +278,34 @@
     "vatNumber": "Btw-nummer",
     "disclaimer": "Disclaimer",
     "disclaimerSubtitle": "Verantwoordelijkheid voor de inhoud.",
-    "disclaimerContent": "De inhoud van deze pagina’s is met grote zorg samengesteld. Tovy kan echter de juistheid, volledigheid en actualiteit ervan niet garanderen. Volgens wettelijke bepalingen is Tovy verantwoordelijk voor de eigen inhoud op deze webpagina's. Tovy is niet verplicht om door derden aangeleverde informatie actief te controleren op illegale activiteiten.",
+    "disclaimerContent": "De inhoud van deze pagina’s is met grote zorg samengesteld. Tovy kan echter de juistheid, volledigheid en actualiteit ervan niet garanderen. Volgens wettelijke bepalingen is Tovy verantwoordelijk voor de eigen inhoud op deze webpagina's. Tovy is niet verplicht om door derden aangeleverde informatie actief te controlieren op illegale activiteiten.",
     "nederland": "Nederland"
   },
   "projectForm": {
     "title": "Projectformulier",
-    "subtitle": "Deel je projectvereisten met Tovy om schaalbare data-systemen te bouwen.",
+    "subtitle": "Deel uw projectvereisten met Tovy om schaalbare data-systemen te bouwen.",
     "intro": {
-      "title": "Bouw je datafundament",
-      "description": "Om de juiste aanbeveling te geven, stellen we zeven korte vragen over je projectdoelen. Dit helpt ons te bepalen of er een match is."
+      "title": "Bouw uw datafundament",
+      "description": "Om de juiste aanbeveling te geven, stellen we zeven korte vragen over uw projectdoelen. Dit helpt ons te bepalen of er een match is."
     },
     "success": {
       "title": "Bedankt",
-      "description": "Tovy heeft je verzoek ontvangen. Plan hieronder een kennismakingsgesprek om het proces te versnellen.",
+      "description": "Tovy heeft uw verzoek ontvangen. Plan hieronder een kennismakingsgesprek om het proces te versnellen.",
       "titlePathB": "Beoordeling vereisten",
       "descriptionPathB": "Tovy beoordeelt momenteel de technische en strategische vereisten. Wij nemen contact op als er extra context nodig is.",
       "titlePathC": "Kennis-hub",
-      "descriptionPathC": "Op basis van je scope is de Kennis-hub het meest geschikte startpunt. Verken daar technische documentatie en casestudy's.",
+      "descriptionPathC": "Op basis van uw scope is de Kennis-hub het meest geschikte startpunt. Verken daar technische documentatie en casestudy's.",
       "backHome": "Terug naar homepage",
       "bookMeeting": "Plan kennismakingsgesprek",
-      "exploreHub": "Ontdenk de Kennis-hub"
+      "exploreHub": "Ontdek de Kennis-hub"
     },
     "steps": {
       "problemStatement": {
         "label": "Probleemstelling en gewenste uitkomst",
-        "description": "Help ons jouw uitdaging en visie te begrijpen. Zo kunnen de oplossing visualiseren.",
-        "hasProblemLabel": "Is er een specifiek probleem dat je wilt oplossen?",
-        "problemDescriptionLabel": "Beschrijf het probleem en de impact op je bedrijf (wie, wat, wanneer, waar).",
-        "idealStateLabel": "Hoe ziet de ideale oplossing eruit en welke resultaten verwacht je?",
+        "description": "Help ons uw uitdaging en visie te begrijpen. Zo kunnen we de oplossing visualiseren.",
+        "hasProblemLabel": "Is er een specifiek probleem dat u wilt oplossen?",
+        "problemDescriptionLabel": "Beschrijf het probleem en de impact op uw bedrijf (wie, wat, wanneer, waar).",
+        "idealStateLabel": "Hoe ziet de ideale oplossing eruit en welke resultaten verwacht u?",
         "options": {
           "yes": "Ja",
           "no": "Nee"
@@ -305,7 +313,7 @@
       },
       "workEmail": {
         "label": "Zakelijk e-mailadres",
-        "description": "Geef een professioneel zakelijk e-mailadres op.",
+        "description": "Geeft u een professioneel zakelijk e-mailadres op.",
         "note": "Let op: Persoonlijke e-mailadressen zijn toegestaan, maar zakelijke e-mailadressen hebben de voorkeur en krijgen voorrang bij de beoordeling."
       },
       "companySize": {
@@ -323,11 +331,11 @@
       },
       "dataInfrastructure": {
         "label": "Data-infrastructuur",
-        "description": "Help ons je huidige datalandschap te begrijpen.",
+        "description": "Help ons uw huidige datalandschap te begrijpen.",
         "hasDataTeamLabel": "Is er een (data)engineeringteam?",
         "hasCentralDatabaseLabel": "Is er een centrale database die gegevens uit meerdere systemen bevat?",
-        "hasCloudPlatformLabel": "Maak je gebruik van een cloud-platform (AWS / Azure / GCP)?",
-        "solutionsInUseLabel": "Welke software, tools of platforms gebruik je momenteel?",
+        "hasCloudPlatformLabel": "Maakt u gebruik van een cloud-platform (AWS / Azure / GCP)?",
+        "solutionsInUseLabel": "Welke software, tools of platforms gebruikt u momenteel?",
         "options": {
           "yes": "Ja",
           "no": "Nee"
@@ -359,7 +367,8 @@
         "company": "Bedrijf *",
         "phone": "Telefoonnummer",
         "email": "E-mail *",
-        "consent": "Ik ga akkoord met de privacyverklaring."
+        "consentPreLink": "Ik ga akkoord met het",
+        "consentLinkText": "Privacybeleid"
       }
     },
     "buttons": {
@@ -374,7 +383,7 @@
     "badge": "Fout 404",
     "titlePart1": "Verdwaald in de",
     "titlePart2": "datasilo's?",
-    "description": "De bezochte pagina is verplaatst, verwijderd of heeft nooit bestaan. Tovy wijst je graag de weg terug.",
+    "description": "De bezochte pagina is verplaatst, verwijderd of heeft nooit bestaan. Tovy wijst u graag de weg terug.",
     "returnHome": "Terug naar home",
     "startProject": "Project starten"
   },

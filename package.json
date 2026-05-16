@@ -36,6 +36,7 @@
     "embla-carousel-react": "^8.6.0",
     "firebase": "^11.4.0",
     "framer-motion": "^12.4.7",
+    "geist": "^1.7.0",
     "gray-matter": "^4.0.3",
     "js-cookie": "^3.0.5",
     "libphonenumber-js": "^1.11.4",

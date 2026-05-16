@@ -33,17 +33,18 @@ function processFiles(dir: string, fileNames: string[]) {
   const allPostsData = fileNames.map(fileName => {
     const id = fileName.replace(/\.md$/, '');
     const fullPath = path.join(dir, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const matterResult = matter(fileContents);
     
-    const excerpt = matterResult.data.summary || (matterResult.content.substring(0, 150).trim() + (matterResult.content.length > 150 ? '...' : ''));
-    const readingTime = getReadingTime(matterResult.content);
+    // Efficiently read only the frontmatter
+    const { data } = matter.read(fullPath);
+    
+    // Excerpt and readingTime are not needed for the list page, 
+    // they can be calculated on the individual post page instead.
+    const excerpt = data.summary || '';
 
     return {
       id,
       excerpt,
-      readingTime,
-      ...(matterResult.data as { date: string; title: string, author: string, image: string, tags: string[], summary: string }),
+      ...(data as { date: string; title: string, author: string, image: string, tags: string[], summary: string }),
     };
   }).filter(post => {
     if (!post.date) return false;
@@ -58,6 +59,24 @@ function processFiles(dir: string, fileNames: string[]) {
       return -1;
     }
   });
+}
+
+export function getPaginatedPostsData(
+  lang: string = 'en',
+  limit: number = 6,
+  page: number = 1
+) {
+  const allPosts = getSortedPostsData(lang);
+  const totalPosts = allPosts.length;
+  const totalPages = Math.ceil(totalPosts / limit);
+  const offset = (page - 1) * limit;
+  const posts = allPosts.slice(offset, offset + limit);
+
+  return {
+    posts,
+    totalPages,
+    currentPage: page,
+  };
 }
 
 export async function getPostData(id: string, lang: string = 'en') {

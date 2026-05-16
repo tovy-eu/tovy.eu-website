@@ -13,6 +13,8 @@ import { CONFIG } from '@/lib/config';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { Magnetic } from '@/components/ui/magnetic';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
+import { generateAlternates } from '@/lib/metadata';
+import person from '@/content/person.json';
 
 type Props = {
   params: Promise<{ lang: string; slug: string }>;
@@ -43,17 +45,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
   
   const ogImage = postData.image || defaultOgImage;
+  const path = `/kx/${slug}`;
 
   return {
     title: postData.title,
     description: postData.excerpt,
-    alternates: {
-      canonical: `/${lang}/kx/${slug}/`,
-      languages: {
-        'en': `/en/kx/${slug}/`,
-        'nl': `/nl/kx/${slug}/`,
-      },
-    },
+    alternates: generateAlternates(path, lang),
     openGraph: {
       title: postData.title,
       description: postData.excerpt,
@@ -87,6 +84,7 @@ export default async function KxResource({ params }: Props) {
   const image = postData.image;
   const dateObj = new Date(postData.date);
   const displayDate = isValid(dateObj) ? format(dateObj, 'LLLL d, yyyy') : 'Recently';
+  const authorProfile = person;
 
   const breadcrumbs = [
     { name: 'Home', item: `/${lang}/` },
@@ -152,7 +150,7 @@ export default async function KxResource({ params }: Props) {
             </CardTitle>
             <CardDescription className="text-base flex flex-col gap-6 text-white/70">
               <div className="flex items-center gap-3 flex-wrap font-medium text-sm">
-                <span className="font-bold text-white/95">{postData.author}</span>
+                <a href={authorProfile.url} target="_blank" rel="author noopener noreferrer" className="font-bold text-white/95 hover:text-primary transition-colors">{postData.author}</a>
                 <span className="text-white/30">&bull;</span>
                 <time className="text-white/80">{displayDate}</time>
                 {postData.readingTime && (
@@ -208,7 +206,7 @@ export default async function KxResource({ params }: Props) {
         </Card>
         
         {/* Navigation - added small padding so they don't hit edges if the card doesn't */}
-        <div className="px-4 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="px-4 md:px-0 grid grid-col-1 md:grid-cols-2 gap-4">
           {postData.previousPost && (
             <Link href={`/${lang}/kx/${postData.previousPost.id}/`} className="group">
               <Card className="bg-card/20 border-white/5 p-4 group-hover:bg-card/40 transition-colors">
