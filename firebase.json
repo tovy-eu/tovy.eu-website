@@ -21,6 +21,18 @@
         "function": "metrics"
       }
     ],
+    "redirects": [
+      {
+        "source": "/en/kx/old-post-url",
+        "destination": "/en/kx/new-post-url",
+        "type": 301
+      },
+      {
+        "source": "/nl/kx/oude-post-url",
+        "destination": "/nl/kx/nieuwe-post-url",
+        "type": 301
+      }
+    ],
     "headers": [
       {
         "source": "/_next/static/**",

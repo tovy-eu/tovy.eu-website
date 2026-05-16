@@ -99,7 +99,13 @@
     "services": {
       "strategic": {
         "title": "Strategic advice",
-        "desc": "Your course is determined by technology that works. IT architecture is more than technology; it is the basis of your business continuity. We provide independent advice on your technical course, supplier selection and the feasibility of complex IT issues. No imposed choices, but a strategic plan that contributes directly to your business objectives.",
+        "desc": "Your course is determined by technology that works. IT architecture is more than technology; it is the basis of your business continuity. We provide independent advice on:",
+        "points": [
+          "Defining your technical course",
+          "Supplier selection and evaluation",
+          "Assessing the feasibility of complex IT issues",
+          "Creating a strategic plan that aligns with your business objectives"
+        ],
         "tools": [
           "Architecture",
           "Tool selection",
@@ -138,7 +144,13 @@
       },
       "automation": {
         "title": "AI & automation",
-        "desc": "Manual processes are a brake on growth. We replace repetitive tasks with smart software solutions and agentic workflows. By integrating LLMs and custom applications, we automate your processes without unnecessary complexity, making your organization work faster and more effectively.",
+        "desc": "Manual processes are a brake on growth. We replace repetitive tasks with smart software solutions and agentic workflows, enabling your organization to work faster and more effectively by:",
+        "points": [
+          "Integrating LLMs and custom applications to automate processes.",
+          "Replacing repetitive tasks with smart software solutions.",
+          "Developing agentic workflows for complex automation.",
+          "Eliminating unnecessary complexity in your operations."
+        ],
         "tools": [
           "LLM integrations",
           "Python",
@@ -390,5 +402,10 @@
   "marquee": {
     "title": "Technology that enables scalability",
     "subtitle": "We select tools known for their reliability, scalability and ease of maintenance, so that your data platform is future-proof."
+  },
+  "projectCta": {
+    "title": "Ready to build your data foundation?",
+    "description": "Let's turn your data challenges into growth opportunities.",
+    "buttonText": "Start a project"
   }
 }
