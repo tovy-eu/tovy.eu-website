@@ -5,12 +5,12 @@ import { CONFIG } from '@/lib/config';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://tovy.eu'; 
+  const baseUrl = 'https://www.tovy.eu'; 
   const languages = ['en', 'nl'];
 
   const routes = [
     '',
-    '/project-request',
+    // '/project-request', // Removed as it is disallowed in robots.txt
     '/privacy-policy',
     '/legal-notice',
   ];

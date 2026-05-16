@@ -3,7 +3,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { getDictionary } from '@/lib/get-dictionary';
 import { ScrollProgress } from '@/components/layout/scroll-progress';
-import { JsonLd, getCompanySchema, getPersonSchema } from '@/components/layout/json-ld';
+import { JsonLd, getOrganizationSchema, getPersonSchema } from '@/components/layout/json-ld';
 import { i18n } from '@/lib/config';
 
 /**
@@ -36,7 +36,7 @@ export default async function LocalizedLayout({
   
   return (
     <>
-      <JsonLd type="ProfessionalService" data={getCompanySchema(dict)} />
+      <JsonLd type="Organization" data={getOrganizationSchema(dict)} />
       <JsonLd type="Person" data={getPersonSchema()} />
       <ScrollProgress />
       <Header lang={lang} dict={dict} />

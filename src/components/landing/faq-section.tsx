@@ -9,11 +9,13 @@ import {
 import type { Dictionary } from '@/lib/get-dictionary';
 import { SectionHeader } from './section-header';
 import { ScrollReveal } from '../scroll-reveal';
+import { JsonLd, getFaqSchema } from '@/components/layout/json-ld';
   
 
 const FaqSection = ({ dict }: { dict: Dictionary }) => {
     return (
         <section className="relative w-full flex flex-col justify-center bg-gradient-to-b from-background to-accent/5 py-24 overflow-hidden scroll-mt-16 md:scroll-mt-20">
+            <JsonLd type="FAQPage" data={getFaqSchema(dict)} />
             <div className="relative mx-auto max-w-4xl px-4 md:px-8 z-10 w-full">
                 <SectionHeader 
                   badge={dict.faq.badge}

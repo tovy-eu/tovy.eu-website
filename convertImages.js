@@ -1,20 +1,28 @@
 
 const sharp = require('sharp');
+const fs = require('fs').promises;
 const path = require('path');
 
-async function convertImage(inputPath, outputPath) {
-  try {
-    await sharp(inputPath)
-      .webp({ quality: 80 }) // Adjust quality as needed
-      .toFile(outputPath);
-    console.log(`Converted ${inputPath} to ${outputPath}`);
-  } catch (error) {
-    console.error(`Error converting ${inputPath}:`, error);
+async function convertImages(dir) {
+  const dirents = await fs.readdir(dir, { withFileTypes: true });
+  for (const dirent of dirents) {
+    const res = path.resolve(dir, dirent.name);
+    if (dirent.isDirectory()) {
+      await convertImages(res);
+    } else {
+      if (res.match(/\.(png|jpg|jpeg)$/)) {
+        const webpPath = res.replace(/\.(png|jpg|jpeg)$/, '.webp');
+        try {
+          await sharp(res)
+            .webp({ quality: 80 })
+            .toFile(webpPath);
+          console.log(`Converted ${res} to ${webpPath}`);
+        } catch (error) {
+          console.error(`Error converting ${res}:`, error);
+        }
+      }
+    }
   }
 }
 
-// Convert public/images/tovy-og-image.png
-convertImage(
-  path.join(__dirname, 'public/images/tovy-og-image.png'),
-  path.join(__dirname, 'public/images/tovy-og-image.webp')
-);
+convertImages(path.join(__dirname, 'public/images'));

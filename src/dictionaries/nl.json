@@ -278,7 +278,7 @@
     "vatNumber": "Btw-nummer",
     "disclaimer": "Disclaimer",
     "disclaimerSubtitle": "Verantwoordelijkheid voor de inhoud.",
-    "disclaimerContent": "De inhoud van deze pagina’s is met grote zorg samengesteld. Tovy kan echter de juistheid, volledigheid en actualiteit ervan niet garanderen. Volgens wettelijke bepalingen is Tovy verantwoordelijk voor de eigen inhoud op deze webpagina's. Tovy is niet verplicht om door derden aangeleverde informatie actief te controlieren op illegale activiteiten.",
+    "disclaimerContent": "De inhoud van deze pagina’s is met grote zorg samengesteld. Tovy kan echter de juistheid, volledigheid en actualiteit ervan niet garanderen. Volgens wettelijke bepalingen is Tovy verantwoordelijk voor de eigen inhoud op deze webpagina's. Tovy is niet verplicht om door derden aangeleverde informatie actief te controleren op illegale activiteiten.",
     "nederland": "Nederland"
   },
   "projectForm": {
@@ -390,5 +390,10 @@
   "marquee": {
     "title": "Technologie die schaalbaarheid mogelijk maakt",
     "subtitle": "Wij selecteren tools die bekend staan om hun betrouwbaarheid, schaalbaarheid en onderhoudsgemak, zodat uw dataplatform toekomstbestendig is."
+  },
+  "projectCta": {
+    "title": "Klaar om uw datafundament te bouwen?",
+    "description": "Laten we uw data-uitdagingen omzetten in groeikansen.",
+    "buttonText": "Start een project"
   }
 }

@@ -17,16 +17,17 @@ function getReadingTime(content: string) {
 export function getSortedPostsData(lang: string = 'en') {
   const postsDirectory = path.join(basePostsDirectory, lang);
   
-  if (!fs.existsSync(postsDirectory)) {
-    if (fs.existsSync(basePostsDirectory)) {
-       const baseFiles = fs.readdirSync(basePostsDirectory).filter(file => file.endsWith('.md'));
-       if (baseFiles.length > 0) return processFiles(basePostsDirectory, baseFiles);
+  try {
+    if (!fs.existsSync(postsDirectory)) {
+      return [];
     }
+    
+    const fileNames = fs.readdirSync(postsDirectory).filter(file => file.endsWith('.md'));
+    return processFiles(postsDirectory, fileNames);
+  } catch (e) {
+    console.error(`Could not read posts for language: ${lang}`, e);
     return [];
   }
-  
-  const fileNames = fs.readdirSync(postsDirectory).filter(file => file.endsWith('.md'));
-  return processFiles(postsDirectory, fileNames);
 }
 
 function processFiles(dir: string, fileNames: string[]) {
@@ -44,6 +45,7 @@ function processFiles(dir: string, fileNames: string[]) {
     return {
       id,
       excerpt,
+      slug: id,
       ...(data as { date: string; title: string, author: string, image: string, tags: string[], summary: string }),
     };
   }).filter(post => {

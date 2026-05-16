@@ -1,11 +1,12 @@
 
-import type { Organization, Service, WebSite, ProfessionalService, FAQPage, BreadcrumbList, Person } from 'schema-dts';
+import type { Organization, Service, WebSite, ProfessionalService, FAQPage, BreadcrumbList, Person, Article, WebPage } from 'schema-dts';
 import companyProfile from '@/content/company-profile.json';
 import personProfile from '@/content/person.json';
 import type { Dictionary } from '@/lib/get-dictionary';
+import type { PostData } from '@/lib/blog';
 
 interface JsonLdProps {
-  type: 'Organization' | 'ProfessionalService' | 'Service' | 'WebSite' | 'FAQPage' | 'BreadcrumbList' | 'Person';
+  type: 'Organization' | 'ProfessionalService' | 'Service' | 'WebSite' | 'FAQPage' | 'BreadcrumbList' | 'Person' | 'Article' | 'WebPage';
   data: any;
 }
 
@@ -23,13 +24,12 @@ export function JsonLd({ type, data }: JsonLdProps) {
 }
 
 /**
- * Generates the primary ProfessionalService schema for Tovy.
+ * Generates the primary Organization schema for Tovy.
  */
-export function getCompanySchema(dict: Dictionary): ProfessionalService {
+export function getOrganizationSchema(dict: Dictionary): Organization {
   const profile = companyProfile.public_company_profile;
-  const person = personProfile.public_ceo_profile;
   return {
-    '@type': 'ProfessionalService',
+    '@type': 'Organization',
     '@id': 'https://tovy.eu/#organization',
     name: profile.entity_name,
     description: dict.hero.subtitle,
@@ -50,11 +50,6 @@ export function getCompanySchema(dict: Dictionary): ProfessionalService {
     },
     vatID: profile.primary_identifiers.vat_id_number,
     identifier: profile.primary_identifiers.commercial_registry_number,
-    foundingDate: profile.business_context.start_date,
-    founder: {
-      '@type': 'Person',
-      name: person.name,
-    },
   };
 }
 
@@ -145,4 +140,47 @@ export function getFaqSchema(dict: Dictionary): FAQPage {
       },
     })),
   };
+}
+
+/**
+ * Generates Article schema for blog posts.
+ */
+export function getArticleSchema(post: PostData): Article {
+  const profile = companyProfile.public_company_profile;
+  const author = personProfile.public_ceo_profile;
+  
+  const article: Article = {
+    '@type': 'Article',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://tovy.eu/kx/${post.id}`,
+    },
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image,
+    author: {
+      '@type': 'Person',
+      name: author.name,
+      url: author.url,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: profile.entity_name,
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://tovy.eu/logo.png',
+      },
+    },
+    datePublished: post.date,
+    isAccessibleForFree: true,
+    hasPart: [
+      {
+        '@type': 'WebPageElement',
+        isAccessibleForFree: true,
+        cssSelector: '.subscription-form',
+      }
+    ]
+  };
+
+  return article;
 }

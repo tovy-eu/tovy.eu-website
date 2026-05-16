@@ -7,18 +7,18 @@ import { SectionHeader } from './section-header';
 
 export function TechMarquee({ dict }: { dict: Dictionary }) {
   const techLogos = [
-    { "id": "gcp", "url": "/images/tech/gcp.webp", "hint": "google cloud" },
-    { "id": "aws", "url": "https://picsum.photos/seed/aws/150/60", "hint": "amazon aws" },
-    { "id": "azure", "url": "/images/tech/azure.webp", "hint": "microsoft azure" },
-    { "id": "dbt", "url": "https://picsum.photos/seed/dbt/150/60", "hint": "dbt logo" },
-    { "id": "snowflake", "url": "https://picsum.photos/seed/snowflake/150/60", "hint": "snowflake logo" },
-    { "id": "databricks", "url": "/images/tech/databricks.webp", "hint": "databricks logo" },
-    { "id": "python", "url": "/images/tech/python.webp", "hint": "python language" },
-    { "id": "typescript", "url": "https://picsum.photos/seed/ts/150/60", "hint": "typescript" },
-    { "id": "powerbi", "url": "/images/tech/power-bi.webp", "hint": "power bi" },
-    { "id": "oracle", "url": "/images/tech/oracle.webp", "hint": "oracle" },
-    { "id": "sap", "url": "/images/tech/sap.webp", "hint": "sap" },
-    { "id": "sql", "url": "/images/tech/sql.webp", "hint": "sql" }
+    { "id": "gcp", "url": "/images/tech/gcp.webp", "alt": "Google Cloud logo" },
+    { "id": "aws", "url": "https://picsum.photos/seed/aws/150/60", "alt": "Amazon AWS logo" },
+    { "id": "azure", "url": "/images/tech/azure.webp", "alt": "Microsoft Azure logo" },
+    { "id": "dbt", "url": "https://picsum.photos/seed/dbt/150/60", "alt": "dbt logo" },
+    { "id": "snowflake", "url": "https://picsum.photos/seed/snowflake/150/60", "alt": "Snowflake logo" },
+    { "id": "databricks", "url": "/images/tech/databricks.webp", "alt": "Databricks logo" },
+    { "id": "python", "url": "/images/tech/python.webp", "alt": "Python language logo" },
+    { "id": "typescript", "url": "https://picsum.photos/seed/ts/150/60", "alt": "TypeScript logo" },
+    { "id": "powerbi", "url": "/images/tech/power-bi.webp", "alt": "Power BI logo" },
+    { "id": "oracle", "url": "/images/tech/oracle.webp", "alt": "Oracle logo" },
+    { "id": "sap", "url": "/images/tech/sap.webp", "alt": "SAP logo" },
+    { "id": "sql", "url": "/images/tech/sql.webp", "alt": "SQL logo" }
   ];
 
   // Triple the logos for a long, smooth continuous loop
@@ -52,10 +52,9 @@ export function TechMarquee({ dict }: { dict: Dictionary }) {
                 )}>
                   <Image
                     src={logo.url}
-                    alt={`${logo.id} logo`}
+                    alt={logo.alt}
                     fill
                     className="object-contain"
-                    data-ai-hint={logo.hint}
                   />
                 </div>
               </div>

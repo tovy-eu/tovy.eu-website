@@ -99,10 +99,10 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
                             <div className="relative h-4 w-14 sm:h-6 sm:w-20 md:h-8 md:w-24 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
                               <Image
                                 src={logoData.url}
-                                alt={`${testimonial.author} company logo`}
-                                fill
+                                alt={`${testimonial.author}'s company logo: ${logoData.hint}`}
+                                width={96}
+                                height={32}
                                 className="object-contain"
-                                data-ai-hint={logoData.hint}
                               />
                             </div>
                           )}
