@@ -21,6 +21,10 @@
       "start_date": "2025-11-06",
       "proprietor_name": "Giel Nijkamp",
       "primary_activity_description": "Support of business process automation (consulting and engineering)"
+    },
+    "social_media_profiles": {
+      "linkedin_url": "https://www.linkedin.com/company/tovy-solutions/",
+      "github_url": "https://github.com/tovy-solutions"
     }
   }
 }

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getSortedPostsData } from '@/lib/blog';
+import { getPaginatedPostsData } from '@/lib/blog';
 import { format, isValid } from 'date-fns';
 import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/badge';
@@ -12,26 +12,18 @@ import { WavyLines } from '@/components/landing/wavy-lines';
 import { SectionHeader } from '@/components/landing/section-header';
 import { cn } from '@/lib/utils';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
-
-export async function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'nl' }];
-}
+import { generateAlternates } from '@/lib/metadata';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const dict = await getDictionary(lang);
   const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
+  const path = `/kx/`;
 
   return {
     title: dict.blog.title,
     description: dict.blog.subtitle,
-    alternates: {
-      canonical: `/${lang}/kx/`,
-      languages: {
-        'en': '/en/kx/',
-        'nl': '/nl/kx/',
-      },
-    },
+    alternates: generateAlternates(path, lang),
     openGraph: {
       title: dict.blog.title,
       description: dict.blog.subtitle,
@@ -47,14 +39,15 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   };
 }
 
-export default async function KxHome({ params }: { params: Promise<{ lang: string }> }) {
+export default async function KxHomePage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
   if (!CONFIG.enableBlog) {
     notFound();
   }
 
-  const { lang } = await params;
   const dict = await getDictionary(lang);
-  const allPostsData = getSortedPostsData(lang);
+  const currentPage = 1;
+  const { posts, totalPages } = getPaginatedPostsData(lang, 6, currentPage);
 
   const formatDate = (dateString: string) => {
     const d = new Date(dateString);
@@ -71,7 +64,7 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
     { name: 'Knowledge Exchange Hub', item: `/${lang}/kx/` },
   ];
 
-  if (allPostsData.length === 0) {
+  if (posts.length === 0) {
     return (
       <div 
         className="relative flex flex-col items-center justify-center min-h-screen pt-32 md:pt-40 pb-24 px-4 overflow-hidden"
@@ -107,8 +100,8 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-16">
-          {allPostsData.map((post, index) => {
-            const isFeatured = index === 0;
+          {posts.map((post, index) => {
+            const isFeatured = index === 0 && currentPage === 1;
             
             return (
               <Link 
@@ -191,6 +184,14 @@ export default async function KxHome({ params }: { params: Promise<{ lang: strin
               </Link>
             );
           })}
+        </div>
+        
+        <div className="flex justify-center items-center gap-4">
+          {totalPages > 1 && (
+            <Link href={`/${lang}/kx/page/2`} className="px-4 py-2 bg-primary text-primary-foreground rounded-md">
+              Next
+            </Link>
+          )}
         </div>
       </div>
     </div>

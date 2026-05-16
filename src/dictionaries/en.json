@@ -24,6 +24,14 @@
     "subscribing": "Subscribing...",
     "techStack": "THE TOVY TOOLCHAIN"
   },
+  "footer": {
+    "slogan-line-1": "The data and AI foundation",
+    "slogan-line-2": "for your company's growth.",
+    "legal": "Legal",
+    "legal-notice": "Legal Notice",
+    "privacy-policy": "Privacy Policy",
+    "connect": "Connect"
+  },
   "hero": {
     "title": "The data and AI foundation for your company's growth",
     "subtitle": "Tovy builds the data systems that unlock automation. We transform complex data silos into streamlined, scalable processes. Save time and unlock the full growth potential of your business."
@@ -359,7 +367,8 @@
         "company": "Company *",
         "phone": "Telephone number",
         "email": "E-mail *",
-        "consent": "I agree to the privacy statement."
+        "consentPreLink": "I agree to the",
+        "consentLinkText": "Privacy Policy"
       }
     },
     "buttons": {

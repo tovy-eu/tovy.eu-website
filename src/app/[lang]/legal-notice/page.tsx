@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import companyProfile from '@/content/company-profile.json';
 import LegalNoticeClient from '@/components/legal/legal-notice-client';
 import { getDictionary } from '@/lib/get-dictionary';
+import { generateAlternates } from '@/lib/metadata';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'nl' }];
@@ -12,12 +13,22 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { lang } = await params;
-  const dict = await getDictionary(lang);
-  return {
-    title: dict.legal.title,
-    description: `Legal Notice and company information for Tovy.`,
-  };
+  try {
+    const { lang } = await params;
+    const dict = await getDictionary(lang);
+    const path = '/legal-notice';
+
+    return {
+      title: dict.legal.title,
+      description: `Legal Notice and company information for Tovy.`,
+      alternates: generateAlternates(path, lang),
+    };
+  } catch (error) {
+    return {
+      title: 'Error',
+      description: 'Page not found',
+    };
+  }
 }
 
 export default async function LegalNoticePage({ params }: Props) {

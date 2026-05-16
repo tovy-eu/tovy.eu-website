@@ -7,18 +7,29 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ShieldCheck, Mail, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { generateAlternates } from '@/lib/metadata';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'nl' }];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-  const { lang } = await params;
-  const dict = await getDictionary(lang);
-  return {
-    title: dict.privacy.title,
-    description: dict.privacy.intro.substring(0, 160),
-  };
+  try {
+    const { lang } = await params;
+    const dict = await getDictionary(lang);
+    const path = '/privacy-policy';
+
+    return {
+      title: dict.privacy.title,
+      description: dict.privacy.intro.substring(0, 160),
+      alternates: generateAlternates(path, lang),
+    };
+  } catch (error) {
+    return {
+      title: 'Error',
+      description: 'Page not found',
+    };
+  }
 }
 
 export default async function PrivacyPolicyPage({ params }: { params: Promise<{ lang: string }> }) {

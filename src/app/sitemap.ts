@@ -24,10 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   languages.forEach((lang) => {
     routes.forEach((route) => {
       sitemapEntries.push({
-        url: `${baseUrl}/${lang}${route}/`,
-        lastModified: new Date(),
-        changeFrequency: route === '/kx' ? 'weekly' : 'monthly',
-        priority: route === '' ? 1.0 : 0.8,
+        url: `${baseUrl}/${lang}${route}/`
       });
     });
 
@@ -37,8 +34,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         sitemapEntries.push({
           url: `${baseUrl}/${lang}/kx/${post.id}/`,
           lastModified: new Date(post.date),
-          changeFrequency: 'monthly',
-          priority: 0.7,
         });
       });
     }

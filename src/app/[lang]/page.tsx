@@ -5,44 +5,47 @@ import { getDictionary } from "@/lib/get-dictionary";
 import { JsonLd, getServicesSchema, getFaqSchema } from "@/components/layout/json-ld";
 import type { Metadata } from 'next';
 import FaqSection from '@/components/landing/faq-section';
+import { generateAlternates } from '@/lib/metadata';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'nl' }];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-  const { lang } = await params;
-  const dict = await getDictionary(lang);
+  try {
+    const { lang } = await params;
+    const dict = await getDictionary(lang);
 
-  const title = dict.hero.title;
-  const description = dict.hero.subtitle;
+    const title = dict.hero.title;
+    const description = dict.hero.subtitle;
+    const path = '/';
 
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/${lang}/`,
-      languages: {
-        'en': '/en/',
-        'nl': '/nl/',
-      },
-    },
-    openGraph: {
+    return {
       title,
       description,
-      siteName: 'Tovy',
-      images: [
-        {
-          url: '/images/tovy-og-image.webp',
-          width: 1200,
-          height: 630,
-          alt: description,
-        },
-      ],
-      locale: lang,
-      type: 'website',
-    },
-  };
+      alternates: generateAlternates(path, lang),
+      openGraph: {
+        title,
+        description,
+        siteName: 'Tovy',
+        images: [
+          {
+            url: '/images/tovy-og-image.webp',
+            width: 1200,
+            height: 630,
+            alt: description,
+          },
+        ],
+        locale: lang,
+        type: 'website',
+      },
+    };
+  } catch (error) {
+    return {
+      title: 'Error',
+      description: 'Page not found',
+    };
+  }
 }
 
 // Dynamically import below-the-fold sections to reduce unused JS on initial load

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { ProjectIntakeForm } from '@/components/landing/project-intake-form';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { getDictionary } from '@/lib/get-dictionary';
+import { generateAlternates } from '@/lib/metadata';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'nl' }];
@@ -13,12 +14,22 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { lang } = await params;
-  const dict = await getDictionary(lang);
-  return {
-    title: dict.projectForm.title,
-    description: dict.projectForm.subtitle,
-  };
+  try {
+    const { lang } = await params;
+    const dict = await getDictionary(lang);
+    const path = '/project-request';
+
+    return {
+      title: dict.projectForm.title,
+      description: dict.projectForm.subtitle,
+      alternates: generateAlternates(path, lang),
+    };
+  } catch (error) {
+    return {
+      title: 'Error',
+      description: 'Page not found',
+    };
+  }
 }
 
 export default async function ProjectRequestPage({ params }: Props) {
