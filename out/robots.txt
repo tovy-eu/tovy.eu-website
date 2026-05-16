@@ -1,6 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow: /__/
-Disallow: /metrics/
+
+# Prevent non-content images from being indexed
+User-agent: Googlebot-Image
+Disallow: /images/people/
 
 Sitemap: https://tovy.eu/sitemap.xml
