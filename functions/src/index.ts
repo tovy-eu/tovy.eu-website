@@ -1,9 +1,15 @@
-import { onRequest, Request, Response } from "firebase-functions/v2/https";
+import { onRequest, Request } from "firebase-functions/v2/https";
+import { onDocumentUpdated } from "firebase-functions/v2/firestore";
 import { logger } from "firebase-functions";
 import { defineString } from "firebase-functions/params";
+import { initializeApp } from "firebase-admin/app";
 import { lookup } from "dns";
+import { Response } from "express";
+
+initializeApp();
 
 const MEASUREMENT_ID = defineString("GA4_MEASUREMENT_ID");
+const MAKE_WEBHOOK_URL = defineString("MAKE_WEBHOOK_URL");
 
 const GOOGLEBOT_UA = "Googlebot";
 const GOOGLEBOT_REVERSE_DNS_SUFFIX = ".googlebot.com";
@@ -47,18 +53,20 @@ const metricsHandler = async (request: Request, response: Response) => {
   const userAgent = request.headers["user-agent"] || "";
   if (userAgent.includes(GOOGLEBOT_UA)) {
     const ip = request.ip;
-    try {
-      const isGooglebot = await verifyGooglebot(ip);
-      if (!isGooglebot) {
-        logger.warn("Spoofed Googlebot detected", {
-          ip,
-          userAgent,
-        });
-        response.status(403).send("Forbidden");
-        return;
+    if (ip) {
+      try {
+        const isGooglebot = await verifyGooglebot(ip);
+        if (!isGooglebot) {
+          logger.warn("Spoofed Googlebot detected", {
+            ip,
+            userAgent,
+          });
+          response.status(403).send("Forbidden");
+          return;
+        }
+      } catch (error) {
+        logger.error("Error verifying Googlebot", error);
       }
-    } catch (error) {
-      logger.error("Error verifying Googlebot", error);
     }
   }
 
@@ -108,3 +116,45 @@ export const metrics = onRequest(
   { secrets: ["GA4_API_SECRET"], memory: "512MiB" },
   withNoIndex(metricsHandler)
 );
+
+/**
+ * Triggered when a project request document is updated.
+ * Sends the data to a Make.com webhook when the status changes to 'complete'.
+ */
+export const onProjectRequestUpdate = onDocumentUpdated("project_requests/{docId}", async (event) => {
+  const newValue = event.data?.after.data();
+  const previousValue = event.data?.before.data();
+
+  if (!newValue || !previousValue) {
+    logger.warn("No data found in Firestore event");
+    return;
+  }
+
+  // Only trigger if status changed to complete
+  if (newValue.status === "complete" && previousValue.status !== "complete") {
+    logger.info(`Sending project request ${event.params.docId} to Make.com`);
+    
+    try {
+      const response = await fetch(MAKE_WEBHOOK_URL.value(), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: event.params.docId,
+          ...newValue,
+          triggered_at: new Date().toISOString(),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Make.com webhook failed with status ${response.status}`);
+      }
+
+      logger.info(`Successfully sent project request ${event.params.docId} to Make.com`);
+    } catch (error) {
+      logger.error(`Error sending project request ${event.params.docId} to Make.com`, error);
+    }
+  }
+});
+
