@@ -23,6 +23,9 @@
 
 # Misc
 .DS_Store
+*.tsbuildinfo
+.turbo/
+next-env.d.ts
 *.pem
 
 # Log files

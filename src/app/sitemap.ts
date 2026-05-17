@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     '',
-    // '/project-request', // Removed as it is disallowed in robots.txt
+    '/project-request',
     '/privacy-policy',
     '/legal-notice',
   ];

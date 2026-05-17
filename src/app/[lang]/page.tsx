@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const { lang } = await params;
     const dict = await getDictionary(lang);
 
-    const title = dict.hero.title;
-    const description = dict.hero.subtitle;
+    const title = dict.hero.metaTitle || dict.hero.title;
+    const description = dict.hero.metaDescription || dict.hero.subtitle;
     const path = '/';
 
     return {

@@ -6,4 +6,4 @@ Disallow: /__/
 User-agent: Googlebot-Image
 Disallow: /images/people/
 
-Sitemap: https://tovy.eu/sitemap.xml
+Sitemap: https://www.tovy.eu/sitemap.xml

@@ -1,19 +1,15 @@
-
-import type { Organization, Service, WebSite, ProfessionalService, FAQPage, BreadcrumbList, Person, Article, WebPage } from 'schema-dts';
-import companyProfile from '@/content/company-profile.json';
-import personProfile from '@/content/person.json';
-import type { Dictionary } from '@/lib/get-dictionary';
-import type { PostData } from '@/lib/blog';
+import type { Organization, Service, WebSite, ProfessionalService, FAQPage, BreadcrumbList, Person, Article, WebPage } from "schema-dts";
+import companyProfile from "@/content/company-profile.json";
+import personProfile from "@/content/person.json";
+import type { Dictionary } from "@/lib/get-dictionary";
+import type { PostData } from "@/lib/blog";
+import testimonials from "@/content/testimonials-template/data.json";
 
 interface JsonLdProps {
-  type: 'Organization' | 'ProfessionalService' | 'Service' | 'WebSite' | 'FAQPage' | 'BreadcrumbList' | 'Person' | 'Article' | 'WebPage';
+  type: "Organization" | "ProfessionalService" | "Service" | "WebSite" | "FAQPage" | "BreadcrumbList" | "Person" | "Article" | "WebPage";
   data: any;
 }
 
-/**
- * A utility component to inject JSON-LD structured data into the head.
- * This is the cornerstone of Machine Experience (MX) Design.
- */
 export function JsonLd({ type, data }: JsonLdProps) {
   return (
     <script
@@ -23,62 +19,77 @@ export function JsonLd({ type, data }: JsonLdProps) {
   );
 }
 
-/**
- * Generates the primary Organization schema for Tovy.
- */
-export function getOrganizationSchema(dict: Dictionary): Organization {
+export function getOrganizationSchema(dict: Dictionary): ProfessionalService {
   const profile = companyProfile.public_company_profile;
   return {
-    '@type': 'Organization',
-    '@id': 'https://tovy.eu/#organization',
+    "@type": "ProfessionalService",
+    "@id": "https://tovy.eu/#organization",
     name: profile.entity_name,
     description: dict.hero.subtitle,
-    url: 'https://tovy.eu',
-    logo: 'https://tovy.eu/logo.png',
+    url: "https://tovy.eu",
+    logo: "https://tovy.eu/images/tovy-og-image.webp",
+    priceRange: "€€€",
+    openingHours: ["Mo-Th 19:00-20:00", "Fr 08:00-17:00"],
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 51.5891,
+      longitude: 4.7744
+    },
     address: {
-      '@type': 'PostalAddress',
+      "@type": "PostalAddress",
       streetAddress: `${profile.contact_details.street_name} ${profile.contact_details.house_number}`,
       addressLocality: profile.contact_details.city,
       postalCode: profile.contact_details.postal_code,
-      addressCountry: 'NL',
+      addressCountry: "NL",
     },
     contactPoint: {
-      '@type': 'ContactPoint',
+      "@type": "ContactPoint",
       telephone: `${profile.contact_details.country_code}${profile.contact_details.phone_number}`,
-      contactType: 'customer service',
+      contactType: "customer service",
       email: profile.contact_details.email,
     },
     vatID: profile.primary_identifiers.vat_id_number,
     identifier: profile.primary_identifiers.commercial_registry_number,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: 5,
+      reviewCount: testimonials.length,
+    },
+    review: testimonials.map(t => ({
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: 5,
+      },
+      author: {
+        "@type": "Person",
+        name: t.author,
+      },
+      reviewBody: t.quote,
+    })),
   };
 }
 
-/**
- * Generates the Person schema for the CEO.
- */
 export function getPersonSchema(): Person {
     const person = personProfile.public_ceo_profile;
     return {
-        '@type': 'Person',
+        "@type": "Person",
         name: person.name,
         jobTitle: person.jobTitle,
         image: person.image,
         sameAs: person.sameAs,
         worksFor: {
-            '@type': 'Organization',
+            "@type": "Organization",
             name: companyProfile.public_company_profile.entity_name,
         },
     };
 }
 
-/**
- * Generates Breadcrumb schema for navigation depth.
- */
 export function getBreadcrumbSchema(items: { name: string; item: string }[]): BreadcrumbList {
   return {
-    '@type': 'BreadcrumbList',
+    "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
+      "@type": "ListItem",
       position: index + 1,
       name: item.name,
       item: `https://tovy.eu${item.item}`,
@@ -86,9 +97,6 @@ export function getBreadcrumbSchema(items: { name: string; item: string }[]): Br
   };
 }
 
-/**
- * Generates the Service schemas for Tovy's core offerings.
- */
 export function getServicesSchema(dict: Dictionary): Service[] {
   const services = [
     {
@@ -110,74 +118,68 @@ export function getServicesSchema(dict: Dictionary): Service[] {
   ];
 
   return services.map(s => ({
-    '@type': 'Service',
+    "@type": "Service",
     name: s.name,
     description: s.description,
     provider: {
-      '@id': 'https://tovy.eu/#organization',
+      "@id": "https://tovy.eu/#organization",
     },
-    areaServed: 'EU',
+    areaServed: "EU",
     hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Data Engineering Services',
+      "@type": "OfferCatalog",
+      name: "Data Engineering Services",
     }
   }));
 }
 
-/**
- * Generates FAQ schema to support Prompt-Optimized Search (MX).
- */
 export function getFaqSchema(dict: Dictionary): FAQPage {
-  const allQuestions = dict.faq.categories.flatMap(category => category.questions);
+  const allQuestions = dict.faq.categories.flatMap((category: any) => category.questions);
   return {
-    '@type': 'FAQPage',
-    mainEntity: allQuestions.map(item => ({
-      '@type': 'Question',
+    "@type": "FAQPage",
+    mainEntity: allQuestions.map((item: any) => ({
+      "@type": "Question",
       name: item.question,
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer.replace(/<[^>]*>?/gm, ''), // Strip HTML for JSON-LD
+        "@type": "Answer",
+        text: item.answer.replace(/<[^>]*>?/gm, ""),
       },
     })),
   };
 }
 
-/**
- * Generates Article schema for blog posts.
- */
 export function getArticleSchema(post: PostData): Article {
   const profile = companyProfile.public_company_profile;
   const author = personProfile.public_ceo_profile;
   
   const article: Article = {
-    '@type': 'Article',
+    "@type": "Article",
     mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://tovy.eu/kx/${post.id}`,
+      "@type": "WebPage",
+      "@id": `https://tovy.eu/kx/${post.id}`,
     },
     headline: post.title,
     description: post.excerpt,
     image: post.image,
     author: {
-      '@type': 'Person',
+      "@type": "Person",
       name: author.name,
       url: author.url,
     },
     publisher: {
-      '@type': 'Organization',
+      "@type": "Organization",
       name: profile.entity_name,
       logo: {
-        '@type': 'ImageObject',
-        url: 'https://tovy.eu/logo.png',
+        "@type": "ImageObject",
+        url: "https://tovy.eu/images/tovy-og-image.webp",
       },
     },
     datePublished: post.date,
     isAccessibleForFree: true,
     hasPart: [
       {
-        '@type': 'WebPageElement',
+        "@type": "WebPageElement",
         isAccessibleForFree: true,
-        cssSelector: '.subscription-form',
+        cssSelector: ".subscription-form",
       }
     ]
   };

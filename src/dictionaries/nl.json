@@ -1,8 +1,8 @@
 {
   "common": {
-    "workWithUs": "Start project",
+    "workWithUs": "Bedrijfsscan aanvragen",
     "readBlog": "Ontdek de Kennis-hub",
-    "shareIdea": "Start project",
+    "shareIdea": "Bedrijfsscan aanvragen",
     "privacyPolicy": "Privacyverklaring",
     "legalNotice": "Juridische informatie",
     "allRightsReserved": "Alle rechten voorbehouden.",
@@ -33,7 +33,9 @@
     "connect": "Contact"
   },
   "hero": {
-    "title": "De basis voor rust en controle in uw datalandschap",
+    "metaTitle": "Tovy | Data-engineering voor schaalbare e-commerce groei",
+    "metaDescription": "Stop met brandjes blussen. Tovy bouwt de geautomatiseerde fundamenten die e-commerce teams nodig hebben om Shopify, Exact en ERPs foutloos te synchroniseren.",
+    "title": "De datafundering die u uw vrijheid om te ondernemen teruggeeft",
     "subtitle": "Tovy bouwt de intelligente datasystemen die chaos omzetten in helderheid. Wij vervangen handmatige processen door naadloze automatisering, zodat u weer volledige controle krijgt en kunt focussen op groei."
   },
   "painSolution": {
@@ -100,11 +102,7 @@
       "strategic": {
         "title": "Strategisch advies",
         "desc": "Een heldere koers is de basis van controle. Wij helpen u de juiste technologische keuzes te maken voor de lange termijn, zodat uw IT-landschap schaalbaar en toekomstbestendig is. Geen complexe rapporten, maar een duidelijk en haalbaar plan.",
-        "tools": [
-          "Architectuur",
-          "Toolingselectie",
-          "Haalbaarheid"
-        ]
+        "tools": ["Architectuur", "Toolingselectie", "Haalbaarheid"]
       },
       "cloud": {
         "title": "Infrastructuur",
@@ -115,11 +113,7 @@
           "Volledige gemoedsrust door robuuste, automatische back-up strategieën.",
           "Een veilig beheerde Azure-cloudomgeving die uw team ontzorgt."
         ],
-        "tools": [
-          "Azure / GCP / AWS",
-          "Security",
-          "Back-ups"
-        ]
+        "tools": ["Azure / GCP / AWS", "Security", "Back-ups"]
       },
       "data": {
         "title": "Data & analytics",
@@ -130,20 +124,12 @@
           "Real-time grip op uw voorraden, marges en klantdata over alle kanalen.",
           "Een geïntegreerd dataplatform dat de basis vormt voor slimme besluitvorming."
         ],
-        "tools": [
-          "dbt / SQL / Python",
-          "Power BI",
-          "Datawarehousing"
-        ]
+        "tools": ["dbt / SQL / Python", "Power BI", "Datawarehousing"]
       },
       "automation": {
         "title": "AI & automatisering",
         "desc": "Wij vervangen repetitieve, handmatige taken door slimme, geautomatiseerde workflows. Dit bespaart niet alleen tijd, maar elimineert ook de kans op fouten, wat leidt tot een efficiënter, rustiger en meer schaalbaar bedrijfsproces.",
-        "tools": [
-          "LLM-integraties",
-          "Python",
-          "Agentic workflows"
-        ]
+        "tools": ["LLM-integraties", "Python", "Agentic workflows"]
       }
     }
   },
@@ -152,6 +138,8 @@
     "subtitle": "Ontdek hoe Tovy de operationele rust herstelt en schaalbare groei mogelijk maakt."
   },
   "blog": {
+    "metaTitle": "Data Strategie & Engineering Inzichten | Tovy Kennis-hub",
+    "metaDescription": "Diepgaande technische artikelen over data-architectuur, automatisering en systeemintegratie. Leer hoe u een onderhoudsvrij fundament bouwt.",
     "title": "Kennis-hub",
     "subtitle": "Technische bronnen en inzichten die helderheid scheppen in complexe materie.",
     "noPosts": "Geen bronnen gevonden in de Kennis-hub. Komt u later terug!",
@@ -282,6 +270,8 @@
     "nederland": "Nederland"
   },
   "projectForm": {
+    "metaTitle": "Vraag een Data Architectuur Assessment aan | Tovy",
+    "metaDescription": "Is uw IT-landschap klaar voor automatisering? Vul de 7-stappen intake in voor een professioneel assessment van uw datafundament.",
     "title": "Projectformulier",
     "subtitle": "Deel uw projectvereisten met Tovy om schaalbare data-systemen te bouwen.",
     "intro": {
@@ -354,10 +344,7 @@
       "budget": {
         "label": "Budget",
         "description": "Onze standaardprojecten zijn sprints van zes weken met een vast budget. Is er een minimale investering van € 5.000,- beschikbaar?",
-        "options": [
-          "Ja",
-          "Nee"
-        ]
+        "options": ["Ja", "Nee"]
       },
       "contact": {
         "label": "Contactgegevens",

@@ -14,6 +14,21 @@ function getReadingTime(content: string) {
   return Math.ceil(wordCount / wordsPerMinute);
 }
 
+export type PostData = {
+  id: string;
+  date: string;
+  title: string;
+  author: string;
+  image: string;
+  tags: string[];
+  summary: string;
+  excerpt: string;
+  slug?: string;
+  contentHtml?: string;
+  introHtml?: string;
+  readingTime?: number;
+};
+
 export function getSortedPostsData(lang: string = 'en') {
   const postsDirectory = path.join(basePostsDirectory, lang);
   

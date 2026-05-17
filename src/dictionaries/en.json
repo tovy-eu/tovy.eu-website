@@ -1,8 +1,8 @@
 {
   "common": {
-    "workWithUs": "Start project",
+    "workWithUs": "Request an Assessment",
     "readBlog": "Explore KX Hub",
-    "shareIdea": "Start project",
+    "shareIdea": "Request an Assessment",
     "privacyPolicy": "Privacy Policy",
     "legalNotice": "Legal Notice",
     "allRightsReserved": "All rights reserved.",
@@ -33,8 +33,10 @@
     "connect": "Connect"
   },
   "hero": {
-    "title": "The data and AI foundation for your company's growth",
-    "subtitle": "Tovy builds the data systems that unlock automation. We transform complex data silos into streamlined, scalable processes. Save time and unlock the full growth potential of your business."
+    "metaTitle": "Tovy | Data Engineering for E-commerce Growth",
+    "metaDescription": "Stop fighting data chaos. Tovy builds the automated foundations e-commerce teams need to sync Shopify, Exact, and ERPs flawlessly. Reclaim your time.",
+    "title": "The data foundation that restores your freedom to grow",
+    "subtitle": "Tovy builds the intelligent data systems that turn chaos into clarity. We replace manual processes with seamless automation, giving you back total control to focus on growth."
   },
   "painSolution": {
     "title": "Silos vs. Centralized",
@@ -164,6 +166,8 @@
     "subtitle": "Discover how Tovy helps companies scale with automation."
   },
   "blog": {
+    "metaTitle": "Data Strategy & Engineering Insights | Tovy KX Hub",
+    "metaDescription": "Deep dives into data architecture, automation, and system integration. Learn how to build maintenance-free data pipelines for your business.",
     "title": "Knowledge Hub",
     "subtitle": "Technical resources, insights and documentation by Tovy.",
     "noPosts": "No resources found in the Knowledge Hub. Come back later!",
@@ -294,6 +298,8 @@
     "nederland": "Netherlands"
   },
   "projectForm": {
+    "metaTitle": "Request a Data Architecture Assessment | Tovy",
+    "metaDescription": "Is your data infrastructure ready for automation? Complete our 7-step intake for a professional engineering assessment of your data landscape.",
     "title": "Project form",
     "subtitle": "Share your project requirements with Tovy to build scalable data systems.",
     "intro": {
