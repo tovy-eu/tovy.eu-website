@@ -8,10 +8,7 @@ import { GtmScriptHead, GtmScriptBody } from '@/components/layout/gtm-script';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tovy.eu'),
-  title: {
-    template: 'Tovy | %s',
-    default: 'Tovy | Shaping the Future of Data',
-  },
+  title: 'Tovy',
 };
 
 export default function RootLayout({
