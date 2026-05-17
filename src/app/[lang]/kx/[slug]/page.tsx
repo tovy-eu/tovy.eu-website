@@ -12,7 +12,7 @@ import { getDictionary } from '@/lib/get-dictionary';
 import { CONFIG } from '@/lib/config';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { Magnetic } from '@/components/ui/magnetic';
-import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
+import { JsonLd, getBreadcrumbSchema, getArticleSchema } from '@/components/layout/json-ld';
 import { generateAlternates } from '@/lib/metadata';
 import person from '@/content/person.json';
 
@@ -36,7 +36,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug } = await params;
   const postData = await getPostData(slug, lang);
-  const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
+  const defaultOgImage = '/images/tovy-og-image.webp';
   
   if (!postData) {
     return {
@@ -84,7 +84,7 @@ export default async function KxResource({ params }: Props) {
   const image = postData.image;
   const dateObj = new Date(postData.date);
   const displayDate = isValid(dateObj) ? format(dateObj, 'LLLL d, yyyy') : 'Recently';
-  const authorProfile = person;
+  const authorProfile = person.public_ceo_profile;
 
   const breadcrumbs = [
     { name: 'Home', item: `/${lang}/` },
@@ -98,6 +98,7 @@ export default async function KxResource({ params }: Props) {
       style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))' }}
     >
       <JsonLd type="BreadcrumbList" data={getBreadcrumbSchema(breadcrumbs)} />
+      <JsonLd type="Article" data={getArticleSchema(postData)} />
       <WavyLines />
       
       {/* max-w-[680px] for desktop focus; px-0 ensures card touches edges on mobile */}

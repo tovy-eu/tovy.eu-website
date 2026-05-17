@@ -17,23 +17,23 @@ import { generateAlternates } from '@/lib/metadata';
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  const defaultOgImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630';
+  const defaultOgImage = '/images/tovy-og-image.webp';
   const path = `/kx/`;
 
   return {
-    title: dict.blog.title,
-    description: dict.blog.subtitle,
+    title: dict.blog.metaTitle || dict.blog.title,
+    description: dict.blog.metaDescription || dict.blog.subtitle,
     alternates: generateAlternates(path, lang),
     openGraph: {
-      title: dict.blog.title,
-      description: dict.blog.subtitle,
+      title: dict.blog.metaTitle || dict.blog.title,
+      description: dict.blog.metaDescription || dict.blog.subtitle,
       type: 'website',
       images: [{ url: defaultOgImage }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: dict.blog.title,
-      description: dict.blog.subtitle,
+      title: dict.blog.metaTitle || dict.blog.title,
+      description: dict.blog.metaDescription || dict.blog.subtitle,
       images: [defaultOgImage],
     },
   };

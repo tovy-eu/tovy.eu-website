@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import companyProfile from '@/content/company-profile.json';
-import { Locale } from '@/lib/config';
+import { i18n } from '@/lib/config';
 import { getDictionary } from '@/lib/get-dictionary';
 import { Github, Linkedin } from 'lucide-react';
 
-import { JsonLd } from '@/components/layout/json-ld';
+import { JsonLd, getOrganizationSchema } from '@/components/layout/json-ld';
 import { Button } from '@/components/ui/button';
+
+type Locale = typeof i18n.locales[number];
 
 export default async function Footer({ lang }: { lang: Locale }) {
   const dictionary = await getDictionary(lang);
@@ -71,7 +73,6 @@ export default async function Footer({ lang }: { lang: Locale }) {
         {/* Empty div for grid balancing */}
         <div></div>
       </div>
-      <JsonLd data={companyProfile} />
     </footer>
   );
 }

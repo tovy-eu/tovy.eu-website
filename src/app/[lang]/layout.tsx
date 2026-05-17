@@ -30,7 +30,7 @@ export default async function LocalizedLayout({
   const { lang: rawLang } = await params;
   
   // Gracefully handle invalid or missing lang parameters during 404 rendering
-  const lang = i18n.locales.includes(rawLang) ? rawLang : i18n.defaultLocale;
+  const lang = i18n.locales.includes(rawLang as any) ? (rawLang as 'en' | 'nl') : i18n.defaultLocale;
 
   const dict = await getDictionary(lang);
   
@@ -43,7 +43,7 @@ export default async function LocalizedLayout({
       <main id="main-content" className="flex-grow flex flex-col">
         {children}
       </main>
-      <Footer lang={lang} dict={dict} />
+      <Footer lang={lang} />
     </>
   );
 }

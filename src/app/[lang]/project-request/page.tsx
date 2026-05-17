@@ -20,13 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const path = '/project-request';
 
     return {
-      title: dict.projectForm.title,
-      description: dict.projectForm.subtitle,
+      title: dict.projectForm.metaTitle || dict.projectForm.title,
+      description: dict.projectForm.metaDescription || dict.projectForm.subtitle,
       alternates: generateAlternates(path, lang),
-      robots: {
-        index: false,
-        follow: true,
-      },
     };
   } catch (error) {
     return {
