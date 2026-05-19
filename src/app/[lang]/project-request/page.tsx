@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: dict.projectForm.metaTitle || dict.projectForm.title,
       description: dict.projectForm.metaDescription || dict.projectForm.subtitle,
+      keywords: dict.projectForm.keywords || [],
       alternates: generateAlternates(path, lang),
     };
   } catch (error) {

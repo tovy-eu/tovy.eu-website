@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TrackedLink } from "@/components/ui/tracked-link";
 import companyProfile from "@/content/company-profile.json";
 import { i18n } from "@/lib/config";
 import { getDictionary } from "@/lib/get-dictionary";
@@ -78,9 +79,9 @@ export default async function Footer({ lang }: { lang: Locale }) {
         <div className="flex flex-col items-center md:items-end justify-center">
           <Magnetic strength={0.2}>
             <Button asChild size="sm" className="h-9 md:h-10 px-4 md:px-6">
-              <Link href={`/${lang}/project-request/`}>
+              <TrackedLink href={`/${lang}/project-request/`} eventParams={{ location: "footer", text: dictionary.common.workWithUs }}>
                 <span className="font-bold text-sm">{dictionary.common.workWithUs}</span>
-              </Link>
+              </TrackedLink>
             </Button>
           </Magnetic>
         </div>

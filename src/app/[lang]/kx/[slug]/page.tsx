@@ -48,12 +48,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const path = `/kx/${slug}`;
 
   return {
-    title: postData.title,
-    description: postData.excerpt,
+    title: postData.metaTitle || postData.title,
+    description: postData.metaDescription || postData.excerpt,
     alternates: generateAlternates(path, lang),
     openGraph: {
-      title: postData.title,
-      description: postData.excerpt,
+      title: postData.metaTitle || postData.title,
+      description: postData.metaDescription || postData.excerpt,
       type: 'article',
       publishedTime: postData.date,
       authors: [postData.author],
@@ -61,8 +61,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: postData.title,
-      description: postData.excerpt,
+      title: postData.metaTitle || postData.title,
+      description: postData.metaDescription || postData.excerpt,
       images: [ogImage],
     },
   };

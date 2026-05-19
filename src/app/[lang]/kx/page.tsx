@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return {
     title: dict.blog.metaTitle || dict.blog.title,
     description: dict.blog.metaDescription || dict.blog.subtitle,
+    keywords: dict.blog.keywords || [],
     alternates: generateAlternates(path, lang),
     openGraph: {
       title: dict.blog.metaTitle || dict.blog.title,

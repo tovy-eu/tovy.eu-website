@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { CONFIG } from "@/lib/config";
 import { Magnetic } from "@/components/ui/magnetic";
+import { sendGA4Event } from "@/lib/tracking";
 
 export default function Header({ lang = "en", dict }: { lang?: string; dict?: Dictionary }) {
   const pathname = usePathname();
@@ -69,7 +70,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
 
         <div className="flex items-center gap-2 sm:gap-4 relative z-10">
           <Magnetic strength={0.2}>
-            <Button asChild size="sm" className="h-9 md:h-10 px-4 md:px-6">
+            <Button asChild size="sm" className="h-9 md:h-10 px-4 md:px-6" onClick={() => sendGA4Event("cta_clicked", { location: "header", text: shareIdeaText })}>
               <Link href={`/${lang}/project-request/`}>
                 <span className="font-bold text-sm">{shareIdeaText}</span>
               </Link>

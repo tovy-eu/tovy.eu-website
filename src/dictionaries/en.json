@@ -33,10 +33,18 @@
     "connect": "Connect"
   },
   "hero": {
-    "metaTitle": "Tovy | Data Engineering for E-commerce Growth",
+    "metaTitle": "Data Engineering for E-commerce Growth",
     "metaDescription": "Stop fighting data chaos. Tovy builds the automated foundations e-commerce teams need to sync Shopify, Exact, and ERPs flawlessly. Reclaim your time.",
     "title": "The data foundation that restores your freedom to grow",
-    "subtitle": "Tovy builds the intelligent data systems that turn chaos into clarity. We replace manual processes with seamless automation, giving you back total control to focus on growth."
+    "subtitle": "Tovy builds the intelligent data systems that turn chaos into clarity. We replace manual processes with seamless automation, giving you back total control to focus on growth.",
+    "keywords": [
+      "Data Engineering",
+      "Shopify Automation",
+      "Exact Online Integration",
+      "Data Architecture",
+      "Machine Experience",
+      "B2B Automation"
+    ]
   },
   "painSolution": {
     "title": "Silos vs. Centralized",
@@ -166,16 +174,23 @@
     "subtitle": "Discover how Tovy helps companies scale with automation."
   },
   "blog": {
-    "metaTitle": "Data Strategy & Engineering Insights | Tovy KX Hub",
+    "metaTitle": "Data Strategy & Engineering Insights",
     "metaDescription": "Deep dives into data architecture, automation, and system integration. Learn how to build maintenance-free data pipelines for your business.",
-    "title": "Knowledge Hub",
+    "title": "KX Hub: Data Strategy & Insights",
     "subtitle": "Technical resources, insights and documentation by Tovy.",
     "noPosts": "No resources found in the Knowledge Hub. Come back later!",
     "readingTime": "min read",
     "previous": "Previous",
     "next": "Next",
     "featured": "Featured source",
-    "by": "by"
+    "by": "by",
+    "keywords": [
+      "Data Engineering Articles",
+      "Automation Blueprints",
+      "Python for E-commerce",
+      "System Architecture",
+      "Tovy Knowledge Hub"
+    ]
   },
   "faq": {
     "title": "Frequently Asked Questions",
@@ -276,7 +291,15 @@
         "footer": "To exercise these rights, you can contact us via the e-mail address below."
       }
     ],
-    "effectiveDate": "This policy has been in effect since July 30, 2024."
+    "effectiveDate": "This policy has been in effect since July 30, 2024.",
+    "metaTitle": "Privacy Policy",
+    "metaDescription": "Tovy respects your privacy. Read our GDPR-compliant privacy policy regarding data collection, processing, and server-side tracking.",
+    "keywords": [
+      "Tovy Privacy Policy",
+      "GDPR Compliance",
+      "Data Protection",
+      "Privacy Statement"
+    ]
   },
   "legal": {
     "title": "Legal information",
@@ -295,12 +318,20 @@
     "disclaimer": "Disclaimer",
     "disclaimerSubtitle": "Responsibility for the content.",
     "disclaimerContent": "The content of these pages has been compiled with great care. However, Tovy cannot guarantee its accuracy, completeness and topicality. According to legal provisions, Tovy is responsible for its own content on these web pages. Tovy is not obliged to actively monitor third-party information for illegal activities.",
-    "nederland": "Netherlands"
+    "nederland": "Netherlands",
+    "metaTitle": "Legal Notice",
+    "metaDescription": "Official company details, registration, and legal information for Tovy Data Engineering.",
+    "keywords": [
+      "Tovy Legal Notice",
+      "Company Details",
+      "KVK Registration",
+      "Disclaimer"
+    ]
   },
   "projectForm": {
-    "metaTitle": "Request a Data Architecture Assessment | Tovy",
-    "metaDescription": "Is your data infrastructure ready for automation? Complete our 7-step intake for a professional engineering assessment of your data landscape.",
-    "title": "Project form",
+    "metaTitle": "Request a Data Architecture Assessment",
+    "metaDescription": "Ready for automation? Complete our 7-step technical intake to get a direct architecture assessment from a senior data engineer. No account managers, just working code.",
+    "title": "Data Architecture Assessment",
     "subtitle": "Share your project requirements with Tovy to build scalable data systems.",
     "intro": {
       "title": "Build your data foundation",
@@ -339,10 +370,10 @@
         "description": "This helps Tovy to estimate the size of the project.",
         "options": [
           "Independent entrepreneur",
-          "2–15",
-          "16–49",
-          "50–249",
-          "250–999",
+          "2\u201315",
+          "16\u201349",
+          "50\u2013249",
+          "250\u2013999",
           "1.000+",
           "Unknown"
         ]
@@ -364,14 +395,14 @@
         "description": "When is the intended start date?",
         "options": [
           "Immediately",
-          "1–3 months",
+          "1\u20133 months",
           "3+ months",
           "Exploring / No fixed date"
         ]
       },
       "budget": {
         "label": "Budget",
-        "description": "Our standard projects are six-week sprints with a fixed budget. Is a minimum investment of €5,000 available?",
+        "description": "Our standard projects are six-week sprints with a fixed budget. Is a minimum investment of \u20ac5,000 available?",
         "options": [
           "Yes",
           "No"
@@ -395,7 +426,13 @@
       "start": "Start",
       "submit": "Submit request",
       "submitting": "Submitting..."
-    }
+    },
+    "keywords": [
+      "Request Data Assessment",
+      "Hire Data Engineer",
+      "Data Integration Sprint",
+      "Tovy Intake Form"
+    ]
   },
   "notFound": {
     "badge": "Error 404",

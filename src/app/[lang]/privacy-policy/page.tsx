@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const path = '/privacy-policy';
 
     return {
-      title: dict.privacy.title,
-      description: dict.privacy.intro.substring(0, 160),
+      title: dict.privacy?.metaTitle || dict.privacy.title,
+      description: dict.privacy?.metaDescription || dict.privacy.intro.substring(0, 160),
       alternates: generateAlternates(path, lang),
     };
   } catch (error) {
