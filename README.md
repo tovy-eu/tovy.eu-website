@@ -43,6 +43,14 @@ Tovy is architected as a **Static Site Generation (SSG)** application, optimized
 3. **Develop**: `npm run dev`
 4. **Deploy**: `npm run build && firebase deploy`
 
+## 🔄 CI/CD Pipeline
+
+Tovy utilizes an advanced GitHub Actions workflow for zero-downtime, automated deployments:
+- **Workload Identity Federation (WIF)**: Secure, keyless authentication to Google Cloud.
+- **Quality Gates**: Strict `npm run typecheck` and ESLint checks run on every PR and push.
+- **Preview Environments**: Every Pull Request automatically spins up a temporary, 7-day Firebase Preview Channel for stakeholder review before merging.
+- **Production Deploy**: Merging to `main` instantly deploys the static build (`/out`) to live Firebase Hosting.
+
 ## ⚖️ License
 
 All rights reserved. © 2026 Tovy.
