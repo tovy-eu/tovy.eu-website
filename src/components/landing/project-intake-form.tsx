@@ -196,15 +196,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     const domain = data.email.split('@')[1]?.toLowerCase();
     score += publicEmailDomains.includes(domain) ? -10 : 5;
 
-    const companySizeIndex = singleOptions.companySize.findIndex(o => o.label === data.companySize);
+    const companySizeIndex = singleOptions.companySize.findIndex((o: any) => o.label === data.companySize);
     const sizeScores = [0, 4, 7, 10, 3];
     if (companySizeIndex !== -1) score += sizeScores[companySizeIndex];
 
-    const timelineIndex = singleOptions.timeline.findIndex(o => o.label === data.timeline);
+    const timelineIndex = singleOptions.timeline.findIndex((o: any) => o.label === data.timeline);
     const timelineScores = [5, 3, 1, -5];
     if (timelineIndex !== -1) score += timelineScores[timelineIndex];
 
-    const budgetIndex = singleOptions.budget.findIndex(o => o.label === data.budget);
+    const budgetIndex = singleOptions.budget.findIndex((o: any) => o.label === data.budget);
     const budgetScores = [5, -10];
     if (budgetIndex !== -1) score += budgetScores[budgetIndex];
 
@@ -306,7 +306,7 @@ const nextStep = async () => {
         fieldsToValidate = [currentField as keyof ProjectRequestData];
     }
         
-    const isValid = await form.trigger(fieldsToValidate);
+    const isValid = await form.trigger(fieldsToValidate as any);
 
     if (isValid) {
         await saveProgress();
@@ -332,7 +332,7 @@ const nextStep = async () => {
   const prevStep = () => setStep(s => Math.max(s - 1, -1));
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && e.target.tagName.toLowerCase() !== 'textarea') {
+    if (e.key === 'Enter' && (e.target as HTMLElement).tagName.toLowerCase() !== 'textarea') {
       e.preventDefault();
       nextStep();
     }
@@ -429,7 +429,7 @@ const nextStep = async () => {
                               </div>
                               <p className="text-muted-foreground mt-2 text-sm">{description}</p>
                               <div className="grid gap-2 mt-6 max-w-sm">
-                                {opts.map(o => (
+                                {opts.map((o: any) => (
                                   <button
                                     key={o.label}
                                     type="button"

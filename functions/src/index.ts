@@ -47,7 +47,7 @@ const verifyGooglebot = (ip: string): Promise<boolean> => {
   });
 };
 
-const metricsHandler = async (request: Request, response: Response) => {
+const metricsHandler = async (request: any, response: any) => {
   logger.info("Metrics function triggered");
 
   const userAgent = request.headers["user-agent"] || "";
@@ -114,7 +114,7 @@ const metricsHandler = async (request: Request, response: Response) => {
 
 export const metrics = onRequest(
   { secrets: ["GA4_API_SECRET"], memory: "512MiB" },
-  withNoIndex(metricsHandler)
+  withNoIndex(metricsHandler as any) as any
 );
 
 /**

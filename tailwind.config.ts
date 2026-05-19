@@ -15,7 +15,7 @@ export default {
         headline: ['var(--font-geist-sans)', 'sans-serif'],
         code: ['monospace'],
       },
-      typography: ({ theme }) => ({
+      typography: ({ theme }: { theme: any }) => ({
         DEFAULT: {
           css: {
             '--tw-prose-body': theme('colors.foreground / 0.8'),

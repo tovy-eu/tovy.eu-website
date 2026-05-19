@@ -27,12 +27,12 @@ const FaqSection = ({ dict }: { dict: Dictionary }) => {
                     <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
                         <div className="relative h-full w-full bg-card rounded-[calc(1.5rem-1px)] p-6 sm:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/10 group-hover:border-transparent overflow-hidden">
                             <Accordion type="single" collapsible className="w-full">
-                                {dict.faq.categories.map((category, catIndex) => (
+                                {dict.faq.categories.map((category: any, catIndex: number) => (
                                     <React.Fragment key={catIndex}>
                                         <h3 className="text-[11px] md:text-sm font-bold uppercase tracking-widest bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent mt-6 first:mt-0 mb-2">
                                             {category.name}
                                         </h3>
-                                        {category.questions.map((item, qIndex) => (
+                                        {category.questions.map((item: any, qIndex: number) => (
                                             <AccordionItem key={qIndex} value={`item-${catIndex}-${qIndex}`}>
                                                 <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
                                                 <AccordionContent>

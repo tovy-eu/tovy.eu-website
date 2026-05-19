@@ -69,7 +69,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                 </div>
 
                 <ul className="space-y-4">
-                  {painItems.map((item, i) => (
+                  {painItems.map((item: string, i: number) => (
                     <li key={i} className="flex items-start gap-3">
                       <XCircle className="h-5 w-5 text-muted-foreground/70 shrink-0 mt-0.5" />
                       <span className="text-sm md:text-base text-muted-foreground font-medium leading-relaxed">{item}</span>
@@ -108,7 +108,7 @@ export function PainSolutionSection({ dict }: { dict: Dictionary }) {
                   </div>
 
                   <ul className="space-y-4">
-                    {solutionItems.map((item, i) => (
+                    {solutionItems.map((item: string, i: number) => (
                       <li key={i} className="flex items-start gap-3 group/item">
                         <CheckCircle2 
                           className="h-5 w-5 shrink-0 mt-0.5 transition-colors duration-300 text-green-400 drop-shadow-[0_0_5px_rgba(74,222,128,0.4)]" 
