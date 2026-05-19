@@ -2,7 +2,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { JSONContent } from '@/lib/definitions';
 import { Button } from '@/components/ui/button';
 import { Download, Building, MapPin, Mail, Phone, User, FileText, Landmark, KeyRound, ShieldCheck, ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -11,7 +10,7 @@ import { WavyLines } from '@/components/landing/wavy-lines';
 import Link from 'next/link';
 
 type LegalNoticeClientProps = {
-  profile: JSONContent['public_company_profile'];
+  profile: any;
   dict: Dictionary;
 }
 

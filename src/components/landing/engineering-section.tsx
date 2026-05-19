@@ -36,7 +36,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
       title: dict.engineering.services.strategic.title,
       icon: <DraftingCompass />,
       description: dict.engineering.services.strategic.desc,
-      stack: dict.engineering.services.strategic.tools?.map(tool => ({ tool })) || [],
+      stack: dict.engineering.services.strategic.tools?.map((tool: string) => ({ tool })) || [],
       color: "hsl(var(--brand-1))",
       className: "md:col-span-2",
     },
@@ -45,7 +45,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
       title: dict.engineering.services.cloud.title,
       icon: <CloudCog />,
       description: dict.engineering.services.cloud.desc,
-      stack: dict.engineering.services.cloud.tools?.map(tool => ({ tool })) || [],
+      stack: dict.engineering.services.cloud.tools?.map((tool: string) => ({ tool })) || [],
       points: dict.engineering.services.cloud.points || [],
       color: "hsl(var(--brand-2))",
       className: "md:col-span-3",
@@ -55,7 +55,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
       title: dict.engineering.services.data.title,
       icon: <DatabaseZap />,
       description: dict.engineering.services.data.desc,
-      stack: dict.engineering.services.data.tools?.map(tool => ({ tool })) || [],
+      stack: dict.engineering.services.data.tools?.map((tool: string) => ({ tool })) || [],
       points: dict.engineering.services.data.points || [],
       color: "hsl(var(--brand-3))",
       className: "md:col-span-3",
@@ -65,7 +65,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
       title: dict.engineering.services.automation.title,
       icon: <CodeXml />,
       description: dict.engineering.services.automation.desc,
-      stack: dict.engineering.services.automation.tools?.map(tool => ({ tool })) || [],
+      stack: dict.engineering.services.automation.tools?.map((tool: string) => ({ tool })) || [],
       color: "hsl(var(--brand-4))",
       className: "md:col-span-2",
     },
@@ -119,7 +119,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                       className="transition-colors"
                       style={{ color: service.color }}
                     >
-                      {React.cloneElement(service.icon as React.ReactElement, { className: "h-5 w-5" })}
+                      {React.cloneElement(service.icon as React.ReactElement<any>, { className: "h-5 w-5" })}
                     </div>
                     <h3 className="text-base font-bold text-white/90 uppercase tracking-widest">
                       {service.title}
@@ -128,7 +128,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
 
                   {service.stack && service.stack.length > 0 && (
                     <div className="flex flex-wrap gap-3 mb-6">
-                      {service.stack.map(item => (
+                      {service.stack.map((item: any) => (
                         <span 
                           key={item.tool} 
                           className="tool-tag text-[10px] font-bold tracking-[0.2em] uppercase px-2 py-1 rounded border"
@@ -146,7 +146,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
 
                   {service.points && service.points.length > 0 && (
                     <div className="mt-6 space-y-4">
-                      {service.points.map((point, i) => (
+                      {service.points.map((point: string, i: number) => (
                         <div key={i} className="flex items-start gap-3">
                           <CheckCircle 
                             className="h-5 w-5 flex-shrink-0 mt-1"
