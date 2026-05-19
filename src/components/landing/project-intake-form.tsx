@@ -26,6 +26,7 @@ import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home, BookOpen } fr
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { Magnetic } from "@/components/ui/magnetic";
+import { sendGA4Event } from "@/lib/tracking";
 import { getVisitorId, getTraceId } from "@/lib/tracking";
 
 interface ProjectIntakeFormProps {
@@ -312,7 +313,14 @@ const nextStep = async () => {
         if (step < totalSteps - 1) {
             setStep(s => {
                 const newStep = s + 1;
-                pushToDataLayer(`form_step_${newStep + 1}`);
+                sendGA4Event("intake_step_completed", {
+                    
+                    action: "next_click",
+                    category: "engagement",
+                    label: "Project Intake Form",
+                    step_number: newStep + 1,
+                    visitor_id: getVisitorId()
+                });
                 return newStep;
             });
         } else {
@@ -332,7 +340,7 @@ const nextStep = async () => {
 
   return (
     <div className="w-full" onKeyDown={handleKeyDown}>
-      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
+      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
 
       {formSubmitted ? (
         <Card className="w-full max-w-3xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-4 md:p-8 animate-scale-in">
@@ -399,7 +407,7 @@ const nextStep = async () => {
                               </div>
                               <p className="text-muted-foreground mt-2 text-sm">{description}</p>
                               <FormControl>
-                                <Input {...f} placeholder={dict.common.emailPlaceholder} className="mt-6 bg-white/5 border-white/10 h-12" />
+                                <Input id={f.name} {...f} placeholder={dict.common.emailPlaceholder} className="mt-6 bg-white/5 border-white/10 h-12" />
                               </FormControl>
                               <FormDescription>
                                 {dict.projectForm.steps.workEmail.note}
@@ -485,14 +493,14 @@ const nextStep = async () => {
                                 <FormField control={form.control} name="problemDescription" render={({ field: f }) => (
                                   <FormItem className="mt-6">
                                     <FormLabel>{dict.projectForm.steps.problemStatement.problemDescriptionLabel}</FormLabel>
-                                    <Textarea {...f} placeholder="..." className="bg-white/5 border-white/10" />
+                                    <Textarea id={f.name} {...f} placeholder="..." className="bg-white/5 border-white/10" />
                                     <FormMessage />
                                   </FormItem>
                                 )} />
                                 <FormField control={form.control} name="idealState" render={({ field: f }) => (
                                     <FormItem className="mt-6">
                                         <FormLabel>{dict.projectForm.steps.problemStatement.idealStateLabel}</FormLabel>
-                                        <Textarea {...f} placeholder="..." className="bg-white/5 border-white/10" />
+                                        <Textarea id={f.name} {...f} placeholder="..." className="bg-white/5 border-white/10" />
                                         <FormMessage />
                                     </FormItem>
                                 )} />
@@ -614,14 +622,14 @@ const nextStep = async () => {
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                               <FormField control={form.control} name="firstName" render={({ field: f }) => (
-                                <FormItem><FormLabel>{dict.projectForm.steps.contact.firstName}</FormLabel><Input {...f} className="bg-white/5 border-white/10" /></FormItem>
+                                <FormItem><FormLabel>{dict.projectForm.steps.contact.firstName}</FormLabel><Input id={f.name} {...f} className="bg-white/5 border-white/10" /></FormItem>
                               )} />
                               <FormField control={form.control} name="lastName" render={({ field: f }) => (
-                                <FormItem><FormLabel>{dict.projectForm.steps.contact.lastName}</FormLabel><Input {...f} className="bg-white/5 border-white/10" /></FormItem>
+                                <FormItem><FormLabel>{dict.projectForm.steps.contact.lastName}</FormLabel><Input id={f.name} {...f} className="bg-white/5 border-white/10" /></FormItem>
                               )} />
                             </div>
                             <FormField control={form.control} name="company" render={({ field: f }) => (
-                              <FormItem><FormLabel>{dict.projectForm.steps.contact.company}</FormLabel><Input {...f} className="bg-white/5 border-white/10" /></FormItem>
+                              <FormItem><FormLabel>{dict.projectForm.steps.contact.company}</FormLabel><Input id={f.name} {...f} className="bg-white/5 border-white/10" /></FormItem>
                             )} />
                             <FormField control={form.control} name="phone" render={({ field: f }) => (
                               <FormItem>

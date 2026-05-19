@@ -27,6 +27,8 @@ export type PostData = {
   contentHtml?: string;
   introHtml?: string;
   readingTime?: number;
+  metaTitle?: string;
+  metaDescription?: string;
 };
 
 export function getSortedPostsData(lang: string = 'en') {
