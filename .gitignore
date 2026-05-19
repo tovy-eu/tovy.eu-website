@@ -65,3 +65,4 @@ pnpm-debug.log*
 
 # CMS config file - contains sensitive info
 /public/admin/config.yml
+functions/.env.*
