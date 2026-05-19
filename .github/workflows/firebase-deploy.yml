@@ -55,12 +55,13 @@ jobs:
         run: npm run build
 
       - name: Deploy to Firebase Preview Channel
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: 'firebase-adminsdk-fbsvc@studio-5767764867-ecdbc.iam.gserviceaccount.com'
-          expires: 7d
-          projectId: studio-5767764867-ecdbc
+        run: |
+          CHANNEL_ID="pr-${{ github.event.pull_request.number }}-${{ github.head_ref }}"
+          # Clean channel ID (lowercase, replace invalid chars with dashes, max 40 chars)
+          CLEAN_CHANNEL_ID=$(echo "$CHANNEL_ID" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]/_/' | cut -c 1-40 | sed 's/_$//')
+          
+          # Deploy to the specific preview channel
+          npx firebase-tools hosting:channel:deploy "$CLEAN_CHANNEL_ID" --expires 7d --project studio-5767764867-ecdbc
 
   deploy_production:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
