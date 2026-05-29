@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         siteName: 'Tovy',
         images: [
           {
-            url: '/images/tovy-og-image.webp',
+            url: `https://tovy.eu/images/tovy-og-image.webp`,
             width: 1200,
             height: 630,
             alt: description,
@@ -52,14 +52,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 const PainSolutionSection = dynamic(() => import("@/components/landing/pain-solution-section").then(mod => mod.PainSolutionSection));
 const AboutSection = dynamic(() => import("@/components/landing/about-section").then(mod => mod.AboutSection));
 const EngineeringSection = dynamic(() => import("@/components/landing/engineering-section").then(mod => mod.EngineeringSection));
-// const TestimonialsSection = dynamic(() => import("@/components/landing/testimonials-section").then(mod => mod.TestimonialsSection));
+const FaqSection = dynamic(() => import('@/components/landing/faq-section'));
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center overflow-x-hidden">
       {/* Machine Experience (MX) Structured Data */}
       <JsonLd type="Service" data={getServicesSchema(dict)} />
       <JsonLd type="FAQPage" data={getFaqSchema(dict)} />

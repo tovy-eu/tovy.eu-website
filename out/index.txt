@@ -1,46 +1,42 @@
 1:"$Sreact.fragment"
-2:I[7304,["619","static/chunks/619-5601a613a3f74060.js","909","static/chunks/909-a5da60d248a1c133.js","876","static/chunks/876-35f9324f50d2e6d3.js","118","static/chunks/118-c0fb7bc2c11bcfa9.js","23","static/chunks/23-1523711f956b261b.js","177","static/chunks/app/layout-19a64f4a3f80d4c1.js"],"AnalyticsProviderHead"]
-3:I[7304,["619","static/chunks/619-5601a613a3f74060.js","909","static/chunks/909-a5da60d248a1c133.js","876","static/chunks/876-35f9324f50d2e6d3.js","118","static/chunks/118-c0fb7bc2c11bcfa9.js","23","static/chunks/23-1523711f956b261b.js","177","static/chunks/app/layout-19a64f4a3f80d4c1.js"],"AnalyticsProviderBody"]
-4:I[9766,[],""]
-5:I[8924,[],""]
-6:I[3486,["619","static/chunks/619-5601a613a3f74060.js","909","static/chunks/909-a5da60d248a1c133.js","345","static/chunks/app/not-found-05d3edf3c7910126.js"],"default"]
-7:I[8516,["619","static/chunks/619-5601a613a3f74060.js","909","static/chunks/909-a5da60d248a1c133.js","876","static/chunks/876-35f9324f50d2e6d3.js","118","static/chunks/118-c0fb7bc2c11bcfa9.js","23","static/chunks/23-1523711f956b261b.js","177","static/chunks/app/layout-19a64f4a3f80d4c1.js"],"Toaster"]
-8:I[2355,["619","static/chunks/619-5601a613a3f74060.js","909","static/chunks/909-a5da60d248a1c133.js","876","static/chunks/876-35f9324f50d2e6d3.js","118","static/chunks/118-c0fb7bc2c11bcfa9.js","23","static/chunks/23-1523711f956b261b.js","177","static/chunks/app/layout-19a64f4a3f80d4c1.js"],"default"]
-a:I[4431,[],"OutletBoundary"]
-c:I[5278,[],"AsyncMetadataOutlet"]
-e:I[4431,[],"ViewportBoundary"]
-10:I[4431,[],"MetadataBoundary"]
-11:"$Sreact.suspense"
-13:I[7150,[],""]
+2:I[9766,[],""]
+3:I[8924,[],""]
+4:I[5715,["619","static/chunks/619-1ab174a7dcaa52a1.js","909","static/chunks/909-a5da60d248a1c133.js","345","static/chunks/app/not-found-16d4e95a2d6b7baf.js"],"default"]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
 :HL["/_next/static/media/27834908180db20f-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/css/badba33cb5f06cfc.css","style"]
-:HL["/_next/static/css/3d295439b634eab1.css","style"]
-9:T483,
-                 (function() {
-                   try {
-                     var target = 'en'; // Default language
-                     var supported = ['en', 'nl'];
-                     var cookieLang = (document.cookie.match(/^(?:.*;)?NEXT_LOCALE=([^;]+)(?:.*)?$/) || [, ''])[1];
-     
-                     if (cookieLang && supported.includes(cookieLang)) {
-                       target = cookieLang;
-                     } else {
-                       var browserLang = navigator.language.split('-')[0];
-                       if (supported.includes(browserLang)) {
-                         target = browserLang;
-                       }
-                       // Set the cookie if not already set or invalid
-                       document.cookie = 'NEXT_LOCALE=' + target + '; Path=/; Max-Age=' + (365 * 24 * 60 * 60) + '; Secure; SameSite=Lax';
-                     }
-                     window.location.replace('/' + target + '/');
-                   } catch (e) {
-                     // Fallback to English if any error occurs
-                     window.location.replace('/en/');
-                   }
-                 })();
-               0:{"P":null,"b":"Q6AbOK3jqhFleTLI4VFJf","p":"","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/badba33cb5f06cfc.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/3d295439b634eab1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"__variable_245d8d scroll-smooth","data-scroll-behavior":"smooth","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","$L2",null,{}]}],["$","body",null,{"className":"font-sans antialiased flex flex-col min-h-screen","children":[["$","$L3",null,{}],["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","$L6",null,{}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L7",null,{}],["$","$L8",null,{}]]}]]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","div",null,{"className":"flex h-screen w-full items-center justify-center bg-[#0a1120]","children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$9"}}]}],null,["$","$La",null,{"children":["$Lb",["$","$Lc",null,{"promise":"$@d"}]]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$Le",null,{"children":"$Lf"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$L10",null,{"children":["$","div",null,{"hidden":true,"children":["$","$11",null,{"fallback":null,"children":"$L12"}]}]}]]}],false]],"m":"$undefined","G":["$13",[]],"s":false,"S":true}
-f:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-b:null
-14:I[622,[],"IconMark"]
-d:{"metadata":[["$","title","0",{"children":"Data Engineering for E-commerce Growth | Tovy"}],["$","meta","1",{"property":"og:title","content":"Data Engineering for E-commerce Growth | Tovy"}],["$","meta","2",{"property":"og:site_name","content":"Tovy"}],["$","meta","3",{"property":"og:locale","content":"en_US"}],["$","meta","4",{"property":"og:image","content":"https://tovy.eu/images/tovy-og-image.webp"}],["$","meta","5",{"property":"og:image:width","content":"1200"}],["$","meta","6",{"property":"og:image:height","content":"630"}],["$","meta","7",{"property":"og:image:alt","content":"Tovy Data Engineering"}],["$","meta","8",{"property":"og:locale:alternate","content":"nl_NL"}],["$","meta","9",{"property":"og:type","content":"website"}],["$","meta","10",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","11",{"name":"twitter:title","content":"Data Engineering for E-commerce Growth | Tovy"}],["$","meta","12",{"name":"twitter:image","content":"https://tovy.eu/images/tovy-og-image.webp"}],["$","link","13",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L14","14",{}]],"error":null,"digest":"$undefined"}
-12:"$d:metadata"
+:HL["/_next/static/css/123c91aa5d4f355c.css","style"]
+5:T410,
+            (function() {
+              try {
+                var target = 'en'; // Default language
+                var supported = ['en', 'nl'];
+                var cookieLang = (document.cookie.match(/^(?:.*;)?NEXT_LOCALE=([^;]+)(?:.*)?$/) || [, ''])[1];
+
+                if (cookieLang && supported.includes(cookieLang)) {
+                  target = cookieLang;
+                } else {
+                  var browserLang = navigator.language.split('-')[0];
+                  if (supported.includes(browserLang)) {
+                    target = browserLang;
+                  }
+                  // Set the cookie if not already set or invalid
+                  document.cookie = 'NEXT_LOCALE=' + target + '; Path=/; Max-Age=' + (365 * 24 * 60 * 60) + '; Secure; SameSite=Lax';
+                }
+                window.location.replace('/' + target + '/');
+              } catch (e) {
+                // Fallback to English if any error occurs
+                window.location.replace('/en/');
+              }
+            })();
+          0:{"P":null,"b":"oPPAbhVExhOv89RiU_6Ef","p":"","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/badba33cb5f06cfc.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/123c91aa5d4f355c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"__variable_245d8d","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","meta",null,{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","$L4",null,{}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","div",null,{"className":"flex h-screen w-full items-center justify-center bg-[#0a1120]","children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$5"}}]}],null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+10:I[622,[],"IconMark"]
+9:{"metadata":[["$","title","0",{"children":"Tovy | Data Engineering"}],["$","meta","1",{"name":"description","content":"Intelligent data systems that turn chaos into clarity."}],["$","meta","2",{"name":"robots","content":"noindex, follow"}],["$","link","3",{"rel":"canonical","href":"https://tovy.eu/en/"}],["$","link","4",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L10","5",{}]],"error":null,"digest":"$undefined"}
+e:"$9:metadata"

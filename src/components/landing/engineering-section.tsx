@@ -8,6 +8,7 @@ import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { SectionHeader } from "./section-header";
 import { cn } from "@/lib/utils";
+import { Spotlight } from "../ui/spotlight";
 
 export function EngineeringSection({ dict }: { dict: Dictionary }) {
   const gridRef = useRef<HTMLDivElement>(null);
@@ -84,83 +85,98 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
         ref={gridRef}
         className="parallax-grid-bg"
         style={{ transform: 'translateZ(0)' }}
+       
       />
 
       <div className="relative mx-auto max-w-6xl px-4 md:px-8 z-10 w-full">
         <SectionHeader 
+          index="03"
           badge={dict.engineering.section}
           title={dict.engineering.title}
           description={dict.engineering.subtitle}
           className="mb-16"
         />
 
-        <div className="relative grid grid-cols-1 md:grid-cols-5 gap-6">
-          {serviceLines.map((service, index) => (
-            <ScrollReveal 
-              key={service.id} 
-              delay={getDelayClass(index)}
-              className={cn("h-full", service.className)}
-            >
-              <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
-                />
-                
-                <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(1.5rem-1px)] p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
+        <div className="relative grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-6">
+          {serviceLines.map((service, index) => {
+            const isLarge = index === 1 || index === 2;
+            return (
+              <ScrollReveal 
+                key={service.id} 
+                delay={getDelayClass(index)}
+                className={cn(
+                  "h-full", 
+                  isLarge ? "md:col-span-3" : "md:col-span-2",
+                  service.className
+                )}
+              >
+                <div className="relative h-full w-full p-[1px] overflow-hidden rounded-2xl md:rounded-3xl group transition-all duration-500">
                   <div 
-                    className="absolute top-0 right-0 text-9xl font-black opacity-30 select-none -translate-y-1/4 translate-x-1/4"
-                    style={{ color: service.color }}
-                  >
-                    {index + 1}
-                  </div>
-                  
-                  <div className="flex items-center gap-3 mb-4">
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
+                  />
+
+                  <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(1rem-1px)] md:rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
+                    <Spotlight color="rgba(43, 94, 255, 0.08)" size={400} />
+                    
                     <div 
-                      className="transition-colors"
+                      className="absolute top-0 right-0 text-7xl md:text-9xl font-black opacity-[0.15] md:opacity-30 select-none -translate-y-1/4 translate-x-1/4"
                       style={{ color: service.color }}
                     >
-                      {React.cloneElement(service.icon as React.ReactElement<any>, { className: "h-5 w-5" })}
+                      {index + 1}
                     </div>
-                    <h3 className="text-base font-bold text-white/90 uppercase tracking-widest">
-                      {service.title}
-                    </h3>
-                  </div>
 
-                  {service.stack && service.stack.length > 0 && (
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      {service.stack.map((item: any) => (
-                        <span 
-                          key={item.tool} 
-                          className="tool-tag text-[10px] font-bold tracking-[0.2em] uppercase px-2 py-1 rounded border"
-                          style={{ '--service-color': `var(--brand-${index + 1})` } as React.CSSProperties}
-                        >
-                          {item.tool}
-                        </span>
-                      ))}
+                    <div className="flex items-center gap-3 mb-6 relative z-10">
+                      <div 
+                        className="transition-colors"
+                        style={{ color: service.color }}
+                      >
+                        {React.cloneElement(service.icon as React.ReactElement<any>, { className: "h-5 w-5" })}
+                      </div>
+                      <h3 className="text-[10px] md:text-[11px] font-bold text-white/90 uppercase tracking-[0.3em]">
+                        {service.title}
+                      </h3>
                     </div>
-                  )}
-                  
-                  <p className="text-base text-white/80 leading-relaxed font-medium">
-                    {service.description}
-                  </p>
 
-                  {service.points && service.points.length > 0 && (
-                    <div className="mt-6 space-y-4">
-                      {service.points.map((point: string, i: number) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <CheckCircle 
-                            className="h-5 w-5 flex-shrink-0 mt-1"
-                            style={{ color: service.color }}
-                          />
-                          <p className="text-sm text-white/70">{point}</p>
+                    {service.stack && service.stack.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-6 md:mb-8 relative z-10">
+                        {service.stack.map((item: any) => (
+                          <span 
+                            key={item.tool} 
+                            className="tool-tag text-[8px] md:text-[9px] font-bold tracking-[0.1em] md:tracking-[0.2em] uppercase px-2 py-0.5 md:py-1 rounded border border-white/5 bg-white/[0.03] text-white/40"
+                            style={{ '--service-color': `var(--brand-${index + 1})` } as React.CSSProperties}
+                          >
+                            {item.tool}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className={cn("flex flex-col h-full relative z-10", isLarge && "md:grid md:grid-cols-2 md:gap-8")}>
+                      <div>
+                        <p className="text-sm md:text-base text-white/50 leading-relaxed font-medium tracking-tight mb-6 md:mb-8">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      {service.points && service.points.length > 0 && (
+                        <div className="space-y-3 md:space-y-4">
+                          {service.points.map((point: string, i: number) => (
+                            <div key={i} className="flex items-start gap-3">
+                              <CheckCircle 
+                                className="h-4 w-4 flex-shrink-0 mt-0.5 opacity-40"
+                                style={{ color: service.color }}
+                              />
+                              <p className="text-xs md:text-[13px] text-white/40 leading-relaxed font-medium tracking-tight">{point}</p>
+                            </div>
+                          ))}
                         </div>
-                      ))}
+                      )}
                     </div>
-                  )}
+                  </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </section>

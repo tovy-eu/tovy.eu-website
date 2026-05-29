@@ -19,7 +19,8 @@ export function Magnetic({ children, strength = 0.35, className }: MagneticProps
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+    // Only apply effect if the device has a fine pointer (mouse)
+    if (!ref.current || !window.matchMedia("(pointer: fine)").matches) return;
     
     const { clientX, clientY } = e;
     const { width, height, left, top } = ref.current.getBoundingClientRect();

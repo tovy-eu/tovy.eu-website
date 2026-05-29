@@ -9,7 +9,7 @@ export default async function ProjectCta({ lang }: { lang: 'en' | 'nl' }) {
       <h2 className="text-2xl font-bold mb-4">{dict.projectCta.title}</h2>
       <p className="mb-6">{dict.projectCta.description}</p>
       <Button asChild>
-        <Link href={`/${lang}/project-request`}>{dict.projectCta.buttonText}</Link>
+        <Link href={`/${lang}/project-request/`}>{dict.projectCta.buttonText}</Link>
       </Button>
     </div>
   );

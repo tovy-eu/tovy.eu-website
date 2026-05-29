@@ -1,11 +1,11 @@
 import { getSortedPostsData } from '@/lib/blog'
 import { MetadataRoute } from 'next'
-import { CONFIG } from '@/lib/config';
+import { CONFIG, SITE_URL } from '@/lib/config';
 
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.tovy.eu'; 
+  const baseUrl = SITE_URL; 
   const languages = ['en', 'nl'];
 
   const routes = [

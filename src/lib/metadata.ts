@@ -11,7 +11,10 @@ import { Metadata } from 'next';
  * @returns A Next.js Metadata['alternates'] object.
  */
 export function generateAlternates(path: string, lang: string): Metadata['alternates'] {
-  const formattedPath = path.startsWith('/') ? path : `/${path}`;
+  let formattedPath = path.startsWith('/') ? path : `/${path}`;
+  if (!formattedPath.endsWith('/')) {
+    formattedPath = `${formattedPath}/`;
+  }
 
   return {
     canonical: `${SITE_URL}/${lang}${formattedPath}`,

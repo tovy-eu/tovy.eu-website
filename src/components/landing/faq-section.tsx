@@ -18,6 +18,7 @@ const FaqSection = ({ dict }: { dict: Dictionary }) => {
             <JsonLd type="FAQPage" data={getFaqSchema(dict)} />
             <div className="relative mx-auto max-w-4xl px-4 md:px-8 z-10 w-full">
                 <SectionHeader 
+                  index="04"
                   badge={dict.faq.badge}
                   title={dict.faq.title}
                   className="mb-16"
@@ -25,18 +26,19 @@ const FaqSection = ({ dict }: { dict: Dictionary }) => {
 
                 <ScrollReveal delay="duration-700" className="flex">
                     <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
-                        <div className="relative h-full w-full bg-card rounded-[calc(1.5rem-1px)] p-6 sm:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/10 group-hover:border-transparent overflow-hidden">
+                        <div className="relative h-full w-full bg-card rounded-[calc(1.5rem-1px)] p-5 md:p-10 flex flex-col transition-all duration-300 shadow-2xl border border-white/10 group-hover:border-transparent overflow-hidden">
                             <Accordion type="single" collapsible className="w-full">
                                 {dict.faq.categories.map((category: any, catIndex: number) => (
                                     <React.Fragment key={catIndex}>
-                                        <h3 className="text-[11px] md:text-sm font-bold uppercase tracking-widest bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent mt-6 first:mt-0 mb-2">
+                                        <h3 className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mt-8 md:mt-10 first:mt-0 mb-4 md:mb-6 flex items-center gap-3">
+                                            <span className="h-px w-6 bg-white/10" />
                                             {category.name}
                                         </h3>
                                         {category.questions.map((item: any, qIndex: number) => (
-                                            <AccordionItem key={qIndex} value={`item-${catIndex}-${qIndex}`}>
-                                                <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
+                                            <AccordionItem key={qIndex} value={`item-${catIndex}-${qIndex}`} className="border-white/5">
+                                                <AccordionTrigger className="text-left text-[13px] md:text-base font-bold text-white/80 hover:text-white transition-colors py-4 md:py-5 tracking-tight">{item.question}</AccordionTrigger>
                                                 <AccordionContent>
-                                                    <div className="prose prose-invert prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: item.answer }} />
+                                                    <div className="prose prose-invert prose-sm max-w-none text-white/50 leading-[1.6] tracking-tight pb-2 md:pb-4" dangerouslySetInnerHTML={{ __html: item.answer }} />
                                                 </AccordionContent>
                                             </AccordionItem>
                                         ))}

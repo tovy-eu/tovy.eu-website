@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   
-  const ogImage = postData.image || defaultOgImage;
+  const ogImage = postData.image ? `https://tovy.eu${postData.image}` : `https://tovy.eu${defaultOgImage}`;
   const path = `/kx/${slug}`;
 
   return {
@@ -123,6 +123,7 @@ export default async function KxResource({ params }: Props) {
                 className="object-cover"
                 priority 
                 sizes="(max-width: 768px) 100vw, 680px"
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
             </div>

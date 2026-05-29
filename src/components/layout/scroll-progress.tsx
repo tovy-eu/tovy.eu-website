@@ -40,16 +40,41 @@ export function ScrollProgress() {
   if (!showProgress) return null;
 
   return (
-    <div className="fixed top-16 md:top-20 left-0 w-full h-[3px] z-[60] pointer-events-none">
-      <div 
-        className="h-full bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] transition-all duration-150 ease-out shadow-[0_0_15px_rgba(43,94,255,0.6)]"
-        style={{ width: `${progress}%` }}
-        role="progressbar"
-        aria-valuenow={progress}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-label="Reading progress"
-      />
+    <div className="fixed top-0 left-0 w-full z-[60] pointer-events-none py-4">
+      <div className="container mx-auto relative h-14 md:h-16 max-w-7xl">
+        {/* Luminous Border Trace SVG */}
+        <svg 
+          className="absolute inset-0 w-full h-full overflow-visible"
+          style={{ 
+            opacity: progress > 0 ? 1 : 0,
+            transition: 'opacity 0.5s ease'
+          }}
+        >
+          <rect
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            rx="999px"
+            fill="none"
+            stroke="url(#progress-gradient)"
+            strokeWidth="2"
+            pathLength="100"
+            strokeDasharray="100"
+            strokeDashoffset={100 - progress}
+            className="transition-all duration-200 ease-out"
+            style={{
+              filter: 'drop-shadow(0 0 8px hsl(var(--primary) / 0.3))'
+            }}
+          />
+          <defs>
+            <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" />
+              <stop offset="100%" stopColor="hsl(var(--accent-gradient-stop))" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
     </div>
   );
 }
