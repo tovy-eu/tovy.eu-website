@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       description: dict.privacy?.metaDescription || dict.privacy.intro.substring(0, 160),
       alternates: generateAlternates(path, lang),
     };
-  } catch (error) {
+  } catch {
     return {
       title: 'Error',
       description: 'Page not found',

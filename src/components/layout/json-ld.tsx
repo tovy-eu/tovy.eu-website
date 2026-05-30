@@ -1,16 +1,16 @@
-import type { Organization, Service, WebSite, ProfessionalService, FAQPage, BreadcrumbList, Person, Article, WebPage } from "schema-dts";
+import type { Service, ProfessionalService, FAQPage, BreadcrumbList, Person, Article } from "schema-dts";
 import companyProfile from "@/content/company-profile.json";
 import personProfile from "@/content/person.json";
 import type { Dictionary } from "@/lib/get-dictionary";
 import type { PostData } from "@/lib/blog";
-import testimonials from "@/content/testimonials-template/data.json";
 
 interface JsonLdProps {
-  type: "Organization" | "ProfessionalService" | "Service" | "WebSite" | "FAQPage" | "BreadcrumbList" | "Person" | "Article" | "WebPage";
+  type?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
 }
 
-export function JsonLd({ type, data }: JsonLdProps) {
+export function JsonLd({ type: _type, data }: JsonLdProps) {
   return (
     <script
       type="application/ld+json"
@@ -20,69 +20,47 @@ export function JsonLd({ type, data }: JsonLdProps) {
 }
 
 export function getOrganizationSchema(dict: Dictionary): ProfessionalService {
-  const profile = companyProfile.public_company_profile;
   return {
     "@type": "ProfessionalService",
     "@id": "https://tovy.eu/#organization",
-    name: profile.entity_name,
-    description: dict.hero.subtitle,
+    name: "Tovy",
     url: "https://tovy.eu",
     logo: "https://tovy.eu/images/tovy-og-image.webp",
-    priceRange: "€€€",
-    openingHours: ["Mo-Th 19:00-20:00", "Fr 08:00-17:00"],
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 51.5891,
-      longitude: 4.7744
-    },
+    image: "https://tovy.eu/images/tovy-og-image.webp",
+    description: dict.hero.subtitle,
     address: {
       "@type": "PostalAddress",
-      streetAddress: `${profile.contact_details.street_name} ${profile.contact_details.house_number}`,
-      addressLocality: profile.contact_details.city,
-      postalCode: profile.contact_details.postal_code,
+      streetAddress: `${companyProfile.public_company_profile.contact_details.street_name} ${companyProfile.public_company_profile.contact_details.house_number}`,
+      addressLocality: companyProfile.public_company_profile.contact_details.city,
+      postalCode: companyProfile.public_company_profile.contact_details.postal_code,
       addressCountry: "NL",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 52.3676,
+      longitude: 4.9041,
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: `${profile.contact_details.country_code}${profile.contact_details.phone_number}`,
+      telephone: companyProfile.public_company_profile.contact_details.phone_number,
       contactType: "customer service",
-      email: profile.contact_details.email,
+      email: companyProfile.public_company_profile.contact_details.email,
     },
-    vatID: profile.primary_identifiers.vat_id_number,
-    identifier: profile.primary_identifiers.commercial_registry_number,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: 5,
-      reviewCount: testimonials.length,
-    },
-    review: testimonials.map(t => ({
-      "@type": "Review",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: 5,
-      },
-      author: {
-        "@type": "Person",
-        name: t.author,
-      },
-      reviewBody: t.quote,
-    })),
+    sameAs: [
+      companyProfile.public_company_profile.social_media_profiles.linkedin_url,
+      companyProfile.public_company_profile.social_media_profiles.github_url,
+    ],
   };
 }
 
 export function getPersonSchema(): Person {
-    const person = personProfile.public_ceo_profile;
-    return {
-        "@type": "Person",
-        name: person.name,
-        jobTitle: person.jobTitle,
-        image: person.image,
-        sameAs: person.sameAs,
-        worksFor: {
-            "@type": "Organization",
-            name: companyProfile.public_company_profile.entity_name,
-        },
-    };
+  return {
+    "@type": "Person",
+    name: personProfile.public_ceo_profile.name,
+    jobTitle: personProfile.public_ceo_profile.jobTitle,
+    url: "https://tovy.eu",
+    sameAs: personProfile.public_ceo_profile.sameAs,
+  };
 }
 
 export function getBreadcrumbSchema(items: { name: string; item: string }[]): BreadcrumbList {
@@ -98,45 +76,38 @@ export function getBreadcrumbSchema(items: { name: string; item: string }[]): Br
 }
 
 export function getServicesSchema(dict: Dictionary): Service[] {
-  const services = [
-    {
-      name: dict.engineering.services.strategic.title,
-      description: dict.engineering.services.strategic.desc,
-    },
-    {
-      name: dict.engineering.services.cloud.title,
-      description: dict.engineering.services.cloud.desc,
-    },
-    {
-      name: dict.engineering.services.data.title,
-      description: dict.engineering.services.data.desc,
-    },
-    {
-      name: dict.engineering.services.automation.title,
-      description: dict.engineering.services.automation.desc,
-    },
-  ];
-
-  return services.map(s => ({
-    "@type": "Service",
-    name: s.name,
-    description: s.description,
-    provider: {
-      "@id": "https://tovy.eu/#organization",
-    },
-    areaServed: "EU",
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Data Engineering Services",
-    }
-  }));
+  return Object.values(dict.engineering.services).map((service: unknown) => {
+    const s = service as { title: string; desc: string };
+    return {
+      "@type": "Service",
+      name: s.title,
+      description: s.desc,
+      provider: {
+        "@id": "https://tovy.eu/#organization",
+      },
+      areaServed: "Europe",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Data Engineering Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: s.title,
+            },
+          },
+        ],
+      },
+    };
+  });
 }
 
 export function getFaqSchema(dict: Dictionary): FAQPage {
-  const allQuestions = dict.faq.categories.flatMap((category: any) => category.questions);
+  const allQuestions = dict.faq.categories.flatMap((category: { questions: { question: string; answer: string }[] }) => category.questions);
   return {
     "@type": "FAQPage",
-    mainEntity: allQuestions.map((item: any) => ({
+    mainEntity: allQuestions.map((item: { question: string; answer: string }) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {
@@ -148,41 +119,23 @@ export function getFaqSchema(dict: Dictionary): FAQPage {
 }
 
 export function getArticleSchema(post: PostData): Article {
-  const profile = companyProfile.public_company_profile;
-  const author = personProfile.public_ceo_profile;
-  
-  const article: Article = {
+  return {
     "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image ? `https://tovy.eu${post.image}` : "https://tovy.eu/images/tovy-og-image.webp",
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Person",
+      name: post.author,
+    },
+    publisher: {
+      "@id": "https://tovy.eu/#organization",
+    },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `https://tovy.eu/kx/${post.id}`,
     },
-    headline: post.title,
-    description: post.excerpt,
-    image: post.image,
-    author: {
-      "@type": "Person",
-      name: author.name,
-      url: author.url,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: profile.entity_name,
-      logo: {
-        "@type": "ImageObject",
-        url: "https://tovy.eu/images/tovy-og-image.webp",
-      },
-    },
-    datePublished: post.date,
-    isAccessibleForFree: true,
-    hasPart: [
-      {
-        "@type": "WebPageElement",
-        isAccessibleForFree: true,
-        cssSelector: ".subscription-form",
-      }
-    ]
   };
-
-  return article;
 }

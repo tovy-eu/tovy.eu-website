@@ -354,8 +354,8 @@
         "note": "Let op: Persoonlijke e-mailadressen zijn toegestaan, maar zakelijke e-mailadressen hebben de voorkeur en krijgen voorrang bij de beoordeling."
       },
       "companySize": {
-        "label": "Bedrijfsgrootte",
-        "description": "Dit helpt Tovy de omvang van het project in te schatten.",
+        "label": "Wat is de omvang van uw bedrijf?",
+        "description": "Dit helpt Tovy om de schaal en complexiteit van het project in te schatten.",
         "options": [
           "Zelfstandig ondernemer",
           "2\u201315",
@@ -367,8 +367,8 @@
         ]
       },
       "dataInfrastructure": {
-        "label": "Data-infrastructuur",
-        "description": "Help ons uw huidige datalandschap te begrijpen.",
+        "label": "Hoe ziet uw huidige data-infrastructuur eruit?",
+        "description": "Inzicht in uw huidige opzet stelt ons in staat om de meest effectieve integratiepunten te identificeren.",
         "hasDataTeamLabel": "Is er een (data)engineeringteam?",
         "hasCentralDatabaseLabel": "Is er een centrale database die gegevens uit meerdere systemen bevat?",
         "hasCloudPlatformLabel": "Maakt u gebruik van een cloud-platform (AWS / Azure / GCP)?",
@@ -379,8 +379,8 @@
         }
       },
       "timeline": {
-        "label": "Projecttijdlijn",
-        "description": "Wanneer is de beoogde startdatum?",
+        "label": "Wanneer is de beoogde startdatum?",
+        "description": "Onze implementatiecycli bedragen doorgaans 6 weken. Wanneer wilt u beginnen?",
         "options": [
           "Onmiddellijk",
           "1\u20133 maanden",
@@ -389,7 +389,7 @@
         ]
       },
       "budget": {
-        "label": "Budget",
+        "label": "Is het benodigde projectbudget beschikbaar?",
         "description": "Onze standaardprojecten zijn sprints van zes weken met een vast budget. Is er een minimale investering van \u20ac 5.000,- beschikbaar?",
         "options": [
           "Ja",

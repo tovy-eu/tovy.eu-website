@@ -14,7 +14,6 @@ import { Send, Loader2, CheckCircle } from "lucide-react";
 import { Checkbox } from '../ui/checkbox';
 import { Label } from '../ui/label';
 import type { Dictionary } from '@/lib/get-dictionary';
-import { cn } from '@/lib/utils';
 
 const subscriptionSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -87,10 +86,11 @@ export function SubscriptionForm({ dict }: { dict?: Dictionary }) {
         // Reset success state after a delay
         setTimeout(() => setIsSuccess(false), 5000);
 
-      } catch (error: any) {
+      } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
         toast({
           title: dict?.common.errorOccurred || "An Error Occurred",
-          description: error.message || (dict?.common.errorTryAgain || "Could not subscribe at this time. Please try again later."),
+          description: errorMessage || (dict?.common.errorTryAgain || "Could not subscribe at this time. Please try again later."),
           variant: "destructive",
         });
       }

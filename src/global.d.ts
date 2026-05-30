@@ -1,4 +1,7 @@
 interface Window {
-  gtag: (...args: any[]) => void;
-  dataLayer: any[];
+  gtag: (...args: unknown[]) => void;
+  dataLayer: Record<string, unknown>[];
+  Calendly?: {
+    initInlineWidget: (options: { url: string; parentElement: HTMLElement | null }) => void;
+  };
 }

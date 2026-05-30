@@ -16,7 +16,10 @@ export default function CookieBanner() {
   useEffect(() => {
     const consent = getConsent();
     if (consent === null) {
-      setShowBanner(true);
+      const timeoutId = setTimeout(() => {
+        setShowBanner(true);
+      }, 500); // Slight delay for better UX and to avoid hydration conflicts
+      return () => clearTimeout(timeoutId);
     }
   }, []);
 
@@ -52,7 +55,7 @@ export default function CookieBanner() {
         <div className="flex items-start gap-3">
           <Cookie className="h-5 w-5 mt-1 text-primary flex-shrink-0"/>
           <p className="text-sm text-muted-foreground">
-            We use cookies to enhance your experience and for analytics purposes. By clicking "Accept", you agree to our use of cookies. For more details, see our{' '}
+            We use cookies to enhance your experience and for analytics purposes. By clicking &quot;Accept&quot;, you agree to our use of cookies. For more details, see our{' '}
             <Link href={`/${lang}/privacy-policy/`} className="underline hover:text-primary">
               Privacy Policy
             </Link>

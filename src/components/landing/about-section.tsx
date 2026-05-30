@@ -124,7 +124,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                       <div className="flex flex-col gap-2">
                         {ceoInfo.map((item, index) => (
                           <div key={index} className="flex items-center gap-2 text-white/30">
-                            {React.cloneElement(item.icon as React.ReactElement, { size: 12 })}
+                            {React.cloneElement(item.icon as React.ReactElement<{ size: number }>, { size: 12 })}
                             <span className="text-[10px] font-bold uppercase tracking-widest">{item.text}</span>
                           </div>
                         ))}

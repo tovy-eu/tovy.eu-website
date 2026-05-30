@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       keywords: dict.legal?.keywords || [],
       alternates: generateAlternates(path, lang),
     };
-  } catch (error) {
+  } catch {
     return {
       title: 'Error',
       description: 'Page not found',

@@ -366,8 +366,8 @@
         "note": "Please note: Personal e-mail addresses are allowed, but business e-mail addresses are preferred and will be given priority in the assessment."
       },
       "companySize": {
-        "label": "Company size",
-        "description": "This helps Tovy to estimate the size of the project.",
+        "label": "What is the size of your company?",
+        "description": "This helps Tovy to estimate the scale and complexity of the project.",
         "options": [
           "Independent entrepreneur",
           "2\u201315",
@@ -379,8 +379,8 @@
         ]
       },
       "dataInfrastructure": {
-        "label": "Data infrastructure",
-        "description": "Help us understand your current data landscape.",
+        "label": "What does your current data infrastructure look like?",
+        "description": "Understanding your existing setup allows us to identify the most effective integration points.",
         "hasDataTeamLabel": "Is there a (data) engineering team?",
         "hasCentralDatabaseLabel": "Is there a central database that contains data from multiple systems?",
         "hasCloudPlatformLabel": "Do you use a cloud platform (AWS / Azure / GCP)?",
@@ -391,8 +391,8 @@
         }
       },
       "timeline": {
-        "label": "Project timeline",
-        "description": "When is the intended start date?",
+        "label": "When is the intended start date?",
+        "description": "Our implementation cycles are typically 6 weeks. When would you like to begin?",
         "options": [
           "Immediately",
           "1\u20133 months",
@@ -401,7 +401,7 @@
         ]
       },
       "budget": {
-        "label": "Budget",
+        "label": "Is the required project budget available?",
         "description": "Our standard projects are six-week sprints with a fixed budget. Is a minimum investment of \u20ac5,000 available?",
         "options": [
           "Yes",

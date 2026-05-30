@@ -5,7 +5,6 @@ import { i18n } from "@/lib/config";
 import { getDictionary } from "@/lib/get-dictionary";
 import { Github, Linkedin } from "lucide-react";
 
-import { JsonLd, getOrganizationSchema } from "@/components/layout/json-ld";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/ui/magnetic";
 

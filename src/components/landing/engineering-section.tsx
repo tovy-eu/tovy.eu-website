@@ -130,7 +130,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                         className="transition-colors"
                         style={{ color: service.color }}
                       >
-                        {React.cloneElement(service.icon as React.ReactElement<any>, { className: "h-5 w-5" })}
+                        {React.cloneElement(service.icon as React.ReactElement<{ className?: string }>, { className: "h-5 w-5" })}
                       </div>
                       <h3 className="text-[10px] md:text-[11px] font-bold text-white/90 uppercase tracking-[0.3em]">
                         {service.title}
@@ -139,7 +139,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
 
                     {service.stack && service.stack.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-6 md:mb-8 relative z-10">
-                        {service.stack.map((item: any) => (
+                        {service.stack.map((item: { tool: string }) => (
                           <span 
                             key={item.tool} 
                             className="tool-tag text-[8px] md:text-[9px] font-bold tracking-[0.1em] md:tracking-[0.2em] uppercase px-2 py-0.5 md:py-1 rounded border border-white/5 bg-white/[0.03] text-white/40"

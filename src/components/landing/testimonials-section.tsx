@@ -88,7 +88,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
                       {/* Inner Content Layer */}
                       <div className="relative h-full w-full bg-card/95 backdrop-blur-2xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent">
                         <p className="text-sm sm:text-base md:text-lg italic text-foreground/90 mb-8 leading-relaxed">
-                          "{testimonial.quote}"
+                          &quot;{testimonial.quote}&quot;
                         </p>
                         <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-6">
                           <div>

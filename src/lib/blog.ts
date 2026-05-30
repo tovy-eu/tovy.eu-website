@@ -139,6 +139,15 @@ export async function getPostData(id: string, lang: string = 'en') {
     readingTime,
     previousPost,
     nextPost,
-    ...(matterResult.data as { date: string; title: string, author: string, image: string, tags: string[], summary: string }),
+    ...(matterResult.data as { 
+      date: string; 
+      title: string; 
+      author: string; 
+      image: string; 
+      tags: string[]; 
+      summary: string;
+      metaTitle?: string;
+      metaDescription?: string;
+    }),
   };
 }

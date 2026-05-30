@@ -24,6 +24,7 @@ export const LogoBanner: React.FC<LogoBannerProps> = ({ logos, className }) => {
   const [index, setIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
   const groups: Logo[][] = [];
+  const speed = 5000; // Animation interval in ms
   
   // Group logos into triplets
   for (let i = 0; i < logos.length; i += 3) {
@@ -31,13 +32,20 @@ export const LogoBanner: React.FC<LogoBannerProps> = ({ logos, className }) => {
   }
 
   useEffect(() => {
-    setMounted(true);
+    const timeoutId = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+
     if (groups.length <= 1) return;
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % groups.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [groups.length]);
+    }, speed);
+
+    return () => {
+      clearTimeout(timeoutId);
+      clearInterval(timer);
+    };
+  }, [groups.length, speed]);
 
   if (!mounted) return (
     <div className={cn("w-full pt-4 pb-2 flex justify-center items-center min-h-[60px]", className)} />
@@ -114,7 +122,7 @@ export const TrustedBySection = ({ className }: { className?: string }) => {
   return (
     <section className={cn("w-full px-2 md:px-4", className)}>
       <h2 className="text-center text-[7px] md:text-[8px] font-black uppercase tracking-[0.5em] md:tracking-[0.6em] text-white/40 mb-2 md:mb-4">
-        // Prior_Experience
+        {"// "}Prior_Experience
       </h2>
       <LogoBanner logos={sampleLogos} className="py-0 min-h-[60px]" />
     </section>

@@ -52,7 +52,7 @@ export default async function LocalizedLayout({
   params: Promise<{ lang: string }>;
 }>) {
   const { lang: rawLang } = await params;
-  const lang = i18n.locales.includes(rawLang as any) ? (rawLang as 'en' | 'nl') : i18n.defaultLocale;
+  const lang = i18n.locales.includes(rawLang as typeof i18n.locales[number]) ? (rawLang as typeof i18n.locales[number]) : i18n.defaultLocale;
   const dict = await getDictionary(lang);
   
   return (

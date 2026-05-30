@@ -6,7 +6,7 @@ import { getDictionary } from '@/lib/get-dictionary';
 import { generateAlternates } from '@/lib/metadata';
 
 const ProjectIntakeForm = dynamic(() => import('@/components/landing/project-intake-form').then(mod => mod.ProjectIntakeForm), {
-  loading: () => <div className="w-full h-[600px] flex items-center justify-center bg-card/20 animate-pulse rounded-[2.5rem]" />
+  loading: () => <div className="w-full h-[500px] md:h-[600px] flex items-center justify-center bg-card/20 animate-pulse rounded-[2.5rem]" />
 });
 
 export async function generateStaticParams() {
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       keywords: dict.projectForm.keywords || [],
       alternates: generateAlternates(path, lang),
     };
-  } catch (error) {
+  } catch {
     return {
       title: 'Error',
       description: 'Page not found',
@@ -43,13 +43,13 @@ export default async function ProjectRequestPage({ params }: Props) {
   
   return (
     <div 
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 md:p-8"
+      className="relative flex min-h-[100dvh] flex-col items-center justify-start md:justify-center overflow-hidden p-0 md:p-8"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
     >
       <WavyLines />
-      <div className="w-full max-w-6xl z-10 flex flex-col justify-center flex-grow py-32">
+      <div className="w-full max-w-6xl z-10 flex flex-col justify-start md:justify-center flex-grow py-0 md:py-32">
         <ProjectIntakeForm dict={dict} />
       </div>
     </div>

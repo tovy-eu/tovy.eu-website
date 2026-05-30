@@ -40,7 +40,7 @@ export function getTraceId(): string {
  * Sends an event directly to the Firebase Measurement Protocol proxy.
  * This bypasses GTM and ad-blockers entirely.
  */
-export async function sendGA4Event(eventName: string, params: Record<string, any> = {}) {
+export async function sendGA4Event(eventName: string, params: Record<string, unknown> = {}) {
   if (typeof window === "undefined") return;
 
   // Check consent before sending

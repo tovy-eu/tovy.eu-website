@@ -35,6 +35,15 @@
     ],
     "headers": [
       {
+        "source": "**",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "max-image-preview:large"
+          }
+        ]
+      },
+      {
         "source": "/_next/static/**",
         "headers": [
           {

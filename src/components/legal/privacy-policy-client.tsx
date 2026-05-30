@@ -1,14 +1,13 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ShieldCheck, Mail, ArrowLeft, ChevronRight } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ArrowLeft, ChevronRight } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 import type { Dictionary } from '@/lib/get-dictionary';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
 import { Spotlight } from '@/components/ui/spotlight';
 import { SectionHeader } from '@/components/landing/section-header';
 import { usePathname } from 'next/navigation';
@@ -44,13 +43,13 @@ export default function PrivacyPolicyClient({ email, dict }: PrivacyPolicyClient
           <Spotlight color="rgba(43, 94, 255, 0.05)" size={400} />
           
           <div className="p-8 md:p-16 space-y-12 relative z-10">
-            {dict.privacy.sections.map((section: any, index: number) => (
+            {dict.privacy.sections.map((section: { title: string; content: string; list?: string[]; footer?: string }, index: number) => (
               <React.Fragment key={index}>
                 {index > 0 && <div className="h-px w-full bg-white/5" />}
                 
                 <section className="space-y-6">
                   <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">
-                    // {(index + 1).toString().padStart(2, '0')}. {section.title.toUpperCase().replace(/\s+/g, '_')}
+                    {"// "}{(index + 1).toString().padStart(2, '0')}. {section.title.toUpperCase().replace(/\s+/g, '_')}
                   </h3>
                   
                   <div className="space-y-6">

@@ -8,7 +8,12 @@ export function useCookieConsent() {
 
   useEffect(() => {
     const consent = getConsent();
-    setHasCookieConsent(consent?.granted ?? false);
+    const isGranted = consent?.granted ?? false;
+    
+    // Defer update to avoid synchronous state update warning during hydration
+    const timeoutId = setTimeout(() => {
+      setHasCookieConsent(isGranted);
+    }, 0);
 
     const handleConsentChange = () => {
       const newConsent = getConsent();
@@ -18,6 +23,7 @@ export function useCookieConsent() {
     window.addEventListener('consent-changed', handleConsentChange);
 
     return () => {
+      clearTimeout(timeoutId);
       window.removeEventListener('consent-changed', handleConsentChange);
     };
   }, []);

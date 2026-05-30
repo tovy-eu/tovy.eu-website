@@ -4,7 +4,6 @@ import { SectionDivider } from "@/components/landing/section-divider";
 import { getDictionary } from "@/lib/get-dictionary";
 import { JsonLd, getServicesSchema, getFaqSchema } from "@/components/layout/json-ld";
 import type { Metadata } from 'next';
-import FaqSection from '@/components/landing/faq-section';
 import { generateAlternates } from '@/lib/metadata';
 
 export async function generateStaticParams() {
@@ -40,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         type: 'website',
       },
     };
-  } catch (error) {
+  } catch {
     return {
       title: 'Error',
       description: 'Page not found',

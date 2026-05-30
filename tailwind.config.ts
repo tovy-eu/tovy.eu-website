@@ -1,4 +1,6 @@
-import type {Config} from 'tailwindcss';
+import type { Config } from 'tailwindcss';
+import tailwindcssAnimate from 'tailwindcss-animate';
+import tailwindcssTypography from '@tailwindcss/typography';
 
 export default {
   darkMode: ['class'],
@@ -15,7 +17,7 @@ export default {
         headline: ['var(--font-geist-sans)', 'sans-serif'],
         code: ['monospace'],
       },
-      typography: ({ theme }: { theme: any }) => ({
+      typography: ({ theme }: { theme: (path: string) => string }) => ({
         DEFAULT: {
           css: {
             '--tw-prose-body': theme('colors.foreground / 0.8'),
@@ -149,5 +151,5 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+  plugins: [tailwindcssAnimate, tailwindcssTypography],
 } satisfies Config;

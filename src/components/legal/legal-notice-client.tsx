@@ -3,38 +3,39 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Download, Building, MapPin, Mail, Phone, User, FileText, Landmark, KeyRound, ShieldCheck, ArrowLeft } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Download, ArrowLeft } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 import type { Dictionary } from '@/lib/get-dictionary';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
 import { Spotlight } from '@/components/ui/spotlight';
 import { SectionHeader } from '@/components/landing/section-header';
 
 import { usePathname } from 'next/navigation';
 
+interface CompanyProfile {
+  entity_name: string;
+  legal_structure: string;
+  business_context: {
+    proprietor_name: string;
+  };
+  contact_details: {
+    email: string;
+    street_name: string;
+    house_number: string;
+    postal_code: string;
+    city: string;
+  };
+  primary_identifiers: {
+    commercial_registry_number: string;
+    vat_id_number: string;
+  };
+}
+
 type LegalNoticeClientProps = {
-  profile: any;
+  profile: CompanyProfile;
   dict: Dictionary;
 }
-
-type InfoLineProps = {
-  icon: React.ReactNode;
-  label: string;
-  value: React.ReactNode;
-}
-
-const InfoLine = ({ icon, label, value }: InfoLineProps) => (
-  <div className="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-primary/20 transition-all duration-500 group relative overflow-hidden">
-    <Spotlight color="rgba(43, 94, 255, 0.05)" size={200} />
-    <div className="text-primary/60 mt-1 shrink-0 transition-transform group-hover:scale-110 relative z-10">{icon}</div>
-    <div className="min-w-0 relative z-10">
-      <p className="font-mono text-[9px] font-bold uppercase tracking-[0.3em] text-white/20 mb-2">// {label}</p>
-      <div className="text-white/70 font-medium break-words group-hover:text-white transition-colors tracking-tight">{value}</div>
-    </div>
-  </div>
-);
 
 export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientProps) {
   const [downloadHref, setDownloadHref] = useState('');
@@ -45,9 +46,13 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
     const jsonString = JSON.stringify({ public_company_profile: profile }, null, 2);
     const blob = new Blob([jsonString], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
-    setDownloadHref(url);
+    
+    const timeoutId = setTimeout(() => {
+      setDownloadHref(url);
+    }, 0);
 
     return () => {
+      clearTimeout(timeoutId);
       URL.revokeObjectURL(url);
     };
   }, [profile]);
@@ -76,7 +81,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
           <div className="p-8 md:p-16 space-y-12 relative z-10">
             {/* Entity Section */}
             <section className="space-y-6">
-              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">// 01. ENTITY_DETAILS</h3>
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">{"// "}01. ENTITY_DETAILS</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.legal.companyName}</p>
@@ -94,7 +99,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
 
             {/* Contact Section */}
             <section className="space-y-6">
-              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">// 02. CONTACT_CHANNELS</h3>
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">{"// "}02. CONTACT_CHANNELS</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.legal.email}</p>
@@ -116,7 +121,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
 
             {/* Registry Section */}
             <section className="space-y-6">
-              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">// 03. FISCAL_IDENTIFIERS</h3>
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">{"// "}03. FISCAL_IDENTIFIERS</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">Registry</p>
@@ -137,7 +142,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
 
             {/* Disclaimer */}
             <section className="space-y-4">
-              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/20">// 04. DISCLAIMER</h3>
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/20">{"// "}04. DISCLAIMER</h3>
               <p className="text-sm text-white/30 leading-relaxed font-medium text-pretty italic">
                 {dict.legal.disclaimerContent}
               </p>

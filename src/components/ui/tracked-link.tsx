@@ -8,7 +8,7 @@ interface TrackedLinkProps extends LinkProps {
   children: ReactNode;
   className?: string;
   eventName?: string;
-  eventParams?: Record<string, any>;
+  eventParams?: Record<string, unknown>;
 }
 
 export function TrackedLink({ children, className, eventName = "cta_clicked", eventParams = {}, ...props }: TrackedLinkProps) {

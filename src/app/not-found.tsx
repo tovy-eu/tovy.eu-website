@@ -5,13 +5,22 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { WavyLines } from '@/components/landing/wavy-lines';
-import { ArrowLeft, Home, FileText } from 'lucide-react';
+import { Home, FileText } from 'lucide-react';
 
 export default function NotFound() {
   const pathname = usePathname();
   const lang = pathname.split('/')[1] || 'en';
 
-  const translations:any = {
+  const translations: Record<string, {
+    badge: string;
+    titlePart1: string;
+    titlePart2: string;
+    description: string;
+    returnHome: string;
+    startProject: string;
+    homePath: string;
+    projectPath: string;
+  }> = {
     en: {
       badge: "Error 404",
       titlePart1: "Lost in the",

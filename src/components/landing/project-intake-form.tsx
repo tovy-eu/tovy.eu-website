@@ -19,10 +19,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
 import { MultiText } from "@/components/ui/multi-text";
-import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home, BookOpen } from "lucide-react";
+import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { Magnetic } from "@/components/ui/magnetic";
@@ -38,6 +37,7 @@ const STORAGE_KEY = "tovy_project_form_progress";
 type RoutingPath = 'A' | 'B' | 'C';
 
 export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
+  "use no memo";
   const [step, setStep] = useState(-1); // Start at -1 for the intro step
   const { toast } = useToast();
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -157,8 +157,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
 
       const initCalendly = () => {
         const parentElement = document.querySelector('.calendly-inline-widget.visible-widget');
-        if ((window as any).Calendly && parentElement) {
-          (window as any).Calendly.initInlineWidget({ url: calendlyUrl, parentElement });
+        if (window.Calendly && parentElement) {
+          window.Calendly.initInlineWidget({ url: calendlyUrl, parentElement: parentElement as HTMLElement });
           return true;
         }
         return false;
@@ -171,8 +171,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         const genericCalendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=ffffff&primary_color=365af6&hide_gdpr_banner=1`;
         const initSeoCalendly = () => {
             const parentElement = document.querySelector('.calendly-inline-widget.seo-widget');
-            if ((window as any).Calendly && parentElement) {
-                (window as any).Calendly.initInlineWidget({ url: genericCalendlyUrl, parentElement });
+            if (window.Calendly && parentElement) {
+                window.Calendly.initInlineWidget({ url: genericCalendlyUrl, parentElement: parentElement as HTMLElement });
                 return true;
             }
             return false;
@@ -196,15 +196,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     const domain = data.email.split('@')[1]?.toLowerCase();
     score += publicEmailDomains.includes(domain) ? -10 : 5;
 
-    const companySizeIndex = singleOptions.companySize.findIndex((o: any) => o.label === data.companySize);
+    const companySizeIndex = singleOptions.companySize.findIndex((o: { label: string }) => o.label === data.companySize);
     const sizeScores = [0, 4, 7, 10, 3];
     if (companySizeIndex !== -1) score += sizeScores[companySizeIndex];
 
-    const timelineIndex = singleOptions.timeline.findIndex((o: any) => o.label === data.timeline);
+    const timelineIndex = singleOptions.timeline.findIndex((o: { label: string }) => o.label === data.timeline);
     const timelineScores = [5, 3, 1, -5];
     if (timelineIndex !== -1) score += timelineScores[timelineIndex];
 
-    const budgetIndex = singleOptions.budget.findIndex((o: any) => o.label === data.budget);
+    const budgetIndex = singleOptions.budget.findIndex((o: { label: string }) => o.label === data.budget);
     const budgetScores = [5, -10];
     if (budgetIndex !== -1) score += budgetScores[budgetIndex];
 
@@ -267,10 +267,11 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         setRoutingPath(path);
         setSubmittedValues(data);
         setFormSubmitted(true);
-      } catch (error: any) {
+      } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
         toast({
           title: dict?.common.submissionFailed || "Submission Failed",
-          description: error.message || "There was an error submitting your request.",
+          description: errorMessage || "There was an error submitting your request.",
           variant: "destructive",
         });
       }
@@ -306,7 +307,7 @@ const nextStep = async () => {
         fieldsToValidate = [currentField as keyof ProjectRequestData];
     }
         
-    const isValid = await form.trigger(fieldsToValidate as any);
+    const isValid = await form.trigger(fieldsToValidate as (keyof ProjectRequestData)[]);
 
     if (isValid) {
         await saveProgress();
@@ -339,11 +340,19 @@ const nextStep = async () => {
   };
 
   return (
-    <div className="w-full" onKeyDown={handleKeyDown}>
+    <div className="w-full h-full md:h-auto" onKeyDown={handleKeyDown}>
       <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
 
+      {/* Style override to hide header and manage body overflow on mobile project-request page */}
+      <style jsx global>{`
+        @media (max-width: 768px) {
+          header { display: none !important; }
+          body { overflow: hidden !important; position: fixed; width: 100%; height: 100%; }
+        }
+      `}</style>
+
       {formSubmitted ? (
-        <Card className="w-full max-w-3xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-4 md:p-8 animate-scale-in">
+        <Card className="w-full max-w-3xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-4 md:p-8 animate-scale-in rounded-none md:rounded-[2.5rem] min-h-[100dvh] md:min-h-0">
           <Spotlight color="rgba(43, 94, 255, 0.1)" />
           <CardHeader className="text-center pb-6">
             <CheckCircle className="mx-auto h-12 w-12 text-primary mb-4 animate-check-bounce" />
@@ -356,8 +365,8 @@ const nextStep = async () => {
           </CardHeader>
           
           {(routingPath === 'A' || routingPath === 'B' || routingPath === 'C') && (
-            <div className="w-full rounded-3xl overflow-hidden bg-black/40 border border-white/5 mb-8 shadow-inner min-h-[700px]">
-              <div className="calendly-inline-widget visible-widget" style={{ minWidth: '320px', height: '700px' }} />
+            <div className="w-full rounded-3xl overflow-hidden bg-black/40 border border-white/5 mb-8 shadow-inner min-h-[500px] md:min-h-[700px]">
+              <div className="calendly-inline-widget visible-widget" style={{ minWidth: '320px', height: '500px' }} />
             </div>
           )}
 
@@ -368,13 +377,13 @@ const nextStep = async () => {
           </div>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 max-w-6xl mx-auto items-center">
+        <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 max-w-6xl mx-auto items-stretch md:items-center h-[100dvh] md:h-auto">
           {/* Technical Progress Index */}
           <div className="hidden md:flex flex-col gap-6 relative">
             {/* Vertical connector line */}
             <div className="absolute left-3 top-10 bottom-0 w-[1px] bg-white/5 z-0" />
             
-            <div className="font-mono text-[9px] uppercase tracking-[0.4em] text-white/10 mb-2 pl-1">// SEQUENCE_INDEX</div>
+            <div className="font-mono text-[9px] tracking-[0.2em] text-white/10 mb-2 pl-1">{"// "}sequence_index</div>
             {formSteps.map((s, i) => (
               <button
                 key={i}
@@ -396,19 +405,19 @@ const nextStep = async () => {
                 )}>
                   {i < step ? <Check className="h-3 w-3" /> : (i + 1).toString().padStart(2, '0')}
                 </span>
-                <span className="font-bold text-[8px] uppercase tracking-[0.2em]">{s.field.replace(/([A-Z])/g, ' $1')}</span>
+                <span className="font-bold text-[8px] tracking-[0.1em]">{s.field.replace(/([A-Z])/g, ' $1').toLowerCase()}</span>
               </button>
             ))}
           </div>
 
-          <Card className="w-full bg-card/60 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col rounded-3xl md:rounded-[2.5rem] transform-gpu">
+          <Card className="w-full bg-card/60 md:backdrop-blur-2xl border-x-0 border-t-0 md:border border-white/10 shadow-2xl overflow-hidden flex flex-col rounded-none md:rounded-[2.5rem] transform-gpu h-full md:h-auto">
             <Spotlight color="rgba(43, 94, 255, 0.08)" />
             <div 
                 className="calendly-inline-widget seo-widget" 
                 style={{ position: 'absolute', top: '-9999px', left: '-9999px', minWidth: '320px', height: '700px' }} 
             />
             <CardHeader className="p-0">
-              <div className="h-1 w-full bg-white/5">
+              <div className="h-1.5 w-full bg-white/5">
                 <motion.div 
                   initial={{ width: 0 }}
                   animate={{ width: `${((step + 1) / (totalSteps + 1)) * 100}%` }}
@@ -417,8 +426,8 @@ const nextStep = async () => {
               </div>
             </CardHeader>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
-                <CardContent className="p-6 md:p-12 h-[550px] md:h-[600px] flex items-center overflow-hidden">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full">
+                <CardContent className="p-5 md:p-12 flex-grow md:h-[600px] flex items-start md:items-center overflow-hidden pt-8 md:pt-12">
                 <AnimatePresence mode="wait">
                     <motion.div
                       key={step}
@@ -426,12 +435,12 @@ const nextStep = async () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -15 }}
                       transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                      className="w-full"
+                      className="w-full flex flex-col justify-start"
                     >
                       {step === -1 && (
-                        <div className="text-center py-4 md:py-8">
-                          <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-4 md:mb-6">{dict.projectForm.intro.title}</h2>
-                          <p className="text-white/40 text-sm md:text-lg leading-relaxed max-w-lg mx-auto font-medium">{dict.projectForm.intro.description}</p>
+                        <div className="text-center py-6 md:py-8">
+                          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 md:mb-6">{dict.projectForm.intro.title}</h2>
+                          <p className="text-white/40 text-base md:text-lg leading-relaxed font-medium">{dict.projectForm.intro.description}</p>
                         </div>
                       )}
                       {formSteps.map((s, index) => {
@@ -444,19 +453,19 @@ const nextStep = async () => {
                             <FormField key={field} control={form.control} name="email" render={({ field: f }) => (
                               <FormItem className="space-y-4 md:space-y-6">
                                 <div className="space-y-2 md:space-y-3">
-                                  <div className="font-mono text-[8px] md:text-[9px] uppercase tracking-[0.4em] text-primary/60">// FIELD_INPUT_01</div>
-                                  <FormLabel className="text-lg md:text-2xl font-bold leading-tight text-white block">{label}</FormLabel>
-                                  <p className="text-white/40 text-xs md:text-base leading-relaxed font-medium">{description}</p>
+                                  <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}field_input_01</div>
+                                  <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
+                                  <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
                                 <FormControl>
                                   <Input 
                                     id={f.name} 
                                     {...f} 
                                     placeholder={dict.common.emailPlaceholder} 
-                                    className="bg-white/[0.03] border-white/10 h-12 md:h-14 text-sm md:text-lg px-5 md:px-6 rounded-xl md:rounded-2xl focus-visible:ring-primary/40 focus-visible:border-primary/50 transition-all duration-300" 
+                                    className="bg-white/[0.03] border-white/10 h-12 md:h-16 text-base md:text-xl px-5 md:px-8 rounded-2xl md:rounded-3xl focus-visible:ring-primary/40 focus-visible:border-primary/50 transition-all duration-300" 
                                   />
                                 </FormControl>
-                                <FormDescription className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold text-white/20">
+                                <FormDescription className="text-[10px] md:text-[11px] tracking-wide font-medium text-white/30 italic">
                                   {dict.projectForm.steps.workEmail.note}
                                 </FormDescription>
                                 <FormMessage />
@@ -467,40 +476,46 @@ const nextStep = async () => {
 
                         if (['companySize', 'timeline', 'budget'].includes(field)) {
                           const opts = singleOptions[field as keyof typeof singleOptions];
+                          const isCompanySize = field === 'companySize';
+                          
                           return (
-                            <FormField key={field} control={form.control} name={field as any} render={({ field: f }) => (
-                              <FormItem className="space-y-4 md:space-y-6">
-                                <div className="space-y-2 md:space-y-3">
-                                  <div className="font-mono text-[8px] md:text-[9px] uppercase tracking-[0.4em] text-primary/60">// SELECTION_SET_{index + 1}</div>
-                                  <FormLabel className="text-lg md:text-2xl font-bold leading-tight text-white block">{label}</FormLabel>
-                                  <p className="text-white/40 text-xs md:text-base leading-relaxed font-medium">{description}</p>
+                            <FormField key={field} control={form.control} name={field as keyof ProjectRequestData} render={({ field: f }) => (
+                              <FormItem className="space-y-3 md:space-y-6">
+                                <div className="space-y-1.5 md:space-y-3">
+                                  <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}selection_set_{index + 1}</div>
+                                  <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
+                                  <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
-                                <div className="grid gap-2 mt-4">
-                                  {opts.map((o: any) => (
+                                <div className={cn(
+                                  "grid gap-2 mt-2",
+                                  isCompanySize ? "grid-cols-1" : "grid-cols-1"
+                                )}>
+                                  {opts.map((o: { label: string; hint: string }) => (
                                     <button
                                       key={o.label}
                                       type="button"
                                       onClick={() => { f.onChange(o.label); setTimeout(() => nextStep(), 300); }}
                                       className={cn(
-                                        "group flex items-center justify-between p-3 md:p-4 rounded-xl md:rounded-2xl border transition-all duration-500",
+                                        "group flex items-center justify-between transition-all duration-500 border",
+                                        isCompanySize ? "p-2.5 md:p-5 rounded-xl md:rounded-3xl" : "p-3.5 md:p-5 rounded-2xl md:rounded-3xl",
                                         f.value === o.label 
                                           ? "bg-primary/10 border-primary/40 shadow-[0_0_25px_rgba(43,94,255,0.08)]" 
                                           : "bg-white/[0.02] border-white/5 hover:bg-white/[0.05] hover:border-white/10"
                                       )}
                                     >
-                                      <div className="flex items-center gap-3 md:gap-4">
+                                      <div className="flex items-center gap-3 md:gap-5">
                                         <span className={cn(
-                                          "font-mono text-[8px] md:text-[9px] font-bold px-1.5 md:px-2 py-0.5 rounded-md transition-colors duration-500",
+                                          "font-mono text-[9px] md:text-[11px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 rounded-md transition-colors duration-500",
                                           f.value === o.label ? "bg-primary/20 text-primary" : "bg-black/20 text-white/30"
                                         )}>{o.hint}</span>
                                         <span className={cn(
-                                          "font-bold text-xs md:text-base transition-colors duration-500",
+                                          "font-bold text-xs md:text-lg transition-colors duration-500",
                                           f.value === o.label ? "text-white" : "text-white/60"
                                         )}>{o.label}</span>
                                       </div>
                                       {f.value === o.label && (
                                         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                                          <CheckCircle className="h-4 w-4 text-primary" />
+                                          <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                                         </motion.div>
                                       )}
                                     </button>
@@ -516,38 +531,38 @@ const nextStep = async () => {
                           return (
                             <div key={field} className="space-y-4 md:space-y-6">
                               <div className="space-y-2 md:space-y-3">
-                                <div className="font-mono text-[8px] md:text-[9px] uppercase tracking-[0.4em] text-primary/60">// PROBLEM_DEFINITION</div>
-                                <h3 className="text-lg md:text-2xl font-bold leading-tight text-white">{label}</h3>
-                                <p className="text-white/40 text-xs md:text-sm leading-relaxed font-medium">{description}</p>
+                                <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}problem_definition</div>
+                                <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
+                                <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                               </div>
                               
                               <FormField control={form.control} name="hasProblem" render={({ field: f }) => (
-                                  <FormItem className="space-y-2 md:space-y-3">
-                                      <FormLabel className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold text-white/30">{dict.projectForm.steps.problemStatement.hasProblemLabel}</FormLabel>
-                                      <div className="grid grid-cols-2 gap-2">
+                                  <FormItem className="space-y-2 md:space-y-4">
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.problemStatement.hasProblemLabel}</FormLabel>
+                                      <div className="grid grid-cols-2 gap-2.5">
                                           {singleOptions.hasProblem.map(o => (
                                               <button
                                                   key={o.key}
                                                   type="button"
                                                   onClick={() => { f.onChange(o.key); }}
                                                   className={cn(
-                                                  "group flex items-center justify-between p-3 md:p-4 rounded-xl md:rounded-2xl border transition-all duration-500",
+                                                  "group flex items-center justify-between p-3.5 md:p-5 rounded-2xl md:rounded-3xl border transition-all duration-500",
                                                   f.value === o.key 
                                                     ? "bg-primary/10 border-primary/40 shadow-[0_0_20px_rgba(43,94,255,0.08)]" 
                                                     : "bg-white/[0.02] border-white/5 hover:bg-white/[0.05] hover:border-white/10"
                                                   )}
                                               >
-                                                  <div className="flex items-center gap-2 md:gap-4">
+                                                  <div className="flex items-center gap-3 md:gap-5">
                                                   <span className={cn(
-                                                    "font-mono text-[8px] md:text-[9px] font-bold px-1.5 md:px-2 py-0.5 rounded-md transition-colors duration-500",
+                                                    "font-mono text-[9px] md:text-[11px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 rounded-md transition-colors duration-500",
                                                     f.value === o.key ? "bg-primary/20 text-primary" : "bg-black/20 text-white/30"
                                                   )}>{o.hint}</span>
                                                   <span className={cn(
-                                                    "font-bold text-xs md:text-sm transition-colors duration-500",
+                                                    "font-bold text-xs md:text-lg transition-colors duration-500",
                                                     f.value === o.key ? "text-white" : "text-white/60"
                                                   )}>{o.label}</span>
                                                   </div>
-                                                  {f.value === o.key && <Check className="h-4 w-4 text-primary" />}
+                                                  {f.value === o.key && <Check className="h-4 w-4 md:h-5 md:w-5 text-primary" />}
                                               </button>
                                           ))}
                                       </div>
@@ -559,28 +574,28 @@ const nextStep = async () => {
                                 <motion.div 
                                   initial={{ opacity: 0, height: 0 }} 
                                   animate={{ opacity: 1, height: 'auto' }}
-                                  className="space-y-3"
+                                  className="space-y-3 md:space-y-4"
                                 >
                                   <FormField control={form.control} name="problemDescription" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold text-white/30">{dict.projectForm.steps.problemStatement.problemDescriptionLabel}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.problemStatement.problemDescriptionLabel}</FormLabel>
                                       <Textarea 
                                         id={f.name} 
                                         {...f} 
                                         placeholder="..." 
-                                        className="bg-white/[0.03] border-white/10 min-h-[70px] md:min-h-[80px] rounded-lg md:rounded-xl focus-visible:ring-primary/40 p-3 md:p-4 text-xs md:text-sm" 
+                                        className="bg-white/[0.03] border-white/10 min-h-[60px] md:min-h-[100px] rounded-xl md:rounded-3xl focus-visible:ring-primary/40 p-3 md:p-5 text-sm md:text-lg" 
                                       />
                                       <FormMessage />
                                     </FormItem>
                                   )} />
                                   <FormField control={form.control} name="idealState" render={({ field: f }) => (
                                       <FormItem className="space-y-1.5">
-                                          <FormLabel className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold text-white/30">{dict.projectForm.steps.problemStatement.idealStateLabel}</FormLabel>
+                                          <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.problemStatement.idealStateLabel}</FormLabel>
                                           <Textarea 
                                             id={f.name} 
                                             {...f} 
                                             placeholder="..." 
-                                            className="bg-white/[0.03] border-white/10 min-h-[70px] md:min-h-[80px] rounded-lg md:rounded-xl focus-visible:ring-primary/40 p-3 md:p-4 text-xs md:text-sm" 
+                                            className="bg-white/[0.03] border-white/10 min-h-[60px] md:min-h-[100px] rounded-xl md:rounded-3xl focus-visible:ring-primary/40 p-3 md:p-5 text-sm md:text-lg" 
                                           />
                                           <FormMessage />
                                       </FormItem>
@@ -595,30 +610,29 @@ const nextStep = async () => {
                           const isSoleEntrepreneur = companySizeWatch === singleOptions.companySize[0]?.label;
                           return (
                               <div key={field} className="space-y-4 md:space-y-6 w-full">
-                                  <div className="space-y-1 md:space-y-2">
-                                      <div className="font-mono text-[8px] md:text-[9px] uppercase tracking-[0.4em] text-primary/60">// INFRASTRUCTURE_AUDIT</div>
-                                      <h3 className="text-lg md:text-2xl font-bold leading-tight text-white">{label}</h3>
-                                      <p className="text-white/40 text-xs md:text-sm leading-relaxed font-medium">{description}</p>
+                                  <div className="space-y-2 md:space-y-3">
+                                      <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}infrastructure_audit</div>
+                                      <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
+                                      <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                   </div>
                                   
                                   <div className="space-y-4 md:space-y-6 pt-1 md:pt-2">
-                                      {/* Horizontal Audit Rows */}
-                                      <div className="space-y-2 md:space-y-3 bg-white/[0.02] p-4 md:p-6 rounded-xl md:rounded-2xl border border-white/5">
+                                      <div className="space-y-2.5 md:space-y-4">
                                           {!isSoleEntrepreneur && (
                                               <FormField control={form.control} name="hasDataTeam" render={({ field: f }) => (
-                                                  <FormItem className="flex flex-row items-center justify-between space-y-0 pb-2 md:pb-3 border-b border-white/5 last:border-0 last:pb-0">
-                                                      <FormLabel className="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-[0.2em] font-bold text-white/50 pr-2">{dict.projectForm.steps.dataInfrastructure.hasDataTeamLabel}</FormLabel>
-                                                      <div className="flex gap-1 bg-black/20 p-1 rounded-lg border border-white/5 w-[100px] md:w-[140px]">
+                                                  <FormItem className="space-y-1.5">
+                                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.dataInfrastructure.hasDataTeamLabel}</FormLabel>
+                                                      <div className="grid grid-cols-2 gap-2.5">
                                                           {singleOptions.dataInfrastructure.map(o => (
                                                               <button
                                                                   key={o.key}
                                                                   type="button"
                                                                   onClick={() => f.onChange(o.key)}
                                                                   className={cn(
-                                                                      "flex-1 py-1 md:py-1.5 rounded-md transition-all duration-300 text-[8px] md:text-[9px] font-black uppercase tracking-widest",
+                                                                      "flex items-center justify-center py-2.5 md:py-3.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[10px] md:text-xs font-black",
                                                                       f.value === o.key 
-                                                                        ? "bg-primary text-white shadow-lg" 
-                                                                        : "text-white/20 hover:text-white/40"
+                                                                        ? "bg-primary/20 border-primary/40 text-primary shadow-lg shadow-primary/10" 
+                                                                        : "bg-white/[0.02] border-white/5 text-white/20 hover:text-white/40"
                                                                   )}
                                                               >
                                                                   {o.label}
@@ -630,19 +644,19 @@ const nextStep = async () => {
                                           )}
 
                                           <FormField control={form.control} name="hasCentralDatabase" render={({ field: f }) => (
-                                              <FormItem className="flex flex-row items-center justify-between space-y-0 pb-2 md:pb-3 border-b border-white/5 last:border-0 last:pb-0">
-                                                  <FormLabel className="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-[0.2em] font-bold text-white/50 pr-2">{dict.projectForm.steps.dataInfrastructure.hasCentralDatabaseLabel}</FormLabel>
-                                                  <div className="flex gap-1 bg-black/20 p-1 rounded-lg border border-white/5 w-[100px] md:w-[140px]">
+                                              <FormItem className="space-y-1.5">
+                                                  <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.dataInfrastructure.hasCentralDatabaseLabel}</FormLabel>
+                                                  <div className="grid grid-cols-2 gap-2.5">
                                                       {singleOptions.dataInfrastructure.map(o => (
                                                           <button
                                                               key={o.key}
                                                               type="button"
                                                               onClick={() => f.onChange(o.key)}
                                                               className={cn(
-                                                                  "flex-1 py-1 md:py-1.5 rounded-md transition-all duration-300 text-[8px] md:text-[9px] font-black uppercase tracking-widest",
+                                                                  "flex items-center justify-center py-2.5 md:py-3.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[10px] md:text-xs font-black",
                                                                   f.value === o.key 
-                                                                    ? "bg-primary text-white shadow-lg" 
-                                                                    : "text-white/20 hover:text-white/40"
+                                                                    ? "bg-primary/20 border-primary/40 text-primary shadow-lg shadow-primary/10" 
+                                                                    : "bg-white/[0.02] border-white/5 text-white/20 hover:text-white/40"
                                                               )}
                                                           >
                                                               {o.label}
@@ -653,19 +667,19 @@ const nextStep = async () => {
                                           )} />
 
                                           <FormField control={form.control} name="hasCloudPlatform" render={({ field: f }) => (
-                                              <FormItem className="flex flex-row items-center justify-between space-y-0 last:pb-0">
-                                                  <FormLabel className="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-[0.2em] font-bold text-white/50 pr-2">{dict.projectForm.steps.dataInfrastructure.hasCloudPlatformLabel}</FormLabel>
-                                                  <div className="flex gap-1 bg-black/20 p-1 rounded-lg border border-white/5 w-[100px] md:w-[140px]">
+                                              <FormItem className="space-y-1.5">
+                                                  <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.dataInfrastructure.hasCloudPlatformLabel}</FormLabel>
+                                                  <div className="grid grid-cols-2 gap-2.5">
                                                       {singleOptions.dataInfrastructure.map(o => (
                                                           <button
                                                               key={o.key}
                                                               type="button"
                                                               onClick={() => f.onChange(o.key)}
                                                               className={cn(
-                                                                  "flex-1 py-1 md:py-1.5 rounded-md transition-all duration-300 text-[8px] md:text-[9px] font-black uppercase tracking-widest",
+                                                                  "flex items-center justify-center py-2.5 md:py-3.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[10px] md:text-xs font-black",
                                                                   f.value === o.key 
-                                                                    ? "bg-primary text-white shadow-lg" 
-                                                                    : "text-white/20 hover:text-white/40"
+                                                                    ? "bg-primary/20 border-primary/40 text-primary shadow-lg shadow-primary/10" 
+                                                                    : "bg-white/[0.02] border-white/5 text-white/20 hover:text-white/40"
                                                               )}
                                                           >
                                                               {o.label}
@@ -678,8 +692,8 @@ const nextStep = async () => {
                                       
                                       <div className="pt-1">
                                         <FormField control={form.control} name="solutionsInUse" render={({ field: { onChange, value } }) => (
-                                            <FormItem className="space-y-3">
-                                                <FormLabel className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-black text-white/40">{dict.projectForm.steps.dataInfrastructure.solutionsInUseLabel}</FormLabel>
+                                            <FormItem className="space-y-2">
+                                                <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.dataInfrastructure.solutionsInUseLabel}</FormLabel>
                                                 <MultiText value={value || []} onChange={onChange} placeholder="..." />
                                                 <FormMessage />
                                             </FormItem>
@@ -688,55 +702,55 @@ const nextStep = async () => {
                                   </div>
                               </div>
                           );
-                      }
+                        }
 
                         if (field === 'contactDetails') {
                           return (
-                            <div key={field} className="space-y-6 md:space-y-8">
+                            <div key={field} className="space-y-5 md:space-y-8">
                               <div className="space-y-2 md:space-y-3">
-                                <div className="font-mono text-[8px] md:text-[9px] uppercase tracking-[0.4em] text-primary/60">// FINAL_VERIFICATION</div>
-                                <h3 className="text-lg md:text-2xl font-bold leading-tight text-white">{label}</h3>
-                                <p className="text-white/40 text-xs md:text-base leading-relaxed font-medium">{description}</p>
+                                <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}final_verification</div>
+                                <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
+                                <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                               </div>
                               
-                              <div className="space-y-4 md:space-y-5 pt-1 md:pt-2">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="space-y-3 md:space-y-5 pt-1 md:pt-2">
+                                <div className="flex flex-col gap-3 md:gap-4">
                                   <FormField control={form.control} name="firstName" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold text-white/30">{dict.projectForm.steps.contact.firstName}</FormLabel>
-                                      <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-10 md:h-12 rounded-lg md:rounded-xl px-4 md:px-5 focus-visible:ring-primary/40 text-xs md:text-sm" />
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.contact.firstName}</FormLabel>
+                                      <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
                                     </FormItem>
                                   )} />
                                   <FormField control={form.control} name="lastName" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold text-white/30">{dict.projectForm.steps.contact.lastName}</FormLabel>
-                                      <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-10 md:h-12 rounded-lg md:rounded-xl px-4 md:px-5 focus-visible:ring-primary/40 text-xs md:text-sm" />
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.contact.lastName}</FormLabel>
+                                      <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
+                                    </FormItem>
+                                  )} />
+                                  <FormField control={form.control} name="company" render={({ field: f }) => (
+                                    <FormItem className="space-y-1.5">
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.contact.company}</FormLabel>
+                                      <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
+                                    </FormItem>
+                                  )} />
+                                  <FormField control={form.control} name="phone" render={({ field: f }) => (
+                                    <FormItem className="space-y-1.5">
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.contact.phone}</FormLabel>
+                                      <PhoneInput 
+                                        international 
+                                        defaultCountry="NL" 
+                                        className="[&_input]:bg-white/[0.03] [&_input]:border-white/10 [&_input]:h-11 md:[&_input]:h-14 [&_input]:rounded-xl md:[&_input]:rounded-3xl [&_input]:px-5 md:[&_input]:px-8 [&_input]:focus-visible:ring-primary/40 [&_input]:text-base md:[&_input]:text-lg" 
+                                        {...f} 
+                                      />
                                     </FormItem>
                                   )} />
                                 </div>
-                                <FormField control={form.control} name="company" render={({ field: f }) => (
-                                  <FormItem className="space-y-1.5">
-                                    <FormLabel className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold text-white/30">{dict.projectForm.steps.contact.company}</FormLabel>
-                                    <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-10 md:h-12 rounded-lg md:rounded-xl px-4 md:px-5 focus-visible:ring-primary/40 text-xs md:text-sm" />
-                                  </FormItem>
-                                )} />
-                                <FormField control={form.control} name="phone" render={({ field: f }) => (
-                                  <FormItem className="space-y-1.5">
-                                    <FormLabel className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold text-white/30">{dict.projectForm.steps.contact.phone}</FormLabel>
-                                    <PhoneInput 
-                                      international 
-                                      defaultCountry="NL" 
-                                      className="[&_input]:bg-white/[0.03] [&_input]:border-white/10 [&_input]:h-10 md:[&_input]:h-12 [&_input]:rounded-lg md:[&_input]:rounded-xl [&_input]:px-4 md:[&_input]:px-5 [&_input]:focus-visible:ring-primary/40 [&_input]:text-xs md:[&_input]:text-sm" 
-                                      {...f} 
-                                    />
-                                  </FormItem>
-                                )} />
                                 <FormField control={form.control} name="consent" render={({ field: f }) => (
-                                  <FormItem className="flex items-center gap-3 space-y-0 bg-white/[0.02] p-4 md:p-5 rounded-lg md:rounded-xl border border-white/5">
+                                  <FormItem className="flex items-center gap-4 space-y-0 bg-white/[0.02] p-4 md:p-6 rounded-2xl md:rounded-3xl border border-white/5">
                                     <FormControl>
                                       <Checkbox checked={f.value} onCheckedChange={f.onChange} />
                                     </FormControl>
-                                    <FormLabel className="text-[9px] md:text-[10px] font-medium text-white/50 cursor-pointer leading-tight">
+                                    <FormLabel className="text-xs md:text-sm font-medium text-white/50 cursor-pointer leading-tight">
                                       {dict.projectForm.steps.contact.consentPreLink}{' '}
                                       <Link href={`/${lang}/privacy-policy/`} className="text-primary hover:underline" target="_blank">
                                         {dict.projectForm.steps.contact.consentLinkText}
@@ -754,13 +768,13 @@ const nextStep = async () => {
                     </motion.div>
                   </AnimatePresence>
                 </CardContent>
-                <CardFooter className="flex justify-between p-6 md:p-10 border-t border-white/5 bg-black/10">
+                <CardFooter className="flex justify-between p-6 md:p-10 border-t border-white/5 bg-black/10 shrink-0">
                   <Button 
                     type="button" 
                     variant="ghost" 
                     onClick={prevStep} 
                     disabled={step === -1} 
-                    className="hover:bg-white/5 text-white/40 font-bold text-[8px] md:text-[10px] uppercase tracking-widest rounded-full px-6 md:px-8"
+                    className="hover:bg-white/5 text-white/40 font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-6 md:px-8"
                   >
                     <ArrowLeft className="mr-2 h-4 w-4" /> {dict.projectForm.buttons.previous}
                   </Button>
@@ -769,7 +783,7 @@ const nextStep = async () => {
                       <Button 
                         type="button" 
                         onClick={nextStep}
-                        className="bg-primary hover:bg-blue-500 text-white font-bold text-[8px] md:text-[10px] uppercase tracking-widest rounded-full px-8 md:px-10 h-10 md:h-12 shadow-[0_0_20px_rgba(43,94,255,0.3)] transition-all duration-300"
+                        className="bg-primary hover:bg-blue-500 text-white font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-8 md:px-10 h-12 md:h-12 shadow-[0_0_20px_rgba(43,94,255,0.3)] transition-all duration-300"
                       >
                         {dict.projectForm.buttons.start} <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -778,7 +792,7 @@ const nextStep = async () => {
                         type="button" 
                         onClick={nextStep} 
                         disabled={isNextButtonDisabled}
-                        className="bg-primary hover:bg-blue-500 text-white font-bold text-[8px] md:text-[10px] uppercase tracking-widest rounded-full px-8 md:px-10 h-10 md:h-12 shadow-[0_0_20px_rgba(43,94,255,0.3)] transition-all duration-300 disabled:opacity-20 disabled:shadow-none"
+                        className="bg-primary hover:bg-blue-500 text-white font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-8 md:px-10 h-12 md:h-12 shadow-[0_0_20px_rgba(43,94,255,0.3)] transition-all duration-300 disabled:opacity-20 disabled:shadow-none"
                       >
                         {dict.projectForm.buttons.next} <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -787,7 +801,7 @@ const nextStep = async () => {
                         <Button 
                           type="submit" 
                           disabled={isSubmitButtonDisabled}
-                          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-[8px] md:text-[10px] uppercase tracking-widest rounded-full px-10 md:px-12 h-10 md:h-12 shadow-[0_0_30px_rgba(43,94,255,0.4)] transition-all duration-500 border-none relative overflow-hidden"
+                          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-10 md:px-12 h-12 md:h-12 shadow-[0_0_30px_rgba(43,94,255,0.4)] transition-all duration-500 border-none relative overflow-hidden"
                         >
                           <div className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
                           <span className="relative flex items-center">
