@@ -24,7 +24,7 @@ const withNoIndex = (handler: (req: Request, res: Response) => Promise<void> | v
 
 const verifyGooglebot = (ip: string): Promise<boolean> => {
   return new Promise((resolve, reject) => {
-    lookup(ip, (err, address, family) => {
+    lookup(ip, (err, address) => {
       if (err) {
         return reject(err);
       }
@@ -33,7 +33,7 @@ const verifyGooglebot = (ip: string): Promise<boolean> => {
         return resolve(false);
       }
 
-      lookup(address, (err, forwardAddress, family) => {
+      lookup(address, (err, forwardAddress) => {
         if (err) {
           return reject(err);
         }
@@ -47,10 +47,10 @@ const verifyGooglebot = (ip: string): Promise<boolean> => {
   });
 };
 
-const metricsHandler = async (request: any, response: any) => {
+const metricsHandler = async (request: Request, response: Response) => {
   logger.info("Metrics function triggered");
 
-  const userAgent = request.headers["user-agent"] || "";
+  const userAgent = (request.headers["user-agent"] as string) || "";
   if (userAgent.includes(GOOGLEBOT_UA)) {
     const ip = request.ip;
     if (ip) {
@@ -97,7 +97,7 @@ const metricsHandler = async (request: any, response: any) => {
       headers: {
         "Content-Type": request.headers["content-type"] || "application/json",
       },
-      body: request.rawBody,
+      body: (request as Request & { rawBody: Buffer }).rawBody,
     });
 
     proxyResponse.headers.forEach((value: string, name: string) => {
@@ -114,7 +114,7 @@ const metricsHandler = async (request: any, response: any) => {
 
 export const metrics = onRequest(
   { secrets: ["GA4_API_SECRET"], memory: "512MiB" },
-  withNoIndex(metricsHandler as any) as any
+  withNoIndex(metricsHandler)
 );
 
 /**
@@ -157,4 +157,3 @@ export const onProjectRequestUpdate = onDocumentUpdated("project_requests/{docId
     }
   }
 });
-

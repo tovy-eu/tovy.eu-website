@@ -12,6 +12,7 @@ export default defineConfig([
       "functions/node_modules/*",
       "node_modules/*",
       "convertImages.js",
+      "next-env.d.ts",
     ],
   },
   ...nextConfig.map(config => ({

@@ -1,7 +1,8 @@
+"use no memo";
 "use client";
 
 import { useState, useTransition, useEffect, useMemo } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { projectRequestSchema, type ProjectRequestData } from "@/lib/definitions";
 import { useToast } from "@/hooks/use-toast";
@@ -37,7 +38,6 @@ const STORAGE_KEY = "tovy_project_form_progress";
 type RoutingPath = 'A' | 'B' | 'C';
 
 export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
-  "use no memo";
   const [step, setStep] = useState(-1); // Start at -1 for the intro step
   const { toast } = useToast();
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -92,9 +92,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     reValidateMode: 'onChange',
   });
   
-  const allValues = form.watch();
-  const hasProblemWatch = form.watch("hasProblem");
-  const companySizeWatch = form.watch("companySize");
+  const allValues = useWatch({ control: form.control });
+  const hasProblemWatch = useWatch({ control: form.control, name: "hasProblem" });
+  const companySizeWatch = useWatch({ control: form.control, name: "companySize" });
   const { setValue } = form;
 
   const isNextButtonDisabled = step > -1 && (() => {
@@ -131,11 +131,17 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     if (savedProgress) {
       try {
         const { step: savedStep, data: savedData, docId: savedDocId } = JSON.parse(savedProgress);
-        setStep(savedStep);
-        form.reset(savedData);
-        if (savedDocId) {
-          setFormDocId(savedDocId);
-        }
+        
+        // Defer state updates to avoid synchronous state update warning during hydration
+        const timeoutId = setTimeout(() => {
+          setStep(savedStep);
+          form.reset(savedData);
+          if (savedDocId) {
+            setFormDocId(savedDocId);
+          }
+        }, 0);
+
+        return () => clearTimeout(timeoutId);
       } catch (e) {
         console.error("Failed to load form progress", e);
       }
