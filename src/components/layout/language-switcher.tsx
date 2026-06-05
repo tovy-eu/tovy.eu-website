@@ -65,6 +65,20 @@ const ESFlag = () => (
   </svg>
 );
 
+const DEFlag = () => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 5 3" 
+    className="w-5 h-auto rounded-[1px] shadow-sm"
+    aria-hidden="true"
+    role="img"
+  >
+    <rect width="5" height="3" y="0" fill="#000" />
+    <rect width="5" height="2" y="1" fill="#D00" />
+    <rect width="5" height="1" y="2" fill="#FFCE00" />
+  </svg>
+);
+
 export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps) {
   const pathname = usePathname();
   const router = useRouter();
@@ -73,7 +87,7 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
     if (!pathname) return;
     
     const segments = pathname.split("/");
-    const languages = ["en", "nl", "es"];
+    const languages = ["en", "nl", "es", "de"];
     const currentIndex = languages.indexOf(currentLang);
     const targetLang = languages[(currentIndex + 1) % languages.length];
 
@@ -101,6 +115,7 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
       case "en": return "English";
       case "nl": return "Dutch";
       case "es": return "Spanish";
+      case "de": return "German";
       default: return "";
     }
   };
@@ -110,6 +125,7 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
       case "en": return <EUFlag />;
       case "nl": return <NLFlag />;
       case "es": return <ESFlag />;
+      case "de": return <DEFlag />;
       default: return null;
     }
   };

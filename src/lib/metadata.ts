@@ -22,6 +22,7 @@ export function generateAlternates(path: string, lang: string): Metadata['altern
       'en': `${SITE_URL}/en${formattedPath}`,
       'nl': `${SITE_URL}/nl${formattedPath}`,
       'es': `${SITE_URL}/es${formattedPath}`,
+      'de': `${SITE_URL}/de${formattedPath}`,
       'x-default': `${SITE_URL}/${i18n.defaultLocale}${formattedPath}`,
     },
   };
