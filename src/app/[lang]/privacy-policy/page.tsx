@@ -5,8 +5,10 @@ import { getDictionary } from '@/lib/get-dictionary';
 import { generateAlternates } from '@/lib/metadata';
 import PrivacyPolicyClient from '@/components/legal/privacy-policy-client';
 
+import { i18n } from '@/lib/config';
+
 export async function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'nl' }];
+  return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {

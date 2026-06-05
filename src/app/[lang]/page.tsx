@@ -6,8 +6,10 @@ import { JsonLd, getServicesSchema, getFaqSchema } from "@/components/layout/jso
 import type { Metadata } from 'next';
 import { generateAlternates } from '@/lib/metadata';
 
+import { i18n } from '@/lib/config';
+
 export async function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'nl' }];
+  return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {

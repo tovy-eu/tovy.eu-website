@@ -52,6 +52,19 @@ const NLFlag = () => (
   </svg>
 );
 
+const ESFlag = () => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 750 500" 
+    className="w-5 h-auto rounded-[1px] shadow-sm"
+    aria-hidden="true"
+    role="img"
+  >
+    <rect width="750" height="500" fill="#c60b1e" />
+    <rect width="750" height="250" y="125" fill="#ffc400" />
+  </svg>
+);
+
 export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps) {
   const pathname = usePathname();
   const router = useRouter();
@@ -60,12 +73,14 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
     if (!pathname) return;
     
     const segments = pathname.split("/");
-    const targetLang = currentLang === "en" ? "nl" : "en";
+    const languages = ["en", "nl", "es"];
+    const currentIndex = languages.indexOf(currentLang);
+    const targetLang = languages[(currentIndex + 1) % languages.length];
 
     // Set the language preference in a first-party cookie
     Cookies.set('NEXT_LOCALE', targetLang, { expires: 365, secure: true, sameSite: 'Lax' });
     
-    if (segments[1] === "en" || segments[1] === "nl") {
+    if (languages.includes(segments[1])) {
       segments[1] = targetLang;
     } else {
       segments.splice(1, 0, targetLang);
@@ -81,7 +96,23 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
     router.push(newPath);
   };
 
-  const targetLangName = currentLang === "en" ? "Dutch" : "English";
+  const getLanguageName = (lang: string) => {
+    switch (lang) {
+      case "en": return "English";
+      case "nl": return "Dutch";
+      case "es": return "Spanish";
+      default: return "";
+    }
+  };
+
+  const renderFlag = (lang: string) => {
+    switch (lang) {
+      case "en": return <EUFlag />;
+      case "nl": return <NLFlag />;
+      case "es": return <ESFlag />;
+      default: return null;
+    }
+  };
 
   return (
     <Button
@@ -89,10 +120,10 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
       size="sm"
       onClick={toggleLanguage}
       className="h-11 px-3 rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-2 overflow-hidden border-none"
-      aria-label={`Switch to ${targetLangName}`}
+      aria-label={`Switch language from ${getLanguageName(currentLang)}`}
     >
-      {currentLang === "en" ? <EUFlag /> : <NLFlag />}
-      <span className="sr-only">Switch to {targetLangName}</span>
+      {renderFlag(currentLang)}
+      <span className="sr-only">Current language: {getLanguageName(currentLang)}</span>
     </Button>
   );
 }

@@ -16,15 +16,16 @@ import { JsonLd, getBreadcrumbSchema, getArticleSchema } from '@/components/layo
 import { generateAlternates } from '@/lib/metadata';
 import person from '@/content/person.json';
 
+import { i18n } from '@/lib/config';
+
 type Props = {
   params: Promise<{ lang: string; slug: string }>;
 };
 
 export async function generateStaticParams() {
-  const langs = ['en', 'nl'];
   const params = [];
-  
-  for (const lang of langs) {
+
+  for (const lang of i18n.locales) {
     const posts = getSortedPostsData(lang);
     for (const post of posts) {
       params.push({ lang, slug: post.id });
@@ -32,7 +33,6 @@ export async function generateStaticParams() {
   }
   return params;
 }
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug } = await params;
   const postData = await getPostData(slug, lang);

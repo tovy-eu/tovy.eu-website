@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Script from "next/script";
 import { TrackedLink } from "@/components/ui/tracked-link";
 import companyProfile from "@/content/company-profile.json";
 import { i18n } from "@/lib/config";
@@ -17,6 +18,10 @@ export default async function Footer({ lang }: { lang: Locale }) {
 
   return (
     <footer className="border-t border-white/10 bg-background px-4 py-12 md:px-8">
+      <Script 
+        src="https://www.moneybird.nl/widget/simplerinvoicing.js" 
+        strategy="afterInteractive"
+      />
       <div className="mx-auto grid max-w-screen-xl grid-cols-1 items-center gap-y-10 md:gap-y-12 text-center md:grid-cols-3 md:text-left">
         
         {/* Left Column: Brand & Copyright */}
@@ -36,6 +41,8 @@ export default async function Footer({ lang }: { lang: Locale }) {
               <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
               Platform Status: Operational // v1.2.0-stable
             </div>
+            {/* Moneybird Widget */}
+            <div id="moneybird-widget-simplerinvoicing" data-id="WyJUb3Z5IiwiTkw6S1ZLIiwiOTg3ODcwNTUiLCJubCJd" className="mt-1 opacity-80 hover:opacity-100 transition-opacity"></div>
           </div>
         </div>
 

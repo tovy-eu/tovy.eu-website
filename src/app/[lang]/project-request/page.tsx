@@ -9,8 +9,10 @@ const ProjectIntakeForm = dynamic(() => import('@/components/landing/project-int
   loading: () => <div className="w-full h-[500px] md:h-[600px] flex items-center justify-center bg-card/20 animate-pulse rounded-[2.5rem]" />
 });
 
+import { i18n } from '@/lib/config';
+
 export async function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'nl' }];
+  return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
 type Props = {

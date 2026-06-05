@@ -4,8 +4,10 @@ import LegalNoticeClient from '@/components/legal/legal-notice-client';
 import { getDictionary } from '@/lib/get-dictionary';
 import { generateAlternates } from '@/lib/metadata';
 
+import { i18n } from '@/lib/config';
+
 export async function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'nl' }];
+  return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
 type Props = {

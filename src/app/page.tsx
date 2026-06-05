@@ -26,7 +26,7 @@ export default function RootPage() {
             (function() {
               try {
                 var target = 'en'; // Default language
-                var supported = ['en', 'nl'];
+                var supported = ['en', 'nl', 'es'];
                 var cookieLang = (document.cookie.match(/^(?:.*;)?NEXT_LOCALE=([^;]+)(?:.*)?$/) || [, ''])[1];
 
                 if (cookieLang && supported.includes(cookieLang)) {

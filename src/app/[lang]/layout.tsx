@@ -56,7 +56,7 @@ export default async function LocalizedLayout({
   const dict = await getDictionary(lang);
   
   return (
-    <html lang={lang} className={`${GeistSans.variable} scroll-smooth`} data-scroll-behavior="smooth">
+    <html lang={lang} className={`${GeistSans.variable} scroll-smooth`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

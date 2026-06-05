@@ -6,7 +6,7 @@ export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL; 
-  const languages = ['en', 'nl'];
+  const languages = ['en', 'nl', 'es'];
 
   const routes = [
     '',

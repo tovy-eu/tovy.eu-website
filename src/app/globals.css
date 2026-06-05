@@ -185,4 +185,9 @@
     background-color: hsl(var(--service-color) / 0.1);
     border-color: hsl(var(--service-color) / 0.15);
   }
+
+  /* Accessibility Override: Increase contrast for Moneybird widget subtitle */
+  span.moneybird-widget-simplerinvoicing-body-subtitle {
+    color: #4b5563 !important;
+  }
 }

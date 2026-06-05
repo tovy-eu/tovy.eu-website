@@ -13,6 +13,11 @@ import { SectionHeader } from '@/components/landing/section-header';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 import { generateAlternates } from '@/lib/metadata';
 import { Spotlight } from '@/components/ui/spotlight';
+import { i18n } from '@/lib/config';
+
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;

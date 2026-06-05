@@ -12,8 +12,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, doc, setDoc } from "firebase/firestore";
-import Script from "next/script";
 import { motion, AnimatePresence } from "framer-motion";
+import Script from "next/script";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -155,45 +155,17 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   }, [step, allValues, formSubmitted, formDocId]);
 
   useEffect(() => {
-    // If the form is submitted, initialize the visible widget with user data
-    if (formSubmitted && submittedValues && (routingPath === 'A' || routingPath === 'B' || routingPath === 'C')) {
-      const name = `${submittedValues.firstName} ${submittedValues.lastName}`.trim();
-      const email = submittedValues.email;
-      const calendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=ffffff&primary_color=365af6&hide_gdpr_banner=1&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
-
-      const initCalendly = () => {
-        const parentElement = document.querySelector('.calendly-inline-widget.visible-widget');
-        if (window.Calendly && parentElement) {
-          window.Calendly.initInlineWidget({ url: calendlyUrl, parentElement: parentElement as HTMLElement });
-          return true;
-        }
-        return false;
-      };
-      const interval = setInterval(() => { if (initCalendly()) clearInterval(interval) }, 100);
-      return () => clearInterval(interval);
-    } 
-    // Otherwise, on initial load, initialize the hidden SEO widget for crawlers
-    else if (!formSubmitted) {
-        const genericCalendlyUrl = `https://calendly.com/tovy-info?background_color=080c1b&text_color=ffffff&primary_color=365af6&hide_gdpr_banner=1`;
-        const initSeoCalendly = () => {
-            const parentElement = document.querySelector('.calendly-inline-widget.seo-widget');
-            if (window.Calendly && parentElement) {
-                window.Calendly.initInlineWidget({ url: genericCalendlyUrl, parentElement: parentElement as HTMLElement });
-                return true;
-            }
-            return false;
-        };
-        const interval = setInterval(() => { if (initSeoCalendly()) clearInterval(interval) }, 100);
-        return () => clearInterval(interval);
-    }
-  }, [formSubmitted, submittedValues, routingPath]);
-
-  useEffect(() => {
     const isSoleEntrepreneur = companySizeWatch === singleOptions.companySize[0]?.label;
     if (isSoleEntrepreneur) {
       setValue("hasDataTeam", "no");
     }
   }, [companySizeWatch, setValue, singleOptions.companySize]);
+
+  useEffect(() => {
+    if (formSubmitted && submittedValues) {
+      console.log("Form submitted with path:", routingPath);
+    }
+  }, [formSubmitted, submittedValues, routingPath]);
 
   const calculateScore = (data: ProjectRequestData): { score: number, path: RoutingPath } => {
     let score = 0;
@@ -347,8 +319,6 @@ const nextStep = async () => {
 
   return (
     <div className="w-full h-full md:h-auto" onKeyDown={handleKeyDown}>
-      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
-
       {/* Style override to hide header and manage body overflow on mobile project-request page */}
       <style jsx global>{`
         @media (max-width: 768px) {
@@ -371,8 +341,15 @@ const nextStep = async () => {
           </CardHeader>
           
           {(routingPath === 'A' || routingPath === 'B' || routingPath === 'C') && (
-            <div className="w-full rounded-3xl overflow-hidden bg-black/40 border border-white/5 mb-8 shadow-inner min-h-[500px] md:min-h-[700px]">
-              <div className="calendly-inline-widget visible-widget" style={{ minWidth: '320px', height: '500px' }} />
+            <div className="w-full rounded-3xl overflow-hidden bg-white border border-white/5 mb-8 shadow-inner">
+              <iframe 
+                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GvYWPuGvxv0-8qtgsYeJKkgMUjmUqu-2D2FZrKqU6z75hXbUv6_FjFmbPdPBHcyew-fiAUXQ2?gv=true" 
+                style={{ border: 0 }} 
+                width="100%" 
+                height="600" 
+                frameBorder="0"
+                title="Google Calendar Appointment Scheduling"
+              ></iframe>
             </div>
           )}
 
@@ -419,9 +396,16 @@ const nextStep = async () => {
           <Card className="w-full bg-card/60 md:backdrop-blur-2xl border-x-0 border-t-0 md:border border-white/10 shadow-2xl overflow-hidden flex flex-col rounded-none md:rounded-[2.5rem] transform-gpu h-full md:h-auto">
             <Spotlight color="rgba(43, 94, 255, 0.08)" />
             <div 
-                className="calendly-inline-widget seo-widget" 
-                style={{ position: 'absolute', top: '-9999px', left: '-9999px', minWidth: '320px', height: '700px' }} 
-            />
+                className="hidden" 
+                style={{ position: 'absolute', top: '-9999px', left: '-9999px' }} 
+            >
+              <iframe 
+                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GvYWPuGvxv0-8qtgsYeJKkgMUjmUqu-2D2FZrKqU6z75hXbUv6_FjFmbPdPBHcyew-fiAUXQ2?gv=true" 
+                width="100%" 
+                height="600" 
+                title="SEO Placeholder"
+              ></iframe>
+            </div>
             <CardHeader className="p-0">
               <div className="h-1.5 w-full bg-white/5">
                 <motion.div 
