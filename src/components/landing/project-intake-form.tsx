@@ -13,7 +13,6 @@ import { usePathname } from "next/navigation";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
-import Script from "next/script";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
