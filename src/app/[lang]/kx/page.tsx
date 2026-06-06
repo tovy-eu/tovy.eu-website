@@ -62,8 +62,8 @@ export default async function KxHub({ params }: { params: Promise<{ lang: string
   };
 
   const breadcrumbs = [
-    { name: 'Home', item: `/${lang}/` },
-    { name: 'Knowledge Exchange Hub', item: `/${lang}/kx/` },
+    { name: dict.common.home || 'Home', item: `/${lang}/` },
+    { name: dict.common.kxHub || 'Knowledge Exchange Hub', item: `/${lang}/kx/` },
   ];
 
   if (posts.length === 0) {
@@ -72,14 +72,14 @@ export default async function KxHub({ params }: { params: Promise<{ lang: string
         <WavyLines />
         <div className="container relative z-10 mx-auto max-w-4xl text-center">
           <SectionHeader 
-            badge="Knowledge Exchange"
+            badge={dict.blog.badge || "Knowledge Exchange"}
             title={dict.blog.title}
             description={dict.blog.subtitle}
           />
           <div className="mt-20 p-12 rounded-[2.5rem] bg-card/40 backdrop-blur-xl border border-white/10">
-            <p className="text-white/60 text-lg">Our intelligence repository is being updated. Check back soon for new insights.</p>
+            <p className="text-white/60 text-lg">{dict.blog.noPosts}</p>
             <Button asChild className="mt-8 rounded-full px-8" variant="outline">
-              <Link href={`/${lang}/`}>Back to Foundation</Link>
+              <Link href={`/${lang}/`}>{dict.common.backToFoundation || "Back to Foundation"}</Link>
             </Button>
           </div>
         </div>
@@ -100,7 +100,7 @@ export default async function KxHub({ params }: { params: Promise<{ lang: string
       <div className="container relative z-10 mx-auto max-w-7xl">
         <div className="mb-16 md:mb-24">
           <SectionHeader 
-            badge="Knowledge Exchange"
+            badge={dict.blog.badge || "Knowledge Exchange"}
             title={dict.blog.title}
             description={dict.blog.subtitle}
           />
@@ -159,7 +159,7 @@ export default async function KxHub({ params }: { params: Promise<{ lang: string
                     </p>
 
                     <div className="mt-auto flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-500">
-                      Explore Intelligence <ArrowRight className="h-3 w-3" />
+                      {dict.common.exploreIntelligence || "Explore Intelligence"} <ArrowRight className="h-3 w-3" />
                     </div>
                   </div>
                 </div>

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { Dictionary } from '@/lib/get-dictionary';
 
 interface Logo {
   name: string;
@@ -109,7 +110,7 @@ export const LogoBanner: React.FC<LogoBannerProps> = ({ logos, className }) => {
 };
 
 // Example Usage Component
-export const TrustedBySection = ({ className }: { className?: string }) => {
+export const TrustedBySection = ({ className, dict }: { className?: string; dict?: Dictionary }) => {
   const sampleLogos: Logo[] = [
     { name: "Deloitte", src: "/images/logos/deloitte.webp" },
     { name: "Rabobank", src: "/images/logos/rabobank.webp" },
@@ -119,10 +120,12 @@ export const TrustedBySection = ({ className }: { className?: string }) => {
     { name: "LW", src: "/images/logos/lw.webp" },
   ];
 
+  const titleText = dict?.common.priorExperience || "Prior Experience";
+
   return (
     <section className={cn("w-full px-2 md:px-4", className)}>
       <h2 className="text-center text-[7px] md:text-[8px] font-black uppercase tracking-[0.5em] md:tracking-[0.6em] text-white/40 mb-2 md:mb-4">
-        {"// "}Prior_Experience
+        {"// "}{titleText.toUpperCase().replace(/\s+/g, '_')}
       </h2>
       <LogoBanner logos={sampleLogos} className="py-0 min-h-[60px]" />
     </section>

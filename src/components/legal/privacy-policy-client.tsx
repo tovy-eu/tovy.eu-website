@@ -33,7 +33,7 @@ export default function PrivacyPolicyClient({ email, dict }: PrivacyPolicyClient
       <div className="container relative z-10 mx-auto max-w-3xl">
         <div className="mb-16">
           <SectionHeader 
-            badge="Privacy protocol"
+            badge={dict.privacy.badge || "Privacy protocol"}
             title={dict.privacy.title}
             description={dict.privacy.intro}
           />
@@ -93,7 +93,7 @@ export default function PrivacyPolicyClient({ email, dict }: PrivacyPolicyClient
               </p>
               
               <Button asChild variant="ghost" className="hover:bg-white/5 text-white/20 hover:text-white/40 text-[10px] font-bold uppercase tracking-widest h-12 px-8 rounded-full">
-                <Link href={`/${lang}/`}><ArrowLeft className="mr-2 h-3.5 w-3.5" /> Back to Intelligence</Link>
+                <Link href={`/${lang}/`}><ArrowLeft className="mr-2 h-3.5 w-3.5" /> {dict.common.backToIntelligence || "Back to Intelligence"}</Link>
               </Button>
             </div>
           </div>

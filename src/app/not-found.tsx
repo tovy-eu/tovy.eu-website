@@ -9,7 +9,7 @@ import { Home, FileText } from 'lucide-react';
 
 export default function NotFound() {
   const pathname = usePathname();
-  const lang = pathname.split('/')[1] || 'en';
+  const lang = pathname?.split('/')[1] || 'en';
 
   const translations: Record<string, {
     badge: string;
@@ -40,6 +40,26 @@ export default function NotFound() {
       startProject: "Project Starten",
       homePath: "/nl/",
       projectPath: "/nl/project-request/"
+    },
+    de: {
+      badge: "Fehler 404",
+      titlePart1: "Verloren in den",
+      titlePart2: "Datensilos?",
+      description: "Die von Ihnen besuchte Seite wurde verschoben, gelöscht oder hat nie existiert. Tovy zeigt Ihnen gerne den Weg zurück.",
+      returnHome: "Zurück zur Startseite",
+      startProject: "Projekt starten",
+      homePath: "/de/",
+      projectPath: "/de/project-request/"
+    },
+    es: {
+      badge: "Error 404",
+      titlePart1: "¿Perdido en los",
+      titlePart2: "Silos de Datos?",
+      description: "La página que ha visitado ha sido trasladada, eliminada o nunca ha existido. Tovy estará encantado de mostrarle el camino de vuelta.",
+      returnHome: "Volver al inicio",
+      startProject: "Iniciar un proyecto",
+      homePath: "/es/",
+      projectPath: "/es/project-request/"
     }
   };
 

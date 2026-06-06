@@ -31,19 +31,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const defaultOgImage = 'https://tovy.eu/images/tovy-og-image.webp';
   const path = `/kx/page/${pageParam}`;
 
+  const pageText = dict.common.page || 'Page';
+
   return {
-    title: `${dict.blog.title} - Page ${pageParam}`,
+    title: `${dict.blog.title} - ${pageText} ${pageParam}`,
     description: dict.blog.subtitle,
     alternates: generateAlternates(path, langParam),
     openGraph: {
-      title: `${dict.blog.title} - Page ${pageParam}`,
+      title: `${dict.blog.title} - ${pageText} ${pageParam}`,
       description: dict.blog.subtitle,
       type: 'website',
       images: [{ url: defaultOgImage }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${dict.blog.title} - Page ${pageParam}`,
+      title: `${dict.blog.title} - ${pageText} ${pageParam}`,
       description: dict.blog.subtitle,
       images: [defaultOgImage],
     },
@@ -78,10 +80,12 @@ export default async function KxPagination({ params }: Props) {
     return isValid(d) ? format(d, 'LLLL d, yyyy') : 'Recently';
   };
 
+  const pageText = dict.common.page || 'Page';
+
   const breadcrumbs = [
-    { name: 'Home', item: `/${lang}/` },
-    { name: 'Knowledge Exchange Hub', item: `/${lang}/kx/` },
-    { name: `Page ${currentPage}`, item: `/${lang}/kx/page/${currentPage}/` },
+    { name: dict.common.home || 'Home', item: `/${lang}/` },
+    { name: dict.common.kxHub || 'Knowledge Exchange Hub', item: `/${lang}/kx/` },
+    { name: `${pageText} ${currentPage}`, item: `/${lang}/kx/page/${currentPage}/` },
   ];
 
   return (
@@ -97,7 +101,7 @@ export default async function KxPagination({ params }: Props) {
       <div className="container relative z-10 mx-auto max-w-7xl">
         <div className="mb-16 md:mb-24">
           <SectionHeader 
-            badge="Knowledge Exchange"
+            badge={dict.blog.badge || "Knowledge Exchange"}
             title={dict.blog.title}
             description={dict.blog.subtitle}
           />
@@ -152,7 +156,7 @@ export default async function KxPagination({ params }: Props) {
                   </p>
 
                   <div className="mt-auto flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-500">
-                    Explore Intelligence <ArrowRight className="h-3 w-3" />
+                    {dict.common.exploreIntelligence || "Explore Intelligence"} <ArrowRight className="h-3 w-3" />
                   </div>
                 </div>
               </div>
@@ -190,7 +194,7 @@ export default async function KxPagination({ params }: Props) {
                 className="rounded-full px-6 hover:bg-white/5 text-white/40 font-bold text-[10px] uppercase tracking-widest border border-white/5"
             >
                 <Link href={currentPage === 2 ? `/${lang}/kx/` : `/${lang}/kx/page/${currentPage - 1}/`}>
-                    <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+                    <ArrowLeft className="mr-2 h-4 w-4" /> {dict.blog.previous || "Previous"}
                 </Link>
             </Button>
             <Button
@@ -200,7 +204,7 @@ export default async function KxPagination({ params }: Props) {
                 className="rounded-full px-6 hover:bg-white/5 text-white/40 font-bold text-[10px] uppercase tracking-widest border border-white/5"
             >
                 <Link href={`/${lang}/kx/page/${currentPage + 1}/`}>
-                    Next <ArrowRight className="ml-2 h-4 w-4" />
+                    {dict.blog.next || "Next"} <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
             </Button>
           </div>

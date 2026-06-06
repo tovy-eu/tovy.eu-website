@@ -39,7 +39,7 @@ export default async function Footer({ lang }: { lang: Locale }) {
             {/* Technical Density: Build Marker */}
             <div className="flex items-center gap-2 font-mono text-[8px] md:text-[9px] text-white/80 uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-              Platform Status: Operational // v1.2.0-stable
+              {dictionary.common.platformStatus || "Platform Status: Operational // v1.2.0-stable"}
             </div>
             {/* Moneybird Widget */}
             <div id="moneybird-widget-simplerinvoicing" data-id="WyJUb3Z5IiwiTkw6S1ZLIiwiOTg3ODcwNTUiLCJubCJd" className="mt-1 opacity-80 hover:opacity-100 transition-opacity"></div>

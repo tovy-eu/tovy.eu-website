@@ -22,7 +22,27 @@
     "newsletterDesc": "Ontvang technische inzichten van Tovy.",
     "subscribe": "Aanmelden",
     "subscribing": "Bezig met aanmelden...",
-    "techStack": "De Tovy-toolchain"
+    "techStack": "De Tovy-toolchain",
+    "home": "Home",
+    "kxHub": "Kennis-hub",
+    "page": "Pagina",
+    "back": "Terug",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "priorExperience": "Eerdere ervaring",
+    "linkedinProfile": "LinkedIn-profiel",
+    "platformStatus": "Platform Status: Operationeel // v1.2.0-stable",
+    "backToIntelligence": "Terug naar Intelligence",
+    "backToFoundation": "Terug naar de Basis",
+    "exploreIntelligence": "Verken Intelligence",
+    "readyToScale": "Klaar om te schalen?",
+    "buildFoundation": "Laten we een fundament bouwen voor groei."
+  },
+  "cookieBanner": {
+    "text": "We gebruiken cookies om uw ervaring te verbeteren en voor analysedoeleinden. Door op \"Accepteren\" te klikken, stemt u in met ons gebruik van cookies. Zie voor meer details onze",
+    "privacyPolicy": "Privacyverklaring",
+    "decline": "Weigeren",
+    "accept": "Accepteren"
   },
   "footer": {
     "slogan-line-1": "De basis voor rust en controle",
@@ -162,6 +182,7 @@
     "subtitle": "Ontdek hoe Tovy de operationele rust herstelt en schaalbare groei mogelijk maakt."
   },
   "blog": {
+    "badge": "Kennis-hub",
     "metaTitle": "Data Strategie & Engineering Inzichten",
     "metaDescription": "Diepgaande technische artikelen over data-architectuur, automatisering en systeemintegratie. Leer hoe u een onderhoudsvrij fundament bouwt.",
     "title": "Kennis-hub: Data Strategie & Inzichten",
@@ -240,6 +261,7 @@
     "contact": "Contact"
   },
   "privacy": {
+    "badge": "Privacyprotocol",
     "title": "Privacyverklaring",
     "intro": "Privacy is belangrijk voor Tovy. Het beleid van Tovy is om uw privacy te respecteren bij het verzamelen van gegevens via de website. Dit beleid voldoet aan de Algemene verordening gegevensbescherming (AVG).",
     "sections": [
@@ -290,6 +312,10 @@
     ]
   },
   "legal": {
+    "compliance": "Compliance",
+    "entityDetails": "Bedrijfsgegevens",
+    "contactChannels": "Contactkanalen",
+    "fiscalIdentifiers": "Fiscale identificatiemiddelen",
     "title": "Juridische informatie",
     "subtitle": "Offici\u00eble bedrijfs- en contactgegevens van Tovy.",
     "companyDetails": "Bedrijfsgegevens",
@@ -317,6 +343,15 @@
     ]
   },
   "projectForm": {
+    "sidebarSteps": {
+      "email": "e-mailadres",
+      "companySize": "bedrijfsgrootte",
+      "problemStatement": "probleemstelling",
+      "dataInfrastructure": "data-infrastructuur",
+      "timeline": "tijdlijn",
+      "budget": "budget",
+      "contactDetails": "contactgegevens"
+    },
     "metaTitle": "Vraag een Data Architectuur Assessment aan",
     "metaDescription": "Klaar voor automatisering? Vul de 7-stappen technische intake in voor een direct architectuur assessment door een senior data engineer. Geen accountmanagers, alleen werkende code.",
     "title": "Data Architectuur Assessment",

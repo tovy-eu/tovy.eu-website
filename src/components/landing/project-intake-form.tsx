@@ -387,7 +387,9 @@ const nextStep = async () => {
                 )}>
                   {i < step ? <Check className="h-3 w-3" /> : (i + 1).toString().padStart(2, '0')}
                 </span>
-                <span className="font-bold text-[8px] tracking-[0.1em]">{s.field.replace(/([A-Z])/g, ' $1').toLowerCase()}</span>
+                <span className="font-bold text-[8px] tracking-[0.1em]">
+                  {dict.projectForm.sidebarSteps?.[s.field as keyof typeof dict.projectForm.sidebarSteps] || s.field.replace(/([A-Z])/g, ' $1').toLowerCase()}
+                </span>
               </button>
             ))}
           </div>

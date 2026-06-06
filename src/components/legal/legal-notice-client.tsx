@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -69,7 +68,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
       <div className="container relative z-10 mx-auto max-w-3xl">
         <div className="mb-16">
           <SectionHeader 
-            badge="Compliance"
+            badge={dict.legal.compliance || "Compliance"}
             title={dict.legal.title}
             description={dict.legal.subtitle}
           />
@@ -81,7 +80,9 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
           <div className="p-8 md:p-16 space-y-12 relative z-10">
             {/* Entity Section */}
             <section className="space-y-6">
-              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">{"// "}01. ENTITY_DETAILS</h3>
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">
+                {"// "}01. {(dict.legal.entityDetails || "ENTITY_DETAILS").toUpperCase().replace(/\s+/g, '_')}
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.legal.companyName}</p>
@@ -99,7 +100,9 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
 
             {/* Contact Section */}
             <section className="space-y-6">
-              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">{"// "}02. CONTACT_CHANNELS</h3>
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">
+                {"// "}02. {(dict.legal.contactChannels || "CONTACT_CHANNELS").toUpperCase().replace(/\s+/g, '_')}
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.legal.email}</p>
@@ -121,18 +124,20 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
 
             {/* Registry Section */}
             <section className="space-y-6">
-              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">{"// "}03. FISCAL_IDENTIFIERS</h3>
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">
+                {"// "}03. {(dict.legal.fiscalIdentifiers || "FISCAL_IDENTIFIERS").toUpperCase().replace(/\s+/g, '_')}
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">Registry</p>
-                  <p className="text-sm font-bold text-white/80">Chamber of Commerce [KvK]</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.legal.registry || "Registry"}</p>
+                  <p className="text-sm font-bold text-white/80">{dict.legal.commercialRegistry || "Chamber of Commerce [KvK]"}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">KvK Number</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.legal.kvkNumber || "KvK Number"}</p>
                   <p className="font-mono text-lg text-primary drop-shadow-[0_0_8px_rgba(43,94,255,0.3)]">{profile.primary_identifiers.commercial_registry_number}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">VAT ID</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.legal.vatNumber || "VAT ID"}</p>
                   <p className="font-mono text-lg text-primary drop-shadow-[0_0_8px_rgba(43,94,255,0.3)]">{profile.primary_identifiers.vat_id_number}</p>
                 </div>
               </div>
@@ -142,7 +147,9 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
 
             {/* Disclaimer */}
             <section className="space-y-4">
-              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/20">{"// "}04. DISCLAIMER</h3>
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/20">
+                {"// "}04. {(dict.legal.disclaimer || "DISCLAIMER").toUpperCase()}
+              </h3>
               <p className="text-sm text-white/30 leading-relaxed font-medium text-pretty italic">
                 {dict.legal.disclaimerContent}
               </p>
@@ -159,7 +166,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
                 </Button>
               )}
               <Button asChild variant="ghost" className="hover:bg-white/5 text-white/20 hover:text-white/40 text-[10px] font-bold uppercase tracking-widest h-12 px-8 rounded-full">
-                <Link href={`/${lang}/`}><ArrowLeft className="mr-2 h-3.5 w-3.5" /> Back to Intelligence</Link>
+                <Link href={`/${lang}/`}><ArrowLeft className="mr-2 h-3.5 w-3.5" /> {dict.common.backToIntelligence || "Back to Intelligence"}</Link>
               </Button>
             </div>
           </div>

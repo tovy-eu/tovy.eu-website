@@ -22,7 +22,27 @@
     "newsletterDesc": "Erhalten Sie technische Einblicke von Tovy.",
     "subscribe": "Abonnieren",
     "subscribing": "Abonniert...",
-    "techStack": "DIE TOVY TOOLCHAIN"
+    "techStack": "DIE TOVY TOOLCHAIN",
+    "home": "Startseite",
+    "kxHub": "Knowledge Hub",
+    "page": "Seite",
+    "back": "Zurück",
+    "previous": "Vorheriger",
+    "next": "Nächster",
+    "priorExperience": "Frühere Erfahrung",
+    "linkedinProfile": "LinkedIn-Profil",
+    "platformStatus": "Plattform-Status: Betriebsbereit // v1.2.0-stable",
+    "backToIntelligence": "Zurück zu Intelligence",
+    "backToFoundation": "Zurück zum Fundament",
+    "exploreIntelligence": "Intelligence erkunden",
+    "readyToScale": "Bereit zu skalieren?",
+    "buildFoundation": "Lassen Sie uns ein Fundament für Wachstum bauen."
+  },
+  "cookieBanner": {
+    "text": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und für Analysezwecke. Durch Klicken auf \"Akzeptieren\" stimmen Sie der Verwendung von Cookies zu. Weitere Details finden Sie in unserer",
+    "privacyPolicy": "Datenschutzerklärung",
+    "decline": "Ablehnen",
+    "accept": "Akzeptieren"
   },
   "footer": {
     "slogan-line-1": "Das Fundament für Ruhe und Kontrolle",
@@ -162,6 +182,7 @@
     "subtitle": "Erfahren Sie, wie Tovy die operative Ruhe wiederherstellt und skalierbares Wachstum ermöglicht."
   },
   "blog": {
+    "badge": "Knowledge Hub",
     "metaTitle": "Einblicke in Datenstrategie & Engineering",
     "metaDescription": "Detaillierte technische Artikel über Datenarchitektur, Automatisierung und Systemintegration. Lernen Sie, wie man wartungsfreie Daten-Pipelines aufbaut.",
     "title": "Knowledge Hub: Datenstrategie & Einblicke",
@@ -240,6 +261,7 @@
     "contact": "Kontakt"
   },
   "privacy": {
+    "badge": "Datenschutzprotokoll",
     "title": "Datenschutzerklärung",
     "intro": "Datenschutz ist Tovy wichtig. Es ist Tovy's Richtlinie, Ihre Privatsphäre bei der Erhebung von Daten über die Website zu respektieren. Diese Richtlinie entspricht der Datenschutz-Grundverordnung (DSGVO).",
     "sections": [
@@ -290,6 +312,10 @@
     ]
   },
   "legal": {
+    "compliance": "Compliance",
+    "entityDetails": "Unternehmensdaten",
+    "contactChannels": "Kontaktkanäle",
+    "fiscalIdentifiers": "Steuerliche Identifikationsdaten",
     "title": "Impressum",
     "subtitle": "Offizielle Unternehmens- und Kontaktdaten von Tovy.",
     "companyDetails": "Unternehmensdaten",
@@ -317,6 +343,15 @@
     ]
   },
   "projectForm": {
+    "sidebarSteps": {
+      "email": "E-Mail-Adresse",
+      "companySize": "Unternehmensgröße",
+      "problemStatement": "Problemstellung",
+      "dataInfrastructure": "Dateninfrastruktur",
+      "timeline": "Zeitplan",
+      "budget": "Budget",
+      "contactDetails": "Kontaktdaten"
+    },
     "metaTitle": "Fordern Sie eine Datenarchitektur-Bewertung an",
     "metaDescription": "Bereit für die Automatisierung? Füllen Sie unsere technische 7-Schritte-Intake aus, um eine direkte Architektur-Bewertung von einem Senior Data Engineer zu erhalten. Keine Account Manager, nur funktionierender Code.",
     "title": "Datenarchitektur-Bewertung",

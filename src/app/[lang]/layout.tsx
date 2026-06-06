@@ -72,7 +72,7 @@ export default async function LocalizedLayout({
         </main>
         <Footer lang={lang} />
         <Toaster />
-        <CookieBanner />
+        <CookieBanner dict={dict} />
       </body>
     </html>
   );

@@ -22,7 +22,27 @@
     "newsletterDesc": "Reciba información técnica de Tovy.",
     "subscribe": "Suscribirse",
     "subscribing": "Suscribiendo...",
-    "techStack": "La cadena de herramientas de Tovy"
+    "techStack": "La cadena de herramientas de Tovy",
+    "home": "Inicio",
+    "kxHub": "Centro de conocimiento",
+    "page": "Página",
+    "back": "Volver",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "priorExperience": "Experiencia previa",
+    "linkedinProfile": "Perfil de LinkedIn",
+    "platformStatus": "Estado de la plataforma: Operativo // v1.2.0-stable",
+    "backToIntelligence": "Volver a Intelligence",
+    "backToFoundation": "Volver al Fundamento",
+    "exploreIntelligence": "Explorar Intelligence",
+    "readyToScale": "¿Preparado para crecer?",
+    "buildFoundation": "Construyamos una base para el crecimiento."
+  },
+  "cookieBanner": {
+    "text": "Utilizamos cookies para mejorar su experiencia y con fines analíticos. Al hacer clic en \"Aceptar\", acepta nuestro uso de cookies. Para obtener más detalles, consulte nuestra",
+    "privacyPolicy": "Política de privacidad",
+    "decline": "Rechazar",
+    "accept": "Aceptar"
   },
   "footer": {
     "slogan-line-1": "La base para la tranquilidad y el control",
@@ -162,6 +182,7 @@
     "subtitle": "Descubra cómo Tovy restaura la calma operativa y hace posible el crecimiento escalable."
   },
   "blog": {
+    "badge": "Centro de conocimiento",
     "metaTitle": "Perspectivas de estrategia e ingeniería de datos",
     "metaDescription": "Artículos técnicos detallados sobre arquitectura de datos, automatización e integración de sistemas. Aprenda a construir unos cimientos sin mantenimiento.",
     "title": "Centro de conocimiento: Estrategia e ideas de datos",
@@ -240,6 +261,7 @@
     "contact": "Contacto"
   },
   "privacy": {
+    "badge": "Protocolo de privacidad",
     "title": "Política de privacidad",
     "intro": "La privacidad es importante para Tovy. La política de Tovy es respetar su privacidad al recopilar datos a través del sitio web. Esta política cumple con el Reglamento General de Protección de Datos (RGPD).",
     "sections": [
@@ -290,6 +312,10 @@
     ]
   },
   "legal": {
+    "compliance": "Cumplimiento",
+    "entityDetails": "Datos de la entidad",
+    "contactChannels": "Canales de contacto",
+    "fiscalIdentifiers": "Identificadores fiscales",
     "title": "Información legal",
     "subtitle": "Datos oficiales de empresa y contacto de Tovy.",
     "companyDetails": "Datos de la empresa",
@@ -317,6 +343,15 @@
     ]
   },
   "projectForm": {
+    "sidebarSteps": {
+      "email": "correo electrónico",
+      "companySize": "tamaño de la empresa",
+      "problemStatement": "planteamiento del problema",
+      "dataInfrastructure": "infraestructura de datos",
+      "timeline": "cronograma",
+      "budget": "presupuesto",
+      "contactDetails": "datos de contacto"
+    },
     "metaTitle": "Solicite una evaluación de arquitectura de datos",
     "metaDescription": "¿Preparado para la automatización? Rellene la toma de datos técnica de 7 pasos para una evaluación de arquitectura inmediata por parte de un ingeniero de datos senior. Sin gestores de cuentas, solo código funcional.",
     "title": "Evaluación de arquitectura de datos",

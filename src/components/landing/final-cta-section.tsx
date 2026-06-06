@@ -23,14 +23,10 @@ export function FinalCtaSection({ dict }: { dict: Dictionary }) {
       
       <div className="container relative z-10 mx-auto max-w-4xl text-center">
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-          {lang === 'en' 
-            ? "Ready to build your foundation?" 
-            : "Klaar om je fundament te bouwen?"}
+          {dict.projectCta.title}
         </h2>
         <p className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto font-medium">
-          {lang === 'en'
-            ? "Let's turn your data silos into a unified ecosystem that scales with your growth."
-            : "Laten we je data-silo's omzetten in een uniform ecosysteem dat meegroeit met je ambities."}
+          {dict.projectCta.description}
         </p>
         
         <div className="flex justify-center">

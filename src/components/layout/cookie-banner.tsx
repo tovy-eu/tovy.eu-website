@@ -7,8 +7,9 @@ import { cn } from '@/lib/utils';
 import { Cookie } from 'lucide-react';
 import { getConsent, updateConsent } from '@/lib/consent';
 import { usePathname } from 'next/navigation';
+import type { Dictionary } from '@/lib/get-dictionary';
 
-export default function CookieBanner() {
+export default function CookieBanner({ dict }: { dict?: Dictionary }) {
   const [showBanner, setShowBanner] = useState(false);
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
@@ -43,6 +44,11 @@ export default function CookieBanner() {
     return null;
   }
 
+  const text = dict?.cookieBanner?.text || "We use cookies to enhance your experience and for analytics purposes. By clicking \"Accept\", you agree to our use of cookies. For more details, see our";
+  const privacyPolicy = dict?.cookieBanner?.privacyPolicy || "Privacy Policy";
+  const decline = dict?.cookieBanner?.decline || "Decline";
+  const accept = dict?.cookieBanner?.accept || "Accept";
+
   return (
     <div 
       className={cn(
@@ -55,19 +61,19 @@ export default function CookieBanner() {
         <div className="flex items-start gap-3">
           <Cookie className="h-5 w-5 mt-1 text-primary flex-shrink-0"/>
           <p className="text-sm text-muted-foreground">
-            We use cookies to enhance your experience and for analytics purposes. By clicking &quot;Accept&quot;, you agree to our use of cookies. For more details, see our{' '}
+            {text}{' '}
             <Link href={`/${lang}/privacy-policy/`} className="underline hover:text-primary">
-              Privacy Policy
+              {privacyPolicy}
             </Link>
             .
           </p>
         </div>
         <div className="flex gap-2 flex-shrink-0 w-full sm:w-auto">
           <Button onClick={handleDecline} variant="secondary" size="sm" className="flex-grow sm:flex-grow-0">
-            Decline
+            {decline}
           </Button>
           <Button onClick={handleAccept} size="sm" className="flex-grow sm:flex-grow-0">
-            Accept
+            {accept}
           </Button>
         </div>
       </div>

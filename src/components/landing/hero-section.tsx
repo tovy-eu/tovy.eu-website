@@ -93,7 +93,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
 
         {/* Logos moved between subtitle and CTA */}
         <div className="w-full mb-10 md:mb-16 transform-gpu">
-          <TrustedBySection className="py-0" />
+          <TrustedBySection className="py-0" dict={dict} />
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full sm:w-auto">

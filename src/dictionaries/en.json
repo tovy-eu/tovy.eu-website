@@ -22,7 +22,27 @@
     "newsletterDesc": "Get technical insights from Tovy.",
     "subscribe": "Subscribe",
     "subscribing": "Subscribing...",
-    "techStack": "THE TOVY TOOLCHAIN"
+    "techStack": "THE TOVY TOOLCHAIN",
+    "home": "Home",
+    "kxHub": "Knowledge Exchange Hub",
+    "page": "Page",
+    "back": "Back",
+    "previous": "Previous",
+    "next": "Next",
+    "priorExperience": "Prior Experience",
+    "linkedinProfile": "LinkedIn Profile",
+    "platformStatus": "Platform Status: Operational // v1.2.0-stable",
+    "backToIntelligence": "Back to Intelligence",
+    "backToFoundation": "Back to Foundation",
+    "exploreIntelligence": "Explore Intelligence",
+    "readyToScale": "Ready to scale?",
+    "buildFoundation": "Let’s build a foundation for growth."
+  },
+  "cookieBanner": {
+    "text": "We use cookies to enhance your experience and for analytics purposes. By clicking \"Accept\", you agree to our use of cookies. For more details, see our",
+    "privacyPolicy": "Privacy Policy",
+    "decline": "Decline",
+    "accept": "Accept"
   },
   "footer": {
     "slogan-line-1": "The data and AI foundation",
@@ -174,6 +194,7 @@
     "subtitle": "Discover how Tovy helps companies scale with automation."
   },
   "blog": {
+    "badge": "Knowledge Exchange",
     "metaTitle": "Data Strategy & Engineering Insights",
     "metaDescription": "Deep dives into data architecture, automation, and system integration. Learn how to build maintenance-free data pipelines for your business.",
     "title": "KX Hub: Data Strategy & Insights",
@@ -252,6 +273,7 @@
     "contact": "Contact"
   },
   "privacy": {
+    "badge": "Privacy protocol",
     "title": "Privacy Statement",
     "intro": "Privacy is important to Tovy. It is Tovy's policy to respect user privacy regarding any information collected via the website. This policy complies with the General Data Protection Regulation (GDPR).",
     "sections": [
@@ -302,6 +324,10 @@
     ]
   },
   "legal": {
+    "compliance": "Compliance",
+    "entityDetails": "Entity details",
+    "contactChannels": "Contact channels",
+    "fiscalIdentifiers": "Fiscal identifiers",
     "title": "Legal information",
     "subtitle": "Official company and contact details of Tovy.",
     "companyDetails": "Company details",
@@ -329,6 +355,15 @@
     ]
   },
   "projectForm": {
+    "sidebarSteps": {
+      "email": "email",
+      "companySize": "company size",
+      "problemStatement": "problem statement",
+      "dataInfrastructure": "data infrastructure",
+      "timeline": "timeline",
+      "budget": "budget",
+      "contactDetails": "contact details"
+    },
     "metaTitle": "Request a Data Architecture Assessment",
     "metaDescription": "Ready for automation? Complete our 7-step technical intake to get a direct architecture assessment from a senior data engineer. No account managers, just working code.",
     "title": "Data Architecture Assessment",

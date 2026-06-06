@@ -145,7 +145,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
                     >
                       <Link size={14} />
                       <span className="group-hover:underline">
-                        LinkedIn Profile
+                        {dict.common.linkedinProfile || "LinkedIn Profile"}
                       </span>
                     </a>
                   </div>

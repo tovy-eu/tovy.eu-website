@@ -87,8 +87,8 @@ export default async function KxResource({ params }: Props) {
   const authorProfile = person.public_ceo_profile;
 
   const breadcrumbs = [
-    { name: 'Home', item: `/${lang}/` },
-    { name: 'Knowledge Exchange', item: `/${lang}/kx/` },
+    { name: dict.common.home || 'Home', item: `/${lang}/` },
+    { name: dict.common.kxHub || 'Knowledge Exchange', item: `/${lang}/kx/` },
     { name: postData.title, item: `/${lang}/kx/${slug}/` },
   ];
 
@@ -112,7 +112,7 @@ export default async function KxResource({ params }: Props) {
                 <Button asChild variant="secondary" size="sm" className="bg-black/40 hover:bg-black/60 backdrop-blur-lg border border-white/10 text-white shadow-xl">
                   <Link href={`/${lang}/kx/`}>
                     <ArrowLeft className="mr-2 h-4 w-4" />
-                    {lang === 'en' ? 'Back' : 'Terug'}
+                    {dict.common.back || 'Back'}
                   </Link>
                 </Button>
               </div>
@@ -132,7 +132,7 @@ export default async function KxResource({ params }: Props) {
               <Button asChild variant="secondary" className="bg-white/5 hover:bg-white/10 backdrop-blur-lg border border-white/10 text-white">
                 <Link href={`/${lang}/kx/`}>
                   <ArrowLeft className="mr-2 h-4 w-4" />
-                  {lang === 'en' ? 'Back' : 'Terug'}
+                  {dict.common.back || 'Back'}
                 </Link>
               </Button>
             </div>
@@ -187,12 +187,10 @@ export default async function KxResource({ params }: Props) {
             <div className="mt-12 pt-8 border-t border-white/5">
               <div className="text-center">
                 <h3 className="text-xl font-bold text-white mb-3">
-                  {lang === 'en' ? 'Ready to scale?' : 'Klaar om te schalen?'}
+                  {dict.common.readyToScale || 'Ready to scale?'}
                 </h3>
                 <p className="text-white/60 mb-8 text-sm">
-                  {lang === 'en' 
-                    ? 'Let’s build a foundation for growth.' 
-                    : 'Laten we een fundament bouwen voor groei.'}
+                  {dict.common.buildFoundation || 'Let’s build a foundation for growth.'}
                 </p>
                 <Magnetic strength={0.2}>
                   <Button asChild size="lg" className="font-bold">
@@ -212,7 +210,7 @@ export default async function KxResource({ params }: Props) {
           {postData.previousPost && (
             <Link href={`/${lang}/kx/${postData.previousPost.id}/`} className="group">
               <Card className="bg-card/20 border-white/5 p-4 group-hover:bg-card/40 transition-colors">
-                <p className="text-[10px] font-bold text-primary uppercase mb-1">Previous</p>
+                <p className="text-[10px] font-bold text-primary uppercase mb-1">{dict.blog.previous || "Previous"}</p>
                 <h4 className="text-white text-sm font-bold line-clamp-1">{postData.previousPost.title}</h4>
               </Card>
             </Link>
@@ -220,7 +218,7 @@ export default async function KxResource({ params }: Props) {
           {postData.nextPost && (
             <Link href={`/${lang}/kx/${postData.nextPost.id}/`} className="group">
               <Card className="bg-card/20 border-white/5 p-4 text-right group-hover:bg-card/40 transition-colors">
-                <p className="text-[10px] font-bold text-primary uppercase mb-1">Next</p>
+                <p className="text-[10px] font-bold text-primary uppercase mb-1">{dict.blog.next || "Next"}</p>
                 <h4 className="text-white text-sm font-bold line-clamp-1">{postData.nextPost.title}</h4>
               </Card>
             </Link>
