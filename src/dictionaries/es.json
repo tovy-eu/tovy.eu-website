@@ -31,7 +31,7 @@
     "next": "Siguiente",
     "priorExperience": "Experiencia previa",
     "linkedinProfile": "Perfil de LinkedIn",
-    "platformStatus": "Estado de la plataforma: Operativo // v1.2.0-stable",
+    "platformStatus": "Estado de la plataforma: Operativo",
     "backToIntelligence": "Volver a Intelligence",
     "backToFoundation": "Volver a la base",
     "exploreIntelligence": "Explorar Intelligence",
@@ -53,17 +53,17 @@
     "connect": "Contacto"
   },
   "hero": {
-    "metaTitle": "Ingeniería de datos para el crecimiento del comercio electrónico",
-    "metaDescription": "Deja de apagar fuegos. Tovy construye las bases automatizadas que los equipos de comercio electrónico necesitan para sincronizar Shopify, Exact y ERPs sin errores.",
+    "metaTitle": "Ingeniería de datos para el crecimiento comercial",
+    "metaDescription": "Deje de apagar fuegos. Tovy construye las bases automatizadas que los equipos comerciales necesitan para sincronizar sus sistemas sin errores.",
     "title": "La base de datos que te devuelve la libertad de emprender",
     "subtitle": "Tovy construye sistemas de datos inteligentes que transforman el caos en claridad. Sustituimos los procesos manuales por una automatización fluida, para que recuperes el control total y puedas centrarte en el crecimiento.",
     "keywords": [
       "Ingeniería de datos",
-      "Automatización de Shopify",
-      "Conexión con Exact Online",
+      "Automatización de negocios",
+      "Integración de sistemas",
       "Arquitectura de datos",
       "Automatización de procesos",
-      "Crecimiento de comercio electrónico"
+      "Crecimiento comercial"
     ]
   },
   "painSolution": {
@@ -215,7 +215,7 @@
         "questions": [
           {
             "question": "¿Qué obtengo exactamente por el precio de inicio de un proyecto?",
-            "answer": "En 6 semanas entregamos una solución concreta y funcional. Por ejemplo: una plataforma de datos totalmente configurada en Azure, un canal automatizado que sincroniza tus datos de ventas de Shopify a Exact Online y un panel de Power BI con tus KPI más importantes. Una base completa para el control y la visión general."
+            "answer": "En 6 semanas entregamos una solución concreta y funcional. Por ejemplo: una plataforma de datos totalmente configurada en Azure, un canal automatizado que sincroniza tus datos de ventas del sistema A al sistema B y un panel de Power BI con tus KPI más importantes. Una base completa para el control y la visión general."
           },
           {
             "question": "¿Cómo puedo reservar una reunión de toma de contacto?",

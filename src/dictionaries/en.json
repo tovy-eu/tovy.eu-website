@@ -31,7 +31,7 @@
     "next": "Next",
     "priorExperience": "Prior Experience",
     "linkedinProfile": "LinkedIn Profile",
-    "platformStatus": "Platform Status: Operational // v1.2.0-stable",
+    "platformStatus": "Platform Status: Operational",
     "backToIntelligence": "Back to Intelligence",
     "backToFoundation": "Back to Foundation",
     "exploreIntelligence": "Explore Intelligence",
@@ -53,17 +53,17 @@
     "connect": "Connect"
   },
   "hero": {
-    "metaTitle": "Data Engineering for E-commerce Growth",
-    "metaDescription": "Stop fighting fires. Tovy builds the automated foundations your e-commerce team needs to sync Shopify, Exact, and ERPs flawlessly.",
+    "metaTitle": "Data Engineering for Commercial Growth",
+    "metaDescription": "Stop fighting fires. Tovy builds the automated foundations your commercial team needs to sync your systems flawlessly.",
     "title": "A data foundation that restores your freedom to grow",
     "subtitle": "Tovy builds intelligent data systems that turn chaos into clarity. We replace manual processes with seamless automation, giving you back total control to focus on growth.",
     "keywords": [
       "Data Engineering",
-      "Shopify Automation",
-      "Exact Online Integration",
+      "Business Automation",
+      "System Integration",
       "Data Architecture",
       "Process Automation",
-      "E-commerce Growth"
+      "Commercial Growth"
     ]
   },
   "painSolution": {
@@ -194,7 +194,7 @@
         "questions": [
           {
             "question": "What kind of problems does Tovy solve?",
-            "answer": "Tovy solves the chaos caused by manual data processes. A concrete example is the daily, error-prone task of transferring Shopify orders to Exact Online. We build a seamless, automatic connection that takes over this process entirely. This provides peace of mind and ensures data that is always accurate."
+            "answer": "Tovy solves the chaos caused by manual data processes. A concrete example is the daily, error-prone task of transferring orders between systems. We build a seamless, automatic connection that takes over this process entirely. This provides peace of mind and ensures data that is always accurate."
           },
           {
             "question": "How does Tovy's approach differ from a traditional IT partner?",
@@ -202,7 +202,7 @@
           },
           {
             "question": "For what type of company is Tovy most suitable?",
-            "answer": "Our approach is ideal for companies where data integrity is crucial. E-commerce and trading companies, for example, that depend on perfect synchronization between stock, sales, and finance. If the stress of inconsistent data is hampering your growth, we are the right partner."
+            "answer": "Our approach is ideal for companies where data integrity is crucial. Commercial and trading companies, for example, that depend on perfect synchronization between stock, sales, and finance. If the stress of inconsistent data is hampering your growth, we are the right partner."
           },
           {
             "question": "Why would I choose Tovy over a large data consulting firm?",
@@ -215,7 +215,7 @@
         "questions": [
           {
             "question": "What exactly do I get for the project starting price?",
-            "answer": "In 6 weeks, we deliver a concrete, working solution. For example: a fully configured data platform in Azure, an automated pipeline that synchronizes your sales data from Shopify to Exact Online, and a Power BI dashboard with your key KPIs. A complete foundation for control and insight."
+            "answer": "In 6 weeks, we deliver a concrete, working solution. For example: a fully configured data platform in Azure, an automated pipeline that synchronizes your sales data, and a Power BI dashboard with your key KPIs. A complete foundation for control and insight."
           },
           {
             "question": "How can I book an introductory meeting?",

@@ -16,13 +16,49 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
   const [progress, setProgress] = useState(0);
   const pathname = usePathname();
 
+  const shareIdeaText = dict?.common?.shareIdea || "Request an Assessment";
+  const blogText = dict?.navigation?.blog || "Knowledge Hub";
+  const aboutText = dict?.navigation?.about || "About us";
+  const servicesText = dict?.navigation?.services || "Services";
+  
+  // Super robust homepage detection across trailing slashes, static servers, and index.html fallbacks
+  const homePath = `/${lang}`;
+  const isAtHome = 
+    pathname === "/" ||
+    pathname === "/index.html" ||
+    pathname === homePath || 
+    pathname === `${homePath}/` || 
+    pathname === `${homePath}/index.html` || 
+    pathname === `${homePath}/index`;
+
+  // Determine if only the background bar of the header should be dissolved (hidden)
+  const shouldDissolve = isAtHome && !scrolled;
+
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      // Robust cross-browser scroll position check
+      const scrollTop = window.scrollY !== undefined 
+        ? window.scrollY 
+        : (window.pageYOffset !== undefined ? window.pageYOffset : document.documentElement.scrollTop);
       
+      // 10px scroll threshold registers immediate and sleek transitions
+      const isScrolled = scrollTop > 10;
+      setScrolled(isScrolled);
+      
+      // Synchronize iOS Safari status bar theme color behind clock and battery
+      let themeMeta = document.querySelector('meta[name="theme-color"]');
+      if (!themeMeta) {
+        themeMeta = document.createElement('meta');
+        themeMeta.setAttribute('name', 'theme-color');
+        document.head.appendChild(themeMeta);
+      }
+      
+      // Force iOS status bar to match your dark slate-blue background (#040815) in both states
+      // because mobile header is now permanently visible on mobile devices
+      themeMeta.setAttribute('content', '#040815');
+
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = document.documentElement.clientHeight;
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const windowHeight = scrollHeight - clientHeight;
       const scrollPercentage = windowHeight > 0 ? (scrollTop / windowHeight) * 100 : 0;
       setProgress(scrollPercentage);
@@ -31,15 +67,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  
-  const shareIdeaText = dict?.common.shareIdea || "Request an Assessment";
-  const blogText = dict?.navigation.blog || "Knowledge Hub";
-  const aboutText = dict?.navigation.about || "About us";
-  const servicesText = dict?.navigation.services || "Services";
-  
-  const homePath = `/${lang}/`;
-  const isAtHome = pathname === homePath;
+  }, [isAtHome]);
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (isAtHome) {
@@ -52,42 +80,42 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
     <header
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-500",
-        // Mobile: Traditional Header Style (Visible only on small screens)
-        "bg-gradient-to-b from-background via-background/90 to-background/60 backdrop-blur-xl border-b border-white/10 shadow-sm",
-        // Desktop: Absolute Clean Reset (Transparent parent)
-        "md:bg-none md:bg-transparent md:backdrop-blur-none md:border-none md:shadow-none",
-        // Layout Pacing
-        "pt-[max(1rem,env(safe-area-inset-top))] md:pt-[max(1.5rem,env(safe-area-inset-top))] md:py-6",
-        scrolled ? "translate-y-0" : "translate-y-0 md:translate-y-2"
+        // Clean transparent parent (letting backdrop layer handle the visual background)
+        "bg-transparent shadow-none border-none",
+        // Slimmer Mobile Header Pacing & Standard Desktop Padding
+        "pt-[max(0.5rem,env(safe-area-inset-top))] pb-1.5 md:pt-[max(1rem,env(safe-area-inset-top))] md:pb-3"
       )}
     >
+      {/* Cinematic Backdrop Blur & Gradient Layer (Only this layer dissolves/appears based on scroll) */}
       <div 
         className={cn(
-          "container mx-auto relative flex w-full items-center justify-between transition-all duration-500",
-          // Mobile Design (Full Width)
-          "h-16 px-4 sm:px-6 max-w-none md:max-w-7xl",
-          // Desktop Design (Floating Pill)
-          "md:h-14 md:w-[92%] md:px-10 md:rounded-full transform-gpu md:backface-visibility-hidden",
-          scrolled 
-            ? "md:bg-background/90 md:backdrop-blur-2xl md:border md:border-white/10 md:shadow-2xl" 
-            : "md:bg-transparent md:backdrop-blur-none md:border md:border-transparent md:shadow-none"
+          "absolute inset-0 z-0 transition-opacity duration-700 ease-out pointer-events-none",
+          "bg-gradient-to-b from-background via-background/90 to-background/60 backdrop-blur-xl border-b border-white/10 shadow-sm",
+          // Mobile: always visible (opacity-100)
+          // Desktop (md): dynamically controlled by shouldDissolve (opacity-0 at top, opacity-100 on scroll)
+          shouldDissolve ? "opacity-100 md:opacity-0" : "opacity-100 md:opacity-100"
         )}
-      >
-        {/* Sleek Bottom-only Progress Line */}
-        <div 
-          className="absolute bottom-0 left-0 right-0 md:left-6 md:right-6 h-[1.5px] overflow-hidden md:rounded-full transition-opacity duration-500"
-          style={{ 
-            opacity: progress > 0 ? 1 : 0,
-            maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)'
-          }}
-        >
-          <div 
-            className="h-full bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] transition-all duration-150 ease-out"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+      />
 
+      {/* Sleek Bottom-only Progress Line - Placed directly on the edge of the 100% full-width header parent */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-[1.5px] overflow-hidden transition-opacity duration-500 z-10"
+        style={{ 
+          opacity: progress > 0 ? 1 : 0,
+          maskImage: 'linear-gradient(to right, transparent, black 1%, black 99%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 1%, black 99%, transparent)'
+        }}
+      >
+        <div 
+          className="h-full bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] transition-all duration-150 ease-out"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+
+      {/* Content Container (Logo, Navigation, CTA, Language Switcher - ALWAYS visible & interactive) */}
+      <div 
+        className="container mx-auto relative flex w-full items-center justify-between h-11 md:h-14 px-4 sm:px-6 max-w-7xl z-10"
+      >
         <Link 
           href={homePath} 
           onClick={handleLogoClick}
@@ -123,14 +151,14 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
 
         <div className="flex items-center gap-2 md:gap-4 relative z-10">
           <Magnetic strength={0.1}>
-            <Button asChild size="sm" className="h-8 md:h-8 px-4 md:px-5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 border-none shadow-lg shadow-blue-500/20" onClick={() => sendGA4Event("cta_clicked", { location: "header", text: shareIdeaText })}>
+            <Button asChild size="sm" className="h-8 px-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 border-none shadow-lg shadow-blue-500/20" onClick={() => sendGA4Event("cta_clicked", { location: "header", text: shareIdeaText })}>
               <Link href={`/${lang}/project-request/`}>
                 <span className="font-bold text-[9px] uppercase tracking-widest">{shareIdeaText}</span>
               </Link>
             </Button>
           </Magnetic>
 
-          <div className="scale-90 md:scale-100 origin-right">
+          <div className="scale-90 origin-right">
             <LanguageSwitcher currentLang={lang} />
           </div>
         </div>

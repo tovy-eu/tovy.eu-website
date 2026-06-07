@@ -31,7 +31,7 @@
     "next": "Nächste",
     "priorExperience": "Bisherige Erfahrung",
     "linkedinProfile": "LinkedIn-Profil",
-    "platformStatus": "Plattformstatus: Operativ // v1.2.0-stable",
+    "platformStatus": "Plattformstatus: Operativ",
     "backToIntelligence": "Zurück zu Intelligence",
     "backToFoundation": "Zurück zum Fundament",
     "exploreIntelligence": "Intelligence erkunden",
@@ -53,17 +53,17 @@
     "connect": "Kontakt"
   },
   "hero": {
-    "metaTitle": "Data-Engineering für E-Commerce-Wachstum",
-    "metaDescription": "Hör auf, Brände zu löschen. Tovy baut die automatisierten Fundamente, die E-Commerce-Teams benötigen, um Shopify, Exact und ERP-Systeme fehlerfrei zu synchronisieren.",
+    "metaTitle": "Data-Engineering für kommerzielles Wachstum",
+    "metaDescription": "Hör auf, Brände zu löschen. Tovy baut die automatisierten Fundamente, die kommerziellen Teams benötigen, um ihre Systeme fehlerfrei zu synchronisieren.",
     "title": "Das Datenfundament, das dir deine unternehmerische Freiheit zurückgibt",
     "subtitle": "Tovy baut die intelligenten Datensysteme, die Chaos in Klarheit verwandeln. Wir ersetzen manuelle Prozesse durch nahtlose Automatisierung, damit du wieder die volle Kontrolle hast und dich auf Wachstum konzentrieren kannst.",
     "keywords": [
       "Data Engineering",
-      "Shopify Automatisierung",
-      "Exact Online Anbindung",
+      "Geschäftsautomatisierung",
+      "Systemintegration",
       "Datenarchitektur",
       "Prozessautomatisierung",
-      "E-Commerce-Wachstum"
+      "Kommerzielles Wachstum"
     ]
   },
   "painSolution": {
@@ -202,7 +202,7 @@
           },
           {
             "question": "Für welchen Unternehmenstyp ist Tovy am besten geeignet?",
-            "answer": "Unser Ansatz ist ideal für Unternehmen, in denen Datenintegrität entscheidend ist. E-Commerce- und Handelsunternehmen zum Beispiel, die von einer perfekten Synchronisation zwischen Bestand, Verkauf und Finanzen abhängig sind. Wenn der Stress durch inkonsistente Daten dein Wachstum hemmt, sind wir der richtige Partner."
+            "answer": "Unser Ansatz ist ideal für Unternehmen, in denen Datenintegrität entscheidend ist. Kommerzielle und Handelsunternehmen zum Beispiel, die von einer perfekten Synchronisation zwischen Bestand, Verkauf und Finanzen abhängig sind. Wenn der Stress durch inkonsistente Daten dein Wachstum hemmt, sind wir der richtige Partner."
           },
           {
             "question": "Warum sollte ich Tovy einem großen Datenberatungshaus vorziehen?",

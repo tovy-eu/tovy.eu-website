@@ -53,17 +53,15 @@
     "connect": "Contact"
   },
   "hero": {
-    "metaTitle": "Data-engineering voor e-commerce groei",
-    "metaDescription": "Stop met brandjes blussen. Tovy bouwt de geautomatiseerde fundamenten die e-commerce teams nodig hebben om Shopify, Exact en ERPs foutloos te synchroniseren.",
+    "metaTitle": "Data-engineering voor commerciële groei",
+    "metaDescription": "Stop met brandjes blussen. Tovy bouwt de geautomatiseerde fundamenten die commerciële teams nodig hebben om uw systems foutloos te synchroniseren.",
     "title": "De datafundering die je jouw vrijheid om te ondernemen teruggeeft",
     "subtitle": "Tovy bouwt de intelligente datasystemen die chaos omzetten in helderheid. Wij vervangen handmatige processen door naadloze automatisering, zodat je weer volledige controle krijgt en je kunt focussen op groei.",
     "keywords": [
       "Data Engineering",
-      "Shopify Automatisering",
-      "Exact Online Koppeling",
       "Data Architectuur",
       "Procesautomatisering",
-      "E-commerce Groei"
+      "Commerciële Groei"
     ]
   },
   "painSolution": {
@@ -194,7 +192,7 @@
         "questions": [
           {
             "question": "Wat voor problemen lost Tovy concreet op?",
-            "answer": "Tovy lost de chaos op die ontstaat door handmatige dataprocessen. Een concreet voorbeeld is de dagelijkse, foutgevoelige taak van het overzetten van Shopify-orders naar Exact Online. Wij bouwen een naadloze, automatische koppeling die dit proces volledig overneemt. Dit geeft rust en zorgt voor data die altijd klopt."
+            "answer": "Tovy lost de chaos op die ontstaat door handmatige dataprocessen. Een concreet voorbeeld is de dagelijkse, foutgevoelige taak van het overzetten van orders. Wij bouwen een naadloze, automatische koppeling die dit proces volledig overneemt. Dit geeft rust en zorgt voor data die altijd klopt."
           },
           {
             "question": "Hoe verschilt de werkwijze van Tovy van een traditionele IT-partner?",
@@ -202,7 +200,7 @@
           },
           {
             "question": "Voor welk type bedrijf is Tovy het meest geschikt?",
-            "answer": "Onze aanpak is ideaal voor bedrijven waar dataintegriteit cruciaal is. E-commerce- en handelsbedrijven, bijvoorbeeld, die afhankelijk zijn van een perfecte synchronisatie tussen voorraad, verkoop en financiën. Als de stress van inconsistente data jouw groei belemmert, zijn wij de juiste partner."
+            "answer": "Onze aanpak is ideaal voor bedrijven waar dataintegriteit cruciaal is. Commerciële en handelsbedrijven, bijvoorbeeld, die afhankelijk zijn van een perfecte synchronisatie tussen voorraad, verkoop en financiën. Als de stress van inconsistente data jouw groei belemmert, zijn wij de juiste partner."
           },
           {
             "question": "Waarom zou ik Tovy verkiezen boven een groot data-adviesbureau?",
@@ -215,7 +213,7 @@
         "questions": [
           {
             "question": "Wat krijg ik precies voor de startprijs van een project?",
-            "answer": "In 6 weken leveren we een concrete, werkende oplossing. Bijvoorbeeld: een volledig ingericht data-platform in Azure, een geautomatiseerde pipeline die je verkoopdata van Shopify naar Exact Online synchroniseert, en een Power BI-dashboard met je belangrijkste KPI's. Een compleet fundament voor controle en inzicht."
+            "answer": "In 6 weken leveren we een concrete, werkende oplossing. Bijvoorbeeld: een volledig ingericht data-platform in Azure, een geautomatiseerde pipeline die je verkoopdata van systeem A naar systeem B synchroniseert, en een Power BI-dashboard met je belangrijkste KPI's. Een compleet fundament voor controle en inzicht."
           },
           {
             "question": "Hoe kan ik een kennismaking boeken?",
