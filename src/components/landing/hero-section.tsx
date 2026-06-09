@@ -43,7 +43,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
 
   return (
     <section 
-      className="relative w-full flex flex-col items-center justify-between min-h-screen text-center overflow-hidden transform-gpu"
+      className="relative w-full flex flex-col items-center justify-center min-h-screen text-center overflow-hidden transform-gpu"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
@@ -70,12 +70,9 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
 
       <WavyLines />
       
-      {/* Spacer to push content down */}
-      <div className="flex-1 h-20 md:h-52" />
-
       <div
         className={cn(
-          'transition-all ease-in-out duration-1000 delay-300 z-10 max-w-[90rem] flex flex-col items-center justify-center flex-grow px-6 md:px-12 transform-gpu',
+          'transition-all ease-in-out duration-1000 delay-300 z-10 max-w-[90rem] flex flex-col items-center justify-center px-6 md:px-12 pt-20 pb-8 md:pt-24 md:pb-12 transform-gpu',
           isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         )}
         style={{ backfaceVisibility: 'hidden' }}
@@ -87,18 +84,18 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         )}
 
         <h1 
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7.5rem] leading-[1] md:leading-[0.95] tracking-[-0.02em] md:tracking-[-0.04em] relative mb-6 md:mb-10 text-white"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem] 2xl:text-[6rem] leading-[1.05] md:leading-[1] tracking-[-0.03em] relative mb-4 md:mb-6 text-white"
           style={{ textShadow: '0 0 40px rgba(255, 255, 255, 0.1)' }}
         >
           {dict.hero.title}
         </h1>
         
-        <p className="text-sm md:text-lg lg:text-xl leading-relaxed text-white/70 max-w-xs md:max-w-3xl mx-auto font-medium balance px-4 mb-10 md:mb-16">
+        <p className="text-sm md:text-base lg:text-lg leading-relaxed text-white/70 max-w-xs md:max-w-3xl mx-auto font-medium balance px-4 mb-6 md:mb-8">
           {dict.hero.subtitle}
         </p>
 
         {/* Logos moved between subtitle and CTA */}
-        <div className="w-full mb-10 md:mb-16 transform-gpu">
+        <div className="w-full mb-6 md:mb-8 transform-gpu">
           <TrustedBySection className="py-0" dict={dict} />
         </div>
 
