@@ -1,4 +1,28 @@
 {
+  "metadata": {
+    "template": "%s | Tovy",
+    "defaultTitle": "Ingeniería de datos y automatización de procesos | Tovy",
+    "ogAlt": "Tovy Ingeniería de datos y automatización",
+    "twitterTitle": "Ingeniería de datos y automatización de procesos | Tovy"
+  },
+  "redirects": {
+    "title": "Tovy | Ingeniería de datos y automatización",
+    "description": "Sistemas de datos inteligentes que convierten el caos en claridad.",
+    "projectRequestTitle": "Tovy | Solicitud de proyecto y evaluación"
+  },
+  "solutions": {
+    "badge": "Soluciones Entregadas",
+    "title": "Con la confianza de nuestros clientes.",
+    "viewSolution": "Ver Solución",
+    "items": [
+      {
+        "title": "Kenexis: Automatización de Anamnesis",
+        "description": "SaaS en la nube que elimina la carga administrativa de los terapeutas en el sector sanitario.",
+        "link": "#",
+        "imageId": "kenexis"
+      }
+    ]
+  },
   "common": {
     "workWithUs": "Solicitar escáner empresarial",
     "readBlog": "Descubre el centro de conocimiento",
@@ -53,17 +77,16 @@
     "connect": "Contacto"
   },
   "hero": {
-    "metaTitle": "Ingeniería de datos para el crecimiento comercial",
-    "metaDescription": "Deje de apagar fuegos. Tovy construye las bases automatizadas que los equipos comerciales necesitan para sincronizar sus sistemas sin errores.",
-    "title": "La base de datos que te devuelve la libertad de emprender",
-    "subtitle": "Tovy construye sistemas de datos inteligentes que transforman el caos en claridad. Sustituimos los procesos manuales por una automatización fluida, para que recuperes el control total y puedas centrarte en el crecimiento.",
+    "badge": "Integración & Ingeniería de Datos",
+    "metaTitle": "Integración de sistemas y automatización de procesos | Tovy",
+    "metaDescription": "Elimine la entrada manual de datos. Tovy construye canalizaciones de datos fiables para sincronizar sus sistemas sin errores ni complicaciones.",
+    "title": "Integraciones que te devuelven la paz y el control operativo.",
+    "subtitle": "Tovy sustituye la introducción manual de datos y las hojas de cálculo propensas a errores por una automatización fluida. Deja de apagar fuegos, céntrate en crecer.",
     "keywords": [
       "Ingeniería de datos",
-      "Automatización de negocios",
       "Integración de sistemas",
-      "Arquitectura de datos",
       "Automatización de procesos",
-      "Crecimiento comercial"
+      "Automatización de negocios"
     ]
   },
   "painSolution": {
@@ -163,12 +186,26 @@
   },
   "testimonials": {
     "title": "Con la confianza de equipos centrados en el crecimiento",
-    "subtitle": "Descubre cómo Tovy restaura la calma operativa y permite un crecimiento escalable."
+    "subtitle": "Descubre cómo Tovy restaura la calma operativa y permite un crecimiento escalable.",
+    "items": [
+      {
+        "quote": "Tovy transformó nuestro caos de datos en una tubería clara y automatizada. Su experiencia en IA es insuperable.",
+        "author": "Sarah Jenkins",
+        "role": "CTO en TechFlow",
+        "logoId": "techflow-logo"
+      },
+      {
+        "quote": "La velocidad y confiabilidad de los sistemas que Tovy construyó para nosotros permitieron que nuestro equipo se concentrara en el crecimiento en lugar del mantenimiento.",
+        "author": "Mark van den Berg",
+        "role": "Fundador de BrightScale",
+        "logoId": "brightscale-logo"
+      }
+    ]
   },
   "blog": {
     "badge": "Centro de conocimiento",
-    "metaTitle": "Perspectivas de estrategia e ingeniería de datos",
-    "metaDescription": "Artículos técnicos profundos sobre arquitectura de datos, automatización e integración de sistemas. Aprende a construir una base sin mantenimiento.",
+    "metaTitle": "Centro de conocimiento: estrategia de datos | Tovy",
+    "metaDescription": "Artículos técnicos sobre arquitectura de datos, integración de API y automatización. Construya una base sólida y sin mantenimiento.",
     "title": "Centro de conocimiento: Estrategia y perspectivas de datos",
     "subtitle": "Recursos técnicos y perspectivas que aportan claridad a materias complejas.",
     "noPosts": "No se encontraron recursos en el centro de conocimiento. ¡Vuelve más tarde!",
@@ -286,8 +323,8 @@
       }
     ],
     "effectiveDate": "Esta política está vigente desde el 30 de julio de 2024.",
-    "metaTitle": "Política de privacidad",
-    "metaDescription": "Tovy respeta tu privacidad. Lee nuestra política de privacidad conforme al RGPD sobre la recopilación de datos y el seguimiento en el lado del servidor.",
+    "metaTitle": "Política de privacidad y cumplimiento RGPD | Tovy",
+    "metaDescription": "Tovy respeta su privacidad. Lea nuestra declaración de privacidad conforme al RGPD sobre la recogida y el uso seguro de datos del sitio.",
     "keywords": [
       "Política de privacidad Tovy",
       "RGPD",
@@ -317,8 +354,8 @@
     "disclaimerSubtitle": "Responsabilidad por el contenido.",
     "disclaimerContent": "El contenido de estas páginas ha sido elaborado con gran cuidado. Sin embargo, Tovy no puede garantizar su exactitud, integridad y actualidad. Según las disposiciones legales, Tovy es responsable del contenido propio en estas páginas web. Tovy no está obligado a controlar activamente la información proporcionada por terceros sobre actividades ilegales.",
     "nederland": "Países Bajos",
-    "metaTitle": "Aviso legal",
-    "metaDescription": "Datos oficiales de la empresa, registro KVK e información legal de Tovy Data Engineering.",
+    "metaTitle": "Información legal y datos de la empresa | Tovy",
+    "metaDescription": "Datos oficiales de la empresa, número de registro KvK y detalles de contacto de Tovy Data Engineering en los Países Bajos.",
     "keywords": [
       "Aviso legal Tovy",
       "Datos de la empresa",
@@ -336,8 +373,8 @@
       "budget": "presupuesto",
       "contactDetails": "datos de contacto"
     },
-    "metaTitle": "Solicitar una evaluación de arquitectura de datos",
-    "metaDescription": "¿Listo para la automatización? Completa la admisión técnica de 7 pasos para una evaluación de arquitectura directa por un ingeniero de datos senior. Sin gestores de cuenta, solo código que funciona.",
+    "metaTitle": "Solicitar evaluación de arquitectura de datos | Tovy",
+    "metaDescription": "¿Listo para automatizar? Complete nuestra admisión técnica de 7 pasos para una evaluación directa de un ingeniero de datos senior.",
     "title": "Evaluación de arquitectura de datos",
     "subtitle": "Comparte los requisitos de tu proyecto con Tovy para construir sistemas de datos escalables.",
     "intro": {

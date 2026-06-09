@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import en from '@/dictionaries/en.json';
 
 export const metadata: Metadata = {
-  title: 'Tovy | Data Engineering',
-  description: 'Intelligent data systems that turn chaos into clarity.',
+  title: en.redirects.title,
+  description: en.redirects.description,
   robots: {
     index: false,
     follow: true,

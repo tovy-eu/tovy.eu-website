@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -12,18 +11,12 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
+import type { Dictionary } from "@/lib/get-dictionary";
 
-const solutions = [
-  {
-    title: "Kenexis: Anamnesis Automation",
-    description: "Cloud SaaS which eliminates the administrational burden of therapists in healthcare.",
-    link: "#",
-    imageId: "kenexis"
-  }
-];
+export function SolutionsShowcase({ dict }: { dict: Dictionary }) {
+  const solutions = dict.solutions?.items || [];
 
-export function SolutionsShowcase() {
   return (
     <section 
       className="w-full py-16 sm:py-24"
@@ -33,10 +26,10 @@ export function SolutionsShowcase() {
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
-              Delivered Solutions
+              {dict.solutions?.badge}
             </h2>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              Trusted by our customers.
+              {dict.solutions?.title}
             </h2>
           </div>
         </ScrollReveal>
@@ -50,7 +43,7 @@ export function SolutionsShowcase() {
               className="w-full max-w-sm md:max-w-md lg:max-w-lg"
             >
               <CarouselContent>
-                {solutions.map((solution) => (
+                {solutions.map((solution: { title: string; description: string; link: string }) => (
                     <CarouselItem key={solution.title}>
                       <div className="p-1">
                         <Card className="flex flex-col h-full">
@@ -63,7 +56,7 @@ export function SolutionsShowcase() {
                           <CardFooter>
                             <Button asChild variant="link" className="p-0 h-auto">
                               <Link href={solution.link}>
-                                View Solution <ArrowRight className="ml-2 h-4 w-4" />
+                                {dict.solutions?.viewSolution} <ArrowRight className="ml-2 h-4 w-4" />
                               </Link>
                             </Button>
                           </CardFooter>

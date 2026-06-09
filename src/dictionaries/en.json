@@ -1,4 +1,28 @@
 {
+  "metadata": {
+    "template": "%s | Tovy",
+    "defaultTitle": "Data Engineering & Process Automation | Tovy",
+    "ogAlt": "Tovy Data Engineering & Automation",
+    "twitterTitle": "Data Engineering & Process Automation | Tovy"
+  },
+  "redirects": {
+    "title": "Tovy | Data Engineering & Automation",
+    "description": "Intelligent data systems that turn chaos into clarity.",
+    "projectRequestTitle": "Tovy | Project Request & Assessment"
+  },
+  "solutions": {
+    "badge": "Delivered Solutions",
+    "title": "Trusted by our customers.",
+    "viewSolution": "View Solution",
+    "items": [
+      {
+        "title": "Kenexis: Anamnesis Automation",
+        "description": "Cloud SaaS which eliminates the administrational burden of therapists in healthcare.",
+        "link": "#",
+        "imageId": "kenexis"
+      }
+    ]
+  },
   "common": {
     "workWithUs": "Request an Assessment",
     "readBlog": "Explore the Knowledge Hub",
@@ -53,17 +77,16 @@
     "connect": "Connect"
   },
   "hero": {
-    "metaTitle": "Data Engineering for Commercial Growth",
-    "metaDescription": "Stop fighting fires. Tovy builds the automated foundations your commercial team needs to sync your systems flawlessly.",
-    "title": "A data foundation that restores your freedom to grow",
-    "subtitle": "Tovy builds intelligent data systems that turn chaos into clarity. We replace manual processes with seamless automation, giving you back total control to focus on growth.",
+    "badge": "Business Automation & Data Engineering",
+    "metaTitle": "System Integrations & Process Automation | Tovy",
+    "metaDescription": "Eliminate manual entry and fight no more fires. Tovy builds custom, high-reliability automated pipelines to sync your systems flawlessly and restore control.",
+    "title": "Integrations that restore peace and operational control.",
+    "subtitle": "Tovy replaces manual data entry and error-prone spreadsheets with seamless automation. Stop fighting fires, focus on growth.",
     "keywords": [
       "Data Engineering",
-      "Business Automation",
-      "System Integration",
-      "Data Architecture",
+      "System Integrations",
       "Process Automation",
-      "Commercial Growth"
+      "Business Automation"
     ]
   },
   "painSolution": {
@@ -163,12 +186,26 @@
   },
   "testimonials": {
     "title": "Trusted by teams focused on growth",
-    "subtitle": "Discover how Tovy restores operational peace and enables scalable growth."
+    "subtitle": "Discover how Tovy restores operational peace and enables scalable growth.",
+    "items": [
+      {
+        "quote": "Tovy transformed our data chaos into a clear, automated pipeline. Their AI expertise is second to none.",
+        "author": "Sarah Jenkins",
+        "role": "CTO at TechFlow",
+        "logoId": "techflow-logo"
+      },
+      {
+        "quote": "The speed and reliability of the systems Tovy built for us allowed our team to focus on growth instead of maintenance.",
+        "author": "Mark van den Berg",
+        "role": "Founder of BrightScale",
+        "logoId": "brightscale-logo"
+      }
+    ]
   },
   "blog": {
     "badge": "Knowledge Hub",
-    "metaTitle": "Data Strategy & Engineering Insights",
-    "metaDescription": "In-depth technical articles on data architecture, automation, and system integration. Learn how to build a maintenance-free foundation.",
+    "metaTitle": "Data Strategy, Architecture & Automation Insights | Tovy",
+    "metaDescription": "In-depth technical guides on data warehousing, API integrations, and process automation. Learn how to build a resilient, maintenance-free data foundation.",
     "title": "Knowledge Hub: Data Strategy & Insights",
     "subtitle": "Technical resources and insights that bring clarity to complex matters.",
     "noPosts": "No resources found in the Knowledge Hub. Please check back later!",
@@ -286,8 +323,8 @@
       }
     ],
     "effectiveDate": "This policy has been in effect since July 30, 2024.",
-    "metaTitle": "Privacy Policy",
-    "metaDescription": "Tovy respects your privacy. Read our GDPR-compliant privacy policy regarding data collection and server-side tracking.",
+    "metaTitle": "Privacy Policy & GDPR Compliance | Tovy",
+    "metaDescription": "Tovy is committed to security and data privacy. Read our GDPR-compliant privacy statement regarding site tracking and data collection.",
     "keywords": [
       "Tovy Privacy Policy",
       "GDPR",
@@ -317,8 +354,8 @@
     "disclaimerSubtitle": "Responsibility for content.",
     "disclaimerContent": "The content of these pages has been compiled with great care. However, Tovy cannot guarantee its accuracy, completeness, or timeliness. According to legal provisions, Tovy is responsible for its own content on these web pages. Tovy is not obliged to actively monitor third-party information for illegal activities.",
     "nederland": "Netherlands",
-    "metaTitle": "Legal Information",
-    "metaDescription": "Official company details, KvK registration, and legal information for Tovy Data Engineering.",
+    "metaTitle": "Legal Information & Company Details | Tovy",
+    "metaDescription": "Official company details, commercial registry KvK number, and contact information for Tovy Data Engineering in the Netherlands.",
     "keywords": [
       "Tovy Legal Information",
       "Company Details",
@@ -336,8 +373,8 @@
       "budget": "budget",
       "contactDetails": "contact details"
     },
-    "metaTitle": "Request a Data Architecture Assessment",
-    "metaDescription": "Ready for automation? Complete the 7-step technical intake for a direct architecture assessment by a senior data engineer. No account managers, just working code.",
+    "metaTitle": "Request a Data Architecture Assessment | Tovy",
+    "metaDescription": "Ready to automate? Complete our 7-step technical intake for a direct architecture assessment from a senior data engineer. Zero fluff, just code.",
     "title": "Data Architecture Assessment",
     "subtitle": "Share your project requirements with Tovy to build scalable data systems.",
     "intro": {

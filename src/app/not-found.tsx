@@ -7,57 +7,36 @@ import { Button } from '@/components/ui/button';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { Home, FileText } from 'lucide-react';
 
+import en from '@/dictionaries/en.json';
+import nl from '@/dictionaries/nl.json';
+import de from '@/dictionaries/de.json';
+import es from '@/dictionaries/es.json';
+
 export default function NotFound() {
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
 
-  const translations: Record<string, {
-    badge: string;
-    titlePart1: string;
-    titlePart2: string;
-    description: string;
-    returnHome: string;
-    startProject: string;
+  const translations: Record<string, typeof en.notFound & {
     homePath: string;
     projectPath: string;
   }> = {
     en: {
-      badge: "Error 404",
-      titlePart1: "Lost in the",
-      titlePart2: "Data Silos?",
-      description: "The page you are looking for has been moved, deleted, or never existed. Let's get you back to the foundation.",
-      returnHome: "Return Home",
-      startProject: "Start a Project",
+      ...en.notFound,
       homePath: "/en/",
       projectPath: "/en/project-request/"
     },
     nl: {
-      badge: "Fout 404",
-      titlePart1: "Verdwaald in de",
-      titlePart2: "Data Silo's?",
-      description: "De pagina die je zoekt is verplaatst, verwijderd of heeft nooit bestaan. Laten we je terugbrengen naar de basis.",
-      returnHome: "Terug naar Home",
-      startProject: "Project Starten",
+      ...nl.notFound,
       homePath: "/nl/",
       projectPath: "/nl/project-request/"
     },
     de: {
-      badge: "Fehler 404",
-      titlePart1: "Verloren in den",
-      titlePart2: "Datensilos?",
-      description: "Die von Ihnen besuchte Seite wurde verschoben, gelöscht oder hat nie existiert. Tovy zeigt Ihnen gerne den Weg zurück.",
-      returnHome: "Zurück zur Startseite",
-      startProject: "Projekt starten",
+      ...de.notFound,
       homePath: "/de/",
       projectPath: "/de/project-request/"
     },
     es: {
-      badge: "Error 404",
-      titlePart1: "¿Perdido en los",
-      titlePart2: "Silos de Datos?",
-      description: "La página que ha visitado ha sido trasladada, eliminada o nunca ha existido. Tovy estará encantado de mostrarle el camino de vuelta.",
-      returnHome: "Volver al inicio",
-      startProject: "Iniciar un proyecto",
+      ...es.notFound,
       homePath: "/es/",
       projectPath: "/es/project-request/"
     }

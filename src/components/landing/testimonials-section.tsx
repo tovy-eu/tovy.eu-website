@@ -19,7 +19,6 @@ import {
 import { Magnetic } from "@/components/ui/magnetic";
 import type { Dictionary } from "@/lib/get-dictionary";
 import placeholderImages from "@/app/lib/placeholder-images.json";
-import testimonialsData from '@/content/testimonials-template/data.json';
 import { WavyLines } from './wavy-lines';
 import { SectionHeader } from './section-header';
 
@@ -31,9 +30,11 @@ import { SectionHeader } from './section-header';
 export function TestimonialsSection({ dict }: { dict: Dictionary }) {
   const pathname = usePathname();
   const lang = pathname?.split('/')?.[1] ?? 'en';
+  
+  const testimonialsItems = dict.testimonials.items || [];
 
   // If no data is found, the section is not rendered
-  if (!testimonialsData || testimonialsData.length === 0) {
+  if (testimonialsItems.length === 0) {
     return null;
   }
 
@@ -73,7 +74,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
           className="w-full"
         >
           <CarouselContent className="-ml-4">
-            {testimonialsData.map((testimonial, index) => {
+            {testimonialsItems.map((testimonial: { quote: string; author: string; role: string; logoId: string }, index: number) => {
               const logoData = placeholderImages.testimonials.find(img => img.id === testimonial.logoId);
               return (
                 <CarouselItem key={`${testimonial.author}-${index}`} className="pl-4 basis-3/4 md:basis-1/2 lg:basis-1/3">

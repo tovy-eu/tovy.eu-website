@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
+import en from '@/dictionaries/en.json';
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -7,8 +8,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  title: 'Tovy | Data Engineering',
-  description: 'Intelligent data systems that turn chaos into clarity.',
+  title: en.redirects.title,
+  description: en.redirects.description,
   robots: {
     index: false,
     follow: true,

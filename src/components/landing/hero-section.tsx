@@ -80,6 +80,12 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         )}
         style={{ backfaceVisibility: 'hidden' }}
       >
+        {dict.hero.badge && (
+          <p className="text-[11px] md:text-[12px] font-black leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-4 md:mb-6 select-none">
+            {dict.hero.badge}
+          </p>
+        )}
+
         <h1 
           className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7.5rem] leading-[1] md:leading-[0.95] tracking-[-0.02em] md:tracking-[-0.04em] relative mb-6 md:mb-10 text-white"
           style={{ textShadow: '0 0 40px rgba(255, 255, 255, 0.1)' }}

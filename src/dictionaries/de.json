@@ -1,4 +1,28 @@
 {
+  "metadata": {
+    "template": "%s | Tovy",
+    "defaultTitle": "Data-Engineering & Prozessautomatisierung | Tovy",
+    "ogAlt": "Tovy Data-Engineering & Automatisierung",
+    "twitterTitle": "Data-Engineering & Prozessautomatisierung | Tovy"
+  },
+  "redirects": {
+    "title": "Tovy | Data-Engineering & Automatisierung",
+    "description": "Intelligente Datensysteme, die Chaos in Klarheit verwandeln.",
+    "projectRequestTitle": "Tovy | Projektanfrage & Analyse"
+  },
+  "solutions": {
+    "badge": "Gelieferte Lösungen",
+    "title": "Vertraut von unseren Kunden.",
+    "viewSolution": "Lösung anzeigen",
+    "items": [
+      {
+        "title": "Kenexis: Anamnese-Automatisierung",
+        "description": "Cloud SaaS, die den administrativen Aufwand von Therapeuten im Gesundheitswesen eliminiert.",
+        "link": "#",
+        "imageId": "kenexis"
+      }
+    ]
+  },
   "common": {
     "workWithUs": "Unternehmensanalyse anfragen",
     "readBlog": "Knowledge-Hub entdecken",
@@ -53,17 +77,16 @@
     "connect": "Kontakt"
   },
   "hero": {
-    "metaTitle": "Data-Engineering für kommerzielles Wachstum",
-    "metaDescription": "Hör auf, Brände zu löschen. Tovy baut die automatisierten Fundamente, die kommerziellen Teams benötigen, um ihre Systeme fehlerfrei zu synchronisieren.",
-    "title": "Das Datenfundament, das dir deine unternehmerische Freiheit zurückgibt",
-    "subtitle": "Tovy baut die intelligenten Datensysteme, die Chaos in Klarheit verwandeln. Wir ersetzen manuelle Prozesse durch nahtlose Automatisierung, damit du wieder die volle Kontrolle hast und dich auf Wachstum konzentrieren kannst.",
+    "badge": "Systemintegrationen & Automatisierung",
+    "metaTitle": "Systemintegrationen & Prozessautomatisierung | Tovy",
+    "metaDescription": "Keine manuelle Dateneingabe mehr. Tovy baut zuverlässige Datenpipelines zur fehlerfreien Synchronisierung Ihrer Systeme für volle Kontrolle.",
+    "title": "Systemintegrationen, die Ihnen Ruhe und Kontrolle zurückgeben.",
+    "subtitle": "Tovy ersetzt manuelle Dateneingaben und fehleranfällige Excel-Tabellen durch nahtlose Automatisierung. Schluss mit Brandlöschung, Fokus auf Wachstum.",
     "keywords": [
       "Data Engineering",
-      "Geschäftsautomatisierung",
       "Systemintegration",
-      "Datenarchitektur",
       "Prozessautomatisierung",
-      "Kommerzielles Wachstum"
+      "Geschäftsautomatisierung"
     ]
   },
   "painSolution": {
@@ -163,12 +186,26 @@
   },
   "testimonials": {
     "title": "Geschätzt von Teams, die auf Wachstum fokussiert sind",
-    "subtitle": "Entdecke, wie Tovy operationelle Ruhe wiederherstellt und skalierbares Wachstum ermöglicht."
+    "subtitle": "Entdecke, wie Tovy operationelle Ruhe wiederherstellt und skalierbares Wachstum ermöglicht.",
+    "items": [
+      {
+        "quote": "Tovy hat unser Datenchaos in eine klare, automatisierte Pipeline verwandelt. Ihre KI-Expertise ist unübertroffen.",
+        "author": "Sarah Jenkins",
+        "role": "CTO bei TechFlow",
+        "logoId": "techflow-logo"
+      },
+      {
+        "quote": "Die Geschwindigkeit und Zuverlässigkeit der Systeme, die Tovy für uns gebaut hat, ermöglichten es unserem Team, sich auf das Wachstum anstatt auf die Wartung zu konzentrieren.",
+        "author": "Mark van den Berg",
+        "role": "Gründer von BrightScale",
+        "logoId": "brightscale-logo"
+      }
+    ]
   },
   "blog": {
     "badge": "Knowledge-Hub",
-    "metaTitle": "Datenstrategie & Engineering Einblicke",
-    "metaDescription": "Tiefgehende technische Artikel über Datenarchitektur, Automatisierung und Systemintegration. Lerne, wie man ein wartungsfreies Fundament baut.",
+    "metaTitle": "Knowledge-Hub: Datenstrategie & Automatisierung | Tovy",
+    "metaDescription": "Technische Artikel über Datenarchitektur, Systemkopplungen und Workflow-Automatisierung. Bauen Sie ein wartungsfreies Fundament für Wachstum.",
     "title": "Knowledge-Hub: Datenstrategie & Einblicke",
     "subtitle": "Technische Ressourcen und Einblicke, die Klarheit in komplexe Materie bringen.",
     "noPosts": "Keine Ressourcen im Knowledge-Hub gefunden. Schau später nochmal vorbei!",
@@ -286,8 +323,8 @@
       }
     ],
     "effectiveDate": "Diese Richtlinie ist seit dem 30. Juli 2024 in Kraft.",
-    "metaTitle": "Datenschutzerklärung",
-    "metaDescription": "Tovy respektiert deine Privatsphäre. Lies unsere DSGVO-konforme Datenschutzerklärung in Bezug auf Datenerhebung und Server-Side Tracking.",
+    "metaTitle": "Datenschutzerklärung & DSGVO-Konformität | Tovy",
+    "metaDescription": "Sicherheit und Datenschutz stehen an erster Stelle. Lesen Sie unsere DSGVO-konforme Datenschutzerklärung zur Erfassung von Webdaten.",
     "keywords": [
       "Tovy Datenschutzerklärung",
       "DSGVO",
@@ -317,8 +354,8 @@
     "disclaimerSubtitle": "Verantwortlichkeit für den Inhalt.",
     "disclaimerContent": "Der Inhalt dieser Seiten wurde mit größter Sorgfalt erstellt. Tovy kann jedoch keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität übernehmen. Gemäß gesetzlichen Bestimmungen ist Tovy für eigene Inhalte auf diesen Webseiten verantwortlich. Tovy ist nicht verpflichtet, von Dritten übermittelte Informationen aktiv auf illegale Aktivitäten zu prüfen.",
     "nederland": "Niederlande",
-    "metaTitle": "Rechtliche Hinweise",
-    "metaDescription": "Offizielle Unternehmensdaten, KvK-Registrierung und rechtliche Informationen für Tovy Data Engineering.",
+    "metaTitle": "Rechtliche Hinweise & Unternehmensdaten | Tovy",
+    "metaDescription": "Offizielle Unternehmensdaten, KvK-Handelsregisternummer und rechtliche Hinweise von Tovy Data Engineering in den Niederlanden.",
     "keywords": [
       "Tovy Rechtliche Hinweise",
       "Unternehmensdaten",
@@ -336,8 +373,8 @@
       "budget": "Budget",
       "contactDetails": "Kontaktdaten"
     },
-    "metaTitle": "Datenarchitektur-Assessment anfragen",
-    "metaDescription": "Bereit zur Automatisierung? Fülle die 7-stufige technische Aufnahme für ein direktes Architektur-Assessment durch einen Senior Data Engineer aus. Keine Account-Manager, nur funktionierender Code.",
+    "metaTitle": "Datenarchitektur-Assessment anfragen | Tovy",
+    "metaDescription": "Bereit zur Automatisierung? Füllen Sie unsere 7-stufige technische Aufnahme für eine direkte Analyse durch einen Senior Data Engineer aus.",
     "title": "Datenarchitektur-Assessment",
     "subtitle": "Teile deine Projektanforderungen mit Tovy, um skalierbare Datensysteme zu bauen.",
     "intro": {

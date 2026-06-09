@@ -17,32 +17,43 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false;
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://tovy.eu"),
-  title: {
-    template: "%s | Tovy",
-    default: "Data Engineering for E-commerce Growth | Tovy",
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    alternateLocale: "nl_NL",
-    siteName: "Tovy",
-    images: [
-      {
-        url: "https://tovy.eu/images/tovy-og-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "Tovy Data Engineering",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Data Engineering for E-commerce Growth | Tovy",
-    images: ["https://tovy.eu/images/tovy-og-image.webp"],
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang: rawLang } = await params;
+  const lang = i18n.locales.includes(rawLang as typeof i18n.locales[number]) 
+    ? (rawLang as typeof i18n.locales[number]) 
+    : i18n.defaultLocale;
+  const dict = await getDictionary(lang);
+
+  return {
+    metadataBase: new URL("https://tovy.eu"),
+    title: {
+      template: dict.metadata.template,
+      default: dict.metadata.defaultTitle,
+    },
+    openGraph: {
+      type: "website",
+      locale: lang === 'en' ? 'en_US' : `${lang}_${lang.toUpperCase()}`,
+      siteName: "Tovy",
+      images: [
+        {
+          url: "https://tovy.eu/images/tovy-og-image.webp",
+          width: 1200,
+          height: 630,
+          alt: dict.metadata.ogAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.metadata.twitterTitle || dict.metadata.defaultTitle,
+      images: ["https://tovy.eu/images/tovy-og-image.webp"],
+    },
+  };
+}
 
 export default async function LocalizedLayout({
   children,
