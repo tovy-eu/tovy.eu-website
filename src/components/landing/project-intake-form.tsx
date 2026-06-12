@@ -223,16 +223,24 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         const visitorId = getVisitorId();
         const traceId = getTraceId();
         
-        const docRef = doc(db, "project_requests", formDocId!);
-        await setDoc(docRef, {
+        const baseData = {
           ...data,
           timestamp: new Date(),
           lead_score: score,
           routing_path: path,
           visitor_id: visitorId,
           trace_id: traceId,
-          status: "complete",
-        }, { merge: true });
+        };
+
+        // If saveProgress never created the in-progress doc, create it as
+        // "incomplete" first (the create rule requires that), then complete it.
+        let docId = formDocId;
+        if (!docId) {
+          const created = await addDoc(collection(db, "project_requests"), { ...baseData, status: "incomplete" });
+          docId = created.id;
+          setFormDocId(docId);
+        }
+        await setDoc(doc(db, "project_requests", docId), { ...baseData, status: "complete" }, { merge: true });
 
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
@@ -245,9 +253,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         setSubmittedValues(data);
         setFormSubmitted(true);
       } catch (error: unknown) {
+        console.error("Project request submission failed", error);
         const errorMessage = error instanceof Error ? error.message : String(error);
         toast({
-          title: dict?.common.submissionFailed || "Submission Failed",
+          title: dict?.global?.common?.submissionFailed || "Submission Failed",
           description: errorMessage || "There was an error submitting your request.",
           variant: "destructive",
         });

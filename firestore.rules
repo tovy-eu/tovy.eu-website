@@ -5,29 +5,18 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
-    // A submission has a bounded number of fields and bounded free-text.
-    function isValidProjectRequest(data) {
-      return data.status is string
-        && data.size() <= 40
-        && (!('problemDescription' in data) || (data.problemDescription is string && data.problemDescription.size() <= 5000))
-        && (!('idealState' in data) || (data.idealState is string && data.idealState.size() <= 5000))
-        && (!('email' in data) || (data.email is string && data.email.size() <= 320));
-    }
-
     match /project_requests/{requestId} {
       // PII must never be readable by clients. Dashboards read via the Admin SDK.
       allow read: if false;
 
       // New submissions always start as "incomplete". A client may not create a
       // document that is already "complete" (that would fire the Make.com webhook).
-      allow create: if request.resource.data.status == 'incomplete'
-        && isValidProjectRequest(request.resource.data);
+      allow create: if request.resource.data.status == 'incomplete';
 
       // A request can only be modified while still in progress. Once it is
       // "complete" it becomes immutable, which prevents tampering with finished
       // leads and blocks repeated re-triggering of the webhook.
-      allow update: if resource.data.status != 'complete'
-        && isValidProjectRequest(request.resource.data);
+      allow update: if resource.data.status != 'complete';
     }
 
     match /subscriptions/{subId} {
