@@ -117,6 +117,35 @@ export const metrics = onRequest(
   withNoIndex(metricsHandler)
 );
 
+// Only these fields are ever forwarded to the downstream Make.com automation.
+// Anything else a client manages to write to the document is dropped here so it
+// cannot be injected into CRM/email flows.
+const WEBHOOK_ALLOWED_FIELDS = [
+  "email", "companySize", "hasProblem", "problemDescription", "idealState",
+  "hasDataTeam", "hasCentralDatabase", "hasCloudPlatform", "solutionsInUse",
+  "timeline", "budget", "firstName", "lastName", "company", "phone", "consent",
+  "lead_score", "routing_path", "visitor_id", "trace_id", "status",
+] as const;
+
+const MAX_WEBHOOK_STRING_LENGTH = 5000;
+
+const sanitizeWebhookValue = (value: unknown): unknown => {
+  if (typeof value === "string") return value.slice(0, MAX_WEBHOOK_STRING_LENGTH);
+  if (Array.isArray(value)) return value.slice(0, 50).map(sanitizeWebhookValue);
+  return value;
+};
+
+const buildWebhookPayload = (docId: string, data: Record<string, unknown>) => {
+  const payload: Record<string, unknown> = {
+    id: docId,
+    triggered_at: new Date().toISOString(),
+  };
+  for (const key of WEBHOOK_ALLOWED_FIELDS) {
+    if (key in data) payload[key] = sanitizeWebhookValue(data[key]);
+  }
+  return payload;
+};
+
 /**
  * Triggered when a project request document is updated.
  * Sends the data to a Make.com webhook when the status changes to 'complete'.
@@ -140,11 +169,7 @@ export const onProjectRequestUpdate = onDocumentUpdated("project_requests/{docId
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          id: event.params.docId,
-          ...newValue,
-          triggered_at: new Date().toISOString(),
-        }),
+        body: JSON.stringify(buildWebhookPayload(event.params.docId, newValue)),
       });
 
       if (!response.ok) {

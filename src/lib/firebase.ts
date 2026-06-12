@@ -2,6 +2,7 @@
 import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
 import { getAuth, Auth } from "firebase/auth";
 import { getFirestore, Firestore } from "firebase/firestore";
+import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -30,7 +31,20 @@ try {
   } else {
     app = getApp();
   }
-  
+
+  // App Check protects Firestore from automated/off-site abuse by requiring a
+  // reCAPTCHA token issued only to the real site. Inert until the site key is
+  // provided; enforcement is toggled separately in the Firebase console.
+  if (typeof window !== "undefined") {
+    const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    if (recaptchaSiteKey) {
+      initializeAppCheck(app, {
+        provider: new ReCaptchaV3Provider(recaptchaSiteKey),
+        isTokenAutoRefreshEnabled: true,
+      });
+    }
+  }
+
   auth = getAuth(app);
   db = getFirestore(app);
 } catch (error) {
