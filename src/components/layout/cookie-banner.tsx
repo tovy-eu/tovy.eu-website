@@ -50,16 +50,16 @@ export default function CookieBanner({ dict }: { dict?: Dictionary }) {
   const accept = dict?.global?.cookieBanner?.accept || "Accept";
 
   return (
-    <div 
+    <div
       className={cn(
-        "fixed bottom-0 left-0 right-0 z-50 p-4 bg-background/80 backdrop-blur-md border-t border-border shadow-lg",
-        "transition-transform duration-500 ease-in-out",
-        showBanner ? "translate-y-0" : "translate-y-full"
+        "fixed bottom-4 left-4 right-4 sm:right-auto sm:max-w-sm z-50 p-4 rounded-xl bg-background/90 backdrop-blur-md border border-border shadow-lg",
+        "transition-all duration-500 ease-in-out",
+        showBanner ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       )}
     >
-      <div className="container mx-auto max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="flex flex-col gap-3">
         <div className="flex items-start gap-3">
-          <Cookie className="h-5 w-5 mt-1 text-primary flex-shrink-0"/>
+          <Cookie className="h-5 w-5 mt-0.5 text-primary flex-shrink-0"/>
           <p className="text-sm text-muted-foreground">
             {text}{' '}
             <Link href={`/${lang}/privacy-policy/`} className="underline hover:text-primary">
@@ -68,11 +68,11 @@ export default function CookieBanner({ dict }: { dict?: Dictionary }) {
             .
           </p>
         </div>
-        <div className="flex gap-2 flex-shrink-0 w-full sm:w-auto">
-          <Button onClick={handleDecline} variant="secondary" size="sm" className="flex-grow sm:flex-grow-0">
+        <div className="flex gap-2 justify-end">
+          <Button onClick={handleDecline} variant="secondary" size="sm">
             {decline}
           </Button>
-          <Button onClick={handleAccept} size="sm" className="flex-grow sm:flex-grow-0">
+          <Button onClick={handleAccept} size="sm">
             {accept}
           </Button>
         </div>
