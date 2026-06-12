@@ -32,7 +32,8 @@ interface ProjectIntakeFormProps {
   dict: Dictionary;
 }
 
-const STORAGE_KEY = "tovy_project_form_progress";
+// v2: step indices changed when the email step moved to the end of the form
+const STORAGE_KEY = "tovy_project_form_progress_v2";
 
 type RoutingPath = 'A' | 'B' | 'C';
 
@@ -47,13 +48,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const lang = pathname?.split('/')[1] || 'en';
   const [formDocId, setFormDocId] = useState<string | null>(null);
 
+    // Qualification questions come first; email and contact details close the
+    // form so the lowest-friction questions carry the highest-trust moment.
     const formSteps = useMemo(() => [
-    { field: "email", label: dict.pages.projectRequest.form.steps.workEmail.label, description: dict.pages.projectRequest.form.steps.workEmail.description },
     { field: "companySize", label: dict.pages.projectRequest.form.steps.companySize.label, description: dict.pages.projectRequest.form.steps.companySize.description },
     { field: "problemStatement", label: dict.pages.projectRequest.form.steps.problemStatement.label, description: dict.pages.projectRequest.form.steps.problemStatement.description },
     { field: "dataInfrastructure", label: dict.pages.projectRequest.form.steps.dataInfrastructure.label, description: dict.pages.projectRequest.form.steps.dataInfrastructure.description },
     { field: "timeline", label: dict.pages.projectRequest.form.steps.timeline.label, description: dict.pages.projectRequest.form.steps.timeline.description },
     { field: "budget", label: dict.pages.projectRequest.form.steps.budget.label, description: dict.pages.projectRequest.form.steps.budget.description },
+    { field: "email", label: dict.pages.projectRequest.form.steps.workEmail.label, description: dict.pages.projectRequest.form.steps.workEmail.description },
     { field: "contactDetails", label: dict.pages.projectRequest.form.steps.contact.label, description: dict.pages.projectRequest.form.steps.contact.description },
   ], [dict]);
 
@@ -374,7 +377,7 @@ const nextStep = async () => {
             {/* Vertical connector line */}
             <div className="absolute left-3 top-10 bottom-0 w-[1px] bg-white/5 z-0" />
             
-            <div className="font-mono text-[9px] tracking-[0.2em] text-white/10 mb-2 pl-1">{"// "}sequence_index</div>
+            <div className="font-mono text-[9px] tracking-[0.2em] text-white/25 mb-2 pl-1">{"// "}sequence_index</div>
             {formSteps.map((s, i) => (
               <button
                 key={i}
@@ -383,7 +386,7 @@ const nextStep = async () => {
                 disabled={i >= step}
                 className={cn(
                   "group flex items-center gap-4 text-left transition-all duration-500 relative z-10",
-                  step === i ? "text-primary" : i < step ? "text-white/40 hover:text-white" : "text-white/10"
+                  step === i ? "text-primary" : i < step ? "text-white/60 hover:text-white" : "text-white/30"
                 )}
               >
                 <span className={cn(
@@ -396,7 +399,7 @@ const nextStep = async () => {
                 )}>
                   {i < step ? <Check className="h-3 w-3" /> : (i + 1).toString().padStart(2, '0')}
                 </span>
-                <span className="font-bold text-[8px] tracking-[0.1em]">
+                <span className="font-bold text-[10px] tracking-[0.1em]">
                   {dict.pages.projectRequest.form.sidebarSteps?.[s.field as keyof typeof dict.pages.projectRequest.form.sidebarSteps] || s.field.replace(/([A-Z])/g, ' $1').toLowerCase()}
                 </span>
               </button>
@@ -427,7 +430,7 @@ const nextStep = async () => {
             </CardHeader>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full">
-                <CardContent className="p-5 md:p-12 flex-grow md:h-[600px] flex items-start md:items-center overflow-hidden pt-8 md:pt-12">
+                <CardContent className="p-5 md:p-12 flex-grow md:h-[600px] flex overflow-y-auto pt-8 md:pt-12">
                 <AnimatePresence mode="wait">
                     <motion.div
                       key={step}
@@ -435,7 +438,7 @@ const nextStep = async () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -15 }}
                       transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                      className="w-full flex flex-col justify-start"
+                      className="w-full flex flex-col justify-start mb-auto md:my-auto"
                     >
                       {step === -1 && (
                         <div className="text-center py-6 md:py-8">
@@ -453,7 +456,7 @@ const nextStep = async () => {
                             <FormField key={field} control={form.control} name="email" render={({ field: f }) => (
                               <FormItem className="space-y-4 md:space-y-6">
                                 <div className="space-y-2 md:space-y-3">
-                                  <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}field_input_01</div>
+                                  <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}field_input_{String(index + 1).padStart(2, '0')}</div>
                                   <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
                                   <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
@@ -486,7 +489,7 @@ const nextStep = async () => {
                                   <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
                                   <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
-                                <div className={cn(
+                                <div role="radiogroup" aria-label={label} className={cn(
                                   "grid gap-2 mt-2",
                                   isCompanySize ? "grid-cols-1" : "grid-cols-1"
                                 )}>
@@ -494,6 +497,8 @@ const nextStep = async () => {
                                     <button
                                       key={o.label}
                                       type="button"
+                                      role="radio"
+                                      aria-checked={f.value === o.label}
                                       onClick={() => { f.onChange(o.label); setTimeout(() => nextStep(), 300); }}
                                       className={cn(
                                         "group flex items-center justify-between transition-all duration-500 border",
@@ -539,11 +544,13 @@ const nextStep = async () => {
                               <FormField control={form.control} name="hasProblem" render={({ field: f }) => (
                                   <FormItem className="space-y-2 md:space-y-4">
                                       <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.problemStatement.hasProblemLabel}</FormLabel>
-                                      <div className="grid grid-cols-2 gap-2.5">
+                                      <div role="radiogroup" aria-label={dict.pages.projectRequest.form.steps.problemStatement.hasProblemLabel} className="grid grid-cols-2 gap-2.5">
                                           {singleOptions.hasProblem.map(o => (
                                               <button
                                                   key={o.key}
                                                   type="button"
+                                                  role="radio"
+                                                  aria-checked={f.value === o.key}
                                                   onClick={() => { f.onChange(o.key); }}
                                                   className={cn(
                                                   "group flex items-center justify-between p-3.5 md:p-5 rounded-2xl md:rounded-3xl border transition-all duration-500",
@@ -622,11 +629,13 @@ const nextStep = async () => {
                                               <FormField control={form.control} name="hasDataTeam" render={({ field: f }) => (
                                                   <FormItem className="space-y-1.5">
                                                       <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasDataTeamLabel}</FormLabel>
-                                                      <div className="grid grid-cols-2 gap-2.5">
+                                                      <div role="radiogroup" aria-label={dict.pages.projectRequest.form.steps.dataInfrastructure.hasDataTeamLabel} className="grid grid-cols-2 gap-2.5">
                                                           {singleOptions.dataInfrastructure.map(o => (
                                                               <button
                                                                   key={o.key}
                                                                   type="button"
+                                                                  role="radio"
+                                                                  aria-checked={f.value === o.key}
                                                                   onClick={() => f.onChange(o.key)}
                                                                   className={cn(
                                                                       "flex items-center justify-center py-2.5 md:py-3.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[10px] md:text-xs font-black",
@@ -646,11 +655,13 @@ const nextStep = async () => {
                                           <FormField control={form.control} name="hasCentralDatabase" render={({ field: f }) => (
                                               <FormItem className="space-y-1.5">
                                                   <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasCentralDatabaseLabel}</FormLabel>
-                                                  <div className="grid grid-cols-2 gap-2.5">
+                                                  <div role="radiogroup" aria-label={dict.pages.projectRequest.form.steps.dataInfrastructure.hasCentralDatabaseLabel} className="grid grid-cols-2 gap-2.5">
                                                       {singleOptions.dataInfrastructure.map(o => (
                                                           <button
                                                               key={o.key}
                                                               type="button"
+                                                              role="radio"
+                                                              aria-checked={f.value === o.key}
                                                               onClick={() => f.onChange(o.key)}
                                                               className={cn(
                                                                   "flex items-center justify-center py-2.5 md:py-3.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[10px] md:text-xs font-black",
@@ -669,11 +680,13 @@ const nextStep = async () => {
                                           <FormField control={form.control} name="hasCloudPlatform" render={({ field: f }) => (
                                               <FormItem className="space-y-1.5">
                                                   <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasCloudPlatformLabel}</FormLabel>
-                                                  <div className="grid grid-cols-2 gap-2.5">
+                                                  <div role="radiogroup" aria-label={dict.pages.projectRequest.form.steps.dataInfrastructure.hasCloudPlatformLabel} className="grid grid-cols-2 gap-2.5">
                                                       {singleOptions.dataInfrastructure.map(o => (
                                                           <button
                                                               key={o.key}
                                                               type="button"
+                                                              role="radio"
+                                                              aria-checked={f.value === o.key}
                                                               onClick={() => f.onChange(o.key)}
                                                               className={cn(
                                                                   "flex items-center justify-center py-2.5 md:py-3.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[10px] md:text-xs font-black",
