@@ -22,10 +22,16 @@ type Particle = {
   amp: number;     // chaos amplitude
 };
 
+// Logo gradient endpoints: --primary (226 100% 58%) and
+// --accent-gradient-stop (304 20% 48%) from globals.css, as RGB.
+const COLOR_FROM = { r: 43, g: 94, b: 255 };
+const COLOR_TO = { r: 147, g: 98, b: 144 };
+
 function makeParticle(randomT: boolean): Particle {
   return {
     t: randomT ? Math.random() : 0,
-    speed: 0.0006 + Math.random() * 0.0012,
+    // Near slow motion: one full crossing takes roughly 10-20 seconds
+    speed: 0.00004 + Math.random() * 0.00006,
     lane: Math.floor(Math.random() * LANE_COUNT),
     seed: Math.random() * Math.PI * 2,
     amp: 0.25 + Math.random() * 0.75,
@@ -43,7 +49,7 @@ function particleY(p: Particle, t: number, h: number, time: number) {
   const laneY = h * 0.5 + (p.lane - (LANE_COUNT - 1) / 2) * (laneSpread / LANE_COUNT);
   const chaosY =
     h * 0.5 +
-    Math.sin(t * 7 + p.seed + time * 0.0004) * h * 0.28 * p.amp +
+    Math.sin(t * 7 + p.seed + time * 0.00006) * h * 0.28 * p.amp +
     Math.sin(t * 13 + p.seed * 2) * h * 0.1 * p.amp;
   const c = convergence(t);
   return chaosY * (1 - c) + laneY * c;
@@ -81,9 +87,9 @@ export function DataFlow({ className }: { className?: string }) {
       for (let i = 0; i < LANE_COUNT; i++) {
         const y = height * 0.5 + (i - (LANE_COUNT - 1) / 2) * (laneSpread / LANE_COUNT);
         const grad = ctx.createLinearGradient(width * 0.45, 0, width, 0);
-        grad.addColorStop(0, "rgba(43, 94, 255, 0)");
-        grad.addColorStop(0.7, "rgba(43, 94, 255, 0.05)");
-        grad.addColorStop(1, "rgba(59, 226, 176, 0.08)");
+        grad.addColorStop(0, `rgba(${COLOR_FROM.r}, ${COLOR_FROM.g}, ${COLOR_FROM.b}, 0)`);
+        grad.addColorStop(0.7, `rgba(${COLOR_FROM.r}, ${COLOR_FROM.g}, ${COLOR_FROM.b}, 0.05)`);
+        grad.addColorStop(1, `rgba(${COLOR_TO.r}, ${COLOR_TO.g}, ${COLOR_TO.b}, 0.08)`);
         ctx.strokeStyle = grad;
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -96,14 +102,14 @@ export function DataFlow({ className }: { className?: string }) {
     const drawParticle = (p: Particle, time: number) => {
       const x = p.t * width;
       const y = particleY(p, p.t, height, time);
-      const tailT = Math.max(p.t - 0.035, 0);
+      const tailT = Math.max(p.t - 0.02, 0);
       const tailY = particleY(p, tailT, height, time);
 
-      // Blue near the chaotic side, teal once converged
+      // Primary blue near the chaotic side, logo accent once converged
       const c = convergence(p.t);
-      const r = Math.round(43 + (59 - 43) * c);
-      const g = Math.round(94 + (226 - 94) * c);
-      const b = Math.round(255 + (176 - 255) * c);
+      const r = Math.round(COLOR_FROM.r + (COLOR_TO.r - COLOR_FROM.r) * c);
+      const g = Math.round(COLOR_FROM.g + (COLOR_TO.g - COLOR_FROM.g) * c);
+      const b = Math.round(COLOR_FROM.b + (COLOR_TO.b - COLOR_FROM.b) * c);
       // Fade in/out at the horizontal edges
       const edge = Math.min(p.t / 0.08, (1 - p.t) / 0.08, 1);
       const alpha = 0.5 * edge;
