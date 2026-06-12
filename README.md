@@ -10,7 +10,7 @@ Tovy is architected as a **Static Site Generation (SSG)** application, optimized
 ### 1. Build-Time (Static Generation)
 - **Framework**: Next.js 15 (App Router) using `output: 'export'`.
 - **KX Hub**: Markdown resources are parsed at build-time using `remark` and `gray-matter`, resulting in zero-latency documentation pages.
-- **i18n**: Bilingual support (EN/NL) is pre-rendered into static route segments.
+- **i18n**: Four locales (EN/NL/DE/ES) are pre-rendered into static route segments.
 
 ### 2. The Edge (Global Delivery)
 - **Hosting**: Firebase Hosting (CDN).

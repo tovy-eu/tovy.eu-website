@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/carousel";
 import { Magnetic } from "@/components/ui/magnetic";
 import type { Dictionary } from "@/lib/get-dictionary";
-import placeholderImages from "@/app/lib/placeholder-images.json";
+import placeholderImages from "@/lib/placeholder-images.json";
 import { WavyLines } from './wavy-lines';
 import { SectionHeader } from './section-header';
 

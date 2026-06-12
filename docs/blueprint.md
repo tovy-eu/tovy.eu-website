@@ -27,7 +27,7 @@ A highly optimized, sequential lead-qualification engine:
 - **Lead Qualification (AI Integration)**: An automated Google Cloud / Firebase function evaluates and tags incoming leads (e.g., "High-fit", "Medium-fit", "Low-fit") and generates a concise, one-sentence project challenge and vision summary for rapid developer/engineer triage.
 
 ### 2.3 KX Hub (Knowledge Exchange)
-A bilingual (EN/NL) professional resource center for technical insights and AI-engineering thought leadership.
+A localized (EN/NL/DE/ES) professional resource center for technical insights and AI-engineering thought leadership.
 - Includes a listing page and localized markdown-based article pages (stored in `/src/content/kx/`).
 - Integrates a **Subscription Form** to capture user emails for insights newsletter delivery.
 

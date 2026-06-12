@@ -56,13 +56,4 @@ pnpm-debug.log*
 # Ignore Firebase emulators, hosting cache, and local files
 .firebase/
 
-# Ignore firebase config files for your project
-/firebase.json
-/.firebaserc
-
-# Ignore generated static files
-/public/static/admin/
-
-# CMS config file - contains sensitive info
-/public/admin/config.yml
 functions/.env.*
