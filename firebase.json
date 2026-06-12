@@ -18,7 +18,8 @@
     "rewrites": [
       {
         "source": "/metrics{,/**}",
-        "function": "metrics"
+        "function": "metrics",
+        "region": "europe-west4"
       }
     ],
     "redirects": [
