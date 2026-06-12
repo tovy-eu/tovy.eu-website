@@ -114,7 +114,11 @@
           "strategic": {
             "title": "Datagedreven strategie",
             "desc": "Wij ontwerpen schaalbare data-architecturen en selecteren de juiste tooling. Geen theoretische adviesrapporten, maar concrete technische blauwdrukken.",
-            "tools": ["Architectuur", "Toolingselectie", "Haalbaarheid"]
+            "tools": [
+              "Architectuur",
+              "Toolingselectie",
+              "Haalbaarheid"
+            ]
           },
           "cloud": {
             "title": "Infrastructuur",
@@ -125,7 +129,11 @@
               "Volledige rust door robuuste back-up strategieën.",
               "Een veilig beheerde omgeving die je team ontzorgt."
             ],
-            "tools": ["Azure / GCP / AWS", "Security", "Back-ups"]
+            "tools": [
+              "Azure / GCP / AWS",
+              "Security",
+              "Back-ups"
+            ]
           },
           "data": {
             "title": "Datawarehousing & pipelines",
@@ -136,12 +144,20 @@
               "Real-time grip op je voorraden, marges en klantdata.",
               "Een geïntegreerd dataplatform dat de basis vormt voor besluitvorming."
             ],
-            "tools": ["dbt / SQL / Python", "Power BI", "Datawarehousing"]
+            "tools": [
+              "dbt / SQL / Python",
+              "Power BI",
+              "Datawarehousing"
+            ]
           },
           "automation": {
             "title": "Procesautomatisering",
             "desc": "Ontwikkelen van betrouwbare API-koppelingen en op maat gemaakte AI-oplossingen om handmatige data-overdracht tussen je applicaties volledig te elimineren.",
-            "tools": ["LLM-integraties", "Python", "Agentic workflows"]
+            "tools": [
+              "LLM-integraties",
+              "Python",
+              "Agentic workflows"
+            ]
           }
         }
       },
@@ -355,7 +371,10 @@
           "budget": {
             "label": "Is het benodigde projectbudget beschikbaar?",
             "description": "Onze standaardprojecten zijn sprints van zes weken met een vast budget. Is er een minimale investering van € 5.000,- beschikbaar?",
-            "options": ["Ja", "Nee"]
+            "options": [
+              "Ja",
+              "Nee"
+            ]
           },
           "contact": {
             "label": "Contactgegevens",
@@ -465,7 +484,8 @@
         "disclaimer": "Disclaimer",
         "disclaimerSubtitle": "Verantwoordelijkheid voor de inhoud.",
         "disclaimerContent": "De inhoud van deze pagina’s is met grote zorg samengesteld. Tovy kan echter de juistheid, volledigheid en actualiteit ervan niet garanderen. Volgens wettelijke bepalingen is Tovy verantwoordelijk voor de eigen inhoud op deze webpagina's. Tovy is niet verplicht om door derden aangeleverde informatie actief te controleren op illegale activiteiten.",
-        "nederland": "Nederland"
+        "nederland": "Nederland",
+        "peppolId": "E-facturatie (Peppol)"
       }
     },
     "notFound": {

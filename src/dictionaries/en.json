@@ -476,7 +476,8 @@
         "disclaimer": "Disclaimer",
         "disclaimerSubtitle": "Responsibility for content.",
         "disclaimerContent": "The content of these pages has been compiled with great care. However, Tovy cannot guarantee its accuracy, completeness, or timeliness. According to legal provisions, Tovy is responsible for its own content on these web pages. Tovy is not obliged to actively monitor third-party information for illegal activities.",
-        "nederland": "Netherlands"
+        "nederland": "Netherlands",
+        "peppolId": "E-invoicing (Peppol)"
       }
     },
     "notFound": {

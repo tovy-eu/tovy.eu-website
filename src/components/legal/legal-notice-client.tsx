@@ -140,6 +140,10 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
                   <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.pages.legalNotice.content.vatNumber || "VAT ID"}</p>
                   <p className="font-mono text-lg text-primary drop-shadow-[0_0_8px_rgba(43,94,255,0.3)]">{profile.primary_identifiers.vat_id_number}</p>
                 </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.pages.legalNotice.content.peppolId || "E-invoicing (Peppol)"}</p>
+                  <p className="font-mono text-lg text-primary drop-shadow-[0_0_8px_rgba(43,94,255,0.3)]">NL:KVK {profile.primary_identifiers.commercial_registry_number}</p>
+                </div>
               </div>
             </section>
 

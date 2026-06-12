@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Script from "next/script";
 import { TrackedLink } from "@/components/ui/tracked-link";
 import companyProfile from "@/content/company-profile.json";
 import { i18n } from "@/lib/config";
@@ -18,10 +17,6 @@ export default async function Footer({ lang }: { lang: Locale }) {
 
   return (
     <footer className="border-t border-white/10 bg-background px-6 py-12 md:px-12 relative overflow-hidden">
-      <Script 
-        src="https://www.moneybird.nl/widget/simplerinvoicing.js" 
-        strategy="afterInteractive"
-      />
       <div className="mx-auto max-w-screen-xl">
         
         {/* Top Grid: Logo, Legal Buttons, CTA */}
@@ -72,36 +67,12 @@ export default async function Footer({ lang }: { lang: Locale }) {
         {/* Subtle Horizontal Divider */}
         <div className="h-px w-full bg-white/5 my-8" />
 
-        {/* Bottom Row: Copyright, Pebble Widget, and Social Icons */}
+        {/* Bottom Row: Copyright and Social Icons */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-10 sm:gap-6 text-center sm:text-left">
-          
-          {/* Copyright & Moneybird Widget */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 text-white/40 text-[10px] tracking-wider font-mono">
+
+          {/* Copyright */}
+          <div className="flex items-center gap-4 text-white/40 text-[10px] tracking-wider font-mono">
             <span>&copy; {currentYear} {profile.entity_name}</span>
-            <span className="text-white/10 hidden sm:inline">|</span>
-            {/* Moneybird Pebble Widget wrapped securely to enforce theme and prevent layout shift */}
-            <div className="h-6 flex items-center justify-center grayscale invert opacity-45 hover:opacity-100 transition-all duration-300 transform-gpu origin-center sm:origin-left">
-              <style dangerouslySetInnerHTML={{ __html: `
-                #moneybird-widget-simplerinvoicing {
-                  display: flex !important;
-                  align-items: center !important;
-                  justify-content: center !important;
-                }
-                #moneybird-widget-simplerinvoicing a {
-                  display: flex !important;
-                  align-items: center !important;
-                  justify-content: center !important;
-                  height: 100% !important;
-                }
-                #moneybird-widget-simplerinvoicing img, 
-                #moneybird-widget-simplerinvoicing svg {
-                  height: 18px !important;
-                  width: auto !important;
-                  display: block !important;
-                }
-              `}} />
-              <div id="moneybird-widget-simplerinvoicing" data-id="WyJUb3Z5IiwiTkw6S1ZLIiwiOTg3ODcwNTUiLCJubCJd"></div>
-            </div>
           </div>
 
           {/* Social Profiles */}
