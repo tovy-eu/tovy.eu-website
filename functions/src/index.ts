@@ -113,7 +113,7 @@ const metricsHandler = async (request: Request, response: Response) => {
 };
 
 export const metrics = onRequest(
-  { secrets: ["GA4_API_SECRET"], memory: "512MiB" },
+  { secrets: ["GA4_API_SECRET"], memory: "512MiB", region: "europe-west4" },
   withNoIndex(metricsHandler)
 );
 
