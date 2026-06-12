@@ -23,17 +23,17 @@ export function FinalCtaSection({ dict }: { dict: Dictionary }) {
       
       <div className="container relative z-10 mx-auto max-w-4xl text-center">
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-          {dict.projectCta.title}
+          {dict.pages.knowledgeHub.projectCta.title}
         </h2>
         <p className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto font-medium">
-          {dict.projectCta.description}
+          {dict.pages.knowledgeHub.projectCta.description}
         </p>
         
         <div className="flex justify-center">
           <Magnetic strength={0.25}>
             <Button asChild size="lg" className="w-full sm:w-auto font-semibold text-lg h-14 shadow-2xl px-10">
               <Link href={`/${lang}/project-request/`}>
-                {dict.common.workWithUs}
+                {dict.global.common.workWithUs}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>

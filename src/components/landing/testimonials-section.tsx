@@ -31,7 +31,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
   const pathname = usePathname();
   const lang = pathname?.split('/')?.[1] ?? 'en';
   
-  const testimonialsItems = dict.testimonials.items || [];
+  const testimonialsItems = dict.pages.home.testimonials.items || [];
 
   // If no data is found, the section is not rendered
   if (testimonialsItems.length === 0) {
@@ -52,8 +52,8 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
       
       <div className="container relative z-10 mx-auto px-4 md:px-8 max-w-7xl w-full">
         <SectionHeader 
-          title={dict.testimonials.title}
-          description={dict.testimonials.subtitle}
+          title={dict.pages.home.testimonials.title}
+          description={dict.pages.home.testimonials.subtitle}
           className="mb-12 md:mb-16"
         />
       </div>
@@ -129,7 +129,7 @@ export function TestimonialsSection({ dict }: { dict: Dictionary }) {
             className="w-full sm:w-auto font-semibold text-base sm:text-lg h-12 sm:h-14 shadow-2xl px-10"
           >
             <Link href={`/${lang}/project-request/`}>
-              {dict.common.workWithUs}
+              {dict.global.common.workWithUs}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>

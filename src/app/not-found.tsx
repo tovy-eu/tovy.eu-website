@@ -16,27 +16,27 @@ export default function NotFound() {
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
 
-  const translations: Record<string, typeof en.notFound & {
+  const translations: Record<string, typeof en.pages.notFound.content & {
     homePath: string;
     projectPath: string;
   }> = {
     en: {
-      ...en.notFound,
+      ...en.pages.notFound.content,
       homePath: "/en/",
       projectPath: "/en/project-request/"
     },
     nl: {
-      ...nl.notFound,
+      ...nl.pages.notFound.content,
       homePath: "/nl/",
       projectPath: "/nl/project-request/"
     },
     de: {
-      ...de.notFound,
+      ...de.pages.notFound.content,
       homePath: "/de/",
       projectPath: "/de/project-request/"
     },
     es: {
-      ...es.notFound,
+      ...es.pages.notFound.content,
       homePath: "/es/",
       projectPath: "/es/project-request/"
     }

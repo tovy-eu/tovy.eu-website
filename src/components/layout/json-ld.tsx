@@ -27,7 +27,7 @@ export function getOrganizationSchema(dict: Dictionary): ProfessionalService {
     url: "https://tovy.eu",
     logo: "https://tovy.eu/images/tovy-og-image.webp",
     image: "https://tovy.eu/images/tovy-og-image.webp",
-    description: dict.hero.subtitle,
+    description: dict.pages.home.hero.subtitle,
     address: {
       "@type": "PostalAddress",
       streetAddress: `${companyProfile.public_company_profile.contact_details.street_name} ${companyProfile.public_company_profile.contact_details.house_number}`,
@@ -76,7 +76,7 @@ export function getBreadcrumbSchema(items: { name: string; item: string }[]): Br
 }
 
 export function getServicesSchema(dict: Dictionary): Service[] {
-  return Object.values(dict.engineering.services).map((service: unknown) => {
+  return Object.values(dict.pages.home.engineering.services).map((service: unknown) => {
     const s = service as { title: string; desc: string };
     return {
       "@type": "Service",
@@ -104,7 +104,7 @@ export function getServicesSchema(dict: Dictionary): Service[] {
 }
 
 export function getFaqSchema(dict: Dictionary): FAQPage {
-  const allQuestions = dict.faq.categories.flatMap((category: { questions: { question: string; answer: string }[] }) => category.questions);
+  const allQuestions = dict.pages.home.faq.categories.flatMap((category: { questions: { question: string; answer: string }[] }) => category.questions);
   return {
     "@type": "FAQPage",
     mainEntity: allQuestions.map((item: { question: string; answer: string }) => ({

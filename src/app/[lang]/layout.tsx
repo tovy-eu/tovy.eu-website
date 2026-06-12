@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { getDictionary } from '@/lib/get-dictionary';
@@ -7,9 +6,9 @@ import { JsonLd, getOrganizationSchema, getPersonSchema } from '@/components/lay
 import { i18n } from '@/lib/config';
 import "../globals.css";
 import { Toaster } from "@/components/ui/toaster"
-import { cn } from "@/lib/utils";
 import CookieBanner from "@/components/layout/cookie-banner";
 import { AnalyticsProviderHead, AnalyticsProviderBody } from "@/components/layout/analytics-provider";
+import { LanguageSync } from "@/components/layout/language-sync";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -31,8 +30,8 @@ export async function generateMetadata({
   return {
     metadataBase: new URL("https://tovy.eu"),
     title: {
-      template: dict.metadata.template,
-      default: dict.metadata.defaultTitle,
+      template: dict.global.metadata.template,
+      default: dict.global.metadata.defaultTitle,
     },
     openGraph: {
       type: "website",
@@ -43,13 +42,13 @@ export async function generateMetadata({
           url: "https://tovy.eu/images/tovy-og-image.webp",
           width: 1200,
           height: 630,
-          alt: dict.metadata.ogAlt,
+          alt: dict.global.metadata.ogAlt,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: dict.metadata.twitterTitle || dict.metadata.defaultTitle,
+      title: dict.global.metadata.twitterTitle || dict.global.metadata.defaultTitle,
       images: ["https://tovy.eu/images/tovy-og-image.webp"],
     },
   };
@@ -67,24 +66,19 @@ export default async function LocalizedLayout({
   const dict = await getDictionary(lang);
   
   return (
-    <html lang={lang} className={`${GeistSans.variable} scroll-smooth`} data-scroll-behavior="smooth" suppressHydrationWarning>
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <AnalyticsProviderHead />
-        <JsonLd type="Organization" data={getOrganizationSchema(dict)} />
-        <JsonLd type="Person" data={getPersonSchema()} />
-      </head>
-      <body className={cn("font-sans antialiased flex flex-col min-h-screen")}>
-        <AnalyticsProviderBody />
-        <Header lang={lang} dict={dict} />
-        <main id="main-content" className="flex-grow flex flex-col">
-          {children}
-        </main>
-        <Footer lang={lang} />
-        <Toaster />
-        <CookieBanner dict={dict} />
-      </body>
-    </html>
+    <>
+      <LanguageSync lang={lang} />
+      <AnalyticsProviderHead />
+      <JsonLd type="Organization" data={getOrganizationSchema(dict)} />
+      <JsonLd type="Person" data={getPersonSchema()} />
+      <AnalyticsProviderBody />
+      <Header lang={lang} dict={dict} />
+      <main id="main-content" className="flex-grow flex flex-col">
+        {children}
+      </main>
+      <Footer lang={lang} />
+      <Toaster />
+      <CookieBanner dict={dict} />
+    </>
   );
 }

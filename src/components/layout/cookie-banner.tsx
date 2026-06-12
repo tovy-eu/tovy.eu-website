@@ -44,10 +44,10 @@ export default function CookieBanner({ dict }: { dict?: Dictionary }) {
     return null;
   }
 
-  const text = dict?.cookieBanner?.text || "We use cookies to enhance your experience and for analytics purposes. By clicking \"Accept\", you agree to our use of cookies. For more details, see our";
-  const privacyPolicy = dict?.cookieBanner?.privacyPolicy || "Privacy Policy";
-  const decline = dict?.cookieBanner?.decline || "Decline";
-  const accept = dict?.cookieBanner?.accept || "Accept";
+  const text = dict?.global?.cookieBanner?.text || "We use cookies to enhance your experience and for analytics purposes. By clicking \"Accept\", you agree to our use of cookies. For more details, see our";
+  const privacyPolicy = dict?.global?.cookieBanner?.privacyPolicy || "Privacy Policy";
+  const decline = dict?.global?.cookieBanner?.decline || "Decline";
+  const accept = dict?.global?.cookieBanner?.accept || "Accept";
 
   return (
     <div 

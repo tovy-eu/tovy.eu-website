@@ -77,9 +77,9 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         )}
         style={{ backfaceVisibility: 'hidden' }}
       >
-        {dict.hero.badge && (
+        {dict.pages.home.hero.badge && (
           <p className="text-[11px] md:text-[12px] font-black leading-7 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-4 md:mb-6 select-none">
-            {dict.hero.badge}
+            {dict.pages.home.hero.badge}
           </p>
         )}
 
@@ -87,15 +87,15 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem] 2xl:text-[6rem] leading-[1.05] md:leading-[1] tracking-[-0.03em] relative mb-4 md:mb-6 text-white"
           style={{ textShadow: '0 0 40px rgba(255, 255, 255, 0.1)' }}
         >
-          {dict.hero.title}
+          {dict.pages.home.hero.title}
         </h1>
         
         <p className="text-sm md:text-base lg:text-lg leading-relaxed text-white/70 max-w-xs md:max-w-3xl mx-auto font-medium balance px-4 mb-6 md:mb-8">
-          {dict.hero.subtitle}
+          {dict.pages.home.hero.subtitle}
         </p>
 
         {/* Logos moved between subtitle and CTA */}
-        <div className="w-full mb-6 md:mb-8 transform-gpu">
+        <div className="w-full mb-20 md:mb-28 transform-gpu">
           <TrustedBySection className="py-0" dict={dict} />
         </div>
 
@@ -105,7 +105,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
               <Link href={`/${lang}/project-request/`}>
                 <div className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
                 <span className="relative flex items-center">
-                  {dict.common.workWithUs}
+                  {dict.global.common.workWithUs}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
                 </span>
               </Link>
@@ -116,7 +116,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
             <Button asChild size="lg" variant="outline" className="w-[85%] sm:w-auto font-bold text-sm md:text-base bg-white/[0.02] text-white/80 border-white/10 hover:bg-white/[0.06] hover:border-white/20 h-12 md:h-14 px-8 md:px-12 rounded-full transition-all duration-500 backdrop-blur-md transform-gpu">
               <Link href={`/${lang}/kx/`}>
                 <BookOpen className="mr-2 h-4 w-4 md:h-5 md:w-5 text-blue-400/60" />
-                {dict.common.readBlog}
+                {dict.global.common.readBlog}
               </Link>
             </Button>
           )}

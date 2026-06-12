@@ -31,22 +31,22 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const defaultOgImage = 'https://tovy.eu/images/tovy-og-image.webp';
   const path = `/kx/page/${pageParam}`;
 
-  const pageText = dict.common.page || 'Page';
+  const pageText = dict.global.common.page || 'Page';
 
   return {
-    title: `${dict.blog.title} - ${pageText} ${pageParam}`,
-    description: dict.blog.subtitle,
+    title: `${dict.pages.knowledgeHub.metadata.title} - ${pageText} ${pageParam}`,
+    description: dict.pages.knowledgeHub.metadata.description,
     alternates: generateAlternates(path, langParam),
     openGraph: {
-      title: `${dict.blog.title} - ${pageText} ${pageParam}`,
-      description: dict.blog.subtitle,
+      title: `${dict.pages.knowledgeHub.metadata.title} - ${pageText} ${pageParam}`,
+      description: dict.pages.knowledgeHub.metadata.description,
       type: 'website',
       images: [{ url: defaultOgImage }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${dict.blog.title} - ${pageText} ${pageParam}`,
-      description: dict.blog.subtitle,
+      title: `${dict.pages.knowledgeHub.metadata.title} - ${pageText} ${pageParam}`,
+      description: dict.pages.knowledgeHub.metadata.description,
       images: [defaultOgImage],
     },
   };
@@ -80,11 +80,11 @@ export default async function KxPagination({ params }: Props) {
     return isValid(d) ? format(d, 'LLLL d, yyyy') : 'Recently';
   };
 
-  const pageText = dict.common.page || 'Page';
+  const pageText = dict.global.common.page || 'Page';
 
   const breadcrumbs = [
-    { name: dict.common.home || 'Home', item: `/${lang}/` },
-    { name: dict.common.kxHub || 'Knowledge Exchange Hub', item: `/${lang}/kx/` },
+    { name: dict.global.common.home || 'Home', item: `/${lang}/` },
+    { name: dict.global.common.kxHub || 'Knowledge Exchange Hub', item: `/${lang}/kx/` },
     { name: `${pageText} ${currentPage}`, item: `/${lang}/kx/page/${currentPage}/` },
   ];
 
@@ -101,9 +101,9 @@ export default async function KxPagination({ params }: Props) {
       <div className="container relative z-10 mx-auto max-w-7xl">
         <div className="mb-16 md:mb-24">
           <SectionHeader 
-            badge={dict.blog.badge || "Knowledge Exchange"}
-            title={dict.blog.title}
-            description={dict.blog.subtitle}
+            badge={dict.pages.knowledgeHub.hub.badge || "Knowledge Exchange"}
+            title={dict.pages.knowledgeHub.hub.title}
+            description={dict.pages.knowledgeHub.hub.subtitle}
           />
         </div>
         
@@ -156,7 +156,7 @@ export default async function KxPagination({ params }: Props) {
                   </p>
 
                   <div className="mt-auto flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-500">
-                    {dict.common.exploreIntelligence || "Explore Intelligence"} <ArrowRight className="h-3 w-3" />
+                    {dict.global.common.explore || "Explore"} <ArrowRight className="h-3 w-3" />
                   </div>
                 </div>
               </div>
@@ -194,7 +194,7 @@ export default async function KxPagination({ params }: Props) {
                 className="rounded-full px-6 hover:bg-white/5 text-white/40 font-bold text-[10px] uppercase tracking-widest border border-white/5"
             >
                 <Link href={currentPage === 2 ? `/${lang}/kx/` : `/${lang}/kx/page/${currentPage - 1}/`}>
-                    <ArrowLeft className="mr-2 h-4 w-4" /> {dict.blog.previous || "Previous"}
+                    <ArrowLeft className="mr-2 h-4 w-4" /> {dict.pages.knowledgeHub.hub.previous || "Previous"}
                 </Link>
             </Button>
             <Button
@@ -204,7 +204,7 @@ export default async function KxPagination({ params }: Props) {
                 className="rounded-full px-6 hover:bg-white/5 text-white/40 font-bold text-[10px] uppercase tracking-widest border border-white/5"
             >
                 <Link href={`/${lang}/kx/page/${currentPage + 1}/`}>
-                    {dict.blog.next || "Next"} <ArrowRight className="ml-2 h-4 w-4" />
+                    {dict.pages.knowledgeHub.hub.next || "Next"} <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
             </Button>
           </div>

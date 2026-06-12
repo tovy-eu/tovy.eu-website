@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const { lang } = await params;
     const dict = await getDictionary(lang);
 
-    const title = dict.hero.metaTitle || dict.hero.title;
-    const description = dict.hero.metaDescription || dict.hero.subtitle;
+    const title = dict.pages.home.metadata.title;
+    const description = dict.pages.home.metadata.description;
     const path = '/';
 
     return {
@@ -48,7 +48,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   }
 }
 
-import { PainSolutionSection } from "@/components/landing/pain-solution-section";
 import { AboutSection } from "@/components/landing/about-section";
 import { EngineeringSection } from "@/components/landing/engineering-section";
 import FaqSection from "@/components/landing/faq-section";
@@ -64,10 +63,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <JsonLd type="FAQPage" data={getFaqSchema(dict)} />
 
       <HeroSection dict={dict} />
-
-      <SectionDivider />
-
-      <PainSolutionSection dict={dict} />
 
       <SectionDivider />
       

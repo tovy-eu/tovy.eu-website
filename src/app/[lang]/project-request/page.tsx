@@ -26,9 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const path = '/project-request';
 
     return {
-      title: dict.projectForm.metaTitle || dict.projectForm.title,
-      description: dict.projectForm.metaDescription || dict.projectForm.subtitle,
-      keywords: dict.projectForm.keywords || [],
+      title: dict.pages.projectRequest.metadata.title,
+      description: dict.pages.projectRequest.metadata.description,
+      keywords: dict.pages.projectRequest.metadata.keywords,
       alternates: generateAlternates(path, lang),
     };
   } catch {

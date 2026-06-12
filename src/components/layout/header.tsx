@@ -16,10 +16,10 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
   const [progress, setProgress] = useState(0);
   const pathname = usePathname();
 
-  const shareIdeaText = dict?.common?.shareIdea || "Request an Assessment";
-  const blogText = dict?.navigation?.blog || "Knowledge Hub";
-  const aboutText = dict?.navigation?.about || "About us";
-  const servicesText = dict?.navigation?.services || "Services";
+  const shareIdeaText = dict?.global?.common?.shareIdea || "Request an Assessment";
+  const blogText = dict?.global?.navigation?.blog || "Knowledge Hub";
+  const aboutText = dict?.global?.navigation?.about || "About us";
+  const servicesText = dict?.global?.navigation?.services || "Services";
   
   // Super robust homepage detection across trailing slashes, static servers, and index.html fallbacks
   const homePath = `/${lang}`;

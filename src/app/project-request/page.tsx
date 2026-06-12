@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import en from '@/dictionaries/en.json';
 
 export const metadata: Metadata = {
-  title: en.redirects.projectRequestTitle,
-  description: en.redirects.description,
+  title: en.global.redirects.projectRequestTitle,
+  description: en.global.redirects.description,
   robots: {
     index: false,
     follow: true,

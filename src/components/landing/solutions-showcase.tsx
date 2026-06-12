@@ -15,7 +15,7 @@ import {
 import type { Dictionary } from "@/lib/get-dictionary";
 
 export function SolutionsShowcase({ dict }: { dict: Dictionary }) {
-  const solutions = dict.solutions?.items || [];
+  const solutions = dict.pages.home.solutions?.items || [];
 
   return (
     <section 
@@ -26,10 +26,10 @@ export function SolutionsShowcase({ dict }: { dict: Dictionary }) {
         <ScrollReveal>
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-base font-semibold leading-7 bg-gradient-to-r from-primary to-[#8F668C] bg-clip-text text-transparent">
-              {dict.solutions?.badge}
+              {dict.pages.home.solutions?.badge}
             </h2>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              {dict.solutions?.title}
+              {dict.pages.home.solutions?.title}
             </h2>
           </div>
         </ScrollReveal>
@@ -56,7 +56,7 @@ export function SolutionsShowcase({ dict }: { dict: Dictionary }) {
                           <CardFooter>
                             <Button asChild variant="link" className="p-0 h-auto">
                               <Link href={solution.link}>
-                                {dict.solutions?.viewSolution} <ArrowRight className="ml-2 h-4 w-4" />
+                                {dict.pages.home.solutions?.viewSolution} <ArrowRight className="ml-2 h-4 w-4" />
                               </Link>
                             </Button>
                           </CardFooter>

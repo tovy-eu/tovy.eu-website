@@ -33,9 +33,9 @@ export default function PrivacyPolicyClient({ email, dict }: PrivacyPolicyClient
       <div className="container relative z-10 mx-auto max-w-3xl">
         <div className="mb-16">
           <SectionHeader 
-            badge={dict.privacy.badge || "Privacy protocol"}
-            title={dict.privacy.title}
-            description={dict.privacy.intro}
+            badge={dict.pages.privacyPolicy.content.badge || "Privacy protocol"}
+            title={dict.pages.privacyPolicy.content.title}
+            description={dict.pages.privacyPolicy.content.intro}
           />
         </div>
 
@@ -43,13 +43,13 @@ export default function PrivacyPolicyClient({ email, dict }: PrivacyPolicyClient
           <Spotlight color="rgba(43, 94, 255, 0.05)" size={400} />
           
           <div className="p-8 md:p-16 space-y-12 relative z-10">
-            {dict.privacy.sections.map((section: { title: string; content: string; list?: string[]; footer?: string }, index: number) => (
+            {dict.pages.privacyPolicy.content.sections.map((section: { title: string; content: string; list?: string[]; footer?: string }, index: number) => (
               <React.Fragment key={index}>
                 {index > 0 && <div className="h-px w-full bg-white/5" />}
                 
                 <section className="space-y-6">
-                  <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/60">
-                    {"// "}{(index + 1).toString().padStart(2, '0')}. {section.title.toUpperCase().replace(/\s+/g, '_')}
+                  <h3 className="font-semibold text-xs text-primary/80 tracking-wider">
+                    {(index + 1).toString().padStart(2, '0')}. {section.title}
                   </h3>
                   
                   <div className="space-y-6">
@@ -89,11 +89,11 @@ export default function PrivacyPolicyClient({ email, dict }: PrivacyPolicyClient
             {/* Actions */}
             <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
               <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/20">
-                {dict.privacy.effectiveDate}
+                {dict.pages.privacyPolicy.content.effectiveDate}
               </p>
               
               <Button asChild variant="ghost" className="hover:bg-white/5 text-white/20 hover:text-white/40 text-[10px] font-bold uppercase tracking-widest h-12 px-8 rounded-full">
-                <Link href={`/${lang}/`}><ArrowLeft className="mr-2 h-3.5 w-3.5" /> {dict.common.backToIntelligence || "Back to Intelligence"}</Link>
+                <Link href={`/${lang}/`}><ArrowLeft className="mr-2 h-3.5 w-3.5" /> {dict.global.common.back || "Back"}</Link>
               </Button>
             </div>
           </div>

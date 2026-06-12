@@ -21,9 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const path = '/legal-notice';
 
     return {
-      title: dict.legal?.metaTitle || dict.legal.title,
-      description: dict.legal?.metaDescription || `Legal Notice and company information for Tovy.`,
-      keywords: dict.legal?.keywords || [],
+      title: dict.pages.legalNotice.metadata.title,
+      description: dict.pages.legalNotice.metadata.description,
+      keywords: dict.pages.legalNotice.metadata.keywords,
       alternates: generateAlternates(path, lang),
     };
   } catch {

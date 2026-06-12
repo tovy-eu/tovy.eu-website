@@ -120,12 +120,12 @@ export const TrustedBySection = ({ className, dict }: { className?: string; dict
     { name: "LW", src: "/images/logos/lw.webp" },
   ];
 
-  const titleText = dict?.common.priorExperience || "Prior Experience";
+  const titleText = dict?.global?.common.priorExperience || "Prior Experience";
 
   return (
     <section className={cn("w-full px-2 md:px-4", className)}>
-      <h2 className="text-center text-[7px] md:text-[8px] font-black uppercase tracking-[0.5em] md:tracking-[0.6em] text-white/40 mb-2 md:mb-4">
-        {"// "}{titleText.toUpperCase().replace(/\s+/g, '_')}
+      <h2 className="text-center text-[10px] md:text-xs font-semibold tracking-wider text-white/40 mb-0.5 md:mb-0.5">
+        {titleText}
       </h2>
       <LogoBanner logos={sampleLogos} className="py-0 min-h-[60px]" />
     </section>

@@ -28,9 +28,9 @@ export function TechMarquee({ dict }: { dict: Dictionary }) {
     <div className="w-full py-16 bg-background/30 border-b border-white/5 overflow-hidden">
       <div className="container mx-auto px-4 mb-12">
         <SectionHeader
-          badge={dict.common.techStack}
-          title={dict.marquee.title}
-          description={dict.marquee.subtitle}
+          badge={dict.global.common.techStack}
+          title={dict.pages.home.marquee.title}
+          description={dict.pages.home.marquee.subtitle}
         />
       </div>
       <div className="relative flex items-center">

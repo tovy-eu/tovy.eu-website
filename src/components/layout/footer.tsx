@@ -37,12 +37,8 @@ export default async function Footer({ lang }: { lang: Locale }) {
             </div>
             {/* Slogan */}
             <div className="text-[10px] md:text-[11px] text-white/50 leading-relaxed font-medium -mt-1 mb-1 max-w-[200px] md:max-w-none">
-              <p>{dictionary.footer["slogan-line-1"]}</p>
-              <p>{dictionary.footer["slogan-line-2"]}</p>
-            </div>
-            <div className="flex items-center gap-2 font-mono text-[8px] md:text-[9px] text-white/40 uppercase tracking-widest">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-              {dictionary.common.platformStatus || "Platform Status: Operational // v1.2.0-stable"}
+              <p>{dictionary.global.footer["slogan-line-1"]}</p>
+              <p>{dictionary.global.footer["slogan-line-2"]}</p>
             </div>
           </div>
 
@@ -50,12 +46,12 @@ export default async function Footer({ lang }: { lang: Locale }) {
           <div className="flex items-center justify-center gap-3">
             <Button asChild variant="ghost" className="h-8 rounded-full border border-white/5 hover:border-white/10 bg-white/[0.01] hover:bg-white/5 text-white/50 hover:text-white text-[9px] uppercase tracking-widest px-4 transition-all duration-300">
               <Link href={`/${lang}/legal-notice/`}>
-                {dictionary.footer["legal-notice"]}
+                {dictionary.global.footer["legal-notice"]}
               </Link>
             </Button>
             <Button asChild variant="ghost" className="h-8 rounded-full border border-white/5 hover:border-white/10 bg-white/[0.01] hover:bg-white/5 text-white/50 hover:text-white text-[9px] uppercase tracking-widest px-4 transition-all duration-300">
               <Link href={`/${lang}/privacy-policy/`}>
-                {dictionary.footer["privacy-policy"]}
+                {dictionary.global.footer["privacy-policy"]}
               </Link>
             </Button>
           </div>
@@ -64,8 +60,8 @@ export default async function Footer({ lang }: { lang: Locale }) {
           <div className="flex flex-col items-center md:items-end justify-center">
             <Magnetic strength={0.1}>
               <Button asChild size="sm" className="h-8 md:h-9 px-5 md:px-6 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 border-none shadow-lg shadow-blue-500/10 transition-all duration-500">
-                <TrackedLink href={`/${lang}/project-request/`} eventParams={{ location: "footer", text: dictionary.common.workWithUs }}>
-                  <span className="font-bold text-[8px] md:text-[9px] uppercase tracking-widest">{dictionary.common.workWithUs}</span>
+                <TrackedLink href={`/${lang}/project-request/`} eventParams={{ location: "footer", text: dictionary.global.common.workWithUs }}>
+                  <span className="font-bold text-[8px] md:text-[9px] uppercase tracking-widest">{dictionary.global.common.workWithUs}</span>
                 </TrackedLink>
               </Button>
             </Magnetic>

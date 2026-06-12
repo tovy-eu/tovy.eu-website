@@ -48,23 +48,23 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const [formDocId, setFormDocId] = useState<string | null>(null);
 
     const formSteps = useMemo(() => [
-    { field: "email", label: dict.projectForm.steps.workEmail.label, description: dict.projectForm.steps.workEmail.description },
-    { field: "companySize", label: dict.projectForm.steps.companySize.label, description: dict.projectForm.steps.companySize.description },
-    { field: "problemStatement", label: dict.projectForm.steps.problemStatement.label, description: dict.projectForm.steps.problemStatement.description },
-    { field: "dataInfrastructure", label: dict.projectForm.steps.dataInfrastructure.label, description: dict.projectForm.steps.dataInfrastructure.description },
-    { field: "timeline", label: dict.projectForm.steps.timeline.label, description: dict.projectForm.steps.timeline.description },
-    { field: "budget", label: dict.projectForm.steps.budget.label, description: dict.projectForm.steps.budget.description },
-    { field: "contactDetails", label: dict.projectForm.steps.contact.label, description: dict.projectForm.steps.contact.description },
+    { field: "email", label: dict.pages.projectRequest.form.steps.workEmail.label, description: dict.pages.projectRequest.form.steps.workEmail.description },
+    { field: "companySize", label: dict.pages.projectRequest.form.steps.companySize.label, description: dict.pages.projectRequest.form.steps.companySize.description },
+    { field: "problemStatement", label: dict.pages.projectRequest.form.steps.problemStatement.label, description: dict.pages.projectRequest.form.steps.problemStatement.description },
+    { field: "dataInfrastructure", label: dict.pages.projectRequest.form.steps.dataInfrastructure.label, description: dict.pages.projectRequest.form.steps.dataInfrastructure.description },
+    { field: "timeline", label: dict.pages.projectRequest.form.steps.timeline.label, description: dict.pages.projectRequest.form.steps.timeline.description },
+    { field: "budget", label: dict.pages.projectRequest.form.steps.budget.label, description: dict.pages.projectRequest.form.steps.budget.description },
+    { field: "contactDetails", label: dict.pages.projectRequest.form.steps.contact.label, description: dict.pages.projectRequest.form.steps.contact.description },
   ], [dict]);
 
   const totalSteps = formSteps.length;
 
   const singleOptions = useMemo(() => ({
-    companySize: dict.projectForm.steps.companySize.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
-    timeline: dict.projectForm.steps.timeline.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
-    budget: dict.projectForm.steps.budget.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
-    hasProblem: Object.entries(dict.projectForm.steps.problemStatement.options).map(([key, label], i) => ({ key, label: label as string, hint: String.fromCharCode(65 + i) })),
-    dataInfrastructure: Object.entries(dict.projectForm.steps.dataInfrastructure.options).map(([key, label], i) => ({ key, label: label as string, hint: String.fromCharCode(65 + i) })),
+    companySize: dict.pages.projectRequest.form.steps.companySize.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
+    timeline: dict.pages.projectRequest.form.steps.timeline.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
+    budget: dict.pages.projectRequest.form.steps.budget.options.map((opt: string, i: number) => ({ label: opt, hint: String.fromCharCode(65 + i), index: i })),
+    hasProblem: Object.entries(dict.pages.projectRequest.form.steps.problemStatement.options).map(([key, label], i) => ({ key, label: label as string, hint: String.fromCharCode(65 + i) })),
+    dataInfrastructure: Object.entries(dict.pages.projectRequest.form.steps.dataInfrastructure.options).map(([key, label], i) => ({ key, label: label as string, hint: String.fromCharCode(65 + i) })),
   }), [dict]);
 
   const form = useForm<ProjectRequestData>({
@@ -332,10 +332,10 @@ const nextStep = async () => {
           <CardHeader className="text-center pb-6">
             <CheckCircle className="mx-auto h-12 w-12 text-primary mb-4 animate-check-bounce" />
             <CardTitle className="text-xl md:text-2xl font-bold tracking-tight">
-              {(routingPath === 'A' || routingPath === 'B') ? dict.projectForm.success.title : dict.projectForm.success.titlePathC}
+              {(routingPath === 'A' || routingPath === 'B') ? dict.pages.projectRequest.form.success.title : dict.pages.projectRequest.form.success.titlePathC}
             </CardTitle>
             <CardDescription className="max-w-md mx-auto text-white/50 leading-relaxed font-medium">
-              {(routingPath === 'A' || routingPath === 'B') ? dict.projectForm.success.description : dict.projectForm.success.descriptionPathC}
+              {(routingPath === 'A' || routingPath === 'B') ? dict.pages.projectRequest.form.success.description : dict.pages.projectRequest.form.success.descriptionPathC}
             </CardDescription>
           </CardHeader>
           
@@ -354,7 +354,7 @@ const nextStep = async () => {
 
           <div className="flex flex-col sm:flex-row gap-4 mt-4">
             <Button asChild variant="ghost" className="hover:bg-white/10 text-white/40 text-[10px] font-bold uppercase tracking-[0.3em] rounded-full px-8">
-              <Link href={`/${lang}/`}><Home className="mr-2 h-3 w-3" />{dict.projectForm.success.backHome}</Link>
+              <Link href={`/${lang}/`}><Home className="mr-2 h-3 w-3" />{dict.pages.projectRequest.form.success.backHome}</Link>
             </Button>
           </div>
         </Card>
@@ -388,7 +388,7 @@ const nextStep = async () => {
                   {i < step ? <Check className="h-3 w-3" /> : (i + 1).toString().padStart(2, '0')}
                 </span>
                 <span className="font-bold text-[8px] tracking-[0.1em]">
-                  {dict.projectForm.sidebarSteps?.[s.field as keyof typeof dict.projectForm.sidebarSteps] || s.field.replace(/([A-Z])/g, ' $1').toLowerCase()}
+                  {dict.pages.projectRequest.form.sidebarSteps?.[s.field as keyof typeof dict.pages.projectRequest.form.sidebarSteps] || s.field.replace(/([A-Z])/g, ' $1').toLowerCase()}
                 </span>
               </button>
             ))}
@@ -430,8 +430,8 @@ const nextStep = async () => {
                     >
                       {step === -1 && (
                         <div className="text-center py-6 md:py-8">
-                          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 md:mb-6">{dict.projectForm.intro.title}</h2>
-                          <p className="text-white/40 text-base md:text-lg leading-relaxed font-medium">{dict.projectForm.intro.description}</p>
+                          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 md:mb-6">{dict.pages.projectRequest.form.intro.title}</h2>
+                          <p className="text-white/40 text-base md:text-lg leading-relaxed font-medium">{dict.pages.projectRequest.form.intro.description}</p>
                         </div>
                       )}
                       {formSteps.map((s, index) => {
@@ -452,12 +452,12 @@ const nextStep = async () => {
                                   <Input 
                                     id={f.name} 
                                     {...f} 
-                                    placeholder={dict.common.emailPlaceholder} 
+                                    placeholder={dict.global.common.emailPlaceholder} 
                                     className="bg-white/[0.03] border-white/10 h-12 md:h-16 text-base md:text-xl px-5 md:px-8 rounded-2xl md:rounded-3xl focus-visible:ring-primary/40 focus-visible:border-primary/50 transition-all duration-300" 
                                   />
                                 </FormControl>
                                 <FormDescription className="text-[10px] md:text-[11px] tracking-wide font-medium text-white/30 italic">
-                                  {dict.projectForm.steps.workEmail.note}
+                                  {dict.pages.projectRequest.form.steps.workEmail.note}
                                 </FormDescription>
                                 <FormMessage />
                               </FormItem>
@@ -529,7 +529,7 @@ const nextStep = async () => {
                               
                               <FormField control={form.control} name="hasProblem" render={({ field: f }) => (
                                   <FormItem className="space-y-2 md:space-y-4">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.problemStatement.hasProblemLabel}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.problemStatement.hasProblemLabel}</FormLabel>
                                       <div className="grid grid-cols-2 gap-2.5">
                                           {singleOptions.hasProblem.map(o => (
                                               <button
@@ -569,7 +569,7 @@ const nextStep = async () => {
                                 >
                                   <FormField control={form.control} name="problemDescription" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.problemStatement.problemDescriptionLabel}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.problemStatement.problemDescriptionLabel}</FormLabel>
                                       <Textarea 
                                         id={f.name} 
                                         {...f} 
@@ -581,7 +581,7 @@ const nextStep = async () => {
                                   )} />
                                   <FormField control={form.control} name="idealState" render={({ field: f }) => (
                                       <FormItem className="space-y-1.5">
-                                          <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.problemStatement.idealStateLabel}</FormLabel>
+                                          <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.problemStatement.idealStateLabel}</FormLabel>
                                           <Textarea 
                                             id={f.name} 
                                             {...f} 
@@ -612,7 +612,7 @@ const nextStep = async () => {
                                           {!isSoleEntrepreneur && (
                                               <FormField control={form.control} name="hasDataTeam" render={({ field: f }) => (
                                                   <FormItem className="space-y-1.5">
-                                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.dataInfrastructure.hasDataTeamLabel}</FormLabel>
+                                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasDataTeamLabel}</FormLabel>
                                                       <div className="grid grid-cols-2 gap-2.5">
                                                           {singleOptions.dataInfrastructure.map(o => (
                                                               <button
@@ -636,7 +636,7 @@ const nextStep = async () => {
 
                                           <FormField control={form.control} name="hasCentralDatabase" render={({ field: f }) => (
                                               <FormItem className="space-y-1.5">
-                                                  <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.dataInfrastructure.hasCentralDatabaseLabel}</FormLabel>
+                                                  <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasCentralDatabaseLabel}</FormLabel>
                                                   <div className="grid grid-cols-2 gap-2.5">
                                                       {singleOptions.dataInfrastructure.map(o => (
                                                           <button
@@ -659,7 +659,7 @@ const nextStep = async () => {
 
                                           <FormField control={form.control} name="hasCloudPlatform" render={({ field: f }) => (
                                               <FormItem className="space-y-1.5">
-                                                  <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.dataInfrastructure.hasCloudPlatformLabel}</FormLabel>
+                                                  <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasCloudPlatformLabel}</FormLabel>
                                                   <div className="grid grid-cols-2 gap-2.5">
                                                       {singleOptions.dataInfrastructure.map(o => (
                                                           <button
@@ -684,7 +684,7 @@ const nextStep = async () => {
                                       <div className="pt-1">
                                         <FormField control={form.control} name="solutionsInUse" render={({ field: { onChange, value } }) => (
                                             <FormItem className="space-y-2">
-                                                <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.dataInfrastructure.solutionsInUseLabel}</FormLabel>
+                                                <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.solutionsInUseLabel}</FormLabel>
                                                 <MultiText value={value || []} onChange={onChange} placeholder="..." />
                                                 <FormMessage />
                                             </FormItem>
@@ -708,25 +708,25 @@ const nextStep = async () => {
                                 <div className="flex flex-col gap-3 md:gap-4">
                                   <FormField control={form.control} name="firstName" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.contact.firstName}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.contact.firstName}</FormLabel>
                                       <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
                                     </FormItem>
                                   )} />
                                   <FormField control={form.control} name="lastName" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.contact.lastName}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.contact.lastName}</FormLabel>
                                       <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
                                     </FormItem>
                                   )} />
                                   <FormField control={form.control} name="company" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.contact.company}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.contact.company}</FormLabel>
                                       <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
                                     </FormItem>
                                   )} />
                                   <FormField control={form.control} name="phone" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.projectForm.steps.contact.phone}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.contact.phone}</FormLabel>
                                       <PhoneInput 
                                         international 
                                         defaultCountry="NL" 
@@ -742,9 +742,9 @@ const nextStep = async () => {
                                       <Checkbox checked={f.value} onCheckedChange={f.onChange} />
                                     </FormControl>
                                     <FormLabel className="text-xs md:text-sm font-medium text-white/50 cursor-pointer leading-tight">
-                                      {dict.projectForm.steps.contact.consentPreLink}{' '}
+                                      {dict.pages.projectRequest.form.steps.contact.consentPreLink}{' '}
                                       <Link href={`/${lang}/privacy-policy/`} className="text-primary hover:underline" target="_blank">
-                                        {dict.projectForm.steps.contact.consentLinkText}
+                                        {dict.pages.projectRequest.form.steps.contact.consentLinkText}
                                       </Link>
                                     </FormLabel>
                                   </FormItem>
@@ -767,7 +767,7 @@ const nextStep = async () => {
                     disabled={step === -1} 
                     className="hover:bg-white/5 text-white/40 font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-6 md:px-8"
                   >
-                    <ArrowLeft className="mr-2 h-4 w-4" /> {dict.projectForm.buttons.previous}
+                    <ArrowLeft className="mr-2 h-4 w-4" /> {dict.pages.projectRequest.form.buttons.previous}
                   </Button>
                   <div className="flex gap-4">
                   {step === -1 ? (
@@ -776,7 +776,7 @@ const nextStep = async () => {
                         onClick={nextStep}
                         className="bg-primary hover:bg-blue-500 text-white font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-8 md:px-10 h-12 md:h-12 shadow-[0_0_20px_rgba(43,94,255,0.3)] transition-all duration-300"
                       >
-                        {dict.projectForm.buttons.start} <ArrowRight className="ml-2 h-4 w-4" />
+                        {dict.pages.projectRequest.form.buttons.start} <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     ) : step < totalSteps - 1 ? (
                       <Button 
@@ -785,7 +785,7 @@ const nextStep = async () => {
                         disabled={isNextButtonDisabled}
                         className="bg-primary hover:bg-blue-500 text-white font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-8 md:px-10 h-12 md:h-12 shadow-[0_0_20px_rgba(43,94,255,0.3)] transition-all duration-300 disabled:opacity-20 disabled:shadow-none"
                       >
-                        {dict.projectForm.buttons.next} <ArrowRight className="ml-2 h-4 w-4" />
+                        {dict.pages.projectRequest.form.buttons.next} <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     ) : (
                       <Magnetic strength={0.1}>
@@ -797,7 +797,7 @@ const nextStep = async () => {
                           <div className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
                           <span className="relative flex items-center">
                             {isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-                            {dict.projectForm.buttons.submit}
+                            {dict.pages.projectRequest.form.buttons.submit}
                           </span>
                         </Button>
                       </Magnetic>

@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import en from '@/dictionaries/en.json';
 import "./globals.css";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tovy.eu"),
   alternates: {
     canonical: '/',
   },
-  title: en.redirects.title,
-  description: en.redirects.description,
+  title: en.global.redirects.title,
+  description: en.global.redirects.description,
   robots: {
     index: false,
     follow: true,
@@ -22,12 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={GeistSans.variable}>
+    <html lang="en" className={cn(GeistSans.variable, "scroll-smooth")} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body>
+      <body className="font-sans antialiased flex flex-col min-h-screen">
         {children}
       </body>
     </html>
