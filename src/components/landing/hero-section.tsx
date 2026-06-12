@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { ArrowRight, BookOpen } from "lucide-react";
 import { cn } from '@/lib/utils';
-import { WavyLines } from './wavy-lines';
+import { DataFlow } from './data-flow';
+import { ScrollIndicator } from './scroll-indicator';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import type { Dictionary } from '@/lib/get-dictionary';
@@ -68,8 +69,8 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         style={{ backfaceVisibility: 'hidden' }}
       />
 
-      <WavyLines />
-      
+      <DataFlow className="absolute inset-0 w-full h-full pointer-events-none opacity-70" />
+
       <div
         className={cn(
           'transition-all ease-in-out duration-1000 delay-300 z-10 max-w-[90rem] flex flex-col items-center justify-center px-6 md:px-12 pt-20 pb-8 md:pt-24 md:pb-12 transform-gpu',
@@ -122,6 +123,8 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           )}
         </div>
       </div>
+
+      <ScrollIndicator label={dict.global.common.scroll} />
     </section>
   );
 }

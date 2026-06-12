@@ -50,6 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 import { AboutSection } from "@/components/landing/about-section";
 import { EngineeringSection } from "@/components/landing/engineering-section";
+import { TechMarquee } from "@/components/landing/tech-marquee";
 import FaqSection from "@/components/landing/faq-section";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
@@ -71,6 +72,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <SectionDivider />
 
       <EngineeringSection dict={dict} />
+
+      <TechMarquee dict={dict} />
 
       <SectionDivider />
 
