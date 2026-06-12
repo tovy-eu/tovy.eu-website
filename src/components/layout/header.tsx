@@ -10,10 +10,12 @@ import type { Dictionary } from "@/lib/get-dictionary";
 import { CONFIG } from "@/lib/config";
 import { Magnetic } from "@/components/ui/magnetic";
 import { sendGA4Event } from "@/lib/tracking";
+import { Menu, X } from "lucide-react";
 
 export default function Header({ lang = "en", dict }: { lang?: string; dict?: Dictionary }) {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   const shareIdeaText = dict?.global?.common?.shareIdea || "Request an Assessment";
@@ -70,6 +72,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
   }, [isAtHome]);
 
   const handleLogoClick = (e: React.MouseEvent) => {
+    setMenuOpen(false);
     if (isAtHome) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -161,8 +164,55 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
           <div className="scale-90 origin-right">
             <LanguageSwitcher currentLang={lang} />
           </div>
+
+          {/* Mobile menu toggle */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setMenuOpen(o => !o)}
+            className="md:hidden h-9 w-9 p-0 rounded-full hover:bg-white/10 border-none"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            {menuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          </Button>
         </div>
       </div>
+
+      {/* Mobile Navigation Panel */}
+      {menuOpen && (
+        <nav
+          id="mobile-nav"
+          className="md:hidden relative z-10 border-t border-white/10 bg-background/95 backdrop-blur-xl"
+        >
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 py-3 flex flex-col">
+            <Link
+              href={`${homePath}#about`}
+              onClick={() => setMenuOpen(false)}
+              className="text-xs font-bold uppercase tracking-[0.3em] text-white/70 hover:text-white transition-colors py-3"
+            >
+              {aboutText}
+            </Link>
+            <Link
+              href={`${homePath}#services`}
+              onClick={() => setMenuOpen(false)}
+              className="text-xs font-bold uppercase tracking-[0.3em] text-white/70 hover:text-white transition-colors py-3"
+            >
+              {servicesText}
+            </Link>
+            {CONFIG.enableBlog && (
+              <Link
+                href={`/${lang}/kx/`}
+                onClick={() => setMenuOpen(false)}
+                className="text-xs font-bold uppercase tracking-[0.3em] text-white/70 hover:text-white transition-colors py-3"
+              >
+                {blogText}
+              </Link>
+            )}
+          </div>
+        </nav>
+      )}
     </header>
   );
 }
