@@ -15,11 +15,11 @@ const PARTICLE_COUNT = 90;
 const LANE_COUNT = 5;
 
 type Particle = {
-  t: number;       // progress along x, 0..1
+  t: number; // progress along x, 0..1
   speed: number;
-  lane: number;    // target lane index
-  seed: number;    // phase offset for the chaotic left half
-  amp: number;     // chaos amplitude
+  lane: number; // target lane index
+  seed: number; // phase offset for the chaotic left half
+  amp: number; // chaos amplitude
 };
 
 // Logo gradient endpoints: --primary (226 100% 58%) and
@@ -30,8 +30,8 @@ const COLOR_TO = { r: 147, g: 98, b: 144 };
 function makeParticle(randomT: boolean): Particle {
   return {
     t: randomT ? Math.random() : 0,
-    // Near slow motion: one full crossing takes roughly 10-20 seconds
-    speed: 0.00004 + Math.random() * 0.00006,
+    // Synchronized speed for all particles
+    speed: 0.00005,
     lane: Math.floor(Math.random() * LANE_COUNT),
     seed: Math.random() * Math.PI * 2,
     amp: 0.25 + Math.random() * 0.75,
@@ -45,8 +45,9 @@ function convergence(t: number) {
 }
 
 function particleY(p: Particle, t: number, h: number, time: number) {
-  const laneSpread = h * 0.5;
-  const laneY = h * 0.5 + (p.lane - (LANE_COUNT - 1) / 2) * (laneSpread / LANE_COUNT);
+  const laneSpread = h * 0.1;
+  const laneY =
+    h * 0.5 + (p.lane - (LANE_COUNT - 1) / 2) * (laneSpread / LANE_COUNT);
   const chaosY =
     h * 0.5 +
     Math.sin(t * 7 + p.seed + time * 0.00006) * h * 0.28 * p.amp +
@@ -64,8 +65,12 @@ export function DataFlow({ className }: { className?: string }) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const particles: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => makeParticle(true));
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const particles: Particle[] = Array.from({ length: PARTICLE_COUNT }, () =>
+      makeParticle(true),
+    );
 
     let raf = 0;
     let running = false;
@@ -83,13 +88,23 @@ export function DataFlow({ className }: { className?: string }) {
 
     const drawLanes = () => {
       // Faint guide lanes on the converged (right) side
-      const laneSpread = height * 0.5;
+      const laneSpread = height * 0.1;
       for (let i = 0; i < LANE_COUNT; i++) {
-        const y = height * 0.5 + (i - (LANE_COUNT - 1) / 2) * (laneSpread / LANE_COUNT);
+        const y =
+          height * 0.5 + (i - (LANE_COUNT - 1) / 2) * (laneSpread / LANE_COUNT);
         const grad = ctx.createLinearGradient(width * 0.45, 0, width, 0);
-        grad.addColorStop(0, `rgba(${COLOR_FROM.r}, ${COLOR_FROM.g}, ${COLOR_FROM.b}, 0)`);
-        grad.addColorStop(0.7, `rgba(${COLOR_FROM.r}, ${COLOR_FROM.g}, ${COLOR_FROM.b}, 0.05)`);
-        grad.addColorStop(1, `rgba(${COLOR_TO.r}, ${COLOR_TO.g}, ${COLOR_TO.b}, 0.08)`);
+        grad.addColorStop(
+          0,
+          `rgba(${COLOR_FROM.r}, ${COLOR_FROM.g}, ${COLOR_FROM.b}, 0)`,
+        );
+        grad.addColorStop(
+          0.7,
+          `rgba(${COLOR_FROM.r}, ${COLOR_FROM.g}, ${COLOR_FROM.b}, 0.05)`,
+        );
+        grad.addColorStop(
+          1,
+          `rgba(${COLOR_TO.r}, ${COLOR_TO.g}, ${COLOR_TO.b}, 0.08)`,
+        );
         ctx.strokeStyle = grad;
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -169,7 +184,7 @@ export function DataFlow({ className }: { className?: string }) {
 
     const observer = new IntersectionObserver(
       ([entry]) => (entry.isIntersecting ? start() : stop()),
-      { threshold: 0 }
+      { threshold: 0 },
     );
     observer.observe(canvas);
 
@@ -188,7 +203,9 @@ export function DataFlow({ className }: { className?: string }) {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className={className ?? "absolute inset-0 w-full h-full pointer-events-none"}
+      className={
+        className ?? "absolute inset-0 w-full h-full pointer-events-none"
+      }
     />
   );
 }

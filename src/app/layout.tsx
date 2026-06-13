@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   },
   title: en.global.redirects.title,
   description: en.global.redirects.description,
-  robots: {
-    index: false,
-    follow: true,
+  other: {
+    'revisit-after': '14 days',
+    'googlebot': 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
   },
 };
 

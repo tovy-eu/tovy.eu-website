@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import companyProfile from '@/content/company-profile.json';
 import { getDictionary } from '@/lib/get-dictionary';
 import { generateAlternates } from '@/lib/metadata';
+import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 import PrivacyPolicyClient from '@/components/legal/privacy-policy-client';
 
 import { i18n } from '@/lib/config';
@@ -35,5 +36,13 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
   const dict = await getDictionary(lang);
   const email = companyProfile.public_company_profile.contact_details.email;
 
-  return <PrivacyPolicyClient email={email} dict={dict} />;
+  return (
+    <>
+      <JsonLd type="BreadcrumbList" data={getBreadcrumbSchema([
+        { name: dict.global.home, item: '/' },
+        { name: dict.pages.privacyPolicy.metadata.title, item: '/privacy-policy/' }
+      ])} />
+      <PrivacyPolicyClient email={email} dict={dict} />
+    </>
+  );
 }

@@ -51,6 +51,10 @@ export async function generateMetadata({
       title: dict.global.metadata.twitterTitle || dict.global.metadata.defaultTitle,
       images: ["https://tovy.eu/images/tovy-og-image.webp"],
     },
+    other: {
+      'revisit-after': '14 days',
+      'googlebot': 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+    },
   };
 }
 

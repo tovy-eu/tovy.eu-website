@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { ArrowRight, BookOpen } from "lucide-react";
 import { cn } from '@/lib/utils';
+import { WavyLines } from './wavy-lines';
 import { DataFlow } from './data-flow';
 import { ScrollIndicator } from './scroll-indicator';
 import { motion } from 'framer-motion';

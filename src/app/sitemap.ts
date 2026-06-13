@@ -5,18 +5,18 @@ import { CONFIG, SITE_URL } from '@/lib/config';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = SITE_URL; 
+  const baseUrl = SITE_URL;
   const languages = ['en', 'nl', 'es', 'de'];
 
   const routes = [
-    '',
-    '/project-request',
-    '/privacy-policy',
-    '/legal-notice',
+    { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
+    { path: '/project-request', priority: 0.9, changeFrequency: 'monthly' as const },
+    { path: '/privacy-policy', priority: 0.5, changeFrequency: 'yearly' as const },
+    { path: '/legal-notice', priority: 0.5, changeFrequency: 'yearly' as const },
   ];
 
   if (CONFIG.enableBlog) {
-    routes.push('/kx');
+    routes.push({ path: '/kx', priority: 0.7, changeFrequency: 'weekly' as const });
   }
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
@@ -24,7 +24,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   languages.forEach((lang) => {
     routes.forEach((route) => {
       sitemapEntries.push({
-        url: `${baseUrl}/${lang}${route}/`
+        url: `${baseUrl}/${lang}${route.path}/`,
+        lastModified: new Date(),
+        changeFrequency: route.changeFrequency,
+        priority: route.priority,
       });
     });
 
@@ -34,6 +37,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         sitemapEntries.push({
           url: `${baseUrl}/${lang}/kx/${post.id}/`,
           lastModified: new Date(post.date),
+          changeFrequency: 'never' as const,
+          priority: 0.6,
         });
       });
     }

@@ -4,10 +4,6 @@ import en from '@/dictionaries/en.json';
 export const metadata: Metadata = {
   title: en.global.redirects.title,
   description: en.global.redirects.description,
-  robots: {
-    index: false,
-    follow: true,
-  },
   alternates: {
     canonical: 'https://tovy.eu/en/',
   }

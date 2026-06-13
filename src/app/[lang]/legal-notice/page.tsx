@@ -3,6 +3,7 @@ import companyProfile from '@/content/company-profile.json';
 import LegalNoticeClient from '@/components/legal/legal-notice-client';
 import { getDictionary } from '@/lib/get-dictionary';
 import { generateAlternates } from '@/lib/metadata';
+import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 
 import { i18n } from '@/lib/config';
 
@@ -37,5 +38,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function LegalNoticePage({ params }: Props) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  return <LegalNoticeClient profile={companyProfile.public_company_profile} dict={dict} />;
+  return (
+    <>
+      <JsonLd type="BreadcrumbList" data={getBreadcrumbSchema([
+        { name: dict.global.home, item: '/' },
+        { name: dict.pages.legalNotice.metadata.title, item: '/legal-notice/' }
+      ])} />
+      <LegalNoticeClient profile={companyProfile.public_company_profile} dict={dict} />
+    </>
+  );
 }

@@ -1,8 +1,14 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
+Allow: /
 Disallow: /__/
+Crawl-delay: 1
 
-# Prevent non-content images from being indexed
+User-agent: Googlebot
+Allow: /
+Disallow: /__/
+Crawl-delay: 0
+
 User-agent: Googlebot-Image
 Disallow: /images/people/
 

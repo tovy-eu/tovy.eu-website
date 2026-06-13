@@ -28,6 +28,7 @@ export function getOrganizationSchema(dict: Dictionary): ProfessionalService {
     logo: "https://tovy.eu/images/tovy-og-image.webp",
     image: "https://tovy.eu/images/tovy-og-image.webp",
     description: dict.pages.home.hero.subtitle,
+    foundingDate: "2024-01-01",
     address: {
       "@type": "PostalAddress",
       streetAddress: `${companyProfile.public_company_profile.contact_details.street_name} ${companyProfile.public_company_profile.contact_details.house_number}`,
@@ -59,6 +60,7 @@ export function getPersonSchema(): Person {
     name: personProfile.public_ceo_profile.name,
     jobTitle: personProfile.public_ceo_profile.jobTitle,
     url: "https://tovy.eu",
+    image: personProfile.public_ceo_profile.image || "https://tovy.eu/images/tovy-og-image.webp",
     sameAs: personProfile.public_ceo_profile.sameAs,
   };
 }
