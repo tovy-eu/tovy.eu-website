@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { ArrowRight, BookOpen } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { WavyLines } from './wavy-lines';
-import { DataFlow } from './data-flow';
 import { ScrollIndicator } from './scroll-indicator';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
@@ -70,7 +69,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         style={{ backfaceVisibility: 'hidden' }}
       />
 
-      <DataFlow className="absolute inset-0 w-full h-full pointer-events-none opacity-70" />
+      <WavyLines />
 
       <div
         className={cn(
