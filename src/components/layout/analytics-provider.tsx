@@ -1,31 +1,43 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking } from "@/lib/tracking";
 import { getConsent } from "@/lib/consent";
 import { onCLS, onFCP, onLCP, onTTFB, onINP } from 'web-vitals';
+import { usePathname } from "next/navigation";
 
 export function AnalyticsProviderHead() {
-  return null; // GTM is completely removed
+  return null;
 }
-
-import { usePathname } from "next/navigation";
 
 export function AnalyticsProviderBody() {
   const pathname = usePathname();
+  const [consentGranted, setConsentGranted] = useState(false);
 
-  // Fire page_view on initial load AND route changes
+  // Listen for consent changes
   useEffect(() => {
-    const consent = getConsent();
-    if (consent && consent.granted) {
-        sendGA4Event("page_view");
+    const checkConsent = () => {
+      const consent = getConsent();
+      setConsentGranted(consent?.granted ?? false);
+    };
+
+    checkConsent();
+
+    // Listen to consent-changed event dispatched by cookie banner
+    window.addEventListener("consent-changed", checkConsent);
+    return () => window.removeEventListener("consent-changed", checkConsent);
+  }, []);
+
+  // Fire page_view on route changes (when consent is granted)
+  useEffect(() => {
+    if (consentGranted) {
+      sendGA4Event("page_view");
     }
-  }, [pathname]);
+  }, [pathname, consentGranted]);
 
-  // Track Core Web Vitals, Errors, Scroll Depth, and Outbound Links
+  // Track Core Web Vitals, Errors, Scroll Depth, and Outbound Links (only with consent)
   useEffect(() => {
-    const consent = getConsent();
-    if (!consent?.granted) return;
+    if (!consentGranted) return;
 
     // Initialize error tracking (always on)
     initErrorTracking();
