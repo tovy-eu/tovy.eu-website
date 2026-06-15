@@ -13,6 +13,7 @@ import { SectionHeader } from '@/components/landing/section-header';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 import { generateAlternates } from '@/lib/metadata';
 import { Spotlight } from '@/components/ui/spotlight';
+import { PageCategorySetter } from '@/components/layout/page-category-setter';
 
 export async function generateStaticParams() {
   const params = [];
@@ -89,12 +90,13 @@ export default async function KxPagination({ params }: Props) {
   ];
 
   return (
-    <div 
+    <div
       className="relative min-h-screen flex flex-col pt-32 md:pt-40 pb-24 px-4 md:px-8 overflow-hidden"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
     >
+      <PageCategorySetter category="knowledge-base" />
       <JsonLd data={getBreadcrumbSchema(breadcrumbs)} />
       <WavyLines />
       
@@ -138,7 +140,7 @@ export default async function KxPagination({ params }: Props) {
 
                 <div className="flex flex-col p-8 flex-grow relative z-10">
                   <div className="flex items-center gap-4 mb-6">
-                      <p className="font-mono text-[9px] font-bold tracking-[0.3em] text-white/30 uppercase">
+                      <p className="font-mono text-[9px] font-bold tracking-[0.3em] text-white/50 uppercase">
                         {"// "}{formatDate(post.date)}
                       </p>
                       <span className="h-px w-4 bg-white/10" />
@@ -151,7 +153,7 @@ export default async function KxPagination({ params }: Props) {
                     {post.title}
                   </h3>
 
-                  <p className="text-white/40 leading-relaxed font-medium tracking-tight mb-8 text-pretty line-clamp-2 text-base">
+                  <p className="text-white/55 leading-relaxed font-medium tracking-tight mb-8 text-pretty line-clamp-2 text-base">
                     {post.excerpt}
                   </p>
 
@@ -177,7 +179,7 @@ export default async function KxPagination({ params }: Props) {
                         className={`w-12 h-12 rounded-2xl flex items-center justify-center font-mono text-xs font-bold transition-all duration-500 border ${
                             isActive 
                             ? "bg-primary border-primary text-white shadow-[0_0_20px_rgba(43,94,255,0.3)]" 
-                            : "bg-white/5 border-white/10 text-white/40 hover:bg-white/10 hover:text-white"
+                            : "bg-white/5 border-white/10 text-white/55 hover:bg-white/10 hover:text-white"
                         }`}
                     >
                         {pageNum.toString().padStart(2, '0')}
@@ -191,7 +193,7 @@ export default async function KxPagination({ params }: Props) {
                 variant="ghost"
                 asChild
                 disabled={currentPage === 1}
-                className="rounded-full px-6 hover:bg-white/5 text-white/40 font-bold text-[10px] uppercase tracking-widest border border-white/5"
+                className="rounded-full px-6 hover:bg-white/5 text-white/55 font-bold text-[10px] uppercase tracking-widest border border-white/5"
             >
                 <Link href={currentPage === 2 ? `/${lang}/kx/` : `/${lang}/kx/page/${currentPage - 1}/`}>
                     <ArrowLeft className="mr-2 h-4 w-4" /> {dict.pages.knowledgeHub.hub.previous || "Previous"}
@@ -201,7 +203,7 @@ export default async function KxPagination({ params }: Props) {
                 variant="ghost"
                 asChild
                 disabled={currentPage === totalPages}
-                className="rounded-full px-6 hover:bg-white/5 text-white/40 font-bold text-[10px] uppercase tracking-widest border border-white/5"
+                className="rounded-full px-6 hover:bg-white/5 text-white/55 font-bold text-[10px] uppercase tracking-widest border border-white/5"
             >
                 <Link href={`/${lang}/kx/page/${currentPage + 1}/`}>
                     {dict.pages.knowledgeHub.hub.next || "Next"} <ArrowRight className="ml-2 h-4 w-4" />

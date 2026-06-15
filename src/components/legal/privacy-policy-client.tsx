@@ -77,7 +77,7 @@ export default function PrivacyPolicyClient({ email, dict }: PrivacyPolicyClient
                     )}
 
                     {section.footer && (
-                      <p className="text-sm font-medium italic text-white/30 border-l-2 border-white/5 pl-6 py-1">
+                      <p className="text-sm font-medium italic text-white/50 border-l-2 border-white/5 pl-6 py-1">
                         {section.footer}
                       </p>
                     )}
@@ -92,7 +92,7 @@ export default function PrivacyPolicyClient({ email, dict }: PrivacyPolicyClient
                 {dict.pages.privacyPolicy.content.effectiveDate}
               </p>
               
-              <Button asChild variant="ghost" className="hover:bg-white/5 text-white/20 hover:text-white/40 text-[10px] font-bold uppercase tracking-widest h-12 px-8 rounded-full">
+              <Button asChild variant="ghost" className="hover:bg-white/5 text-white/20 hover:text-white/55 text-[10px] font-bold uppercase tracking-widest h-12 px-8 rounded-full">
                 <Link href={`/${lang}/`}><ArrowLeft className="mr-2 h-3.5 w-3.5" /> {dict.global.common.back || "Back"}</Link>
               </Button>
             </div>

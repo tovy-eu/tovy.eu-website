@@ -85,12 +85,12 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.pages.legalNotice.content.companyName}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">{dict.pages.legalNotice.content.companyName}</p>
                   <p className="text-xl font-bold text-white tracking-tight">{profile.entity_name}</p>
-                  <p className="text-sm text-white/40 mt-1">{profile.legal_structure}</p>
+                  <p className="text-sm text-white/55 mt-1">{profile.legal_structure}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.pages.legalNotice.content.representedBy}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">{dict.pages.legalNotice.content.representedBy}</p>
                   <p className="text-lg font-semibold text-white/90">{profile.business_context.proprietor_name}</p>
                 </div>
               </div>
@@ -105,13 +105,13 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.pages.legalNotice.content.email}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">{dict.pages.legalNotice.content.email}</p>
                   <a href={`mailto:${profile.contact_details.email}`} className="text-lg font-bold text-primary hover:text-blue-400 transition-colors underline underline-offset-8 decoration-primary/20">
                     {profile.contact_details.email}
                   </a>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.pages.legalNotice.content.address}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">{dict.pages.legalNotice.content.address}</p>
                   <p className="text-base text-white/70 leading-relaxed">
                     {profile.contact_details.street_name} {profile.contact_details.house_number}<br />
                     {profile.contact_details.postal_code} {profile.contact_details.city}, NL
@@ -129,19 +129,19 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.pages.legalNotice.content.registry || "Registry"}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">{dict.pages.legalNotice.content.registry || "Registry"}</p>
                   <p className="text-sm font-bold text-white/80">{dict.pages.legalNotice.content.commercialRegistry || "Chamber of Commerce [KvK]"}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.pages.legalNotice.content.kvkNumber || "KvK Number"}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">{dict.pages.legalNotice.content.kvkNumber || "KvK Number"}</p>
                   <p className="font-mono text-lg text-primary drop-shadow-[0_0_8px_rgba(43,94,255,0.3)]">{profile.primary_identifiers.commercial_registry_number}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.pages.legalNotice.content.vatNumber || "VAT ID"}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">{dict.pages.legalNotice.content.vatNumber || "VAT ID"}</p>
                   <p className="font-mono text-lg text-primary drop-shadow-[0_0_8px_rgba(43,94,255,0.3)]">{profile.primary_identifiers.vat_id_number}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-white/30 mb-2">{dict.pages.legalNotice.content.peppolId || "E-invoicing (Peppol)"}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">{dict.pages.legalNotice.content.peppolId || "E-invoicing (Peppol)"}</p>
                   <p className="font-mono text-lg text-primary drop-shadow-[0_0_8px_rgba(43,94,255,0.3)]">NL:KVK {profile.primary_identifiers.commercial_registry_number}</p>
                 </div>
               </div>
@@ -154,7 +154,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
               <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/20">
                 {"// "}04. {(dict.pages.legalNotice.content.disclaimer || "DISCLAIMER").toUpperCase()}
               </h3>
-              <p className="text-sm text-white/30 leading-relaxed font-medium text-pretty italic">
+              <p className="text-sm text-white/50 leading-relaxed font-medium text-pretty italic">
                 {dict.pages.legalNotice.content.disclaimerContent}
               </p>
             </section>
@@ -169,7 +169,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
                   </a>
                 </Button>
               )}
-              <Button asChild variant="ghost" className="hover:bg-white/5 text-white/20 hover:text-white/40 text-[10px] font-bold uppercase tracking-widest h-12 px-8 rounded-full">
+              <Button asChild variant="ghost" className="hover:bg-white/5 text-white/20 hover:text-white/55 text-[10px] font-bold uppercase tracking-widest h-12 px-8 rounded-full">
                 <Link href={`/${lang}/`}><ArrowLeft className="mr-2 h-3.5 w-3.5" /> {dict.global.common.back || "Back"}</Link>
               </Button>
             </div>

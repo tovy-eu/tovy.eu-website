@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { sendGA4Event } from "@/lib/tracking";
+import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking } from "@/lib/tracking";
 import { getConsent } from "@/lib/consent";
 import { onCLS, onFCP, onLCP, onTTFB, onINP } from 'web-vitals';
 
@@ -22,10 +22,22 @@ export function AnalyticsProviderBody() {
     }
   }, [pathname]);
 
-  // Track Core Web Vitals
+  // Track Core Web Vitals, Errors, Scroll Depth, and Outbound Links
   useEffect(() => {
     const consent = getConsent();
     if (!consent?.granted) return;
+
+    // Initialize error tracking (always on)
+    initErrorTracking();
+
+    // Initialize scroll depth tracking
+    initScrollTracking();
+
+    // Initialize outbound link tracking
+    initOutboundLinkTracking();
+
+    // Initialize CTA click tracking
+    initCTATracking();
 
     // Cumulative Layout Shift
     onCLS(metric => {

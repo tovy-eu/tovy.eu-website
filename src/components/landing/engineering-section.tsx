@@ -172,7 +172,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                         {service.stack.map((item: { tool: string }) => (
                           <span 
                             key={item.tool} 
-                            className="tool-tag text-[8px] md:text-[9px] font-bold tracking-[0.1em] md:tracking-[0.2em] uppercase px-2 py-0.5 md:py-1 rounded border border-white/5 bg-white/[0.03] text-white/40"
+                            className="tool-tag text-[8px] md:text-[9px] font-bold tracking-[0.1em] md:tracking-[0.2em] uppercase px-2 py-0.5 md:py-1 rounded border border-white/5 bg-white/[0.03] text-white/55"
                             style={{ '--service-color': `var(--brand-${index + 1})` } as React.CSSProperties}
                           >
                             {item.tool}
@@ -183,7 +183,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
 
                     <div className={cn("flex flex-col h-full relative z-10", isLarge && "md:grid md:grid-cols-5 md:gap-8")}>
                       <div className={cn(isLarge && "md:col-span-2")}>
-                        <p className="text-sm md:text-base text-white/50 leading-relaxed font-medium tracking-tight mb-6 md:mb-8">
+                        <p className="text-sm md:text-base text-white/65 leading-relaxed font-medium tracking-tight mb-6 md:mb-8">
                           {service.description}
                         </p>
                       </div>
@@ -192,11 +192,11 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                         <div className={cn(isLarge && "md:col-span-3", "space-y-3 md:space-y-4")}>
                           {service.points.map((point: string, i: number) => (
                             <div key={i} className="flex items-start gap-3">
-                              <CheckCircle 
+                              <CheckCircle
                                 className="h-4 w-4 flex-shrink-0 mt-0.5 opacity-40"
                                 style={{ color: service.color }}
                               />
-                              <p className="text-xs md:text-[13px] text-white/40 leading-relaxed font-medium tracking-tight">{point}</p>
+                              <p className="text-xs md:text-[13px] text-white/65 leading-relaxed font-medium tracking-tight">{point}</p>
                             </div>
                           ))}
                         </div>

@@ -25,7 +25,7 @@ import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home } from "lucide
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { Magnetic } from "@/components/ui/magnetic";
-import { sendGA4Event, getVisitorId, getTraceId } from "@/lib/tracking";
+import { sendGA4Event, getVisitorId, getTraceId, trackFormSubmission, trackFormError, trackFormStart } from "@/lib/tracking";
 import { Spotlight } from "@/components/ui/spotlight";
 
 interface ProjectIntakeFormProps {
@@ -156,6 +156,13 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     }
   }, [step, allValues, formSubmitted, formDocId]);
 
+  // Track when form is first opened
+  useEffect(() => {
+    if (step === 0) {
+      trackFormStart('Project Request');
+    }
+  }, [step]);
+
   useEffect(() => {
     const isSoleEntrepreneur = companySizeWatch === singleOptions.companySize[0]?.label;
     if (isSoleEntrepreneur) {
@@ -251,6 +258,9 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           'form_name': 'Project Request'
         });
 
+        // Track form submission in GA4
+        trackFormSubmission('Project Request', data);
+
         localStorage.removeItem(STORAGE_KEY);
         setRoutingPath(path);
         setSubmittedValues(data);
@@ -263,6 +273,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           description: errorMessage || "There was an error submitting your request.",
           variant: "destructive",
         });
+        // Track form error in GA4
+        trackFormError('Project Request', errorMessage || "Unknown error");
       }
     });
   };
@@ -339,45 +351,47 @@ const nextStep = async () => {
       `}</style>
 
       {formSubmitted ? (
-        <Card className="w-full max-w-3xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-4 md:p-8 animate-scale-in rounded-none md:rounded-[2.5rem] min-h-[100dvh] md:min-h-0">
-          <Spotlight color="rgba(43, 94, 255, 0.1)" />
-          <CardHeader className="text-center pb-6">
-            <CheckCircle className="mx-auto h-12 w-12 text-primary mb-4 animate-check-bounce" />
-            <CardTitle className="text-xl md:text-2xl font-bold tracking-tight">
-              {(routingPath === 'A' || routingPath === 'B') ? dict.pages.projectRequest.form.success.title : dict.pages.projectRequest.form.success.titlePathC}
-            </CardTitle>
-            <CardDescription className="max-w-md mx-auto text-white/50 leading-relaxed font-medium">
-              {(routingPath === 'A' || routingPath === 'B') ? dict.pages.projectRequest.form.success.description : dict.pages.projectRequest.form.success.descriptionPathC}
-            </CardDescription>
-          </CardHeader>
-          
-          {(routingPath === 'A' || routingPath === 'B' || routingPath === 'C') && (
-            <div className="w-full rounded-3xl overflow-hidden bg-white border border-white/5 mb-8 shadow-inner">
-              <iframe 
-                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GvYWPuGvxv0-8qtgsYeJKkgMUjmUqu-2D2FZrKqU6z75hXbUv6_FjFmbPdPBHcyew-fiAUXQ2?gv=true" 
-                style={{ border: 0 }} 
-                width="100%" 
-                height="600" 
-                frameBorder="0"
-                title="Google Calendar Appointment Scheduling"
-              ></iframe>
-            </div>
-          )}
+        <div className="w-full h-full overflow-y-auto md:overflow-y-visible">
+          <Card className="w-full max-w-3xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-4 md:p-8 animate-scale-in rounded-none md:rounded-[2.5rem] md:min-h-0">
+            <Spotlight color="rgba(43, 94, 255, 0.1)" />
+            <CardHeader className="text-center pb-6">
+              <CheckCircle className="mx-auto h-12 w-12 text-primary mb-4 animate-check-bounce" />
+              <CardTitle className="text-xl md:text-2xl font-bold tracking-tight">
+                {(routingPath === 'A' || routingPath === 'B') ? dict.pages.projectRequest.form.success.title : dict.pages.projectRequest.form.success.titlePathC}
+              </CardTitle>
+              <CardDescription className="max-w-md mx-auto text-white/65 leading-relaxed font-medium">
+                {(routingPath === 'A' || routingPath === 'B') ? dict.pages.projectRequest.form.success.description : dict.pages.projectRequest.form.success.descriptionPathC}
+              </CardDescription>
+            </CardHeader>
 
-          <div className="flex flex-col sm:flex-row gap-4 mt-4">
-            <Button asChild variant="ghost" className="hover:bg-white/10 text-white/40 text-[10px] font-bold uppercase tracking-[0.3em] rounded-full px-8">
-              <Link href={`/${lang}/`}><Home className="mr-2 h-3 w-3" />{dict.pages.projectRequest.form.success.backHome}</Link>
-            </Button>
-          </div>
-        </Card>
+            {(routingPath === 'A' || routingPath === 'B' || routingPath === 'C') && (
+              <div className="w-full rounded-3xl overflow-hidden bg-white border border-white/5 mb-8 shadow-inner">
+                <iframe
+                  src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GvYWPuGvxv0-8qtgsYeJKkgMUjmUqu-2D2FZrKqU6z75hXbUv6_FjFmbPdPBHcyew-fiAUXQ2?gv=true"
+                  style={{ border: 0 }}
+                  width="100%"
+                  height="600"
+                  frameBorder="0"
+                  title="Google Calendar Appointment Scheduling"
+                ></iframe>
+              </div>
+            )}
+
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+              <Button asChild variant="ghost" className="hover:bg-white/10 text-white/65 text-[10px] font-bold uppercase tracking-[0.3em] rounded-full px-8">
+                <Link href={`/${lang}/`}><Home className="mr-2 h-3 w-3" />{dict.pages.projectRequest.form.success.backHome}</Link>
+              </Button>
+            </div>
+          </Card>
+        </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 md:gap-16 max-w-6xl mx-auto items-stretch md:items-center h-[100dvh] md:h-auto">
+        <div className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-6 md:gap-12 max-w-5xl mx-auto items-stretch md:items-start px-4 md:px-6 h-[100dvh] md:h-auto py-2 md:py-2">
           {/* Technical Progress Index */}
           <div className="hidden md:flex flex-col gap-6 relative">
             {/* Vertical connector line */}
             <div className="absolute left-3 top-10 bottom-0 w-[1px] bg-white/5 z-0" />
             
-            <div className="font-mono text-[9px] tracking-[0.2em] text-white/25 mb-2 pl-1">{"// "}sequence_index</div>
+            <div className="font-mono text-[9px] tracking-[0.2em] text-white/65 mb-2 pl-1">{"// "}steps</div>
             {formSteps.map((s, i) => (
               <button
                 key={i}
@@ -386,7 +400,7 @@ const nextStep = async () => {
                 disabled={i >= step}
                 className={cn(
                   "group flex items-center gap-4 text-left transition-all duration-500 relative z-10",
-                  step === i ? "text-primary" : i < step ? "text-white/60 hover:text-white" : "text-white/30"
+                  step === i ? "text-primary" : i < step ? "text-white/60 hover:text-white" : "text-white/65"
                 )}
               >
                 <span className={cn(
@@ -406,7 +420,7 @@ const nextStep = async () => {
             ))}
           </div>
 
-          <Card className="w-full bg-card/60 md:backdrop-blur-2xl border-x-0 border-t-0 md:border border-white/10 shadow-2xl overflow-hidden flex flex-col rounded-none md:rounded-[2.5rem] transform-gpu h-full md:h-auto">
+          <Card className="w-full bg-card/60 md:backdrop-blur-2xl border-x-0 border-t-0 md:border border-white/10 shadow-2xl overflow-hidden flex flex-col rounded-none md:rounded-[2.5rem] transform-gpu h-full md:h-auto max-h-[100dvh] md:max-h-none">
             <Spotlight color="rgba(43, 94, 255, 0.08)" />
             <div 
                 className="hidden" 
@@ -430,7 +444,7 @@ const nextStep = async () => {
             </CardHeader>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full">
-                <CardContent className="p-5 md:p-12 flex-grow md:h-[600px] flex overflow-y-auto pt-8 md:pt-12">
+                <CardContent className="p-3 md:p-6 lg:p-10 flex-grow flex flex-col overflow-hidden pt-4 md:pt-6 lg:pt-8">
                 <AnimatePresence mode="wait">
                     <motion.div
                       key={step}
@@ -443,7 +457,7 @@ const nextStep = async () => {
                       {step === -1 && (
                         <div className="text-center py-6 md:py-8">
                           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 md:mb-6">{dict.pages.projectRequest.form.intro.title}</h2>
-                          <p className="text-white/40 text-base md:text-lg leading-relaxed font-medium">{dict.pages.projectRequest.form.intro.description}</p>
+                          <p className="text-white/65 text-base md:text-lg leading-relaxed font-medium">{dict.pages.projectRequest.form.intro.description}</p>
                         </div>
                       )}
                       {formSteps.map((s, index) => {
@@ -456,7 +470,7 @@ const nextStep = async () => {
                             <FormField key={field} control={form.control} name="email" render={({ field: f }) => (
                               <FormItem className="space-y-4 md:space-y-6">
                                 <div className="space-y-2 md:space-y-3">
-                                  <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}field_input_{String(index + 1).padStart(2, '0')}</div>
+                                  <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                   <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
                                   <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
@@ -465,10 +479,10 @@ const nextStep = async () => {
                                     id={f.name} 
                                     {...f} 
                                     placeholder={dict.global.common.emailPlaceholder} 
-                                    className="bg-white/[0.03] border-white/10 h-12 md:h-16 text-base md:text-xl px-5 md:px-8 rounded-2xl md:rounded-3xl focus-visible:ring-primary/40 focus-visible:border-primary/50 transition-all duration-300" 
+                                    className="bg-white/[0.03] border-white/10 h-10 md:h-14 text-sm md:text-lg px-5 md:px-8 rounded-2xl md:rounded-3xl focus-visible:ring-primary/40 focus-visible:border-primary/50 transition-all duration-300" 
                                   />
                                 </FormControl>
-                                <FormDescription className="text-[10px] md:text-[11px] tracking-wide font-medium text-white/30 italic">
+                                <FormDescription className="text-[10px] md:text-[11px] tracking-wide font-medium text-white/65 italic">
                                   {dict.pages.projectRequest.form.steps.workEmail.note}
                                 </FormDescription>
                                 <FormMessage />
@@ -485,7 +499,7 @@ const nextStep = async () => {
                             <FormField key={field} control={form.control} name={field as keyof ProjectRequestData} render={({ field: f }) => (
                               <FormItem className="space-y-3 md:space-y-6">
                                 <div className="space-y-1.5 md:space-y-3">
-                                  <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}selection_set_{index + 1}</div>
+                                  <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                   <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
                                   <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
@@ -502,25 +516,25 @@ const nextStep = async () => {
                                       onClick={() => { f.onChange(o.label); setTimeout(() => nextStep(), 300); }}
                                       className={cn(
                                         "group flex items-center justify-between transition-all duration-500 border",
-                                        isCompanySize ? "p-2.5 md:p-5 rounded-xl md:rounded-3xl" : "p-3.5 md:p-5 rounded-2xl md:rounded-3xl",
+                                        isCompanySize ? "py-2 md:py-2.5 px-3 md:px-4 rounded-xl md:rounded-3xl" : "py-2 md:py-2.5 px-3 md:px-4 rounded-2xl md:rounded-3xl",
                                         f.value === o.label 
                                           ? "bg-primary/10 border-primary/40 shadow-[0_0_25px_rgba(43,94,255,0.08)]" 
                                           : "bg-white/[0.02] border-white/5 hover:bg-white/[0.05] hover:border-white/10"
                                       )}
                                     >
-                                      <div className="flex items-center gap-3 md:gap-5">
+                                      <div className="flex items-center gap-1.5 md:gap-2.5">
                                         <span className={cn(
                                           "font-mono text-[9px] md:text-[11px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 rounded-md transition-colors duration-500",
-                                          f.value === o.label ? "bg-primary/20 text-primary" : "bg-black/20 text-white/30"
+                                          f.value === o.label ? "bg-primary/20 text-primary" : "bg-black/20 text-white/65"
                                         )}>{o.hint}</span>
                                         <span className={cn(
-                                          "font-bold text-xs md:text-lg transition-colors duration-500",
+                                          "font-bold text-[9px] md:text-[10px] transition-colors duration-500",
                                           f.value === o.label ? "text-white" : "text-white/60"
                                         )}>{o.label}</span>
                                       </div>
                                       {f.value === o.label && (
                                         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                                          <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+                                          <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-primary" />
                                         </motion.div>
                                       )}
                                     </button>
@@ -536,14 +550,14 @@ const nextStep = async () => {
                           return (
                             <div key={field} className="space-y-4 md:space-y-6">
                               <div className="space-y-2 md:space-y-3">
-                                <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}problem_definition</div>
+                                <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                 <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
                                 <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                               </div>
                               
                               <FormField control={form.control} name="hasProblem" render={({ field: f }) => (
                                   <FormItem className="space-y-2 md:space-y-4">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.problemStatement.hasProblemLabel}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/65 block">{dict.pages.projectRequest.form.steps.problemStatement.hasProblemLabel}</FormLabel>
                                       <div role="radiogroup" aria-label={dict.pages.projectRequest.form.steps.problemStatement.hasProblemLabel} className="grid grid-cols-2 gap-2.5">
                                           {singleOptions.hasProblem.map(o => (
                                               <button
@@ -553,23 +567,23 @@ const nextStep = async () => {
                                                   aria-checked={f.value === o.key}
                                                   onClick={() => { f.onChange(o.key); }}
                                                   className={cn(
-                                                  "group flex items-center justify-between p-3.5 md:p-5 rounded-2xl md:rounded-3xl border transition-all duration-500",
+                                                  "group flex items-center justify-between p-2 md:p-3 rounded-2xl md:rounded-3xl border transition-all duration-500",
                                                   f.value === o.key 
                                                     ? "bg-primary/10 border-primary/40 shadow-[0_0_20px_rgba(43,94,255,0.08)]" 
                                                     : "bg-white/[0.02] border-white/5 hover:bg-white/[0.05] hover:border-white/10"
                                                   )}
                                               >
-                                                  <div className="flex items-center gap-3 md:gap-5">
+                                                  <div className="flex items-center gap-1.5 md:gap-2.5">
                                                   <span className={cn(
                                                     "font-mono text-[9px] md:text-[11px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 rounded-md transition-colors duration-500",
-                                                    f.value === o.key ? "bg-primary/20 text-primary" : "bg-black/20 text-white/30"
+                                                    f.value === o.key ? "bg-primary/20 text-primary" : "bg-black/20 text-white/65"
                                                   )}>{o.hint}</span>
                                                   <span className={cn(
-                                                    "font-bold text-xs md:text-lg transition-colors duration-500",
+                                                    "font-bold text-[9px] md:text-[10px] transition-colors duration-500",
                                                     f.value === o.key ? "text-white" : "text-white/60"
                                                   )}>{o.label}</span>
                                                   </div>
-                                                  {f.value === o.key && <Check className="h-4 w-4 md:h-5 md:w-5 text-primary" />}
+                                                  {f.value === o.key && <Check className="h-3 w-3 md:h-4 md:w-4 text-primary" />}
                                               </button>
                                           ))}
                                       </div>
@@ -585,7 +599,7 @@ const nextStep = async () => {
                                 >
                                   <FormField control={form.control} name="problemDescription" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.problemStatement.problemDescriptionLabel}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/65 block">{dict.pages.projectRequest.form.steps.problemStatement.problemDescriptionLabel}</FormLabel>
                                       <Textarea 
                                         id={f.name} 
                                         {...f} 
@@ -597,7 +611,7 @@ const nextStep = async () => {
                                   )} />
                                   <FormField control={form.control} name="idealState" render={({ field: f }) => (
                                       <FormItem className="space-y-1.5">
-                                          <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.problemStatement.idealStateLabel}</FormLabel>
+                                          <FormLabel className="text-xs md:text-sm font-bold text-white/65 block">{dict.pages.projectRequest.form.steps.problemStatement.idealStateLabel}</FormLabel>
                                           <Textarea 
                                             id={f.name} 
                                             {...f} 
@@ -628,7 +642,7 @@ const nextStep = async () => {
                                           {!isSoleEntrepreneur && (
                                               <FormField control={form.control} name="hasDataTeam" render={({ field: f }) => (
                                                   <FormItem className="space-y-1.5">
-                                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasDataTeamLabel}</FormLabel>
+                                                      <FormLabel className="text-xs md:text-sm font-bold text-white/65 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasDataTeamLabel}</FormLabel>
                                                       <div role="radiogroup" aria-label={dict.pages.projectRequest.form.steps.dataInfrastructure.hasDataTeamLabel} className="grid grid-cols-2 gap-2.5">
                                                           {singleOptions.dataInfrastructure.map(o => (
                                                               <button
@@ -638,10 +652,10 @@ const nextStep = async () => {
                                                                   aria-checked={f.value === o.key}
                                                                   onClick={() => f.onChange(o.key)}
                                                                   className={cn(
-                                                                      "flex items-center justify-center py-2.5 md:py-3.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[10px] md:text-xs font-black",
+                                                                      "flex items-center justify-center py-2 md:py-2.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[9px] md:text-[10px] font-black",
                                                                       f.value === o.key 
                                                                         ? "bg-primary/20 border-primary/40 text-primary shadow-lg shadow-primary/10" 
-                                                                        : "bg-white/[0.02] border-white/5 text-white/20 hover:text-white/40"
+                                                                        : "bg-white/[0.02] border-white/5 text-white/50 hover:text-white/65"
                                                                   )}
                                                               >
                                                                   {o.label}
@@ -654,7 +668,7 @@ const nextStep = async () => {
 
                                           <FormField control={form.control} name="hasCentralDatabase" render={({ field: f }) => (
                                               <FormItem className="space-y-1.5">
-                                                  <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasCentralDatabaseLabel}</FormLabel>
+                                                  <FormLabel className="text-xs md:text-sm font-bold text-white/65 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasCentralDatabaseLabel}</FormLabel>
                                                   <div role="radiogroup" aria-label={dict.pages.projectRequest.form.steps.dataInfrastructure.hasCentralDatabaseLabel} className="grid grid-cols-2 gap-2.5">
                                                       {singleOptions.dataInfrastructure.map(o => (
                                                           <button
@@ -664,10 +678,10 @@ const nextStep = async () => {
                                                               aria-checked={f.value === o.key}
                                                               onClick={() => f.onChange(o.key)}
                                                               className={cn(
-                                                                  "flex items-center justify-center py-2.5 md:py-3.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[10px] md:text-xs font-black",
+                                                                  "flex items-center justify-center py-2 md:py-2.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[9px] md:text-[10px] font-black",
                                                                   f.value === o.key 
                                                                     ? "bg-primary/20 border-primary/40 text-primary shadow-lg shadow-primary/10" 
-                                                                    : "bg-white/[0.02] border-white/5 text-white/20 hover:text-white/40"
+                                                                    : "bg-white/[0.02] border-white/5 text-white/50 hover:text-white/65"
                                                               )}
                                                           >
                                                               {o.label}
@@ -679,7 +693,7 @@ const nextStep = async () => {
 
                                           <FormField control={form.control} name="hasCloudPlatform" render={({ field: f }) => (
                                               <FormItem className="space-y-1.5">
-                                                  <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasCloudPlatformLabel}</FormLabel>
+                                                  <FormLabel className="text-xs md:text-sm font-bold text-white/65 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.hasCloudPlatformLabel}</FormLabel>
                                                   <div role="radiogroup" aria-label={dict.pages.projectRequest.form.steps.dataInfrastructure.hasCloudPlatformLabel} className="grid grid-cols-2 gap-2.5">
                                                       {singleOptions.dataInfrastructure.map(o => (
                                                           <button
@@ -689,10 +703,10 @@ const nextStep = async () => {
                                                               aria-checked={f.value === o.key}
                                                               onClick={() => f.onChange(o.key)}
                                                               className={cn(
-                                                                  "flex items-center justify-center py-2.5 md:py-3.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[10px] md:text-xs font-black",
+                                                                  "flex items-center justify-center py-2 md:py-2.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[9px] md:text-[10px] font-black",
                                                                   f.value === o.key 
                                                                     ? "bg-primary/20 border-primary/40 text-primary shadow-lg shadow-primary/10" 
-                                                                    : "bg-white/[0.02] border-white/5 text-white/20 hover:text-white/40"
+                                                                    : "bg-white/[0.02] border-white/5 text-white/50 hover:text-white/65"
                                                               )}
                                                           >
                                                               {o.label}
@@ -706,7 +720,7 @@ const nextStep = async () => {
                                       <div className="pt-1">
                                         <FormField control={form.control} name="solutionsInUse" render={({ field: { onChange, value } }) => (
                                             <FormItem className="space-y-2">
-                                                <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.solutionsInUseLabel}</FormLabel>
+                                                <FormLabel className="text-xs md:text-sm font-bold text-white/65 block">{dict.pages.projectRequest.form.steps.dataInfrastructure.solutionsInUseLabel}</FormLabel>
                                                 <MultiText value={value || []} onChange={onChange} placeholder="..." />
                                                 <FormMessage />
                                             </FormItem>
@@ -730,25 +744,25 @@ const nextStep = async () => {
                                 <div className="flex flex-col gap-3 md:gap-4">
                                   <FormField control={form.control} name="firstName" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.contact.firstName}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/65 block">{dict.pages.projectRequest.form.steps.contact.firstName}</FormLabel>
                                       <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
                                     </FormItem>
                                   )} />
                                   <FormField control={form.control} name="lastName" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.contact.lastName}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/65 block">{dict.pages.projectRequest.form.steps.contact.lastName}</FormLabel>
                                       <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
                                     </FormItem>
                                   )} />
                                   <FormField control={form.control} name="company" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.contact.company}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/65 block">{dict.pages.projectRequest.form.steps.contact.company}</FormLabel>
                                       <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
                                     </FormItem>
                                   )} />
                                   <FormField control={form.control} name="phone" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
-                                      <FormLabel className="text-xs md:text-sm font-bold text-white/40 block">{dict.pages.projectRequest.form.steps.contact.phone}</FormLabel>
+                                      <FormLabel className="text-xs md:text-sm font-bold text-white/65 block">{dict.pages.projectRequest.form.steps.contact.phone}</FormLabel>
                                       <PhoneInput 
                                         international 
                                         defaultCountry="NL" 
@@ -763,7 +777,7 @@ const nextStep = async () => {
                                     <FormControl>
                                       <Checkbox checked={f.value} onCheckedChange={f.onChange} />
                                     </FormControl>
-                                    <FormLabel className="text-xs md:text-sm font-medium text-white/50 cursor-pointer leading-tight">
+                                    <FormLabel className="text-xs md:text-sm font-medium text-white/65 cursor-pointer leading-tight">
                                       {dict.pages.projectRequest.form.steps.contact.consentPreLink}{' '}
                                       <Link href={`/${lang}/privacy-policy/`} className="text-primary hover:underline" target="_blank">
                                         {dict.pages.projectRequest.form.steps.contact.consentLinkText}
@@ -787,7 +801,7 @@ const nextStep = async () => {
                     variant="ghost" 
                     onClick={prevStep} 
                     disabled={step === -1} 
-                    className="hover:bg-white/5 text-white/40 font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-6 md:px-8"
+                    className="hover:bg-white/5 text-white/65 font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-6 md:px-8"
                   >
                     <ArrowLeft className="mr-2 h-4 w-4" /> {dict.pages.projectRequest.form.buttons.previous}
                   </Button>

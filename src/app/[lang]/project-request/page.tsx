@@ -5,6 +5,7 @@ import { WavyLines } from '@/components/landing/wavy-lines';
 import { getDictionary } from '@/lib/get-dictionary';
 import { generateAlternates } from '@/lib/metadata';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
+import { PageCategorySetter } from '@/components/layout/page-category-setter';
 
 const ProjectIntakeForm = dynamic(() => import('@/components/landing/project-intake-form').then(mod => mod.ProjectIntakeForm), {
   loading: () => <div className="w-full h-[500px] md:h-[600px] flex items-center justify-center bg-card/20 animate-pulse rounded-[2.5rem]" />
@@ -46,6 +47,7 @@ export default async function ProjectRequestPage({ params }: Props) {
 
   return (
     <>
+      <PageCategorySetter category="form" />
       <JsonLd type="BreadcrumbList" data={getBreadcrumbSchema([
         { name: dict.global.home, item: '/' },
         { name: dict.pages.projectRequest.metadata.title, item: '/project-request/' }
@@ -57,7 +59,7 @@ export default async function ProjectRequestPage({ params }: Props) {
         }}
       >
         <WavyLines />
-        <div className="w-full max-w-6xl z-10 flex flex-col justify-start md:justify-center flex-grow py-0 md:py-32">
+        <div className="w-full max-w-6xl z-10 flex flex-col justify-start md:justify-start flex-grow py-0 md:py-20">
           <ProjectIntakeForm dict={dict} />
         </div>
       </div>

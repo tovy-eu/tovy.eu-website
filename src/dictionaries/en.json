@@ -76,7 +76,7 @@
         "subtitle": "We build, integrate, and manage your entire data ecosystem. From automated API integrations and central data warehouses to stable cloud infrastructure. No manual copying and pasting—just systems that run quietly and flawlessly in the background."
       },
       "about": {
-        "section": "Our Approach",
+        "section": "About Us",
         "title": "Expertise & Direct Contact",
         "mission": "Tovy helps growing companies professionalize their data infrastructure. We build stable, transparent systems that eliminate manual labor and ensure your data is always correct.",
         "ceo": {
@@ -114,12 +114,8 @@
         "services": {
           "strategic": {
             "title": "Consultancy & Architecture",
-            "desc": "We design scalable data architectures and select the right tooling (such as dbt, Snowflake, Azure, or GCP). No theoretical advisory reports—just concrete technical blueprints.",
-            "tools": [
-              "Architecture",
-              "Tool Selection",
-              "Feasibility"
-            ]
+            "desc": "We design scalable data architectures and select the right tooling (such as dbt, Databricks, Azure, or GCP). No theoretical advisory reports—just concrete technical blueprints.",
+            "tools": ["Architecture", "Tool Selection", "Feasibility"]
           },
           "cloud": {
             "title": "Cloud Infrastructure",
@@ -130,11 +126,7 @@
               "Complete peace of mind through robust, automatic backup strategies.",
               "A securely managed Azure cloud environment that unburdens your team."
             ],
-            "tools": [
-              "Azure / GCP / AWS",
-              "Security",
-              "Backups"
-            ]
+            "tools": ["Azure / GCP / AWS", "Security", "Backups"]
           },
           "data": {
             "title": "Data Warehousing & BI Pipelines",
@@ -145,20 +137,12 @@
               "Real-time grip on inventories, margins, and customer data across all channels.",
               "An integrated data platform that forms the basis for smart decision-making."
             ],
-            "tools": [
-              "dbt / SQL / Python",
-              "Power BI",
-              "Data Warehousing"
-            ]
+            "tools": ["dbt / SQL / Python", "Power BI", "Data Warehousing"]
           },
           "automation": {
             "title": "Process Automation",
             "desc": "Developing reliable API integrations and custom Python scripts to completely eliminate manual data transfer between your applications.",
-            "tools": [
-              "LLM Integrations",
-              "Python",
-              "Agentic Workflows"
-            ]
+            "tools": ["LLM Integrations", "Python", "Agentic Workflows"]
           }
         }
       },
@@ -195,7 +179,7 @@
       },
       "faq": {
         "title": "Frequently Asked Questions",
-        "badge": "SUPPORT",
+        "badge": "Support",
         "categories": [
           {
             "name": "Identity",
@@ -364,10 +348,7 @@
           "budget": {
             "label": "Is the required project budget available?",
             "description": "Our standard projects are six-week sprints with a fixed budget. Is a minimum investment of €5,000 available?",
-            "options": [
-              "Yes",
-              "No"
-            ]
+            "options": ["Yes", "No"]
           },
           "contact": {
             "label": "Contact details",

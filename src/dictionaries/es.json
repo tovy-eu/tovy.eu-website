@@ -76,7 +76,7 @@
         "subtitle": "Diseñamos, integramos y gestionamos todo tu ecosistema de datos. Desde integraciones automáticas de API y almacenes de datos centrales hasta infraestructura en la nube estable. Sin copiar y pegar manualmente: solo sistemas que se ejecutan de manera silenciosa y sin errores en segundo plano."
       },
       "about": {
-        "section": "Nuestro enfoque",
+        "section": "Sobre nosotros",
         "title": "Experiencia y contacto directo",
         "mission": "Tovy ayuda a las empresas en crecimiento a profesionalizar su infraestructura de datos. Construimos sistemas estables y transparentes que eliminan el trabajo manual y garantizan que tus datos sean siempre correctos.",
         "ceo": {
@@ -114,12 +114,8 @@
         "services": {
           "strategic": {
             "title": "Consultoría y Arquitectura",
-            "desc": "Diseñamos arquitecturas de datos escalables y seleccionamos las herramientas adecuadas (como dbt, Snowflake, Azure o GCP). Sin informes teóricos: solo planos técnicos concretos.",
-            "tools": [
-              "Arquitectura",
-              "Selección de herramientas",
-              "Viabilidad"
-            ]
+            "desc": "Diseñamos arquitecturas de datos escalables y seleccionamos las herramientas adecuadas (como dbt, Databricks, Azure o GCP). Sin informes teóricos: solo planos técnicos concretos.",
+            "tools": ["Arquitectura", "Selección de herramientas", "Viabilidad"]
           },
           "cloud": {
             "title": "Infraestructura en la nube",
@@ -130,11 +126,7 @@
               "Tranquilidad absoluta gracias a estrategias de copia de seguridad automáticas.",
               "Un entorno en la nube de Azure gestionado de forma segura que libera a tu equipo."
             ],
-            "tools": [
-              "Azure / GCP / AWS",
-              "Seguridad",
-              "Copias de seguridad"
-            ]
+            "tools": ["Azure / GCP / AWS", "Seguridad", "Copias de seguridad"]
           },
           "data": {
             "title": "Almacenamiento de datos y flujos de BI",
@@ -145,20 +137,12 @@
               "Control en tiempo real de inventarios, márgenes y datos de clientes en todos los canales.",
               "Una plataforma de datos integrada que sirve de base para la toma de decisiones inteligentes."
             ],
-            "tools": [
-              "dbt / SQL / Python",
-              "Power BI",
-              "Almacenes de datos"
-            ]
+            "tools": ["dbt / SQL / Python", "Power BI", "Almacenes de datos"]
           },
           "automation": {
             "title": "Automatización de procesos",
             "desc": "Desarrollo de integraciones de API confiables y scripts de Python personalizados para eliminar por completo la transferencia manual de datos entre tus aplicaciones.",
-            "tools": [
-              "Integraciones de LLM",
-              "Python",
-              "Flujos de agentes"
-            ]
+            "tools": ["Integraciones de LLM", "Python", "Flujos de agentes"]
           }
         }
       },
@@ -364,10 +348,7 @@
           "budget": {
             "label": "¿Está disponible el presupuesto necesario para el proyecto?",
             "description": "Nuestros proyectos estándar son sprints de seis semanas con un presupuesto fijo. ¿Hay una inversión mínima de 5.000 € disponible?",
-            "options": [
-              "Sí",
-              "No"
-            ]
+            "options": ["Sí", "No"]
           },
           "contact": {
             "label": "Datos de contacto",

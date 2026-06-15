@@ -5,6 +5,7 @@ import { getDictionary } from '@/lib/get-dictionary';
 import { generateAlternates } from '@/lib/metadata';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 import PrivacyPolicyClient from '@/components/legal/privacy-policy-client';
+import { PageCategorySetter } from '@/components/layout/page-category-setter';
 
 import { i18n } from '@/lib/config';
 
@@ -38,6 +39,7 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
 
   return (
     <>
+      <PageCategorySetter category="legal" />
       <JsonLd type="BreadcrumbList" data={getBreadcrumbSchema([
         { name: dict.global.home, item: '/' },
         { name: dict.pages.privacyPolicy.metadata.title, item: '/privacy-policy/' }

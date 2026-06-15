@@ -14,6 +14,7 @@ import { WavyLines } from '@/components/landing/wavy-lines';
 import { Magnetic } from '@/components/ui/magnetic';
 import { JsonLd, getBreadcrumbSchema, getArticleSchema } from '@/components/layout/json-ld';
 import { generateAlternates } from '@/lib/metadata';
+import { PageCategorySetter } from '@/components/layout/page-category-setter';
 import person from '@/content/person.json';
 
 import { i18n } from '@/lib/config';
@@ -93,10 +94,11 @@ export default async function KxResource({ params }: Props) {
   ];
 
   return (
-    <div 
+    <div
       className="relative flex flex-col min-h-screen pt-16 md:pt-28 pb-8 overflow-hidden"
       style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))' }}
     >
+      <PageCategorySetter category="knowledge-base" />
       <JsonLd type="BreadcrumbList" data={getBreadcrumbSchema(breadcrumbs)} />
       <JsonLd type="Article" data={getArticleSchema(postData)} />
       <WavyLines />
@@ -153,11 +155,11 @@ export default async function KxResource({ params }: Props) {
             <CardDescription className="text-base flex flex-col gap-6 text-white/70">
               <div className="flex items-center gap-3 flex-wrap font-medium text-sm">
                 <a href={authorProfile.url} target="_blank" rel="author noopener noreferrer" className="font-bold text-white/95 hover:text-primary transition-colors">{postData.author}</a>
-                <span className="text-white/30">&bull;</span>
+                <span className="text-white/50">&bull;</span>
                 <time className="text-white/80">{displayDate}</time>
                 {postData.readingTime && (
                   <>
-                    <span className="text-white/30">&bull;</span>
+                    <span className="text-white/50">&bull;</span>
                     <div className="flex items-center gap-1.5 text-primary/90">
                       <BookOpen className="h-3.5 w-3.5" />
                       <span>{postData.readingTime} {dict.pages.knowledgeHub.hub.readingTime}</span>

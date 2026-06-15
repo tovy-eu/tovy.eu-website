@@ -124,7 +124,7 @@ export const TrustedBySection = ({ className, dict }: { className?: string; dict
 
   return (
     <section className={cn("w-full px-2 md:px-4", className)}>
-      <h2 className="text-center text-[10px] md:text-xs font-semibold tracking-wider text-white/40 mb-0.5 md:mb-0.5">
+      <h2 className="text-center text-[10px] md:text-xs font-semibold tracking-wider text-white/55 mb-0.5 md:mb-0.5 italic">
         {titleText}
       </h2>
       <LogoBanner logos={sampleLogos} className="py-0 min-h-[60px]" />

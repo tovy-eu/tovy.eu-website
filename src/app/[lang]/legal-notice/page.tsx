@@ -4,6 +4,7 @@ import LegalNoticeClient from '@/components/legal/legal-notice-client';
 import { getDictionary } from '@/lib/get-dictionary';
 import { generateAlternates } from '@/lib/metadata';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
+import { PageCategorySetter } from '@/components/layout/page-category-setter';
 
 import { i18n } from '@/lib/config';
 
@@ -40,6 +41,7 @@ export default async function LegalNoticePage({ params }: Props) {
   const dict = await getDictionary(lang);
   return (
     <>
+      <PageCategorySetter category="legal" />
       <JsonLd type="BreadcrumbList" data={getBreadcrumbSchema([
         { name: dict.global.home, item: '/' },
         { name: dict.pages.legalNotice.metadata.title, item: '/legal-notice/' }

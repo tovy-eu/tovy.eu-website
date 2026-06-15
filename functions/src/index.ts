@@ -47,18 +47,29 @@ const verifyGooglebot = (ip: string): Promise<boolean> => {
   });
 };
 
+const getClientIp = (request: Request): string | null => {
+  // Try multiple headers in priority order (respect CF/proxy headers)
+  const ip =
+    (request.headers["cf-connecting-ip"] as string) ||
+    (request.headers["x-forwarded-for"] as string)?.split(",")[0].trim() ||
+    request.ip;
+
+  return ip || null;
+};
+
 const metricsHandler = async (request: Request, response: Response) => {
   logger.info("Metrics function triggered");
 
   const userAgent = (request.headers["user-agent"] as string) || "";
+  const clientIp = getClientIp(request);
+
   if (userAgent.includes(GOOGLEBOT_UA)) {
-    const ip = request.ip;
-    if (ip) {
+    if (clientIp) {
       try {
-        const isGooglebot = await verifyGooglebot(ip);
+        const isGooglebot = await verifyGooglebot(clientIp);
         if (!isGooglebot) {
           logger.warn("Spoofed Googlebot detected", {
-            ip,
+            ip: clientIp,
             userAgent,
           });
           response.status(403).send("Forbidden");
@@ -92,12 +103,32 @@ const metricsHandler = async (request: Request, response: Response) => {
   }
 
   try {
+    let bodyToSend = (request as Request & { rawBody: Buffer }).rawBody;
+
+    // Parse payload and add IP for geolocation + user-agent for device classification
+    if (clientIp) {
+      try {
+        const payload = JSON.parse(bodyToSend.toString());
+        // GA4 Measurement Protocol: include IP override for geolocation
+        ga4Url += `&ip_override=${encodeURIComponent(clientIp)}`;
+        // Also include user-agent override for improved device classification
+        const userAgent = (request.headers["user-agent"] as string) || "";
+        if (userAgent) {
+          ga4Url += `&user_agent=${encodeURIComponent(userAgent)}`;
+        }
+        bodyToSend = Buffer.from(JSON.stringify(payload));
+      } catch (parseError) {
+        logger.warn("Failed to parse request body for IP/UA injection", parseError);
+        // Continue without IP/UA injection
+      }
+    }
+
     const proxyResponse = await fetch(ga4Url, {
       method: "POST",
       headers: {
         "Content-Type": request.headers["content-type"] || "application/json",
       },
-      body: (request as Request & { rawBody: Buffer }).rawBody,
+      body: bodyToSend,
     });
 
     proxyResponse.headers.forEach((value: string, name: string) => {

@@ -1,11 +1,11 @@
-import React from 'react';
-import type { Dictionary } from '@/lib/get-dictionary';
-import { SectionHeader } from './section-header';
+import React from "react";
+import type { Dictionary } from "@/lib/get-dictionary";
+import { SectionHeader } from "./section-header";
 
 // Locale-independent product names, so no per-language content is needed here.
 const STACK = [
   "dbt",
-  "Snowflake",
+  "Databricks",
   "Microsoft Azure",
   "Google Cloud",
   "AWS",
@@ -13,7 +13,6 @@ const STACK = [
   "SQL",
   "TypeScript",
   "Power BI",
-  "Databricks",
   "SAP",
   "Oracle",
 ];
@@ -34,8 +33,10 @@ export function TechMarquee({ dict }: { dict: Dictionary }) {
       <div
         className="relative flex items-center"
         style={{
-          maskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)',
+          maskImage:
+            "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
         }}
       >
         <div className="flex animate-marquee whitespace-nowrap items-center">
@@ -47,10 +48,15 @@ export function TechMarquee({ dict }: { dict: Dictionary }) {
             >
               {row.map((name) => (
                 <React.Fragment key={name}>
-                  <span className="font-mono text-sm md:text-base tracking-[0.2em] uppercase text-white/30 hover:text-white transition-colors duration-300 cursor-default px-6 md:px-10">
+                  <span className="font-mono text-sm md:text-base tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-300 cursor-default px-6 md:px-10">
                     {name}
                   </span>
-                  <span className="text-primary/40 text-[8px] select-none" aria-hidden="true">◆</span>
+                  <span
+                    className="text-primary/40 text-[8px] select-none"
+                    aria-hidden="true"
+                  >
+                    ◆
+                  </span>
                 </React.Fragment>
               ))}
             </div>

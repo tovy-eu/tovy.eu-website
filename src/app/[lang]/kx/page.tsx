@@ -13,6 +13,7 @@ import { SectionHeader } from '@/components/landing/section-header';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 import { generateAlternates } from '@/lib/metadata';
 import { Spotlight } from '@/components/ui/spotlight';
+import { PageCategorySetter } from '@/components/layout/page-category-setter';
 import { i18n } from '@/lib/config';
 
 export async function generateStaticParams() {
@@ -69,6 +70,7 @@ export default async function KxHub({ params }: { params: Promise<{ lang: string
   if (posts.length === 0) {
     return (
       <div className="relative min-h-screen flex flex-col pt-40 pb-24 px-4 overflow-hidden" style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))' }}>
+        <PageCategorySetter category="knowledge-base" />
         <WavyLines />
         <div className="container relative z-10 mx-auto max-w-4xl text-center">
           <SectionHeader 
@@ -88,12 +90,13 @@ export default async function KxHub({ params }: { params: Promise<{ lang: string
   }
 
   return (
-    <div 
+    <div
       className="relative min-h-screen flex flex-col pt-32 md:pt-40 pb-24 px-4 md:px-8 overflow-hidden"
       style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
     >
+      <PageCategorySetter category="knowledge-base" />
       <JsonLd data={getBreadcrumbSchema(breadcrumbs)} />
       <WavyLines />
       
@@ -141,7 +144,7 @@ export default async function KxHub({ params }: { params: Promise<{ lang: string
 
                   <div className="flex flex-col p-8 md:p-10 flex-grow relative z-10">
                     <div className="flex items-center gap-4 mb-6">
-                        <p className="font-mono text-[9px] font-bold tracking-[0.3em] text-white/30 uppercase">
+                        <p className="font-mono text-[9px] font-bold tracking-[0.3em] text-white/50 uppercase">
                           {"// "}{formatDate(post.date)}
                         </p>
                         <span className="h-px w-4 bg-white/10" />
@@ -154,7 +157,7 @@ export default async function KxHub({ params }: { params: Promise<{ lang: string
                       {post.title}
                     </h3>
 
-                    <p className={isFeatured ? "text-white/40 leading-relaxed font-medium tracking-tight mb-8 text-pretty line-clamp-3 text-lg" : "text-white/40 leading-relaxed font-medium tracking-tight mb-8 text-pretty line-clamp-2 text-base"}>
+                    <p className={isFeatured ? "text-white/55 leading-relaxed font-medium tracking-tight mb-8 text-pretty line-clamp-3 text-lg" : "text-white/55 leading-relaxed font-medium tracking-tight mb-8 text-pretty line-clamp-2 text-base"}>
                       {post.excerpt}
                     </p>
 
@@ -181,7 +184,7 @@ export default async function KxHub({ params }: { params: Promise<{ lang: string
                         className={`w-12 h-12 rounded-2xl flex items-center justify-center font-mono text-xs font-bold transition-all duration-500 border ${
                             isActive 
                             ? "bg-primary border-primary text-white shadow-[0_0_20px_rgba(43,94,255,0.3)]" 
-                            : "bg-white/5 border-white/10 text-white/40 hover:bg-white/10 hover:text-white"
+                            : "bg-white/5 border-white/10 text-white/55 hover:bg-white/10 hover:text-white"
                         }`}
                     >
                         {pageNum.toString().padStart(2, '0')}

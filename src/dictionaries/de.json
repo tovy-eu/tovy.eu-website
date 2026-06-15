@@ -76,7 +76,7 @@
         "subtitle": "Wir bauen, integrieren und verwalten Ihre gesamte Datenlandschaft. Von automatisierten API-Verbindungen und zentralen Data Warehouses bis hin zu stabiler Cloud-Infrastruktur. Kein manuelles Kopieren und Einfügen mehr – sondern Systeme, die geräuschlos und fehlerfrei im Hintergrund laufen."
       },
       "about": {
-        "section": "Unser Ansatz",
+        "section": "Über uns",
         "title": "Expertise & Direkter Kontakt",
         "mission": "Tovy hilft wachsenden Unternehmen, ihre Dateninfrastruktur zu professionalisieren. Wir bauen stabile, transparente Systeme, die manuelle Arbeit eliminieren und sicherstellen, dass Ihre Daten immer korrekt sind.",
         "ceo": {
@@ -114,12 +114,8 @@
         "services": {
           "strategic": {
             "title": "Beratung & Architektur",
-            "desc": "Wir entwerfen skalierbare Datenarchitekturen und wählen die passenden Tools aus (wie dbt, Snowflake, Azure oder GCP). Keine theoretischen Gutachten – sondern konkrete technische Konzepte.",
-            "tools": [
-              "Architektur",
-              "Tool-Auswahl",
-              "Machbarkeit"
-            ]
+            "desc": "Wir entwerfen skalierbare Datenarchitekturen und wählen die passenden Tools aus (wie dbt, Databricks, Azure oder GCP). Keine theoretischen Gutachten – sondern konkrete technische Konzepte.",
+            "tools": ["Architektur", "Tool-Auswahl", "Machbarkeit"]
           },
           "cloud": {
             "title": "Cloud-Infrastruktur",
@@ -130,11 +126,7 @@
               "Absolute Sorgenfreiheit durch robuste, automatische Backup-Strategien.",
               "Eine sicher verwaltete Azure-Cloud-Umgebung, die Ihr Team entlastet."
             ],
-            "tools": [
-              "Azure / GCP / AWS",
-              "Sicherheit",
-              "Backups"
-            ]
+            "tools": ["Azure / GCP / AWS", "Sicherheit", "Backups"]
           },
           "data": {
             "title": "Data Warehousing & BI-Pipelines",
@@ -145,20 +137,12 @@
               "Echtzeit-Kontrolle über Bestände, Margen und Kundendaten auf allen Kanälen.",
               "Eine integrierte Datenplattform als solide Basis für kluge Entscheidungen."
             ],
-            "tools": [
-              "dbt / SQL / Python",
-              "Power BI",
-              "Data Warehousing"
-            ]
+            "tools": ["dbt / SQL / Python", "Power BI", "Data Warehousing"]
           },
           "automation": {
             "title": "Prozessautomatisierung",
             "desc": "Entwicklung zuverlässiger API-Integrationen und maßgeschneiderter Python-Skripte, um manuelle Datenübertragungen zwischen Ihren Anwendungen vollständig zu eliminieren.",
-            "tools": [
-              "LLM-Integrationen",
-              "Python",
-              "Agenten-Workflows"
-            ]
+            "tools": ["LLM-Integrationen", "Python", "Agenten-Workflows"]
           }
         }
       },
@@ -195,7 +179,7 @@
       },
       "faq": {
         "title": "Häufig gestellte Fragen",
-        "badge": "SUPPORT",
+        "badge": "Support",
         "categories": [
           {
             "name": "Identität",
@@ -364,10 +348,7 @@
           "budget": {
             "label": "Ist das erforderliche Projektbudget verfügbar?",
             "description": "Unsere Standardprojekte sind Sprints von sechs Wochen mit einem festen Budget. Ist eine Mindestinvestition von 5.000 € verfügbar?",
-            "options": [
-              "Ja",
-              "Nein"
-            ]
+            "options": ["Ja", "Nein"]
           },
           "contact": {
             "label": "Kontaktdaten",
