@@ -14,14 +14,6 @@ const MAKE_WEBHOOK_URL = defineString("MAKE_WEBHOOK_URL");
 const GOOGLEBOT_UA = "Googlebot";
 const GOOGLEBOT_REVERSE_DNS_SUFFIX = ".googlebot.com";
 
-// Higher-order function to add the noindex header
-const withNoIndex = (handler: (req: Request, res: Response) => Promise<void> | void) => {
-  return (req: Request, res: Response) => {
-    res.set("X-Robots-Tag", "noindex");
-    return handler(req, res);
-  };
-};
-
 const verifyGooglebot = (ip: string): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     lookup(ip, (err, address) => {
@@ -145,7 +137,7 @@ const metricsHandler = async (request: Request, response: Response) => {
 
 export const metrics = onRequest(
   { secrets: ["GA4_API_SECRET"], memory: "512MiB", region: "europe-west4", invoker: "public" },
-  withNoIndex(metricsHandler)
+  metricsHandler
 );
 
 // Only these fields are ever forwarded to the downstream Make.com automation.
