@@ -95,7 +95,7 @@ export function AnalyticsProviderBody() {
         metric_rating: metric.rating,
       });
     });
-  }, []);
+  }, [consentGranted]);
 
   return null;
 }
