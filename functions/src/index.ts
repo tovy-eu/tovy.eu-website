@@ -3,7 +3,6 @@ import { onDocumentUpdated } from "firebase-functions/v2/firestore";
 import { logger } from "firebase-functions";
 import { defineString } from "firebase-functions/params";
 import { initializeApp } from "firebase-admin/app";
-import { lookup } from "dns";
 import { Response } from "express";
 
 initializeApp();
@@ -11,42 +10,41 @@ initializeApp();
 const MEASUREMENT_ID = defineString("GA4_MEASUREMENT_ID");
 const MAKE_WEBHOOK_URL = defineString("MAKE_WEBHOOK_URL");
 
-const GOOGLEBOT_UA = "Googlebot";
-const GOOGLEBOT_REVERSE_DNS_SUFFIX = ".googlebot.com";
 
-const verifyGooglebot = (ip: string): Promise<boolean> => {
-  return new Promise((resolve, reject) => {
-    lookup(ip, (err, address) => {
-      if (err) {
-        return reject(err);
-      }
-
-      if (!address.endsWith(GOOGLEBOT_REVERSE_DNS_SUFFIX)) {
-        return resolve(false);
-      }
-
-      lookup(address, (err, forwardAddress) => {
-        if (err) {
-          return reject(err);
-        }
-
-        if (ip === forwardAddress) {
-          return resolve(true);
-        }
-        resolve(false);
-      });
+const isValidIp = (ip: string): boolean => {
+  // Basic IPv4 validation: check for obvious non-IPs (localhost, internal)
+  if (!ip || ip.includes("127.") || ip.includes("::1")) return false;
+  if (ip === "localhost") return false;
+  // Basic format check for IPv4
+  if (ip.includes(".")) {
+    const parts = ip.split(".");
+    return parts.length === 4 && parts.every(p => {
+      const num = parseInt(p);
+      return !isNaN(num) && num >= 0 && num <= 255;
     });
-  });
+  }
+  // IPv6 - at least has colons
+  return ip.includes(":");
 };
 
 const getClientIp = (request: Request): string | null => {
-  // Try multiple headers in priority order (respect CF/proxy headers)
-  const ip =
-    (request.headers["cf-connecting-ip"] as string) ||
-    (request.headers["x-forwarded-for"] as string)?.split(",")[0].trim() ||
-    request.ip;
+  // Try multiple headers in priority order
+  // x-forwarded-for is most reliable (standard proxy header, split and use first/last)
+  const xForwardedFor = request.headers["x-forwarded-for"] as string;
+  if (xForwardedFor) {
+    const ips = xForwardedFor.split(",").map(ip => ip.trim());
+    const clientIp = ips[0]; // First IP is original client
+    if (isValidIp(clientIp)) return clientIp;
+  }
 
-  return ip || null;
+  // Cloudflare header
+  const cfIp = request.headers["cf-connecting-ip"] as string;
+  if (cfIp && isValidIp(cfIp)) return cfIp;
+
+  // Firebase request.ip - fallback, may be internal
+  if (request.ip && isValidIp(request.ip)) return request.ip;
+
+  return null;
 };
 
 const metricsHandler = async (request: Request, response: Response) => {
@@ -54,24 +52,6 @@ const metricsHandler = async (request: Request, response: Response) => {
 
   const userAgent = (request.headers["user-agent"] as string) || "";
   const clientIp = getClientIp(request);
-
-  if (userAgent.includes(GOOGLEBOT_UA)) {
-    if (clientIp) {
-      try {
-        const isGooglebot = await verifyGooglebot(clientIp);
-        if (!isGooglebot) {
-          logger.warn("Spoofed Googlebot detected", {
-            ip: clientIp,
-            userAgent,
-          });
-          response.status(403).send("Forbidden");
-          return;
-        }
-      } catch (error) {
-        logger.error("Error verifying Googlebot", error);
-      }
-    }
-  }
 
   const apiSecret = process.env.GA4_API_SECRET;
 
@@ -95,23 +75,13 @@ const metricsHandler = async (request: Request, response: Response) => {
   }
 
   try {
-    let bodyToSend = (request as Request & { rawBody: Buffer }).rawBody;
+    const bodyToSend = (request as Request & { rawBody: Buffer }).rawBody;
 
-    // Parse payload and add IP for geolocation + user-agent for device classification
+    // Add IP for geolocation + user-agent for device classification via GA4 Measurement Protocol parameters
     if (clientIp) {
-      try {
-        const payload = JSON.parse(bodyToSend.toString());
-        // GA4 Measurement Protocol: include IP override for geolocation
-        ga4Url += `&ip_override=${encodeURIComponent(clientIp)}`;
-        // Also include user-agent override for improved device classification
-        const userAgent = (request.headers["user-agent"] as string) || "";
-        if (userAgent) {
-          ga4Url += `&user_agent=${encodeURIComponent(userAgent)}`;
-        }
-        bodyToSend = Buffer.from(JSON.stringify(payload));
-      } catch (parseError) {
-        logger.warn("Failed to parse request body for IP/UA injection", parseError);
-        // Continue without IP/UA injection
+      ga4Url += `&ip_override=${encodeURIComponent(clientIp)}`;
+      if (userAgent) {
+        ga4Url += `&user_agent=${encodeURIComponent(userAgent)}`;
       }
     }
 
