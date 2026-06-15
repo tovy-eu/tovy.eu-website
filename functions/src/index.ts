@@ -11,9 +11,27 @@ const MEASUREMENT_ID = defineString("GA4_MEASUREMENT_ID");
 const MAKE_WEBHOOK_URL = defineString("MAKE_WEBHOOK_URL");
 
 
+const sanitizeAndCleanIp = (ip: string): string => {
+  let cleaned = ip.trim();
+
+  // Strip IPv4 port (e.g., 1.2.3.4:8080 -> 1.2.3.4)
+  if (cleaned.includes(".") && cleaned.includes(":")) {
+    const lastColon = cleaned.lastIndexOf(":");
+    cleaned = cleaned.substring(0, lastColon);
+  }
+
+  // Strip IPv6 brackets and port (e.g., [2001:db8::1]:8080 -> 2001:db8::1)
+  if (cleaned.startsWith("[") && cleaned.includes("]")) {
+    const closingBracket = cleaned.indexOf("]");
+    cleaned = cleaned.substring(1, closingBracket);
+  }
+
+  return cleaned;
+};
+
 const isValidIp = (ip: string): boolean => {
   // Basic IPv4 validation: check for obvious non-IPs (localhost, internal)
-  if (!ip || ip.includes("127.") || ip.includes("::1")) return false;
+  if (!ip || ip.includes("127.") || ip === "::1") return false;
   if (ip === "localhost") return false;
   // Basic format check for IPv4
   if (ip.includes(".")) {
@@ -27,31 +45,55 @@ const isValidIp = (ip: string): boolean => {
   return ip.includes(":");
 };
 
-const getClientIp = (request: Request): string | null => {
+export const getClientIp = (request: Request): string | null => {
   // Try multiple headers in priority order
-  // x-forwarded-for is most reliable (standard proxy header, split and use first/last)
+
+  // 1. fastly-client-ip is specific to Firebase Hosting and highly reliable
+  const fastlyIp = request.headers["fastly-client-ip"] as string;
+  if (fastlyIp) {
+    const cleaned = sanitizeAndCleanIp(fastlyIp);
+    if (isValidIp(cleaned)) return cleaned;
+  }
+
+  // 2. x-forwarded-for is most reliable general standard proxy header
   const xForwardedFor = request.headers["x-forwarded-for"] as string;
   if (xForwardedFor) {
     const ips = xForwardedFor.split(",").map(ip => ip.trim());
-    const clientIp = ips[0]; // First IP is original client
-    if (isValidIp(clientIp)) return clientIp;
+    const firstIp = ips[0]; // First IP is original client
+    if (firstIp) {
+      const cleaned = sanitizeAndCleanIp(firstIp);
+      if (isValidIp(cleaned)) return cleaned;
+    }
   }
 
-  // Cloudflare header
+  // 3. Cloudflare header
   const cfIp = request.headers["cf-connecting-ip"] as string;
-  if (cfIp && isValidIp(cfIp)) return cfIp;
+  if (cfIp) {
+    const cleaned = sanitizeAndCleanIp(cfIp);
+    if (isValidIp(cleaned)) return cleaned;
+  }
 
-  // Firebase request.ip - fallback, may be internal
-  if (request.ip && isValidIp(request.ip)) return request.ip;
+  // 4. x-appengine-user-ip
+  const aeIp = request.headers["x-appengine-user-ip"] as string;
+  if (aeIp) {
+    const cleaned = sanitizeAndCleanIp(aeIp);
+    if (isValidIp(cleaned)) return cleaned;
+  }
+
+  // 5. Firebase request.ip - fallback, may be internal
+  if (request.ip) {
+    const cleaned = sanitizeAndCleanIp(request.ip);
+    if (isValidIp(cleaned)) return cleaned;
+  }
 
   return null;
 };
 
-const metricsHandler = async (request: Request, response: Response) => {
-  logger.info("Metrics function triggered");
-
+export const metricsHandler = async (request: Request, response: Response) => {
   const userAgent = (request.headers["user-agent"] as string) || "";
   const clientIp = getClientIp(request);
+
+  logger.info(`Metrics function triggered. Client IP: ${clientIp}, User Agent: ${userAgent}`);
 
   const apiSecret = process.env.GA4_API_SECRET;
 
@@ -75,22 +117,49 @@ const metricsHandler = async (request: Request, response: Response) => {
   }
 
   try {
-    const bodyToSend = (request as Request & { rawBody: Buffer }).rawBody;
+    const bodyBuffer = (request as Request & { rawBody?: Buffer }).rawBody;
+    const bodyObj = (request as Request).body;
+    let finalBody: string | Buffer | undefined = bodyBuffer;
 
-    // Add IP for geolocation + user-agent for device classification via GA4 Measurement Protocol parameters
-    if (clientIp) {
-      ga4Url += `&ip_override=${encodeURIComponent(clientIp)}`;
-      if (userAgent) {
-        ga4Url += `&user_agent=${encodeURIComponent(userAgent)}`;
+    // Parse the body as JSON and inject ip_override and user_agent into the top level
+    const contentType = request.headers["content-type"] || "";
+    if (contentType.includes("application/json")) {
+      let jsonBody: any = null;
+
+      // Case 1: body is already parsed as an object (very common in Express/Firebase middleware)
+      if (bodyObj && typeof bodyObj === "object") {
+        jsonBody = { ...bodyObj };
+      } 
+      // Case 2: body is still a Buffer in rawBody
+      else if (bodyBuffer && bodyBuffer.length > 0) {
+        try {
+          const bodyStr = bodyBuffer.toString("utf8");
+          jsonBody = JSON.parse(bodyStr);
+        } catch (parseError) {
+          logger.warn("Failed to parse request rawBody as JSON.", parseError);
+        }
+      }
+
+      // If we successfully retrieved/parsed the JSON body, inject the fields
+      if (jsonBody) {
+        if (clientIp) {
+          jsonBody.ip_override = clientIp;
+        }
+        if (userAgent) {
+          jsonBody.user_agent = userAgent;
+        }
+
+        finalBody = JSON.stringify(jsonBody);
+        logger.info(`Successfully injected ip_override (${clientIp}) and user_agent into JSON payload`);
       }
     }
 
     const proxyResponse = await fetch(ga4Url, {
       method: "POST",
       headers: {
-        "Content-Type": request.headers["content-type"] || "application/json",
+        "Content-Type": contentType || "application/json",
       },
-      body: bodyToSend,
+      body: finalBody,
     });
 
     proxyResponse.headers.forEach((value: string, name: string) => {
