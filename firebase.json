@@ -24,6 +24,16 @@
     ],
     "redirects": [
       {
+        "source": "/en",
+        "destination": "/en/",
+        "type": 301
+      },
+      {
+        "source": "/nl",
+        "destination": "/nl/",
+        "type": 301
+      },
+      {
         "source": "/es",
         "destination": "/es/",
         "type": 301
@@ -36,6 +46,16 @@
       {
         "source": "/project-request",
         "destination": "/project-request/",
+        "type": 301
+      },
+      {
+        "source": "/privacy-policy",
+        "destination": "/privacy-policy/",
+        "type": 301
+      },
+      {
+        "source": "/legal-notice",
+        "destination": "/legal-notice/",
         "type": 301
       }
     ],
