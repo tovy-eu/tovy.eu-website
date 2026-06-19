@@ -15,7 +15,13 @@ import { generateAlternates } from '@/lib/metadata';
 import { Spotlight } from '@/components/ui/spotlight';
 import { PageCategorySetter } from '@/components/layout/page-category-setter';
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
+  if (!CONFIG.enableBlog) {
+    return i18n.locales.map((lang) => ({ lang, page: '2' }));
+  }
+
   const params = [];
   for (const lang of i18n.locales) {
     const { totalPages } = getPaginatedPostsData(lang, 6, 1);
@@ -37,6 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return {
     title: `${dict.pages.knowledgeHub.metadata.title} - ${pageText} ${pageParam}`,
     description: dict.pages.knowledgeHub.metadata.description,
+    robots: CONFIG.enableBlog ? undefined : { index: false },
     alternates: generateAlternates(path, langParam),
     openGraph: {
       title: `${dict.pages.knowledgeHub.metadata.title} - ${pageText} ${pageParam}`,

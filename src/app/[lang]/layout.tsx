@@ -28,7 +28,7 @@ export async function generateMetadata({
   const dict = await getDictionary(lang);
 
   return {
-    metadataBase: new URL("https://tovy.eu"),
+    metadataBase: new URL("https://www.tovy.eu"),
     title: {
       template: dict.global.metadata.template,
       default: dict.global.metadata.defaultTitle,

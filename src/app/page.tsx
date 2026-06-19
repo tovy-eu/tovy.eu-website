@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: en.global.redirects.title,
   description: en.global.redirects.description,
   alternates: {
-    canonical: 'https://tovy.eu/en/',
+    canonical: 'https://www.tovy.eu/en/',
   }
 };
 

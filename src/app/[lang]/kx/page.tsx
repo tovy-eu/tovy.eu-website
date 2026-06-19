@@ -16,7 +16,10 @@ import { Spotlight } from '@/components/ui/spotlight';
 import { PageCategorySetter } from '@/components/layout/page-category-setter';
 import { i18n } from '@/lib/config';
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
+  if (!CONFIG.enableBlog) return [];
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
@@ -29,6 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return {
     title: dict.pages.knowledgeHub.metadata.title,
     description: dict.pages.knowledgeHub.metadata.description,
+    robots: CONFIG.enableBlog ? undefined : { index: false },
     alternates: generateAlternates(path, lang),
     openGraph: {
       title: dict.pages.knowledgeHub.metadata.title,
@@ -46,13 +50,31 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 }
 
 export default async function KxHub({ params }: { params: Promise<{ lang: string }> }) {
-  if (!CONFIG.enableBlog) {
-    notFound();
-  }
-
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  
+
+  if (!CONFIG.enableBlog) {
+    return (
+      <div className="relative min-h-screen flex flex-col pt-40 pb-24 px-4 overflow-hidden" style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))' }}>
+        <PageCategorySetter category="knowledge-base" />
+        <WavyLines />
+        <div className="container relative z-10 mx-auto max-w-4xl text-center">
+          <SectionHeader
+            badge={dict.pages.knowledgeHub.hub.badge || "Knowledge Exchange"}
+            title={dict.pages.knowledgeHub.hub.title}
+            description={dict.pages.knowledgeHub.hub.subtitle}
+          />
+          <div className="mt-20 p-12 rounded-[2.5rem] bg-card/40 backdrop-blur-xl border border-white/10">
+            <p className="text-white/60 text-lg">{dict.pages.knowledgeHub.hub.noPosts}</p>
+            <Button asChild className="mt-8 rounded-full px-8" variant="outline">
+              <Link href={`/${lang}/`}>{dict.global.common.back || "Back"}</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // Always page 1 for the main kx hub
   const currentPage = 1;
   const { posts, totalPages } = getPaginatedPostsData(lang, 6, currentPage);

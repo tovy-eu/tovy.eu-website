@@ -23,7 +23,13 @@ type Props = {
   params: Promise<{ lang: string; slug: string }>;
 };
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
+  if (!CONFIG.enableBlog) {
+    return i18n.locales.map((lang) => ({ lang, slug: 'placeholder' }));
+  }
+
   const params = [];
 
   for (const lang of i18n.locales) {
@@ -38,13 +44,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug } = await params;
   const postData = await getPostData(slug, lang);
   const defaultOgImage = '/images/tovy-og-image.webp';
-  
-  if (!postData) {
+
+  if (!postData || !CONFIG.enableBlog) {
     return {
-      title: 'Resource Not Found'
+      title: 'Resource Not Found',
+      robots: { index: false }
     };
   }
-  
+
   const ogImage = postData.image ? `https://tovy.eu${postData.image}` : `https://tovy.eu${defaultOgImage}`;
   const path = `/kx/${slug}`;
 
@@ -70,12 +77,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function KxResource({ params }: Props) {
+  const { lang, slug } = await params;
+  const dict = await getDictionary(lang);
+
   if (!CONFIG.enableBlog) {
     notFound();
   }
 
-  const { lang, slug } = await params;
-  const dict = await getDictionary(lang);
   const postData = await getPostData(slug, lang);
 
   if (!postData) {
