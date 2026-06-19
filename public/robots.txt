@@ -2,12 +2,10 @@
 User-agent: *
 Allow: /
 Disallow: /__/
-Crawl-delay: 1
 
 User-agent: Googlebot
 Allow: /
 Disallow: /__/
-Crawl-delay: 0
 
 User-agent: Googlebot-Image
 Disallow: /images/people/
