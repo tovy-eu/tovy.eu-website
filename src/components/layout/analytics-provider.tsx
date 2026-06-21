@@ -145,8 +145,11 @@ export function AnalyticsProviderBody() {
       <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          window.gtag = gtag;
+          if (!window.gtag) {
+            window.gtag = function() {
+              window.dataLayer.push(arguments);
+            };
+          }
         `}
       </Script>
     </>
