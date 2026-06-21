@@ -15,13 +15,7 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
-      {
-        "source": "/metrics{,/**}",
-        "function": "metrics",
-        "region": "europe-west4"
-      }
-    ],
+    "rewrites": [],
     "redirects": [],
     "headers": [
       {

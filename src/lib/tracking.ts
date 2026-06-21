@@ -40,84 +40,13 @@ export function getTraceId(): string {
   return uuidv4();
 }
 
-// Must Fix #1: Language and timezone (user_properties)
-function getUserLanguage(): string {
-  if (typeof window === "undefined") return "en";
-  return document.documentElement.lang || navigator.language || "en";
-}
-
-function getTimezoneOffset(): number {
-  return new Date().getTimezoneOffset();
-}
-
-// Must Fix #2: Dynamic engagement time
-function getEngagementTimeMs(): number {
-  if (typeof window === "undefined") return 100;
-
-  const sessionStartStr = sessionStorage.getItem(SESSION_START_TIME_KEY);
-  if (!sessionStartStr) return 100;
-
-  const sessionStartTime = parseInt(sessionStartStr, 10);
-  const elapsedMs = Math.max(100, Date.now() - sessionStartTime);
-  return Math.min(elapsedMs, 3600000); // Cap at 1 hour to avoid outliers
-}
-
 // Must Fix #3: Page referrer
 function getPageReferrer(): string {
   if (typeof window === "undefined") return "";
   return document.referrer || "";
 }
 
-// Must Fix #4: UTM parameters
-function extractUtmParameters(): Record<string, string> {
-  if (typeof window === "undefined") return {};
-
-  const params: Record<string, string> = {};
-  const searchParams = new URLSearchParams(window.location.search);
-
-  const utmFields = ["source", "medium", "campaign", "content", "term"];
-  utmFields.forEach(field => {
-    const value = searchParams.get(`utm_${field}`);
-    if (value) {
-      params[`utm_${field}`] = value;
-    }
-  });
-
-  return params;
-}
-
-// Should Fix #5: Screen resolution and viewport
-function getScreenResolution(): string {
-  if (typeof window === "undefined") return "0x0";
-  return `${window.screen.width}x${window.screen.height}`;
-}
-
-function getViewportSize(): string {
-  if (typeof window === "undefined") return "0x0";
-  return `${Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)}x${Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)}`;
-}
-
-// Should Fix #7: User agent classification
-function getDeviceCategory(): "mobile" | "tablet" | "desktop" {
-  if (typeof window === "undefined") return "desktop";
-
-  const ua = navigator.userAgent.toLowerCase();
-  if (/mobile|android|iphone|ipod|blackberry|iemobile|opera mini/i.test(ua)) {
-    return "mobile";
-  }
-  if (/ipad|android(?!.*mobile)|tablet|kindle/i.test(ua)) {
-    return "tablet";
-  }
-  return "desktop";
-}
-
-// Should Fix #7: User agent string for detailed device analysis
-function getUserAgent(): string {
-  if (typeof window === "undefined") return "";
-  return navigator.userAgent || "";
-}
-
-// Nice to Have #8: User ID for authenticated users
+// Nice to Have #8: Include user_id if user is authenticated
 export function setUserId(userId: string | null): void {
   if (typeof window === "undefined") return;
   if (userId) {
@@ -146,31 +75,6 @@ function sanitizeUrl(url: string): string {
     return `${urlObj.protocol}//${urlObj.hostname}${pathname}${urlObj.search}`;
   } catch {
     return url;
-  }
-}
-
-// Additional: Debug mode (true in development)
-function isDebugMode(): boolean {
-  if (typeof window === "undefined") return false;
-  return process.env.NODE_ENV !== "production";
-}
-
-// Additional: Session timeout check (30 minutes)
-function checkSessionTimeout(): void {
-  if (typeof window === "undefined") return;
-
-  const SESSION_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
-  const sessionStartStr = sessionStorage.getItem(SESSION_START_TIME_KEY);
-
-  if (sessionStartStr) {
-    const sessionStartTime = parseInt(sessionStartStr, 10);
-    const elapsed = Date.now() - sessionStartTime;
-
-    if (elapsed > SESSION_TIMEOUT_MS) {
-      // Session expired, clear it
-      sessionStorage.removeItem(SESSION_ID_KEY);
-      sessionStorage.removeItem(SESSION_START_TIME_KEY);
-    }
   }
 }
 
@@ -329,9 +233,47 @@ export function initCTATracking(): void {
   });
 }
 
+let gtmInitialized = false;
+
 /**
- * Sends an event directly to the Firebase Measurement Protocol proxy.
- * This bypasses GTM and ad-blockers entirely.
+ * Initializes the Google Tag Manager container dynamically via the Server-Side GTM endpoint.
+ * This ensures sGTM serves the JavaScript files directly as first-party assets.
+ */
+export function initGTM(): void {
+  if (typeof window === "undefined" || gtmInitialized) return;
+
+  const sgtmUrl = (process.env.NEXT_PUBLIC_SGTM_URL || '').replace(/\/$/, '');
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+
+  if (!sgtmUrl || !gtmId) {
+    console.warn("[Analytics] sGTM URL or GTM ID is missing in environment variables.");
+    return;
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    "gtm.start": new Date().getTime(),
+    event: "gtm.js"
+  });
+
+  const firstScript = document.getElementsByTagName("script")[0];
+  const scriptEl = document.createElement("script");
+  scriptEl.async = true;
+  scriptEl.src = `${sgtmUrl}/gtm.js?id=${gtmId}`;
+  
+  if (firstScript && firstScript.parentNode) {
+    firstScript.parentNode.insertBefore(scriptEl, firstScript);
+  } else {
+    document.head.appendChild(scriptEl);
+  }
+
+  gtmInitialized = true;
+  console.log(`[Analytics] sGTM initialized with Container ID: ${gtmId} at endpoint: ${sgtmUrl}`);
+}
+
+/**
+ * Sends an event to Server-Side GTM by pushing it to the dataLayer.
+ * If GTM is not initialized yet, it initializes it dynamically.
  */
 export async function sendGA4Event(eventName: string, params: Record<string, unknown> = {}) {
   if (typeof window === "undefined") return;
@@ -345,91 +287,38 @@ export async function sendGA4Event(eventName: string, params: Record<string, unk
     return;
   }
 
-  // Check if session has timed out (30 minutes)
-  checkSessionTimeout();
+  // Ensure GTM is initialized
+  initGTM();
+
+  // Push event to dataLayer
+  window.dataLayer = window.dataLayer || [];
 
   const visitorId = getVisitorId();
   const sessionId = getSessionId();
-
-  // Must Fix #1: User properties (language, timezone)
-  const userProperties: Record<string, { value: string | number }> = {
-    language: { value: getUserLanguage() },
-    timezone_offset_minutes: { value: getTimezoneOffset() },
-  };
-
-  // Should Fix #7: Device category
-  userProperties.device_category = { value: getDeviceCategory() };
-
-  // Additional: Page category for content type analysis
   const pageCategory = getPageCategory();
-  if (pageCategory) {
-    userProperties.page_category = { value: pageCategory };
-  }
+  const userId = getUserId();
 
-  // Build event parameters with all collected data
-  const eventParams: Record<string, unknown> = {
+  const dataLayerPayload: Record<string, unknown> = {
+    event: eventName,
+    visitor_id: visitorId,
     session_id: sessionId,
-    // Additional: Sanitize URL to prevent PII leakage
     page_location: sanitizeUrl(window.location.href),
     page_title: document.title,
-    // Must Fix #2: Dynamic engagement time
-    engagement_time_msec: getEngagementTimeMs(),
-    // Must Fix #3: Page referrer
     page_referrer: getPageReferrer(),
-    // Should Fix #5: Screen and viewport
-    screen_resolution: getScreenResolution(),
-    viewport_size: getViewportSize(),
-    // Should Fix #7: User agent for detailed device analysis
-    user_agent: getUserAgent(),
     ...params,
   };
 
-  // Additional: Add debug mode indicator
-  if (isDebugMode()) {
-    eventParams.debug_mode = true;
+  if (pageCategory) {
+    dataLayerPayload.page_category = pageCategory;
   }
-
-  // Must Fix #4: UTM parameters
-  const utmParams = extractUtmParameters();
-  Object.assign(eventParams, utmParams);
-
-  const payload: Record<string, unknown> = {
-    client_id: visitorId,
-    // Should Fix #6: Timestamp in microseconds
-    timestamp_micros: Date.now() * 1000,
-    // Must Fix #1: User properties object
-    user_properties: userProperties,
-    events: [
-      {
-        name: eventName,
-        params: eventParams,
-      },
-    ],
-  };
-
-  // Nice to Have #8: Include user_id if user is authenticated
-  const userId = getUserId();
   if (userId) {
-    payload.user_id = userId;
+    dataLayerPayload.user_id = userId;
   }
 
   try {
-    console.log(`[Analytics] Preparing to send ${eventName} to /metrics...`, payload);
-    fetch("/metrics", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-      keepalive: true,
-    })
-      .then((res) => {
-        console.log(`[Analytics] /metrics response status: ${res.status}`);
-      })
-      .catch((err) => {
-        console.error(`[Analytics] Fetch failed for ${eventName}:`, err);
-      });
+    console.log(`[Analytics] Pushing event ${eventName} to dataLayer...`, dataLayerPayload);
+    window.dataLayer.push(dataLayerPayload);
   } catch (e) {
-    console.error("[Analytics] Try/Catch failed to send GA4 event", e);
+    console.error("[Analytics] Failed to push GA4 event to dataLayer", e);
   }
 }

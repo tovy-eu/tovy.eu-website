@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking } from "@/lib/tracking";
+import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking, initGTM } from "@/lib/tracking";
 import { getConsent } from "@/lib/consent";
 import { onCLS, onFCP, onLCP, onTTFB, onINP } from 'web-vitals';
 import { usePathname } from "next/navigation";
@@ -38,6 +38,9 @@ export function AnalyticsProviderBody() {
   // Track Core Web Vitals, Errors, Scroll Depth, and Outbound Links (only with consent)
   useEffect(() => {
     if (!consentGranted) return;
+
+    // Initialize Server-Side Google Tag Manager (sGTM)
+    initGTM();
 
     // Initialize error tracking (always on)
     initErrorTracking();
