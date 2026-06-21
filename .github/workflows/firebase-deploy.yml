@@ -52,6 +52,8 @@ jobs:
         run: npm install
 
       - name: Build project
+        env:
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: "G-VL0FR2B3DH"
         run: npm run build
 
       - name: Deploy to Firebase Preview Channel
@@ -81,6 +83,8 @@ jobs:
         run: npm install
 
       - name: Build project
+        env:
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: "G-VL0FR2B3DH"
         run: npm run build
 
       - name: Deploy to Firebase Hosting (Production)

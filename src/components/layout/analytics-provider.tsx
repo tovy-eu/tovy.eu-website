@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking, initGTM } from "@/lib/tracking";
+import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking, initGA, setUserId, getUserId } from "@/lib/tracking";
 import { getConsent } from "@/lib/consent";
 import { onCLS, onFCP, onLCP, onTTFB, onINP } from 'web-vitals';
 import { usePathname } from "next/navigation";
+import { auth } from "@/lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import Script from "next/script";
 
 export function AnalyticsProviderHead() {
   return null;
@@ -35,12 +38,39 @@ export function AnalyticsProviderBody() {
     }
   }, [pathname, consentGranted]);
 
+  // Synchronize Firebase Auth state with Google Analytics
+  useEffect(() => {
+    let previousUid: string | null = null;
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      const currentUid = user ? user.uid : null;
+      
+      // Update persistent user_id in local storage
+      setUserId(currentUid);
+
+      if (consentGranted) {
+        if (currentUid && currentUid !== previousUid) {
+          sendGA4Event("login", {
+            method: "firebase",
+            user_id: currentUid,
+          });
+        } else if (!currentUid && previousUid) {
+          sendGA4Event("logout");
+        }
+      }
+      
+      previousUid = currentUid;
+    });
+
+    return () => unsubscribe();
+  }, [consentGranted]);
+
   // Track Core Web Vitals, Errors, Scroll Depth, and Outbound Links (only with consent)
   useEffect(() => {
     if (!consentGranted) return;
 
-    // Initialize Server-Side Google Tag Manager (sGTM)
-    initGTM();
+    // Initialize Google Analytics (GA4) out-of-the-box
+    initGA();
 
     // Initialize error tracking (always on)
     initErrorTracking();
@@ -100,5 +130,30 @@ export function AnalyticsProviderBody() {
     });
   }, [consentGranted]);
 
-  return null;
+  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
+  if (!consentGranted || !gaMeasurementId) {
+    return null;
+  }
+
+  return (
+    <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', '${gaMeasurementId}', {
+            send_page_view: false,
+            ${getUserId() ? `user_id: '${getUserId()}',` : ''}
+          });
+        `}
+      </Script>
+    </>
+  );
 }

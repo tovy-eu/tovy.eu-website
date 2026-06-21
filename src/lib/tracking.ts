@@ -233,47 +233,43 @@ export function initCTATracking(): void {
   });
 }
 
-let gtmInitialized = false;
+let gaInitialized = false;
 
 /**
- * Initializes the Google Tag Manager container dynamically via the Server-Side GTM endpoint.
- * This ensures sGTM serves the JavaScript files directly as first-party assets.
+ * Initializes Google Analytics (GA4) dynamically.
+ * This loads the standard gtag.js from Google's CDN and configures it.
  */
-export function initGTM(): void {
-  if (typeof window === "undefined" || gtmInitialized) return;
+export function initGA(): void {
+  if (typeof window === "undefined" || gaInitialized) return;
 
-  const sgtmUrl = (process.env.NEXT_PUBLIC_SGTM_URL || '').replace(/\/$/, '');
-  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
-  if (!sgtmUrl || !gtmId) {
-    console.warn("[Analytics] sGTM URL or GTM ID is missing in environment variables.");
+  if (!gaMeasurementId) {
+    console.warn("[Analytics] GA Measurement ID is missing in environment variables.");
     return;
   }
 
+  // Set up dataLayer and gtag function
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    "gtm.start": new Date().getTime(),
-    event: "gtm.js"
+  window.gtag = window.gtag || function() {
+    // eslint-disable-next-line prefer-rest-params
+    (window.dataLayer as unknown[]).push(arguments);
+  };
+
+  // Configure standard parameters
+  window.gtag("js", new Date());
+  window.gtag("config", gaMeasurementId, {
+    send_page_view: false, // Page views are fired manually on route change in AnalyticsProvider
+    user_id: getUserId() || undefined,
   });
 
-  const firstScript = document.getElementsByTagName("script")[0];
-  const scriptEl = document.createElement("script");
-  scriptEl.async = true;
-  scriptEl.src = `${sgtmUrl}/gtm.js?id=${gtmId}`;
-  
-  if (firstScript && firstScript.parentNode) {
-    firstScript.parentNode.insertBefore(scriptEl, firstScript);
-  } else {
-    document.head.appendChild(scriptEl);
-  }
-
-  gtmInitialized = true;
-  console.log(`[Analytics] sGTM initialized with Container ID: ${gtmId} at endpoint: ${sgtmUrl}`);
+  gaInitialized = true;
+  console.log(`[Analytics] Standard GA4 initialized with Measurement ID: ${gaMeasurementId}`);
 }
 
 /**
- * Sends an event to Server-Side GTM by pushing it to the dataLayer.
- * If GTM is not initialized yet, it initializes it dynamically.
+ * Sends an event to standard Google Analytics (GA4) via gtag.
+ * If GA is not initialized yet, it initializes it dynamically.
  */
 export async function sendGA4Event(eventName: string, params: Record<string, unknown> = {}) {
   if (typeof window === "undefined") return;
@@ -287,19 +283,24 @@ export async function sendGA4Event(eventName: string, params: Record<string, unk
     return;
   }
 
-  // Ensure GTM is initialized
-  initGTM();
+  // Ensure GA is initialized
+  initGA();
 
-  // Push event to dataLayer
-  window.dataLayer = window.dataLayer || [];
+  // Ensure gtag is defined on window
+  if (!window.gtag) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function() {
+      // eslint-disable-next-line prefer-rest-params
+      (window.dataLayer as unknown[]).push(arguments);
+    };
+  }
 
   const visitorId = getVisitorId();
   const sessionId = getSessionId();
   const pageCategory = getPageCategory();
   const userId = getUserId();
 
-  const dataLayerPayload: Record<string, unknown> = {
-    event: eventName,
+  const eventPayload: Record<string, unknown> = {
     visitor_id: visitorId,
     session_id: sessionId,
     page_location: sanitizeUrl(window.location.href),
@@ -309,16 +310,16 @@ export async function sendGA4Event(eventName: string, params: Record<string, unk
   };
 
   if (pageCategory) {
-    dataLayerPayload.page_category = pageCategory;
+    eventPayload.page_category = pageCategory;
   }
   if (userId) {
-    dataLayerPayload.user_id = userId;
+    eventPayload.user_id = userId;
   }
 
   try {
-    console.log(`[Analytics] Pushing event ${eventName} to dataLayer...`, dataLayerPayload);
-    window.dataLayer.push(dataLayerPayload);
+    console.log(`[Analytics] Sending GA4 event ${eventName} via gtag...`, eventPayload);
+    window.gtag("event", eventName, eventPayload);
   } catch (e) {
-    console.error("[Analytics] Failed to push GA4 event to dataLayer", e);
+    console.error("[Analytics] Failed to send GA4 event via gtag", e);
   }
 }
