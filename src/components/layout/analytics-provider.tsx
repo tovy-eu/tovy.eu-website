@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking, initGA, setUserId, getUserId } from "@/lib/tracking";
+import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking, initGA, setUserId } from "@/lib/tracking";
 import { getConsent } from "@/lib/consent";
 import { onCLS, onFCP, onLCP, onTTFB, onINP } from 'web-vitals';
 import { usePathname } from "next/navigation";
@@ -147,11 +147,6 @@ export function AnalyticsProviderBody() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('config', '${gaMeasurementId}', {
-            send_page_view: false,
-            ${getUserId() ? `user_id: '${getUserId()}',` : ''}
-          });
         `}
       </Script>
     </>

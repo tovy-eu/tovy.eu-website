@@ -256,6 +256,14 @@ export function initGA(): void {
     (window.dataLayer as unknown[]).push(arguments);
   };
 
+  // Configure standard Consent Mode defaults as granted since the user explicitly accepted consent
+  window.gtag("consent", "default", {
+    ad_storage: "granted",
+    ad_user_data: "granted",
+    ad_personalization: "granted",
+    analytics_storage: "granted",
+  });
+
   // Configure standard parameters
   window.gtag("js", new Date());
   window.gtag("config", gaMeasurementId, {
