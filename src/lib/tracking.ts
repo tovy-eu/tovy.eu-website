@@ -271,6 +271,17 @@ export function initGA(): void {
     user_id: getUserId() || undefined,
   });
 
+  const firstScript = document.getElementsByTagName("script")[0];
+  const scriptEl = document.createElement("script");
+  scriptEl.async = true;
+  scriptEl.src = `https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`;
+  
+  if (firstScript && firstScript.parentNode) {
+    firstScript.parentNode.insertBefore(scriptEl, firstScript);
+  } else {
+    document.head.appendChild(scriptEl);
+  }
+
   gaInitialized = true;
   console.log(`[Analytics] Standard GA4 initialized with Measurement ID: ${gaMeasurementId}`);
 }

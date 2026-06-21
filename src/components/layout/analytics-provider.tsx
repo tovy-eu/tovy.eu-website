@@ -7,7 +7,6 @@ import { onCLS, onFCP, onLCP, onTTFB, onINP } from 'web-vitals';
 import { usePathname } from "next/navigation";
 import { auth } from "@/lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import Script from "next/script";
 
 export function AnalyticsProviderHead() {
   return null;
@@ -130,28 +129,5 @@ export function AnalyticsProviderBody() {
     });
   }, [consentGranted]);
 
-  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-
-  if (!consentGranted || !gaMeasurementId) {
-    return null;
-  }
-
-  return (
-    <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          if (!window.gtag) {
-            window.gtag = function() {
-              window.dataLayer.push(arguments);
-            };
-          }
-        `}
-      </Script>
-    </>
-  );
+  return null;
 }
