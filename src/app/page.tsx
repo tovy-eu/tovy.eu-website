@@ -36,10 +36,11 @@ export default function RootPage() {
                   // Set the cookie if not already set or invalid
                   document.cookie = 'NEXT_LOCALE=' + target + '; Path=/; Max-Age=' + (365 * 24 * 60 * 60) + '; Secure; SameSite=Lax';
                 }
-                window.location.replace('/' + target + '/');
+                var search = window.location.search || '';
+                window.location.replace('/' + target + '/' + search);
               } catch (e) {
                 // Fallback to English if any error occurs
-                window.location.replace('/en/');
+                window.location.replace('/en/' + (window.location.search || ''));
               }
             })();
           `,
