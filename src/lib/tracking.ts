@@ -242,7 +242,8 @@ let gaInitialized = false;
 export function initGA(): void {
   if (typeof window === "undefined" || gaInitialized) return;
 
-  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const rawGaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const gaMeasurementId = rawGaId ? rawGaId.replace(/['"]/g, "") : "";
 
   if (!gaMeasurementId) {
     console.warn("[Analytics] GA Measurement ID is missing in environment variables.");
