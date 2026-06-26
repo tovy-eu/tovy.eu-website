@@ -109,16 +109,20 @@ export const notifyOnEmailQueued = onDocumentWritten("project_requests/{docId}",
   const before = event.data?.before.data();
   const after = event.data?.after.data();
 
-  // Only notify if message was just added (didn't exist before)
-  if (before?.message || !after?.message?.subject) {
+  // Only notify if message field just appeared (added in this write)
+  const hasMessageBefore = !!before?.message?.subject;
+  const hasMessageAfter = !!after?.message?.subject;
+
+  if (hasMessageBefore || !hasMessageAfter) {
+    logger.info(`Skipping: message existed before=${hasMessageBefore}, exists now=${hasMessageAfter}`);
     return;
   }
 
   const data = after;
-  logger.info(`notifyOnEmailQueued triggered for doc: ${event.params.docId}`, { hasTo: !!data?.to, hasSubject: !!data?.message?.subject });
+  logger.info(`Sending notification for doc: ${event.params.docId}`, { to: data?.to, subject: data?.message?.subject });
 
   if (!data?.to) {
-    logger.warn(`Skipping notification: missing to field`);
+    logger.warn(`Skipping: missing to field`);
     return;
   }
 
