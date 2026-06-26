@@ -24,7 +24,7 @@
       "accept": "Accepteren"
     },
     "common": {
-      "workWithUs": "Bedrijfsscan aanvragen",
+      "workWithUs": "Start de intake",
       "readBlog": "Ontdek de kennis-hub",
       "shareIdea": "Deel je projectidee",
       "privacyPolicy": "Privacyverklaring",
@@ -73,19 +73,19 @@
       "hero": {
         "badge": "Data engineering & procesautomatisering",
         "title": "Betrouwbare data-infrastructuur & procesautomatisering",
-        "subtitle": "Wij bouwen, integreren en beheren je complete data-omgeving. Van geautomatiseerde API-koppelingen en centrale datawarehouses tot stabiele cloud-infrastructuur. Geen handmatig knip-en-plakwerk, maar systemen die stil en foutloos op de achtergrond draaien."
+        "subtitle": "Wij bouwen, integreren en beheren je complete data-omgeving. Van geautomatiseerde API-koppelingen en centrale datawarehouses tot stabiele cloud-infrastructuur. Geen handmatig knip-en-plakwerk, maar systemen die foutloos op de achtergrond draaien."
       },
       "about": {
-        "section": "Over ons",
-        "title": "Expertise & direct contact",
-        "mission": "Tovy helpt groeiende bedrijven hun data-infrastructuur te professionaliseren. Wij bouwen stabiele, transparante systemen die handmatig werk elimineren en zorgen dat je data altijd klopt.",
+        "section": "Over onze",
+        "title": "technische expertise",
+        "mission": "Tovy helpt groeiende bedrijven hun data-infrastructuur te professionaliseren. Wij bouwen stabiele systemen die handmatig werk elimineren en zorgen dat je data klopt.",
         "ceo": {
           "name": "Giel Nijkamp",
           "role": "Oprichter & data-engineer",
           "specialization": "Data-architectuur",
           "location": "Breda, Nederland",
           "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
-          "bio": "Als data engineer help ik bedrijven rust te brengen door middel van tech. Ik heb een achtergrond in supply chain management. Met deze ervaring en visie engineer ik nu de data supply chain om automatisering te kunnen waarborgen. Je werkt direct samen met mij, de specialist die jouw systemen ontwerpt en bouwt. Mijn aanpak is pragmatisch: clean code, duidelijke documentatie en systemen die simpelweg blijven werken."
+          "bio": "Als data engineer help ik bedrijven rust te brengen door middel van IT. Door mijn BSc bedrijfskunde, MSc supply chain management en praktijkervaring begrijp ik zowel bedrijfsprocessen als passende datastructuren. Met deze ervaring en visie engineer ik \"data supply chains\" om automatisering te waarborgen. Je werkt direct samen met mij, de specialist die jouw systemen ontwerpt en bouwt. Mijn aanpak is pragmatisch en snel."
         },
         "pillarsTitle": "Onze pijlers",
         "pillars": {
@@ -95,70 +95,58 @@
           },
           "optimization": {
             "title": "Optimalisatie",
-            "desc": "Naast het gebruiken van tech zoekt Tovy voortdurend naar optimalisatie van processen. Het liefst volledig geautomatiseerd."
+            "desc": "Naast het gebruiken van tech zoekt Tovy voortdurend naar optimalisatie van processen. Het liefst volledig geautomatiseerd. Dit vraagty 100% alignment tussen business processen en IT."
           },
           "freedom": {
             "title": "Vrijheid",
-            "desc": "Dure FTEs behoren slim besteed te worden; daarom zoeken wij naar manieren om de simpele taken van jouw werknemers uit handen te nemen."
+            "desc": "Dure FTEs behoren slim besteed te worden, daarom zoeken wij naar manieren om de simpele taken van jouw werknemers uit handen te nemen en hen meer cognitieve vrijheid te bieden."
           },
           "innovation": {
             "title": "Innovatie",
-            "desc": "Een solide basis geeft de mentale en technische ruimte om te innoveren en te groeien."
+            "desc": "Een solide basis geeft de mentale en technische ruimte om te innoveren en te groeien. Wij starten hiermee en geven dit door aan jouw workforce."
           }
         }
       },
       "engineering": {
         "section": "Diensten",
-        "title": "End-to-end datasystemen",
-        "subtitle": "Van een robuuste data-architectuur tot betrouwbare procesautomatisering",
+        "title": "met als doel een end-to-end systeem",
+        "subtitle": "Enkel betrouwbare bedrijfsprocessen maken een robuust systeem mogelijk",
         "services": {
           "strategic": {
             "title": "Datagedreven strategie",
-            "desc": "Wij ontwerpen schaalbare data-architecturen en selecteren de juiste tooling. Geen theoretische adviesrapporten, maar concrete technische blauwdrukken.",
-            "tools": [
-              "Architectuur",
-              "Toolingselectie",
-              "Haalbaarheid"
-            ]
+            "desc": "Wij ontwerpen schaalbare gekoppelde systemen en selecteren tooling in overleg. Geen theoretische adviesrapporten, maar concrete technische blauwdrukken met een focus op haalbaarheid.",
+            "tools": ["Architectuur", "Toolingselectie", "Haalbaarheid"]
           },
           "cloud": {
             "title": "Infrastructuur",
-            "desc": "Inrichten en proactief beheren van stabiele IT-omgevingen. Wij ontwerpen je cloud en/of lokale omgevingen met het oog op maximale performance, back-ups en uptime.",
+            "desc": "Inrichten en beheren van IT-omgevingen. Wij ontwerpen je cloud en/of lokale omgevingen met het oog op maximale performance, back-ups en uptime.",
             "points": [
               "Een IT-omgeving die naadloos meegroeit met je bedrijfsambities.",
               "Maximale performance voor je bedrijfssystemen.",
-              "Volledige rust door robuuste back-up strategieën.",
-              "Een veilig beheerde omgeving die je team ontzorgt."
+              "Volledige rust door back-up strategieën.",
+              "Een veilig beheerd systeem die je team ontzorgt."
             ],
-            "tools": [
-              "Azure / GCP / AWS",
-              "Security",
-              "Back-ups"
-            ]
+            "tools": ["Azure / GCP / AWS", "Security", "Back-ups"]
           },
           "data": {
             "title": "Datawarehousing & pipelines",
-            "desc": "Het samenbrengen van bronnen (ERP, CRM, websites, accounting software) in één centraal datawarehouse",
+            "desc": "Het consolideren van data uit diverse bronnen waaronder ERP, CRM, websites, boekhoudsoftware en maatwerk. Alles opgeslagen binnen één centraal datawarehouse.",
             "points": [
               "Één centrale bron van waarheid voor al je data.",
               "Direct inzicht in bedrijfsresultaten via rapportages.",
               "Real-time grip op je voorraden, marges en klantdata.",
-              "Een geïntegreerd dataplatform dat de basis vormt voor besluitvorming."
+              "Een dataplatform dat de basis vormt voor besluitvorming."
             ],
             "tools": [
-              "dbt / SQL / Python",
+              "dbt / Databricks / Apache Spark",
               "Power BI",
               "Datawarehousing"
             ]
           },
           "automation": {
             "title": "Procesautomatisering",
-            "desc": "Ontwikkelen van betrouwbare API-koppelingen en op maat gemaakte AI-oplossingen om handmatige data-overdracht tussen je applicaties volledig te elimineren.",
-            "tools": [
-              "LLM-integraties",
-              "Python",
-              "Agentic workflows"
-            ]
+            "desc": "Het definiëren en implementeren van de gewenste bedrijfslogica binnen standaard softwarepakketten, aangevuld met AI-oplossingen om simpele handmatige taken te elimineren.",
+            "tools": ["Standaard software", "Agentic systems"]
           }
         }
       },
@@ -372,10 +360,7 @@
           "budget": {
             "label": "Is het benodigde projectbudget beschikbaar?",
             "description": "Onze standaardprojecten zijn sprints van zes weken met een vast budget. Is er een minimale investering van € 5.000,- beschikbaar?",
-            "options": [
-              "Ja",
-              "Nee"
-            ]
+            "options": ["Ja", "Nee"]
           },
           "contact": {
             "label": "Contactgegevens",
