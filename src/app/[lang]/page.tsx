@@ -77,10 +77,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <SectionDivider />
 
       <FaqSection dict={dict} />
-
-      {/* <SectionDivider /> */}
-
-      {/* <TestimonialsSection dict={dict} /> */}
     </div>
   );
 }

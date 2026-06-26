@@ -1,56 +1,94 @@
 # Tovy - Smart Data Ecosystems & AI Foundations
 
 Tovy is a high-end, professional platform designed to showcase advanced AI and data engineering services. Built with a focus on **Machine Experience (MX) Design**, Tovy transforms fragmented data silos into unified, automated foundations.
-🌐 **[TOVY](https://www.tovy.eu/?utm_source=github&utm_medium=profile&utm_campaign=readme_link)**
+
+🌐 **[TOVY Live Platform](https://www.tovy.eu/?utm_source=github&utm_medium=profile&utm_campaign=readme_link)**
+
+---
+
+## 📖 Deep Technical & Business Architecture
+
+For an exhaustive technical mapping, file-by-file directory responsibilities, and step-by-step tracing of business workflows (such as lead progress auto-saving, lead scoring, email notification triggers, and cron-scheduled abandonment recovery), see the master blueprint:
+👉 **[RECON_LOG.md](./RECON_LOG.md)**
+
+---
 
 ## 🚀 Technical Architecture
 
-Tovy is architected as a **Static Site Generation (SSG)** application, optimized for the **Edge**.
+Tovy is architected as a serverless **Static Site Generation (SSG)** application, optimized for high-speed delivery at the **Edge**.
 
 ### 1. Build-Time (Static Generation)
-- **Framework**: Next.js 15 (App Router) using `output: 'export'`.
-- **KX Hub**: Markdown resources are parsed at build-time using `remark` and `gray-matter`, resulting in zero-latency documentation pages.
-- **i18n**: Four locales (EN/NL/DE/ES) are pre-rendered into static route segments.
+- **Framework**: Next.js 15 (App Router) configured for fully static exports (`output: 'export'`).
+- **i18n**: Pre-renders four fully static locales (`en`, `nl`, `es`, `de`) into isolated, SEO-friendly route segments.
+- **Deduplicated Early Language Routing**: Client-side locale redirection is handled immediately at the root via an inline, zero-flicker redirection script utilizing cookie checks and `navigator.language` split-matching.
 
 ### 2. The Edge (Global Delivery)
 - **Hosting**: Firebase Hosting (CDN).
-- **Performance**: Assets are served from global PoPs with immutable caching headers for sub-100ms response times.
-- **SEO**: Static HTML ensures 100% crawlability for search engines and AI agents (LLMs).
+- **Performance**: Static assets served from global Points of Presence (PoPs) with immutable cache headers for sub-100ms response times.
+- **SEO & AI Discoverability**: Raw static HTML provides 100% indexability for standard search engines as well as LLM-driven AI indexing agents.
 
-### 3. The Client (Real-time Logic)
-- **Direct-to-Cloud**: Tovy interacts directly with **Firebase Firestore** via the Client SDK. This eliminates the need for a custom backend server, reducing latency and cost.
-- **Lead Qualification**: A proprietary scoring algorithm runs in the browser to route prospects to **Path A/B** (Calendly) or **Path C** (KX Hub).
-- **Journey Mapping**: Every visitor is assigned a persistent `visitor_id` and session-based `trace_id`. These are synchronized across Firestore and Google Tag Manager (GTM) for full-funnel attribution.
+### 3. The Client & Database (JAMstack Integration)
+- **Direct-to-Cloud Integration**: Clients communicate directly with **Google Cloud Firestore** via the Firebase Client SDK. This eliminates custom backend layers, drastically decreasing latency and operational overhead.
+- **Input Security & Constraints**: Database write operations are secured on the network boundary via strict `firestore.rules` (which block client-side reads entirely and enforce email validation rules to prevent email-relay abuse).
+- **Lead Journey Preservation**: Tracks and synchronizes an end-to-end user-journey tunnel using persistent `visitor_id` and unique `trace_id` mappings across both client-side forms and Google Analytics 4 (GA4).
 
-## ✨ Key Features
+---
 
-- **Strategic Lead Qualification**: A 7-step intake form with professional domain validation and automated routing logic.
-- **Machine Experience (MX)**: Comprehensive JSON-LD structured data (Schema.org) for AI-driven discovery.
-- **Knowledge Exchange (KX) Hub**: A high-performance resource center with reading progress indicators.
-- **Privacy & Compliance**: GDPR-compliant consent management and detailed legal notice.
+## ✨ Key Features & Business Workflows
+
+- **Strategic Lead Qualification**: A 7-step Intake Form with professional domain checks, real-time client-profile scoring, and prompt routing (Path A for high-fit leads vs Path B).
+- **Automated Lead Recovery**: A scheduled Firebase Cloud Function (`checkAbandonmentEmails`) triggers a cron check every 15 minutes to recover incomplete, abandoned form entries older than 2 hours—queuing a localized, high-performance reminder email.
+- **Real-Time Admin Alerting**: Document-creation event listeners in Firebase Functions intercept new lead filings and queue notifications to the admin team via `ntfy.sh`.
+- **Machine Experience (MX) Schema Injection**: Automated JSON-LD structured data (Organization, Services, FAQPage, BreadcrumbList) for AI search engine optimization.
+- **GDPR Privacy & Cookie Consent**: Lightweight, client-side compliance banner that broadcasts cookie-consent status changes to dynamically activate/deactivate tracking listeners.
+- **Knowledge Exchange (KX) Hub (Feature-Flagged)**: An integrated technical blog resource structure is fully supported inside configurations and dictionaries, but is currently deactivated via `CONFIG.enableBlog: false` in `src/lib/config.ts`.
+
+---
 
 ## 🛠 Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/)
-- **UI**: [Tailwind CSS](https://tailwindcss.com/) & [ShadCN UI](https://ui.shadcn.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Database**: [Firebase Firestore](https://firebase.google.com/)
-- **Analytics**: [Google Tag Manager](https://tagmanager.google.com/)
+- **Web Framework:** [Next.js 15 (React 19)](https://nextjs.org/)
+- **Styling:** [Tailwind CSS v3](https://tailwindcss.com/)
+- **Animations:** [Framer Motion v12](https://www.framer.com/motion/)
+- **State Validation:** [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
+- **Database / Host:** [Google Firebase (Hosting, Firestore, Functions, Extensions)](https://firebase.google.com/)
+- **Analytics:** [Google Tag Manager & GA4](https://tagmanager.google.com/)
+
+---
 
 ## 🚦 Getting Started
 
-1. **Install**: `npm install`
-2. **Configure**: Add Firebase credentials to `.env.local`
-3. **Develop**: `npm run dev`
-4. **Deploy**: `npm run build && firebase deploy`
+### 1. Installation & Local Development
+Install dependencies and run the Next.js development server:
+```bash
+npm install
+npm run dev
+```
+
+### 2. Code Quality Gates
+Run strict TypeScript compilation typechecks and ESLint style checks before committing code:
+```bash
+npm run typecheck    # Run tsc compiler
+npm run lint         # Run ESLint linter
+```
+
+### 3. Deployment
+Deploy changes directly to Firebase Hosting and Cloud Functions:
+```bash
+npm run deploy       # Full build, verification, and Firebase deploy (via scripts/deploy.sh)
+```
+
+---
 
 ## 🔄 CI/CD Pipeline
 
-Tovy utilizes an advanced GitHub Actions workflow for zero-downtime, automated deployments:
-- **Workload Identity Federation (WIF)**: Secure, keyless authentication to Google Cloud.
-- **Quality Gates**: Strict `npm run typecheck` and ESLint checks run on every PR and push.
-- **Preview Environments**: Every Pull Request automatically spins up a temporary, 7-day Firebase Preview Channel for stakeholder review before merging.
-- **Production Deploy**: Merging to `main` instantly deploys the static build (`/out`) to live Firebase Hosting.
+Tovy utilizes an automated GitHub Actions workflow for zero-downtime deployments:
+*   **Workload Identity Federation (WIF):** Secure, keyless authentication to Google Cloud.
+*   **Quality Gates:** Pull requests trigger automatic typechecks and ESLint checks.
+*   **Preview Environments:** Temporary, 7-day Firebase Hosting Preview Channels are automatically generated on every Pull Request for stakeholder review before code merges.
+*   **Production Deployment:** Merging to the `main` branch automatically triggers static HTML building and deploys the static `/out` bundle to live Firebase Hosting.
+
+---
 
 ## ⚖️ License
 

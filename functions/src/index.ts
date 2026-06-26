@@ -15,7 +15,7 @@ initializeApp();
  * Queries Firestore for incomplete project requests older than 2 hours and queues
  * a visually consistent email abandonment reminder document.
  */
-export const checkAbandonmentEmails = onSchedule("every 15 minutes", async (event) => {
+export const checkAbandonmentEmails = onSchedule("every 15 minutes", async (_event) => {
   const db = getFirestore();
   
   // Calculate threshold: 2 hours ago

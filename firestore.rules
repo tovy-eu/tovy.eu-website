@@ -19,9 +19,5 @@ service cloud.firestore {
       allow update: if resource.data.status != 'complete'
                     && request.resource.data.to == request.resource.data.userEmail;
     }
-
-    match /subscriptions/{subId} {
-      allow create: if true;
-    }
   }
 }
