@@ -22,34 +22,25 @@ if ! command -v firebase &> /dev/null; then
 fi
 
 echo -e "${YELLOW}📦 Building website...${NC}"
-npm run build > /dev/null 2>&1 || {
+if ! npm run build > /tmp/build.log 2>&1; then
     echo -e "${YELLOW}❌ Build failed${NC}"
+    cat /tmp/build.log
     exit 1
-}
+fi
 echo -e "${GREEN}✓ Website built${NC}"
 
 echo -e "${YELLOW}📤 Deploying hosting & functions...${NC}"
 
 # Deploy with filtered output - only show important info
-firebase deploy --only hosting,functions 2>&1 | while IFS= read -r line; do
-    # Show success indicators
+firebase deploy --only hosting,functions 2>&1 | grep -E "^(✔|✘|Deploy complete|i  hosting|i  functions)" | while IFS= read -r line; do
     if [[ $line =~ ^✔ ]]; then
         echo -e "${GREEN}${line}${NC}"
-    # Show error indicators
-    elif [[ $line =~ ^✘ ]] || [[ $line =~ Error ]] || [[ $line =~ error ]]; then
+    elif [[ $line =~ ^✘ ]] || [[ $line =~ Error ]]; then
         echo -e "${YELLOW}${line}${NC}"
-    # Show deployment complete
     elif [[ $line =~ "Deploy complete" ]]; then
         echo -e "${GREEN}${line}${NC}"
-    # Show URLs
-    elif [[ $line =~ "Hosting URL:" ]] || [[ $line =~ "Project Console:" ]]; then
-        echo -e "${BLUE}${line}${NC}"
-    # Skip verbose lines
-    elif [[ $line =~ ^i\ \ ]] || [[ $line =~ "Serving at port" ]] || [[ $line =~ "ensuring required API" ]] || [[ $line =~ "Loaded environment" ]] || [[ $line =~ "packaged" ]] || [[ $line =~ "uploaded" ]] || [[ $line =~ "Verifying" ]] || [[ $line =~ "Granted roles" ]] || [[ $line =~ "release" ]]; then
-        : # Skip verbose info lines
     else
-        # Show other important output
-        [[ ! -z "$line" ]] && echo "$line"
+        echo "$line"
     fi
 done
 
