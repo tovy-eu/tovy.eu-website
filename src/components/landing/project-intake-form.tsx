@@ -35,22 +35,50 @@ interface ProjectIntakeFormProps {
 const getEmailTranslations = (dict: Dictionary, lang: string, emailType: 'welcome' | 'abandonment') => {
   const l = (lang === 'nl' || lang === 'de' || lang === 'es') ? lang : 'en';
 
-  try {
-    // Access the email translations from dictionary - these are guaranteed to exist
-    const emails = dict.pages?.projectRequest?.form?.emails as Record<string, Record<string, Record<string, unknown>>>;
-    const translations = emails?.[emailType]?.[l];
+  console.log(`[Email] Loading ${emailType} translations for language: ${l}`);
 
-    if (!translations) {
-      console.warn(`Translation missing for ${emailType}.${l}, falling back to English`);
-      return emails?.[emailType]?.en as Record<string, unknown>;
+  try {
+    // Access the email translations from dictionary
+    const emails = dict.pages?.projectRequest?.form?.emails as Record<string, Record<string, Record<string, unknown>>> | undefined;
+
+    console.log(`[Email] Dictionary emails object:`, emails ? Object.keys(emails) : 'undefined');
+
+    if (!emails) {
+      console.error('[Email] No emails object found in dictionary');
+      return getDefaultEmailTranslations(emailType);
     }
 
+    const emailTypeTranslations = emails[emailType];
+    console.log(`[Email] ${emailType} translations available for:`, emailTypeTranslations ? Object.keys(emailTypeTranslations) : 'undefined');
+
+    const translations = emailTypeTranslations?.[l];
+
+    if (!translations) {
+      console.warn(`[Email] Translation missing for ${emailType}.${l}, using English`);
+      const englishFallback = emailTypeTranslations?.['en'];
+      if (englishFallback) return englishFallback as Record<string, unknown>;
+      return getDefaultEmailTranslations(emailType);
+    }
+
+    console.log(`[Email] Using ${l} translations for ${emailType}`);
     return translations;
   } catch (error) {
-    console.error('Error loading email translations:', error);
-    // This should never happen - translations are in dictionaries
-    return {};
+    console.error('[Email] Error loading translations:', error);
+    return getDefaultEmailTranslations(emailType);
   }
+};
+
+const getDefaultEmailTranslations = (emailType: 'welcome' | 'abandonment'): Record<string, unknown> => {
+  if (emailType === 'welcome') {
+    return {
+      subject: 'Welcome to Tovy - Project Request Received',
+      copyright: '© {year} Tovy. All rights reserved.'
+    };
+  }
+  return {
+    subject: 'Secure your automated foundation with Tovy',
+    copyright: '© {year} Tovy. All rights reserved.'
+  };
 };
 
 const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: string, dict: Dictionary): string => {
