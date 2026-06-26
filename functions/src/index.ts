@@ -117,8 +117,10 @@ export const notifyOnEmailQueued = onDocumentWritten("project_requests/{docId}",
   const docId = event.params.docId;
   const notifyUrl = "https://ntfy.sh/tovy-emails";
 
+  logger.info(`Attempting to send ntfy for doc: ${docId}`);
+
   try {
-    await fetch(notifyUrl, {
+    const response = await fetch(notifyUrl, {
       method: "POST",
       headers: {
         "Title": "New Project Request",
@@ -128,8 +130,8 @@ export const notifyOnEmailQueued = onDocumentWritten("project_requests/{docId}",
       },
       body: `New project request submitted: ${docId}`
     });
-    logger.info(`Notification sent for completed request: ${docId}`);
+    logger.info(`ntfy response: ${response.status} ${response.statusText}`);
   } catch (error) {
-    logger.error("Failed to send ntfy notification:", error);
+    logger.error(`ntfy fetch failed: ${error}`);
   }
 });
