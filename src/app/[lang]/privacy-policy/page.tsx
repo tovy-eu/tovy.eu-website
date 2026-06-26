@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import companyProfile from '@/content/company-profile.json';
 import { getDictionary } from '@/lib/get-dictionary';
-import { generateAlternates } from '@/lib/metadata';
+import { alternates } from '@/lib/metadata';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 import PrivacyPolicyClient from '@/components/legal/privacy-policy-client';
 import { PageCategorySetter } from '@/components/layout/page-category-setter';
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     return {
       title: dict.pages.privacyPolicy.metadata.title,
       description: dict.pages.privacyPolicy.metadata.description,
-      alternates: generateAlternates(path, lang),
+      alternates: alternates(path, lang),
     };
   } catch {
     return {

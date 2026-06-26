@@ -13,7 +13,7 @@ import { CONFIG } from '@/lib/config';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { Magnetic } from '@/components/ui/magnetic';
 import { JsonLd, getBreadcrumbSchema, getArticleSchema } from '@/components/layout/json-ld';
-import { generateAlternates } from '@/lib/metadata';
+import { alternates } from '@/lib/metadata';
 import { PageCategorySetter } from '@/components/layout/page-category-setter';
 import person from '@/content/person.json';
 
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: postData.metaTitle || postData.title,
     description: postData.metaDescription || postData.excerpt,
-    alternates: generateAlternates(path, lang),
+    alternates: alternates(path, lang),
     openGraph: {
       title: postData.metaTitle || postData.title,
       description: postData.metaDescription || postData.excerpt,

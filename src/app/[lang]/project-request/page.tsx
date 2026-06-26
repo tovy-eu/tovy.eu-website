@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { getDictionary } from '@/lib/get-dictionary';
-import { generateAlternates } from '@/lib/metadata';
+import { alternates } from '@/lib/metadata';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 import { PageCategorySetter } from '@/components/layout/page-category-setter';
 
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: dict.pages.projectRequest.metadata.title,
       description: dict.pages.projectRequest.metadata.description,
       keywords: dict.pages.projectRequest.metadata.keywords,
-      alternates: generateAlternates(path, lang),
+      alternates: alternates(path, lang),
     };
   } catch {
     return {

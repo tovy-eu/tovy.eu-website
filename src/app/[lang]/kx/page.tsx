@@ -10,7 +10,7 @@ import { CONFIG } from '@/lib/config';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { SectionHeader } from '@/components/landing/section-header';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
-import { generateAlternates } from '@/lib/metadata';
+import { alternates } from '@/lib/metadata';
 import { Spotlight } from '@/components/ui/spotlight';
 import { PageCategorySetter } from '@/components/layout/page-category-setter';
 import { i18n } from '@/lib/config';
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title: dict.pages.knowledgeHub.metadata.title,
     description: dict.pages.knowledgeHub.metadata.description,
     robots: CONFIG.enableBlog ? undefined : { index: false },
-    alternates: generateAlternates(path, lang),
+    alternates: alternates(path, lang),
     openGraph: {
       title: dict.pages.knowledgeHub.metadata.title,
       description: dict.pages.knowledgeHub.metadata.description,

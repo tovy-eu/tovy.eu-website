@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import companyProfile from '@/content/company-profile.json';
 import LegalNoticeClient from '@/components/legal/legal-notice-client';
 import { getDictionary } from '@/lib/get-dictionary';
-import { generateAlternates } from '@/lib/metadata';
+import { alternates } from '@/lib/metadata';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 import { PageCategorySetter } from '@/components/layout/page-category-setter';
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: dict.pages.legalNotice.metadata.title,
       description: dict.pages.legalNotice.metadata.description,
       keywords: dict.pages.legalNotice.metadata.keywords,
-      alternates: generateAlternates(path, lang),
+      alternates: alternates(path, lang),
     };
   } catch {
     return {

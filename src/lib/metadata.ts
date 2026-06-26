@@ -1,29 +1,17 @@
-// src/lib/metadata.ts
-
 import { i18n, SITE_URL } from '@/lib/config';
 import { Metadata } from 'next';
 
-/**
- * Generates the 'alternates' metadata object for hreflang tags.
- * This helps search engines understand the relationship between language-specific pages.
- * @param path - The page's path without the locale prefix (e.g., '/kx/some-post').
- * @param lang - The current language of the page.
- * @returns A Next.js Metadata['alternates'] object.
- */
-export function generateAlternates(path: string, lang: string): Metadata['alternates'] {
-  let formattedPath = path.startsWith('/') ? path : `/${path}`;
-  if (!formattedPath.endsWith('/')) {
-    formattedPath = `${formattedPath}/`;
-  }
-
+// ponytail: 4 static language codes. inline if complexity increases.
+export function alternates(path: string, lang: string): Metadata['alternates'] {
+  const p = `${path.startsWith('/') ? path : `/${path}`}`.replace(/\/?$/, '/');
   return {
-    canonical: `${SITE_URL}/${lang}${formattedPath}`,
+    canonical: `${SITE_URL}/${lang}${p}`,
     languages: {
-      'en': `${SITE_URL}/en${formattedPath}`,
-      'nl': `${SITE_URL}/nl${formattedPath}`,
-      'es': `${SITE_URL}/es${formattedPath}`,
-      'de': `${SITE_URL}/de${formattedPath}`,
-      'x-default': `${SITE_URL}/${i18n.defaultLocale}${formattedPath}`,
+      'en': `${SITE_URL}/en${p}`,
+      'nl': `${SITE_URL}/nl${p}`,
+      'es': `${SITE_URL}/es${p}`,
+      'de': `${SITE_URL}/de${p}`,
+      'x-default': `${SITE_URL}/${i18n.defaultLocale}${p}`,
     },
   };
 }

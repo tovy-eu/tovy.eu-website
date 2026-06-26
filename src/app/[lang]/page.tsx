@@ -4,7 +4,7 @@ import { getDictionary } from "@/lib/get-dictionary";
 import { JsonLd, getServicesSchema, getFaqSchema } from "@/components/layout/json-ld";
 import { PageCategorySetter } from "@/components/layout/page-category-setter";
 import type { Metadata } from 'next';
-import { generateAlternates } from '@/lib/metadata';
+import { alternates } from '@/lib/metadata';
 
 import { i18n } from '@/lib/config';
 
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     return {
       title,
       description,
-      alternates: generateAlternates(path, lang),
+      alternates: alternates(path, lang),
       openGraph: {
         title,
         description,
