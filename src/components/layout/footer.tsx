@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { TrackedLink } from "@/components/ui/tracked-link";
 import companyProfile from "@/content/company-profile.json";
 import { i18n } from "@/lib/config";
 import { getDictionary } from "@/lib/get-dictionary";
@@ -7,6 +6,7 @@ import { Github, Linkedin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/ui/magnetic";
+import { FooterCTA } from "@/components/layout/footer-cta";
 
 type Locale = typeof i18n.locales[number];
 
@@ -55,9 +55,9 @@ export default async function Footer({ lang }: { lang: Locale }) {
           <div className="flex flex-col items-center md:items-end justify-center">
             <Magnetic strength={0.1}>
               <Button asChild size="sm" className="h-8 md:h-9 px-5 md:px-6 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 border-none shadow-lg shadow-blue-500/10 transition-all duration-500">
-                <TrackedLink href={`/${lang}/project-request/`} eventParams={{ location: "footer", text: dictionary.global.common.workWithUs }}>
+                <FooterCTA href={`/${lang}/project-request/`} text={dictionary.global.common.workWithUs}>
                   <span className="font-bold text-[8px] md:text-[9px] uppercase tracking-widest">{dictionary.global.common.workWithUs}</span>
-                </TrackedLink>
+                </FooterCTA>
               </Button>
             </Magnetic>
           </div>
