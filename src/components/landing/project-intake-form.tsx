@@ -34,8 +34,23 @@ interface ProjectIntakeFormProps {
 
 const getEmailTranslations = (dict: Dictionary, lang: string, emailType: 'welcome' | 'abandonment') => {
   const l = (lang === 'nl' || lang === 'de' || lang === 'es') ? lang : 'en';
-  const emails = dict.pages?.projectRequest?.form?.emails as Record<string, Record<string, unknown>>;
-  return (emails?.[emailType]?.[l] ?? emails?.[emailType]?.en) as Record<string, unknown>;
+
+  try {
+    // Access the email translations from dictionary - these are guaranteed to exist
+    const emails = dict.pages?.projectRequest?.form?.emails as Record<string, Record<string, Record<string, unknown>>>;
+    const translations = emails?.[emailType]?.[l];
+
+    if (!translations) {
+      console.warn(`Translation missing for ${emailType}.${l}, falling back to English`);
+      return emails?.[emailType]?.en as Record<string, unknown>;
+    }
+
+    return translations;
+  } catch (error) {
+    console.error('Error loading email translations:', error);
+    // This should never happen - translations are in dictionaries
+    return {};
+  }
 };
 
 const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: string, dict: Dictionary): string => {
