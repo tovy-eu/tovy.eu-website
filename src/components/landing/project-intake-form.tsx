@@ -34,23 +34,36 @@ interface ProjectIntakeFormProps {
 
 const getEmailTranslations = (dict: Dictionary, emailType: 'welcome' | 'abandonment') => {
   try {
-    // Each dictionary file (en.json, nl.json, etc) is already language-specific
-    // So we just access emails[emailType] directly - no language key needed
-    const emails = dict.pages?.projectRequest?.form?.emails as Record<string, Record<string, unknown>> | undefined;
+    // Debug: Log the dictionary structure
+    console.log('[Email Debug] Full dict object:', dict);
+    console.log('[Email Debug] dict.pages:', dict.pages);
+    console.log('[Email Debug] dict.pages?.projectRequest:', (dict as any)?.pages?.projectRequest);
+    console.log('[Email Debug] dict.pages?.projectRequest?.form:', (dict as any)?.pages?.projectRequest?.form);
 
-    if (!emails) {
-      console.error('[Email] No emails object found in dictionary');
+    // Each dictionary file (en.json, nl.json, etc) is already language-specific
+    const pages = (dict as any).pages;
+    const projectRequest = pages?.projectRequest;
+    const form = projectRequest?.form;
+    const emails = form?.emails;
+
+    console.log('[Email Debug] emails object:', emails);
+    console.log('[Email Debug] emails keys:', emails ? Object.keys(emails) : 'undefined');
+
+    if (!emails || typeof emails !== 'object') {
+      console.error('[Email] No emails object found. Using fallback.');
       return getDefaultEmailTranslations(emailType);
     }
 
     const translations = emails[emailType];
+    console.log(`[Email Debug] translations for ${emailType}:`, translations);
 
     if (!translations || typeof translations !== 'object') {
-      console.error(`[Email] No translations found for ${emailType}`);
+      console.error(`[Email] No translations found for ${emailType}. Using fallback.`);
       return getDefaultEmailTranslations(emailType);
     }
 
-    return translations;
+    console.log(`[Email] Successfully loaded ${emailType} translations`);
+    return translations as Record<string, unknown>;
   } catch (error) {
     console.error('[Email] Error loading translations:', error);
     return getDefaultEmailTranslations(emailType);
