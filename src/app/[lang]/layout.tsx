@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/toaster"
 import CookieBanner from "@/components/layout/cookie-banner";
 import { AnalyticsProviderHead, AnalyticsProviderBody } from "@/components/layout/analytics-provider";
 import { LanguageSync } from "@/components/layout/language-sync";
+import { ToastProviderClient } from "@/components/layout/toast-provider-client";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -70,7 +71,7 @@ export default async function LocalizedLayout({
   const dict = await getDictionary(lang);
   
   return (
-    <>
+    <ToastProviderClient>
       <LanguageSync lang={lang} />
       <AnalyticsProviderHead />
       <JsonLd type="Organization" data={getOrganizationSchema(dict)} />
@@ -83,6 +84,6 @@ export default async function LocalizedLayout({
       <Footer lang={lang} />
       <Toaster />
       <CookieBanner dict={dict} />
-    </>
+    </ToastProviderClient>
   );
 }
