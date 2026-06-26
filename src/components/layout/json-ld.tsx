@@ -1,8 +1,7 @@
-import type { Service, ProfessionalService, FAQPage, BreadcrumbList, Person, Article } from "schema-dts";
+import type { Service, ProfessionalService, FAQPage, BreadcrumbList, Person } from "schema-dts";
 import companyProfile from "@/content/company-profile.json";
 import personProfile from "@/content/person.json";
 import type { Dictionary } from "@/lib/get-dictionary";
-import type { PostData } from "@/lib/blog";
 
 interface JsonLdProps {
   type?: string;
@@ -120,24 +119,3 @@ export function getFaqSchema(dict: Dictionary): FAQPage {
   };
 }
 
-export function getArticleSchema(post: PostData): Article {
-  return {
-    "@type": "Article",
-    headline: post.title,
-    description: post.excerpt,
-    image: post.image ? `https://tovy.eu${post.image}` : "https://tovy.eu/images/tovy-og-image.webp",
-    datePublished: post.date,
-    dateModified: post.date,
-    author: {
-      "@type": "Person",
-      name: post.author,
-    },
-    publisher: {
-      "@id": "https://tovy.eu/#organization",
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://tovy.eu/kx/${post.id}`,
-    },
-  };
-}
