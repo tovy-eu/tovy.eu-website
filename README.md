@@ -41,7 +41,6 @@ Tovy is architected as a serverless **Static Site Generation (SSG)** application
 - **Real-Time Admin Alerting**: Document-creation event listeners in Firebase Functions intercept new lead filings and queue notifications to the admin team via `ntfy.sh`.
 - **Machine Experience (MX) Schema Injection**: Automated JSON-LD structured data (Organization, Services, FAQPage, BreadcrumbList) for AI search engine optimization.
 - **GDPR Privacy & Cookie Consent**: Lightweight, client-side compliance banner that broadcasts cookie-consent status changes to dynamically activate/deactivate tracking listeners.
-- **Knowledge Exchange (KX) Hub (Feature-Flagged)**: An integrated technical blog resource structure is fully supported inside configurations and dictionaries, but is currently deactivated via `CONFIG.enableBlog: false` in `src/lib/config.ts`.
 
 ---
 
