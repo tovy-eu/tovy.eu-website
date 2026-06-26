@@ -1,5 +1,5 @@
 import { onSchedule } from "firebase-functions/v2/scheduler";
-import { onDocumentCreated, onDocumentWritten } from "firebase-functions/v2/firestore";
+import { onDocumentWritten } from "firebase-functions/v2/firestore";
 import { setGlobalOptions } from "firebase-functions/v2";
 import { logger } from "firebase-functions";
 import { initializeApp } from "firebase-admin/app";
@@ -109,47 +109,26 @@ export const notifyOnEmailQueued = onDocumentWritten("project_requests/{docId}",
   const before = event.data?.before.data();
   const after = event.data?.after.data();
 
-  // Trigger on: delivery.state changed from missing to PENDING (means email is queued)
-  const beforeDeliveryState = before?.delivery?.state;
-  const afterDeliveryState = after?.delivery?.state;
-
-  if (beforeDeliveryState !== undefined || afterDeliveryState !== "PENDING") {
+  // Only notify when status transitions to "completed"
+  if (before?.status === "completed" || after?.status !== "completed") {
     return;
   }
 
-  if (!after?.to || !after?.message?.subject) {
-    logger.warn(`Document missing to or subject for ${event.params.docId}`);
-    return;
-  }
-
-  const notifyUrl = "https://ntfy.sh/tovy-emails";
   const docId = event.params.docId;
-  const requestId = docId.replace(/_abandonment$/, "");
+  const notifyUrl = "https://ntfy.sh/tovy-emails";
 
   try {
-    logger.info(`Sending ntfy notification to ${notifyUrl}`, {
-      title: "Email Queued",
-      priority: "5",
-      subject: data.message.subject,
-      to: data.to
-    });
-
-    const response = await fetch(notifyUrl, {
+    await fetch(notifyUrl, {
       method: "POST",
       headers: {
-        "Title": "Email Queued",
+        "Title": "New Project Request",
         "Priority": "5",
-        "Tags": "email,abandonment",
-        "Click": `https://tovy.eu/requests/${requestId}`
+        "Tags": "project-request",
+        "Click": `https://tovy.eu/requests/${docId}`
       },
-      body: `${data.message.subject}\n\nTo: ${data.to}`
+      body: `New project request submitted: ${docId}`
     });
-
-    if (response.ok) {
-      logger.info(`ntfy notification sent successfully`);
-    } else {
-      logger.error(`ntfy returned ${response.status}: ${await response.text()}`);
-    }
+    logger.info(`Notification sent for completed request: ${docId}`);
   } catch (error) {
     logger.error("Failed to send ntfy notification:", error);
   }
