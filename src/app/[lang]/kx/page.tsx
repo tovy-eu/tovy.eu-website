@@ -6,7 +6,6 @@ import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { getDictionary } from '@/lib/get-dictionary';
-import { notFound } from 'next/navigation';
 import { CONFIG } from '@/lib/config';
 import { WavyLines } from '@/components/landing/wavy-lines';
 import { SectionHeader } from '@/components/landing/section-header';

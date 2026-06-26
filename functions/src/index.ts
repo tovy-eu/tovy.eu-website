@@ -65,7 +65,7 @@ export const checkAbandonmentEmails = onSchedule("every 15 minutes", async (even
       
       const currentYear = new Date().getFullYear();
       const lang = data.lang || 'en';
-      const l = (lang === 'nl' || lang === 'de' || lang === 'es') ? lang : 'en';
+      const l: 'en' | 'nl' | 'de' | 'es' = (lang === 'nl' || lang === 'de' || lang === 'es') ? lang : 'en';
       const subject = abandonmentEmailTranslations[l].subject;
       const emailHtml = getAbandonmentEmailHtml(docId, currentYear, lang);
       

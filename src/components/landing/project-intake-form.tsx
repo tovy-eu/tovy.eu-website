@@ -32,160 +32,15 @@ interface ProjectIntakeFormProps {
   dict: Dictionary;
 }
 
-const welcomeEmailTranslations = {
-  en: {
-    subject: "Welcome to Tovy - Project Request Received",
-    title: "Welcome to Tovy",
-    subTitle: "Welcome to Tovy. This is your first step to automation.",
-    bodyText: "Thank you for sharing your project specifications. I am currently reviewing your infrastructure details to lay the foundation for our onboarding call. Our goal is to transform fragmented data systems into unified, automated foundations.",
-    specsTitle: "Intake Specifications",
-    profileTitle: "Contact Profile",
-    nameLabel: "Name:",
-    orgLabel: "Organization:",
-    emailLabel: "Work Email:",
-    phoneLabel: "Phone:",
-    phoneNotProvided: "Not provided",
-    scopeTitle: "Project Scope",
-    budgetLabel: "Budget:",
-    timelineLabel: "Timeline:",
-    infraTitle: "Infrastructure & Stack",
-    dataTeamLabel: "Data Team:",
-    hasDataTeamYes: "Internal Team",
-    hasDataTeamNo: "No Internal Team",
-    centralDbLabel: "Central Database:",
-    centralDbConfigured: "Configured",
-    centralDbNone: "None / Siloed",
-    cloudPlatformLabel: "Cloud Platforms:",
-    cloudPlatformConfigured: "Configured",
-    cloudPlatformNone: "None / On-Prem",
-    activeToolsLabel: "Active Tools:",
-    noneSpecified: "None Specified",
-    challengesTitle: "Strategic Challenges",
-    bottlenecksLabel: "Current Bottlenecks:",
-    noneDeclared: "None Declared",
-    idealStateLabel: "Vision / Ideal State:",
-    schedulerText: "If you didn't do so right after completing the form on our website, please use the link below to select a convenient time for our call:",
-    btnText: "Schedule onboarding",
-    bestRegards: "Best regards,",
-    founderTitle: "Founder & Data Engineer, Tovy",
-    copyright: (year: number) => `&copy; ${year} Tovy. All rights reserved.`
-  },
-  nl: {
-    subject: "Welkom bij Tovy - Projectaanvraag Ontvangen",
-    title: "Welkom bij Tovy",
-    subTitle: "Welkom bij Tovy. Dit is je eerste stap naar automatisering.",
-    bodyText: "Bedankt voor het delen van je projectspecificaties. Ik bekijk momenteel je infrastructuurdetails om de basis te leggen voor ons kennismakingsgesprek. Ons doel is om gefragmenteerde datasystemen te transformeren naar uniforme, geautomatiseerde fundamenten.",
-    specsTitle: "Intake-specificaties",
-    profileTitle: "Contactprofiel",
-    nameLabel: "Naam:",
-    orgLabel: "Organisatie:",
-    emailLabel: "Zakelijk e-mailadres:",
-    phoneLabel: "Telefoonnummer:",
-    phoneNotProvided: "Niet opgegeven",
-    scopeTitle: "Projectomvang",
-    budgetLabel: "Budget:",
-    timelineLabel: "Doorlooptijd:",
-    infraTitle: "Infrastructuur & Stack",
-    dataTeamLabel: "Datateam:",
-    hasDataTeamYes: "Interne team",
-    hasDataTeamNo: "Geen intern team",
-    centralDbLabel: "Centrale database:",
-    centralDbConfigured: "Geconfigureerd",
-    centralDbNone: "Geen / Silo's",
-    cloudPlatformLabel: "Cloudplatforms:",
-    cloudPlatformConfigured: "Geconfigureerd",
-    cloudPlatformNone: "Geen / On-Prem",
-    activeToolsLabel: "Actieve tools:",
-    noneSpecified: "Geen opgegeven",
-    challengesTitle: "Strategische uitdagingen",
-    bottlenecksLabel: "Huidige knelpunten:",
-    noneDeclared: "Geen opgegeven",
-    idealStateLabel: "Visie / Ideale situatie:",
-    schedulerText: "Als je dat niet direct na het invullen van het formulier op onze website hebt gedaan, gebruik dan de onderstaande link om een geschikt moment te kiezen voor ons gesprek:",
-    btnText: "Plan kennismaking",
-    bestRegards: "Met vriendelijke groet,",
-    founderTitle: "Oprichter & Data-engineer, Tovy",
-    copyright: (year: number) => `&copy; ${year} Tovy. Alle rechten voorbehouden.`
-  },
-  de: {
-    subject: "Willkommen bei Tovy - Projektanfrage erhalten",
-    title: "Willkommen bei Tovy",
-    subTitle: "Willkommen bei Tovy. Dies ist Ihr erster Schritt zur Automatisierung.",
-    bodyText: "Vielen Dank, dass Sie Ihre Projektspezifikationen mit uns geteilt haben. Ich überprüfe derzeit Ihre Infrastrukturdetails, um die Grundlage für unser Onboarding-Gespräch zu legen. Unser Ziel ist es, fragmentierte Datensysteme in einheitliche, automatisierte Fundamente zu verwandeln.",
-    specsTitle: "Anfrage-Spezifikationen",
-    profileTitle: "Kontaktprofil",
-    nameLabel: "Name:",
-    orgLabel: "Organisation:",
-    emailLabel: "Geschäftliche E-Mail:",
-    phoneLabel: "Telefonnummer:",
-    phoneNotProvided: "Nicht angegeben",
-    scopeTitle: "Projektumfang",
-    budgetLabel: "Budget:",
-    timelineLabel: "Zeitplan:",
-    infraTitle: "Infrastruktur & Stack",
-    dataTeamLabel: "Data Team:",
-    hasDataTeamYes: "Internes Team",
-    hasDataTeamNo: "Kein internes Team",
-    centralDbLabel: "Zentrale Datenbank:",
-    centralDbConfigured: "Konfiguriert",
-    centralDbNone: "Keine / Silos",
-    cloudPlatformLabel: "Cloud-Plattformen:",
-    cloudPlatformConfigured: "Konfiguriert",
-    cloudPlatformNone: "Keine / On-Prem",
-    activeToolsLabel: "Aktive Tools:",
-    noneSpecified: "Keine angegeben",
-    challengesTitle: "Strategische Herausforderungen",
-    bottlenecksLabel: "Aktuelle Engpässe:",
-    noneDeclared: "Keine angegeben",
-    idealStateLabel: "Vision / Idealer Zustand:",
-    schedulerText: "Falls Sie dies nicht direkt nach dem Ausfüllen des Formulars auf unserer Website getan haben, nutzen Sie bitte den folgenden Link, um einen passenden Termin für unser Gespräch zu wählen:",
-    btnText: "Onboarding terminieren",
-    bestRegards: "Mit freundlichen Grüßen,",
-    founderTitle: "Gründer & Data Engineer, Tovy",
-    copyright: (year: number) => `&copy; ${year} Tovy. Alle Rechte vorbehalten.`
-  },
-  es: {
-    subject: "Bienvenido a Tovy - Solicitud de proyecto recibida",
-    title: "Bienvenido a Tovy",
-    subTitle: "Bienvenido a Tovy. Este es su primer paso hacia la automatización.",
-    bodyText: "Gracias por compartir las especificaciones de su proyecto. Actualmente estoy revisando los detalles de su infraestructura para sentar las bases de nuestra llamada de incorporación. Nuestro objetivo es transformar los sistemas de datos fragmentados en cimientos unificados y automatizados.",
-    specsTitle: "Especificaciones de la solicitud",
-    profileTitle: "Perfil de contacto",
-    nameLabel: "Nombre:",
-    orgLabel: "Organización:",
-    emailLabel: "Correo electrónico de trabajo:",
-    phoneLabel: "Teléfono:",
-    phoneNotProvided: "No proporcionado",
-    scopeTitle: "Alcance del proyecto",
-    budgetLabel: "Budget:",
-    timelineLabel: "Cronograma:",
-    infraTitle: "Infraestructura y herramientas",
-    dataTeamLabel: "Equipo de datos:",
-    hasDataTeamYes: "Equipo interno",
-    hasDataTeamNo: "Sin equipo interno",
-    centralDbLabel: "Base de datos central:",
-    centralDbConfigured: "Configurado",
-    centralDbNone: "Ninguna / Aislada",
-    cloudPlatformLabel: "Plataformas en la nube:",
-    cloudPlatformConfigured: "Configurado",
-    cloudPlatformNone: "Ninguna / Local (On-Prem)",
-    activeToolsLabel: "Herramientas activas:",
-    noneSpecified: "Ninguna especificada",
-    challengesTitle: "Desafíos estratégicos",
-    bottlenecksLabel: "Obstáculos actuales:",
-    noneDeclared: "Ninguno especificado",
-    idealStateLabel: "Visión / Estado ideal:",
-    schedulerText: "Si no lo hizo inmediatamente después de completar el formulario en nuestro sitio web, use el siguiente enlace para seleccionar un horario conveniente para nuestra llamada:",
-    btnText: "Programar incorporación",
-    bestRegards: "Saludos cordiales,",
-    founderTitle: "Fundador e Ingeniero de Datos, Tovy",
-    copyright: (year: number) => `&copy; ${year} Tovy. Todos los derechos reservados.`
-  }
+const getEmailTranslations = (dict: Dictionary, lang: string, emailType: 'welcome' | 'abandonment') => {
+  const l = (lang === 'nl' || lang === 'de' || lang === 'es') ? lang : 'en';
+  const emails = dict.pages?.projectRequest?.form?.emails as Record<string, Record<string, unknown>>;
+  return (emails?.[emailType]?.[l] ?? emails?.[emailType]?.en) as Record<string, unknown>;
 };
 
-const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: string): string => {
+const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: string, dict: Dictionary): string => {
   const l = (lang === 'nl' || lang === 'de' || lang === 'es') ? lang : 'en';
-  const t = welcomeEmailTranslations[l];
+  const t = getEmailTranslations(dict, lang, 'welcome');
   
   const formattedName = `${data.firstName} ${data.lastName}`;
   const formattedOrg = `${data.company} (${data.companySize || 'N/A'})`;
@@ -349,7 +204,7 @@ const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: stri
 
       <!-- Footer with a thread-buster and unique reference to prevent Gmail collapsing threads -->
       <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 24px; text-align: center;">
-        <p style="font-size: 11px; color: #64748b; margin: 0 0 8px 0;">${t.copyright(currentYear)}</p>
+        <p style="font-size: 11px; color: #64748b; margin: 0 0 8px 0;">${String(t.copyright).replace('{year}', String(currentYear))}</p>
         <p style="font-size: 9px; color: #334155; margin: 0; font-family: monospace;">Ref: ${docId}</p>
       </div>
 
@@ -624,8 +479,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           userEmail: data.email,
           lang,
           message: {
-            subject: welcomeEmailTranslations[l].subject,
-            html: getWelcomeEmailHtml(data, docId, l),
+            subject: String(getEmailTranslations(dict, l, 'welcome').subject || ''),
+            html: getWelcomeEmailHtml(data, docId, l, dict),
           },
           delivery: {
             state: "PENDING"
