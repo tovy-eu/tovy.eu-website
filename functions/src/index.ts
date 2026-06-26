@@ -1,5 +1,5 @@
 import { onSchedule } from "firebase-functions/v2/scheduler";
-import { onDocumentCreated } from "firebase-functions/v2/firestore";
+import { onDocumentCreated, onDocumentWritten } from "firebase-functions/v2/firestore";
 import { setGlobalOptions } from "firebase-functions/v2";
 import { logger } from "firebase-functions";
 import { initializeApp } from "firebase-admin/app";
@@ -105,18 +105,52 @@ export const checkAbandonmentEmails = onSchedule("every 15 minutes", async (even
   }
 });
 
-export const notifyOnEmailQueued = onDocumentCreated("project_requests/{docId}", async (event) => {
-  const data = event.data?.data();
-  if (!data?.to || !data?.message?.subject) return;
+export const notifyOnEmailQueued = onDocumentWritten("project_requests/{docId}", async (event) => {
+  const before = event.data?.before.data();
+  const after = event.data?.after.data();
+
+  // Only notify if message was just added (didn't exist before)
+  if (before?.message || !after?.message?.subject) {
+    return;
+  }
+
+  const data = after;
+  logger.info(`notifyOnEmailQueued triggered for doc: ${event.params.docId}`, { hasTo: !!data?.to, hasSubject: !!data?.message?.subject });
+
+  if (!data?.to) {
+    logger.warn(`Skipping notification: missing to field`);
+    return;
+  }
 
   const notifyUrl = "https://ntfy.sh/tovy-emails";
+  const docId = event.params.docId;
+  const requestId = docId.replace(/_abandonment$/, "");
 
   try {
-    await fetch(notifyUrl, {
-      method: "POST",
-      body: `📧 ${data.message.subject} → ${data.to}`
+    logger.info(`Sending ntfy notification to ${notifyUrl}`, {
+      title: "Email Queued",
+      priority: "5",
+      subject: data.message.subject,
+      to: data.to
     });
+
+    const response = await fetch(notifyUrl, {
+      method: "POST",
+      headers: {
+        "Title": "Email Queued",
+        "Priority": "5",
+        "Tags": "email,abandonment",
+        "Click": `https://tovy.eu/requests/${requestId}`
+      },
+      body: `${data.message.subject}\n\nTo: ${data.to}`
+    });
+
+    if (response.ok) {
+      logger.info(`ntfy notification sent successfully`);
+    } else {
+      logger.error(`ntfy returned ${response.status}: ${await response.text()}`);
+    }
   } catch (error) {
-    logger.warn("Failed to send ntfy notification:", error);
+    logger.error("Failed to send ntfy notification:", error);
   }
 });
