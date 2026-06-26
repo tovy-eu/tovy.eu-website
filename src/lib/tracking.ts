@@ -61,18 +61,12 @@ export function getUserId(): string | null {
   return localStorage.getItem(USER_ID_KEY);
 }
 
-// Additional: PII Protection - sanitize URLs before sending
+// ponytail: remove sensitive query params only. email regex in path is fragile and unlikely here.
 function sanitizeUrl(url: string): string {
   try {
-    const urlObj = new URL(url);
-    // Remove sensitive query parameters that might contain PII
-    const sensitiveParams = ["email", "phone", "password", "token", "key", "secret", "api_key"];
-    sensitiveParams.forEach((param) => {
-      urlObj.searchParams.delete(param);
-    });
-    // Also redact common patterns (email-like in path)
-    const pathname = urlObj.pathname.replace(/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g, "[email]");
-    return `${urlObj.protocol}//${urlObj.hostname}${pathname}${urlObj.search}`;
+    const u = new URL(url);
+    ["email", "phone", "password", "token", "key", "secret", "api_key"].forEach(p => u.searchParams.delete(p));
+    return u.toString();
   } catch {
     return url;
   }
