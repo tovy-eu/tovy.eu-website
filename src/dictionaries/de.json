@@ -24,7 +24,7 @@
       "accept": "Akzeptieren"
     },
     "common": {
-      "workWithUs": "Unternehmensanalyse anfragen",
+      "workWithUs": "Intake starten",
       "readBlog": "Knowledge-Hub entdecken",
       "shareIdea": "Unternehmensanalyse anfragen",
       "privacyPolicy": "Datenschutzerklärung",
@@ -73,76 +73,76 @@
       "hero": {
         "badge": "Automatisierung & Data-Engineering",
         "title": "Zuverlässige Dateninfrastruktur & Prozessautomatisierung",
-        "subtitle": "Wir bauen, integrieren und verwalten Ihre gesamte Datenlandschaft. Von automatisierten API-Verbindungen und zentralen Data Warehouses bis hin zu stabiler Cloud-Infrastruktur. Kein manuelles Kopieren und Einfügen mehr – sondern Systeme, die geräuschlos und fehlerfrei im Hintergrund laufen."
+        "subtitle": "Wir bauen, integrieren und verwalten Ihre gesamte Datenlandschaft. Von automatisierten API-Verbindungen und zentralen Data Warehouses bis hin zu stabiler Cloud-Infrastruktur. Kein manuelles Kopieren und Einfügen mehr – sondern Systeme, die fehlerfrei im Hintergrund laufen."
       },
       "about": {
-        "section": "Über uns",
-        "title": "Expertise & Direkter Kontakt",
-        "mission": "Tovy hilft wachsenden Unternehmen, ihre Dateninfrastruktur zu professionalisieren. Wir bauen stabile, transparente Systeme, die manuelle Arbeit eliminieren und sicherstellen, dass Ihre Daten immer korrekt sind.",
+        "section": "Über unsere",
+        "title": "Technische Kompetenz",
+        "mission": "Tovy hilft wachsenden Unternehmen, ihre Dateninfrastruktur zu professionalisieren. Wir bauen stabile Systeme, die manuelle Arbeit eliminieren und sicherstellen, dass Ihre Daten stimmen.",
         "ceo": {
           "name": "Giel Nijkamp",
           "role": "Gründer & Data Engineer",
           "specialization": "Datenarchitektur",
           "location": "Breda, Niederlande",
           "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
-          "bio": "Als Data Engineer helfe ich Unternehmen, durch Technologie Ruhe einkehren zu lassen. Ich habe einen Hintergrund im Supply-Chain-Management. Mit dieser Erfahrung und Vision entwerfe ich nun die Daten-Lieferkette (Data Supply Chain), um eine Automatisierung zu gewährleisten. Sie arbeiten direkt mit mir zusammen, dem Spezialisten, der Ihre Systeme entwirft und baut. Mein Ansatz ist pragmatisch: sauberer Code, klare Dokumentation und Systeme, die einfach laufen."
+          "bio": "Als Data Engineer helfe ich Unternehmen, durch IT Ruhe zu schaffen. Durch mein BSc in Betriebswirtschaft, MSc in Supply Chain Management und praktische Erfahrung verstehe ich sowohl Geschäftsprozesse als auch passende Datenstrukturen. Mit diesem Wissen und Vision entwerfe ich \"data supply chains\" zur Sicherung der Automatisierung. Sie arbeiten direkt mit mir zusammen, dem Spezialisten, der Ihre Systeme entwirft und baut. Mein Ansatz ist pragmatisch und schnell."
         },
         "pillarsTitle": "Unsere Säulen",
         "pillars": {
           "tech": {
             "title": "Technologie",
-            "desc": "Wir nutzen bewährte, stabile Technologie, um ein zuverlässiges Fundament zu legen. Keine Hypes, nur Systeme, die funktionieren und Sicherheit geben."
+            "desc": "Tovy verfügt über eine tief verwurzelte Leidenschaft für Technologie, die eine fundierte Beurteilung darüber ermöglicht, welcher Tech Stack am besten zu Ihrem Unternehmen passt."
           },
           "optimization": {
             "title": "Optimierung",
-            "desc": "Der Kern der Stabilität ist ein reibungslos laufendes System. Wir eliminieren Rauschen und bauen effiziente Prozesse, die still für Sie arbeiten."
+            "desc": "Neben der Nutzung von Technologie sucht Tovy ständig nach Prozessoptimierungen. Am liebsten vollständig automatisiert. Dies erfordert 100 % Abstimmung zwischen Geschäftsprozessen und IT."
           },
           "freedom": {
-            "title": "Direktkontakt",
-            "desc": "Direkter Kontakt mit dem Spezialisten, der Ihr System baut. Keine Tickets, keine Account-Manager. Sie haben die volle Kontrolle und klare Wege."
+            "title": "Freiheit",
+            "desc": "Teure FTEs sollten klug eingesetzt werden. Daher suchen wir nach Wegen, um einfache Aufgaben von Ihren Mitarbeitern zu übernehmen und ihnen mehr kognitive Freiheit zu geben."
           },
           "innovation": {
             "title": "Innovation",
-            "desc": "Ein solides Fundament schafft den mentalen und technischen Raum für Innovationen. Wir bauen Systeme, die heute funktionieren und zukunftssicher sind."
+            "desc": "Ein solides Fundament bietet den mentalen und technischen Raum zum Innovieren und Wachsen. Wir beginnen damit und geben es an Ihr Team weiter."
           }
         }
       },
       "engineering": {
         "section": "Leistungen",
-        "title": "End-to-End Datensysteme",
-        "subtitle": "Von robuster Datenarchitektur bis zur zuverlässigen Prozessautomatisierung",
+        "title": "Mit dem Ziel eines End-to-End-Systems",
+        "subtitle": "Nur zuverlässige Geschäftsprozesse ermöglichen ein robustes System",
         "services": {
           "strategic": {
-            "title": "Beratung & Architektur",
-            "desc": "Wir entwerfen skalierbare Datenarchitekturen und wählen die passenden Tools aus (wie dbt, Databricks, Azure oder GCP). Keine theoretischen Gutachten – sondern konkrete technische Konzepte.",
-            "tools": ["Architektur", "Tool-Auswahl", "Machbarkeit"]
+            "title": "Datengesteuerte Strategie",
+            "desc": "Wir entwerfen skalierbare gekoppelte Systeme und wählen Werkzeuge in Rücksprache aus. Keine theoretischen Gutachten, sondern konkrete technische Blaupausen mit Fokus auf Machbarkeit.",
+            "tools": ["Architektur", "Werkzeugauswahl", "Machbarkeit"]
           },
           "cloud": {
-            "title": "Cloud-Infrastruktur",
-            "desc": "Aufbau und proaktive Verwaltung stabiler Cloud-Umgebungen. Wir konzipieren Ihre Azure-Umgebung mit Fokus auf maximale Performance, Backups und Verfügbarkeit.",
+            "title": "Infrastruktur",
+            "desc": "Aufbau und Verwaltung von IT-Umgebungen. Wir entwerfen Ihre Cloud- und/oder lokalen Umgebungen mit Fokus auf maximale Performance, Backups und Verfügbarkeit.",
             "points": [
-              "Eine IT-Umgebung, die nahtlos mit Ihren Unternehmenszielen mitwächst.",
-              "Maximale Performance und Ausfallsicherheit für kritische Systeme.",
-              "Absolute Sorgenfreiheit durch robuste, automatische Backup-Strategien.",
-              "Eine sicher verwaltete Azure-Cloud-Umgebung, die Ihr Team entlastet."
+              "Eine IT-Umgebung, die nahtlos mit Ihren Unternehmenszielen wächst.",
+              "Maximale Performance für Ihre Geschäftssysteme.",
+              "Vollständige Ruhe durch Backup-Strategien.",
+              "Ein sicher verwaltetes System, das Ihr Team entlastet."
             ],
             "tools": ["Azure / GCP / AWS", "Sicherheit", "Backups"]
           },
           "data": {
-            "title": "Data Warehousing & BI-Pipelines",
-            "desc": "Zusammenführung fragmentierter Quellen (ERP, CRM, Webshops, Finanzsoftware) in einem zentralen Data Warehouse über dbt-Transformationen und Power BI / Looker Studio Dashboards.",
+            "title": "Data Warehousing & Pipelines",
+            "desc": "Konsolidierung von Daten aus verschiedenen Quellen einschließlich ERP, CRM, Websites, Buchhaltungssoftware und kundenspezifischen Lösungen. Alles in einem zentralen Data Warehouse gespeichert.",
             "points": [
-              "Eine einzige verlässliche Quelle (Single Source of Truth) für alle Daten.",
-              "Direkter Einblick in Geschäftsergebnisse durch konsistente Berichte.",
-              "Echtzeit-Kontrolle über Bestände, Margen und Kundendaten auf allen Kanälen.",
-              "Eine integrierte Datenplattform als solide Basis für kluge Entscheidungen."
+              "Eine zentrale verlässliche Quelle für alle Ihre Daten.",
+              "Direkter Einblick in Geschäftsergebnisse durch Berichte.",
+              "Echtzeitkontrolle über Bestände, Margen und Kundendaten.",
+              "Eine Datenplattform, die die Basis für Entscheidungsfindung bildet."
             ],
-            "tools": ["dbt / SQL / Python", "Power BI", "Data Warehousing"]
+            "tools": ["dbt / Databricks / Apache Spark", "Power BI", "Data Warehousing"]
           },
           "automation": {
             "title": "Prozessautomatisierung",
-            "desc": "Entwicklung zuverlässiger API-Integrationen und maßgeschneiderter Python-Skripte, um manuelle Datenübertragungen zwischen Ihren Anwendungen vollständig zu eliminieren.",
-            "tools": ["LLM-Integrationen", "Python", "Agenten-Workflows"]
+            "desc": "Definition und Implementierung der gewünschten Geschäftslogik innerhalb von Standardsoftwarepaketen, ergänzt durch AI-Lösungen zur Beseitigung einfacher manueller Aufgaben.",
+            "tools": ["Standardsoftware", "Agentic Systems"]
           }
         }
       },

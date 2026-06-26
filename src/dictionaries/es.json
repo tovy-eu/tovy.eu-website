@@ -24,7 +24,7 @@
       "accept": "Aceptar"
     },
     "common": {
-      "workWithUs": "Solicitar escáner empresarial",
+      "workWithUs": "Iniciar la evaluación",
       "readBlog": "Descubre el centro de conocimiento",
       "shareIdea": "Solicitar escáner empresarial",
       "privacyPolicy": "Política de privacidad",
@@ -73,76 +73,76 @@
       "hero": {
         "badge": "Automatización e Ingeniería de Datos",
         "title": "Infraestructura de datos confiable y automatización de procesos",
-        "subtitle": "Diseñamos, integramos y gestionamos todo tu ecosistema de datos. Desde integraciones automáticas de API y almacenes de datos centrales hasta infraestructura en la nube estable. Sin copiar y pegar manualmente: solo sistemas que se ejecutan de manera silenciosa y sin errores en segundo plano."
+        "subtitle": "Diseñamos, integramos y gestionamos todo tu ecosistema de datos. Desde integraciones automáticas de API y almacenes de datos centrales hasta infraestructura en la nube estable. Sin copiar y pegar manualmente: solo sistemas que se ejecutan sin errores en segundo plano."
       },
       "about": {
-        "section": "Sobre nosotros",
-        "title": "Experiencia y contacto directo",
-        "mission": "Tovy ayuda a las empresas en crecimiento a profesionalizar su infraestructura de datos. Construimos sistemas estables y transparentes que eliminan el trabajo manual y garantizan que tus datos sean siempre correctos.",
+        "section": "Sobre nuestra",
+        "title": "Experiencia técnica",
+        "mission": "Tovy ayuda a las empresas en crecimiento a profesionalizar su infraestructura de datos. Construimos sistemas estables que eliminan el trabajo manual y garantizan que tus datos sean correctos.",
         "ceo": {
           "name": "Giel Nijkamp",
           "role": "Creador e Ingeniero de Datos",
           "specialization": "Arquitectura de Datos",
           "location": "Breda, Países Bajos",
           "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
-          "bio": "Como ingeniero de datos, ayudo a las empresas a aportar tranquilidad a través de la tecnología. Tengo experiencia en gestión de la cadena de suministro (supply chain management). Con esta experiencia y visión, ahora diseño la cadena de suministro de datos para garantizar la automatización. Trabajas directamente conmigo, el especialista que diseña y construye tus sistemas. Mi enfoque es pragmático: código limpio, documentación clara y sistemas que simplemente siguen funcionando."
+          "bio": "Como ingeniero de datos, ayudo a las empresas a aportar tranquilidad a través de la TI. Con mi Licenciatura en Administración de Empresas, Máster en Gestión de la Cadena de Suministro y experiencia práctica, entiendo tanto los procesos empresariales como las estructuras de datos adecuadas. Con este conocimiento y visión, diseño \"data supply chains\" para garantizar la automatización. Trabajas directamente conmigo, el especialista que diseña y construye tus sistemas. Mi enfoque es pragmático y rápido."
         },
         "pillarsTitle": "Nuestros pilares",
         "pillars": {
           "tech": {
             "title": "Tecnología",
-            "desc": "Utilizamos tecnología probada y estable para sentar una base confiable. Sin modas pasajeras, solo sistemas que funcionan y brindan tranquilidad."
+            "desc": "Tovy tiene una pasión profundamente arraigada por la tecnología que permite juzgar correctamente qué stack tecnológico se adapta mejor a tu empresa."
           },
           "optimization": {
             "title": "Optimización",
-            "desc": "La clave de la estabilidad es un sistema que funcione sin problemas. Eliminamos el ruido y creamos procesos eficientes que trabajan para ti de forma silenciosa."
+            "desc": "Además de utilizar tecnología, Tovy busca continuamente la optimización de procesos. Idealmente, completamente automatizados. Esto requiere 100% de alineación entre procesos empresariales e IT."
           },
           "freedom": {
-            "title": "Ventas directas",
-            "desc": "Contacto directo con el especialista que crea tu sistema. Sin intermediarios ni gestores de cuentas. Tienes el control total y líneas de comunicación claras."
+            "title": "Libertad",
+            "desc": "Los FTE caros deben invertirse sabiamente. Por eso buscamos formas de quitar tareas simples de los hombros de tus empleados y darles más libertad cognitiva."
           },
           "innovation": {
             "title": "Innovación",
-            "desc": "Una base sólida brinda el espacio mental y técnico necesario para innovar. Creamos sistemas que funcionan hoy y están listos para el futuro."
+            "desc": "Una base sólida proporciona el espacio mental y técnico para innovar y crecer. Comenzamos con esto y lo transmitimos a tu equipo de trabajo."
           }
         }
       },
       "engineering": {
         "section": "Servicios",
-        "title": "Sistemas de datos de extremo a extremo",
-        "subtitle": "Desde una arquitectura de datos robusta hasta una automatización de procesos confiable",
+        "title": "Con el objetivo de un sistema de extremo a extremo",
+        "subtitle": "Solo los procesos empresariales confiables hacen posible un sistema robusto",
         "services": {
           "strategic": {
-            "title": "Consultoría y Arquitectura",
-            "desc": "Diseñamos arquitecturas de datos escalables y seleccionamos las herramientas adecuadas (como dbt, Databricks, Azure o GCP). Sin informes teóricos: solo planos técnicos concretos.",
+            "title": "Estrategia basada en datos",
+            "desc": "Diseñamos sistemas escalables integrados y seleccionamos herramientas en consulta. Sin informes teóricos, solo planos técnicos concretos con enfoque en viabilidad.",
             "tools": ["Arquitectura", "Selección de herramientas", "Viabilidad"]
           },
           "cloud": {
-            "title": "Infraestructura en la nube",
-            "desc": "Configuración y gestión proactiva de entornos estables en la nube. Diseñamos tu entorno de Azure pensando en el máximo rendimiento, las copias de seguridad y el tiempo de actividad.",
+            "title": "Infraestructura",
+            "desc": "Configuración y gestión de entornos de TI. Diseñamos tus entornos en la nube y/o locales pensando en el máximo rendimiento, las copias de seguridad y el tiempo de actividad.",
             "points": [
               "Un entorno de TI que crece a la par de tus ambiciones comerciales.",
-              "Máximo rendimiento y disponibilidad para tus sistemas críticos.",
-              "Tranquilidad absoluta gracias a estrategias de copia de seguridad automáticas.",
-              "Un entorno en la nube de Azure gestionado de forma segura que libera a tu equipo."
+              "Máximo rendimiento para tus sistemas empresariales.",
+              "Tranquilidad completa gracias a estrategias de copia de seguridad.",
+              "Un sistema gestionado de forma segura que libera a tu equipo."
             ],
             "tools": ["Azure / GCP / AWS", "Seguridad", "Copias de seguridad"]
           },
           "data": {
-            "title": "Almacenamiento de datos y flujos de BI",
-            "desc": "Unificación de fuentes fragmentadas (ERP, CRM, tiendas en línea, software financiero) en un almacén de datos central mediante transformaciones dbt y paneles de Power BI / Looker Studio.",
+            "title": "Almacenamiento de datos y Pipelines",
+            "desc": "Consolidación de datos de diversas fuentes incluyendo ERP, CRM, sitios web, software contable y soluciones personalizadas. Todo almacenado en un almacén de datos central.",
             "points": [
-              "Una única fuente de verdad central para todos tus datos.",
-              "Información directa sobre los resultados comerciales mediante informes consistentes.",
-              "Control en tiempo real de inventarios, márgenes y datos de clientes en todos los canales.",
-              "Una plataforma de datos integrada que sirve de base para la toma de decisiones inteligentes."
+              "Una fuente central de verdad para todos tus datos.",
+              "Información directa sobre los resultados comerciales mediante informes.",
+              "Control en tiempo real sobre tus inventarios, márgenes y datos de clientes.",
+              "Una plataforma de datos que forma la base para la toma de decisiones."
             ],
-            "tools": ["dbt / SQL / Python", "Power BI", "Almacenes de datos"]
+            "tools": ["dbt / Databricks / Apache Spark", "Power BI", "Almacenamiento de datos"]
           },
           "automation": {
             "title": "Automatización de procesos",
-            "desc": "Desarrollo de integraciones de API confiables y scripts de Python personalizados para eliminar por completo la transferencia manual de datos entre tus aplicaciones.",
-            "tools": ["Integraciones de LLM", "Python", "Flujos de agentes"]
+            "desc": "Definición e implementación de la lógica empresarial deseada dentro de paquetes de software estándar, complementada con soluciones de IA para eliminar tareas manuales simples.",
+            "tools": ["Software estándar", "Sistemas agénticos"]
           }
         }
       },

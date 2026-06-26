@@ -24,7 +24,7 @@
       "accept": "Accept"
     },
     "common": {
-      "workWithUs": "Request an Assessment",
+      "workWithUs": "Start the Intake",
       "readBlog": "Explore the Knowledge Hub",
       "shareIdea": "Request an Assessment",
       "privacyPolicy": "Privacy Policy",
@@ -73,76 +73,76 @@
       "hero": {
         "badge": "Automation & Data Engineering",
         "title": "Reliable Data Infrastructure & Process Automation",
-        "subtitle": "We build, integrate, and manage your entire data ecosystem. From automated API integrations and central data warehouses to stable cloud infrastructure. No manual copying and pasting—just systems that run quietly and flawlessly in the background."
+        "subtitle": "We build, integrate, and manage your entire data ecosystem. From automated API integrations and central data warehouses to stable cloud infrastructure. No manual copying and pasting—just systems that run flawlessly in the background."
       },
       "about": {
-        "section": "About Us",
-        "title": "Expertise & Direct Contact",
-        "mission": "Tovy helps growing companies professionalize their data infrastructure. We build stable, transparent systems that eliminate manual labor and ensure your data is always correct.",
+        "section": "About Our",
+        "title": "Technical Expertise",
+        "mission": "Tovy helps growing companies professionalize their data infrastructure. We build stable systems that eliminate manual labor and ensure your data is correct.",
         "ceo": {
           "name": "Giel Nijkamp",
           "role": "Founder & Data Engineer",
           "specialization": "Data Architecture",
           "location": "Breda, Netherlands",
           "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
-          "bio": "As a data engineer, I help companies bring peace of mind through technology. I have a background in supply chain management. With this experience and vision, I now engineer the data supply chain to guarantee automation. You work directly with me, the specialist who designs and builds your systems. My approach is pragmatic: clean code, clear documentation, and systems that simply keep working."
+          "bio": "As a data engineer, I help companies bring peace of mind through IT. With my BSc in Business Administration, MSc in Supply Chain Management, and hands-on experience, I understand both business processes and fitting data structures. With this knowledge and vision, I engineer \"data supply chains\" to guarantee automation. You work directly with me, the specialist who designs and builds your systems. My approach is pragmatic and fast."
         },
         "pillarsTitle": "Our Pillars",
         "pillars": {
           "tech": {
             "title": "Technology",
-            "desc": "We use proven, stable technology to lay a reliable foundation. No hypes, just systems that keep working and bring peace of mind."
+            "desc": "Tovy has a deep-rooted passion for technology, enabling sound judgment about which tech stack best fits your business."
           },
           "optimization": {
             "title": "Optimization",
-            "desc": "The core of stability is a smoothly running system. We eliminate noise and build efficient processes that work for you silently and reliably."
+            "desc": "Beyond using technology, Tovy constantly seeks process optimization. Ideally, fully automated. This requires 100% alignment between business processes and IT."
           },
           "freedom": {
             "title": "Freedom",
-            "desc": "Direct contact with the specialist building your system. No tickets, no account managers. You have full control and clear lines of communication."
+            "desc": "Expensive FTEs should be spent wisely. We find ways to take simple tasks off your employees' plates and give them more cognitive freedom."
           },
           "innovation": {
             "title": "Innovation",
-            "desc": "A solid foundation provides the mental and technical space to innovate. We build systems that work today and are ready for the future."
+            "desc": "A solid foundation provides the mental and technical space to innovate and grow. We start with this and pass it on to your workforce."
           }
         }
       },
       "engineering": {
         "section": "Services",
-        "title": "End-to-end Data Systems",
-        "subtitle": "From robust data architecture to reliable process automation",
+        "title": "With the goal of an end-to-end system",
+        "subtitle": "Only reliable business processes enable a robust system",
         "services": {
           "strategic": {
-            "title": "Consultancy & Architecture",
-            "desc": "We design scalable data architectures and select the right tooling (such as dbt, Databricks, Azure, or GCP). No theoretical advisory reports—just concrete technical blueprints.",
+            "title": "Data-driven Strategy",
+            "desc": "We design scalable integrated systems and select tools in consultation. No theoretical advisory reports, but concrete technical blueprints with a focus on feasibility.",
             "tools": ["Architecture", "Tool Selection", "Feasibility"]
           },
           "cloud": {
-            "title": "Cloud Infrastructure",
-            "desc": "Setting up and proactively managing stable cloud environments. We design your Azure environment with maximum performance, back-ups, and uptime in mind.",
+            "title": "Infrastructure",
+            "desc": "Setting up and managing IT environments. We design your cloud and/or local environments with maximum performance, back-ups, and uptime in mind.",
             "points": [
               "An IT environment that seamlessly grows with your business ambitions.",
-              "Maximum uptime and performance for your business-critical systems.",
-              "Complete peace of mind through robust, automatic backup strategies.",
-              "A securely managed Azure cloud environment that unburdens your team."
+              "Maximum performance for your business systems.",
+              "Complete peace of mind through backup strategies.",
+              "A safely managed system that unburdens your team."
             ],
             "tools": ["Azure / GCP / AWS", "Security", "Backups"]
           },
           "data": {
-            "title": "Data Warehousing & BI Pipelines",
-            "desc": "Bringing fragmented sources (ERP, CRM, Webshops, Financial software) together into one central data warehouse via dbt transformations and Power BI / Looker Studio dashboards.",
+            "title": "Data Warehousing & Pipelines",
+            "desc": "Consolidating data from diverse sources including ERP, CRM, websites, accounting software, and custom solutions. Everything stored in one central data warehouse.",
             "points": [
               "One central source of truth for all your data.",
-              "Direct insight into business results via factual, consistent reports.",
-              "Real-time grip on inventories, margins, and customer data across all channels.",
-              "An integrated data platform that forms the basis for smart decision-making."
+              "Direct insight into business results via reporting.",
+              "Real-time grip on your inventories, margins, and customer data.",
+              "A data platform that forms the basis for decision-making."
             ],
-            "tools": ["dbt / SQL / Python", "Power BI", "Data Warehousing"]
+            "tools": ["dbt / Databricks / Apache Spark", "Power BI", "Data Warehousing"]
           },
           "automation": {
             "title": "Process Automation",
-            "desc": "Developing reliable API integrations and custom Python scripts to completely eliminate manual data transfer between your applications.",
-            "tools": ["LLM Integrations", "Python", "Agentic Workflows"]
+            "desc": "Defining and implementing desired business logic within standard software packages, complemented with AI solutions to eliminate simple manual tasks.",
+            "tools": ["Standard Software", "Agentic Systems"]
           }
         }
       },
