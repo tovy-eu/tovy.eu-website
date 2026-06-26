@@ -109,15 +109,18 @@ export const notifyOnEmailQueued = onDocumentWritten("project_requests/{docId}",
   const before = event.data?.before.data();
   const after = event.data?.after.data();
 
+  logger.info(`DOC: ${event.params.docId}, before.status=${before?.status}, after.status=${after?.status}`);
+
   // Only notify when status transitions to "completed"
   if (before?.status === "completed" || after?.status !== "completed") {
+    logger.info(`SKIP: before=${before?.status}, after=${after?.status}`);
     return;
   }
 
   const docId = event.params.docId;
   const notifyUrl = "https://ntfy.sh/tovy-emails";
 
-  logger.info(`Attempting to send ntfy for doc: ${docId}`);
+  logger.info(`SEND: Sending ntfy for ${docId}`);
 
   try {
     const response = await fetch(notifyUrl, {
@@ -130,8 +133,8 @@ export const notifyOnEmailQueued = onDocumentWritten("project_requests/{docId}",
       },
       body: `New project request submitted: ${docId}`
     });
-    logger.info(`ntfy response: ${response.status} ${response.statusText}`);
+    logger.info(`NTFY_OK: ${response.status}`);
   } catch (error) {
-    logger.error(`ntfy fetch failed: ${error}`);
+    logger.error(`NTFY_ERR: ${error}`);
   }
 });
