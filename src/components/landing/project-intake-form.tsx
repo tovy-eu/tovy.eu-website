@@ -32,35 +32,24 @@ interface ProjectIntakeFormProps {
   dict: Dictionary;
 }
 
-const getEmailTranslations = (dict: Dictionary, lang: string, emailType: 'welcome' | 'abandonment') => {
-  const l = (lang === 'nl' || lang === 'de' || lang === 'es') ? lang : 'en';
-
-  console.log(`[Email] Loading ${emailType} translations for language: ${l}`);
-
+const getEmailTranslations = (dict: Dictionary, emailType: 'welcome' | 'abandonment') => {
   try {
-    // Access the email translations from dictionary
-    const emails = dict.pages?.projectRequest?.form?.emails as Record<string, Record<string, Record<string, unknown>>> | undefined;
-
-    console.log(`[Email] Dictionary emails object:`, emails ? Object.keys(emails) : 'undefined');
+    // Each dictionary file (en.json, nl.json, etc) is already language-specific
+    // So we just access emails[emailType] directly - no language key needed
+    const emails = dict.pages?.projectRequest?.form?.emails as Record<string, Record<string, unknown>> | undefined;
 
     if (!emails) {
       console.error('[Email] No emails object found in dictionary');
       return getDefaultEmailTranslations(emailType);
     }
 
-    const emailTypeTranslations = emails[emailType];
-    console.log(`[Email] ${emailType} translations available for:`, emailTypeTranslations ? Object.keys(emailTypeTranslations) : 'undefined');
+    const translations = emails[emailType];
 
-    const translations = emailTypeTranslations?.[l];
-
-    if (!translations) {
-      console.warn(`[Email] Translation missing for ${emailType}.${l}, using English`);
-      const englishFallback = emailTypeTranslations?.['en'];
-      if (englishFallback) return englishFallback as Record<string, unknown>;
+    if (!translations || typeof translations !== 'object') {
+      console.error(`[Email] No translations found for ${emailType}`);
       return getDefaultEmailTranslations(emailType);
     }
 
-    console.log(`[Email] Using ${l} translations for ${emailType}`);
     return translations;
   } catch (error) {
     console.error('[Email] Error loading translations:', error);
@@ -83,7 +72,7 @@ const getDefaultEmailTranslations = (emailType: 'welcome' | 'abandonment'): Reco
 
 const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: string, dict: Dictionary): string => {
   const l = (lang === 'nl' || lang === 'de' || lang === 'es') ? lang : 'en';
-  const t = getEmailTranslations(dict, lang, 'welcome');
+  const t = getEmailTranslations(dict, 'welcome');
   
   const formattedName = `${data.firstName} ${data.lastName}`;
   const formattedOrg = `${data.company} (${data.companySize || 'N/A'})`;
@@ -522,7 +511,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           userEmail: data.email,
           lang,
           message: {
-            subject: String(getEmailTranslations(dict, l, 'welcome').subject || ''),
+            subject: String(getEmailTranslations(dict, 'welcome').subject || ''),
             html: getWelcomeEmailHtml(data, docId, l, dict),
           },
           delivery: {
