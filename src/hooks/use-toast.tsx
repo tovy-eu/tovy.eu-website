@@ -1,12 +1,13 @@
 "use client"
 
-import { createContext, useContext, useState, useCallback, ReactNode } from "react"
+import { createContext, useContext, useState, useCallback, useRef, ReactNode } from "react"
 
 type Toast = {
   id: string
   title?: string
   description?: string
   variant?: "default" | "destructive"
+  action?: React.ReactElement
   open?: boolean
 }
 
@@ -17,10 +18,10 @@ const ToastContext = createContext<{
 
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([])
-  let idCounter = 0
+  const idCounter = useRef(0)
 
   const toast = useCallback((props: Omit<Toast, "id">) => {
-    const id = String(++idCounter)
+    const id = String(++idCounter.current)
     const timeout = setTimeout(() => {
       setToasts([])
     }, 3000)
