@@ -1,4 +1,5 @@
 import { onSchedule } from "firebase-functions/v2/scheduler";
+import { onDocumentCreated } from "firebase-functions/v2/firestore";
 import { setGlobalOptions } from "firebase-functions/v2";
 import { logger } from "firebase-functions";
 import { initializeApp } from "firebase-admin/app";
@@ -99,5 +100,21 @@ export const checkAbandonmentEmails = onSchedule("every 15 minutes", async (even
     
   } catch (error) {
     logger.error("Error executing checkAbandonmentEmails scheduled task:", error);
+  }
+});
+
+export const notifyOnEmailQueued = onDocumentCreated("project_requests/{docId}", async (event) => {
+  const data = event.data?.data();
+  if (!data?.to || !data?.message?.subject) return;
+
+  const notifyUrl = "https://ntfy.sh/tovy-emails";
+
+  try {
+    await fetch(notifyUrl, {
+      method: "POST",
+      body: `📧 ${data.message.subject} → ${data.to}`
+    });
+  } catch (error) {
+    logger.warn("Failed to send ntfy notification:", error);
   }
 });
