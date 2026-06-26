@@ -32,30 +32,23 @@ interface ProjectIntakeFormProps {
   dict: Dictionary;
 }
 
-const getEmailTranslations = (dict: Dictionary, emailType: 'welcome' | 'abandonment') => {
+const getEmailTranslations = (dict: Dictionary, emailType: 'welcome' | 'abandonment'): Record<string, unknown> => {
   try {
-    // Debug: Log the dictionary structure
-    console.log('[Email Debug] Full dict object:', dict);
-    console.log('[Email Debug] dict.pages:', dict.pages);
-    console.log('[Email Debug] dict.pages?.projectRequest:', (dict as any)?.pages?.projectRequest);
-    console.log('[Email Debug] dict.pages?.projectRequest?.form:', (dict as any)?.pages?.projectRequest?.form);
-
     // Each dictionary file (en.json, nl.json, etc) is already language-specific
-    const pages = (dict as any).pages;
-    const projectRequest = pages?.projectRequest;
-    const form = projectRequest?.form;
-    const emails = form?.emails;
+    const dictObj = dict as Record<string, unknown>;
+    const pagesObj = dictObj.pages as Record<string, unknown>;
+    const prObj = pagesObj?.projectRequest as Record<string, unknown>;
+    const formObj = prObj?.form as Record<string, unknown>;
+    const emailsObj = formObj?.emails as Record<string, Record<string, unknown>> | undefined;
 
-    console.log('[Email Debug] emails object:', emails);
-    console.log('[Email Debug] emails keys:', emails ? Object.keys(emails) : 'undefined');
+    console.log('[Email] Loading emails for type:', emailType);
 
-    if (!emails || typeof emails !== 'object') {
+    if (!emailsObj || typeof emailsObj !== 'object') {
       console.error('[Email] No emails object found. Using fallback.');
       return getDefaultEmailTranslations(emailType);
     }
 
-    const translations = emails[emailType];
-    console.log(`[Email Debug] translations for ${emailType}:`, translations);
+    const translations = emailsObj[emailType];
 
     if (!translations || typeof translations !== 'object') {
       console.error(`[Email] No translations found for ${emailType}. Using fallback.`);
@@ -63,7 +56,7 @@ const getEmailTranslations = (dict: Dictionary, emailType: 'welcome' | 'abandonm
     }
 
     console.log(`[Email] Successfully loaded ${emailType} translations`);
-    return translations as Record<string, unknown>;
+    return translations;
   } catch (error) {
     console.error('[Email] Error loading translations:', error);
     return getDefaultEmailTranslations(emailType);
