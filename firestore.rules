@@ -9,14 +9,15 @@ service cloud.firestore {
       // PII must never be readable by clients. Dashboards read via the Admin SDK.
       allow read: if false;
 
-      // New submissions always start as "incomplete". A client may not create a
-      // document that is already "complete" (that would fire the Make.com webhook).
-      allow create: if request.resource.data.status == 'incomplete';
+      // New submissions always start as "incomplete" and must validate that
+      // 'to' matches exactly with 'userEmail'.
+      allow create: if request.resource.data.status == 'incomplete'
+                    && request.resource.data.to == request.resource.data.userEmail;
 
       // A request can only be modified while still in progress. Once it is
-      // "complete" it becomes immutable, which prevents tampering with finished
-      // leads and blocks repeated re-triggering of the webhook.
-      allow update: if resource.data.status != 'complete';
+      // "complete" it becomes immutable. Updates must maintain the email matching rule.
+      allow update: if resource.data.status != 'complete'
+                    && request.resource.data.to == request.resource.data.userEmail;
     }
 
     match /subscriptions/{subId} {

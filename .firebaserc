@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "studio-5767764867-ecdbc"
+  },
+  "targets": {},
+  "etags": {
+    "studio-5767764867-ecdbc": {
+      "extensionInstances": {
+        "firestore-send-email": "d274e9cc60191bbfd8bcc8ffed8b7940851679d47aca204facac5f163d647ad4"
+      }
+    }
   }
 }
