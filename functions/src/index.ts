@@ -74,7 +74,9 @@ export const checkAbandonmentEmails = onSchedule("every 15 minutes", async (even
       const mailDocRef = db.collection("project_requests").doc(`${docId}_abandonment`);
       
       batch.set(mailDocRef, {
+        status: "incomplete",
         to: email,
+        userEmail: email,
         message: {
           subject: subject,
           html: emailHtml,
