@@ -1,5 +1,5 @@
 import { onSchedule } from "firebase-functions/v2/scheduler";
-import { onDocumentWritten } from "firebase-functions/v2/firestore";
+import { onDocumentCreated } from "firebase-functions/v2/firestore";
 import { setGlobalOptions } from "firebase-functions/v2";
 import { logger } from "firebase-functions";
 import { initializeApp } from "firebase-admin/app";
@@ -105,36 +105,43 @@ export const checkAbandonmentEmails = onSchedule("every 15 minutes", async (even
   }
 });
 
-export const notifyOnEmailQueued = onDocumentWritten("project_requests/{docId}", async (event) => {
-  const before = event.data?.before.data();
-  const after = event.data?.after.data();
+export const notifyOnRecordCreated = onDocumentCreated("project_requests/{docId}", async (event) => {
+  const data = event.data?.data();
+  const docId = event.params.docId;
 
-  logger.info(`DOC: ${event.params.docId}, before.status=${before?.status}, after.status=${after?.status}`);
+  logger.info(`notifyOnRecordCreated triggered for docId: ${docId}`, { data });
 
-  // Only notify when status transitions to "completed"
-  if (before?.status === "completed" || after?.status !== "completed") {
-    logger.info(`SKIP: before=${before?.status}, after=${after?.status}`);
-    return;
+  const name = data?.firstName || "Unknown";
+  const email = data?.email || data?.to || "no-email";
+
+  let title = "New Project Request";
+  let body = `New form submission from ${name} (${email})\nDoc ID: ${docId}`;
+  let tags = "project-request";
+
+  if (data?.is_abandonment_mail) {
+    title = "Abandonment Email Queued";
+    body = `Abandonment email reminder queued for ${email}\nDoc ID: ${docId}`;
+    tags = "email,abandonment";
+  } else if (data?.delivery?.state === "PENDING" || data?.message) {
+    title = "Email Notification Queued";
+    body = `Email dispatch queued for ${email}\nDoc ID: ${docId}`;
+    tags = "email,queued";
   }
 
-  const docId = event.params.docId;
-  const notifyUrl = "https://ntfy.sh/tovy-emails";
-
-  logger.info(`SEND: Sending ntfy for ${docId}`);
-
   try {
-    const response = await fetch(notifyUrl, {
+    logger.info(`Sending ntfy notification for ${title}...`);
+    await fetch("https://ntfy.sh/tovy-emails", {
       method: "POST",
       headers: {
-        "Title": "New Project Request",
+        "Title": title,
         "Priority": "5",
-        "Tags": "project-request",
+        "Tags": tags,
         "Click": `https://tovy.eu/requests/${docId}`
       },
-      body: `New project request submitted: ${docId}`
+      body: body
     });
-    logger.info(`NTFY_OK: ${response.status}`);
-  } catch (error) {
-    logger.error(`NTFY_ERR: ${error}`);
+    logger.info("Notification sent successfully");
+  } catch (err) {
+    logger.error(`Failed to send notification: ${err}`);
   }
 });
