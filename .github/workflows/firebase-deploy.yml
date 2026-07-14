@@ -7,6 +7,11 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -16,45 +21,84 @@ permissions:
   checks: write # Required for creating deployment checks on PRs
 
 jobs:
-  test_and_lint:
+  build_and_test:
+    name: Build and Test
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          npm install
-          cd functions && npm install
+      - name: Setup Node.js (Node 24)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
 
-      - name: Lint project
+      - name: Install Root Dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Install Functions Dependencies
+        run: cd functions && npm ci
+
+      - name: Cache Next.js Build
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+      - name: Lint Project
         run: npm run lint
         continue-on-error: true # Temporarily allowed due to ESLint 9 / Next 15 circular dependency bug
 
-      - name: Typecheck project
+      - name: Typecheck Project
         run: npm run typecheck
 
-  preview:
-    if: github.event_name == 'pull_request'
-    needs: test_and_lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: 'projects/553043672473/locations/global/workloadIdentityPools/github-actions/providers/github-provider'
-          service_account: 'firebase-adminsdk-fbsvc@studio-5767764867-ecdbc.iam.gserviceaccount.com'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
+      - name: Build Project Static Export
         env:
           NEXT_PUBLIC_GA_MEASUREMENT_ID: "G-VL0FR2B3DH"
         run: npm run build
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-build
+          path: |
+            out
+            firebase.json
+            .firebaserc
+          retention-days: 1
+
+  preview:
+    name: Deploy Preview (PR)
+    if: github.event_name == 'pull_request'
+    needs: build_and_test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout Repository (for workspace metadata)
+        uses: actions/checkout@v4
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: production-build
+          path: .
+
+      - name: Setup Node.js (Node 24)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          token_format: 'access_token'
+          workload_identity_provider: 'projects/553043672473/locations/global/workloadIdentityPools/github-actions/providers/github-provider'
+          service_account: 'firebase-adminsdk-fbsvc@studio-5767764867-ecdbc.iam.gserviceaccount.com'
 
       - name: Deploy to Firebase Preview Channel
         run: |
@@ -63,29 +107,40 @@ jobs:
           CLEAN_CHANNEL_ID=$(echo "$CHANNEL_ID" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]/_/' | cut -c 1-40 | sed 's/_$//')
           
           # Deploy to the specific preview channel
-          npx firebase-tools hosting:channel:deploy "$CLEAN_CHANNEL_ID" --expires 7d --project studio-5767764867-ecdbc
+          npx --package=firebase-tools firebase hosting:channel:deploy "$CLEAN_CHANNEL_ID" --expires 7d --project studio-5767764867-ecdbc --non-interactive
+        env:
+          FIREBASE_TOKEN: ${{ steps.auth.outputs.access_token }}
 
   deploy_production:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: test_and_lint
+    name: Deploy to Production
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    needs: build_and_test
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository (for workspace metadata)
         uses: actions/checkout@v4
 
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: production-build
+          path: .
+
+      - name: Setup Node.js (Node 24)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
       - name: Authenticate to Google Cloud
+        id: auth
         uses: google-github-actions/auth@v2
         with:
+          token_format: 'access_token'
           workload_identity_provider: 'projects/553043672473/locations/global/workloadIdentityPools/github-actions/providers/github-provider'
           service_account: 'firebase-adminsdk-fbsvc@studio-5767764867-ecdbc.iam.gserviceaccount.com'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        env:
-          NEXT_PUBLIC_GA_MEASUREMENT_ID: "G-VL0FR2B3DH"
-        run: npm run build
-
       - name: Deploy to Firebase Hosting (Production)
-        run: npx firebase-tools deploy --only hosting --project studio-5767764867-ecdbc
+        run: npx --package=firebase-tools firebase deploy --only hosting --project studio-5767764867-ecdbc --non-interactive
+        env:
+          FIREBASE_TOKEN: ${{ steps.auth.outputs.access_token }}
