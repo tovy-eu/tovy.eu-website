@@ -23,8 +23,8 @@ export default function PaymentSuccessClient({ dict, email, lang }: PaymentSucce
         background: "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.15), hsla(0, 0%, 100%, 0))",
       }}
     >
-      {/* Hide footer on this page */}
-      <style dangerouslySetInnerHTML={{ __html: "footer { display: none !important; }" }} />
+      {/* Hide header and footer on this page */}
+      <style dangerouslySetInnerHTML={{ __html: "header, footer { display: none !important; }" }} />
       <WavyLines />
       
       <motion.div
