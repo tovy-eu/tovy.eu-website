@@ -1,0 +1,51 @@
+name: Dependabot Auto-Merge
+
+on:
+  workflow_run:
+    workflows: ["Firebase CI/CD Pipeline"]
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'workflow_dispatch' || (
+        github.event.workflow_run.conclusion == 'success' &&
+        endsWith(github.event.workflow_run.head_branch, 'non-major-dependencies')
+      )
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Approve and Merge PR
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manually triggered. Querying open Dependabot pull requests..."
+            PR_NUMBER=$(gh pr list --author "app/dependabot" --state open --json number --jq '.[0].number')
+          else
+            echo "Triggered by workflow run. Querying PR for branch ${{ github.event.workflow_run.head_branch }}..."
+            PR_NUMBER=$(gh pr list --head "${{ github.event.workflow_run.head_branch }}" --state open --json number --jq '.[0].number')
+          fi
+          
+          if [ -z "$PR_NUMBER" ]; then
+            echo "No open Dependabot PR found."
+            exit 0
+          fi
+          
+          echo "Approving PR #$PR_NUMBER..."
+          gh pr review --approve "$PR_NUMBER"
+          
+          echo "Merging PR #$PR_NUMBER..."
+          gh pr merge --squash --delete-branch "$PR_NUMBER"
+          
+          echo "Triggering deployment..."
+          gh workflow run firebase-deploy.yml --ref main
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
