@@ -533,6 +533,20 @@
         "returnHome": "Back to home",
         "startProject": "Start project"
       }
+    },
+    "paymentSuccess": {
+      "metadata": {
+        "title": "Payment Successful | Tovy",
+        "description": "Your payment has been successfully received. Thank you for your business!"
+      },
+      "content": {
+        "badge": "Payment Succeeded",
+        "title": "Thank you for your payment",
+        "subtitle": "We have successfully received your payment. A confirmation email with the invoice/receipt is on its way to you.",
+        "returnHome": "Go to Tovy's homepage",
+        "needHelp": "Need help or have questions?",
+        "contactUs": "Contact us at"
+      }
     }
   }
 }

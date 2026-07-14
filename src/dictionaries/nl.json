@@ -545,6 +545,20 @@
         "returnHome": "Terug naar home",
         "startProject": "Project starten"
       }
+    },
+    "paymentSuccess": {
+      "metadata": {
+        "title": "Betaling geslaagd | Tovy",
+        "description": "Je betaling is succesvol ontvangen. Hartelijk dank!"
+      },
+      "content": {
+        "badge": "Betaling geslaagd",
+        "title": "Bedankt voor je betaling",
+        "subtitle": "We hebben je betaling in goede orde ontvangen. Een bevestigingsmail met de factuur/kwitantie is naar je onderweg.",
+        "returnHome": "Ga naar Tovy's homepage",
+        "needHelp": "Hulp nodig of vragen?",
+        "contactUs": "Neem contact op via"
+      }
     }
   }
 }

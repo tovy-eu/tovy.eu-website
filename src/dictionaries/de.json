@@ -533,6 +533,20 @@
         "returnHome": "Zurück zur Startseite",
         "startProject": "Projekt starten"
       }
+    },
+    "paymentSuccess": {
+      "metadata": {
+        "title": "Zahlung erfolgreich | Tovy",
+        "description": "Ihre Zahlung wurde erfolgreich empfangen. Vielen Dank für Ihr Vertrauen!"
+      },
+      "content": {
+        "badge": "Zahlung erfolgreich",
+        "title": "Vielen Dank für Ihre Zahlung",
+        "subtitle": "Wir haben Ihre Zahlung erfolgreich erhalten. Eine Bestätigungs-E-Mail mit der Rechnung/Quittung ist auf dem Weg zu Ihnen.",
+        "returnHome": "Gehe zu Tovys Homepage",
+        "needHelp": "Benötigen Sie Hilfe oder haben Sie Fragen?",
+        "contactUs": "Kontaktieren Sie uns unter"
+      }
     }
   }
 }

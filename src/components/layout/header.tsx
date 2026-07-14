@@ -79,6 +79,10 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
     }
   };
 
+  // Do not render header on the payment success page
+  const isPaymentSuccess = pathname?.includes("/payment-success");
+  if (isPaymentSuccess) return null;
+
   return (
     <header
       className={cn(
