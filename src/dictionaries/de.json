@@ -7,7 +7,6 @@
       "twitterTitle": "Data-Engineering & Prozessautomatisierung | Tovy"
     },
     "navigation": {
-      "blog": "Knowledge-Hub",
       "about": "Über uns",
       "services": "Dienstleistungen"
     },
@@ -25,7 +24,6 @@
     },
     "common": {
       "workWithUs": "Intake starten",
-      "readBlog": "Knowledge-Hub entdecken",
       "shareIdea": "Unternehmensanalyse anfragen",
       "privacyPolicy": "Datenschutzerklärung",
       "agreeTo": "Ich stimme zu mit der",
@@ -40,7 +38,6 @@
       "newsletterDesc": "Erhalte technische Einblicke von Tovy.",
       "techStack": "Der Tovy-Toolchain",
       "home": "Startseite",
-      "kxHub": "Knowledge-Hub",
       "page": "Seite",
       "back": "Zurück",
       "previous": "Vorherige",
@@ -73,12 +70,12 @@
       "hero": {
         "badge": "Automatisierung & Data-Engineering",
         "title": "Zuverlässige Dateninfrastruktur & Prozessautomatisierung",
-        "subtitle": "Wir bauen, integrieren und verwalten Ihre gesamte Datenlandschaft. Von automatisierten API-Verbindungen und zentralen Data Warehouses bis hin zu stabiler Cloud-Infrastruktur. Kein manuelles Kopieren und Einfügen mehr – sondern Systeme, die fehlerfrei im Hintergrund laufen."
+        "subtitle": "Tovy baut, integriert und verwaltet Ihre gesamte Datenlandschaft. Von automatisierten API-Verbindungen und zentralen Data Warehouses bis hin zu stabiler Cloud-Infrastruktur. Kein manuelles Kopieren und Einfügen mehr – sondern Systeme, die fehlerfrei im Hintergrund laufen."
       },
       "about": {
         "section": "Über unsere",
         "title": "Technische Kompetenz",
-        "mission": "Tovy hilft wachsenden Unternehmen, ihre Dateninfrastruktur zu professionalisieren. Wir bauen stabile Systeme, die manuelle Arbeit eliminieren und sicherstellen, dass Ihre Daten stimmen.",
+        "mission": "Tovy hilft wachsenden Unternehmen, ihre Dateninfrastruktur zu professionalisieren. Tovy baut stabile Systeme, die manuelle Arbeit eliminieren und sicherstellen, dass Ihre Daten stimmen.",
         "ceo": {
           "name": "Giel Nijkamp",
           "role": "Gründer & Data Engineer",
@@ -99,11 +96,11 @@
           },
           "freedom": {
             "title": "Freiheit",
-            "desc": "Teure FTEs sollten klug eingesetzt werden. Daher suchen wir nach Wegen, um einfache Aufgaben von Ihren Mitarbeitern zu übernehmen und ihnen mehr kognitive Freiheit zu geben."
+            "desc": "Teure FTEs sollten klug eingesetzt werden. Daher sucht Tovy nach Wegen, um einfache Aufgaben von Ihren Mitarbeitern zu übernehmen und ihnen mehr kognitive Freiheit zu geben."
           },
           "innovation": {
             "title": "Innovation",
-            "desc": "Ein solides Fundament bietet den mentalen und technischen Raum zum Innovieren und Wachsen. Wir beginnen damit und geben es an Ihr Team weiter."
+            "desc": "Ein solides Fundament bietet den mentalen und technischen Raum zum Innovieren und Wachsen. Tovy beginnt damit und gibt es an Ihr Team weiter."
           }
         }
       },
@@ -114,12 +111,12 @@
         "services": {
           "strategic": {
             "title": "Datengesteuerte Strategie",
-            "desc": "Wir entwerfen skalierbare gekoppelte Systeme und wählen Werkzeuge in Rücksprache aus. Keine theoretischen Gutachten, sondern konkrete technische Blaupausen mit Fokus auf Machbarkeit.",
+            "desc": "Tovy entwirft skalierbare gekoppelte Systeme und wählt Werkzeuge in Rücksprache aus. Keine theoretischen Gutachten, sondern konkrete technische Blaupausen mit Fokus auf Machbarkeit.",
             "tools": ["Architektur", "Werkzeugauswahl", "Machbarkeit"]
           },
           "cloud": {
             "title": "Infrastruktur",
-            "desc": "Aufbau und Verwaltung von IT-Umgebungen. Wir entwerfen Ihre Cloud- und/oder lokalen Umgebungen mit Fokus auf maximale Performance, Backups und Verfügbarkeit.",
+            "desc": "Aufbau und Verwaltung von IT-Umgebungen. Tovy entwirft Ihre Cloud- und/oder lokalen Umgebungen mit Fokus auf maximale Performance, Sicherheit, Backups und Verfügbarkeit.",
             "points": [
               "Eine IT-Umgebung, die nahtlos mit Ihren Unternehmenszielen wächst.",
               "Maximale Performance für Ihre Geschäftssysteme.",
@@ -135,7 +132,8 @@
               "Eine zentrale verlässliche Quelle für alle Ihre Daten.",
               "Direkter Einblick in Geschäftsergebnisse durch Berichte.",
               "Echtzeitkontrolle über Bestände, Margen und Kundendaten.",
-              "Eine Datenplattform, die die Basis für Entscheidungsfindung bildet."
+              "Eine Datenplattform, die die Basis für Entscheidungsfindung bildet.",
+              "Gesichert durch Zugriffskontrolle, Verschlüsselung und Backup-Strategien."
             ],
             "tools": ["dbt / Databricks / Apache Spark", "Power BI", "Data Warehousing"]
           },
@@ -186,7 +184,7 @@
             "questions": [
               {
                 "question": "Welche Probleme löst Tovy konkret?",
-                "answer": "Tovy löst das Chaos, das durch manuelle Datenprozesse entsteht. Ein konkretes Beispiel ist die tägliche, fehleranfällige Aufgabe, Shopify-Bestellungen in Exact Online zu übertragen. Wir bauen eine nahtlose, automatische Anbindung, die diesen Prozess vollständig übernimmt. Das bringt Ruhe und sorgt für Daten, die immer stimmen."
+                "answer": "Tovy löst das Chaos, das durch manuelle Datenprozesse entsteht. Ein konkretes Beispiel ist die tägliche, fehleranfällige Aufgabe, Shopify-Bestellungen in Exact Online zu übertragen. Tovy baut eine nahtlose, automatische Anbindung, die diesen Prozess vollständig übernimmt. Das bringt Ruhe und sorgt für Daten, die immer stimmen."
               },
               {
                 "question": "Wie unterscheidet sich die Arbeitsweise von Tovy von einem traditionellen IT-Partner?",
@@ -194,11 +192,11 @@
               },
               {
                 "question": "Für welchen Unternehmenstyp ist Tovy am besten geeignet?",
-                "answer": "Unser Ansatz ist ideal für Unternehmen, in denen Datenintegrität entscheidend ist. Kommerzielle und Handelsunternehmen zum Beispiel, die von einer perfekten Synchronisation zwischen Bestand, Verkauf und Finanzen abhängig sind. Wenn der Stress durch inkonsistente Daten dein Wachstum hemmt, sind wir der richtige Partner."
+                "answer": "Tovys Ansatz ist ideal für Unternehmen, in denen Datenintegrität entscheidend ist. Kommerzielle und Handelsunternehmen zum Beispiel, die von einer perfekten Synchronisation zwischen Bestand, Verkauf und Finanzen abhängig sind. Wenn der Stress durch inkonsistente Daten dein Wachstum hemmt, ist Tovy der richtige Partner."
               },
               {
                 "question": "Warum sollte ich Tovy einem großen Datenberatungshaus vorziehen?",
-                "answer": "Wir bieten die tiefgehende Expertise, aber ohne die Schwerfälligkeit und Overhead. Wir arbeiten in kurzen, fokussierten Sprints von 6 Wochen, um schnell eine funktionierende Lösung zu liefern, die sofort Ruhe und Kontrolle bringt. Unser Fokus liegt auf dem Bau eines nachhaltigen Systems, nicht auf der Maximierung fakturierbarer Stunden."
+                "answer": "Tovy bietet die tiefgehende Expertise, aber ohne die Schwerfälligkeit und Overhead. Die Arbeit läuft in kurzen, fokussierten Sprints von 6 Wochen, um schnell eine funktionierende Lösung zu liefern, die sofort Ruhe und Kontrolle bringt. Der Fokus liegt auf dem Bau eines nachhaltigen Systems, nicht auf der Maximierung fakturierbarer Stunden."
               }
             ]
           },
@@ -207,7 +205,7 @@
             "questions": [
               {
                 "question": "Was bekomme ich genau für den Startpreis eines Projekts?",
-                "answer": "In 6 Wochen liefern wir eine konkrete, funktionierende Lösung. Zum Beispiel: eine voll eingerichtete Datenplattform in Azure, eine automatisierte Pipeline, die deine Verkaufsdaten von Shopify nach Exact Online synchronisiert, und ein Power BI-Dashboard mit deinen wichtigsten KPIs. Ein komplettes Fundament für Kontrolle und Einblick."
+                "answer": "In 6 Wochen liefert Tovy eine konkrete, funktionierende Lösung. Zum Beispiel: eine voll eingerichtete Datenplattform in Azure, eine automatisierte Pipeline, die deine Verkaufsdaten von Shopify nach Exact Online synchronisiert, und ein Power BI-Dashboard mit deinen wichtigsten KPIs. Ein komplettes Fundament für Kontrolle und Einblick."
               },
               {
                 "question": "Wie kann ich ein Kennenlernen buchen?",
@@ -223,36 +221,7 @@
       },
       "marquee": {
         "title": "Technologie, die Skalierbarkeit ermöglicht",
-        "subtitle": "Wir wählen Tools aus, die für ihre Zuverlässigkeit, Skalierbarkeit und Wartungsfreundlichkeit bekannt sind, damit deine Datenplattform zukunftssicher ist."
-      }
-    },
-    "knowledgeHub": {
-      "metadata": {
-        "title": "Knowledge-Hub: Datenstrategie & Automatisierung | Tovy",
-        "description": "Technische Artikel über Datenarchitektur, Systemkopplungen und Workflow-Automatisierung. Bauen Sie ein wartungsfreies Fundament für Wachstum.",
-        "keywords": [
-          "Data Engineering Wissen",
-          "Automatisierungs-Baupläne",
-          "Systemintegration",
-          "Tovy Knowledge-Hub",
-          "Tech-Architektur"
-        ]
-      },
-      "hub": {
-        "badge": "Knowledge-Hub",
-        "title": "Knowledge-Hub: Datenstrategie & Einblicke",
-        "subtitle": "Technische Ressourcen und Einblicke, die Klarheit in komplexe Materie bringen.",
-        "noPosts": "Keine Ressourcen im Knowledge-Hub gefunden. Schau später nochmal vorbei!",
-        "readingTime": "Min. Lesezeit",
-        "previous": "Vorherige",
-        "next": "Nächste",
-        "featured": "Hervorgehobene Ressource",
-        "by": "von"
-      },
-      "projectCta": {
-        "title": "Bereit, dein Datenfundament zu bauen?",
-        "description": "Lass uns deine Datenherausforderungen in Wachstumschancen verwandeln.",
-        "buttonText": "Projekt starten"
+        "subtitle": "Tovy wählt Tools aus, die für ihre Zuverlässigkeit, Skalierbarkeit und Wartungsfreundlichkeit bekannt sind, damit deine Datenplattform zukunftssicher ist."
       }
     },
     "projectRequest": {
@@ -286,12 +255,9 @@
           "title": "Danke",
           "description": "Tovy hat deine Anfrage erhalten. Plane unten ein Kennenlerngespräch, um den Prozess zu beschleunigen.",
           "titlePathB": "Bewertung der Anforderungen",
-          "descriptionPathB": "Tovy bewertet derzeit die technischen und strategischen Anforderungen. Wir nehmen Kontakt auf, wenn zusätzliche Informationen benötigt werden.",
-          "titlePathC": "Knowledge-Hub",
-          "descriptionPathC": "Basierend auf deinem Umfang ist der Knowledge-Hub der am besten geeignete Startpunkt. Erkunde dort technische Dokumentationen und Fallstudien.",
+          "descriptionPathB": "Tovy bewertet derzeit die technischen und strategischen Anforderungen. Tovy nimmt Kontakt auf, wenn zusätzliche Informationen benötigt werden.",
           "backHome": "Zurück zur Startseite",
-          "bookMeeting": "Kennenlerngespräch planen",
-          "exploreHub": "Knowledge-Hub entdecken"
+          "bookMeeting": "Kennenlerngespräch planen"
         },
         "steps": {
           "problemStatement": {

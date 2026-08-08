@@ -259,7 +259,7 @@ interface ProjectIntakeFormProps {
 // v2: step indices changed when the email step moved to the end of the form
 const STORAGE_KEY = "tovy_project_form_progress_v2";
 
-type RoutingPath = 'A' | 'B' | 'C';
+type RoutingPath = 'A' | 'B';
 
 export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const [step, setStep] = useState(-1); // Start at -1 for the intro step
@@ -634,15 +634,14 @@ const nextStep = async () => {
             <CardHeader className="text-center pb-6">
               <CheckCircle className="mx-auto h-12 w-12 text-primary mb-4 animate-check-bounce" />
               <CardTitle className="text-xl md:text-2xl font-bold tracking-tight">
-                {(routingPath === 'A' || routingPath === 'B') ? dict.pages.projectRequest.form.success.title : dict.pages.projectRequest.form.success.titlePathC}
+                {dict.pages.projectRequest.form.success.title}
               </CardTitle>
               <CardDescription className="max-w-md mx-auto text-white/65 leading-relaxed font-medium">
-                {(routingPath === 'A' || routingPath === 'B') ? dict.pages.projectRequest.form.success.description : dict.pages.projectRequest.form.success.descriptionPathC}
+                {dict.pages.projectRequest.form.success.description}
               </CardDescription>
             </CardHeader>
 
-            {(routingPath === 'A' || routingPath === 'B' || routingPath === 'C') && (
-              <div className="w-full rounded-3xl overflow-hidden bg-white border border-white/5 mb-8 shadow-inner">
+            <div className="w-full rounded-3xl overflow-hidden bg-white border border-white/5 mb-8 shadow-inner">
                 <iframe
                   src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GvYWPuGvxv0-8qtgsYeJKkgMUjmUqu-2D2FZrKqU6z75hXbUv6_FjFmbPdPBHcyew-fiAUXQ2?gv=true"
                   style={{ border: 0 }}
@@ -651,8 +650,7 @@ const nextStep = async () => {
                   frameBorder="0"
                   title="Google Calendar Appointment Scheduling"
                 ></iframe>
-              </div>
-            )}
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
               <Button asChild variant="ghost" className="hover:bg-white/10 text-white/65 text-[10px] font-bold uppercase tracking-[0.3em] rounded-full px-8">

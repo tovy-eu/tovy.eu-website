@@ -3,19 +3,13 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-/**
- * A reading progress indicator for the landing page and KX resources.
- * Positioned at the bottom of the header to help users gauge their exploration progress.
- */
+
 export function ScrollProgress() {
   const [progress, setProgress] = useState(0);
   const pathname = usePathname();
   
-  // Detect if we are on a page where progress tracking is desired
-  // This includes the landing page (length 1) and KX hub resources (length >= 3)
-  const isKxPage = pathname ? pathname.includes('/kx/') : false;
   const isLandingPage = pathname ? pathname.split('/').filter(Boolean).length === 1 : false;
-  const showProgress = isKxPage || isLandingPage;
+  const showProgress = isLandingPage;
 
   useEffect(() => {
     if (!showProgress) return;

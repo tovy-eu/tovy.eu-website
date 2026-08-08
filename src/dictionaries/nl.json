@@ -7,7 +7,6 @@
       "twitterTitle": "Data engineering & procesautomatisering | Tovy"
     },
     "navigation": {
-      "blog": "Kennis-hub",
       "about": "Over ons",
       "services": "Diensten"
     },
@@ -25,7 +24,6 @@
     },
     "common": {
       "workWithUs": "Start de intake",
-      "readBlog": "Ontdek de kennis-hub",
       "shareIdea": "Deel je projectidee",
       "privacyPolicy": "Privacyverklaring",
       "agreeTo": "Ik ga akkoord met de",
@@ -40,7 +38,6 @@
       "newsletterDesc": "Ontvang technische inzichten van Tovy.",
       "techStack": "De Tovy-toolchain",
       "home": "Home",
-      "kxHub": "Kennis-hub",
       "page": "Pagina",
       "back": "Terug",
       "previous": "Vorige",
@@ -73,12 +70,12 @@
       "hero": {
         "badge": "Data engineering & procesautomatisering",
         "title": "Betrouwbare data-infrastructuur & procesautomatisering",
-        "subtitle": "Wij bouwen, integreren en beheren je complete data-omgeving. Van geautomatiseerde API-koppelingen en centrale datawarehouses tot stabiele cloud-infrastructuur. Geen handmatig knip-en-plakwerk, maar systemen die foutloos op de achtergrond draaien."
+        "subtitle": "Tovy bouwt, integreert en beheert je complete data-omgeving. Van geautomatiseerde API-koppelingen en centrale datawarehouses tot stabiele cloud-infrastructuur. Geen handmatig knip-en-plakwerk, maar systemen die foutloos op de achtergrond draaien."
       },
       "about": {
         "section": "Over onze",
         "title": "technische expertise",
-        "mission": "Tovy helpt groeiende bedrijven hun data-infrastructuur te professionaliseren. Wij bouwen stabiele systemen die handmatig werk elimineren en zorgen dat je data klopt.",
+        "mission": "Tovy helpt groeiende bedrijven hun data-infrastructuur te professionaliseren. Tovy bouwt stabiele systemen die handmatig werk elimineren en zorgen dat je data klopt.",
         "ceo": {
           "name": "Giel Nijkamp",
           "role": "Oprichter & data-engineer",
@@ -95,15 +92,15 @@
           },
           "optimization": {
             "title": "Optimalisatie",
-            "desc": "Naast het gebruiken van tech zoekt Tovy voortdurend naar optimalisatie van processen. Het liefst volledig geautomatiseerd. Dit vraagty 100% alignment tussen business processen en IT."
+            "desc": "Naast het gebruiken van tech zoekt Tovy voortdurend naar optimalisatie van processen. Het liefst volledig geautomatiseerd. Dit vraagt 100% alignment tussen business processen en IT."
           },
           "freedom": {
             "title": "Vrijheid",
-            "desc": "Dure FTEs behoren slim besteed te worden, daarom zoeken wij naar manieren om de simpele taken van jouw werknemers uit handen te nemen en hen meer cognitieve vrijheid te bieden."
+            "desc": "Dure FTE's behoren slim besteed te worden, daarom zoekt Tovy naar manieren om de simpele taken van jouw werknemers uit handen te nemen en hen meer cognitieve vrijheid te bieden."
           },
           "innovation": {
             "title": "Innovatie",
-            "desc": "Een solide basis geeft de mentale en technische ruimte om te innoveren en te groeien. Wij starten hiermee en geven dit door aan jouw workforce."
+            "desc": "Een solide basis geeft de mentale en technische ruimte om te innoveren en te groeien. Tovy start hiermee en geeft dit door aan jouw workforce."
           }
         }
       },
@@ -114,12 +111,12 @@
         "services": {
           "strategic": {
             "title": "Datagedreven strategie",
-            "desc": "Wij ontwerpen schaalbare gekoppelde systemen en selecteren tooling in overleg. Geen theoretische adviesrapporten, maar concrete technische blauwdrukken met een focus op haalbaarheid.",
+            "desc": "Tovy ontwerpt schaalbare gekoppelde systemen en selecteert tooling in overleg. Geen theoretische adviesrapporten, maar concrete technische blauwdrukken met een focus op haalbaarheid.",
             "tools": ["Architectuur", "Toolingselectie", "Haalbaarheid"]
           },
           "cloud": {
             "title": "Infrastructuur",
-            "desc": "Inrichten en beheren van IT-omgevingen. Wij ontwerpen je cloud en/of lokale omgevingen met het oog op maximale performance, back-ups en uptime.",
+            "desc": "Inrichten en beheren van IT-omgevingen. Tovy ontwerpt je cloud en/of lokale omgevingen met het oog op maximale performance, beveiliging, back-ups en uptime.",
             "points": [
               "Een IT-omgeving die naadloos meegroeit met je bedrijfsambities.",
               "Maximale performance voor je bedrijfssystemen.",
@@ -135,7 +132,8 @@
               "Één centrale bron van waarheid voor al je data.",
               "Direct inzicht in bedrijfsresultaten via rapportages.",
               "Real-time grip op je voorraden, marges en klantdata.",
-              "Een dataplatform dat de basis vormt voor besluitvorming."
+              "Een dataplatform dat de basis vormt voor besluitvorming.",
+              "Beveiligd met toegangsbeheer, versleuteling en back-upstrategieën."
             ],
             "tools": [
               "dbt / Databricks / Apache Spark",
@@ -190,7 +188,7 @@
             "questions": [
               {
                 "question": "Wat voor problemen lost Tovy concreet op?",
-                "answer": "Tovy lost de chaos op die ontstaat door handmatige dataprocessen. Een concreet voorbeeld is de dagelijkse, foutgevoelige taak van het overzetten van orders. Wij bouwen een automatische koppeling die dit proces volledig overneemt. Dit zorgt voor data die altijd klopt."
+                "answer": "Tovy lost de chaos op die ontstaat door handmatige dataprocessen. Een concreet voorbeeld is de dagelijkse, foutgevoelige taak van het overzetten van orders. Tovy bouwt een automatische koppeling die dit proces volledig overneemt. Dit zorgt voor data die altijd klopt."
               },
               {
                 "question": "Hoe verschilt de werkwijze van Tovy van een traditionele IT-partner?",
@@ -198,11 +196,11 @@
               },
               {
                 "question": "Voor welk type bedrijf is Tovy het meest geschikt?",
-                "answer": "Onze aanpak is ideaal voor bedrijven waar dataintegriteit cruciaal is. Commerciële en handelsbedrijven, bijvoorbeeld, die afhankelijk zijn van een perfecte synchronisatie tussen voorraad, verkoop en financiën. Als de stress van inconsistente data jouw groei belemmert, zijn wij de juiste partner."
+                "answer": "De aanpak van Tovy is ideaal voor bedrijven waar data-integriteit cruciaal is. Commerciële en handelsbedrijven, bijvoorbeeld, die afhankelijk zijn van een perfecte synchronisatie tussen voorraad, verkoop en financiën. Als de stress van inconsistente data jouw groei belemmert, is Tovy de juiste partner."
               },
               {
                 "question": "Waarom zou ik Tovy verkiezen boven een groot data-adviesbureau?",
-                "answer": "Wij bieden de diepgaande expertise, maar zonder de logheid of overhead. We werken in korte, gefocuste sprints van 6 weken om snel een werkende oplossing te leveren die direct controle brengt. Onze focus ligt op het bouwen van een duurzaam systeem."
+                "answer": "Tovy biedt de diepgaande expertise, maar zonder de logheid of overhead. De aanpak is gebaseerd op korte, gefocuste sprints van 6 weken om snel een werkende oplossing te leveren die direct controle brengt. De focus ligt op het bouwen van een duurzaam systeem."
               }
             ]
           },
@@ -211,7 +209,7 @@
             "questions": [
               {
                 "question": "Wat krijg ik precies voor de startprijs van een project?",
-                "answer": "In 6 weken leveren we een concrete, werkende oplossing. Bijvoorbeeld: een volledig ingericht data-platform in Azure, een geautomatiseerde pipeline die je verkoopdata van systeem A naar systeem B synchroniseert, en een Power BI-dashboard met je belangrijkste KPI's."
+                "answer": "In 6 weken levert Tovy een concrete, werkende oplossing. Bijvoorbeeld: een volledig ingericht data-platform in Azure, een geautomatiseerde pipeline die je verkoopdata van systeem A naar systeem B synchroniseert, en een Power BI-dashboard met je belangrijkste KPI's."
               },
               {
                 "question": "Hoe kan ik een kennismaking boeken?",
@@ -228,7 +226,7 @@
             "questions": [
               {
                 "question": "Waar kan ik de technische casestudy's vinden?",
-                "answer": "In onze <strong><a href='/kx' class='text-primary hover:underline'>Kennis-hub</a></strong> delen we openlijk onze methodes en technische aanpak. Transparantie is een kernwaarde; we willen dat je precies begrijpt hoe we de rust en controle in je systemen realiseren."
+                "answer": "Transparantie is een kernwaarde van Tovy. Tijdens de kennismaking laat Tovy openlijk de methodes en technische aanpak zien, zodat je precies begrijpt hoe Tovy de rust en controle in je systemen realiseert."
               }
             ]
           }
@@ -236,35 +234,7 @@
       },
       "marquee": {
         "title": "Technologie die schaalbaarheid mogelijk maakt",
-        "subtitle": "Wij selecteren tools die bekend staan om hun betrouwbaarheid, schaalbaarheid en onderhoudsgemak, zodat je dataplatform toekomstbestendig is."
-      }
-    },
-    "knowledgeHub": {
-      "metadata": {
-        "title": "Kennis-hub: data-strategie & automatisering | Tovy",
-        "description": "Technische artikelen over data-architectuur, API-koppelingen en automatisering. Bouw een onderhoudsvrij, stabiel fundament voor uw groei.",
-        "keywords": [
-          "Data-engineering",
-          "Automatisering",
-          "Systeemintegratie",
-          "Tech-architectuur"
-        ]
-      },
-      "hub": {
-        "badge": "Kennis-hub",
-        "title": "Kennis-hub: data-strategie & inzichten",
-        "subtitle": "Technische bronnen en inzichten die helderheid scheppen in complexe materie.",
-        "noPosts": "Geen bronnen gevonden in de Kennis-hub. Kom later terug!",
-        "readingTime": "min leestijd",
-        "previous": "Vorige",
-        "next": "Volgende",
-        "featured": "Uitgelichte bron",
-        "by": "door"
-      },
-      "projectCta": {
-        "title": "Klaar om je datafundament te bouwen?",
-        "description": "Laten we jouw data-uitdagingen omzetten in groeikansen.",
-        "buttonText": "Start een project"
+        "subtitle": "Tovy selecteert tools die bekend staan om hun betrouwbaarheid, schaalbaarheid en onderhoudsgemak, zodat je dataplatform toekomstbestendig is."
       }
     },
     "projectRequest": {
@@ -298,12 +268,9 @@
           "title": "Bedankt",
           "description": "Tovy heeft je verzoek ontvangen. Plan hieronder een kennismakingsgesprek om het proces te versnellen.",
           "titlePathB": "Beoordeling vereisten",
-          "descriptionPathB": "Tovy beoordeelt momenteel de technische en strategische vereisten. Wij nemen contact op als er extra context nodig is.",
-          "titlePathC": "Kennis-hub",
-          "descriptionPathC": "Op basis van je scope is de Kennis-hub het meest geschikte startpunt. Verken daar technische documentatie en casestudy's.",
+          "descriptionPathB": "Tovy beoordeelt momenteel de technische en strategische vereisten. Tovy neemt contact op als er extra context nodig is.",
           "backHome": "Terug naar homepage",
-          "bookMeeting": "Plan kennismakingsgesprek",
-          "exploreHub": "Ontdek de Kennis-hub"
+          "bookMeeting": "Plan kennismakingsgesprek"
         },
         "steps": {
           "problemStatement": {

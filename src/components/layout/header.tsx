@@ -19,7 +19,6 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
   const pathname = usePathname();
 
   const shareIdeaText = dict?.global?.common?.shareIdea || "Request an Assessment";
-  const blogText = dict?.global?.navigation?.blog || "Knowledge Hub";
   const aboutText = dict?.global?.navigation?.about || "About us";
   const servicesText = dict?.global?.navigation?.services || "Services";
   
@@ -142,14 +141,6 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
           >
             {servicesText}
           </Link>
-          {CONFIG.enableBlog && (
-            <Link 
-              href={`/${lang}/kx/`} 
-              className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors px-4 py-3"
-            >
-              {blogText}
-            </Link>
-          )}
         </nav>
 
         <div className="flex items-center gap-2 md:gap-4 relative z-10">
@@ -201,15 +192,6 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
             >
               {servicesText}
             </Link>
-            {CONFIG.enableBlog && (
-              <Link
-                href={`/${lang}/kx/`}
-                onClick={() => setMenuOpen(false)}
-                className="text-xs font-bold uppercase tracking-[0.3em] text-white/70 hover:text-white transition-colors py-3"
-              >
-                {blogText}
-              </Link>
-            )}
           </div>
         </nav>
       )}

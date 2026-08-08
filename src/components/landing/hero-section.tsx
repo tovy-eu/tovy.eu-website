@@ -3,14 +3,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { WavyLines } from "./wavy-lines";
 import { ScrollIndicator } from "./scroll-indicator";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import type { Dictionary } from "@/lib/get-dictionary";
-import { CONFIG } from "@/lib/config";
+
 import { Magnetic } from "@/components/ui/magnetic";
 import { TrustedBySection } from "./logo-banner";
 
@@ -117,19 +117,6 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
             </Button>
           </Magnetic>
 
-          {CONFIG.enableBlog && (
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="w-[85%] sm:w-auto font-bold text-sm md:text-base bg-white/[0.02] text-white/80 border-white/10 hover:bg-white/[0.06] hover:border-white/20 h-12 md:h-14 px-8 md:px-12 rounded-full transition-all duration-500 backdrop-blur-md transform-gpu"
-            >
-              <Link href={`/${lang}/kx/`}>
-                <BookOpen className="mr-2 h-4 w-4 md:h-5 md:w-5 text-blue-400/60" />
-                {dict.global.common.readBlog}
-              </Link>
-            </Button>
-          )}
         </div>
       </div>
 

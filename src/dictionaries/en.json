@@ -7,7 +7,6 @@
       "twitterTitle": "Data Engineering & Process Automation | Tovy"
     },
     "navigation": {
-      "blog": "Knowledge Hub",
       "about": "About us",
       "services": "Services"
     },
@@ -25,7 +24,6 @@
     },
     "common": {
       "workWithUs": "Start the Intake",
-      "readBlog": "Explore the Knowledge Hub",
       "shareIdea": "Request an Assessment",
       "privacyPolicy": "Privacy Policy",
       "agreeTo": "I agree to the",
@@ -40,7 +38,6 @@
       "newsletterDesc": "Get technical insights from Tovy.",
       "techStack": "The Tovy Toolchain",
       "home": "Home",
-      "kxHub": "Knowledge Hub",
       "page": "Page",
       "back": "Back",
       "previous": "Previous",
@@ -73,12 +70,12 @@
       "hero": {
         "badge": "Automation & Data Engineering",
         "title": "Reliable Data Infrastructure & Process Automation",
-        "subtitle": "We build, integrate, and manage your entire data ecosystem. From automated API integrations and central data warehouses to stable cloud infrastructure. No manual copying and pasting—just systems that run flawlessly in the background."
+        "subtitle": "Tovy builds, integrates, and manages your entire data ecosystem. From automated API integrations and central data warehouses to stable cloud infrastructure. No manual copying and pasting—just systems that run flawlessly in the background."
       },
       "about": {
         "section": "About Our",
         "title": "Technical Expertise",
-        "mission": "Tovy helps growing companies professionalize their data infrastructure. We build stable systems that eliminate manual labor and ensure your data is correct.",
+        "mission": "Tovy helps growing companies professionalize their data infrastructure. Tovy builds stable systems that eliminate manual labor and ensure your data is correct.",
         "ceo": {
           "name": "Giel Nijkamp",
           "role": "Founder & Data Engineer",
@@ -99,11 +96,11 @@
           },
           "freedom": {
             "title": "Freedom",
-            "desc": "Expensive FTEs should be spent wisely. We find ways to take simple tasks off your employees' plates and give them more cognitive freedom."
+            "desc": "Expensive FTEs should be spent wisely. Tovy finds ways to take simple tasks off your employees' plates and give them more cognitive freedom."
           },
           "innovation": {
             "title": "Innovation",
-            "desc": "A solid foundation provides the mental and technical space to innovate and grow. We start with this and pass it on to your workforce."
+            "desc": "A solid foundation provides the mental and technical space to innovate and grow. Tovy starts with this and passes it on to your workforce."
           }
         }
       },
@@ -114,12 +111,12 @@
         "services": {
           "strategic": {
             "title": "Data-driven Strategy",
-            "desc": "We design scalable integrated systems and select tools in consultation. No theoretical advisory reports, but concrete technical blueprints with a focus on feasibility.",
+            "desc": "Tovy designs scalable integrated systems and selects tools in consultation. No theoretical advisory reports, but concrete technical blueprints with a focus on feasibility.",
             "tools": ["Architecture", "Tool Selection", "Feasibility"]
           },
           "cloud": {
             "title": "Infrastructure",
-            "desc": "Setting up and managing IT environments. We design your cloud and/or local environments with maximum performance, back-ups, and uptime in mind.",
+            "desc": "Setting up and managing IT environments. Tovy designs your cloud and/or local environments with maximum performance, security, back-ups, and uptime in mind.",
             "points": [
               "An IT environment that seamlessly grows with your business ambitions.",
               "Maximum performance for your business systems.",
@@ -135,7 +132,8 @@
               "One central source of truth for all your data.",
               "Direct insight into business results via reporting.",
               "Real-time grip on your inventories, margins, and customer data.",
-              "A data platform that forms the basis for decision-making."
+              "A data platform that forms the basis for decision-making.",
+              "Secured with access control, encryption, and back-up strategies."
             ],
             "tools": ["dbt / Databricks / Apache Spark", "Power BI", "Data Warehousing"]
           },
@@ -186,7 +184,7 @@
             "questions": [
               {
                 "question": "What kind of problems does Tovy solve?",
-                "answer": "Tovy solves the chaos caused by manual data processes. A concrete example is the daily, error-prone task of transferring orders between systems. We build a seamless, automatic connection that takes over this process entirely. This provides peace of mind and ensures data that is always accurate."
+                "answer": "Tovy solves the chaos caused by manual data processes. A concrete example is the daily, error-prone task of transferring orders between systems. Tovy builds a seamless, automatic connection that takes over this process entirely. This provides peace of mind and ensures data that is always accurate."
               },
               {
                 "question": "How does Tovy's approach differ from a traditional IT partner?",
@@ -194,11 +192,11 @@
               },
               {
                 "question": "For what type of company is Tovy most suitable?",
-                "answer": "Our approach is ideal for companies where data integrity is crucial. Commercial and trading companies, for example, that depend on perfect synchronization between stock, sales, and finance. If the stress of inconsistent data is hampering your growth, we are the right partner."
+                "answer": "Tovy's approach is ideal for companies where data integrity is crucial. Commercial and trading companies, for example, that depend on perfect synchronization between stock, sales, and finance. If the stress of inconsistent data is hampering your growth, Tovy is the right partner."
               },
               {
                 "question": "Why would I choose Tovy over a large data consulting firm?",
-                "answer": "We offer in-depth expertise but without the sluggishness and overhead. We work in short, focused 6-week sprints to quickly deliver a working solution that brings immediate peace and control. Our focus is on building a sustainable system, not on maximizing billable hours."
+                "answer": "Tovy offers in-depth expertise but without the sluggishness and overhead. The approach is built around short, focused 6-week sprints to quickly deliver a working solution that brings immediate peace and control. The focus is on building a sustainable system, not on maximizing billable hours."
               }
             ]
           },
@@ -207,7 +205,7 @@
             "questions": [
               {
                 "question": "What exactly do I get for the project starting price?",
-                "answer": "In 6 weeks, we deliver a concrete, working solution. For example: a fully configured data platform in Azure, an automated pipeline that synchronizes your sales data, and a Power BI dashboard with your key KPIs. A complete foundation for control and insight."
+                "answer": "In 6 weeks, Tovy delivers a concrete, working solution. For example: a fully configured data platform in Azure, an automated pipeline that synchronizes your sales data, and a Power BI dashboard with your key KPIs. A complete foundation for control and insight."
               },
               {
                 "question": "How can I book an introductory meeting?",
@@ -223,36 +221,7 @@
       },
       "marquee": {
         "title": "Technology that enables scalability",
-        "subtitle": "We select tools known for their reliability, scalability, and ease of maintenance, ensuring your data platform is future-proof."
-      }
-    },
-    "knowledgeHub": {
-      "metadata": {
-        "title": "Data Strategy, Architecture & Automation Insights | Tovy",
-        "description": "In-depth technical guides on data warehousing, API integrations, and process automation. Learn how to build a resilient, maintenance-free data foundation.",
-        "keywords": [
-          "Data Engineering Knowledge",
-          "Automation Blueprints",
-          "System Integration",
-          "Tovy Knowledge Hub",
-          "Tech Architecture"
-        ]
-      },
-      "hub": {
-        "badge": "Knowledge Hub",
-        "title": "Knowledge Hub: Data Strategy & Insights",
-        "subtitle": "Technical resources and insights that bring clarity to complex matters.",
-        "noPosts": "No resources found in the Knowledge Hub. Please check back later!",
-        "readingTime": "min read",
-        "previous": "Previous",
-        "next": "Next",
-        "featured": "Featured resource",
-        "by": "by"
-      },
-      "projectCta": {
-        "title": "Ready to build your data foundation?",
-        "description": "Let's turn your data challenges into growth opportunities.",
-        "buttonText": "Start a project"
+        "subtitle": "Tovy selects tools known for their reliability, scalability, and ease of maintenance, ensuring your data platform is future-proof."
       }
     },
     "projectRequest": {
@@ -286,12 +255,9 @@
           "title": "Thank you",
           "description": "Tovy has received your request. Schedule an introductory meeting below to speed up the process.",
           "titlePathB": "Requirement assessment",
-          "descriptionPathB": "Tovy is currently assessing your technical and strategic requirements. We will contact you if extra context is needed.",
-          "titlePathC": "Knowledge Hub",
-          "descriptionPathC": "Based on your scope, the Knowledge Hub is the most suitable starting point. Explore technical documentation and case studies there.",
+          "descriptionPathB": "Tovy is currently assessing your technical and strategic requirements. Tovy will contact you if extra context is needed.",
           "backHome": "Back to homepage",
-          "bookMeeting": "Plan introductory meeting",
-          "exploreHub": "Explore the Knowledge Hub"
+          "bookMeeting": "Plan introductory meeting"
         },
         "steps": {
           "problemStatement": {

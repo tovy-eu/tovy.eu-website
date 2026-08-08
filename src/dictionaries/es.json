@@ -7,7 +7,6 @@
       "twitterTitle": "Ingeniería de datos y automatización de procesos | Tovy"
     },
     "navigation": {
-      "blog": "Centro de conocimiento",
       "about": "Sobre nosotros",
       "services": "Servicios"
     },
@@ -25,7 +24,6 @@
     },
     "common": {
       "workWithUs": "Iniciar la evaluación",
-      "readBlog": "Descubre el centro de conocimiento",
       "shareIdea": "Solicitar escáner empresarial",
       "privacyPolicy": "Política de privacidad",
       "agreeTo": "Acepto la",
@@ -40,7 +38,6 @@
       "newsletterDesc": "Recibe conocimientos técnicos de Tovy.",
       "techStack": "La cadena de herramientas Tovy",
       "home": "Inicio",
-      "kxHub": "Centro de conocimiento",
       "page": "Página",
       "back": "Volver",
       "previous": "Anterior",
@@ -73,12 +70,12 @@
       "hero": {
         "badge": "Automatización e Ingeniería de Datos",
         "title": "Infraestructura de datos confiable y automatización de procesos",
-        "subtitle": "Diseñamos, integramos y gestionamos todo tu ecosistema de datos. Desde integraciones automáticas de API y almacenes de datos centrales hasta infraestructura en la nube estable. Sin copiar y pegar manualmente: solo sistemas que se ejecutan sin errores en segundo plano."
+        "subtitle": "Tovy diseña, integra y gestiona todo tu ecosistema de datos. Desde integraciones automáticas de API y almacenes de datos centrales hasta infraestructura en la nube estable. Sin copiar y pegar manualmente: solo sistemas que se ejecutan sin errores en segundo plano."
       },
       "about": {
         "section": "Sobre nuestra",
         "title": "Experiencia técnica",
-        "mission": "Tovy ayuda a las empresas en crecimiento a profesionalizar su infraestructura de datos. Construimos sistemas estables que eliminan el trabajo manual y garantizan que tus datos sean correctos.",
+        "mission": "Tovy ayuda a las empresas en crecimiento a profesionalizar su infraestructura de datos. Tovy construye sistemas estables que eliminan el trabajo manual y garantizan que tus datos sean correctos.",
         "ceo": {
           "name": "Giel Nijkamp",
           "role": "Creador e Ingeniero de Datos",
@@ -99,11 +96,11 @@
           },
           "freedom": {
             "title": "Libertad",
-            "desc": "Los FTE caros deben invertirse sabiamente. Por eso buscamos formas de quitar tareas simples de los hombros de tus empleados y darles más libertad cognitiva."
+            "desc": "Los FTE caros deben invertirse sabiamente. Por eso Tovy busca formas de quitar tareas simples de los hombros de tus empleados y darles más libertad cognitiva."
           },
           "innovation": {
             "title": "Innovación",
-            "desc": "Una base sólida proporciona el espacio mental y técnico para innovar y crecer. Comenzamos con esto y lo transmitimos a tu equipo de trabajo."
+            "desc": "Una base sólida proporciona el espacio mental y técnico para innovar y crecer. Tovy comienza con esto y lo transmite a tu equipo de trabajo."
           }
         }
       },
@@ -114,12 +111,12 @@
         "services": {
           "strategic": {
             "title": "Estrategia basada en datos",
-            "desc": "Diseñamos sistemas escalables integrados y seleccionamos herramientas en consulta. Sin informes teóricos, solo planos técnicos concretos con enfoque en viabilidad.",
+            "desc": "Tovy diseña sistemas escalables integrados y selecciona herramientas en consulta. Sin informes teóricos, solo planos técnicos concretos con enfoque en viabilidad.",
             "tools": ["Arquitectura", "Selección de herramientas", "Viabilidad"]
           },
           "cloud": {
             "title": "Infraestructura",
-            "desc": "Configuración y gestión de entornos de TI. Diseñamos tus entornos en la nube y/o locales pensando en el máximo rendimiento, las copias de seguridad y el tiempo de actividad.",
+            "desc": "Configuración y gestión de entornos de TI. Tovy diseña tus entornos en la nube y/o locales pensando en el máximo rendimiento, la seguridad, las copias de seguridad y el tiempo de actividad.",
             "points": [
               "Un entorno de TI que crece a la par de tus ambiciones comerciales.",
               "Máximo rendimiento para tus sistemas empresariales.",
@@ -135,7 +132,8 @@
               "Una fuente central de verdad para todos tus datos.",
               "Información directa sobre los resultados comerciales mediante informes.",
               "Control en tiempo real sobre tus inventarios, márgenes y datos de clientes.",
-              "Una plataforma de datos que forma la base para la toma de decisiones."
+              "Una plataforma de datos que forma la base para la toma de decisiones.",
+              "Protegido con control de acceso, cifrado y estrategias de copia de seguridad."
             ],
             "tools": ["dbt / Databricks / Apache Spark", "Power BI", "Almacenamiento de datos"]
           },
@@ -186,7 +184,7 @@
             "questions": [
               {
                 "question": "¿Qué tipo de problemas resuelve Tovy de forma concreta?",
-                "answer": "Tovy soluciona el caos provocado por los procesos de datos manuales. Un ejemplo concreto es la tarea diaria y propensa a errores de transferir pedidos de Shopify a Exact Online. Construimos una conexión fluida y automática que se hace cargo totalmente de este proceso. Esto aporta calma y garantiza unos datos que siempre son correctos."
+                "answer": "Tovy soluciona el caos provocado por los procesos de datos manuales. Un ejemplo concreto es la tarea diaria y propensa a errores de transferir pedidos de Shopify a Exact Online. Tovy construye una conexión fluida y automática que se hace cargo totalmente de este proceso. Esto aporta calma y garantiza unos datos que siempre son correctos."
               },
               {
                 "question": "¿Cómo difiere la forma de trabajar de Tovy de un socio de TI tradicional?",
@@ -194,11 +192,11 @@
               },
               {
                 "question": "¿Para qué tipo de empresa es Tovy más adecuada?",
-                "answer": "Nuestro enfoque es ideal para empresas donde la integridad de los datos es crucial. Empresas de comercio electrónico y comercio, por ejemplo, que dependen de una sincronización perfecta entre inventario, ventas y finanzas. Si el estrés de unos datos inconsistentes está frenando tu crecimiento, somos el socio adecuado."
+                "answer": "El enfoque de Tovy es ideal para empresas donde la integridad de los datos es crucial. Empresas de comercio electrónico y comercio, por ejemplo, que dependen de una sincronización perfecta entre inventario, ventas y finanzas. Si el estrés de unos datos inconsistentes está frenando tu crecimiento, Tovy es el socio adecuado."
               },
               {
                 "question": "¿Por qué debería elegir a Tovy antes que a una gran consultora de datos?",
-                "answer": "Ofrecemos la experiencia profunda, pero sin la lentitud y los costes generales. Trabajamos en sprints cortos y enfocados de 6 semanas para entregar rápidamente una solución funcional que aporte calma y control inmediatos. Nuestro enfoque se centra en construir un sistema sostenible, no en maximizar las horas facturables."
+                "answer": "Tovy ofrece la experiencia profunda, pero sin la lentitud y los costes generales. El trabajo se organiza en sprints cortos y enfocados de 6 semanas para entregar rápidamente una solución funcional que aporte calma y control inmediatos. El enfoque se centra en construir un sistema sostenible, no en maximizar las horas facturables."
               }
             ]
           },
@@ -207,7 +205,7 @@
             "questions": [
               {
                 "question": "¿Qué obtengo exactamente por el precio de inicio de un proyecto?",
-                "answer": "En 6 semanas entregamos una solución concreta y funcional. Por ejemplo: una plataforma de datos totalmente configurada en Azure, un canal automatizado que sincroniza tus datos de ventas del sistema A al sistema B y un panel de Power BI con tus KPI más importantes. Una base completa para el control y la visión general."
+                "answer": "En 6 semanas Tovy entrega una solución concreta y funcional. Por ejemplo: una plataforma de datos totalmente configurada en Azure, un canal automatizado que sincroniza tus datos de ventas del sistema A al sistema B y un panel de Power BI con tus KPI más importantes. Una base completa para el control y la visión general."
               },
               {
                 "question": "¿Cómo puedo reservar una reunión de toma de contacto?",
@@ -223,36 +221,7 @@
       },
       "marquee": {
         "title": "Tecnología que permite la escalabilidad",
-        "subtitle": "Seleccionamos herramientas conocidas por su fiabilidad, escalabilidad y facilidad de mantenimiento, para que tu plataforma de datos esté preparada para el futuro."
-      }
-    },
-    "knowledgeHub": {
-      "metadata": {
-        "title": "Centro de conocimiento: estrategia de datos | Tovy",
-        "description": "Artículos técnicos sobre arquitectura de datos, integración de API y automatización. Construya una base sólida y sin mantenimiento.",
-        "keywords": [
-          "Conocimiento de ingeniería de datos",
-          "Planos de automatización",
-          "Integración de sistemas",
-          "Centro de conocimiento Tovy",
-          "Arquitectura técnica"
-        ]
-      },
-      "hub": {
-        "badge": "Centro de conocimiento",
-        "title": "Centro de conocimiento: Estrategia y perspectivas de datos",
-        "subtitle": "Recursos técnicos y perspectivas que aportan claridad a materias complejas.",
-        "noPosts": "No se encontraron recursos en el centro de conocimiento. ¡Vuelve más tarde!",
-        "readingTime": "min de lectura",
-        "previous": "Anterior",
-        "next": "Siguiente",
-        "featured": "Recurso destacado",
-        "by": "por"
-      },
-      "projectCta": {
-        "title": "¿Listo para construir tu base de datos?",
-        "description": "Transformemos tus desafíos de datos en oportunidades de crecimiento.",
-        "buttonText": "Iniciar un proyecto"
+        "subtitle": "Tovy selecciona herramientas conocidas por su fiabilidad, escalabilidad y facilidad de mantenimiento, para que tu plataforma de datos esté preparada para el futuro."
       }
     },
     "projectRequest": {
@@ -287,11 +256,8 @@
           "description": "Tovy ha recibido tu solicitud. Reserva una reunión de toma de contacto a continuación para acelerar el proceso.",
           "titlePathB": "Evaluación de requisitos",
           "descriptionPathB": "Tovy está evaluando actualmente los requisitos técnicos y estratégicos. Nos pondremos en contacto si se necesita contexto adicional.",
-          "titlePathC": "Centro de conocimiento",
-          "descriptionPathC": "Según tu alcance, el Centro de conocimiento es el punto de partida más adecuado. Explora allí la documentación técnica y los estudios de caso.",
           "backHome": "Volver a la página de inicio",
-          "bookMeeting": "Reservar reunión de toma de contacto",
-          "exploreHub": "Descubre el Centro de conocimiento"
+          "bookMeeting": "Reservar reunión de toma de contacto"
         },
         "steps": {
           "problemStatement": {
