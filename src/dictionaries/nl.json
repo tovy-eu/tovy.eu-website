@@ -11,7 +11,7 @@
       "services": "Diensten"
     },
     "footer": {
-      "slogan-line-1": "De tech voor rust en controle",
+      "slogan-line-1": "Onze tech zorgt voor rust en controle",
       "slogan-line-2": "in jouw bedrijf.",
       "legal-notice": "Juridische informatie",
       "privacy-policy": "Privacyverklaring"
@@ -69,7 +69,7 @@
       },
       "hero": {
         "badge": "Data engineering & procesautomatisering",
-        "title": "Betrouwbare data-infrastructuur & procesautomatisering",
+        "title": "Betrouwbare data & procesautomatisering",
         "subtitle": "Tovy bouwt, integreert en beheert je complete data-omgeving. Van geautomatiseerde API-koppelingen en centrale datawarehouses tot stabiele cloud-infrastructuur. Geen handmatig knip-en-plakwerk, maar systemen die foutloos op de achtergrond draaien."
       },
       "about": {

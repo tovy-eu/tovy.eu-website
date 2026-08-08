@@ -11,8 +11,8 @@
       "services": "Servicios"
     },
     "footer": {
-      "slogan-line-1": "La base para la calma y el control",
-      "slogan-line-2": "en tu panorama de datos.",
+      "slogan-line-1": "Nuestra tech aporta calma y control",
+      "slogan-line-2": "en tu empresa.",
       "legal-notice": "Aviso legal",
       "privacy-policy": "Política de privacidad"
     },
@@ -69,7 +69,7 @@
       },
       "hero": {
         "badge": "Automatización e Ingeniería de Datos",
-        "title": "Infraestructura de datos confiable y automatización de procesos",
+        "title": "Datos confiable y automatización de procesos",
         "subtitle": "Tovy diseña, integra y gestiona todo tu ecosistema de datos. Desde integraciones automáticas de API y almacenes de datos centrales hasta infraestructura en la nube estable. Sin copiar y pegar manualmente: solo sistemas que se ejecutan sin errores en segundo plano."
       },
       "about": {

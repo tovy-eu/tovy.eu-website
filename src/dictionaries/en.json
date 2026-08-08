@@ -11,8 +11,8 @@
       "services": "Services"
     },
     "footer": {
-      "slogan-line-1": "The foundation for peace and control",
-      "slogan-line-2": "in your data landscape.",
+      "slogan-line-1": "Our tech delivers peace and control",
+      "slogan-line-2": "in your business.",
       "legal-notice": "Legal Notice",
       "privacy-policy": "Privacy Policy"
     },
@@ -69,7 +69,7 @@
       },
       "hero": {
         "badge": "Automation & Data Engineering",
-        "title": "Reliable Data Infrastructure & Process Automation",
+        "title": "Reliable Data & Process Automation",
         "subtitle": "Tovy builds, integrates, and manages your entire data ecosystem. From automated API integrations and central data warehouses to stable cloud infrastructure. No manual copying and pasting—just systems that run flawlessly in the background."
       },
       "about": {
