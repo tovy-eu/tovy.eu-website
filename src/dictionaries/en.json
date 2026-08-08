@@ -7,7 +7,7 @@
       "twitterTitle": "Data Engineering & Process Automation | Tovy"
     },
     "navigation": {
-      "about": "About us",
+      "about": "About",
       "services": "Services"
     },
     "footer": {
@@ -73,8 +73,8 @@
         "subtitle": "Tovy builds, integrates, and manages your entire data ecosystem. From automated API integrations and central data warehouses to stable cloud infrastructure. No manual copying and pasting—just systems that run flawlessly in the background."
       },
       "about": {
-        "section": "About Our",
-        "title": "Technical Expertise",
+        "section": "About",
+        "title": "We focus on technical expertise",
         "mission": "Tovy helps growing companies professionalize their data infrastructure. Tovy builds stable systems that eliminate manual labor and ensure your data is correct.",
         "ceo": {
           "name": "Giel Nijkamp",
@@ -106,7 +106,7 @@
       },
       "engineering": {
         "section": "Services",
-        "title": "With the goal of an end-to-end system",
+        "title": "The complete build of your data fundament",
         "subtitle": "Only reliable business processes enable a robust system",
         "services": {
           "strategic": {

@@ -73,8 +73,8 @@
         "subtitle": "Tovy bouwt, integreert en beheert je complete data-omgeving. Van geautomatiseerde API-koppelingen en centrale datawarehouses tot stabiele cloud-infrastructuur. Geen handmatig knip-en-plakwerk, maar systemen die foutloos op de achtergrond draaien."
       },
       "about": {
-        "section": "Over onze",
-        "title": "technische expertise",
+        "section": "Over ons",
+        "title": "Een focus op technische expertise",
         "mission": "Tovy helpt groeiende bedrijven hun data-infrastructuur te professionaliseren. Tovy bouwt stabiele systemen die handmatig werk elimineren en zorgen dat je data klopt.",
         "ceo": {
           "name": "Giel Nijkamp",
@@ -106,7 +106,7 @@
       },
       "engineering": {
         "section": "Diensten",
-        "title": "met als doel een end-to-end systeem",
+        "title": "De volledige bouw van jouw datafundament",
         "subtitle": "Enkel betrouwbare bedrijfsprocessen maken een robuust systeem mogelijk",
         "services": {
           "strategic": {
