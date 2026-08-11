@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Cookie } from 'lucide-react';
 import { getConsent, updateConsent } from '@/lib/consent';
+import { grantConsent } from '@/lib/tracking';
 import { usePathname } from 'next/navigation';
 import type { Dictionary } from '@/lib/get-dictionary';
 
@@ -27,11 +28,8 @@ export default function CookieBanner({ dict }: { dict?: Dictionary }) {
   const handleAccept = () => {
     updateConsent(true);
     setShowBanner(false);
+    grantConsent(); // Consent Mode v2: flip storage signals to granted
     window.dispatchEvent(new Event('consent-changed'));
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      'event': 'consent_given'
-    });
   };
 
   const handleDecline = () => {

@@ -251,20 +251,28 @@ export function initGA(): void {
     (window.dataLayer as unknown[]).push(arguments);
   };
 
-  // Configure standard Consent Mode defaults as granted since the user explicitly accepted consent
+  // Consent Mode v2: everything denied by default (privacy-first, GDPR). The tag still
+  // loads on every page and sends cookieless pings until the user opts in.
   window.gtag("consent", "default", {
-    ad_storage: "granted",
-    ad_user_data: "granted",
-    ad_personalization: "granted",
-    analytics_storage: "granted",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied",
+    wait_for_update: 500,
   });
+
+  // Returning visitors who already accepted: restore granted state immediately.
+  const priorConsentRaw = localStorage.getItem("tovy-cookie-consent");
+  const priorGranted = priorConsentRaw ? JSON.parse(priorConsentRaw)?.granted : false;
 
   // Configure standard parameters
   window.gtag("js", new Date());
   window.gtag("config", gaMeasurementId, {
     send_page_view: false, // Page views are fired manually on route change in AnalyticsProvider
-    user_id: getUserId() || undefined,
+    user_id: priorGranted ? getUserId() || undefined : undefined,
   });
+
+  if (priorGranted) grantConsent();
 
   const firstScript = document.getElementsByTagName("script")[0];
   const scriptEl = document.createElement("script");
@@ -282,22 +290,28 @@ export function initGA(): void {
 }
 
 /**
+ * Consent Mode v2: flip storage signals to granted after the user opts in.
+ * Call this from the cookie banner's Accept handler.
+ */
+export function grantConsent(): void {
+  if (typeof window === "undefined") return;
+  initGA(); // ensure the tag is loaded
+  window.gtag?.("consent", "update", {
+    ad_storage: "granted",
+    ad_user_data: "granted",
+    ad_personalization: "granted",
+    analytics_storage: "granted",
+  });
+}
+
+/**
  * Sends an event to standard Google Analytics (GA4) via gtag.
  * If GA is not initialized yet, it initializes it dynamically.
  */
 export async function sendGA4Event(eventName: string, params: Record<string, unknown> = {}) {
   if (typeof window === "undefined") return;
 
-  // Check consent before sending
-  const consentRaw = localStorage.getItem("tovy-cookie-consent");
-  const consent = consentRaw ? JSON.parse(consentRaw) : null;
-
-  if (!consent || !consent.granted) {
-    console.log(`[Analytics Blocked] Event ${eventName} not sent due to lack of consent.`);
-    return;
-  }
-
-  // Ensure GA is initialized
+  // Ensure GA is initialized (loads on every page; Consent Mode gates storage)
   initGA();
 
   // Ensure gtag is defined on window
@@ -309,25 +323,28 @@ export async function sendGA4Event(eventName: string, params: Record<string, unk
     };
   }
 
-  const visitorId = getVisitorId();
-  const sessionId = getSessionId();
-  const pageCategory = getPageCategory();
-  const userId = getUserId();
+  const consentRaw = localStorage.getItem("tovy-cookie-consent");
+  const granted = consentRaw ? JSON.parse(consentRaw)?.granted === true : false;
 
   const eventPayload: Record<string, unknown> = {
-    visitor_id: visitorId,
-    session_id: sessionId,
     page_location: sanitizeUrl(window.location.href),
     page_title: document.title,
     page_referrer: getPageReferrer(),
     ...params,
   };
 
+  // Only attach persistent identifiers (which write to storage) once consent is granted,
+  // so denied-state events stay cookieless.
+  if (granted) {
+    eventPayload.visitor_id = getVisitorId();
+    eventPayload.session_id = getSessionId();
+    const userId = getUserId();
+    if (userId) eventPayload.user_id = userId;
+  }
+
+  const pageCategory = getPageCategory();
   if (pageCategory) {
     eventPayload.page_category = pageCategory;
-  }
-  if (userId) {
-    eventPayload.user_id = userId;
   }
 
   try {

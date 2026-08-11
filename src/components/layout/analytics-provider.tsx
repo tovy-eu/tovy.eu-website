@@ -30,12 +30,15 @@ export function AnalyticsProviderBody() {
     return () => window.removeEventListener("consent-changed", checkConsent);
   }, []);
 
-  // Fire page_view on route changes (when consent is granted)
+  // Load the tag on every page (Consent Mode v2 gates storage, not the script itself)
   useEffect(() => {
-    if (consentGranted) {
-      sendGA4Event("page_view");
-    }
-  }, [pathname, consentGranted]);
+    initGA();
+  }, []);
+
+  // Fire page_view on every route change; denied consent -> cookieless ping
+  useEffect(() => {
+    sendGA4Event("page_view");
+  }, [pathname]);
 
   // Synchronize Firebase Auth state with Google Analytics
   useEffect(() => {
