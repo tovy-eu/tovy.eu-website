@@ -272,7 +272,15 @@ export function initGA(): void {
     user_id: priorGranted ? getUserId() || undefined : undefined,
   });
 
-  if (priorGranted) grantConsent();
+  if (priorGranted) {
+    // Inline (not grantConsent()) to avoid re-entering initGA before gaInitialized is set.
+    window.gtag("consent", "update", {
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+      analytics_storage: "granted",
+    });
+  }
 
   const firstScript = document.getElementsByTagName("script")[0];
   const scriptEl = document.createElement("script");
