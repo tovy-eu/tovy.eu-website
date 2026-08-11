@@ -72,6 +72,36 @@ function sanitizeUrl(url: string): string {
   }
 }
 
+// First-touch traffic attribution (UTM + referrer), captured on the landing page and
+// persisted for the session so it survives the multi-step intake form.
+const ATTRIBUTION_KEY = "tovy_attribution";
+
+export function captureAttribution(): void {
+  if (typeof window === "undefined") return;
+  if (sessionStorage.getItem(ATTRIBUTION_KEY)) return; // first touch wins
+
+  const params = new URLSearchParams(window.location.search);
+  const attribution: Record<string, string> = {
+    referrer: document.referrer || "",
+    landing_page: sanitizeUrl(window.location.href),
+    captured_at: new Date().toISOString(),
+  };
+  for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"]) {
+    const value = params.get(key);
+    if (value) attribution[key] = value;
+  }
+  sessionStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(attribution));
+}
+
+export function getAttribution(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  try {
+    return JSON.parse(sessionStorage.getItem(ATTRIBUTION_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
 // Additional: Track scroll depth
 export function initScrollTracking(): void {
   if (typeof window === "undefined") return;
@@ -157,9 +187,10 @@ export function trackFormStart(formName: string): void {
   });
 }
 
-export function trackFormSubmission(formName: string, formData?: Record<string, unknown>): void {
+export function trackFormSubmission(formName: string, formData?: Record<string, unknown>, extra?: Record<string, unknown>): void {
   const eventData: Record<string, unknown> = {
     form_name: formName,
+    ...extra,
   };
 
   // Track which fields were filled (without sending actual values for PII protection)

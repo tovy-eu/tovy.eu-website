@@ -25,7 +25,7 @@ import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home } from "lucide
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { Magnetic } from "@/components/ui/magnetic";
-import { sendGA4Event, getVisitorId, getTraceId, trackFormSubmission, trackFormError, trackFormStart } from "@/lib/tracking";
+import { sendGA4Event, getVisitorId, getTraceId, trackFormSubmission, trackFormError, trackFormStart, getAttribution } from "@/lib/tracking";
 import { Spotlight } from "@/components/ui/spotlight";
 
 interface ProjectIntakeFormProps {
@@ -496,6 +496,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         const { score, path } = calculateScore(data);
         const visitorId = getVisitorId();
         const traceId = getTraceId();
+        const attribution = getAttribution();
 
         let docId = formDocId;
         if (!docId) {
@@ -513,6 +514,14 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           routing_path: path,
           visitor_id: visitorId,
           trace_id: traceId,
+          // First-touch traffic source so leads can be tied back to the channel/post
+          utm_source: attribution.utm_source || null,
+          utm_medium: attribution.utm_medium || null,
+          utm_campaign: attribution.utm_campaign || null,
+          utm_term: attribution.utm_term || null,
+          utm_content: attribution.utm_content || null,
+          referrer: attribution.referrer || null,
+          landing_page: attribution.landing_page || null,
           to: data.email,
           userEmail: data.email,
           lang,
@@ -535,8 +544,14 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         });
 
 
-        // Track form submission in GA4
-        trackFormSubmission('Project Request', data);
+        // Track form submission in GA4, enriched with lead quality + traffic source
+        trackFormSubmission('Project Request', data, {
+          lead_score: score,
+          routing_path: path,
+          utm_source: attribution.utm_source,
+          utm_medium: attribution.utm_medium,
+          utm_campaign: attribution.utm_campaign,
+        });
 
         localStorage.removeItem(STORAGE_KEY);
         setRoutingPath(path);
