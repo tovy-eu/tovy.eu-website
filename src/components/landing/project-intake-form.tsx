@@ -537,13 +537,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         // Complete the intake request document in a single transaction
         await setDoc(doc(db, "project_requests", docId), { ...baseData, status: "complete" }, { merge: true });
 
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          'event': 'form_submission',
-          'form_name': 'Project Request'
-        });
-
-
         // Upgrade the anonymous User-ID to an email-hash before the conversion fires,
         // so the lead stitches across sessions/devices. Non-blocking on failure.
         await setUserIdFromEmail(data.email).catch(() => {});
@@ -585,14 +578,8 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   };
 
 const nextStep = async () => {
-    const pushToDataLayer = (eventName: string) => {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ 'event': eventName });
-    };
-
     if (step === -1) {
         setStep(0);
-        pushToDataLayer('form_step_1');
         return;
     }
 
