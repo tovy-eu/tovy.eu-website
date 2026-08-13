@@ -25,7 +25,7 @@ import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Check, Home } from "lucide
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { Magnetic } from "@/components/ui/magnetic";
-import { sendGA4Event, getVisitorId, getTraceId, trackFormSubmission, trackFormError, trackFormStart, getAttribution } from "@/lib/tracking";
+import { sendGA4Event, getVisitorId, getTraceId, trackFormSubmission, trackFormError, trackFormStart, getAttribution, setUserIdFromEmail } from "@/lib/tracking";
 import { Spotlight } from "@/components/ui/spotlight";
 
 interface ProjectIntakeFormProps {
@@ -543,6 +543,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           'form_name': 'Project Request'
         });
 
+
+        // Upgrade the anonymous User-ID to an email-hash before the conversion fires,
+        // so the lead stitches across sessions/devices. Non-blocking on failure.
+        await setUserIdFromEmail(data.email).catch(() => {});
 
         // Track form submission in GA4, enriched with lead quality + traffic source
         trackFormSubmission('Project Request', data, {

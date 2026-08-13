@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Cookie } from 'lucide-react';
 import { getConsent, updateConsent } from '@/lib/consent';
-import { grantConsent } from '@/lib/tracking';
+import { grantConsent, clearUserId } from '@/lib/tracking';
 import { usePathname } from 'next/navigation';
 import type { Dictionary } from '@/lib/get-dictionary';
 
@@ -34,6 +34,7 @@ export default function CookieBanner({ dict }: { dict?: Dictionary }) {
 
   const handleDecline = () => {
     updateConsent(false);
+    clearUserId();
     setShowBanner(false);
     window.dispatchEvent(new Event('consent-changed'));
   };

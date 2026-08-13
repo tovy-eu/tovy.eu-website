@@ -284,6 +284,9 @@ export function initGA(): void {
   window.gtag("js", new Date());
   window.gtag("config", gaMeasurementId, {
     send_page_view: false, // Page views are fired manually on route change in AnalyticsProvider
+    // GA4 User-ID: stitch sessions into one user. Only attach once consent is granted
+    // (getVisitorId writes to localStorage), so denied-state stays cookieless.
+    ...(priorGranted ? { user_id: getVisitorId() } : {}),
   });
 
   if (priorGranted) {
@@ -324,6 +327,36 @@ export function grantConsent(): void {
     ad_personalization: "granted",
     analytics_storage: "granted",
   });
+  setUserId(getVisitorId()); // baseline anonymous User-ID; upgraded to email hash on form submit
+}
+
+/**
+ * GA4 User-ID. Associates a stable, non-PII identifier with the user so their
+ * sessions (and devices, once we know who they are) stitch into a single user.
+ * Only call when analytics consent is granted.
+ */
+export function setUserId(id: string): void {
+  if (typeof window === "undefined" || !window.gtag) return;
+  window.gtag("set", { user_id: id });
+}
+
+/** Clear the User-ID on consent revoke / logout. GA4 requires null here, never "". */
+export function clearUserId(): void {
+  if (typeof window === "undefined" || !window.gtag) return;
+  window.gtag("set", { user_id: null });
+}
+
+/**
+ * Upgrade the anonymous UUID to an email-derived, cross-device User-ID at the point
+ * we learn who the lead is (intake-form submit). SHA-256 hex keeps it non-PII per the
+ * Google Analytics ToS (no raw email leaves the browser).
+ */
+export async function setUserIdFromEmail(email: string): Promise<void> {
+  if (typeof window === "undefined" || !email) return;
+  const bytes = new TextEncoder().encode(email.trim().toLowerCase());
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  const hex = Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, "0")).join("");
+  setUserId(hex);
 }
 
 /**
