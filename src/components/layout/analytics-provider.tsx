@@ -1,12 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking, initGA, setUserId, captureAttribution } from "@/lib/tracking";
+import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking, initGA, captureAttribution } from "@/lib/tracking";
 import { getConsent } from "@/lib/consent";
 import { onCLS, onFCP, onLCP, onTTFB, onINP } from 'web-vitals';
 import { usePathname } from "next/navigation";
-import { auth } from "@/lib/firebase";
-import { onAuthStateChanged } from "firebase/auth";
 
 export function AnalyticsProviderHead() {
   return null;
@@ -41,33 +39,6 @@ export function AnalyticsProviderBody() {
   useEffect(() => {
     sendGA4Event("page_view");
   }, [pathname]);
-
-  // Synchronize Firebase Auth state with Google Analytics
-  useEffect(() => {
-    let previousUid: string | null = null;
-
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      const currentUid = user ? user.uid : null;
-      
-      // Update persistent user_id in local storage
-      setUserId(currentUid);
-
-      if (consentGranted) {
-        if (currentUid && currentUid !== previousUid) {
-          sendGA4Event("login", {
-            method: "firebase",
-            user_id: currentUid,
-          });
-        } else if (!currentUid && previousUid) {
-          sendGA4Event("logout");
-        }
-      }
-      
-      previousUid = currentUid;
-    });
-
-    return () => unsubscribe();
-  }, [consentGranted]);
 
   // Track Core Web Vitals, Errors, Scroll Depth, and Outbound Links (only with consent)
   useEffect(() => {

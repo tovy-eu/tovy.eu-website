@@ -553,6 +553,15 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           utm_campaign: attribution.utm_campaign,
         });
 
+        // GA4 recommended lead-conversion event. Mark `generate_lead` as a key event
+        // in GA (Admin > Events). This is the intake-form conversion signal.
+        // ponytail: add value + currency:"EUR" here only if you wire lead value into Google Ads bidding.
+        sendGA4Event('generate_lead', {
+          form_name: 'Project Request',
+          lead_score: score,
+          routing_path: path,
+        });
+
         localStorage.removeItem(STORAGE_KEY);
         setRoutingPath(path);
         setSubmittedValues(data);

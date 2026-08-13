@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 const VISITOR_ID_KEY = "tovy_visitor_id";
 const SESSION_ID_KEY = "tovy_session_id";
 const SESSION_START_TIME_KEY = "tovy_session_start_time";
-const USER_ID_KEY = "tovy_user_id";
 const PAGE_CATEGORY_KEY = "tovy_page_category";
 
 export function getVisitorId(): string {
@@ -44,21 +43,6 @@ export function getTraceId(): string {
 function getPageReferrer(): string {
   if (typeof window === "undefined") return "";
   return document.referrer || "";
-}
-
-// Nice to Have #8: Include user_id if user is authenticated
-export function setUserId(userId: string | null): void {
-  if (typeof window === "undefined") return;
-  if (userId) {
-    localStorage.setItem(USER_ID_KEY, userId);
-  } else {
-    localStorage.removeItem(USER_ID_KEY);
-  }
-}
-
-export function getUserId(): string | null {
-  if (typeof window === "undefined") return null;
-  return localStorage.getItem(USER_ID_KEY);
 }
 
 // ponytail: remove sensitive query params only. email regex in path is fragile and unlikely here.
@@ -300,7 +284,6 @@ export function initGA(): void {
   window.gtag("js", new Date());
   window.gtag("config", gaMeasurementId, {
     send_page_view: false, // Page views are fired manually on route change in AnalyticsProvider
-    user_id: priorGranted ? getUserId() || undefined : undefined,
   });
 
   if (priorGranted) {
@@ -377,8 +360,6 @@ export async function sendGA4Event(eventName: string, params: Record<string, unk
   if (granted) {
     eventPayload.visitor_id = getVisitorId();
     eventPayload.session_id = getSessionId();
-    const userId = getUserId();
-    if (userId) eventPayload.user_id = userId;
   }
 
   const pageCategory = getPageCategory();
