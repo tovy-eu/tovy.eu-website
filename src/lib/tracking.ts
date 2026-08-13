@@ -172,7 +172,7 @@ export function trackFormStart(formName: string): void {
 }
 
 export function trackFormSubmission(formName: string, formData?: Record<string, unknown>, extra?: Record<string, unknown>): void {
-  const eventData: Record<string, unknown> = {
+  const eventData: GA4EventMap["form_submission"] = {
     form_name: formName,
     ...extra,
   };
@@ -360,11 +360,41 @@ export async function setUserIdFromEmail(email: string): Promise<void> {
 }
 
 /**
- * Sends an event to standard Google Analytics (GA4) via gtag.
+ * Registry of every custom GA4 event this app sends, mapped to its parameter shape.
+ * Single source of truth for event names + params: `sendGA4Event` is typed against it,
+ * so a typo'd event name or a missing/misnamed param is a compile error instead of a
+ * silent `(not set)` in GA4. Keep in sync with the custom definitions registered in
+ * GA4 Admin (see docs/analytics-todos.md).
+ */
+export interface GA4EventMap {
+  page_view: Record<string, never>;
+  scroll_depth: { scroll_percent: number; page_location: string };
+  click_outbound_link: { link_url: string; link_text: string };
+  click_cta: { cta_name: string; cta_type: string; cta_text: string; page_category: string; page_location: string };
+  cta_clicked: { location: string; text: string };
+  page_error: { error_message: string; error_source: string; error_lineno: number; error_colno: number };
+  unhandled_promise_rejection: { error_message: string };
+  form_start: { form_name: string };
+  form_submission: { form_name: string; form_fields_filled?: number; [key: string]: unknown };
+  form_error: { form_name: string; error_message: string };
+  intake_step_completed: { action: string; category: string; label: string; step_number: number; visitor_id: string };
+  generate_lead: { form_name: string; lead_score: number; routing_path: string };
+  language_switch: { language: string };
+}
+
+/**
+ * Sends a custom event to GA4 via gtag. Event name and params are type-checked against
+ * GA4EventMap; params are optional only for events that take none (e.g. page_view).
  * If GA is not initialized yet, it initializes it dynamically.
  */
-export async function sendGA4Event(eventName: string, params: Record<string, unknown> = {}) {
+export async function sendGA4Event<K extends keyof GA4EventMap>(
+  eventName: K,
+  ...rest: GA4EventMap[K] extends Record<string, never>
+    ? [params?: GA4EventMap[K]]
+    : [params: GA4EventMap[K]]
+): Promise<void> {
   if (typeof window === "undefined") return;
+  const params = (rest[0] ?? {}) as Record<string, unknown>;
 
   // Ensure GA is initialized (loads on every page; Consent Mode gates storage)
   initGA();

@@ -54,6 +54,15 @@ Build path: Admin → Data display → Audiences → New audience → Create cus
 - [ ] **BigQuery Export**: enable for user-level rows / CRM join (join key = the email-hash user_id).
 - [ ] **Enhanced Conversions + Customer Match**: revisit ONLY when running real Google Ads with enough volume (~100+ matched users). Ads account is linked (customer 5972626884) but dormant; ads_personalization off. Needs data-stream "user-provided data collection" + privacy-policy disclosure (GDPR). Not the email-hash user_id — different mechanism.
 
+## Developer maintenance path (how to keep/improve this as a dev)
+
+Direction: **code-first gtag foundation → server-side conversions → analyze in BigQuery.** Stay in code (not client-side GTM); move business-critical events server-side over time; let BigQuery be the analysis layer (plays to the data-engineering skillset).
+
+- [x] ✅ **Typed event layer** (done 2026-08-14): `GA4EventMap` in `tracking.ts` maps every custom event → its param shape; `sendGA4Event<K>` is generic against it. A typo'd event name / missing / wrong-typed param is now a **compile error** instead of a silent `(not set)`. 13 call sites conform; rejection proven via `@ts-expect-error` probe. **Rule: register a new event in `GA4EventMap` first, then fire it — and mirror it in GA4 Admin custom definitions.**
+- [ ] **Server-side conversions via Measurement Protocol** — fire `generate_lead` / `close_convert_lead` from a Firebase Cloud Function / Firestore trigger (on the actual doc write / status change), not the browser. Blocker-proof + enrichable from server data. Lighter than sGTM at this volume. This is the right fix for data-loss worries (not the tag gateway). Do when closing enough deals to matter.
+- [ ] **BigQuery export** (also listed above) — the durable investment: raw GA4 events in BQ, join with Firestore leads, model in SQL/dbt, no sampling. Flip on now so history accrues.
+- Note: `click_cta` (auto, from `initCTATracking`) and `cta_clicked` (manual, in header/footer) are **two different CTA events** with different params — consolidate to one if you want clean CTA reporting.
+
 ## Already done (reference)
 
 - Reporting Identity = **Blended** (saved; modeling unavailable until traffic grows — behaves as Observed).
