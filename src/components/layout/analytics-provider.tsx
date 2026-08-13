@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking, initGA, captureAttribution } from "@/lib/tracking";
 import { getConsent } from "@/lib/consent";
-import { onCLS, onFCP, onLCP, onTTFB, onINP } from 'web-vitals';
 import { usePathname } from "next/navigation";
 
 export function AnalyticsProviderHead() {
@@ -40,7 +39,7 @@ export function AnalyticsProviderBody() {
     sendGA4Event("page_view");
   }, [pathname]);
 
-  // Track Core Web Vitals, Errors, Scroll Depth, and Outbound Links (only with consent)
+  // Track Errors, Scroll Depth, Outbound Links, and CTA clicks (only with consent)
   useEffect(() => {
     if (!consentGranted) return;
 
@@ -58,51 +57,6 @@ export function AnalyticsProviderBody() {
 
     // Initialize CTA click tracking
     initCTATracking();
-
-    // Cumulative Layout Shift
-    onCLS(metric => {
-      sendGA4Event('web_vital', {
-        metric_name: 'CLS',
-        metric_value: metric.value,
-        metric_rating: metric.rating,
-      });
-    });
-
-    // Largest Contentful Paint
-    onLCP(metric => {
-      sendGA4Event('web_vital', {
-        metric_name: 'LCP',
-        metric_value: metric.value,
-        metric_rating: metric.rating,
-      });
-    });
-
-    // First Contentful Paint
-    onFCP(metric => {
-      sendGA4Event('web_vital', {
-        metric_name: 'FCP',
-        metric_value: metric.value,
-        metric_rating: metric.rating,
-      });
-    });
-
-    // Time to First Byte
-    onTTFB(metric => {
-      sendGA4Event('web_vital', {
-        metric_name: 'TTFB',
-        metric_value: metric.value,
-        metric_rating: metric.rating,
-      });
-    });
-
-    // Interaction to Next Paint (modern replacement for FID)
-    onINP(metric => {
-      sendGA4Event('web_vital', {
-        metric_name: 'INP',
-        metric_value: metric.value,
-        metric_rating: metric.rating,
-      });
-    });
   }, [consentGranted]);
 
   return null;
