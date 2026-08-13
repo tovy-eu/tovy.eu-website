@@ -63,6 +63,11 @@ Direction: **code-first gtag foundation → server-side conversions → analyze 
 - [ ] **BigQuery export** (also listed above) — the durable investment: raw GA4 events in BQ, join with Firestore leads, model in SQL/dbt, no sampling. Flip on now so history accrues.
 - Note: `click_cta` (auto, from `initCTATracking`) and `cta_clicked` (manual, in header/footer) are **two different CTA events** with different params — consolidate to one if you want clean CTA reporting.
 
+### Edge cases (2026-08-14)
+- [x] ✅ **Enhanced Measurement double-count removed**: deleted custom `scroll_depth` + `click_outbound_link` — GA4 Enhanced Measurement already fires auto `scroll` (90%) + outbound `click` (confirmed live: `en=scroll` seen in network). Kept the richer native events; lost only custom `link_text` (negligible). Re-add the custom trackers only if Enhanced Measurement is turned off.
+- [x] ✅ **`form_submission` extra typed**: `FormSubmissionExtra` type on `trackFormSubmission` — typo'd enrichment keys (e.g. `utm_sauce`) now a compile error. Note the event's map entry still has an `[key: string]: unknown` index signature by design (arbitrary extras allowed), so that's the one remaining soft spot.
+- Watch (not bugs): GA4 truncates string param **values to 100 chars** (`error_message`/`error_source` sliced to 200 in code — harmless waste); `intake_step_completed` carries UA-era `action`/`category`/`label` params that mean nothing in GA4 unless registered — trim to `step_number`; consent-denied events omit `visitor_id`/`session_id` by design (blank, not broken).
+
 ## Already done (reference)
 
 - Reporting Identity = **Blended** (saved; modeling unavailable until traffic grows — behaves as Observed).

@@ -86,62 +86,9 @@ export function getAttribution(): Record<string, string> {
   }
 }
 
-// Additional: Track scroll depth
-export function initScrollTracking(): void {
-  if (typeof window === "undefined") return;
-
-  let maxScrollPercent = 0;
-  let scrollEventSent = false;
-
-  const handleScroll = () => {
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = window.scrollY;
-    const scrollPercent = scrollHeight > 0 ? Math.round((scrolled / scrollHeight) * 100) : 0;
-
-    // Update max scroll
-    if (scrollPercent > maxScrollPercent) {
-      maxScrollPercent = scrollPercent;
-    }
-
-    // Send event when user reaches 90% scroll
-    if (scrollPercent >= 90 && !scrollEventSent) {
-      sendGA4Event("scroll_depth", {
-        scroll_percent: 90,
-        page_location: window.location.href,
-      });
-      scrollEventSent = true;
-    }
-  };
-
-  window.addEventListener("scroll", handleScroll, { passive: true });
-}
-
-// Additional: Track outbound links
-export function initOutboundLinkTracking(): void {
-  if (typeof window === "undefined") return;
-
-  document.addEventListener("click", (event) => {
-    const target = event.target as HTMLElement;
-    const link = target.closest("a") as HTMLAnchorElement | null;
-
-    if (!link) return;
-
-    const href = link.getAttribute("href");
-    if (!href) return;
-
-    // Check if it's an external link
-    const isExternal =
-      href.startsWith("http") &&
-      !href.includes(window.location.hostname);
-
-    if (isExternal) {
-      sendGA4Event("click_outbound_link", {
-        link_url: href,
-        link_text: link.textContent?.slice(0, 100) || "",
-      });
-    }
-  });
-}
+// Scroll depth and outbound-link clicks are covered by GA4 Enhanced Measurement
+// (auto `scroll` at 90% + `click` with outbound=true), so we don't fire custom
+// duplicates. If Enhanced Measurement is ever turned off, re-add them here.
 
 // Additional: Track JavaScript errors
 export function initErrorTracking(): void {
@@ -171,7 +118,17 @@ export function trackFormStart(formName: string): void {
   });
 }
 
-export function trackFormSubmission(formName: string, formData?: Record<string, unknown>, extra?: Record<string, unknown>): void {
+// Enrichment params attached to the form_submission conversion. Typed so a typo'd
+// key (e.g. utm_sauce) is a compile error rather than a silent GA4 param.
+type FormSubmissionExtra = {
+  lead_score?: number;
+  routing_path?: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+};
+
+export function trackFormSubmission(formName: string, formData?: Record<string, unknown>, extra?: FormSubmissionExtra): void {
   const eventData: GA4EventMap["form_submission"] = {
     form_name: formName,
     ...extra,
@@ -368,8 +325,6 @@ export async function setUserIdFromEmail(email: string): Promise<void> {
  */
 export interface GA4EventMap {
   page_view: Record<string, never>;
-  scroll_depth: { scroll_percent: number; page_location: string };
-  click_outbound_link: { link_url: string; link_text: string };
   click_cta: { cta_name: string; cta_type: string; cta_text: string; page_category: string; page_location: string };
   cta_clicked: { location: string; text: string };
   page_error: { error_message: string; error_source: string; error_lineno: number; error_colno: number };

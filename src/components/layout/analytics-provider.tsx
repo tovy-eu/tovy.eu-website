@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { sendGA4Event, initScrollTracking, initOutboundLinkTracking, initErrorTracking, initCTATracking, initGA, captureAttribution } from "@/lib/tracking";
+import { sendGA4Event, initErrorTracking, initCTATracking, initGA, captureAttribution } from "@/lib/tracking";
 import { getConsent } from "@/lib/consent";
 import { usePathname } from "next/navigation";
 
@@ -39,7 +39,8 @@ export function AnalyticsProviderBody() {
     sendGA4Event("page_view");
   }, [pathname]);
 
-  // Track Errors, Scroll Depth, Outbound Links, and CTA clicks (only with consent)
+  // Track JS errors and CTA clicks (only with consent). Scroll depth + outbound
+  // link clicks are handled by GA4 Enhanced Measurement, not custom events.
   useEffect(() => {
     if (!consentGranted) return;
 
@@ -48,12 +49,6 @@ export function AnalyticsProviderBody() {
 
     // Initialize error tracking (always on)
     initErrorTracking();
-
-    // Initialize scroll depth tracking
-    initScrollTracking();
-
-    // Initialize outbound link tracking
-    initOutboundLinkTracking();
 
     // Initialize CTA click tracking
     initCTATracking();
