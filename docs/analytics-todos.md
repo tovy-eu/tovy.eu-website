@@ -77,4 +77,40 @@ Direction: **code-first gtag foundation → server-side conversions → analyze 
 - Zero custom dimensions registered (compliant with User-ID best practices).
 - GA Admin + Data APIs enabled on project tax-divider-bridge-prod.
 - PII discipline in code: SHA-256 email hash, `sanitizeUrl` strips sensitive query params, form tracking counts fields filled (never values).
-- Consent Mode v2, denied-by-default (GDPR-first).
+- Consent Mode v2, **region-scoped** (2026-08-14): denied-by-default only for EEA + UK + CH
+  (`EEA_CONSENT_REGIONS` in `tracking.ts`); rest of world defaults to granted. `denyConsent()`
+  + a returning-declined restore path make Decline stick where the region default is granted.
+
+## Session 2026-08-14: consent maximization + referrer attribution
+
+Goal: collect as much visitor-origin data as legally allowed (EU/NL). Two GA "Tag quality:
+Urgent" action items diagnosed and fixed; the 503 red herring put to rest.
+
+- [x] ✅ **Region-scoped consent** (fixes GA "0% consent outside EEA"): non-EEA visitors now
+  default to granted, so their ads + analytics data is measured instead of throttled to
+  cookieless. EEA/UK/CH unchanged (opt-in). Files: `tracking.ts` (region default, `denyConsent`,
+  returning-declined restore), `cookie-banner.tsx` (Decline → `denyConsent`).
+- [x] ✅ **Referrer preserved across the language redirect** (fixes self-referral → `(direct)`):
+  the client-side `location.replace()` in the redirect shims made GA see our own domain as the
+  referrer, dropping the real source. Shims now stash `document.referrer` (first-touch) before
+  redirecting; `resolvePageReferrer()` (`src/lib/referrer.ts`) resolves it in `getPageReferrer()`
+  / `captureAttribution()`. **Verified live**: collect payload showed `dr=https://example.com/`
+  (the real source) instead of `www.tovy.eu`. Unit + shim-contract tests in `referrer.test.ts`
+  (vitest — `npm test`). Note: `payment-success` shim intentionally NOT stashed (post-Stripe,
+  never a real entry).
+- [x] ✅ **Cookieless events on denial**: CTA/error/form listeners now bind on mount (not gated
+  behind consent) so denied traffic sends cookieless pings that feed behavioral modeling, same
+  as page_view. Storage stays consent-gated in `sendGA4Event`. File: `analytics-provider.tsx`.
+- [x] ✅ **503 reconfirmed a harness artifact** (2026-08-14): systematic probing showed a
+  *non-existent* property (`G-0000000000`), the *global* endpoint, and an *unrelated* domain
+  (postman-echo.com) all return 503, while `<script>`/`<img>`/document loads return 200. So the
+  automated browser intercepts the `fetch`/`XHR`/`sendBeacon` transport class only — real
+  visitors' beacons reach Google fine (GA console: "data flowing"). Do not re-investigate as a bug.
+
+### Still open (not code — on the operator)
+
+- [ ] **Tag inbound links with UTMs** — the actual bottleneck for origin data. See
+  [utm-tagging.md](./utm-tagging.md). Nothing produces social/DM attribution without this.
+- [ ] **Re-check GA "Tag quality" panel in ~1 week** — the consent action item should clear once
+  real EEA + non-EEA traffic flows through the region-scoped defaults. The "untagged pages" item
+  is just the redirect shims (low impact) — safe to leave.
