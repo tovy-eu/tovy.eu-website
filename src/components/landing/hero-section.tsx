@@ -52,10 +52,10 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     >
       {/* Kinetic gradient wash - slow drift, reuses gradient-flow keyframe; disabled for reduced-motion */}
       <div
-        className="absolute inset-0 z-0 opacity-60 md:opacity-70 pointer-events-none transform-gpu bg-[length:200%_200%] animate-[gradient-flow_14s_ease_infinite] motion-reduce:animate-none"
+        className="absolute inset-0 z-0 opacity-40 md:opacity-50 pointer-events-none transform-gpu bg-[length:200%_200%] animate-[gradient-flow_20s_ease_infinite] motion-reduce:animate-none"
         style={{
           backgroundImage:
-            "linear-gradient(120deg, rgba(43,94,255,0.28), rgba(120,119,198,0.18), rgba(99,102,241,0.28))",
+            "linear-gradient(120deg, rgba(43,94,255,0.18), rgba(120,119,198,0.12), rgba(99,102,241,0.18))",
         }}
       />
 
