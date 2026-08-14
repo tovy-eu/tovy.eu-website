@@ -7,6 +7,7 @@
     "build": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "eslint .",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "deploy": "bash scripts/deploy.sh",
     "deploy:hosting": "firebase deploy --only hosting",
@@ -67,7 +68,8 @@
     "postcss": "^8",
     "sharp": "^0.33.5",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.10"
   },
   "description": "Tovy is a high-end, professional platform designed to showcase advanced AI and data engineering services. Built with a focus on **Machine Experience (MX) Design**, Tovy transforms fragmented data silos into unified, automated foundations."
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { v4 as uuidv4 } from "uuid";
+import { ENTRY_REFERRER_KEY, resolvePageReferrer } from "./referrer";
 
 const VISITOR_ID_KEY = "tovy_visitor_id";
 const SESSION_ID_KEY = "tovy_session_id";
@@ -39,10 +40,16 @@ export function getTraceId(): string {
   return uuidv4();
 }
 
-// Must Fix #3: Page referrer
+// Page referrer for GA (maps to the `dr` param that drives source/medium attribution).
+// Uses the stashed entry referrer so the language-redirect hop doesn't turn every visit
+// into a self-referral. See resolvePageReferrer / ENTRY_REFERRER_KEY.
 function getPageReferrer(): string {
   if (typeof window === "undefined") return "";
-  return document.referrer || "";
+  return resolvePageReferrer(
+    sessionStorage.getItem(ENTRY_REFERRER_KEY),
+    document.referrer,
+    window.location.hostname,
+  );
 }
 
 // ponytail: remove sensitive query params only. email regex in path is fragile and unlikely here.
@@ -66,7 +73,7 @@ export function captureAttribution(): void {
 
   const params = new URLSearchParams(window.location.search);
   const attribution: Record<string, string> = {
-    referrer: document.referrer || "",
+    referrer: getPageReferrer(),
     landing_page: sanitizeUrl(window.location.href),
     captured_at: new Date().toISOString(),
   };

@@ -22,6 +22,11 @@ export default function ProjectRequestRootPage() {
           __html: `
             (function() {
               try {
+                // Stash the real external referrer before the client-side redirect below,
+                // which would otherwise make the destination see our own domain (self-referral).
+                if (!sessionStorage.getItem('tovy_entry_referrer') && document.referrer) {
+                  sessionStorage.setItem('tovy_entry_referrer', document.referrer);
+                }
                 var target = 'en'; // Default language
                 var supported = ['en', 'nl', 'es', 'de'];
                 var cookieLang = (document.cookie.match(/^(?:.*;)?NEXT_LOCALE=([^;]+)(?:.*)?$/) || [, ''])[1];
