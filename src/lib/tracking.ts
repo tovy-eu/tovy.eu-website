@@ -199,6 +199,14 @@ export function initCTATracking(): void {
   });
 }
 
+// EEA (EU27 + IS/LI/NO) plus UK and Switzerland: regions where consent must default to
+// denied. Everywhere else defaults to granted. ISO 3166-1 alpha-2 codes per Consent Mode.
+const EEA_CONSENT_REGIONS = [
+  "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU",
+  "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES",
+  "SE", "IS", "LI", "NO", "GB", "CH",
+];
+
 let gaInitialized = false;
 
 /**
@@ -223,9 +231,17 @@ export function initGA(): void {
     (window.dataLayer as unknown[]).push(arguments);
   };
 
-  // Consent Mode v2: everything denied by default (privacy-first, GDPR). The tag still
-  // loads on every page and sends cookieless pings until the user opts in.
+  // Consent Mode v2, region-scoped. GDPR/ePrivacy only bind EEA/UK/CH visitors, so we
+  // default those regions to denied (opt-in) and the rest of the world to granted. The tag
+  // loads everywhere; EEA users send cookieless pings until they opt in via the banner.
   window.gtag("consent", "default", {
+    ad_storage: "granted",
+    ad_user_data: "granted",
+    ad_personalization: "granted",
+    analytics_storage: "granted",
+  });
+  window.gtag("consent", "default", {
+    region: EEA_CONSENT_REGIONS,
     ad_storage: "denied",
     ad_user_data: "denied",
     ad_personalization: "denied",
@@ -233,9 +249,12 @@ export function initGA(): void {
     wait_for_update: 500,
   });
 
-  // Returning visitors who already accepted: restore granted state immediately.
+  // Returning visitors: restore their prior decision immediately (the banner won't re-show).
+  // priorDeclined must re-deny explicitly now that non-EEA regions default to granted.
   const priorConsentRaw = localStorage.getItem("tovy-cookie-consent");
-  const priorGranted = priorConsentRaw ? JSON.parse(priorConsentRaw)?.granted : false;
+  const priorConsent = priorConsentRaw ? JSON.parse(priorConsentRaw) : null;
+  const priorGranted = priorConsent?.granted === true;
+  const priorDeclined = priorConsent?.granted === false;
 
   // Configure standard parameters
   window.gtag("js", new Date());
@@ -253,6 +272,14 @@ export function initGA(): void {
       ad_user_data: "granted",
       ad_personalization: "granted",
       analytics_storage: "granted",
+    });
+  } else if (priorDeclined) {
+    // Honor a prior decline even where the region default is granted (non-EEA).
+    window.gtag("consent", "update", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
     });
   }
 
@@ -285,6 +312,23 @@ export function grantConsent(): void {
     analytics_storage: "granted",
   });
   setUserId(getVisitorId()); // baseline anonymous User-ID; upgraded to email hash on form submit
+}
+
+/**
+ * Consent Mode v2: flip storage signals to denied after the user declines. Required now that
+ * non-EEA visitors default to granted — without this, a declining ROW visitor would keep
+ * being tracked. EEA visitors already default to denied, so this is a no-op for them.
+ */
+export function denyConsent(): void {
+  if (typeof window === "undefined") return;
+  initGA(); // ensure gtag exists
+  window.gtag?.("consent", "update", {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied",
+  });
+  clearUserId();
 }
 
 /**
