@@ -21,6 +21,10 @@ node_modules/
 # Static exports
 /export
 
+# Editor / AI IDE config
+.idx/
+.github/copilot-instructions.md
+
 # Misc
 .DS_Store
 *.tsbuildinfo

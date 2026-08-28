@@ -1,94 +1,76 @@
-# Tovy - Smart Data Ecosystems & AI Foundations
+# Tovy
 
-Tovy is a high-end, professional platform designed to showcase advanced AI and data engineering services. Built with a focus on **Machine Experience (MX) Design**, Tovy transforms fragmented data silos into unified, automated foundations.
+Marketing and lead-generation site for [**Tovy**](https://www.tovy.eu) — a data
+engineering and AI consultancy. A statically-exported, multilingual Next.js app
+backed by a serverless Firebase stack for lead capture, scoring, and automated
+follow-up.
 
-🌐 **[TOVY Live Platform](https://www.tovy.eu/?utm_source=github&utm_medium=profile&utm_campaign=readme_link)**
+**Live:** https://www.tovy.eu
 
----
+![Tovy](./public/images/tovy-og-image.webp)
 
-## 📖 Deep Technical & Business Architecture
+![Next.js](https://img.shields.io/badge/Next.js_15-000?logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React_19-20232a?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-06b6d4?logo=tailwindcss&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-ffca28?logo=firebase&logoColor=black)
 
-For an exhaustive technical mapping, file-by-file directory responsibilities, and step-by-step tracing of business workflows (such as lead progress auto-saving, lead scoring, email notification triggers, and cron-scheduled abandonment recovery), see the master blueprint:
-👉 **[RECON_LOG.md](./RECON_LOG.md)**
+## Overview
 
----
+A high-performance static site optimised for SEO and AI discoverability, with a
+lightweight serverless backend. Visitors move through a multi-step intake flow;
+qualified leads are scored, persisted, and routed, with automated recovery and
+admin alerting handled by Cloud Functions.
 
-## 🚀 Technical Architecture
+## Architecture
 
-Tovy is architected as a serverless **Static Site Generation (SSG)** application, optimized for high-speed delivery at the **Edge**.
+- **Static generation** — Next.js 15 App Router with `output: 'export'`; four
+  pre-rendered locales (`en`, `nl`, `es`, `de`) on isolated route segments.
+- **Edge delivery** — Firebase Hosting CDN with immutable cache headers; raw
+  static HTML for full search-engine and LLM indexability.
+- **Direct-to-Firestore** — clients write via the Firebase Client SDK, secured
+  at the network boundary by `firestore.rules` (no client reads, email
+  validation) — no custom backend layer.
+- **Serverless workflows** — Cloud Functions handle scheduled abandoned-lead
+  recovery and real-time admin notifications.
 
-### 1. Build-Time (Static Generation)
-- **Framework**: Next.js 15 (App Router) configured for fully static exports (`output: 'export'`).
-- **i18n**: Pre-renders four fully static locales (`en`, `nl`, `es`, `de`) into isolated, SEO-friendly route segments.
-- **Deduplicated Early Language Routing**: Client-side locale redirection is handled immediately at the root via an inline, zero-flicker redirection script utilizing cookie checks and `navigator.language` split-matching.
+## Features
 
-### 2. The Edge (Global Delivery)
-- **Hosting**: Firebase Hosting (CDN).
-- **Performance**: Static assets served from global Points of Presence (PoPs) with immutable cache headers for sub-100ms response times.
-- **SEO & AI Discoverability**: Raw static HTML provides 100% indexability for standard search engines as well as LLM-driven AI indexing agents.
+- **Lead qualification** — 7-step intake with domain checks, real-time client
+  scoring, and path routing (high-fit vs. nurture).
+- **Automated recovery** — cron Cloud Function requeues localized reminder
+  emails for forms abandoned > 2h.
+- **Real-time alerting** — Firestore document listeners notify the team on new
+  leads via `ntfy.sh`.
+- **Structured data** — automated JSON-LD (Organization, Services, FAQPage,
+  BreadcrumbList) for search and AI indexing.
+- **GDPR consent** — client-side cookie-consent banner that gates tracking.
 
-### 3. The Client & Database (JAMstack Integration)
-- **Direct-to-Cloud Integration**: Clients communicate directly with **Google Cloud Firestore** via the Firebase Client SDK. This eliminates custom backend layers, drastically decreasing latency and operational overhead.
-- **Input Security & Constraints**: Database write operations are secured on the network boundary via strict `firestore.rules` (which block client-side reads entirely and enforce email validation rules to prevent email-relay abuse).
-- **Lead Journey Preservation**: Tracks and synchronizes an end-to-end user-journey tunnel using persistent `visitor_id` and unique `trace_id` mappings across both client-side forms and Google Analytics 4 (GA4).
+## Tech stack
 
----
+Next.js 15 (React 19) · TypeScript · Tailwind CSS · Framer Motion ·
+React Hook Form + Zod · Firebase (Hosting, Firestore, Functions, Extensions) ·
+Google Analytics 4
 
-## ✨ Key Features & Business Workflows
+## Getting started
 
-- **Strategic Lead Qualification**: A 7-step Intake Form with professional domain checks, real-time client-profile scoring, and prompt routing (Path A for high-fit leads vs Path B).
-- **Automated Lead Recovery**: A scheduled Firebase Cloud Function (`checkAbandonmentEmails`) triggers a cron check every 15 minutes to recover incomplete, abandoned form entries older than 2 hours—queuing a localized, high-performance reminder email.
-- **Real-Time Admin Alerting**: Document-creation event listeners in Firebase Functions intercept new lead filings and queue notifications to the admin team via `ntfy.sh`.
-- **Machine Experience (MX) Schema Injection**: Automated JSON-LD structured data (Organization, Services, FAQPage, BreadcrumbList) for AI search engine optimization.
-- **GDPR Privacy & Cookie Consent**: Lightweight, client-side compliance banner that broadcasts cookie-consent status changes to dynamically activate/deactivate tracking listeners.
-
----
-
-## 🛠 Tech Stack
-
-- **Web Framework:** [Next.js 15 (React 19)](https://nextjs.org/)
-- **Styling:** [Tailwind CSS v3](https://tailwindcss.com/)
-- **Animations:** [Framer Motion v12](https://www.framer.com/motion/)
-- **State Validation:** [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
-- **Database / Host:** [Google Firebase (Hosting, Firestore, Functions, Extensions)](https://firebase.google.com/)
-- **Analytics:** [Google Tag Manager & GA4](https://tagmanager.google.com/)
-
----
-
-## 🚦 Getting Started
-
-### 1. Installation & Local Development
-Install dependencies and run the Next.js development server:
 ```bash
-npm install
-npm run dev
+npm install       # install dependencies
+npm run dev       # start dev server (http://localhost:9002)
+npm run typecheck # tsc --noEmit
+npm run lint      # eslint
+npm test          # vitest
 ```
 
-### 2. Code Quality Gates
-Run strict TypeScript compilation typechecks and ESLint style checks before committing code:
-```bash
-npm run typecheck    # Run tsc compiler
-npm run lint         # Run ESLint linter
-```
+## CI/CD
 
-### 3. Deployment
-Deploy changes directly to Firebase Hosting and Cloud Functions:
-```bash
-npm run deploy       # Full build, verification, and Firebase deploy (via scripts/deploy.sh)
-```
+GitHub Actions pipeline with keyless Google Cloud auth via Workload Identity
+Federation:
 
----
+- Typecheck, lint, and build run on every push and pull request.
+- Pull requests deploy to a temporary 7-day Firebase preview channel.
+- Merges to `main` build the static export and deploy to production.
 
-## 🔄 CI/CD Pipeline
-
-Tovy utilizes an automated GitHub Actions workflow for zero-downtime deployments:
-*   **Workload Identity Federation (WIF):** Secure, keyless authentication to Google Cloud.
-*   **Quality Gates:** Pull requests trigger automatic typechecks and ESLint checks.
-*   **Preview Environments:** Temporary, 7-day Firebase Hosting Preview Channels are automatically generated on every Pull Request for stakeholder review before code merges.
-*   **Production Deployment:** Merging to the `main` branch automatically triggers static HTML building and deploys the static `/out` bundle to live Firebase Hosting.
-
----
-
-## ⚖️ License
+## License
 
 All rights reserved. © 2026 Tovy.
