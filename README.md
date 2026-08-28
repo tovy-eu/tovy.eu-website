@@ -7,7 +7,7 @@ follow-up.
 
 **Live:** https://www.tovy.eu
 
-![Tovy](./public/images/tovy-og-image.webp)
+![Tovy homepage](./.github/assets/homepage.png)
 
 ![Next.js](https://img.shields.io/badge/Next.js_15-000?logo=next.js&logoColor=white)
 ![React](https://img.shields.io/badge/React_19-20232a?logo=react)
@@ -21,6 +21,10 @@ A high-performance static site optimised for SEO and AI discoverability, with a
 lightweight serverless backend. Visitors move through a multi-step intake flow;
 qualified leads are scored, persisted, and routed, with automated recovery and
 admin alerting handled by Cloud Functions.
+
+### Lead intake flow
+
+![Intake flow](./.github/assets/intake-flow.gif)
 
 ## Architecture
 
