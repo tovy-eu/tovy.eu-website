@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { Allura } from "next/font/google";
+import { Sora, Space_Grotesk } from "next/font/google";
 import en from '@/dictionaries/en.json';
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const allura = Allura({ weight: "400", variable: "--font-allura", subsets: ["latin"] });
+const sora = Sora({ subsets: ["latin"], variable: "--font-sora" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.tovy.eu"),
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn(GeistSans.variable, allura.variable, "scroll-smooth")} data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" className={cn(sora.variable, spaceGrotesk.variable, "scroll-smooth")} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

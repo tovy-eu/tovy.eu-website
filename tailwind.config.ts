@@ -12,9 +12,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist-sans)', 'sans-serif'],
-        body: ['var(--font-geist-sans)', 'sans-serif'],
-        headline: ['var(--font-geist-sans)', 'sans-serif'],
+        sans: ['var(--font-sora)', 'sans-serif'],
+        body: ['var(--font-sora)', 'sans-serif'],
+        headline: ['var(--font-space-grotesk)', 'sans-serif'],
         code: ['monospace'],
       },
       typography: ({ theme }: { theme: (path: string) => string }) => ({

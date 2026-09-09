@@ -154,10 +154,10 @@ const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: stri
       
       <!-- Summary Card Component -->
       <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 24px; margin-bottom: 32px; box-shadow: 0 0 20px rgba(41, 91, 255, 0.05);">
-        <h4 style="margin: 0 0 16px 0; font-size: 12px; font-weight: bold; color: #5773ff; text-transform: uppercase; letter-spacing: 0.05em;">${t.specsTitle}</h4>
+        <h4 style="margin: 0 0 16px 0; font-size: 12px; font-weight: bold; color: #5773ff; letter-spacing: 0.02em;">${t.specsTitle}</h4>
         
         <!-- Section 1: Lead Profile -->
-        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.profileTitle}</h5>
+        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.profileTitle}</h5>
         <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 12px;">
           <tr>
             <td style="padding: 6px 0; color: #64748b; font-weight: 500; width: 40%;">${t.nameLabel}</td>
@@ -178,7 +178,7 @@ const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: stri
         </table>
 
         <!-- Section 2: Project Scope -->
-        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.scopeTitle}</h5>
+        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.scopeTitle}</h5>
         <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 12px;">
           <tr>
             <td style="padding: 6px 0; color: #64748b; font-weight: 500; width: 40%;">${t.budgetLabel}</td>
@@ -191,7 +191,7 @@ const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: stri
         </table>
 
         <!-- Section 3: Data Infrastructure -->
-        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.infraTitle}</h5>
+        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.infraTitle}</h5>
         <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 12px;">
           <tr>
             <td style="padding: 6px 0; color: #64748b; font-weight: 500; width: 40%;">${t.dataTeamLabel}</td>
@@ -214,7 +214,7 @@ const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: stri
         </table>
 
         <!-- Section 4: Project Context -->
-        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.challengesTitle}</h5>
+        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.challengesTitle}</h5>
         <div style="font-size: 13px; color: #cbd5e1; line-height: 1.5; padding: 4px 0;">
           <p style="margin: 0 0 8px 0;"><strong style="color: #64748b; font-weight: 500;">${t.bottlenecksLabel}</strong><br><span style="color: #f8fafc;">${bottlenecks}</span></p>
           <p style="margin: 0;"><strong style="color: #64748b; font-weight: 500;">${t.idealStateLabel}</strong><br><span style="color: #f8fafc;">${idealState}</span></p>
@@ -228,7 +228,7 @@ const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: stri
       <!-- Hero CTA Button with glowing style matching Tovy branding -->
       <div style="text-align: center; margin: 36px 0 32px 0;">
         <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GvYWPuGvxv0-8qtgsYeJKkgMUjmUqu-2D2FZrKqU6z75hXbUv6_FjFmbPdPBHcyew-fiAUXQ2?gv=true" 
-           style="background: linear-gradient(90deg, #295bff, #936290); color: #ffffff; text-decoration: none; padding: 16px 36px; font-weight: 700; font-size: 14px; border-radius: 50px; display: inline-block; box-shadow: 0 0 30px rgba(41, 91, 255, 0.45); text-transform: uppercase; letter-spacing: 0.08em; border: 1px solid rgba(255, 255, 255, 0.1);">
+           style="background: linear-gradient(90deg, #295bff, #936290); color: #ffffff; text-decoration: none; padding: 16px 36px; font-weight: 700; font-size: 14px; border-radius: 50px; display: inline-block; box-shadow: 0 0 30px rgba(41, 91, 255, 0.45); letter-spacing: 0.02em; border: 1px solid rgba(255, 255, 255, 0.1);">
           ${t.btnText}
         </a>
       </div>
@@ -668,7 +668,7 @@ const nextStep = async () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <Button asChild variant="ghost" className="hover:bg-white/10 text-white/65 text-[10px] font-bold uppercase tracking-[0.3em] rounded-full px-8">
+              <Button asChild variant="ghost" className="hover:bg-white/10 text-white/65 text-xs font-bold tracking-wide rounded-full px-8">
                 <Link href={`/${lang}/`}><Home className="mr-2 h-3 w-3" />{dict.pages.projectRequest.form.success.backHome}</Link>
               </Button>
             </div>
@@ -681,7 +681,7 @@ const nextStep = async () => {
             {/* Vertical connector line */}
             <div className="absolute left-3 top-10 bottom-0 w-[1px] bg-white/5 z-0" />
 
-            <div className="font-mono text-[9px] tracking-[0.2em] text-white/65 mb-2 pl-1">{"// "}steps</div>
+            <div className="font-mono text-[11px] tracking-[0.2em] text-white/65 mb-2 pl-1">{"// "}steps</div>
             {formSteps.map((s, i) => (
               <button
                 key={i}
@@ -694,7 +694,7 @@ const nextStep = async () => {
                 )}
               >
                 <span className={cn(
-                  "font-mono text-[10px] w-6 h-6 rounded-lg border flex items-center justify-center transition-all duration-500 shrink-0",
+                  "font-mono text-xs w-6 h-6 rounded-lg border flex items-center justify-center transition-all duration-500 shrink-0",
                   step === i
                     ? "bg-primary/10 border-primary/40 shadow-[0_0_15px_rgba(43,94,255,0.2)] text-primary"
                     : i < step
@@ -703,7 +703,7 @@ const nextStep = async () => {
                 )}>
                   {i < step ? <Check className="h-3 w-3" /> : (i + 1).toString().padStart(2, '0')}
                 </span>
-                <span className="font-bold text-[10px] tracking-[0.1em]">
+                <span className="font-bold text-xs tracking-[0.1em]">
                   {dict.pages.projectRequest.form.sidebarSteps?.[s.field as keyof typeof dict.pages.projectRequest.form.sidebarSteps] || s.field.replace(/([A-Z])/g, ' $1').toLowerCase()}
                 </span>
               </button>
@@ -760,7 +760,7 @@ const nextStep = async () => {
                             <FormField key={field} control={form.control} name="email" render={({ field: f }) => (
                               <FormItem className="space-y-4 md:space-y-6">
                                 <div className="space-y-2 md:space-y-3">
-                                  <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
+                                  <div className="font-mono text-xs tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                   <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
                                   <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
@@ -772,7 +772,7 @@ const nextStep = async () => {
                                     className="bg-white/[0.03] border-white/10 h-10 md:h-14 text-sm md:text-lg px-5 md:px-8 rounded-2xl md:rounded-3xl focus-visible:ring-primary/40 focus-visible:border-primary/50 transition-all duration-300"
                                   />
                                 </FormControl>
-                                <FormDescription className="text-[10px] md:text-[11px] tracking-wide font-medium text-white/65 italic">
+                                <FormDescription className="text-xs md:text-[13px] tracking-wide font-medium text-white/65 italic">
                                   {dict.pages.projectRequest.form.steps.workEmail.note}
                                 </FormDescription>
                                 <FormMessage />
@@ -789,7 +789,7 @@ const nextStep = async () => {
                             <FormField key={field} control={form.control} name={field as keyof ProjectRequestData} render={({ field: f }) => (
                               <FormItem className="space-y-3 md:space-y-6">
                                 <div className="space-y-1.5 md:space-y-3">
-                                  <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
+                                  <div className="font-mono text-xs tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                   <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
                                   <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
@@ -814,11 +814,11 @@ const nextStep = async () => {
                                     >
                                       <div className="flex items-center gap-1.5 md:gap-2.5">
                                         <span className={cn(
-                                          "font-mono text-[9px] md:text-[11px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 rounded-md transition-colors duration-500",
+                                          "font-mono text-[11px] md:text-[13px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 rounded-md transition-colors duration-500",
                                           f.value === o.label ? "bg-primary/20 text-primary" : "bg-black/20 text-white/65"
                                         )}>{o.hint}</span>
                                         <span className={cn(
-                                          "font-bold text-[9px] md:text-[10px] transition-colors duration-500",
+                                          "font-bold text-[11px] md:text-xs transition-colors duration-500",
                                           f.value === o.label ? "text-white" : "text-white/60"
                                         )}>{o.label}</span>
                                       </div>
@@ -840,7 +840,7 @@ const nextStep = async () => {
                           return (
                             <div key={field} className="space-y-4 md:space-y-6">
                               <div className="space-y-2 md:space-y-3">
-                                <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
+                                <div className="font-mono text-xs tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                 <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
                                 <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                               </div>
@@ -865,11 +865,11 @@ const nextStep = async () => {
                                               >
                                                   <div className="flex items-center gap-1.5 md:gap-2.5">
                                                   <span className={cn(
-                                                    "font-mono text-[9px] md:text-[11px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 rounded-md transition-colors duration-500",
+                                                    "font-mono text-[11px] md:text-[13px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 rounded-md transition-colors duration-500",
                                                     f.value === o.key ? "bg-primary/20 text-primary" : "bg-black/20 text-white/65"
                                                   )}>{o.hint}</span>
                                                   <span className={cn(
-                                                    "font-bold text-[9px] md:text-[10px] transition-colors duration-500",
+                                                    "font-bold text-[11px] md:text-xs transition-colors duration-500",
                                                     f.value === o.key ? "text-white" : "text-white/60"
                                                   )}>{o.label}</span>
                                                   </div>
@@ -922,7 +922,7 @@ const nextStep = async () => {
                           return (
                               <div key={field} className="space-y-4 md:space-y-6 w-full">
                                   <div className="space-y-2 md:space-y-3">
-                                      <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}infrastructure_audit</div>
+                                      <div className="font-mono text-xs tracking-[0.2em] text-primary/60 font-bold">{"// "}infrastructure_audit</div>
                                       <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
                                       <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                   </div>
@@ -942,7 +942,7 @@ const nextStep = async () => {
                                                                   aria-checked={f.value === o.key}
                                                                   onClick={() => f.onChange(o.key)}
                                                                   className={cn(
-                                                                      "flex items-center justify-center py-2 md:py-2.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[9px] md:text-[10px] font-black",
+                                                                      "flex items-center justify-center py-2 md:py-2.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[11px] md:text-xs font-black",
                                                                       f.value === o.key
                                                                         ? "bg-primary/20 border-primary/40 text-primary shadow-lg shadow-primary/10"
                                                                         : "bg-white/[0.02] border-white/5 text-white/50 hover:text-white/65"
@@ -968,7 +968,7 @@ const nextStep = async () => {
                                                               aria-checked={f.value === o.key}
                                                               onClick={() => f.onChange(o.key)}
                                                               className={cn(
-                                                                  "flex items-center justify-center py-2 md:py-2.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[9px] md:text-[10px] font-black",
+                                                                  "flex items-center justify-center py-2 md:py-2.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[11px] md:text-xs font-black",
                                                                   f.value === o.key
                                                                     ? "bg-primary/20 border-primary/40 text-primary shadow-lg shadow-primary/10"
                                                                     : "bg-white/[0.02] border-white/5 text-white/50 hover:text-white/65"
@@ -993,7 +993,7 @@ const nextStep = async () => {
                                                               aria-checked={f.value === o.key}
                                                               onClick={() => f.onChange(o.key)}
                                                               className={cn(
-                                                                  "flex items-center justify-center py-2 md:py-2.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[9px] md:text-[10px] font-black",
+                                                                  "flex items-center justify-center py-2 md:py-2.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-[11px] md:text-xs font-black",
                                                                   f.value === o.key
                                                                     ? "bg-primary/20 border-primary/40 text-primary shadow-lg shadow-primary/10"
                                                                     : "bg-white/[0.02] border-white/5 text-white/50 hover:text-white/65"
@@ -1025,7 +1025,7 @@ const nextStep = async () => {
                           return (
                             <div key={field} className="space-y-5 md:space-y-8">
                               <div className="space-y-2 md:space-y-3">
-                                <div className="font-mono text-[10px] tracking-[0.2em] text-primary/60 font-bold">{"// "}final_verification</div>
+                                <div className="font-mono text-xs tracking-[0.2em] text-primary/60 font-bold">{"// "}final_verification</div>
                                 <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
                                 <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                               </div>
@@ -1091,7 +1091,7 @@ const nextStep = async () => {
                     variant="ghost"
                     onClick={prevStep}
                     disabled={step === -1}
-                    className="hover:bg-white/5 text-white/65 font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-6 md:px-8"
+                    className="hover:bg-white/5 text-white/65 font-bold text-xs tracking-wide rounded-full px-6 md:px-8"
                   >
                     <ArrowLeft className="mr-2 h-4 w-4" /> {dict.pages.projectRequest.form.buttons.previous}
                   </Button>
@@ -1100,7 +1100,7 @@ const nextStep = async () => {
                       <Button
                         type="button"
                         onClick={nextStep}
-                        className="bg-primary hover:bg-blue-500 text-white font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-8 md:px-10 h-12 md:h-12 shadow-[0_0_20px_rgba(43,94,255,0.3)] transition-all duration-300"
+                        className="bg-primary hover:bg-blue-500 text-white font-bold text-xs tracking-wide rounded-full px-8 md:px-10 h-12 md:h-12 shadow-[0_0_20px_rgba(43,94,255,0.3)] transition-all duration-300"
                       >
                         {dict.pages.projectRequest.form.buttons.start} <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -1109,7 +1109,7 @@ const nextStep = async () => {
                         type="button"
                         onClick={nextStep}
                         disabled={isNextButtonDisabled}
-                        className="bg-primary hover:bg-blue-500 text-white font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-8 md:px-10 h-12 md:h-12 shadow-[0_0_20px_rgba(43,94,255,0.3)] transition-all duration-300 disabled:opacity-20 disabled:shadow-none"
+                        className="bg-primary hover:bg-blue-500 text-white font-bold text-xs tracking-wide rounded-full px-8 md:px-10 h-12 md:h-12 shadow-[0_0_20px_rgba(43,94,255,0.3)] transition-all duration-300 disabled:opacity-20 disabled:shadow-none"
                       >
                         {dict.pages.projectRequest.form.buttons.next} <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -1118,7 +1118,7 @@ const nextStep = async () => {
                         <Button
                           type="submit"
                           disabled={isSubmitButtonDisabled}
-                          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-[10px] md:text-[10px] uppercase tracking-widest rounded-full px-10 md:px-12 h-12 md:h-12 shadow-[0_0_30px_rgba(43,94,255,0.4)] transition-all duration-500 border-none relative overflow-hidden"
+                          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs tracking-wide rounded-full px-10 md:px-12 h-12 md:h-12 shadow-[0_0_30px_rgba(43,94,255,0.4)] transition-all duration-500 border-none relative overflow-hidden"
                         >
                           <div className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
                           <span className="relative flex items-center">

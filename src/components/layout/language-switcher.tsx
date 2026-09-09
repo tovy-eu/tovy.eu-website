@@ -69,7 +69,7 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
         variant="ghost"
         size="sm"
         onClick={() => setOpen(o => !o)}
-        className="h-11 px-3 rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-1.5 border-none uppercase tracking-widest text-xs"
+        className="h-11 px-3 rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-1.5 border-none tracking-wide text-xs"
         aria-expanded={open}
         aria-haspopup="true"
         aria-label={`Change language. Current language: ${current.label}`}

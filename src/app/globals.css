@@ -79,7 +79,7 @@
     transform: translate3d(0,0,0);
     will-change: stroke-dashoffset;
   }
-  
+
   @keyframes move-wavy-line {
     to {
       stroke-dashoffset: -1000;
@@ -104,7 +104,7 @@
 
   @media (pointer: coarse) {
     .animated-wavy-line {
-       animation: move-wavy-line 15s linear infinite; /* Slower and simpler on mobile */
+       animation: move-wavy-line 15s linear infinite;
     }
     /* Lower backdrop-blur intensity on mobile to save GPU */
     .backdrop-blur-xl, .backdrop-blur-2xl {

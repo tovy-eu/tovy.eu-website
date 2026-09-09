@@ -49,7 +49,6 @@ const FaqSection = ({ dict }: { dict: Dictionary }) => {
             <JsonLd type="FAQPage" data={getFaqSchema(dict)} />
             <div className="relative mx-auto max-w-4xl px-4 md:px-8 z-10 w-full">
                 <SectionHeader 
-                  index="04"
                   badge={dict.pages.home.faq.badge}
                   title={dict.pages.home.faq.title}
                   className="mb-16"
@@ -62,7 +61,7 @@ const FaqSection = ({ dict }: { dict: Dictionary }) => {
                                 {dict.pages.home.faq.categories.flatMap((category: { name: string; questions: { question: string; answer: string }[] }, catIndex: number) => 
                                     category.questions.map((item: { question: string; answer: string }, qIndex: number) => (
                                         <AccordionItem key={`${catIndex}-${qIndex}`} value={`item-${catIndex}-${qIndex}`} className="border-white/5">
-                                            <AccordionTrigger className="text-left text-[13px] md:text-base font-bold text-white/80 hover:text-white transition-colors py-4 md:py-5 tracking-tight">
+                                            <AccordionTrigger className="text-left text-sm md:text-base font-bold text-white/80 hover:text-white transition-colors py-4 md:py-5 tracking-tight">
                                                 {item.question}
                                             </AccordionTrigger>
                                             <AccordionContent>

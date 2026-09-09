@@ -131,13 +131,13 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
         <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-2 z-0">
           <Link 
             href={`${homePath}#about`} 
-            className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors px-4 py-3"
+            className="text-[11px] font-bold tracking-wide text-white/50 hover:text-white transition-colors px-4 py-3"
           >
             {aboutText}
           </Link>
-          <Link 
-            href={`${homePath}#services`} 
-            className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors px-4 py-3"
+          <Link
+            href={`${homePath}#services`}
+            className="text-[11px] font-bold tracking-wide text-white/50 hover:text-white transition-colors px-4 py-3"
           >
             {servicesText}
           </Link>
@@ -147,7 +147,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
           <Magnetic strength={0.1}>
             <Button asChild size="sm" className="h-8 px-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 border-none shadow-lg shadow-blue-500/20" onClick={() => sendGA4Event("cta_clicked", { location: "header", text: shareIdeaText })}>
               <Link href={`/${lang}/project-request/`}>
-                <span className="font-bold text-[9px] uppercase tracking-widest">{shareIdeaText}</span>
+                <span className="font-bold text-[11px] tracking-wide">{shareIdeaText}</span>
               </Link>
             </Button>
           </Magnetic>
@@ -181,14 +181,14 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
             <Link
               href={`${homePath}#about`}
               onClick={() => setMenuOpen(false)}
-              className="text-xs font-bold uppercase tracking-[0.3em] text-white/70 hover:text-white transition-colors py-3"
+              className="text-sm font-bold tracking-wide text-white/70 hover:text-white transition-colors py-3"
             >
               {aboutText}
             </Link>
             <Link
               href={`${homePath}#services`}
               onClick={() => setMenuOpen(false)}
-              className="text-xs font-bold uppercase tracking-[0.3em] text-white/70 hover:text-white transition-colors py-3"
+              className="text-sm font-bold tracking-wide text-white/70 hover:text-white transition-colors py-3"
             >
               {servicesText}
             </Link>

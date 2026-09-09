@@ -88,11 +88,11 @@ export default function PrivacyPolicyClient({ email, dict }: PrivacyPolicyClient
 
             {/* Actions */}
             <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
-              <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/20">
+              <p className="text-xs font-bold tracking-wide text-white/20">
                 {dict.pages.privacyPolicy.content.effectiveDate}
               </p>
               
-              <Button asChild variant="ghost" className="hover:bg-white/5 text-white/20 hover:text-white/55 text-[10px] font-bold uppercase tracking-widest h-12 px-8 rounded-full">
+              <Button asChild variant="ghost" className="hover:bg-white/5 text-white/20 hover:text-white/55 text-xs font-bold tracking-wide h-12 px-8 rounded-full">
                 <Link href={`/${lang}/`}><ArrowLeft className="mr-2 h-3.5 w-3.5" /> {dict.global.common.back || "Back"}</Link>
               </Button>
             </div>

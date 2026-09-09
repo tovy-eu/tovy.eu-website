@@ -120,7 +120,6 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
 
       <div className="relative mx-auto max-w-6xl px-4 md:px-8 z-10 w-full">
         <SectionHeader 
-          index="03"
           badge={dict.pages.home.engineering.section}
           title={dict.pages.home.engineering.title}
           description={dict.pages.home.engineering.subtitle}
@@ -162,7 +161,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                       >
                         {React.cloneElement(service.icon as React.ReactElement<{ className?: string }>, { className: "h-5 w-5" })}
                       </div>
-                      <h3 className="text-[10px] md:text-[11px] font-bold text-white/90 uppercase tracking-[0.3em]">
+                      <h3 className="text-xs md:text-[13px] font-bold text-white/90 tracking-wide">
                         {service.title}
                       </h3>
                     </div>
@@ -172,7 +171,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                         {service.stack.map((item: { tool: string }) => (
                           <span 
                             key={item.tool} 
-                            className="tool-tag text-[8px] md:text-[9px] font-bold tracking-[0.1em] md:tracking-[0.2em] uppercase px-2 py-0.5 md:py-1 rounded border border-white/5 bg-white/[0.03] text-white/55"
+                            className="tool-tag text-[11px] md:text-xs font-bold tracking-[0.1em] md:tracking-wide px-2 py-0.5 md:py-1 rounded border border-white/5 bg-white/[0.03] text-white/55"
                             style={{ '--service-color': `var(--brand-${index + 1})` } as React.CSSProperties}
                           >
                             {item.tool}
@@ -196,7 +195,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                                 className="h-4 w-4 flex-shrink-0 mt-0.5 opacity-40"
                                 style={{ color: service.color }}
                               />
-                              <p className="text-xs md:text-[13px] text-white/65 leading-relaxed font-medium tracking-tight">{point}</p>
+                              <p className="text-[13px] md:text-sm text-white/65 leading-relaxed font-medium tracking-tight">{point}</p>
                             </div>
                           ))}
                         </div>

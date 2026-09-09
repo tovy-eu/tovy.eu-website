@@ -54,7 +54,7 @@ export default function NotFound() {
       <WavyLines />
       <div className="relative z-10 flex flex-col items-center">
         <div className="mb-4">
-          <span className="inline-block rounded-full bg-primary/20 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-foreground">
+          <span className="inline-block rounded-full bg-primary/20 px-4 py-1 text-xs font-semibold tracking-wide text-primary-foreground">
             {t.badge}
           </span>
         </div>

@@ -31,7 +31,7 @@ export default async function Footer({ lang }: { lang: Locale }) {
               </span>
             </div>
             {/* Slogan */}
-            <div className="text-[10px] md:text-[11px] text-white/50 leading-relaxed font-medium -mt-1 mb-1 max-w-[200px] md:max-w-none">
+            <div className="text-xs md:text-[13px] text-white/50 leading-relaxed font-medium -mt-1 mb-1 max-w-[200px] md:max-w-none">
               <p>{dictionary.global.footer["slogan-line-1"]}</p>
               <p>{dictionary.global.footer["slogan-line-2"]}</p>
             </div>
@@ -39,12 +39,12 @@ export default async function Footer({ lang }: { lang: Locale }) {
 
           {/* Redesigned Pill-shaped Legal Buttons */}
           <div className="flex items-center justify-center gap-3">
-            <Button asChild variant="ghost" className="h-8 rounded-full border border-white/5 hover:border-white/10 bg-white/[0.01] hover:bg-white/5 text-white/50 hover:text-white text-[9px] uppercase tracking-widest px-4 transition-all duration-300">
+            <Button asChild variant="ghost" className="h-8 rounded-full border border-white/5 hover:border-white/10 bg-white/[0.01] hover:bg-white/5 text-white/50 hover:text-white text-[11px] tracking-wide px-4 transition-all duration-300">
               <Link href={`/${lang}/legal-notice/`}>
                 {dictionary.global.footer["legal-notice"]}
               </Link>
             </Button>
-            <Button asChild variant="ghost" className="h-8 rounded-full border border-white/5 hover:border-white/10 bg-white/[0.01] hover:bg-white/5 text-white/50 hover:text-white text-[9px] uppercase tracking-widest px-4 transition-all duration-300">
+            <Button asChild variant="ghost" className="h-8 rounded-full border border-white/5 hover:border-white/10 bg-white/[0.01] hover:bg-white/5 text-white/50 hover:text-white text-[11px] tracking-wide px-4 transition-all duration-300">
               <Link href={`/${lang}/privacy-policy/`}>
                 {dictionary.global.footer["privacy-policy"]}
               </Link>
@@ -56,7 +56,7 @@ export default async function Footer({ lang }: { lang: Locale }) {
             <Magnetic strength={0.1}>
               <Button asChild size="sm" className="h-8 md:h-9 px-5 md:px-6 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 border-none shadow-lg shadow-blue-500/10 transition-all duration-500">
                 <FooterCTA href={`/${lang}/project-request/`} text={dictionary.global.common.workWithUs}>
-                  <span className="font-bold text-[8px] md:text-[9px] uppercase tracking-widest">{dictionary.global.common.workWithUs}</span>
+                  <span className="font-bold text-[11px] md:text-xs tracking-wide">{dictionary.global.common.workWithUs}</span>
                 </FooterCTA>
               </Button>
             </Magnetic>
@@ -71,7 +71,7 @@ export default async function Footer({ lang }: { lang: Locale }) {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-10 sm:gap-6 text-center sm:text-left">
 
           {/* Copyright */}
-          <div className="flex items-center gap-4 text-white/55 text-[10px] tracking-wider font-mono">
+          <div className="flex items-center gap-4 text-white/55 text-xs tracking-wider font-mono">
             <span>&copy; {currentYear} {profile.entity_name}</span>
           </div>
 

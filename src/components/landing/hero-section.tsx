@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { WavyLines } from "./wavy-lines";
+import AeroShards from "@/components/AeroShards";
+import DotField from "@/components/DotField";
 import { ScrollIndicator } from "./scroll-indicator";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
@@ -84,7 +85,59 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         style={{ backfaceVisibility: "hidden" }}
       />
 
-      <WavyLines />
+      {/* AeroShards background — fills the hero viewport */}
+      <div className="absolute inset-0 z-0">
+        <AeroShards
+          backgroundColor="#070D1D"
+          shardColor="#2563EB"
+          accentColor="#A966FF"
+          placement="full"
+          material="satin"
+          detail="fine"
+          effect="dither"
+          flow="ribbon"
+          rippleIntensity={0.45}
+          holdToGather
+          scale={0.65}
+          spread={0.35}
+          depth={1.1}
+          speed={1.5}
+          spin={2}
+          interaction="attract"
+          density={1.15}
+          shardSize={1.2}
+          stretch={0.85}
+          turbulence={0.7}
+          glow={2}
+          edgeSoftness={2}
+          bloom={1.4}
+          grain={0.0625}
+          chromaticAberration={0.0095}
+          transitionDuration={0.2}
+          interactionRadius={0.3}
+          interactionStrength={0.08}
+          paused={false}
+          onError={console.error}
+        />
+      </div>
+
+      {/* DotField overlay — interactive dot grid */}
+      <div className="absolute inset-0 z-[1]">
+        <DotField
+          dotRadius={1.5}
+          dotSpacing={14}
+          cursorRadius={200}
+          cursorForce={0.08}
+          bulgeOnly={true}
+          bulgeStrength={30}
+          glowRadius={0}
+          sparkle={true}
+          waveAmplitude={0}
+          gradientFrom="rgba(37, 99, 235, 0.3)"
+          gradientTo="rgba(169, 102, 255, 0.3)"
+          glowColor="#070D1D"
+        />
+      </div>
 
       <div
         className={cn(
@@ -94,13 +147,13 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         style={{ backfaceVisibility: "hidden" }}
       >
         <h1
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem] 2xl:text-[6rem] leading-[1.05] md:leading-[1] tracking-[-0.03em] relative mb-4 md:mb-6 text-white"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem] 2xl:text-[6rem] leading-[1.05] md:leading-[1] tracking-[-0.03em] relative mb-4 md:mb-6 text-white font-headline font-bold"
           style={{ textShadow: "0 0 40px rgba(255, 255, 255, 0.1)" }}
         >
           {dict.pages.home.hero.title}
         </h1>
 
-        <p className="text-sm md:text-base lg:text-lg leading-relaxed text-white/70 max-w-xs md:max-w-3xl mx-auto font-medium balance px-4 mb-8 md:mb-12">
+        <p className="text-base md:text-lg lg:text-xl leading-relaxed text-white/70 max-w-xs md:max-w-3xl mx-auto font-medium balance px-4 mb-8 md:mb-12">
           {dict.pages.home.hero.subtitle}
         </p>
 

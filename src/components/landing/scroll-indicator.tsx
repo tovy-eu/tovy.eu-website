@@ -37,7 +37,7 @@ export function ScrollIndicator({ label }: ScrollIndicatorProps) {
         isVisible ? "opacity-30 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
       )}
     >
-      <span className="text-[9px] font-bold tracking-[0.4em] uppercase text-white whitespace-nowrap mb-1">
+      <span className="text-[11px] font-bold tracking-wide text-white whitespace-nowrap mb-1">
         {label}
       </span>
       <ChevronDown className="h-6 w-6 text-white animate-bounce" strokeWidth={1.5} />
