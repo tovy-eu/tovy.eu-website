@@ -1,8 +1,6 @@
 
 'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import { CloudCog, CodeXml, DatabaseZap, DraftingCompass, CheckCircle } from "lucide-react";
 import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
@@ -12,42 +10,6 @@ import { cn } from "@/lib/utils";
 import { Spotlight } from "../ui/spotlight";
 
 export function EngineeringSection({ dict }: { dict: Dictionary }) {
-  const gridRef = useRef<HTMLDivElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (window.matchMedia("(pointer: fine)").matches) {
-        setMousePos({
-          x: (e.clientX / window.innerWidth) * 100,
-          y: (e.clientY / window.innerHeight) * 100,
-        });
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (gridRef.current) {
-            const scrollY = window.scrollY;
-            gridRef.current.style.transform = `translateY(${scrollY * 0.08}px) translateZ(0)`;
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const serviceLines = [
     {
@@ -98,25 +60,7 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
   };
 
   return (
-    <section id="services" className="relative w-full min-h-screen flex flex-col justify-center bg-gradient-to-b from-background to-accent/5 py-24 overflow-hidden scroll-mt-16 md:scroll-mt-20">
-      {/* Interactive Luminous Cursor Beam */}
-      <motion.div 
-        className="absolute left-1/2 top-1/2 w-[800px] md:w-[1200px] h-[500px] md:h-[800px] bg-primary/10 blur-[100px] md:blur-[140px] rounded-full pointer-events-none z-0 transform-gpu"
-        animate={{
-          x: `calc(${mousePos.x}% - 50%)`,
-          y: `calc(${mousePos.y}% - 50%)`,
-        }}
-        initial={{ x: '-50%', y: '-50%' }}
-        transition={{ type: "spring", damping: 50, stiffness: 20, restDelta: 0.001 }}
-        style={{ backfaceVisibility: 'hidden' }}
-      />
-
-      <div 
-        ref={gridRef}
-        className="parallax-grid-bg"
-        style={{ transform: 'translateZ(0)' }}
-       
-      />
+    <section id="services" className="relative w-full min-h-screen flex flex-col justify-center bg-gradient-to-b from-background to-accent/5 py-16 md:py-24 overflow-hidden scroll-mt-16 md:scroll-mt-20">
 
       <div className="relative mx-auto max-w-6xl px-4 md:px-8 z-10 w-full">
         <SectionHeader 
@@ -147,13 +91,6 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                   <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(1rem-1px)] md:rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
                     <Spotlight color="rgba(43, 94, 255, 0.08)" size={400} />
                     
-                    <div 
-                      className="absolute top-0 right-0 text-7xl md:text-9xl font-black opacity-[0.15] md:opacity-30 select-none -translate-y-1/4 translate-x-1/4"
-                      style={{ color: service.color }}
-                    >
-                      {index + 1}
-                    </div>
-
                     <div className="flex items-center gap-3 mb-6 relative z-10">
                       <div 
                         className="transition-colors"

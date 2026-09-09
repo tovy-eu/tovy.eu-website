@@ -675,13 +675,12 @@ const nextStep = async () => {
           </Card>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-6 md:gap-12 max-w-5xl mx-auto items-stretch md:items-start px-4 md:px-6 h-[100dvh] md:h-auto py-2 md:py-2">
-          {/* Technical Progress Index */}
-          <div className="hidden md:flex flex-col gap-6 relative">
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-8 max-w-5xl mx-auto items-stretch md:items-center px-4 md:px-6 h-[100dvh] md:h-auto py-2 md:py-2">
+          {/* Step Progress Index */}
+          <div className="hidden md:flex flex-col gap-4 relative">
             {/* Vertical connector line */}
-            <div className="absolute left-3 top-10 bottom-0 w-[1px] bg-white/5 z-0" />
+            <div className="absolute left-3 top-8 bottom-2 w-[1px] bg-white/5 z-0" />
 
-            <div className="font-mono text-[11px] tracking-[0.2em] text-white/65 mb-2 pl-1">{"// "}steps</div>
             {formSteps.map((s, i) => (
               <button
                 key={i}
@@ -689,7 +688,7 @@ const nextStep = async () => {
                 onClick={() => i < step && setStep(i)}
                 disabled={i >= step}
                 className={cn(
-                  "group flex items-center gap-4 text-left transition-all duration-500 relative z-10",
+                  "group flex items-center gap-3 text-left transition-all duration-500 relative z-10",
                   step === i ? "text-primary" : i < step ? "text-white/60 hover:text-white" : "text-white/65"
                 )}
               >
@@ -703,7 +702,7 @@ const nextStep = async () => {
                 )}>
                   {i < step ? <Check className="h-3 w-3" /> : (i + 1).toString().padStart(2, '0')}
                 </span>
-                <span className="font-bold text-xs tracking-[0.1em]">
+                <span className="font-bold text-xs tracking-wide whitespace-nowrap">
                   {dict.pages.projectRequest.form.sidebarSteps?.[s.field as keyof typeof dict.pages.projectRequest.form.sidebarSteps] || s.field.replace(/([A-Z])/g, ' $1').toLowerCase()}
                 </span>
               </button>
@@ -760,7 +759,7 @@ const nextStep = async () => {
                             <FormField key={field} control={form.control} name="email" render={({ field: f }) => (
                               <FormItem className="space-y-4 md:space-y-6">
                                 <div className="space-y-2 md:space-y-3">
-                                  <div className="font-mono text-xs tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
+                                  <div className="text-xs tracking-wide text-primary/50 font-bold">{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                   <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
                                   <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
@@ -789,7 +788,7 @@ const nextStep = async () => {
                             <FormField key={field} control={form.control} name={field as keyof ProjectRequestData} render={({ field: f }) => (
                               <FormItem className="space-y-3 md:space-y-6">
                                 <div className="space-y-1.5 md:space-y-3">
-                                  <div className="font-mono text-xs tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
+                                  <div className="text-xs tracking-wide text-primary/50 font-bold">{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                   <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
                                   <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
@@ -840,7 +839,7 @@ const nextStep = async () => {
                           return (
                             <div key={field} className="space-y-4 md:space-y-6">
                               <div className="space-y-2 md:space-y-3">
-                                <div className="font-mono text-xs tracking-[0.2em] text-primary/60 font-bold">{"// "}{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
+                                <div className="text-xs tracking-wide text-primary/50 font-bold">{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                 <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
                                 <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                               </div>
@@ -922,7 +921,7 @@ const nextStep = async () => {
                           return (
                               <div key={field} className="space-y-4 md:space-y-6 w-full">
                                   <div className="space-y-2 md:space-y-3">
-                                      <div className="font-mono text-xs tracking-[0.2em] text-primary/60 font-bold">{"// "}infrastructure_audit</div>
+                                      <div className="text-xs tracking-wide text-primary/50 font-bold">{dict.pages.projectRequest.form.sidebarSteps?.dataInfrastructure || "Infrastructure"}</div>
                                       <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
                                       <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                   </div>
@@ -1025,7 +1024,7 @@ const nextStep = async () => {
                           return (
                             <div key={field} className="space-y-5 md:space-y-8">
                               <div className="space-y-2 md:space-y-3">
-                                <div className="font-mono text-xs tracking-[0.2em] text-primary/60 font-bold">{"// "}final_verification</div>
+                                <div className="text-xs tracking-wide text-primary/50 font-bold">{dict.pages.projectRequest.form.sidebarSteps?.contactDetails || "Contact"}</div>
                                 <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
                                 <p className="text-white/60 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                               </div>

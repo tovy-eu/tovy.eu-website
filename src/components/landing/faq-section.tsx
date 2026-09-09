@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
 import {
     Accordion,
     AccordionContent,
@@ -14,37 +13,8 @@ import { ScrollReveal } from '../scroll-reveal';
 import { JsonLd, getFaqSchema } from '@/components/layout/json-ld';
 
 const FaqSection = ({ dict }: { dict: Dictionary }) => {
-    const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            if (window.matchMedia("(pointer: fine)").matches) {
-                setMousePos({
-                    x: (e.clientX / window.innerWidth) * 100,
-                    y: (e.clientY / window.innerHeight) * 100,
-                });
-            }
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, []);
-
     return (
-        <section className="relative w-full flex flex-col justify-center bg-gradient-to-b from-background to-accent/5 py-24 overflow-hidden scroll-mt-16 md:scroll-mt-20">
-            {/* Interactive Luminous Cursor Beam */}
-            <motion.div 
-                className="absolute left-1/2 top-1/2 w-[800px] md:w-[1200px] h-[500px] md:h-[800px] bg-primary/10 blur-[100px] md:blur-[140px] rounded-full pointer-events-none z-0 transform-gpu"
-                animate={{
-                    x: `calc(${mousePos.x}% - 50%)`,
-                    y: `calc(${mousePos.y}% - 50%)`,
-                }}
-                initial={{ x: '-50%', y: '-50%' }}
-                transition={{ type: "spring", damping: 50, stiffness: 20, restDelta: 0.001 }}
-                style={{ backfaceVisibility: 'hidden' }}
-            />
+        <section className="relative w-full flex flex-col justify-center bg-gradient-to-b from-background to-accent/5 py-16 md:py-20 overflow-hidden scroll-mt-16 md:scroll-mt-20">
 
             <JsonLd type="FAQPage" data={getFaqSchema(dict)} />
             <div className="relative mx-auto max-w-4xl px-4 md:px-8 z-10 w-full">

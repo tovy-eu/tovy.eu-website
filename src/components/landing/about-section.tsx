@@ -1,34 +1,15 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
 import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { SectionHeader } from "./section-header";
 import Image from "next/image";
 import { Briefcase, DraftingCompass, Link, MapPin, User, Zap, Rocket, ShieldCheck } from "lucide-react";
-import React from 'react';
 import { Spotlight } from "../ui/spotlight";
 
 export function AboutSection({ dict }: { dict: Dictionary }) {
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (window.matchMedia("(pointer: fine)").matches) {
-        setMousePos({
-          x: (e.clientX / window.innerWidth) * 100,
-          y: (e.clientY / window.innerHeight) * 100,
-        });
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
 
   const pillars = [
     { 
@@ -68,19 +49,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
   ];
 
   return (
-    <section id="about" className="relative w-full bg-background py-24 sm:py-32 scroll-mt-16 md:scroll-mt-20 overflow-hidden">
-      {/* Interactive Luminous Cursor Beam */}
-      <motion.div 
-        className="absolute left-1/2 top-1/2 w-[800px] md:w-[1200px] h-[500px] md:h-[800px] bg-primary/10 blur-[100px] md:blur-[140px] rounded-full pointer-events-none z-0 transform-gpu"
-        animate={{
-          x: `calc(${mousePos.x}% - 50%)`,
-          y: `calc(${mousePos.y}% - 50%)`,
-        }}
-        initial={{ x: '-50%', y: '-50%' }}
-        transition={{ type: "spring", damping: 50, stiffness: 20, restDelta: 0.001 }}
-        style={{ backfaceVisibility: 'hidden' }}
-      />
-
+    <section id="about" className="relative w-full bg-background py-20 sm:py-28 scroll-mt-16 md:scroll-mt-20 overflow-hidden">
       <div className="relative mx-auto max-w-6xl px-4 md:px-8 z-10 w-full">
         <SectionHeader 
           badge={dict.pages.home.about.section}
