@@ -56,7 +56,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         className="absolute inset-0 z-0 opacity-40 md:opacity-50 pointer-events-none transform-gpu bg-[length:200%_200%] animate-[gradient-flow_20s_ease_infinite] motion-reduce:animate-none"
         style={{
           backgroundImage:
-            "linear-gradient(120deg, rgba(43,94,255,0.18), rgba(120,119,198,0.12), rgba(99,102,241,0.18))",
+            "linear-gradient(120deg, rgba(89,102,255,0.18), rgba(120,119,198,0.12), rgba(169,102,255,0.18))",
         }}
       />
 
@@ -89,7 +89,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
       <div className="absolute inset-0 z-0">
         <AeroShards
           backgroundColor="#070D1D"
-          shardColor="#2563EB"
+          shardColor="#5966FF"
           accentColor="#A966FF"
           placement="full"
           material="satin"
@@ -133,7 +133,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           glowRadius={0}
           sparkle={true}
           waveAmplitude={0}
-          gradientFrom="rgba(37, 99, 235, 0.3)"
+          gradientFrom="rgba(89, 102, 255, 0.3)"
           gradientTo="rgba(169, 102, 255, 0.3)"
           glowColor="#070D1D"
         />
@@ -167,7 +167,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
             <Button
               asChild
               size="lg"
-              className="group/cta w-[85%] sm:w-auto font-bold text-sm md:text-base h-12 md:h-14 px-8 md:px-12 rounded-full shadow-[0_0_40px_rgba(43,94,255,0.3)] bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 border-none relative overflow-hidden transform-gpu"
+              className="group/cta w-[85%] sm:w-auto font-bold text-sm md:text-base h-12 md:h-14 px-8 md:px-12 rounded-full shadow-[0_0_40px_rgba(89,102,255,0.3)] bg-gradient-to-r from-[#5966ff] to-[#a966ff] hover:from-[#6b77ff] hover:to-[#b57aff] hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 border-none relative overflow-hidden transform-gpu"
             >
               <Link href={`/${lang}/project-request/`}>
                 <div className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-shimmer pointer-events-none" />

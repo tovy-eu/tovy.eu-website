@@ -40,7 +40,7 @@ export async function generateMetadata({
       siteName: "Tovy",
       images: [
         {
-          url: "https://tovy.eu/images/tovy-og-image.webp",
+          url: "https://tovy.eu/images/tovy-og-image.png",
           width: 1200,
           height: 630,
           alt: dict.global.metadata.ogAlt,
@@ -50,7 +50,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: dict.global.metadata.twitterTitle || dict.global.metadata.defaultTitle,
-      images: ["https://tovy.eu/images/tovy-og-image.webp"],
+      images: ["https://tovy.eu/images/tovy-og-image.png"],
     },
     other: {
       'revisit-after': '14 days',

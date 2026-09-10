@@ -11,6 +11,7 @@ import { CONFIG } from "@/lib/config";
 import { Magnetic } from "@/components/ui/magnetic";
 import { sendGA4Event } from "@/lib/tracking";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Header({ lang = "en", dict }: { lang?: string; dict?: Dictionary }) {
   const [scrolled, setScrolled] = useState(false);
@@ -118,13 +119,12 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
       <div 
         className="container mx-auto relative flex w-full items-center justify-between h-11 md:h-14 px-4 sm:px-6 max-w-7xl z-10"
       >
-        <Link 
-          href={homePath} 
+        <Link
+          href={homePath}
           onClick={handleLogoClick}
-          className="font-bold text-xl md:text-2xl tracking-tight transition-transform hover:scale-105 active:scale-95 shrink-0 py-2 relative z-10"
+          className="transition-transform hover:scale-105 active:scale-95 shrink-0 py-2 relative z-10"
         >
-          <span>TOV</span>
-          <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-transparent">Y</span>
+          <Image src="/images/tovy-wordmark.svg" alt="Tovy" width={100} height={29} priority className="h-6 md:h-7 w-auto" />
         </Link>
         
         {/* Desktop Navigation - Hidden on Mobile */}
@@ -145,7 +145,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
 
         <div className="flex items-center gap-2 md:gap-4 relative z-10">
           <Magnetic strength={0.1}>
-            <Button asChild size="sm" className="h-8 px-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 border-none shadow-lg shadow-blue-500/20" onClick={() => sendGA4Event("cta_clicked", { location: "header", text: shareIdeaText })}>
+            <Button asChild size="sm" className="h-8 px-4 rounded-full bg-gradient-to-r from-[#5966ff] to-[#a966ff] hover:from-[#6b77ff] hover:to-[#b57aff] border-none shadow-lg shadow-[#5966ff]/20" onClick={() => sendGA4Event("cta_clicked", { location: "header", text: shareIdeaText })}>
               <Link href={`/${lang}/project-request/`}>
                 <span className="font-bold text-[11px] tracking-wide">{shareIdeaText}</span>
               </Link>

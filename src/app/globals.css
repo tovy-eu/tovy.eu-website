@@ -10,15 +10,15 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 47.4% 11.2%;
     --popover-foreground: 210 40% 98%;
-    --primary: 226 100% 58%;
+    --primary: 235 100% 67%;
     --primary-foreground: 210 40% 98%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215.4 16.3% 85%; /* Further increased for maximum readability on dark BG */
+    --muted-foreground: 215.4 16.3% 85%;
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-    --accent-gradient-stop: 304 20% 48%;
+    --accent-gradient-stop: 266 100% 70%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
@@ -27,8 +27,8 @@
     --radius: 0.5rem;
 
     /* Brand Pillar Colors */
-    --brand-1: 226 100% 58%;
-    --brand-2: 230 100% 67%;
+    --brand-1: 235 100% 67%;
+    --brand-2: 266 100% 70%;
     --brand-3: 253 100% 79%;
     --brand-4: 305 100% 86%;
   }

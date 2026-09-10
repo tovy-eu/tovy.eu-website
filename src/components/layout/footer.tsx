@@ -3,6 +3,7 @@ import companyProfile from "@/content/company-profile.json";
 import { i18n } from "@/lib/config";
 import { getDictionary } from "@/lib/get-dictionary";
 import { Github, Linkedin } from "lucide-react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/ui/magnetic";
@@ -24,12 +25,7 @@ export default async function Footer({ lang }: { lang: Locale }) {
           
           {/* Brand & Technical Status */}
           <div className="flex flex-col items-center md:items-start gap-2.5">
-            <div className="flex select-none items-center">
-              <span className="text-xl md:text-2xl font-bold tracking-tighter text-white">TOV</span>
-              <span className="bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] bg-clip-text text-xl md:text-2xl font-bold tracking-tighter text-transparent">
-                Y
-              </span>
-            </div>
+            <Image src="/images/tovy-wordmark.svg" alt="Tovy" width={100} height={29} className="h-6 md:h-7 w-auto" />
             {/* Slogan */}
             <div className="text-xs md:text-[13px] text-white/50 leading-relaxed font-medium -mt-1 mb-1 max-w-[200px] md:max-w-none">
               <p>{dictionary.global.footer["slogan-line-1"]}</p>
@@ -54,7 +50,7 @@ export default async function Footer({ lang }: { lang: Locale }) {
           {/* Right Column: CTA */}
           <div className="flex flex-col items-center md:items-end justify-center">
             <Magnetic strength={0.1}>
-              <Button asChild size="sm" className="h-8 md:h-9 px-5 md:px-6 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 border-none shadow-lg shadow-blue-500/10 transition-all duration-500">
+              <Button asChild size="sm" className="h-8 md:h-9 px-5 md:px-6 rounded-full bg-gradient-to-r from-[#5966ff] to-[#a966ff] hover:from-[#6b77ff] hover:to-[#b57aff] border-none shadow-lg shadow-[#5966ff]/10 transition-all duration-500">
                 <FooterCTA href={`/${lang}/project-request/`} text={dictionary.global.common.workWithUs}>
                   <span className="font-bold text-[11px] md:text-xs tracking-wide">{dictionary.global.common.workWithUs}</span>
                 </FooterCTA>

@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         siteName: 'Tovy',
         images: [
           {
-            url: `https://tovy.eu/images/tovy-og-image.webp`,
+            url: `https://tovy.eu/images/tovy-og-image.png`,
             width: 1200,
             height: 630,
             alt: description,

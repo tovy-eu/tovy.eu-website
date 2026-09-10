@@ -21,6 +21,9 @@ if ! command -v firebase &> /dev/null; then
     exit 1
 fi
 
+# Sync brand assets if running locally (skipped in CI where Google Drive isn't mounted)
+./scripts/sync-brand-assets.sh 2>/dev/null && echo -e "${GREEN}✓ Brand assets synced${NC}" || true
+
 echo -e "${YELLOW}📦 Building website...${NC}"
 if ! npm run build > /tmp/build.log 2>&1; then
     echo -e "${YELLOW}❌ Build failed${NC}"

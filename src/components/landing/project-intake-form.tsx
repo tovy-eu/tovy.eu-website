@@ -1117,7 +1117,7 @@ const nextStep = async () => {
                         <Button
                           type="submit"
                           disabled={isSubmitButtonDisabled}
-                          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs tracking-wide rounded-full px-10 md:px-12 h-12 md:h-12 shadow-[0_0_30px_rgba(43,94,255,0.4)] transition-all duration-500 border-none relative overflow-hidden"
+                          className="bg-gradient-to-r from-[#5966ff] to-[#a966ff] hover:from-[#6b77ff] hover:to-[#b57aff] text-white font-bold text-xs tracking-wide rounded-full px-10 md:px-12 h-12 md:h-12 shadow-[0_0_30px_rgba(89,102,255,0.4)] transition-all duration-500 border-none relative overflow-hidden"
                         >
                           <div className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
                           <span className="relative flex items-center">
