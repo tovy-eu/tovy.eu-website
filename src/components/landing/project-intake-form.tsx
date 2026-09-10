@@ -136,7 +136,7 @@ const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: stri
       
       <!-- Logo Header using production absolute URL -->
       <div style="margin-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 24px;">
-        <img src="https://tovy.eu/images/tovy-logo-email.png" alt="TOVY" height="32" style="border: 0; display: block;" />
+        <img src="https://tovy.eu/images/tovy-logo-email.png" alt="TOVY" height="28" style="border: 0; display: block;" />
       </div>
 
       <!-- Personal Intro -->

@@ -15,5 +15,6 @@ cp "$BRAND/web/apple-touch-icon.png" public/apple-touch-icon.png
 cp "$BRAND/web/icon-512.png"       public/icon-512.png
 cp "$BRAND/social/og-1200x630.png" public/images/tovy-og-image.png
 cp "$BRAND/svg/wordmark-on-ink.svg" public/images/tovy-wordmark.svg
+cp "$BRAND/png/wordmark-transparent-white-256.png" public/images/tovy-logo-email.png
 
 echo "Brand assets synced."
