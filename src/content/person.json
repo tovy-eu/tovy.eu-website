@@ -6,7 +6,8 @@
     "image": "https://tovy.eu/images/people/ceo.webp",
     "url": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
     "sameAs": [
-      "https://www.linkedin.com/in/giel-nijkamp-ab370447/"
+      "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
+      "https://github.com/GielNijkamp"
     ],
     "worksFor": {
       "@type": "Organization",

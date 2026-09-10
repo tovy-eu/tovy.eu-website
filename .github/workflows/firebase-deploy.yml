@@ -56,6 +56,9 @@ jobs:
       - name: Typecheck Project
         run: npm run typecheck
 
+      - name: Run Tests (external link validation + unit tests)
+        run: npm test
+
       - name: Build Project Static Export
         env:
           NEXT_PUBLIC_GA_MEASUREMENT_ID: "G-ESH71F3XK7"
