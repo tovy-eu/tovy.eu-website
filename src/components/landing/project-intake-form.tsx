@@ -10,8 +10,6 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, doc, setDoc, getDoc } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
@@ -32,230 +30,6 @@ interface ProjectIntakeFormProps {
   dict: Dictionary;
 }
 
-const getEmailTranslations = (dict: Dictionary, emailType: 'welcome' | 'abandonment'): Record<string, unknown> => {
-  try {
-    // Each dictionary file (en.json, nl.json, etc) is already language-specific
-    const dictObj = dict as Record<string, unknown>;
-    const pagesObj = dictObj.pages as Record<string, unknown>;
-    const prObj = pagesObj?.projectRequest as Record<string, unknown>;
-    const formObj = prObj?.form as Record<string, unknown>;
-    const emailsObj = formObj?.emails as Record<string, Record<string, unknown>> | undefined;
-
-    console.log('[Email] Loading emails for type:', emailType);
-
-    if (!emailsObj || typeof emailsObj !== 'object') {
-      console.error('[Email] No emails object found. Using fallback.');
-      return getDefaultEmailTranslations(emailType);
-    }
-
-    const translations = emailsObj[emailType];
-
-    if (!translations || typeof translations !== 'object') {
-      console.error(`[Email] No translations found for ${emailType}. Using fallback.`);
-      return getDefaultEmailTranslations(emailType);
-    }
-
-    console.log(`[Email] Successfully loaded ${emailType} translations`);
-    return translations;
-  } catch (error) {
-    console.error('[Email] Error loading translations:', error);
-    return getDefaultEmailTranslations(emailType);
-  }
-};
-
-const getDefaultEmailTranslations = (emailType: 'welcome' | 'abandonment'): Record<string, unknown> => {
-  if (emailType === 'welcome') {
-    return {
-      subject: 'Welcome to Tovy - Project Request Received',
-      copyright: '© {year} Tovy. All rights reserved.'
-    };
-  }
-  return {
-    subject: 'Secure your automated foundation with Tovy',
-    copyright: '© {year} Tovy. All rights reserved.'
-  };
-};
-
-const getWelcomeEmailHtml = (data: ProjectRequestData, docId: string, lang: string, dict: Dictionary): string => {
-  const l = (lang === 'nl' || lang === 'de' || lang === 'es') ? lang : 'en';
-  const t = getEmailTranslations(dict, 'welcome');
-  
-  const formattedName = `${data.firstName} ${data.lastName}`;
-  const formattedOrg = `${data.company} (${data.companySize || 'N/A'})`;
-  const formattedPhone = data.phone || t.phoneNotProvided;
-  const isDataTeam = data.hasDataTeam === 'yes' ? t.hasDataTeamYes : t.hasDataTeamNo;
-  const centralDb = data.hasCentralDatabase === 'yes' ? t.centralDbConfigured : t.centralDbNone;
-  const cloudPlatform = data.hasCloudPlatform === 'yes' ? t.cloudPlatformConfigured : t.cloudPlatformNone;
-  const activeTools = data.solutionsInUse && data.solutionsInUse.length > 0 ? data.solutionsInUse.join(', ') : t.noneSpecified;
-  const bottlenecks = data.problemDescription || t.noneDeclared;
-  const idealState = data.idealState || t.noneDeclared;
-  const currentYear = new Date().getFullYear();
-
-  return `<!DOCTYPE html>
-<html lang="${l}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="dark only">
-  <meta name="supported-color-schemes" content="dark only">
-  <title>${t.title}</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100% !important;
-      background-color: #030712;
-      color: #f8fafc;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #030712 !important;
-        color: #f8fafc !important;
-      }
-    }
-  </style>
-  <!-- Gmail Inbox Go-To Action Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "EmailMessage",
-    "potentialAction": {
-      "@type": "ViewAction",
-      "name": "${t.btnText}",
-      "target": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GvYWPuGvxv0-8qtgsYeJKkgMUjmUqu-2D2FZrKqU6z75hXbUv6_FjFmbPdPBHcyew-fiAUXQ2?gv=true"
-    },
-    "description": "${t.subTitle}"
-  }
-  </script>
-</head>
-<body style="margin: 0; padding: 0; background-color: #030712; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-  <div style="background-color: #030712; background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.25), rgba(3, 7, 18, 0)); padding: 60px 20px; text-align: center;">
-    <div style="max-width: 600px; margin: 0 auto; background-color: rgba(3, 7, 18, 0.85); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 32px; padding: 48px 40px; text-align: left; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
-      
-      <!-- Logo Header using production absolute URL -->
-      <div style="margin-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 24px;">
-        <img src="https://tovy.eu/images/tovy-logo-email.png" alt="TOVY" height="28" style="border: 0; display: block;" />
-      </div>
-
-      <!-- Personal Intro -->
-      <p style="font-size: 16px; line-height: 1.6; color: #cbd5e1; margin-bottom: 20px;">
-        ${l === 'nl' ? 'Beste' : l === 'es' ? 'Hola' : 'Hi'} ${data.firstName},
-      </p>
-
-      <p style="font-size: 18px; line-height: 1.6; color: #ffffff; font-weight: 700; margin-bottom: 24px; text-shadow: 0 0 20px rgba(41, 91, 255, 0.35);">
-        ${t.subTitle}
-      </p>
-      
-      <p style="font-size: 15px; line-height: 1.6; color: #94a3b8; margin-bottom: 28px;">
-        ${t.bodyText}
-      </p>
-      
-      <!-- Summary Card Component -->
-      <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 24px; margin-bottom: 32px; box-shadow: 0 0 20px rgba(41, 91, 255, 0.05);">
-        <h4 style="margin: 0 0 16px 0; font-size: 12px; font-weight: bold; color: #5773ff; letter-spacing: 0.02em;">${t.specsTitle}</h4>
-        
-        <!-- Section 1: Lead Profile -->
-        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.profileTitle}</h5>
-        <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 12px;">
-          <tr>
-            <td style="padding: 6px 0; color: #64748b; font-weight: 500; width: 40%;">${t.nameLabel}</td>
-            <td style="padding: 6px 0; color: #f8fafc; font-weight: 600;">${formattedName}</td>
-          </tr>
-          <tr>
-            <td style="padding: 6px 0; color: #64748b; font-weight: 500;">${t.orgLabel}</td>
-            <td style="padding: 6px 0; color: #f8fafc; font-weight: 600;">${formattedOrg}</td>
-          </tr>
-          <tr>
-            <td style="padding: 6px 0; color: #64748b; font-weight: 500;">${t.emailLabel}</td>
-            <td style="padding: 6px 0; color: #f8fafc; font-weight: 600;">${data.email}</td>
-          </tr>
-          <tr>
-            <td style="padding: 6px 0; color: #64748b; font-weight: 500;">${t.phoneLabel}</td>
-            <td style="padding: 6px 0; color: #f8fafc; font-weight: 600;">${formattedPhone}</td>
-          </tr>
-        </table>
-
-        <!-- Section 2: Project Scope -->
-        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.scopeTitle}</h5>
-        <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 12px;">
-          <tr>
-            <td style="padding: 6px 0; color: #64748b; font-weight: 500; width: 40%;">${t.budgetLabel}</td>
-            <td style="padding: 6px 0; color: #f8fafc; font-weight: 600;">${data.budget}</td>
-          </tr>
-          <tr>
-            <td style="padding: 6px 0; color: #64748b; font-weight: 500;">${t.timelineLabel}</td>
-            <td style="padding: 6px 0; color: #f8fafc; font-weight: 600;">${data.timeline}</td>
-          </tr>
-        </table>
-
-        <!-- Section 3: Data Infrastructure -->
-        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.infraTitle}</h5>
-        <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 12px;">
-          <tr>
-            <td style="padding: 6px 0; color: #64748b; font-weight: 500; width: 40%;">${t.dataTeamLabel}</td>
-            <td style="padding: 6px 0; color: #f8fafc; font-weight: 600;">${isDataTeam}</td>
-          </tr>
-          <tr>
-            <td style="padding: 6px 0; color: #64748b; font-weight: 500;">${t.centralDbLabel}</td>
-            <td style="padding: 6px 0; color: #f8fafc; font-weight: 600;">${centralDb}</td>
-          </tr>
-          <tr>
-            <td style="padding: 6px 0; color: #64748b; font-weight: 500;">${t.cloudPlatformLabel}</td>
-            <td style="padding: 6px 0; color: #f8fafc; font-weight: 600;">${cloudPlatform}</td>
-          </tr>
-          <tr>
-            <td style="padding: 6px 0; color: #64748b; font-weight: 500;">${t.activeToolsLabel}</td>
-            <td style="padding: 6px 0; color: #cbd5e1; font-weight: 500; font-style: italic;">
-              ${activeTools}
-            </td>
-          </tr>
-        </table>
-
-        <!-- Section 4: Project Context -->
-        <h5 style="margin: 16px 0 8px 0; font-size: 11px; font-weight: bold; color: #cbd5e1; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 4px;">${t.challengesTitle}</h5>
-        <div style="font-size: 13px; color: #cbd5e1; line-height: 1.5; padding: 4px 0;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #64748b; font-weight: 500;">${t.bottlenecksLabel}</strong><br><span style="color: #f8fafc;">${bottlenecks}</span></p>
-          <p style="margin: 0;"><strong style="color: #64748b; font-weight: 500;">${t.idealStateLabel}</strong><br><span style="color: #f8fafc;">${idealState}</span></p>
-        </div>
-      </div>
-
-      <p style="font-size: 15px; line-height: 1.6; color: #cbd5e1; margin-bottom: 28px;">
-        ${t.schedulerText}
-      </p>
-      
-      <!-- Hero CTA Button with glowing style matching Tovy branding -->
-      <div style="text-align: center; margin: 36px 0 32px 0;">
-        <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GvYWPuGvxv0-8qtgsYeJKkgMUjmUqu-2D2FZrKqU6z75hXbUv6_FjFmbPdPBHcyew-fiAUXQ2?gv=true" 
-           style="background: linear-gradient(90deg, #295bff, #936290); color: #ffffff; text-decoration: none; padding: 16px 36px; font-weight: 700; font-size: 14px; border-radius: 50px; display: inline-block; box-shadow: 0 0 30px rgba(41, 91, 255, 0.45); letter-spacing: 0.02em; border: 1px solid rgba(255, 255, 255, 0.1);">
-          ${t.btnText}
-        </a>
-      </div>
-
-      <!-- Sign-off Block -->
-      <div style="margin-bottom: 40px; font-size: 15px; line-height: 1.6; color: #cbd5e1;">
-        <p style="margin-bottom: 5px;">${t.bestRegards}</p>
-        <p style="margin: 0; font-weight: 700; color: #ffffff;">Giel Nijkamp</p>
-        <p style="margin: 0; font-size: 13px; color: #64748b;">${t.founderTitle}</p>
-      </div>
-
-      <!-- Footer with a thread-buster and unique reference to prevent Gmail collapsing threads -->
-      <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 24px; text-align: center;">
-        <p style="font-size: 11px; color: #64748b; margin: 0 0 8px 0;">${String(t.copyright).replace('{year}', String(currentYear))}</p>
-        <p style="font-size: 9px; color: #334155; margin: 0; font-family: monospace;">Ref: ${docId}</p>
-      </div>
-
-    </div>
-  </div>
-</body>
-</html>`;
-}
-
-interface ProjectIntakeFormProps {
-  dict: Dictionary;
-}
-
 // v2: step indices changed when the email step moved to the end of the form
 const STORAGE_KEY = "tovy_project_form_progress_v2";
 
@@ -270,7 +44,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
-  const [formDocId, setFormDocId] = useState<string | null>(null);
 
     // Qualification questions come first; email and contact details close the
     // form so the lowest-friction questions carry the highest-trust moment.
@@ -353,64 +126,26 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const isSubmitButtonDisabled = isPending || !allValues.firstName || !allValues.lastName || !allValues.company || !allValues.consent;
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const urlDocId = params.get('id') || params.get('docId');
-    if (urlDocId) {
-      const loadProgressFromFirestore = async () => {
-        try {
-          const docRef = doc(db, "project_requests", urlDocId);
-          const docSnap = await getDoc(docRef);
-          if (docSnap.exists()) {
-            const docData = docSnap.data();
-            if (docData.status === "incomplete" || docData.status === "abandoned") {
-              const timeoutId = setTimeout(() => {
-                form.reset(docData as ProjectRequestData);
-                setFormDocId(urlDocId);
-                if (typeof docData.step === 'number') {
-                  setStep(docData.step);
-                }
-                localStorage.setItem(STORAGE_KEY, JSON.stringify({
-                  step: docData.step ?? 0,
-                  data: docData,
-                  docId: urlDocId
-                }));
-              }, 0);
-              return () => clearTimeout(timeoutId);
-            }
-          }
-        } catch (error) {
-          console.error("Failed to load progress from Firestore", error);
-        }
-      };
-      loadProgressFromFirestore();
-    } else {
-      const savedProgress = localStorage.getItem(STORAGE_KEY);
-      if (savedProgress) {
-        try {
-          const { step: savedStep, data: savedData, docId: savedDocId } = JSON.parse(savedProgress);
-
-          // Defer state updates to avoid synchronous state update warning during hydration
-          const timeoutId = setTimeout(() => {
-            setStep(savedStep);
-            form.reset(savedData);
-            if (savedDocId) {
-              setFormDocId(savedDocId);
-            }
-          }, 0);
-
-          return () => clearTimeout(timeoutId);
-        } catch (e) {
-          console.error("Failed to load form progress", e);
-        }
+    const savedProgress = localStorage.getItem(STORAGE_KEY);
+    if (savedProgress) {
+      try {
+        const { step: savedStep, data: savedData } = JSON.parse(savedProgress);
+        const timeoutId = setTimeout(() => {
+          setStep(savedStep);
+          form.reset(savedData);
+        }, 0);
+        return () => clearTimeout(timeoutId);
+      } catch (e) {
+        console.error("Failed to load form progress", e);
       }
     }
   }, [form]);
 
   useEffect(() => {
     if (!formSubmitted) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ step, data: allValues, docId: formDocId }));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ step, data: allValues }));
     }
-  }, [step, allValues, formSubmitted, formDocId]);
+  }, [step, allValues, formSubmitted]);
 
   // Track when form is first opened
   useEffect(() => {
@@ -460,36 +195,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     return { score, path: 'B' };
   };
 
-  const saveProgress = async () => {
-    const data = form.getValues();
-    if (data.email) {
-      try {
-        let docRef;
-        const payload = {
-          ...data,
-          to: data.email,
-          userEmail: data.email,
-          step: step + 1,
-          lang,
-        };
-        if (formDocId) {
-          docRef = doc(db, "project_requests", formDocId);
-          await setDoc(docRef, { ...payload, status: "incomplete", last_updated: new Date() }, { merge: true });
-        } else {
-          const doc = await addDoc(collection(db, "project_requests"), {
-            ...payload,
-            timestamp: new Date(),
-            last_updated: new Date(),
-            status: "incomplete",
-          });
-          setFormDocId(doc.id);
-        }
-      } catch (error) {
-        console.error("Failed to save form progress", error);
-      }
-    }
-  };
-
   const onSubmit = (data: ProjectRequestData) => {
     startTransition(async () => {
       try {
@@ -498,23 +203,13 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
         const traceId = getTraceId();
         const attribution = getAttribution();
 
-        let docId = formDocId;
-        if (!docId) {
-          const docRef = doc(collection(db, "project_requests"));
-          docId = docRef.id;
-          setFormDocId(docId);
-        }
-
-        const l = (lang === 'nl' || lang === 'de' || lang === 'es') ? lang : 'en';
-
-        const baseData = {
+        const payload = {
+          type: "project_intake",
           ...data,
-          timestamp: new Date(),
           lead_score: score,
           routing_path: path,
           visitor_id: visitorId,
           trace_id: traceId,
-          // First-touch traffic source so leads can be tied back to the channel/post
           utm_source: attribution.utm_source || null,
           utm_medium: attribution.utm_medium || null,
           utm_campaign: attribution.utm_campaign || null,
@@ -522,26 +217,24 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           utm_content: attribution.utm_content || null,
           referrer: attribution.referrer || null,
           landing_page: attribution.landing_page || null,
-          to: data.email,
-          userEmail: data.email,
           lang,
-          message: {
-            subject: String(getEmailTranslations(dict, 'welcome').subject || ''),
-            html: getWelcomeEmailHtml(data, docId, l, dict),
-          },
-          delivery: {
-            state: "PENDING"
-          }
         };
 
-        // Complete the intake request document in a single transaction
-        await setDoc(doc(db, "project_requests", docId), { ...baseData, status: "complete" }, { merge: true });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_TOVY_OS_URL}/webhook/website`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Webhook-Secret": process.env.NEXT_PUBLIC_TOVY_OS_WEBHOOK_SECRET ?? "",
+            },
+            body: JSON.stringify(payload),
+          }
+        );
+        if (!res.ok) throw new Error(`Submission error: ${res.status}`);
 
-        // Upgrade the anonymous User-ID to an email-hash before the conversion fires,
-        // so the lead stitches across sessions/devices. Non-blocking on failure.
         await setUserIdFromEmail(data.email).catch(() => {});
 
-        // Track form submission in GA4, enriched with lead quality + traffic source
         trackFormSubmission('Project Request', data, {
           lead_score: score,
           routing_path: path,
@@ -550,8 +243,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           utm_campaign: attribution.utm_campaign,
         });
 
-        // GA4 recommended lead-conversion event. Mark `generate_lead` as a key event
-        // in GA (Admin > Events). This is the intake-form conversion signal.
         // ponytail: add value + currency:"EUR" here only if you wire lead value into Google Ads bidding.
         sendGA4Event('generate_lead', {
           form_name: 'Project Request',
@@ -571,7 +262,6 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           description: errorMessage || "There was an error submitting your request.",
           variant: "destructive",
         });
-        // Track form error in GA4
         trackFormError('Project Request', errorMessage || "Unknown error");
       }
     });
@@ -603,7 +293,6 @@ const nextStep = async () => {
     const isValid = await form.trigger(fieldsToValidate as (keyof ProjectRequestData)[]);
 
     if (isValid) {
-        await saveProgress();
         if (step < totalSteps - 1) {
             setStep(s => {
                 const newStep = s + 1;
