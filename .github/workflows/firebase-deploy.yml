@@ -151,7 +151,7 @@ jobs:
           workload_identity_provider: 'projects/553043672473/locations/global/workloadIdentityPools/github-actions/providers/github-provider'
           service_account: 'firebase-adminsdk-fbsvc@studio-5767764867-ecdbc.iam.gserviceaccount.com'
 
-      - name: Deploy to Firebase Hosting + Firestore Rules (Production)
-        run: npx --package=firebase-tools firebase deploy --only hosting,firestore:rules --project studio-5767764867-ecdbc --non-interactive
+      - name: Deploy to Firebase Hosting (Production)
+        run: npx --package=firebase-tools firebase deploy --only hosting --project studio-5767764867-ecdbc --non-interactive
         env:
           FIREBASE_TOKEN: ${{ steps.auth.outputs.access_token }}
