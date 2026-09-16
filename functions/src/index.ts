@@ -1,5 +1,4 @@
 import { onSchedule } from "firebase-functions/v2/scheduler";
-import { onDocumentCreated } from "firebase-functions/v2/firestore";
 import { onRequest } from "firebase-functions/v2/https";
 import { setGlobalOptions } from "firebase-functions/v2";
 import { logger } from "firebase-functions";
@@ -140,43 +139,3 @@ export const submitIntake = onRequest(
   }
 );
 
-export const notifyOnRecordCreated = onDocumentCreated("project_requests/{docId}", async (event) => {
-  const data = event.data?.data();
-  const docId = event.params.docId;
-
-  logger.info(`notifyOnRecordCreated triggered for docId: ${docId}`, { data });
-
-  const name = data?.firstName || "Unknown";
-  const email = data?.email || data?.to || "no-email";
-
-  let title = "New Project Request";
-  let body = `New form submission from ${name} (${email})\nDoc ID: ${docId}`;
-  let tags = "project-request";
-
-  if (data?.is_abandonment_mail) {
-    title = "Abandonment Email Queued";
-    body = `Abandonment email reminder queued for ${email}\nDoc ID: ${docId}`;
-    tags = "email,abandonment";
-  } else if (data?.delivery?.state === "PENDING" || data?.message) {
-    title = "Email Notification Queued";
-    body = `Email dispatch queued for ${email}\nDoc ID: ${docId}`;
-    tags = "email,queued";
-  }
-
-  try {
-    logger.info(`Sending ntfy notification for ${title}...`);
-    await fetch("https://ntfy.sh/tovy-emails", {
-      method: "POST",
-      headers: {
-        "Title": title,
-        "Priority": "5",
-        "Tags": tags,
-        "Click": `https://tovy.eu/requests/${docId}`
-      },
-      body: body
-    });
-    logger.info("Notification sent successfully");
-  } catch (err) {
-    logger.error(`Failed to send notification: ${err}`);
-  }
-});
