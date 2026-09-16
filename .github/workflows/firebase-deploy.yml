@@ -155,6 +155,11 @@ jobs:
       - name: Install Functions Dependencies
         run: cd functions && npm ci --omit=dev
 
+      - name: Write Functions Env
+        run: |
+          echo "TOVY_OS_URL=${{ secrets.TOVY_OS_URL }}" >> functions/.env
+          echo "TOVY_OS_WEBHOOK_SECRET=${{ secrets.TOVY_OS_WEBHOOK_SECRET }}" >> functions/.env
+
       - name: Deploy to Firebase Hosting + Functions (Production)
         run: npx --package=firebase-tools firebase deploy --only hosting,functions --project studio-5767764867-ecdbc --non-interactive
         env:

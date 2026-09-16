@@ -2,13 +2,9 @@ import { onSchedule } from "firebase-functions/v2/scheduler";
 import { onDocumentCreated } from "firebase-functions/v2/firestore";
 import { onRequest } from "firebase-functions/v2/https";
 import { setGlobalOptions } from "firebase-functions/v2";
-import { defineSecret } from "firebase-functions/params";
 import { logger } from "firebase-functions";
 import { initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
-
-const tovyOsWebhookSecret = defineSecret("TOVY_OS_WEBHOOK_SECRET");
-const tovyOsUrl = defineSecret("TOVY_OS_URL");
 
 setGlobalOptions({ region: "europe-west4" });
 import { getAbandonmentEmailHtml, abandonmentEmailTranslations } from "./templates/abandonment-email";
@@ -115,15 +111,15 @@ export const checkAbandonmentEmails = onSchedule("every 15 minutes", async (_eve
  * Adds the webhook secret server-side so it's never exposed to the browser.
  */
 export const submitIntake = onRequest(
-  { secrets: [tovyOsWebhookSecret, tovyOsUrl], cors: ["https://www.tovy.eu", "https://tovy.eu"] },
+  { cors: ["https://www.tovy.eu", "https://tovy.eu"] },
   async (req, res) => {
     if (req.method !== "POST") {
       res.status(405).send("Method Not Allowed");
       return;
     }
 
-    const url = tovyOsUrl.value();
-    const secret = tovyOsWebhookSecret.value();
+    const url = process.env.TOVY_OS_URL;
+    const secret = process.env.TOVY_OS_WEBHOOK_SECRET;
 
     try {
       const upstream = await fetch(`${url}/webhook/website`, {
