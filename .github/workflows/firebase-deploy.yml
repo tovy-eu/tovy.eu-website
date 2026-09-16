@@ -149,8 +149,8 @@ jobs:
           workload_identity_provider: 'projects/553043672473/locations/global/workloadIdentityPools/github-actions/providers/github-provider'
           service_account: 'firebase-adminsdk-fbsvc@studio-5767764867-ecdbc.iam.gserviceaccount.com'
 
-      - name: Install Functions Dependencies
-        run: cd functions && npm ci
+      - name: Install and Build Functions
+        run: cd functions && npm ci && npm run build
 
       - name: Deploy to Firebase Hosting + Functions (Production)
         run: npx --package=firebase-tools firebase deploy --only hosting,functions --project studio-5767764867-ecdbc --non-interactive
