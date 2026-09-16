@@ -15,7 +15,9 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [],
+    "rewrites": [
+      { "source": "/intake", "function": "submitIntake", "region": "europe-west4" }
+    ],
     "redirects": [],
     "headers": [
       {

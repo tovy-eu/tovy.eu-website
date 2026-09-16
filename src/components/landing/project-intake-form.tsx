@@ -220,17 +220,11 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
           lang,
         };
 
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_TOVY_OS_URL}/webhook/website`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "X-Webhook-Secret": process.env.NEXT_PUBLIC_TOVY_OS_WEBHOOK_SECRET ?? "",
-            },
-            body: JSON.stringify(payload),
-          }
-        );
+        const res = await fetch("/intake", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
         if (!res.ok) throw new Error(`Submission error: ${res.status}`);
 
         await setUserIdFromEmail(data.email).catch(() => {});

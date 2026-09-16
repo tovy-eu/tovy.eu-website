@@ -1,9 +1,14 @@
 import { onSchedule } from "firebase-functions/v2/scheduler";
 import { onDocumentCreated } from "firebase-functions/v2/firestore";
+import { onRequest } from "firebase-functions/v2/https";
 import { setGlobalOptions } from "firebase-functions/v2";
+import { defineSecret } from "firebase-functions/params";
 import { logger } from "firebase-functions";
 import { initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
+
+const tovyOsWebhookSecret = defineSecret("TOVY_OS_WEBHOOK_SECRET");
+const tovyOsUrl = defineSecret("TOVY_OS_URL");
 
 setGlobalOptions({ region: "europe-west4" });
 import { getAbandonmentEmailHtml, abandonmentEmailTranslations } from "./templates/abandonment-email";
@@ -104,6 +109,40 @@ export const checkAbandonmentEmails = onSchedule("every 15 minutes", async (_eve
     logger.error("Error executing checkAbandonmentEmails scheduled task:", error);
   }
 });
+
+/**
+ * Proxy for project intake form submissions.
+ * Adds the webhook secret server-side so it's never exposed to the browser.
+ */
+export const submitIntake = onRequest(
+  { secrets: [tovyOsWebhookSecret, tovyOsUrl], cors: ["https://www.tovy.eu", "https://tovy.eu"] },
+  async (req, res) => {
+    if (req.method !== "POST") {
+      res.status(405).send("Method Not Allowed");
+      return;
+    }
+
+    const url = tovyOsUrl.value();
+    const secret = tovyOsWebhookSecret.value();
+
+    try {
+      const upstream = await fetch(`${url}/webhook/website`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Webhook-Secret": secret,
+        },
+        body: JSON.stringify(req.body),
+      });
+
+      const data = await upstream.json();
+      res.status(upstream.status).json(data);
+    } catch (err) {
+      logger.error("submitIntake upstream error", err);
+      res.status(502).json({ error: "Upstream error" });
+    }
+  }
+);
 
 export const notifyOnRecordCreated = onDocumentCreated("project_requests/{docId}", async (event) => {
   const data = event.data?.data();
