@@ -118,8 +118,8 @@ export const submitIntake = onRequest(
       return;
     }
 
-    const url = process.env.TOVY_OS_URL;
-    const secret = process.env.TOVY_OS_WEBHOOK_SECRET;
+    const url = process.env.TOVY_OS_URL ?? "";
+    const secret = process.env.TOVY_OS_WEBHOOK_SECRET ?? "";
 
     try {
       const upstream = await fetch(`${url}/webhook/website`, {
