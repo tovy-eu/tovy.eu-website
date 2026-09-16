@@ -38,8 +38,8 @@ jobs:
       - name: Install Root Dependencies
         run: npm ci --legacy-peer-deps
 
-      - name: Install Functions Dependencies
-        run: cd functions && npm ci
+      - name: Install and Build Functions
+        run: cd functions && npm ci && npm run build
 
       - name: Cache Next.js Build
         uses: actions/cache@v4
@@ -78,6 +78,9 @@ jobs:
             out
             firebase.json
             .firebaserc
+            functions/lib
+            functions/package.json
+            functions/package-lock.json
           retention-days: 1
 
   preview:
@@ -149,8 +152,8 @@ jobs:
           workload_identity_provider: 'projects/553043672473/locations/global/workloadIdentityPools/github-actions/providers/github-provider'
           service_account: 'firebase-adminsdk-fbsvc@studio-5767764867-ecdbc.iam.gserviceaccount.com'
 
-      - name: Install and Build Functions
-        run: cd functions && npm ci && npm run build
+      - name: Install Functions Dependencies
+        run: cd functions && npm ci --omit=dev
 
       - name: Deploy to Firebase Hosting + Functions (Production)
         run: npx --package=firebase-tools firebase deploy --only hosting,functions --project studio-5767764867-ecdbc --non-interactive
