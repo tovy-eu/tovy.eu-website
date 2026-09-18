@@ -59,7 +59,7 @@
     "home": {
       "metadata": {
         "title": "Data engineering & procesautomatisering",
-        "description": "Tovy bouwt betrouwbare data-pipelines om al uw systemen naadloos en foutloos te synchroniseren.",
+        "description": "Tovy bouwt betrouwbare data-pipelines om al je systemen naadloos en foutloos te synchroniseren.",
         "keywords": [
           "Data-engineering",
           "Data-architectuur",
@@ -82,32 +82,32 @@
           "specialization": "Data-architectuur",
           "location": "Breda, Nederland",
           "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
-          "bio": "Als data engineer help ik bedrijven rust te brengen door middel van IT. Door mijn BSc bedrijfskunde, MSc supply chain management en praktijkervaring begrijp ik zowel bedrijfsprocessen als passende datastructuren. Met deze ervaring en visie engineer ik \"data supply chains\" om automatisering te waarborgen. Je werkt direct samen met mij, de specialist die jouw systemen ontwerpt en bouwt. Mijn aanpak is pragmatisch en snel."
+          "bio": "Als data engineer help ik bedrijven rust te brengen via IT. Met een BSc bedrijfskunde, MSc supply chain management en jaren praktijkervaring begrijp ik zowel bedrijfsprocessen als de datastructuren die erbij passen. Je werkt direct samen met mij – de specialist die jouw systemen ontwerpt en bouwt. Pragmatisch en snel."
         },
         "pillarsTitle": "Onze pijlers",
         "pillars": {
           "tech": {
             "title": "Technologie",
-            "desc": "Tovy heeft allereerst een diepgewortelde passie voor tech waardoor goed geoordeeld kan worden over de tech stack die het beste bij jouw bedrijf past."
+            "desc": "Tovy kent de technologie en kiest de stack die het beste bij jouw bedrijf past."
           },
           "optimization": {
             "title": "Optimalisatie",
-            "desc": "Naast het gebruiken van tech zoekt Tovy voortdurend naar optimalisatie van processen. Het liefst volledig geautomatiseerd. Dit vraagt 100% alignment tussen business processen en IT."
+            "desc": "Tovy zoekt voortdurend naar manieren om processen te optimaliseren – het liefst volledig geautomatiseerd. Dat vraagt volledige afstemming tussen bedrijfsprocessen en IT."
           },
           "freedom": {
             "title": "Vrijheid",
-            "desc": "Dure FTE's behoren slim besteed te worden, daarom zoekt Tovy naar manieren om de simpele taken van jouw werknemers uit handen te nemen en hen meer cognitieve vrijheid te bieden."
+            "desc": "Dure medewerkers verdienen slim werk. Tovy neemt de simpele taken uit handen, zodat jouw team zich kan richten op werk dat ertoe doet."
           },
           "innovation": {
             "title": "Innovatie",
-            "desc": "Een solide basis geeft de mentale en technische ruimte om te innoveren en te groeien. Tovy start hiermee en geeft dit door aan jouw workforce."
+            "desc": "Een solide basis geeft ruimte om te innoveren en te groeien. Tovy legt dat fundament, zodat jouw team ermee verder kan."
           }
         }
       },
       "engineering": {
         "section": "Diensten",
         "title": "De volledige bouw van jouw datafundament",
-        "subtitle": "Enkel betrouwbare bedrijfsprocessen maken een robuust systeem mogelijk",
+        "subtitle": "Betrouwbare processen vormen de basis van een robuust systeem",
         "services": {
           "strategic": {
             "title": "Datagedreven strategie",
@@ -116,18 +116,18 @@
           },
           "cloud": {
             "title": "Infrastructuur",
-            "desc": "Inrichten en beheren van IT-omgevingen. Tovy ontwerpt je cloud en/of lokale omgevingen met het oog op maximale performance, beveiliging, back-ups en uptime.",
+            "desc": "Tovy richt je cloud- en lokale omgevingen in en beheert ze. Met oog op performance, beveiliging, back-ups en uptime.",
             "points": [
               "Een IT-omgeving die naadloos meegroeit met je bedrijfsambities.",
               "Maximale performance voor je bedrijfssystemen.",
               "Volledige rust door back-up strategieën.",
-              "Een veilig beheerd systeem die je team ontzorgt."
+              "Een veilig beheerd systeem dat je team ontzorgt."
             ],
             "tools": ["Azure / GCP / AWS", "Security", "Back-ups"]
           },
           "data": {
             "title": "Datawarehousing & pipelines",
-            "desc": "Het consolideren van data uit diverse bronnen waaronder ERP, CRM, websites, boekhoudsoftware en maatwerk. Alles opgeslagen binnen één centraal datawarehouse.",
+            "desc": "Data uit al je bronnen – ERP, CRM, website, boekhoudsoftware, maatwerk – samengebracht in één centraal datawarehouse.",
             "points": [
               "Één centrale bron van waarheid voor al je data.",
               "Direct inzicht in bedrijfsresultaten via rapportages.",
@@ -143,7 +143,7 @@
           },
           "automation": {
             "title": "Procesautomatisering",
-            "desc": "Het definiëren en implementeren van de gewenste bedrijfslogica binnen standaard softwarepakketten, aangevuld met AI-oplossingen om simpele handmatige taken te elimineren.",
+            "desc": "Bedrijfslogica implementeren in standaard softwarepakketten, aangevuld met AI om simpele handmatige taken te elimineren.",
             "tools": ["Standaard software", "Agentic systems"]
           }
         }
@@ -163,10 +163,10 @@
       },
       "testimonials": {
         "title": "Vertrouwd door teams die focussen op groei",
-        "subtitle": "Ontdek hoe Tovy de operationele rust herstelt en schaalbare groei mogelijk maakt.",
+        "subtitle": "Wat klanten zeggen over de samenwerking met Tovy.",
         "items": [
           {
-            "quote": "Tovy veranderde onze datachaos in een heldere, geautomatiseerde pipeline. Hun AI-expertise is ongeëvenaard.",
+            "quote": "Tovy veranderde onze datachaos in een heldere, geautomatiseerde pipeline. Degelijk en snel geleverd.",
             "author": "Sarah Jenkins",
             "role": "CTO bij TechFlow",
             "logoId": "techflow-logo"
@@ -234,7 +234,7 @@
       },
       "marquee": {
         "title": "Technologie die schaalbaarheid mogelijk maakt",
-        "subtitle": "Tovy selecteert tools die bekend staan om hun betrouwbaarheid, schaalbaarheid en onderhoudsgemak, zodat je dataplatform toekomstbestendig is."
+        "subtitle": "Tovy kiest tools die betrouwbaar, schaalbaar en onderhoudbaar zijn – zodat je dataplatform meegroeit."
       }
     },
     "projectRequest": {
@@ -259,7 +259,7 @@
           "contactDetails": "contactgegevens"
         },
         "title": "Data-architectuur assessment",
-        "subtitle": "Deel je projectvereisten met Tovy om schaalbare data-systemen te bouwen.",
+        "subtitle": "Vertel wat je nodig hebt – Tovy kijkt mee naar de oplossing.",
         "intro": {
           "title": "Bouw je datafundament",
           "description": "Om de juiste aanbeveling te geven, stellen we zeven korte vragen over je projectdoelen. Dit helpt ons te bepalen of er een match is."
@@ -353,7 +353,7 @@
             "subject": "Welkom bij Tovy - Projectaanvraag Ontvangen",
             "title": "Welkom bij Tovy",
             "subTitle": "Welkom bij Tovy. Dit is je eerste stap naar automatisering.",
-            "bodyText": "Bedankt voor het delen van je projectspecificaties. Ik bekijk momenteel je infrastructuurdetails om de basis te leggen voor ons kennismakingsgesprek. Ons doel is om gefragmenteerde datasystemen te transformeren naar uniforme, geautomatiseerde fundamenten.",
+            "bodyText": "Bedankt voor het delen van je projectspecificaties. Ik bekijk nu je infrastructuurdetails om ons kennismakingsgesprek goed voor te bereiden.",
             "specsTitle": "Intake-specificaties",
             "profileTitle": "Contactprofiel",
             "nameLabel": "Naam:",
@@ -387,9 +387,9 @@
             "copyright": "© {year} Tovy. Alle rechten voorbehouden."
           },
           "abandonment": {
-            "subject": "Secure your automated foundation with Tovy",
+            "subject": "Je intake bij Tovy staat nog open",
             "greeting": "Beste,",
-            "introTitle": "Zeker je geautomatiseerde fundament. Dit is je eerste stap naar automatisering.",
+            "introTitle": "Je intake is nog niet afgerond – je voortgang is bewaard.",
             "introBody": "We zagen dat je begon met het invullen van ons project-intakeformulier, maar het nog niet helemaal hebt afgerond. Je voortgang is veilig opgeslagen zodat je niet opnieuw hoeft te beginnen.",
             "progressTitle": "Je voortgang: 85% Voltooid",
             "step1": "Kwalificaties & Budget Details",
@@ -411,7 +411,7 @@
     "privacyPolicy": {
       "metadata": {
         "title": "Privacyverklaring & AVG-naleving",
-        "description": "Tovy respecteert uw privacy. Lees onze AVG-conforme privacyverklaring met details over gegevensverzameling en server-side tracking.",
+        "description": "Lees de AVG-conforme privacyverklaring van Tovy over gegevensverzameling en server-side tracking.",
         "keywords": [
           "Tovy Privacyverklaring",
           "AVG",
@@ -422,7 +422,7 @@
       "content": {
         "badge": "Privacyprotocol",
         "title": "Privacyverklaring",
-        "intro": "Privacy is belangrijk voor Tovy. Het beleid van Tovy is om je privacy te respecteren bij het verzamelen van gegevens via de website. Dit beleid voldoet aan de Algemene verordening gegevensbescherming (AVG).",
+        "intro": "Tovy respecteert je privacy bij het verzamelen van gegevens via deze website. Dit beleid voldoet aan de Algemene verordening gegevensbescherming (AVG).",
         "sections": [
           {
             "title": "Verwerkingsverantwoordelijke",
@@ -439,15 +439,15 @@
           },
           {
             "title": "Gegevenslocatie en doorgifte",
-            "content": "Om gegevens te beschermen, is de primaire database (Cloud Firestore) geconfigureerd binnen de Europese Unie (regio ‘eur3’). Hoewel de organisatie de voorkeur geeft aan EU-diensten, kunnen sommige onderaannemers gegevens internationaal doorgeven. Dit gebeurt uitsluitend via wettelijk toegestane mechanismen, zoals standaard contractbepalingen."
+            "content": "De primaire database (Cloud Firestore) staat in de Europese Unie (regio ‘eur3’). Tovy geeft de voorkeur aan EU-diensten, maar sommige onderaannemers kunnen gegevens internationaal doorgeven. Dat gebeurt uitsluitend via wettelijk toegestane mechanismen, zoals standaard contractbepalingen."
           },
           {
             "title": "Bewaartermijnen en beveiliging",
-            "content": "Tovy bewaart persoonsgegevens alleen zolang dit nodig is voor de dienstverlening of wettelijk verplicht is. De organisatie beschermt gegevens met commercieel gangbare beveiligingsmaatregelen om verlies, diefstal en onbevoegde toegang te voorkomen."
+            "content": "Tovy bewaart persoonsgegevens alleen zolang dit nodig is voor de dienstverlening of wettelijk verplicht is. Gegevens worden beschermd met gangbare beveiligingsmaatregelen om verlies, diefstal en onbevoegde toegang te voorkomen."
           },
           {
             "title": "Rechten onder de AVG",
-            "content": "Onder de AVG heb je de volgende rechten met betrekking tot je persoonsgegevens:",
+            "content": "Onder de AVG heb je de volgende rechten over je persoonsgegevens:",
             "list": [
               "<strong>Recht op informatie:</strong> Weten hoe je gegevens worden verzameld en gebruikt",
               "<strong>Recht op inzage:</strong> Een kopie opvragen van de opgeslagen informatie",
