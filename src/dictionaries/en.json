@@ -58,7 +58,7 @@
   "pages": {
     "home": {
       "metadata": {
-        "title": "System Integrations & Process Automation | Tovy",
+        "title": "System Integrations & Process Automation",
         "description": "Eliminate manual entry and fight no more fires. Tovy builds custom, high-reliability automated pipelines to sync your systems flawlessly and restore control.",
         "keywords": [
           "Data Engineering",
@@ -226,7 +226,7 @@
     },
     "projectRequest": {
       "metadata": {
-        "title": "Request a Data Architecture Assessment | Tovy",
+        "title": "Request a Data Architecture Assessment",
         "description": "Ready to automate? Complete our 7-step technical intake for a direct architecture assessment from a senior data engineer. Zero fluff, just code.",
         "keywords": [
           "Request Data Assessment",
@@ -397,7 +397,7 @@
     },
     "privacyPolicy": {
       "metadata": {
-        "title": "Privacy Policy & GDPR Compliance | Tovy",
+        "title": "Privacy Policy & GDPR Compliance",
         "description": "Tovy is committed to security and data privacy. Read our GDPR-compliant privacy statement regarding site tracking and data collection.",
         "keywords": [
           "Tovy Privacy Policy",
@@ -452,7 +452,7 @@
     },
     "legalNotice": {
       "metadata": {
-        "title": "Legal Information & Company Details | Tovy",
+        "title": "Legal Information & Company Details",
         "description": "Official company details, commercial registry KvK number, and contact information for Tovy Data Engineering in the Netherlands.",
         "keywords": [
           "Tovy Legal Information",
@@ -502,7 +502,7 @@
     },
     "paymentSuccess": {
       "metadata": {
-        "title": "Payment Successful | Tovy",
+        "title": "Payment Successful",
         "description": "Your payment has been successfully received. Thank you for your business!"
       },
       "content": {

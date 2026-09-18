@@ -58,7 +58,7 @@
   "pages": {
     "home": {
       "metadata": {
-        "title": "Integración de sistemas y automatización de procesos | Tovy",
+        "title": "Integración de sistemas y automatización de procesos",
         "description": "Elimine la entrada manual de datos. Tovy construye canalizaciones de datos fiables para sincronizar sus sistemas sin errores ni complicaciones.",
         "keywords": [
           "Ingeniería de datos",
@@ -226,7 +226,7 @@
     },
     "projectRequest": {
       "metadata": {
-        "title": "Solicitar evaluación de arquitectura de datos | Tovy",
+        "title": "Solicitar evaluación de arquitectura de datos",
         "description": "¿Listo para automatizar? Complete nuestra admisión técnica de 7 pasos para una evaluación directa de un ingeniero de datos senior.",
         "keywords": [
           "Solicitar evaluación de datos",
@@ -397,7 +397,7 @@
     },
     "privacyPolicy": {
       "metadata": {
-        "title": "Política de privacidad y cumplimiento RGPD | Tovy",
+        "title": "Política de privacidad y cumplimiento RGPD",
         "description": "Tovy respeta su privacidad. Lea nuestra declaración de privacidad conforme al RGPD sobre la recogida y el uso seguro de datos del sitio.",
         "keywords": [
           "Política de privacidad Tovy",
@@ -452,7 +452,7 @@
     },
     "legalNotice": {
       "metadata": {
-        "title": "Información legal y datos de la empresa | Tovy",
+        "title": "Información legal y datos de la empresa",
         "description": "Datos oficiales de la empresa, número de registro KvK y detalles de contacto de Tovy Data Engineering en los Países Bajos.",
         "keywords": [
           "Aviso legal Tovy",
@@ -502,7 +502,7 @@
     },
     "paymentSuccess": {
       "metadata": {
-        "title": "Pago completado | Tovy",
+        "title": "Pago completado",
         "description": "Su pago ha sido recibido con éxito. ¡Gracias por su confianza!"
       },
       "content": {

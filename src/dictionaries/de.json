@@ -58,7 +58,7 @@
   "pages": {
     "home": {
       "metadata": {
-        "title": "Systemintegrationen & Prozessautomatisierung | Tovy",
+        "title": "Systemintegrationen & Prozessautomatisierung",
         "description": "Keine manuelle Dateneingabe mehr. Tovy baut zuverlässige Datenpipelines zur fehlerfreien Synchronisierung Ihrer Systeme für volle Kontrolle.",
         "keywords": [
           "Data Engineering",
@@ -226,7 +226,7 @@
     },
     "projectRequest": {
       "metadata": {
-        "title": "Datenarchitektur-Assessment anfragen | Tovy",
+        "title": "Datenarchitektur-Assessment anfragen",
         "description": "Bereit zur Automatisierung? Füllen Sie unsere 7-stufige technische Aufnahme für eine direkte Analyse durch einen Senior Data Engineer aus.",
         "keywords": [
           "Daten-Assessment anfragen",
@@ -397,7 +397,7 @@
     },
     "privacyPolicy": {
       "metadata": {
-        "title": "Datenschutzerklärung & DSGVO-Konformität | Tovy",
+        "title": "Datenschutzerklärung & DSGVO-Konformität",
         "description": "Sicherheit und Datenschutz stehen an erster Stelle. Lesen Sie unsere DSGVO-konforme Datenschutzerklärung zur Erfassung von Webdaten.",
         "keywords": [
           "Tovy Datenschutzerklärung",
@@ -452,7 +452,7 @@
     },
     "legalNotice": {
       "metadata": {
-        "title": "Rechtliche Hinweise & Unternehmensdaten | Tovy",
+        "title": "Rechtliche Hinweise & Unternehmensdaten",
         "description": "Offizielle Unternehmensdaten, KvK-Handelsregisternummer und rechtliche Hinweise von Tovy Data Engineering in den Niederlanden.",
         "keywords": [
           "Tovy Rechtliche Hinweise",
@@ -502,7 +502,7 @@
     },
     "paymentSuccess": {
       "metadata": {
-        "title": "Zahlung erfolgreich | Tovy",
+        "title": "Zahlung erfolgreich",
         "description": "Ihre Zahlung wurde erfolgreich empfangen. Vielen Dank für Ihr Vertrauen!"
       },
       "content": {
