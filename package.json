@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack -p 9002",
-    "build": "NODE_ENV=production next build",
+    "build": "NODE_ENV=production next build && node scripts/strip-dev-overlay.mjs",
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run",
@@ -13,7 +13,9 @@
     "deploy:hosting": "firebase deploy --only hosting",
     "deploy:functions": "firebase deploy --only functions",
     "deploy:all": "firebase deploy",
-    "deploy:check": "firebase deploy --dry-run"
+    "deploy:check": "firebase deploy --dry-run",
+    "seo": "node scripts/seo-pipeline.mjs",
+    "seo:report": "node scripts/seo-pipeline.mjs --report-only"
   },
   "browserslist": [
     "last 1 Chrome version",
@@ -30,8 +32,6 @@
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-toast": "^1.2.6",
-    "@react-three/drei": "^10.7.8",
-    "@react-three/fiber": "^9.7.0",
     "@types/uuid": "^10.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -45,7 +45,6 @@
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.475.0",
     "next": "^15.1.0",
-    "ogl": "^1.0.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
@@ -55,7 +54,6 @@
     "schema-dts": "^1.1.2",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.180.0",
     "uuid": "^14.0.0",
     "vgpu": "^0.3.1",
     "zod": "^3.24.2"

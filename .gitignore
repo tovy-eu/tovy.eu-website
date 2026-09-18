@@ -61,3 +61,6 @@ pnpm-debug.log*
 .firebase/
 
 functions/.env.*
+
+# SEO pipeline data (contains search analytics — keep local)
+/data/seo/

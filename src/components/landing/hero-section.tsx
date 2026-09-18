@@ -5,10 +5,14 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import AeroShards from "@/components/AeroShards";
-import DotField from "@/components/DotField";
+import dynamic from "next/dynamic";
 import { ScrollIndicator } from "./scroll-indicator";
 import { motion } from "framer-motion";
+
+// ponytail: dynamic import keeps vgpu (~192 KB) and DotField (~40 KB) out of shared chunks,
+// so project-request and other pages don't pay for hero visuals they never render.
+const AeroShards = dynamic(() => import("@/components/AeroShards"), { ssr: false });
+const DotField = dynamic(() => import("@/components/DotField"), { ssr: false });
 import { usePathname } from "next/navigation";
 import type { Dictionary } from "@/lib/get-dictionary";
 
@@ -140,12 +144,11 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
       </div>
 
       <div
-        className={cn(
-          "transition-all ease-in-out duration-1000 delay-300 z-10 max-w-[90rem] flex flex-col items-center justify-center px-6 md:px-12 pt-20 pb-8 md:pt-24 md:pb-12 transform-gpu",
-          isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
-        )}
+        className="z-10 max-w-[90rem] flex flex-col items-center justify-center px-6 md:px-12 pt-20 pb-8 md:pt-24 md:pb-12 transform-gpu"
         style={{ backfaceVisibility: "hidden" }}
       >
+        {/* ponytail: h1 + subtitle render immediately (no opacity-0 gate) so LCP isn't penalised.
+           The fade-in animation moves to the non-LCP elements below (logos, CTA). */}
         <h1
           className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem] 2xl:text-[6rem] leading-[1.05] md:leading-[1] tracking-[-0.03em] relative mb-4 md:mb-6 text-white font-headline font-bold"
           style={{ textShadow: "0 0 40px rgba(255, 255, 255, 0.1)" }}
@@ -157,12 +160,18 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           {dict.pages.home.hero.subtitle}
         </p>
 
-        {/* Logos moved between subtitle and CTA */}
-        <div className="w-full mb-10 md:mb-16 transform-gpu">
+        {/* Logos + CTA fade in after mount (not LCP-critical) */}
+        <div className={cn(
+          "w-full mb-10 md:mb-16 transform-gpu transition-all ease-in-out duration-1000 delay-300",
+          isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+        )}>
           <TrustedBySection className="py-0" dict={dict} />
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full sm:w-auto">
+        <div className={cn(
+          "flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full sm:w-auto transition-all ease-in-out duration-1000 delay-500",
+          isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+        )}>
           <Magnetic strength={0.1} className="w-full sm:w-auto">
             <Button
               asChild
