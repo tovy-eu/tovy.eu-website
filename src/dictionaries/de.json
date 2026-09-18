@@ -17,7 +17,7 @@
       "privacy-policy": "Datenschutzerklärung"
     },
     "cookieBanner": {
-      "text": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und für Analysezwecke. Durch Klicken auf „Akzeptieren" stimmen Sie unserer Verwendung von Cookies zu. Weitere Details finden Sie in unserer",
+      "text": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und für Analysezwecke. Durch Klicken auf „Akzeptieren\u201c stimmen Sie unserer Verwendung von Cookies zu. Weitere Details finden Sie in unserer",
       "privacyPolicy": "Datenschutzerklärung",
       "decline": "Ablehnen",
       "accept": "Akzeptieren"
@@ -425,7 +425,7 @@
           },
           {
             "title": "Datenstandort und Übermittlung",
-            "content": "Um Daten zu schützen, ist die primäre Datenbank (Cloud Firestore) innerhalb der Europäischen Union (Region „eur3") konfiguriert. Obwohl Tovy EU-Dienste bevorzugt, können einige Unterauftragnehmer Daten international übermitteln. Dies geschieht ausschließlich über gesetzlich zulässige Mechanismen, wie Standardvertragsklauseln."
+            "content": "Um Daten zu schützen, ist die primäre Datenbank (Cloud Firestore) innerhalb der Europäischen Union (Region „eur3\u201c) konfiguriert. Obwohl Tovy EU-Dienste bevorzugt, können einige Unterauftragnehmer Daten international übermitteln. Dies geschieht ausschließlich über gesetzlich zulässige Mechanismen, wie Standardvertragsklauseln."
           },
           {
             "title": "Aufbewahrungsfristen und Sicherheit",
