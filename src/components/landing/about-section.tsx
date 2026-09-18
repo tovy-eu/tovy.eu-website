@@ -6,7 +6,7 @@ import { ScrollReveal } from "../scroll-reveal";
 import type { Dictionary } from "@/lib/get-dictionary";
 import { SectionHeader } from "./section-header";
 import Image from "next/image";
-import { Briefcase, DraftingCompass, Link, MapPin, User, Zap, Rocket, ShieldCheck } from "lucide-react";
+import { Briefcase, Link, MapPin, User, Zap, Rocket, ShieldCheck } from "lucide-react";
 import { Spotlight } from "../ui/spotlight";
 
 export function AboutSection({ dict }: { dict: Dictionary }) {
@@ -44,7 +44,6 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
 
   const ceoInfo = [
     { icon: <Briefcase size={14} />, text: dict.pages.home.about.ceo.role },
-    { icon: <DraftingCompass size={14} />, text: dict.pages.home.about.ceo.specialization },
     { icon: <MapPin size={14} />, text: dict.pages.home.about.ceo.location },
   ];
 
