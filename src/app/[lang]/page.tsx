@@ -18,15 +18,16 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const dict = await getDictionary(lang);
 
     const title = dict.pages.home.metadata.title;
+    const fullTitle = dict.global.metadata.template.replace('%s', title);
     const description = dict.pages.home.metadata.description;
     const path = '/';
 
     return {
-      title,
+      title: { absolute: fullTitle },
       description,
       alternates: alternates(path, lang),
       openGraph: {
-        title: `${title} | Tovy`,
+        title: fullTitle,
         description,
         siteName: 'Tovy',
         images: [
