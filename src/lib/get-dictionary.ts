@@ -9,6 +9,8 @@ const dictionaries: Record<string, () => Promise<Record<string, any>>> = {
   es: () => import('../dictionaries/es.json').then((m) => m.default as Record<string, any>),
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   de: () => import('../dictionaries/de.json').then((m) => m.default as Record<string, any>),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fr: () => import('../dictionaries/fr.json').then((m) => m.default as Record<string, any>),
 };
 
 export const getDictionary = async (lang: string) => 

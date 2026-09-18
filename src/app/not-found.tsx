@@ -11,6 +11,7 @@ import en from '@/dictionaries/en.json';
 import nl from '@/dictionaries/nl.json';
 import de from '@/dictionaries/de.json';
 import es from '@/dictionaries/es.json';
+import fr from '@/dictionaries/fr.json';
 
 export default function NotFound() {
   const pathname = usePathname();
@@ -39,6 +40,11 @@ export default function NotFound() {
       ...es.pages.notFound.content,
       homePath: "/es/",
       projectPath: "/es/project-request/"
+    },
+    fr: {
+      ...fr.pages.notFound.content,
+      homePath: "/fr/",
+      projectPath: "/fr/project-request/"
     }
   };
 

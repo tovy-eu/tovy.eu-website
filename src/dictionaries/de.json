@@ -11,32 +11,32 @@
       "services": "Dienstleistungen"
     },
     "footer": {
-      "slogan-line-1": "Unsere Tech sorgt für Ruhe und Kontrolle",
-      "slogan-line-2": "in deinem Unternehmen.",
+      "slogan-line-1": "Unsere Technologie sorgt für Ruhe und Kontrolle",
+      "slogan-line-2": "in Ihrem Unternehmen.",
       "legal-notice": "Rechtliche Hinweise",
       "privacy-policy": "Datenschutzerklärung"
     },
     "cookieBanner": {
-      "text": "Wir verwenden Cookies, um deine Erfahrung zu verbessern und für Analysezwecke. Durch Klicken auf \"Akzeptieren\" stimmst du unserer Verwendung von Cookies zu. Weitere Details findest du in unserer",
+      "text": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und für Analysezwecke. Durch Klicken auf „Akzeptieren" stimmen Sie unserer Verwendung von Cookies zu. Weitere Details finden Sie in unserer",
       "privacyPolicy": "Datenschutzerklärung",
       "decline": "Ablehnen",
       "accept": "Akzeptieren"
     },
     "common": {
-      "workWithUs": "Intake starten",
+      "workWithUs": "Aufnahme starten",
       "shareIdea": "Unternehmensanalyse anfragen",
       "privacyPolicy": "Datenschutzerklärung",
-      "agreeTo": "Ich stimme zu mit der",
+      "agreeTo": "Ich stimme der",
       "downloadJson": "Als JSON herunterladen",
       "submissionFailed": "Übertragung fehlgeschlagen",
-      "submissionErrorDesc": "Bei der Übertragung ist ein Fehler aufgetreten. Bitte versuche es später erneut.",
+      "submissionErrorDesc": "Bei der Übertragung ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
       "emailPlaceholder": "arbeit@firma.de",
       "success": "Erfolg",
       "errorOccurred": "Fehler",
-      "errorTryAgain": "Bitte versuche es später erneut.",
-      "stayUpToDate": "Bleib auf dem Laufenden",
-      "newsletterDesc": "Erhalte technische Einblicke von Tovy.",
-      "techStack": "Der Tovy-Toolchain",
+      "errorTryAgain": "Bitte versuchen Sie es später erneut.",
+      "stayUpToDate": "Bleiben Sie auf dem Laufenden",
+      "newsletterDesc": "Erhalten Sie technische Einblicke von Tovy.",
+      "techStack": "Die Tovy-Toolchain",
       "home": "Startseite",
       "page": "Seite",
       "back": "Zurück",
@@ -45,8 +45,8 @@
       "priorExperience": "Bisherige Erfahrung",
       "linkedinProfile": "LinkedIn-Profil",
       "explore": "Entdecken",
-      "readyToScale": "Bereit zur Skalierung?",
-      "buildFoundation": "Lass uns ein Fundament für Wachstum bauen.",
+      "readyToScale": "Bereit für den nächsten Schritt?",
+      "buildFoundation": "Bauen Sie Ihr Fundament für Wachstum.",
       "scroll": "Scrollen"
     },
     "redirects": {
@@ -61,7 +61,7 @@
         "title": "Systemintegrationen & Prozessautomatisierung",
         "description": "Keine manuelle Dateneingabe mehr. Tovy baut zuverlässige Datenpipelines zur fehlerfreien Synchronisierung Ihrer Systeme für volle Kontrolle.",
         "keywords": [
-          "Data Engineering",
+          "Data-Engineering",
           "Systemintegration",
           "Prozessautomatisierung",
           "Geschäftsautomatisierung"
@@ -73,39 +73,39 @@
         "subtitle": "Tovy baut, integriert und verwaltet Ihre gesamte Datenlandschaft. Von automatisierten API-Verbindungen und zentralen Data Warehouses bis hin zu stabiler Cloud-Infrastruktur. Kein manuelles Kopieren und Einfügen mehr – sondern Systeme, die fehlerfrei im Hintergrund laufen."
       },
       "about": {
-        "section": "Über unsere",
+        "section": "Über uns",
         "title": "Technische Kompetenz",
-        "mission": "Tovy hilft wachsenden Unternehmen, ihre Dateninfrastruktur zu professionalisieren. Tovy baut stabile Systeme, die manuelle Arbeit eliminieren und sicherstellen, dass Ihre Daten stimmen.",
+        "mission": "Tovy hilft wachsenden Unternehmen, ihre Dateninfrastruktur zu professionalisieren. Tovy baut stabile Systeme, die manuelle Arbeit überflüssig machen und sicherstellen, dass Ihre Daten stimmen.",
         "ceo": {
           "name": "Giel Nijkamp",
           "role": "Gründer & Data Engineer",
           "location": "Breda, Niederlande",
           "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
-          "bio": "Als Data Engineer helfe ich Unternehmen, durch IT Ruhe zu schaffen. Durch mein BSc in Betriebswirtschaft, MSc in Supply Chain Management und praktische Erfahrung verstehe ich sowohl Geschäftsprozesse als auch passende Datenstrukturen. Mit diesem Wissen und Vision entwerfe ich \"data supply chains\" zur Sicherung der Automatisierung. Sie arbeiten direkt mit mir zusammen, dem Spezialisten, der Ihre Systeme entwirft und baut. Mein Ansatz ist pragmatisch und schnell."
+          "bio": "Als Data Engineer helfe ich Unternehmen, durch IT Ruhe zu schaffen. Durch mein BSc in Betriebswirtschaft, MSc in Supply Chain Management und praktische Erfahrung verstehe ich sowohl Geschäftsprozesse als auch passende Datenstrukturen. Mit diesem Wissen entwerfe ich automatisierte Datenketten, die zuverlässige Prozesse sichern. Sie arbeiten direkt mit mir zusammen – dem Spezialisten, der Ihre Systeme entwirft und baut. Mein Ansatz ist pragmatisch und schnell."
         },
         "pillarsTitle": "Unsere Säulen",
         "pillars": {
           "tech": {
             "title": "Technologie",
-            "desc": "Tovy verfügt über eine tief verwurzelte Leidenschaft für Technologie, die eine fundierte Beurteilung darüber ermöglicht, welcher Tech Stack am besten zu Ihrem Unternehmen passt."
+            "desc": "Tovy kennt die Technologie und wählt den Stack, der am besten zu Ihrem Unternehmen passt."
           },
           "optimization": {
             "title": "Optimierung",
-            "desc": "Neben der Nutzung von Technologie sucht Tovy ständig nach Prozessoptimierungen. Am liebsten vollständig automatisiert. Dies erfordert 100 % Abstimmung zwischen Geschäftsprozessen und IT."
+            "desc": "Tovy sucht ständig nach Wegen, Prozesse zu optimieren – am liebsten vollständig automatisiert. Das erfordert 100 % Abstimmung zwischen Geschäftsprozessen und IT."
           },
           "freedom": {
             "title": "Freiheit",
-            "desc": "Teure FTEs sollten klug eingesetzt werden. Daher sucht Tovy nach Wegen, um einfache Aufgaben von Ihren Mitarbeitern zu übernehmen und ihnen mehr kognitive Freiheit zu geben."
+            "desc": "Qualifizierte Mitarbeiter verdienen anspruchsvolle Aufgaben. Tovy übernimmt die einfachen Tätigkeiten, damit Ihr Team sich auf das Wesentliche konzentrieren kann."
           },
           "innovation": {
             "title": "Innovation",
-            "desc": "Ein solides Fundament bietet den mentalen und technischen Raum zum Innovieren und Wachsen. Tovy beginnt damit und gibt es an Ihr Team weiter."
+            "desc": "Ein solides Fundament schafft den Raum zum Innovieren und Wachsen. Tovy legt dieses Fundament und gibt es an Ihr Team weiter."
           }
         }
       },
       "engineering": {
         "section": "Leistungen",
-        "title": "Mit dem Ziel eines End-to-End-Systems",
+        "title": "Der vollständige Aufbau Ihres Datenfundaments",
         "subtitle": "Nur zuverlässige Geschäftsprozesse ermöglichen ein robustes System",
         "services": {
           "strategic": {
@@ -115,59 +115,59 @@
           },
           "cloud": {
             "title": "Infrastruktur",
-            "desc": "Aufbau und Verwaltung von IT-Umgebungen. Tovy entwirft Ihre Cloud- und/oder lokalen Umgebungen mit Fokus auf maximale Performance, Sicherheit, Backups und Verfügbarkeit.",
+            "desc": "Aufbau und Verwaltung von IT-Umgebungen. Tovy entwirft Ihre Cloud- und/oder lokalen Umgebungen mit Fokus auf maximale Leistung, Sicherheit, Datensicherungen und Verfügbarkeit.",
             "points": [
               "Eine IT-Umgebung, die nahtlos mit Ihren Unternehmenszielen wächst.",
-              "Maximale Performance für Ihre Geschäftssysteme.",
-              "Vollständige Ruhe durch Backup-Strategien.",
+              "Maximale Leistung für Ihre Geschäftssysteme.",
+              "Vollständige Ruhe durch Strategien zur Datensicherung.",
               "Ein sicher verwaltetes System, das Ihr Team entlastet."
             ],
-            "tools": ["Azure / GCP / AWS", "Sicherheit", "Backups"]
+            "tools": ["Azure / GCP / AWS", "Sicherheit", "Datensicherung"]
           },
           "data": {
             "title": "Data Warehousing & Pipelines",
             "desc": "Konsolidierung von Daten aus verschiedenen Quellen einschließlich ERP, CRM, Websites, Buchhaltungssoftware und kundenspezifischen Lösungen. Alles in einem zentralen Data Warehouse gespeichert.",
             "points": [
-              "Eine zentrale verlässliche Quelle für alle Ihre Daten.",
+              "Alle Ihre Daten an einem Ort, immer korrekt.",
               "Direkter Einblick in Geschäftsergebnisse durch Berichte.",
               "Echtzeitkontrolle über Bestände, Margen und Kundendaten.",
               "Eine Datenplattform, die die Basis für Entscheidungsfindung bildet.",
-              "Gesichert durch Zugriffskontrolle, Verschlüsselung und Backup-Strategien."
+              "Gesichert durch Zugriffskontrolle, Verschlüsselung und Datensicherungsstrategien."
             ],
             "tools": ["dbt / Databricks / Apache Spark", "Power BI", "Data Warehousing"]
           },
           "automation": {
             "title": "Prozessautomatisierung",
-            "desc": "Definition und Implementierung der gewünschten Geschäftslogik innerhalb von Standardsoftwarepaketen, ergänzt durch AI-Lösungen zur Beseitigung einfacher manueller Aufgaben.",
-            "tools": ["Standardsoftware", "Agentic Systems"]
+            "desc": "Definition und Umsetzung der gewünschten Geschäftslogik innerhalb von Standardsoftwarepaketen, ergänzt durch KI-Lösungen zur Beseitigung einfacher manueller Aufgaben.",
+            "tools": ["Standardsoftware", "KI-Automatisierung"]
           }
         }
       },
       "solutions": {
         "badge": "Gelieferte Lösungen",
-        "title": "Vertraut von unseren Kunden.",
+        "title": "Bewährt bei unseren Kunden.",
         "viewSolution": "Lösung anzeigen",
         "items": [
           {
             "title": "Kenexis: Anamnese-Automatisierung",
-            "description": "Cloud SaaS, die den administrativen Aufwand von Therapeuten im Gesundheitswesen eliminiert.",
+            "description": "Cloud-SaaS, die den administrativen Aufwand von Therapeuten im Gesundheitswesen beseitigt.",
             "link": "#",
             "imageId": "kenexis"
           }
         ]
       },
       "testimonials": {
-        "title": "Geschätzt von Teams, die auf Wachstum fokussiert sind",
-        "subtitle": "Entdecke, wie Tovy operationelle Ruhe wiederherstellt und skalierbares Wachstum ermöglicht.",
+        "title": "Wachsende Teams setzen auf Tovy",
+        "subtitle": "Was Kunden über die Zusammenarbeit mit Tovy sagen.",
         "items": [
           {
-            "quote": "Tovy hat unser Datenchaos in eine klare, automatisierte Pipeline verwandelt. Ihre KI-Expertise ist unübertroffen.",
+            "quote": "Tovy hat unser Datenchaos in eine klare, automatisierte Pipeline verwandelt. Solide und schnell geliefert.",
             "author": "Sarah Jenkins",
             "role": "CTO bei TechFlow",
             "logoId": "techflow-logo"
           },
           {
-            "quote": "Die Geschwindigkeit und Zuverlässigkeit der Systeme, die Tovy für uns gebaut hat, ermöglichten es unserem Team, sich auf das Wachstum anstatt auf die Wartung zu konzentrieren.",
+            "quote": "Dank der Geschwindigkeit und Zuverlässigkeit der Systeme, die Tovy für uns gebaut hat, konnte unser Team sich auf Wachstum statt auf Wartung konzentrieren.",
             "author": "Mark van den Berg",
             "role": "Gründer von BrightScale",
             "logoId": "brightscale-logo"
@@ -176,26 +176,26 @@
       },
       "faq": {
         "title": "Häufig gestellte Fragen",
-        "badge": "Support",
+        "badge": "FAQ",
         "categories": [
           {
             "name": "Identität",
             "questions": [
               {
                 "question": "Welche Probleme löst Tovy konkret?",
-                "answer": "Tovy löst das Chaos, das durch manuelle Datenprozesse entsteht. Ein konkretes Beispiel ist die tägliche, fehleranfällige Aufgabe, Shopify-Bestellungen in Exact Online zu übertragen. Tovy baut eine nahtlose, automatische Anbindung, die diesen Prozess vollständig übernimmt. Das bringt Ruhe und sorgt für Daten, die immer stimmen."
+                "answer": "Tovy löst das Chaos, das durch manuelle Datenprozesse entsteht. Ein konkretes Beispiel ist die tägliche, fehleranfällige Aufgabe, Bestellungen zwischen Systemen zu übertragen. Tovy baut eine automatische Anbindung, die diesen Prozess vollständig übernimmt. Das sorgt für Daten, die immer stimmen."
               },
               {
                 "question": "Wie unterscheidet sich die Arbeitsweise von Tovy von einem traditionellen IT-Partner?",
-                "answer": "Unser Fokus liegt auf dem Bau eines Fundaments, nicht auf dem Verkauf von Stunden. Du hast direkten Kontakt mit mir, dem Engineer. Keine Projektmanager oder Account-Manager. Dies sorgt für einen effizienten Prozess und eine Lösung, die perfekt auf deine Praxis zugeschnitten ist, was in einem System resultiert, das du vollständig verstehst und beherrschst."
+                "answer": "Unser Fokus liegt auf dem Bau eines Fundaments, nicht auf dem Verkauf von Stunden. Sie haben direkten Kontakt mit mir, dem Engineer. Keine Projektmanager oder Account-Manager. Dies sorgt für einen effizienten Prozess und eine Lösung, die perfekt auf Ihr Unternehmen zugeschnitten ist."
               },
               {
                 "question": "Für welchen Unternehmenstyp ist Tovy am besten geeignet?",
-                "answer": "Tovys Ansatz ist ideal für Unternehmen, in denen Datenintegrität entscheidend ist. Kommerzielle und Handelsunternehmen zum Beispiel, die von einer perfekten Synchronisation zwischen Bestand, Verkauf und Finanzen abhängig sind. Wenn der Stress durch inkonsistente Daten dein Wachstum hemmt, ist Tovy der richtige Partner."
+                "answer": "Tovys Ansatz ist ideal für Unternehmen, in denen Datenintegrität entscheidend ist. Handels- und Vertriebsunternehmen zum Beispiel, die von einer perfekten Synchronisation zwischen Bestand, Verkauf und Finanzen abhängig sind. Wenn der Stress durch inkonsistente Daten Ihr Wachstum hemmt, ist Tovy der richtige Partner."
               },
               {
                 "question": "Warum sollte ich Tovy einem großen Datenberatungshaus vorziehen?",
-                "answer": "Tovy bietet die tiefgehende Expertise, aber ohne die Schwerfälligkeit und Overhead. Die Arbeit läuft in kurzen, fokussierten Sprints von 6 Wochen, um schnell eine funktionierende Lösung zu liefern, die sofort Ruhe und Kontrolle bringt. Der Fokus liegt auf dem Bau eines nachhaltigen Systems, nicht auf der Maximierung fakturierbarer Stunden."
+                "answer": "Tovy bietet die tiefgehende Expertise, aber ohne die Schwerfälligkeit und den Verwaltungsaufwand. Die Arbeit läuft in kurzen, fokussierten Sprints von 6 Wochen, um schnell eine funktionierende Lösung zu liefern, die sofort Ruhe und Kontrolle bringt. Der Fokus liegt auf dem Bau eines nachhaltigen Systems, nicht auf der Maximierung fakturierbarer Stunden."
               }
             ]
           },
@@ -204,15 +204,15 @@
             "questions": [
               {
                 "question": "Was bekomme ich genau für den Startpreis eines Projekts?",
-                "answer": "In 6 Wochen liefert Tovy eine konkrete, funktionierende Lösung. Zum Beispiel: eine voll eingerichtete Datenplattform in Azure, eine automatisierte Pipeline, die deine Verkaufsdaten von Shopify nach Exact Online synchronisiert, und ein Power BI-Dashboard mit deinen wichtigsten KPIs. Ein komplettes Fundament für Kontrolle und Einblick."
+                "answer": "In 6 Wochen liefert Tovy eine konkrete, funktionierende Lösung. Zum Beispiel: eine voll eingerichtete Datenplattform in Azure, eine automatisierte Pipeline, die Ihre Verkaufsdaten synchronisiert, und ein Power BI-Dashboard mit Ihren wichtigsten KPIs. Ein komplettes Fundament für Kontrolle und Einblick."
               },
               {
                 "question": "Wie kann ich ein Kennenlernen buchen?",
-                "answer": "Du kannst starten, indem du das <a href='/project-request' class='text-primary hover:underline'>Projekt-Aufnahmeformular</a> ausfüllst. Dieses Formular hilft uns, deine Situation zu verstehen, sodass unser erstes Gespräch direkt darauf ausgerichtet ist, eine Lösung zu schaffen."
+                "answer": "Sie können starten, indem Sie das <a href='/project-request' class='text-primary hover:underline'>Projekt-Aufnahmeformular</a> ausfüllen. Dieses Formular hilft uns, Ihre Situation zu verstehen, sodass unser erstes Gespräch direkt auf eine Lösung ausgerichtet ist."
               },
               {
-                "question": "Was ist die durchschnittliche Implementierungszeit?",
-                "answer": "Ein grundlegendes Datensystem, inklusive deines ersten automatisierten Workflows, steht in der Regel innerhalb von <strong>6 Wochen</strong>. Ab diesem Moment erlebst du sofort die Ruhe eines automatisierten Prozesses."
+                "question": "Was ist die durchschnittliche Umsetzungszeit?",
+                "answer": "Ein grundlegendes Datensystem, inklusive Ihres ersten automatisierten Arbeitsablaufs, steht in der Regel innerhalb von <strong>6 Wochen</strong>. Ab diesem Moment erleben Sie sofort die Ruhe eines automatisierten Prozesses."
               }
             ]
           }
@@ -220,7 +220,7 @@
       },
       "marquee": {
         "title": "Technologie, die Skalierbarkeit ermöglicht",
-        "subtitle": "Tovy wählt Tools aus, die für ihre Zuverlässigkeit, Skalierbarkeit und Wartungsfreundlichkeit bekannt sind, damit deine Datenplattform zukunftssicher ist."
+        "subtitle": "Tovy wählt Werkzeuge aus, die für ihre Zuverlässigkeit, Skalierbarkeit und Wartungsfreundlichkeit bekannt sind, damit Ihre Datenplattform zukunftssicher ist."
       }
     },
     "projectRequest": {
@@ -245,14 +245,14 @@
           "contactDetails": "Kontaktdaten"
         },
         "title": "Datenarchitektur-Assessment",
-        "subtitle": "Teile deine Projektanforderungen mit Tovy, um skalierbare Datensysteme zu bauen.",
+        "subtitle": "Teilen Sie Ihre Projektanforderungen mit Tovy, um skalierbare Datensysteme zu bauen.",
         "intro": {
-          "title": "Baue dein Datenfundament",
-          "description": "Um die richtige Empfehlung zu geben, stellen wir sieben kurze Fragen zu deinen Projektzielen. Das hilft uns zu bestimmen, ob ein Match vorliegt."
+          "title": "Bauen Sie Ihr Datenfundament",
+          "description": "Um die richtige Empfehlung zu geben, stellen wir sieben kurze Fragen zu Ihren Projektzielen. Das hilft uns zu bestimmen, ob eine Zusammenarbeit passt."
         },
         "success": {
-          "title": "Danke",
-          "description": "Tovy hat deine Anfrage erhalten. Plane unten ein Kennenlerngespräch, um den Prozess zu beschleunigen.",
+          "title": "Vielen Dank",
+          "description": "Tovy hat Ihre Anfrage erhalten. Planen Sie unten ein Kennenlerngespräch, um den Prozess zu beschleunigen.",
           "titlePathB": "Bewertung der Anforderungen",
           "descriptionPathB": "Tovy bewertet derzeit die technischen und strategischen Anforderungen. Tovy nimmt Kontakt auf, wenn zusätzliche Informationen benötigt werden.",
           "backHome": "Zurück zur Startseite",
@@ -261,10 +261,10 @@
         "steps": {
           "problemStatement": {
             "label": "Problemstellung und gewünschtes Ergebnis",
-            "description": "Hilf uns, deine Herausforderung und Vision zu verstehen. So können wir die Lösung visualisieren.",
-            "hasProblemLabel": "Gibt es ein spezifisches Problem, das du lösen möchtest?",
-            "problemDescriptionLabel": "Beschreibe das Problem und den Einfluss auf dein Unternehmen (Wer, was, wann, wo).",
-            "idealStateLabel": "Wie sieht die ideale Lösung aus und welche Ergebnisse erwartest du?",
+            "description": "Helfen Sie uns, Ihre Herausforderung und Vision zu verstehen. So können wir die Lösung konkretisieren.",
+            "hasProblemLabel": "Gibt es ein spezifisches Problem, das Sie lösen möchten?",
+            "problemDescriptionLabel": "Beschreiben Sie das Problem und den Einfluss auf Ihr Unternehmen (Wer, was, wann, wo).",
+            "idealStateLabel": "Wie sieht die ideale Lösung aus und welche Ergebnisse erwarten Sie?",
             "options": {
               "yes": "Ja",
               "no": "Nein"
@@ -272,11 +272,11 @@
           },
           "workEmail": {
             "label": "Geschäftliche E-Mail-Adresse",
-            "description": "Gib deine professionelle geschäftliche E-Mail-Adresse an.",
+            "description": "Geben Sie Ihre geschäftliche E-Mail-Adresse an.",
             "note": "Hinweis: Persönliche E-Mail-Adressen sind erlaubt, aber geschäftliche werden bevorzugt und erhalten bei der Bewertung Vorrang."
           },
           "companySize": {
-            "label": "Was ist die Größe deines Unternehmens?",
+            "label": "Wie groß ist Ihr Unternehmen?",
             "description": "Dies hilft Tovy, die Skalierung und Komplexität des Projekts einzuschätzen.",
             "options": [
               "Selbstständig",
@@ -289,12 +289,12 @@
             ]
           },
           "dataInfrastructure": {
-            "label": "Wie sieht deine aktuelle Dateninfrastruktur aus?",
-            "description": "Einblick in dein aktuelles Setup ermöglicht es uns, die effektivsten Integrationspunkte zu identifizieren.",
+            "label": "Wie sieht Ihre aktuelle Dateninfrastruktur aus?",
+            "description": "Einblick in Ihr aktuelles Setup ermöglicht es uns, die effektivsten Integrationspunkte zu identifizieren.",
             "hasDataTeamLabel": "Gibt es ein (Daten-)Engineering-Team?",
             "hasCentralDatabaseLabel": "Gibt es eine zentrale Datenbank, die Daten aus mehreren Systemen enthält?",
-            "hasCloudPlatformLabel": "Verwendest du eine Cloud-Plattform (AWS / Azure / GCP)?",
-            "solutionsInUseLabel": "Welche Software, Tools oder Plattformen verwendest du aktuell?",
+            "hasCloudPlatformLabel": "Verwenden Sie eine Cloud-Plattform (AWS / Azure / GCP)?",
+            "solutionsInUseLabel": "Welche Software, Werkzeuge oder Plattformen verwenden Sie aktuell?",
             "options": {
               "yes": "Ja",
               "no": "Nein"
@@ -302,7 +302,7 @@
           },
           "timeline": {
             "label": "Wann ist das geplante Startdatum?",
-            "description": "Unsere Implementierungszyklen betragen in der Regel 6 Wochen. Wann möchtest du beginnen?",
+            "description": "Unsere Umsetzungszyklen betragen in der Regel 6 Wochen. Wann möchten Sie beginnen?",
             "options": [
               "Sofort",
               "1–3 Monate",
@@ -323,7 +323,7 @@
             "company": "Unternehmen *",
             "phone": "Telefonnummer",
             "email": "E-Mail *",
-            "consentPreLink": "Ich stimme zu mit der",
+            "consentPreLink": "Ich stimme der",
             "consentLinkText": "Datenschutzerklärung"
           }
         },
@@ -336,10 +336,10 @@
         },
         "emails": {
           "welcome": {
-            "subject": "Willkommen bei Tovy - Projektanfrage erhalten",
+            "subject": "Willkommen bei Tovy – Projektanfrage erhalten",
             "title": "Willkommen bei Tovy",
             "subTitle": "Willkommen bei Tovy. Dies ist Ihr erster Schritt zur Automatisierung.",
-            "bodyText": "Vielen Dank, dass Sie Ihre Projektspezifikationen mit uns geteilt haben. Ich überprüfe derzeit Ihre Infrastrukturdetails, um die Grundlage für unser Onboarding-Gespräch zu legen. Unser Ziel ist es, fragmentierte Datensysteme in einheitliche, automatisierte Fundamente zu verwandeln.",
+            "bodyText": "Vielen Dank, dass Sie Ihre Projektspezifikationen mit uns geteilt haben. Ich überprüfe derzeit Ihre Infrastrukturdetails, um die Grundlage für unser Kennenlerngespräch zu legen. Unser Ziel ist es, fragmentierte Datensysteme in einheitliche, automatisierte Fundamente zu verwandeln.",
             "specsTitle": "Anfrage-Spezifikationen",
             "profileTitle": "Kontaktprofil",
             "nameLabel": "Name:",
@@ -351,7 +351,7 @@
             "budgetLabel": "Budget:",
             "timelineLabel": "Zeitplan:",
             "infraTitle": "Infrastruktur & Stack",
-            "dataTeamLabel": "Data Team:",
+            "dataTeamLabel": "Datenteam:",
             "hasDataTeamYes": "Internes Team",
             "hasDataTeamNo": "Kein internes Team",
             "centralDbLabel": "Zentrale Datenbank:",
@@ -359,34 +359,34 @@
             "centralDbNone": "Keine / Silos",
             "cloudPlatformLabel": "Cloud-Plattformen:",
             "cloudPlatformConfigured": "Konfiguriert",
-            "cloudPlatformNone": "Keine / On-Prem",
-            "activeToolsLabel": "Aktive Tools:",
+            "cloudPlatformNone": "Keine / Lokal",
+            "activeToolsLabel": "Aktive Werkzeuge:",
             "noneSpecified": "Keine angegeben",
             "challengesTitle": "Strategische Herausforderungen",
             "bottlenecksLabel": "Aktuelle Engpässe:",
             "noneDeclared": "Keine angegeben",
             "idealStateLabel": "Vision / Idealer Zustand:",
             "schedulerText": "Falls Sie dies nicht direkt nach dem Ausfüllen des Formulars auf unserer Website getan haben, nutzen Sie bitte den folgenden Link, um einen passenden Termin für unser Gespräch zu wählen:",
-            "btnText": "Onboarding terminieren",
+            "btnText": "Kennenlerngespräch planen",
             "bestRegards": "Mit freundlichen Grüßen,",
             "founderTitle": "Gründer & Data Engineer, Tovy",
             "copyright": "© {year} Tovy. Alle Rechte vorbehalten."
           },
           "abandonment": {
             "subject": "Sichern Sie Ihr automatisiertes Fundament mit Tovy",
-            "greeting": "Hallo,",
+            "greeting": "Guten Tag,",
             "introTitle": "Sichern Sie Ihr automatisiertes Fundament. Dies ist Ihr erster Schritt zur Automatisierung.",
             "introBody": "Wir haben festgestellt, dass Sie mit dem Ausfüllen unseres Projektanfrage-Formulars begonnen, es aber noch nicht abgeschlossen haben. Ihr Fortschritt wurde sicher gespeichert, sodass Sie nicht von vorne beginnen müssen.",
-            "progressTitle": "Ihr Fortschritt: 85% Abgeschlossen",
-            "step1": "Qualifikationen & Budget-Details",
-            "step2": "Kontaktdetails & E-Mail-Verifizierung",
-            "step3": "Letzte Verifizierung & Onboarding-Terminbuchung",
+            "progressTitle": "Ihr Fortschritt: 85 % abgeschlossen",
+            "step1": "Qualifikationen & Budgetdetails",
+            "step2": "Kontaktdaten & E-Mail-Verifizierung",
+            "step3": "Letzte Verifizierung & Kennenlerntermin",
             "btnText": "Formular fortsetzen",
             "directConnTitle": "Bevorzugen Sie direkten Kontakt?",
-            "directConnText": "Wenn Sie die verbleibenden Schritte komplett überspringen möchten, können Sie:",
-            "optionReply": "Direkt auf diese E-Mail antworten oder uns schreiben unter",
-            "optionSchedule": "Buchen Sie sofort ein kurzes Onboarding-Gespräch über unseren",
-            "optionLinkText": "Google Calendar Link",
+            "directConnText": "Wenn Sie die verbleibenden Schritte überspringen möchten, können Sie:",
+            "optionReply": "Direkt auf diese E-Mail antworten oder uns schreiben an",
+            "optionSchedule": "Buchen Sie sofort ein kurzes Kennenlerngespräch über unseren",
+            "optionLinkText": "Google-Calendar-Link",
             "bestRegards": "Mit freundlichen Grüßen,",
             "founderTitle": "Gründer & Data Engineer, Tovy",
             "copyright": "© {year} Tovy. Alle Rechte vorbehalten."
@@ -408,34 +408,34 @@
       "content": {
         "badge": "Datenschutzprotokoll",
         "title": "Datenschutzerklärung",
-        "intro": "Datenschutz ist Tovy wichtig. Es ist die Richtlinie von Tovy, deine Privatsphäre bei der Datenerhebung über die Website zu respektieren. Diese Richtlinie entspricht der Datenschutz-Grundverordnung (DSGVO).",
+        "intro": "Datenschutz ist Tovy wichtig. Tovy respektiert Ihre Privatsphäre bei der Datenerhebung über die Website. Diese Richtlinie entspricht der Datenschutz-Grundverordnung (DSGVO).",
         "sections": [
           {
             "title": "Verantwortlicher",
-            "content": "Tovy ist der Verantwortliche für die personenbezogenen Daten, die über diese Website erhoben werden. Bei Fragen kannst du Tovy kontaktieren über:"
+            "content": "Tovy ist der Verantwortliche für die personenbezogenen Daten, die über diese Website erhoben werden. Bei Fragen können Sie Tovy kontaktieren über:"
           },
           {
             "title": "Datenerhebung und Verwendung",
-            "content": "Tovy fragt nur nach personenbezogenen Daten, wenn dies zur Erbringung einer Dienstleistung notwendig ist. Die Organisation erhebt Daten auf rechtmäßige Weise, mit deinem Wissen und ausdrücklicher Zustimmung. Die Rechtsgrundlagen für die Verarbeitung sind Einwilligung, vertragliche Notwendigkeit und berechtigtes Interesse.",
+            "content": "Tovy fragt nur nach personenbezogenen Daten, wenn dies zur Erbringung einer Dienstleistung notwendig ist. Tovy erhebt Daten auf rechtmäßige Weise, mit Ihrem Wissen und ausdrücklicher Zustimmung. Die Rechtsgrundlagen für die Verarbeitung sind Einwilligung, vertragliche Notwendigkeit und berechtigtes Interesse.",
             "list": [
               "<strong>Projekt-Aufnahmeformular:</strong> Tovy erhebt Namen, Kontaktdaten (E-Mail, Telefon), Unternehmensinformationen und Projektdetails. Diese Daten werden in Google Cloud Firestore gespeichert und verwendet, um Anfragen zu beurteilen. Die Rechtsgrundlage ist die Absicht, einen Vertrag einzugehen.",
               "<strong>Serverlogs:</strong> Der Webserver, gehostet durch Firebase Hosting, registriert automatisch Anfragen wie IP-Adressen, Browsertypen und besuchte Seiten. Die Rechtsgrundlage ist das berechtigte Interesse, eine sichere Website zu unterhalten.",
-              "<strong>Cookies:</strong> Tovy verwendet notwendige Cookies, um deine Zustimmungseinstellungen zu verwalten. Die Organisation verwendet keine Tracking-Cookies ohne deine ausdrückliche vorherige Zustimmung über das Cookie-Banner."
+              "<strong>Cookies:</strong> Tovy verwendet notwendige Cookies, um Ihre Zustimmungseinstellungen zu verwalten. Tovy verwendet keine Tracking-Cookies ohne Ihre ausdrückliche vorherige Zustimmung über das Cookie-Banner."
             ]
           },
           {
             "title": "Datenstandort und Übermittlung",
-            "content": "Um Daten zu schützen, ist die primäre Datenbank (Cloud Firestore) innerhalb der Europäischen Union (Region 'eur3') konfiguriert. Obwohl die Organisation EU-Dienste bevorzugt, können einige Unterauftragnehmer Daten international übermitteln. Dies geschieht ausschließlich über gesetzlich zulässige Mechanismen, wie Standardvertragsklauseln."
+            "content": "Um Daten zu schützen, ist die primäre Datenbank (Cloud Firestore) innerhalb der Europäischen Union (Region „eur3") konfiguriert. Obwohl Tovy EU-Dienste bevorzugt, können einige Unterauftragnehmer Daten international übermitteln. Dies geschieht ausschließlich über gesetzlich zulässige Mechanismen, wie Standardvertragsklauseln."
           },
           {
             "title": "Aufbewahrungsfristen und Sicherheit",
-            "content": "Tovy speichert personenbezogene Daten nur so lange, wie es für die Dienstleistung notwendig oder gesetzlich vorgeschrieben ist. Die Organisation schützt Daten mit handelsüblichen Sicherheitsmaßnahmen, um Verlust, Diebstahl und unbefugten Zugriff zu verhindern."
+            "content": "Tovy speichert personenbezogene Daten nur so lange, wie es für die Dienstleistung notwendig oder gesetzlich vorgeschrieben ist. Tovy schützt Daten mit handelsüblichen Sicherheitsmaßnahmen, um Verlust, Diebstahl und unbefugten Zugriff zu verhindern."
           },
           {
             "title": "Rechte unter der DSGVO",
-            "content": "Unter der DSGVO hast du die folgenden Rechte in Bezug auf deine personenbezogenen Daten:",
+            "content": "Unter der DSGVO haben Sie die folgenden Rechte in Bezug auf Ihre personenbezogenen Daten:",
             "list": [
-              "<strong>Recht auf Information:</strong> Wissen, wie deine Daten erhoben und verwendet werden",
+              "<strong>Recht auf Information:</strong> Wissen, wie Ihre Daten erhoben und verwendet werden",
               "<strong>Recht auf Auskunft:</strong> Eine Kopie der gespeicherten Informationen anfordern",
               "<strong>Recht auf Berichtigung:</strong> Unrichtige Daten korrigieren lassen",
               "<strong>Recht auf Löschung:</strong> Löschung von Daten beantragen",
@@ -443,7 +443,7 @@
               "<strong>Recht auf Übertragbarkeit:</strong> Daten in einem maschinenlesbaren Format erhalten",
               "<strong>Recht auf Widerspruch:</strong> Der Verarbeitung personenbezogener Daten widersprechen"
             ],
-            "footer": "Um diese Rechte auszuüben, kannst du uns über die untenstehende E-Mail-Adresse kontaktieren."
+            "footer": "Um diese Rechte auszuüben, können Sie uns über die untenstehende E-Mail-Adresse kontaktieren."
           }
         ],
         "effectiveDate": "Diese Richtlinie ist seit dem 30. Juli 2024 in Kraft."
@@ -457,11 +457,11 @@
           "Tovy Rechtliche Hinweise",
           "Unternehmensdaten",
           "KvK-Eintrag",
-          "Disclaimer"
+          "Haftungsausschluss"
         ]
       },
       "content": {
-        "compliance": "Compliance",
+        "compliance": "Konformität",
         "entityDetails": "Unternehmensdetails",
         "contactChannels": "Kontaktkanäle",
         "fiscalIdentifiers": "Steuerliche Identifikatoren",
@@ -478,7 +478,7 @@
         "commercialRegistry": "Handelsregister",
         "kvkNumber": "KvK-Nummer",
         "vatNumber": "USt-IdNr.",
-        "disclaimer": "Disclaimer",
+        "disclaimer": "Haftungsausschluss",
         "disclaimerSubtitle": "Verantwortlichkeit für den Inhalt.",
         "disclaimerContent": "Der Inhalt dieser Seiten wurde mit größter Sorgfalt erstellt. Tovy kann jedoch keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität übernehmen. Gemäß gesetzlichen Bestimmungen ist Tovy für eigene Inhalte auf diesen Webseiten verantwortlich. Tovy ist nicht verpflichtet, von Dritten übermittelte Informationen aktiv auf illegale Aktivitäten zu prüfen.",
         "nederland": "Niederlande",
@@ -487,14 +487,14 @@
     },
     "notFound": {
       "metadata": {
-        "title": "404 - Seite nicht gefunden",
+        "title": "404 – Seite nicht gefunden",
         "description": "Die gesuchte Seite wurde verschoben oder existiert nicht."
       },
       "content": {
         "badge": "Fehler 404",
         "titlePart1": "Verlaufen in den",
         "titlePart2": "Datensilos?",
-        "description": "Die besuchte Seite wurde verschoben, gelöscht oder hat nie existiert. Tovy zeigt dir gerne den Weg zurück.",
+        "description": "Die besuchte Seite wurde verschoben, gelöscht oder hat nie existiert. Tovy zeigt Ihnen gerne den Weg zurück.",
         "returnHome": "Zurück zur Startseite",
         "startProject": "Projekt starten"
       }
@@ -507,8 +507,8 @@
       "content": {
         "badge": "Zahlung erfolgreich",
         "title": "Vielen Dank für Ihre Zahlung",
-        "subtitle": "Wir haben Ihre Zahlung erfolgreich erhalten. Eine Bestätigungs-E-Mail mit der Rechnung/Quittung ist auf dem Weg zu Ihnen.",
-        "returnHome": "Gehe zu Tovys Homepage",
+        "subtitle": "Wir haben Ihre Zahlung erfolgreich erhalten. Eine Bestätigungs-E-Mail mit der Rechnung ist auf dem Weg zu Ihnen.",
+        "returnHome": "Zur Startseite von Tovy",
         "needHelp": "Benötigen Sie Hilfe oder haben Sie Fragen?",
         "contactUs": "Kontaktieren Sie uns unter"
       }

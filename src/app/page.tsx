@@ -28,7 +28,7 @@ export default function RootPage() {
                   sessionStorage.setItem('tovy_entry_referrer', document.referrer);
                 }
                 var target = 'en'; // Default language
-                var supported = ['en', 'nl', 'es', 'de'];
+                var supported = ['en', 'nl', 'es', 'de', 'fr'];
                 var cookieLang = (document.cookie.match(/^(?:.*;)?NEXT_LOCALE=([^;]+)(?:.*)?$/) || [, ''])[1];
 
                 if (cookieLang && supported.includes(cookieLang)) {

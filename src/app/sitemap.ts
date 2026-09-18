@@ -5,7 +5,7 @@ export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
-  const languages = ['en', 'nl', 'es', 'de'];
+  const languages = ['en', 'nl', 'es', 'de', 'fr'];
   const routes = [
     { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
     { path: '/project-request', priority: 0.9, changeFrequency: 'monthly' as const },

@@ -19,6 +19,7 @@ const LANGUAGES = [
   { code: "nl", label: "Nederlands" },
   { code: "de", label: "Deutsch" },
   { code: "es", label: "Español" },
+  { code: "fr", label: "Français" },
 ] as const;
 
 export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps) {

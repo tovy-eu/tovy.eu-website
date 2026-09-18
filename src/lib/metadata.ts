@@ -11,6 +11,7 @@ export function alternates(path: string, lang: string): Metadata['alternates'] {
       'nl': `${SITE_URL}/nl${p}`,
       'es': `${SITE_URL}/es${p}`,
       'de': `${SITE_URL}/de${p}`,
+      'fr': `${SITE_URL}/fr${p}`,
       'x-default': `${SITE_URL}/${i18n.defaultLocale}${p}`,
     },
   };

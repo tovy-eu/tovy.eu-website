@@ -3,7 +3,7 @@
     "metadata": {
       "template": "%s | Tovy",
       "defaultTitle": "Ingeniería de datos y automatización de procesos | Tovy",
-      "ogAlt": "Tovy Ingeniería de datos y automatización",
+      "ogAlt": "Tovy | Ingeniería de datos y automatización",
       "twitterTitle": "Ingeniería de datos y automatización de procesos | Tovy"
     },
     "navigation": {
@@ -11,7 +11,7 @@
       "services": "Servicios"
     },
     "footer": {
-      "slogan-line-1": "Nuestra tech aporta calma y control",
+      "slogan-line-1": "Nuestra tecnología aporta calma y control",
       "slogan-line-2": "en tu empresa.",
       "legal-notice": "Aviso legal",
       "privacy-policy": "Política de privacidad"
@@ -45,8 +45,8 @@
       "priorExperience": "Experiencia previa",
       "linkedinProfile": "Perfil de LinkedIn",
       "explore": "Explorar",
-      "readyToScale": "¿Listo para escalar?",
-      "buildFoundation": "Construyamos una base para el crecimiento.",
+      "readyToScale": "¿Listo para dar el siguiente paso?",
+      "buildFoundation": "Construye tu base para crecer.",
       "scroll": "Desplázate"
     },
     "redirects": {
@@ -59,7 +59,7 @@
     "home": {
       "metadata": {
         "title": "Integración de sistemas y automatización de procesos",
-        "description": "Elimine la entrada manual de datos. Tovy construye canalizaciones de datos fiables para sincronizar sus sistemas sin errores ni complicaciones.",
+        "description": "Tovy construye pipelines de datos fiables para sincronizar tus sistemas sin errores ni complicaciones.",
         "keywords": [
           "Ingeniería de datos",
           "Integración de sistemas",
@@ -68,45 +68,45 @@
         ]
       },
       "hero": {
-        "badge": "Automatización e Ingeniería de Datos",
-        "title": "Datos confiable y automatización de procesos",
+        "badge": "Automatización e ingeniería de datos",
+        "title": "Datos fiables y automatización de procesos",
         "subtitle": "Tovy diseña, integra y gestiona todo tu ecosistema de datos. Desde integraciones automáticas de API y almacenes de datos centrales hasta infraestructura en la nube estable. Sin copiar y pegar manualmente: solo sistemas que se ejecutan sin errores en segundo plano."
       },
       "about": {
-        "section": "Sobre nuestra",
+        "section": "Sobre nosotros",
         "title": "Experiencia técnica",
         "mission": "Tovy ayuda a las empresas en crecimiento a profesionalizar su infraestructura de datos. Tovy construye sistemas estables que eliminan el trabajo manual y garantizan que tus datos sean correctos.",
         "ceo": {
           "name": "Giel Nijkamp",
-          "role": "Creador e Ingeniero de Datos",
+          "role": "Fundador e ingeniero de datos",
           "location": "Breda, Países Bajos",
           "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
-          "bio": "Como ingeniero de datos, ayudo a las empresas a aportar tranquilidad a través de la TI. Con mi Licenciatura en Administración de Empresas, Máster en Gestión de la Cadena de Suministro y experiencia práctica, entiendo tanto los procesos empresariales como las estructuras de datos adecuadas. Con este conocimiento y visión, diseño \"data supply chains\" para garantizar la automatización. Trabajas directamente conmigo, el especialista que diseña y construye tus sistemas. Mi enfoque es pragmático y rápido."
+          "bio": "Como ingeniero de datos, ayudo a las empresas a ganar tranquilidad a través de la TI. Con un grado en Administración de Empresas, un máster en Gestión de la Cadena de Suministro y años de experiencia práctica, entiendo tanto los procesos empresariales como las estructuras de datos que los respaldan. Trabajas directamente con el especialista que diseña y construye tus sistemas. Pragmático y rápido."
         },
         "pillarsTitle": "Nuestros pilares",
         "pillars": {
           "tech": {
             "title": "Tecnología",
-            "desc": "Tovy tiene una pasión profundamente arraigada por la tecnología que permite juzgar correctamente qué stack tecnológico se adapta mejor a tu empresa."
+            "desc": "Tovy conoce la tecnología y elige la combinación que mejor se adapta a tu empresa."
           },
           "optimization": {
             "title": "Optimización",
-            "desc": "Además de utilizar tecnología, Tovy busca continuamente la optimización de procesos. Idealmente, completamente automatizados. Esto requiere 100% de alineación entre procesos empresariales e IT."
+            "desc": "Tovy busca continuamente formas de optimizar procesos, idealmente de forma totalmente automatizada. Esto exige una alineación total entre procesos empresariales y TI."
           },
           "freedom": {
             "title": "Libertad",
-            "desc": "Los FTE caros deben invertirse sabiamente. Por eso Tovy busca formas de quitar tareas simples de los hombros de tus empleados y darles más libertad cognitiva."
+            "desc": "Los empleados cualificados merecen trabajo inteligente. Tovy se encarga de las tareas simples para que tu equipo se centre en lo que importa."
           },
           "innovation": {
             "title": "Innovación",
-            "desc": "Una base sólida proporciona el espacio mental y técnico para innovar y crecer. Tovy comienza con esto y lo transmite a tu equipo de trabajo."
+            "desc": "Una base sólida da espacio para innovar y crecer. Tovy construye esa base para que tu equipo avance con ella."
           }
         }
       },
       "engineering": {
         "section": "Servicios",
-        "title": "Con el objetivo de un sistema de extremo a extremo",
-        "subtitle": "Solo los procesos empresariales confiables hacen posible un sistema robusto",
+        "title": "La construcción completa de tu base de datos",
+        "subtitle": "Los procesos fiables son la base de un sistema robusto",
         "services": {
           "strategic": {
             "title": "Estrategia basada en datos",
@@ -115,7 +115,7 @@
           },
           "cloud": {
             "title": "Infraestructura",
-            "desc": "Configuración y gestión de entornos de TI. Tovy diseña tus entornos en la nube y/o locales pensando en el máximo rendimiento, la seguridad, las copias de seguridad y el tiempo de actividad.",
+            "desc": "Tovy configura y gestiona tus entornos en la nube y locales. Con foco en rendimiento, seguridad, copias de seguridad y disponibilidad.",
             "points": [
               "Un entorno de TI que crece a la par de tus ambiciones comerciales.",
               "Máximo rendimiento para tus sistemas empresariales.",
@@ -125,12 +125,12 @@
             "tools": ["Azure / GCP / AWS", "Seguridad", "Copias de seguridad"]
           },
           "data": {
-            "title": "Almacenamiento de datos y Pipelines",
-            "desc": "Consolidación de datos de diversas fuentes incluyendo ERP, CRM, sitios web, software contable y soluciones personalizadas. Todo almacenado en un almacén de datos central.",
+            "title": "Almacenamiento de datos y pipelines",
+            "desc": "Datos de todas tus fuentes —ERP, CRM, web, contabilidad, desarrollos a medida— reunidos en un almacén de datos central.",
             "points": [
-              "Una fuente central de verdad para todos tus datos.",
-              "Información directa sobre los resultados comerciales mediante informes.",
-              "Control en tiempo real sobre tus inventarios, márgenes y datos de clientes.",
+              "Todos tus datos en un solo lugar, siempre correctos.",
+              "Información directa sobre los resultados empresariales mediante informes.",
+              "Control actualizado de tus inventarios, márgenes y datos de clientes.",
               "Una plataforma de datos que forma la base para la toma de decisiones.",
               "Protegido con control de acceso, cifrado y estrategias de copia de seguridad."
             ],
@@ -138,14 +138,14 @@
           },
           "automation": {
             "title": "Automatización de procesos",
-            "desc": "Definición e implementación de la lógica empresarial deseada dentro de paquetes de software estándar, complementada con soluciones de IA para eliminar tareas manuales simples.",
-            "tools": ["Software estándar", "Sistemas agénticos"]
+            "desc": "Lógica empresarial en software estándar, complementada con IA para automatizar tareas manuales.",
+            "tools": ["Software estándar", "Automatización con IA"]
           }
         }
       },
       "solutions": {
-        "badge": "Soluciones Entregadas",
-        "title": "Con la confianza de nuestros clientes.",
+        "badge": "Soluciones entregadas",
+        "title": "Demostrado con nuestros clientes.",
         "viewSolution": "Ver solución",
         "items": [
           {
@@ -157,17 +157,17 @@
         ]
       },
       "testimonials": {
-        "title": "Con la confianza de equipos centrados en el crecimiento",
-        "subtitle": "Descubre cómo Tovy restaura la calma operativa y permite un crecimiento escalable.",
+        "title": "Equipos en crecimiento eligen Tovy",
+        "subtitle": "Esto dicen nuestros clientes sobre trabajar con Tovy.",
         "items": [
           {
-            "quote": "Tovy transformó nuestro caos de datos en una tubería clara y automatizada. Su experiencia en IA es insuperable.",
+            "quote": "Tovy transformó nuestro caos de datos en un flujo automatizado y claro. Trabajo sólido y entregado rápido.",
             "author": "Sarah Jenkins",
             "role": "CTO en TechFlow",
             "logoId": "techflow-logo"
           },
           {
-            "quote": "La velocidad y confiabilidad de los sistemas que Tovy construyó para nosotros permitieron que nuestro equipo se concentrara en el crecimiento en lugar del mantenimiento.",
+            "quote": "Gracias a la rapidez y fiabilidad de los sistemas que Tovy construyó, nuestro equipo pudo centrarse en crecer en lugar de mantener.",
             "author": "Mark van den Berg",
             "role": "Fundador de BrightScale",
             "logoId": "brightscale-logo"
@@ -176,18 +176,18 @@
       },
       "faq": {
         "title": "Preguntas frecuentes",
-        "badge": "SOPORTE",
+        "badge": "FAQ",
         "categories": [
           {
             "name": "Identidad",
             "questions": [
               {
                 "question": "¿Qué tipo de problemas resuelve Tovy de forma concreta?",
-                "answer": "Tovy soluciona el caos provocado por los procesos de datos manuales. Un ejemplo concreto es la tarea diaria y propensa a errores de transferir pedidos de Shopify a Exact Online. Tovy construye una conexión fluida y automática que se hace cargo totalmente de este proceso. Esto aporta calma y garantiza unos datos que siempre son correctos."
+                "answer": "Tovy soluciona el caos provocado por los procesos de datos manuales. Un ejemplo concreto: la tarea diaria y propensa a errores de transferir pedidos entre sistemas. Tovy construye una conexión automática que se encarga de este proceso por completo. El resultado: datos que siempre son correctos."
               },
               {
                 "question": "¿Cómo difiere la forma de trabajar de Tovy de un socio de TI tradicional?",
-                "answer": "Nuestro enfoque se centra en construir una base, no en vender horas. Tienes contacto directo conmigo, el ingeniero. Sin gestores de proyectos ni gestores de cuenta. Esto garantiza un proceso eficiente y una solución perfectamente adaptada a tu realidad, lo que resulta en un sistema que comprendes y dominas totalmente."
+                "answer": "Nuestro enfoque se centra en construir una base, no en vender horas. Tienes contacto directo conmigo, el ingeniero. Sin intermediarios: ni gestores de proyecto ni comerciales. Esto garantiza un proceso eficiente y una solución perfectamente adaptada a tu empresa."
               },
               {
                 "question": "¿Para qué tipo de empresa es Tovy más adecuada?",
@@ -195,7 +195,7 @@
               },
               {
                 "question": "¿Por qué debería elegir a Tovy antes que a una gran consultora de datos?",
-                "answer": "Tovy ofrece la experiencia profunda, pero sin la lentitud y los costes generales. El trabajo se organiza en sprints cortos y enfocados de 6 semanas para entregar rápidamente una solución funcional que aporte calma y control inmediatos. El enfoque se centra en construir un sistema sostenible, no en maximizar las horas facturables."
+                "answer": "Tovy ofrece la misma experiencia profunda, pero sin la lentitud ni los costes generales. El trabajo se organiza en sprints cortos y enfocados de 6 semanas que entregan rápidamente una solución funcional con control inmediato. El objetivo es construir un sistema sostenible."
               }
             ]
           },
@@ -204,11 +204,11 @@
             "questions": [
               {
                 "question": "¿Qué obtengo exactamente por el precio de inicio de un proyecto?",
-                "answer": "En 6 semanas Tovy entrega una solución concreta y funcional. Por ejemplo: una plataforma de datos totalmente configurada en Azure, un canal automatizado que sincroniza tus datos de ventas del sistema A al sistema B y un panel de Power BI con tus KPI más importantes. Una base completa para el control y la visión general."
+                "answer": "En 6 semanas Tovy entrega una solución concreta y funcional. Por ejemplo: una plataforma de datos totalmente configurada en Azure, un flujo automatizado que sincroniza tus datos de ventas del sistema A al sistema B y un panel de Power BI con tus KPI más importantes."
               },
               {
                 "question": "¿Cómo puedo reservar una reunión de toma de contacto?",
-                "answer": "Puedes empezar rellenando el <a href='/project-request' class='text-primary hover:underline'>formulario de admisión de proyectos</a>. Este formulario nos ayuda a comprender tu situación, para que nuestra primera conversación se centre directamente en crear una solución."
+                "answer": "Puedes empezar rellenando el <a href='/project-request' class='text-primary hover:underline'>formulario de admisión de proyectos</a>. Este formulario nos ayuda a comprender tu situación, para que nuestra primera conversación se centre directamente en encontrar una solución."
               },
               {
                 "question": "¿Cuál es el tiempo medio de implementación?",
@@ -226,7 +226,7 @@
     "projectRequest": {
       "metadata": {
         "title": "Solicitar evaluación de arquitectura de datos",
-        "description": "¿Listo para automatizar? Complete nuestra admisión técnica de 7 pasos para una evaluación directa de un ingeniero de datos senior.",
+        "description": "¿Listo para automatizar? Completa nuestra evaluación técnica de 7 pasos y recibe una valoración directa de un ingeniero de datos senior.",
         "keywords": [
           "Solicitar evaluación de datos",
           "Contratar ingeniero de datos",
@@ -247,7 +247,7 @@
         "title": "Evaluación de arquitectura de datos",
         "subtitle": "Comparte los requisitos de tu proyecto con Tovy para construir sistemas de datos escalables.",
         "intro": {
-          "title": "Construye tu base de datos",
+          "title": "Sienta las bases de tus datos",
           "description": "Para dar la recomendación correcta, hacemos siete preguntas cortas sobre tus objetivos de proyecto. Esto nos ayuda a determinar si hay una coincidencia."
         },
         "success": {
@@ -261,7 +261,7 @@
         "steps": {
           "problemStatement": {
             "label": "Planteamiento del problema y resultado deseado",
-            "description": "Ayúdanos a comprender tu desafío y visión. Así podremos visualizar la solución.",
+            "description": "Ayúdanos a comprender tu desafío y visión. Así podremos diseñar la solución.",
             "hasProblemLabel": "¿Hay un problema específico que quieras solucionar?",
             "problemDescriptionLabel": "Describe el problema y el impacto en tu empresa (quién, qué, cuándo, dónde).",
             "idealStateLabel": "¿Cómo es la solución ideal y qué resultados esperas?",
@@ -272,7 +272,7 @@
           },
           "workEmail": {
             "label": "Correo electrónico profesional",
-            "description": "Proporciona tu correo electrónico profesional de empresa.",
+            "description": "Indica tu correo electrónico de empresa.",
             "note": "Nota: Se permiten correos electrónicos personales, pero los de empresa son preferibles y tienen prioridad en la evaluación."
           },
           "companySize": {
@@ -290,7 +290,7 @@
           },
           "dataInfrastructure": {
             "label": "¿Cómo es tu infraestructura de datos actual?",
-            "description": "El conocimiento de tu configuración actual nos permite identificar los puntos de integración más efectivos.",
+            "description": "Así determinamos los mejores puntos de integración.",
             "hasDataTeamLabel": "¿Hay un equipo de ingeniería (de datos)?",
             "hasCentralDatabaseLabel": "¿Hay una base de datos central que contenga datos de múltiples sistemas?",
             "hasCloudPlatformLabel": "¿Utilizas una plataforma en la nube (AWS / Azure / GCP)?",
@@ -339,7 +339,7 @@
             "subject": "Bienvenido a Tovy - Solicitud de proyecto recibida",
             "title": "Bienvenido a Tovy",
             "subTitle": "Bienvenido a Tovy. Este es su primer paso hacia la automatización.",
-            "bodyText": "Gracias por compartir las especificaciones de su proyecto. Actualmente estoy revisando los detalles de su infraestructura para sentar las bases de nuestra llamada de incorporación. Nuestro objetivo es transformar los sistemas de datos fragmentados en cimientos unificados y automatizados.",
+            "bodyText": "Gracias por enviar las especificaciones de su proyecto. Estoy revisando los detalles de su infraestructura para preparar nuestra primera conversación.",
             "specsTitle": "Especificaciones de la solicitud",
             "profileTitle": "Perfil de contacto",
             "nameLabel": "Nombre:",
@@ -348,7 +348,7 @@
             "phoneLabel": "Teléfono:",
             "phoneNotProvided": "No proporcionado",
             "scopeTitle": "Alcance del proyecto",
-            "budgetLabel": "Budget:",
+            "budgetLabel": "Presupuesto:",
             "timelineLabel": "Cronograma:",
             "infraTitle": "Infraestructura y herramientas",
             "dataTeamLabel": "Equipo de datos:",
@@ -366,26 +366,26 @@
             "bottlenecksLabel": "Obstáculos actuales:",
             "noneDeclared": "Ninguno especificado",
             "idealStateLabel": "Visión / Estado ideal:",
-            "schedulerText": "Si no lo hizo inmediatamente después de completar el formulario en nuestro sitio web, use el siguiente enlace para seleccionar un horario conveniente para nuestra llamada:",
-            "btnText": "Programar incorporación",
+            "schedulerText": "¿Aún no ha programado una reunión? Elija un horario conveniente a través del siguiente enlace:",
+            "btnText": "Programar reunión",
             "bestRegards": "Saludos cordiales,",
             "founderTitle": "Fundador e Ingeniero de Datos, Tovy",
             "copyright": "© {year} Tovy. Todos los derechos reservados."
           },
           "abandonment": {
-            "subject": "Asegure sus cimientos automatizados con Tovy",
+            "subject": "Su solicitud en Tovy sigue abierta",
             "greeting": "Hola,",
-            "introTitle": "Asegure sus cimientos automatizados. Este es su primer paso hacia la automatización.",
-            "introBody": "Notamos que comenzó a completar nuestro formulario de solicitud de proyecto, pero no llegó a terminarlo. Su progreso se ha guardado de forma segura para que no tenga que empezar de nuevo.",
+            "introTitle": "Su solicitud aún no se ha completado – su progreso se ha guardado.",
+            "introBody": "Ha comenzado a rellenar nuestro formulario de solicitud, pero aún no lo ha completado. Su progreso está guardado: no necesita empezar de nuevo.",
             "progressTitle": "Su progreso: 85% Completado",
             "step1": "Detalles de calificación y presupuesto",
             "step2": "Detalles de contacto y verificación de correo electrónico",
-            "step3": "Verificación final y reserva de incorporación",
+            "step3": "Verificación final y programar reunión",
             "btnText": "Reanudar formulario",
             "directConnTitle": "¿Prefiere una comunicación directa?",
             "directConnText": "Si desea omitir el paso restante del formulario por completo, puede:",
             "optionReply": "Responder directamente a este correo electrónico o escribirnos a",
-            "optionSchedule": "Programar una breve llamada de incorporación inmediatamente usando nuestro",
+            "optionSchedule": "Programar directamente una breve reunión a través de nuestro",
             "optionLinkText": "Enlace de Google Calendar",
             "bestRegards": "Saludos cordiales,",
             "founderTitle": "Fundador e Ingeniero de Datos, Tovy",
@@ -408,7 +408,7 @@
       "content": {
         "badge": "Protocolo de privacidad",
         "title": "Política de privacidad",
-        "intro": "La privacidad es importante para Tovy. La política de Tovy es respetar tu privacidad al recopilar datos a través del sitio web. Esta política cumple con el Reglamento General de Protección de Datos (RGPD).",
+        "intro": "Tovy respeta tu privacidad. Esta política describe cómo Tovy gestiona los datos recogidos a través de este sitio web, conforme al Reglamento General de Protección de Datos (RGPD).",
         "sections": [
           {
             "title": "Responsable del tratamiento",
@@ -416,20 +416,20 @@
           },
           {
             "title": "Recopilación y uso de datos",
-            "content": "Tovy solo solicita datos personales cuando es necesario para prestar un servicio. La organización recopila datos de manera legal, con tu conocimiento y consentimiento explícito. Los fundamentos jurídicos para el tratamiento son el consentimiento, la necesidad contractual y el interés legítimo.",
+            "content": "Tovy solo solicita datos personales cuando es necesario para prestar un servicio. Tovy recopila datos de manera legal, con tu conocimiento y consentimiento explícito. Los fundamentos jurídicos para el tratamiento son el consentimiento, la necesidad contractual y el interés legítimo.",
             "list": [
               "<strong>Formulario de solicitud de proyecto:</strong> Tovy recopila nombres, datos de contacto (correo electrónico, teléfono), información de la empresa y detalles del proyecto. Estos datos se almacenan en Google Cloud Firestore y se utilizan para evaluar las solicitudes. El fundamento es la intención de celebrar un contrato.",
               "<strong>Registros del servidor:</strong> El servidor web, alojado por Firebase Hosting, registra automáticamente solicitudes como direcciones IP, tipos de navegador y páginas visitadas. El fundamento es el interés legítimo de mantener un sitio web seguro.",
-              "<strong>Cookies:</strong> Tovy utiliza cookies necesarias para gestionar tus preferencias de consentimiento. La organización no utiliza cookies de seguimiento sin tu consentimiento previo y explícito a través del banner de cookies."
+              "<strong>Cookies:</strong> Tovy utiliza cookies necesarias para gestionar tus preferencias de consentimiento. Tovy no utiliza cookies de seguimiento sin tu consentimiento previo y explícito a través del banner de cookies."
             ]
           },
           {
             "title": "Ubicación y transferencia de datos",
-            "content": "Para proteger los datos, la base de datos principal (Cloud Firestore) está configurada dentro de la Unión Europea (región ‘eur3’). Aunque la organización prefiere los servicios de la UE, algunos subcontratistas pueden transferir datos a nivel internacional. Esto se realiza exclusivamente a través de mecanismos legalmente permitidos, como las cláusulas contractuales tipo."
+            "content": "Para proteger los datos, la base de datos principal (Cloud Firestore) está configurada dentro de la Unión Europea (región ‘eur3’). Aunque Tovy da preferencia a servicios de la UE, algunos subcontratistas pueden transferir datos a nivel internacional. Esto se realiza exclusivamente a través de mecanismos legalmente permitidos, como las cláusulas contractuales tipo."
           },
           {
             "title": "Plazos de conservación y seguridad",
-            "content": "Tovy conserva los datos personales solo durante el tiempo necesario para la prestación del servicio o según lo exija la ley. La organización protege los datos con medidas de seguridad comercialmente estándar para evitar la pérdida, el robo y el acceso no autorizado."
+            "content": "Tovy conserva los datos personales solo durante el tiempo necesario para la prestación del servicio o según lo exija la ley. Tovy protege los datos con medidas de seguridad habituales del sector para evitar la pérdida, el robo y el acceso no autorizado."
           },
           {
             "title": "Derechos bajo el RGPD",
@@ -502,15 +502,15 @@
     "paymentSuccess": {
       "metadata": {
         "title": "Pago completado",
-        "description": "Su pago ha sido recibido con éxito. ¡Gracias por su confianza!"
+        "description": "Tu pago se ha recibido correctamente. ¡Gracias por tu confianza!"
       },
       "content": {
         "badge": "Pago completado",
-        "title": "Gracias por su pago",
-        "subtitle": "Hemos recibido su pago correctamente. Le enviaremos un correo electrónico de confirmación con la factura/recibo.",
+        "title": "Gracias por tu pago",
+        "subtitle": "Hemos recibido tu pago correctamente. Recibirás un correo de confirmación con la factura.",
         "returnHome": "Ir a la página de inicio de Tovy",
-        "needHelp": "¿Necesita ayuda o tiene preguntas?",
-        "contactUs": "Contáctenos en"
+        "needHelp": "¿Necesitas ayuda o tienes preguntas?",
+        "contactUs": "Contáctanos en"
       }
     }
   }
