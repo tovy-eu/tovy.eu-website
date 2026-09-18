@@ -161,6 +161,6 @@ jobs:
           echo "TOVY_OS_WEBHOOK_SECRET=${{ secrets.TOVY_OS_WEBHOOK_SECRET }}" >> functions/.env
 
       - name: Deploy to Firebase Hosting + Functions (Production)
-        run: npx --package=firebase-tools firebase deploy --only hosting,functions --project studio-5767764867-ecdbc --non-interactive
+        run: npx --package=firebase-tools firebase deploy --only hosting,functions --project studio-5767764867-ecdbc --non-interactive --force
         env:
           FIREBASE_TOKEN: ${{ steps.auth.outputs.access_token }}

@@ -45,7 +45,7 @@ admin alerting handled by Cloud Functions.
 - **Automated recovery** — cron Cloud Function requeues localized reminder
   emails for forms abandoned > 2h.
 - **Real-time alerting** — Firestore document listeners notify the team on new
-  leads via `ntfy.sh`.
+  leads via Google Chat.
 - **Structured data** — automated JSON-LD (Organization, Services, FAQPage,
   BreadcrumbList) for search and AI indexing.
 - **GDPR consent** — client-side cookie-consent banner that gates tracking.
