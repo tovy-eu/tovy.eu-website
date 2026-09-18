@@ -2,17 +2,17 @@
   "global": {
     "metadata": {
       "template": "%s | Tovy",
-      "defaultTitle": "Data engineering & procesautomatisering | Tovy",
-      "ogAlt": "Tovy | Data engineering & procesautomatisering",
-      "twitterTitle": "Data engineering & procesautomatisering | Tovy"
+      "defaultTitle": "Automatisering & systeemintegratie | Tovy",
+      "ogAlt": "Tovy | Automatisering & systeemintegratie",
+      "twitterTitle": "Automatisering & systeemintegratie | Tovy"
     },
     "navigation": {
-      "about": "Over ons",
+      "about": "Over mij",
       "services": "Diensten"
     },
     "footer": {
-      "slogan-line-1": "Onze tech zorgt voor rust en controle",
-      "slogan-line-2": "in jouw bedrijf.",
+      "slogan-line-1": "Systemen die het werk doen,",
+      "slogan-line-2": "zodat jij dat niet hoeft.",
       "legal-notice": "Juridische informatie",
       "privacy-policy": "Privacyverklaring"
     },
@@ -23,8 +23,8 @@
       "accept": "Accepteren"
     },
     "common": {
-      "workWithUs": "Start de intake",
-      "shareIdea": "Deel je projectidee",
+      "workWithUs": "Plan een gesprek",
+      "shareIdea": "Vertel over je situatie",
       "privacyPolicy": "Privacyverklaring",
       "agreeTo": "Ik ga akkoord met de",
       "downloadJson": "Download als JSON",
@@ -35,8 +35,8 @@
       "errorOccurred": "Fout",
       "errorTryAgain": "Probeer het later opnieuw.",
       "stayUpToDate": "Blijf op de hoogte",
-      "newsletterDesc": "Ontvang technische inzichten van Tovy.",
-      "techStack": "De Tovy-toolchain",
+      "newsletterDesc": "Praktische inzichten over automatisering en integratie.",
+      "techStack": "De toolchain",
       "home": "Home",
       "page": "Pagina",
       "back": "Terug",
@@ -45,112 +45,112 @@
       "priorExperience": "Eerdere ervaring",
       "linkedinProfile": "LinkedIn-profiel",
       "explore": "Verken",
-      "readyToScale": "Klaar voor de volgende stap?",
+      "readyToScale": "Klaar om te automatiseren?",
       "buildFoundation": "Bouw je fundament voor groei.",
       "scroll": "Scroll"
     },
     "redirects": {
-      "title": "Tovy | Data engineering & automatisering",
-      "description": "Intelligente datasystemen die chaos omzetten in helderheid.",
-      "projectRequestTitle": "Tovy | Projectaanvraag & assessment"
+      "title": "Tovy | Automatisering & systeemintegratie",
+      "description": "Ik koppel je systemen, automatiseer je processen en beheer je cloud-omgeving.",
+      "projectRequestTitle": "Tovy | Intake & assessment"
     }
   },
   "pages": {
     "home": {
       "metadata": {
-        "title": "Data engineering & procesautomatisering",
-        "description": "Tovy bouwt betrouwbare data-pipelines om al je systemen naadloos en foutloos te synchroniseren.",
+        "title": "Automatisering & systeemintegratie voor supply chain",
+        "description": "Freelance automation engineer. Ik koppel je bedrijfssystemen, automatiseer processen en beheer je cloud-omgeving. Vaste maandelijkse samenwerking, geen verrassingen.",
         "keywords": [
-          "Data-engineering",
-          "Data-architectuur",
           "Procesautomatisering",
-          "Commerciële groei"
+          "Systeemintegratie",
+          "Cloud-beheer",
+          "Supply chain automatisering"
         ]
       },
       "hero": {
-        "badge": "Data engineering & procesautomatisering",
-        "title": "Betrouwbare data & procesautomatisering",
-        "subtitle": "Tovy bouwt, integreert en beheert je complete data-omgeving. Van geautomatiseerde API-koppelingen en centrale datawarehouses tot stabiele cloud-infrastructuur. Geen handmatig knip-en-plakwerk, maar systemen die foutloos op de achtergrond draaien."
+        "badge": "Automatisering & integratie",
+        "title": "Jouw systemen laten samenwerken",
+        "subtitle": "Ik koppel je bedrijfssoftware, automatiseer handmatige processen en beheer je cloud-omgeving. SAP, Shopify, boekhouding, magazijn – alles verbonden en foutloos draaiend. Geen bureau, geen overhead. Directe samenwerking met één engineer."
       },
       "about": {
-        "section": "Over ons",
-        "title": "Een focus op technische expertise",
-        "mission": "Tovy helpt groeiende bedrijven hun data-infrastructuur te professionaliseren. Tovy bouwt stabiele systemen die handmatig werk overbodig maken en zorgen dat je data klopt.",
+        "section": "Over mij",
+        "title": "Eén engineer, volledige ontzorging",
+        "mission": "Ik help kleine supply chain bedrijven hun IT professionaliseren zonder de kosten van een intern team. Vaste samenwerking op maandbasis: ik bouw, koppel en onderhoud je systemen.",
         "ceo": {
           "name": "Giel Nijkamp",
-          "role": "Oprichter & data-engineer",
+          "role": "Automation & integration engineer",
           "location": "Breda, Nederland",
           "linkedin": "https://www.linkedin.com/in/giel-nijkamp-ab370447/",
-          "bio": "Als data-engineer help ik bedrijven rust te brengen via IT. Met een BSc bedrijfskunde, MSc supply-chain-management en jaren praktijkervaring begrijp ik zowel bedrijfsprocessen als de datastructuren die erbij passen. Je werkt direct samen met de specialist die jouw systemen ontwerpt en bouwt. Pragmatisch en snel."
+          "bio": "Met een BSc bedrijfskunde en MSc supply-chain-management begrijp ik zowel je bedrijfsprocessen als de techniek erachter. Ik ontwerp en bouw je koppelingen, pipelines en automatiseringen zelf. Geen tussenpersonen, geen overdracht. Pragmatisch en snel."
         },
-        "pillarsTitle": "Onze pijlers",
+        "pillarsTitle": "Werkwijze",
         "pillars": {
           "tech": {
-            "title": "Technologie",
-            "desc": "Tovy kent de technologie en kiest de stack die het beste bij jouw bedrijf past."
+            "title": "Directe samenwerking",
+            "desc": "Je werkt rechtstreeks met mij. Geen accountmanagers, geen projectmanagers. Korte lijnen, snelle beslissingen."
           },
           "optimization": {
-            "title": "Optimalisatie",
-            "desc": "Tovy zoekt voortdurend naar manieren om processen te optimaliseren – het liefst volledig geautomatiseerd. Dat vraagt volledige afstemming tussen bedrijfsprocessen en IT."
+            "title": "Vaste samenwerking",
+            "desc": "Maandelijks retainer van 8 tot 16 uur per week. Doorlopende verbetering van je automatisering, geen eenmalige projecten die daarna stilvallen."
           },
           "freedom": {
-            "title": "Vrijheid",
-            "desc": "Dure medewerkers verdienen slim werk. Tovy neemt de simpele taken uit handen, zodat jouw team zich kan richten op werk dat ertoe doet."
+            "title": "Kennisoverdracht",
+            "desc": "Alles wat ik bouw is gedocumenteerd en overdraagbaar. Je bent nooit afhankelijk van mij als persoon."
           },
           "innovation": {
-            "title": "Innovatie",
-            "desc": "Een solide basis geeft ruimte om te innoveren en te groeien. Tovy legt dat fundament, zodat jouw team ermee verder kan."
+            "title": "Startup-budget, senior kwaliteit",
+            "desc": "AI-ondersteunde ontwikkeling houdt de kosten laag. Dezelfde kwaliteit als een groot bureau, voor een fractie van de prijs."
           }
         }
       },
       "engineering": {
         "section": "Diensten",
-        "title": "De volledige bouw van jouw datafundament",
-        "subtitle": "Betrouwbare processen vormen de basis van een robuust systeem",
+        "title": "Wat ik voor je bouw en beheer",
+        "subtitle": "Van losse systemen naar één geautomatiseerd geheel",
         "services": {
           "strategic": {
-            "title": "Datagedreven strategie",
-            "desc": "Tovy ontwerpt schaalbare gekoppelde systemen en selecteert tooling in overleg. Geen theoretische adviesrapporten, maar concrete technische blauwdrukken gericht op haalbaarheid.",
-            "tools": ["Architectuur", "Toolingselectie", "Haalbaarheid"]
+            "title": "Systeemintegratie",
+            "desc": "Ik koppel je bedrijfssystemen zodat data automatisch stroomt. SAP, Shopify, boekhoud­software, magazijnsystemen – verbonden via betrouwbare API-koppelingen.",
+            "tools": ["API-koppelingen", "SAP / Shopify / ERP", "ETL-pipelines"]
           },
           "cloud": {
-            "title": "Infrastructuur",
-            "desc": "Tovy richt je cloud- en lokale omgevingen in en beheert ze. Met oog op prestaties, beveiliging, back-ups en beschikbaarheid.",
+            "title": "Cloud-beheer",
+            "desc": "Ik richt je cloud-omgeving in en beheer die maandelijks. Prestaties, beveiliging, back-ups en beschikbaarheid – je hoeft er niet meer naar om te kijken.",
             "points": [
-              "Een IT-omgeving die naadloos meegroeit met je bedrijfsambities.",
-              "Maximale prestaties voor je bedrijfssystemen.",
-              "Volledige rust door back-upstrategieën.",
-              "Een veilig beheerd systeem dat je team ontzorgt."
+              "Een cloud-omgeving die meegroeit met je bedrijf.",
+              "Maandelijks beheer: updates, monitoring en beveiliging.",
+              "Back-upstrategieën zodat je data altijd veilig is.",
+              "Geen verrassingen. Vast maandbedrag, helder overzicht."
             ],
-            "tools": ["Azure / GCP / AWS", "Beveiliging", "Back-ups"]
+            "tools": ["Google Cloud Platform", "Beveiliging", "Back-ups"]
           },
           "data": {
-            "title": "Datawarehousing & pipelines",
-            "desc": "Data uit al je bronnen – ERP, CRM, website, boekhoudsoftware, maatwerk – samengebracht in één centraal datawarehouse.",
+            "title": "Datawarehousing & rapportage",
+            "desc": "Data uit al je bronnen – ERP, CRM, webshop, boekhouding – samengebracht in één centraal warehouse. Altijd actueel, altijd kloppend.",
             "points": [
-              "Al je data op één plek, altijd kloppend.",
-              "Direct inzicht in bedrijfsresultaten via rapportages.",
-              "Actueel inzicht in je voorraden, marges en klantdata.",
-              "Een dataplatform dat de basis vormt voor besluitvorming.",
-              "Beveiligd met toegangsbeheer, versleuteling en back-upstrategieën."
+              "Al je data op één plek, automatisch gesynchroniseerd.",
+              "Direct inzicht via dashboards en rapportages.",
+              "Actueel overzicht van voorraden, marges en klantdata.",
+              "Een dataplatform als basis voor je beslissingen.",
+              "Beveiligd met toegangsbeheer, versleuteling en back-ups."
             ],
             "tools": [
-              "dbt / Databricks / Apache Spark",
+              "BigQuery / Databricks",
               "Power BI",
               "Datawarehousing"
             ]
           },
           "automation": {
             "title": "Procesautomatisering",
-            "desc": "Bedrijfslogica implementeren in standaard softwarepakketten, aangevuld met AI om simpele handmatige taken te automatiseren.",
-            "tools": ["Standaard software", "AI-automatisering"]
+            "desc": "Handmatige taken die je medewerkers tijd kosten, automatiseer ik met workflows en AI. Orderverwerking, rapportages, datainvoer – het draait vanzelf.",
+            "tools": ["Cloud Functions", "AI-automatisering", "Workflows"]
           }
         }
       },
       "solutions": {
-        "badge": "Geleverde oplossingen",
-        "title": "Bewezen bij onze klanten.",
-        "viewSolution": "Bekijk oplossing",
+        "badge": "Resultaten",
+        "title": "Wat ik heb opgeleverd.",
+        "viewSolution": "Bekijk resultaat",
         "items": [
           {
             "title": "Kenexis: anamnese-automatisering",
@@ -161,8 +161,8 @@
         ]
       },
       "testimonials": {
-        "title": "Groeiende teams kiezen voor Tovy",
-        "subtitle": "Wat klanten zeggen over de samenwerking met Tovy.",
+        "title": "Wat klanten zeggen",
+        "subtitle": "Directe samenwerking, concrete resultaten.",
         "items": [
           {
             "quote": "Tovy veranderde onze datachaos in een heldere, geautomatiseerde pipeline. Degelijk en snel geleverd.",
@@ -171,7 +171,7 @@
             "logoId": "techflow-logo"
           },
           {
-            "quote": "Dankzij de snelheid en betrouwbaarheid van de systemen die Tovy voor ons heeft gebouwd, kon ons team zich richten op groei in plaats van onderhoud.",
+            "quote": "Dankzij de betrouwbaarheid van de systemen die Giel voor ons bouwde, kon ons team zich richten op groei in plaats van brandjes blussen.",
             "author": "Mark van den Berg",
             "role": "Oprichter van BrightScale",
             "logoId": "brightscale-logo"
@@ -183,40 +183,40 @@
         "badge": "FAQ",
         "categories": [
           {
-            "name": "Identiteit",
+            "name": "Over Tovy",
             "questions": [
               {
-                "question": "Wat voor problemen lost Tovy concreet op?",
-                "answer": "Tovy lost de chaos op die ontstaat door handmatige dataprocessen. Een concreet voorbeeld is de dagelijkse, foutgevoelige taak van het overzetten van orders. Tovy bouwt een automatische koppeling die dit proces volledig overneemt. Dit zorgt voor data die altijd klopt."
+                "question": "Wat doet Tovy precies?",
+                "answer": "Ik koppel bedrijfssystemen, automatiseer handmatige processen en beheer cloud-omgevingen. Concreet voorbeeld: de dagelijkse handmatige export van orders uit je webshop naar je ERP. Dat bouw ik om tot een automatische koppeling die foutloos draait."
               },
               {
-                "question": "Hoe verschilt de werkwijze van Tovy van een traditionele IT-partner?",
-                "answer": "Onze focus ligt op het bouwen van een fundament, niet op het verkopen van uren. Je hebt direct contact met mij, de engineer. Geen projectmanagers of accountmanagers. Dit zorgt voor een efficiënt proces en een oplossing die perfect is afgestemd op jouw bedrijf."
+                "question": "Hoe verschilt Tovy van een IT-bureau?",
+                "answer": "Je werkt direct met mij, de engineer die jouw systemen ontwerpt en bouwt. Geen accountmanagers, geen projectmanagers, geen overhead. Dat houdt de kosten laag en de communicatie kort."
               },
               {
-                "question": "Voor welk type bedrijf is Tovy het meest geschikt?",
-                "answer": "De aanpak van Tovy is ideaal voor bedrijven waar data-integriteit cruciaal is. Commerciële en handelsbedrijven, bijvoorbeeld, die afhankelijk zijn van een perfecte synchronisatie tussen voorraad, verkoop en financiën. Als de stress van inconsistente data jouw groei belemmert, is Tovy de juiste partner."
+                "question": "Voor welk type bedrijf is Tovy geschikt?",
+                "answer": "Kleine bedrijven (10 tot 50 medewerkers) in supply chain, retail, logistiek of operations. Vooral bedrijven met meerdere systemen – SAP, Shopify, boekhoudsoftware, magazijnsystemen – die niet goed met elkaar communiceren."
               },
               {
-                "question": "Waarom zou ik Tovy verkiezen boven een groot data-adviesbureau?",
-                "answer": "Tovy biedt dezelfde diepgaande expertise, maar zonder de logheid of overhead. De aanpak draait om korte, gefocuste sprints van 6 weken die snel een werkende oplossing leveren met directe controle. De focus ligt op het bouwen van een duurzaam systeem."
+                "question": "Waarom geen groot adviesbureau?",
+                "answer": "Dezelfde technische expertise, zonder de overhead. Doordat ik AI-ondersteund ontwikkel, krijg je een bouwkost van € 5.000 tot € 15.000 in plaats van € 50.000 tot € 100.000 bij een bureau. Het beheer kost € 800 tot € 2.000 per maand – een fractie van een interne engineer."
               }
             ]
           },
           {
-            "name": "Operatie",
+            "name": "Werkwijze",
             "questions": [
               {
-                "question": "Wat krijg ik precies voor de startprijs van een project?",
-                "answer": "In 6 weken levert Tovy een concrete, werkende oplossing. Bijvoorbeeld: een volledig ingericht data-platform in Azure, een geautomatiseerde pipeline die je verkoopdata van systeem A naar systeem B synchroniseert, en een Power BI-dashboard met je belangrijkste KPI's."
+                "question": "Hoe werkt de samenwerking?",
+                "answer": "Op basis van een maandelijks retainer. Ik werk 8 tot 16 uur per week aan jouw systemen: nieuwe koppelingen bouwen, bestaande automatiseringen verbeteren, cloud-omgeving beheren. Doorlopend, niet eenmalig."
               },
               {
-                "question": "Hoe kan ik een kennismaking boeken?",
-                "answer": "Je kunt starten door het <a href='/project-request' class='text-primary hover:underline'>project-intakeformulier</a> in te vullen. Dit formulier helpt ons om jouw situatie te begrijpen, zodat ons eerste gesprek direct gericht is op het vinden van een oplossing."
+                "question": "Hoe start ik?",
+                "answer": "Vul het <a href='/project-request' class='text-primary hover:underline'>intakeformulier</a> in of plan direct een gesprek. In het eerste gesprek breng ik je huidige situatie in kaart en bepalen we of er een match is."
               },
               {
-                "question": "Wat is de gemiddelde implementatietijd?",
-                "answer": "Een fundamenteel datasysteem, inclusief je eerste geautomatiseerde workflow, staat doorgaans binnen <strong>6 weken</strong>. Vanaf dat moment ervaar je direct de rust van een geautomatiseerd proces."
+                "question": "Hoe snel zijn er resultaten?",
+                "answer": "De eerste automatisering of koppeling staat doorgaans binnen <strong>2 tot 4 weken</strong>. Vanaf dat moment draait het proces automatisch en bouwen we verder."
               }
             ]
           },
@@ -224,26 +224,26 @@
             "name": "Vertrouwen",
             "questions": [
               {
-                "question": "Waar kan ik de technische casestudy's vinden?",
-                "answer": "Transparantie is een kernwaarde van Tovy. Tijdens de kennismaking laat Tovy openlijk de methodes en technische aanpak zien, zodat je precies begrijpt hoe Tovy de rust en controle in je systemen realiseert."
+                "question": "Hoe zit het met kennisoverdracht?",
+                "answer": "Alles wat ik bouw is gedocumenteerd. Code, configuratie en procedures staan in jouw eigen omgeving. Als de samenwerking stopt, draait alles gewoon door."
               }
             ]
           }
         ]
       },
       "marquee": {
-        "title": "Technologie die schaalbaarheid mogelijk maakt",
-        "subtitle": "Tovy kiest tools die betrouwbaar, schaalbaar en onderhoudbaar zijn – zodat je dataplatform meegroeit."
+        "title": "Technologie die meegroeit",
+        "subtitle": "Ik kies tools die betrouwbaar en onderhoudbaar zijn, zodat je platform klaar is voor de volgende stap."
       }
     },
     "projectRequest": {
       "metadata": {
-        "title": "Data-architectuur assessment aanvragen",
-        "description": "Klaar voor automatisering? Vul de 7-stappen technische intake in voor een direct assessment door een senior data engineer. Direct antwoord.",
+        "title": "Intake & assessment aanvragen",
+        "description": "Vertel over je situatie. Ik beoordeel je systemen en kom met een concreet voorstel.",
         "keywords": [
-          "Data-assessment aanvragen",
-          "Data-engineer inhuren",
-          "Systeemintegratie sprint",
+          "Automatisering aanvragen",
+          "Integratie-engineer inhuren",
+          "Systeemkoppeling",
           "Tovy intake"
         ]
       },
@@ -251,33 +251,33 @@
         "sidebarSteps": {
           "email": "e-mailadres",
           "companySize": "bedrijfsgrootte",
-          "problemStatement": "probleemstelling",
-          "dataInfrastructure": "data-infrastructuur",
+          "problemStatement": "situatie",
+          "dataInfrastructure": "huidige systemen",
           "timeline": "tijdlijn",
           "budget": "budget",
           "contactDetails": "contactgegevens"
         },
-        "title": "Data-architectuur assessment",
-        "subtitle": "Vertel wat je nodig hebt – Tovy kijkt mee naar de oplossing.",
+        "title": "Intake & assessment",
+        "subtitle": "Vertel wat je nodig hebt – ik kijk mee naar de oplossing.",
         "intro": {
-          "title": "Bouw je datafundament",
-          "description": "Om de juiste aanbeveling te geven, stellen we zeven korte vragen over je projectdoelen. Dit helpt ons te bepalen of er een match is."
+          "title": "Vertel over je situatie",
+          "description": "Zeven korte vragen over je bedrijf en systemen. Zo bepaal ik of ik je kan helpen en hoe."
         },
         "success": {
           "title": "Bedankt",
-          "description": "Tovy heeft je verzoek ontvangen. Plan hieronder een kennismakingsgesprek om het proces te versnellen.",
-          "titlePathB": "Beoordeling van vereisten",
-          "descriptionPathB": "Tovy beoordeelt momenteel de technische en strategische vereisten. Tovy neemt contact op als er extra context nodig is.",
+          "description": "Ik heb je aanvraag ontvangen. Plan hieronder een gesprek om het proces te versnellen.",
+          "titlePathB": "Beoordeling loopt",
+          "descriptionPathB": "Ik beoordeel momenteel je situatie. Ik neem contact op als ik extra context nodig heb.",
           "backHome": "Terug naar homepage",
-          "bookMeeting": "Plan kennismakingsgesprek"
+          "bookMeeting": "Plan een gesprek"
         },
         "steps": {
           "problemStatement": {
-            "label": "Probleemstelling en gewenste uitkomst",
-            "description": "Help ons jouw uitdaging en visie te begrijpen. Zo brengen we de oplossing in kaart.",
+            "label": "Wat speelt er?",
+            "description": "Beschrijf je situatie en wat je wilt bereiken.",
             "hasProblemLabel": "Is er een specifiek probleem dat je wilt oplossen?",
-            "problemDescriptionLabel": "Beschrijf het probleem en de impact op je bedrijf (wie, wat, wanneer, waar).",
-            "idealStateLabel": "Hoe ziet de ideale oplossing eruit en welke resultaten verwacht je?",
+            "problemDescriptionLabel": "Beschrijf het probleem en de impact op je bedrijf.",
+            "idealStateLabel": "Hoe ziet de ideale situatie eruit?",
             "options": {
               "yes": "Ja",
               "no": "Nee"
@@ -286,11 +286,11 @@
           "workEmail": {
             "label": "Zakelijk e-mailadres",
             "description": "Geef je zakelijke e-mailadres op.",
-            "note": "Let op: Persoonlijke e-mailadressen zijn toegestaan, maar zakelijke e-mailadressen hebben de voorkeur en krijgen voorrang bij de beoordeling."
+            "note": "Persoonlijke e-mailadressen zijn toegestaan, maar zakelijke adressen hebben de voorkeur."
           },
           "companySize": {
             "label": "Wat is de omvang van je bedrijf?",
-            "description": "Dit helpt Tovy om de schaal en complexiteit van het project in te schatten.",
+            "description": "Dit helpt mij de schaal en complexiteit in te schatten.",
             "options": [
               "Zelfstandig ondernemer",
               "2–15",
@@ -302,11 +302,11 @@
             ]
           },
           "dataInfrastructure": {
-            "label": "Hoe ziet je huidige data-infrastructuur eruit?",
-            "description": "Zo bepalen we waar de beste integratiepunten zitten.",
-            "hasDataTeamLabel": "Is er een (data)engineeringteam?",
+            "label": "Welke systemen gebruik je?",
+            "description": "Zo bepaal ik waar de beste integratiepunten zitten.",
+            "hasDataTeamLabel": "Is er een IT- of engineeringteam?",
             "hasCentralDatabaseLabel": "Is er een centrale database die gegevens uit meerdere systemen bevat?",
-            "hasCloudPlatformLabel": "Maak je gebruik van een cloud-platform (AWS / Azure / GCP)?",
+            "hasCloudPlatformLabel": "Gebruik je een cloud-platform (AWS / Azure / GCP)?",
             "solutionsInUseLabel": "Welke software, tools of platforms gebruik je momenteel?",
             "options": {
               "yes": "Ja",
@@ -314,23 +314,23 @@
             }
           },
           "timeline": {
-            "label": "Wanneer is de beoogde startdatum?",
-            "description": "Onze implementatiecycli bedragen doorgaans 6 weken. Wanneer wil je beginnen?",
+            "label": "Wanneer wil je starten?",
+            "description": "De eerste resultaten staan er doorgaans binnen 2 tot 4 weken.",
             "options": [
-              "Onmiddellijk",
+              "Zo snel mogelijk",
               "1–3 maanden",
               "3+ maanden",
               "Oriënterend / geen vaste datum"
             ]
           },
           "budget": {
-            "label": "Is het benodigde projectbudget beschikbaar?",
-            "description": "Onze standaardprojecten zijn sprints van zes weken met een vast budget. Is er een minimale investering van € 5.000,- beschikbaar?",
+            "label": "Is er budget beschikbaar?",
+            "description": "Een typisch startproject kost € 5.000 tot € 15.000 voor de bouw. Het maandelijks beheer start vanaf € 800.",
             "options": ["Ja", "Nee"]
           },
           "contact": {
             "label": "Contactgegevens",
-            "description": "Laatste informatie voor de opvolging.",
+            "description": "Zodat ik contact kan opnemen.",
             "firstName": "Voornaam *",
             "lastName": "Achternaam *",
             "company": "Bedrijf *",
@@ -344,15 +344,15 @@
           "previous": "Vorige",
           "next": "Volgende",
           "start": "Start",
-          "submit": "Verzoek indienen",
-          "submitting": "Bezig met indienen..."
+          "submit": "Verstuur",
+          "submitting": "Bezig met versturen..."
         },
         "emails": {
           "welcome": {
-            "subject": "Welkom bij Tovy - Projectaanvraag Ontvangen",
-            "title": "Welkom bij Tovy",
-            "subTitle": "Welkom bij Tovy. Dit is je eerste stap naar automatisering.",
-            "bodyText": "Bedankt voor het opsturen van je projectspecificaties. Ik bekijk nu je infrastructuurdetails om ons kennismakingsgesprek goed voor te bereiden.",
+            "subject": "Tovy – Aanvraag ontvangen",
+            "title": "Bedankt voor je aanvraag",
+            "subTitle": "Ik heb je gegevens ontvangen en bekijk je situatie.",
+            "bodyText": "Ik bekijk nu je systeemdetails om ons eerste gesprek goed voor te bereiden. Heb je nog geen gesprek ingepland? Doe dat via de link hieronder.",
             "specsTitle": "Intake-specificaties",
             "profileTitle": "Contactprofiel",
             "nameLabel": "Naam:",
@@ -363,45 +363,45 @@
             "scopeTitle": "Projectomvang",
             "budgetLabel": "Budget:",
             "timelineLabel": "Doorlooptijd:",
-            "infraTitle": "Infrastructuur & Stack",
-            "dataTeamLabel": "Datateam:",
-            "hasDataTeamYes": "Interne team",
+            "infraTitle": "Systemen & Stack",
+            "dataTeamLabel": "IT-team:",
+            "hasDataTeamYes": "Intern team aanwezig",
             "hasDataTeamNo": "Geen intern team",
             "centralDbLabel": "Centrale database:",
-            "centralDbConfigured": "Geconfigureerd",
-            "centralDbNone": "Geen / Silo's",
-            "cloudPlatformLabel": "Cloudplatforms:",
-            "cloudPlatformConfigured": "Geconfigureerd",
-            "cloudPlatformNone": "Geen / On-Prem",
+            "centralDbConfigured": "Aanwezig",
+            "centralDbNone": "Geen / losse systemen",
+            "cloudPlatformLabel": "Cloud-platform:",
+            "cloudPlatformConfigured": "Aanwezig",
+            "cloudPlatformNone": "Geen / on-premises",
             "activeToolsLabel": "Actieve tools:",
             "noneSpecified": "Geen opgegeven",
-            "challengesTitle": "Strategische uitdagingen",
+            "challengesTitle": "Uitdagingen",
             "bottlenecksLabel": "Huidige knelpunten:",
             "noneDeclared": "Geen opgegeven",
-            "idealStateLabel": "Visie / Ideale situatie:",
-            "schedulerText": "Heb je nog geen gesprek ingepland? Kies via onderstaande link een geschikt moment:",
-            "btnText": "Plan kennismaking",
-            "bestRegards": "Met vriendelijke groet,",
-            "founderTitle": "Oprichter & Data-engineer, Tovy",
+            "idealStateLabel": "Gewenste situatie:",
+            "schedulerText": "Plan een kennismakingsgesprek via onderstaande link:",
+            "btnText": "Plan gesprek",
+            "bestRegards": "Groet,",
+            "founderTitle": "Giel Nijkamp – Automation & Integration Engineer, Tovy",
             "copyright": "© {year} Tovy. Alle rechten voorbehouden."
           },
           "abandonment": {
             "subject": "Je intake bij Tovy staat nog open",
-            "greeting": "Beste,",
+            "greeting": "Hoi,",
             "introTitle": "Je intake is nog niet afgerond – je voortgang is bewaard.",
-            "introBody": "Je bent begonnen met ons project-intakeformulier, maar hebt het nog niet afgerond. Je voortgang is opgeslagen – je hoeft niet opnieuw te beginnen.",
-            "progressTitle": "Je voortgang: 85% Voltooid",
-            "step1": "Kwalificaties & budgetdetails",
-            "step2": "Contactgegevens & E-mailverificatie",
-            "step3": "Laatste verificatie & Kennismakingsgesprek plannen",
+            "introBody": "Je bent begonnen met het intakeformulier maar hebt het nog niet afgerond. Je voortgang is opgeslagen – je hoeft niet opnieuw te beginnen.",
+            "progressTitle": "Je voortgang: 85% voltooid",
+            "step1": "Bedrijfsgegevens & budget",
+            "step2": "Contactgegevens & e-mailverificatie",
+            "step3": "Laatste check & gesprek plannen",
             "btnText": "Hervat intakeformulier",
             "directConnTitle": "Liever direct contact?",
-            "directConnText": "Als je de resterende formulierstappen wilt overslaan, kun je:",
-            "optionReply": "Beantwoord deze e-mail direct of schrijf ons op",
-            "optionSchedule": "Plan direct een kort kennismakingsgesprek via onze",
+            "directConnText": "Wil je het formulier overslaan? Dan kan je ook:",
+            "optionReply": "Reageer direct op deze e-mail of schrijf naar",
+            "optionSchedule": "Plan direct een kort gesprek via onze",
             "optionLinkText": "Google Calendar-link",
-            "bestRegards": "Met vriendelijke groet,",
-            "founderTitle": "Oprichter & Data-engineer, Tovy",
+            "bestRegards": "Groet,",
+            "founderTitle": "Giel Nijkamp – Automation & Integration Engineer, Tovy",
             "copyright": "© {year} Tovy. Alle rechten voorbehouden."
           }
         }
@@ -431,14 +431,14 @@
             "title": "Gegevensverzameling en gebruik",
             "content": "Tovy vraagt alleen om persoonsgegevens wanneer dit noodzakelijk is om een dienst te verlenen. Tovy verzamelt gegevens op een rechtmatige manier, met jouw medeweten en expliciete toestemming. De rechtsgronden voor verwerking zijn toestemming, contractuele noodzaak en gerechtvaardigd belang.",
             "list": [
-              "<strong>Projectaanvraagformulier:</strong> Tovy verzamelt namen, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore en gebruikt om aanvragen te beoordelen. De grondslag is de intentie om een overeenkomst aan te gaan.",
-              "<strong>Serverlogs:</strong> De webserver, gehost door Firebase Hosting, registreert automatisch verzoeken zoals IP-adressen, browsertypes en bezochte pagina’s. De grondslag is het gerechtvaardigd belang om een veilige website te onderhouden.",
+              "<strong>Intakeformulier:</strong> Tovy verzamelt namen, contactgegevens (e-mail, telefoon), bedrijfsinformatie en projectdetails. Deze gegevens worden opgeslagen in Google Cloud Firestore en gebruikt om aanvragen te beoordelen. De grondslag is de intentie om een overeenkomst aan te gaan.",
+              "<strong>Serverlogs:</strong> De webserver, gehost door Firebase Hosting, registreert automatisch verzoeken zoals IP-adressen, browsertypes en bezochte pagina's. De grondslag is het gerechtvaardigd belang om een veilige website te onderhouden.",
               "<strong>Cookies:</strong> Tovy gebruikt noodzakelijke cookies om je voorkeuren voor toestemming te beheren. Tovy gebruikt geen trackingcookies zonder jouw expliciete voorafgaande toestemming via de cookiebanner."
             ]
           },
           {
             "title": "Gegevenslocatie en doorgifte",
-            "content": "De primaire database (Cloud Firestore) staat in de Europese Unie (regio ‘eur3’). Tovy geeft de voorkeur aan EU-diensten, maar sommige onderaannemers kunnen gegevens internationaal doorgeven. Dat gebeurt uitsluitend via wettelijk toegestane mechanismen, zoals standaardcontractbepalingen."
+            "content": "De primaire database (Cloud Firestore) staat in de Europese Unie (regio 'eur3'). Tovy geeft de voorkeur aan EU-diensten, maar sommige onderaannemers kunnen gegevens internationaal doorgeven. Dat gebeurt uitsluitend via wettelijk toegestane mechanismen, zoals standaardcontractbepalingen."
           },
           {
             "title": "Bewaartermijnen en beveiliging",
@@ -465,7 +465,7 @@
     "legalNotice": {
       "metadata": {
         "title": "Juridische informatie & bedrijfsgegevens",
-        "description": "Officiële bedrijfsgegevens, KvK-inschrijving en juridische contactgegevens van Tovy Data Engineering in Nederland.",
+        "description": "Officiële bedrijfsgegevens, KvK-inschrijving en juridische contactgegevens van Tovy in Nederland.",
         "keywords": [
           "Tovy Juridische Informatie",
           "Bedrijfsgegevens",
@@ -493,7 +493,7 @@
         "vatNumber": "Btw-nummer",
         "disclaimer": "Disclaimer",
         "disclaimerSubtitle": "Verantwoordelijkheid voor de inhoud.",
-        "disclaimerContent": "De inhoud van deze pagina’s is met grote zorg samengesteld. Tovy kan echter de juistheid, volledigheid en actualiteit ervan niet garanderen. Volgens wettelijke bepalingen is Tovy verantwoordelijk voor de eigen inhoud op deze webpagina's. Tovy is niet verplicht om door derden aangeleverde informatie actief te controleren op illegale activiteiten.",
+        "disclaimerContent": "De inhoud van deze pagina's is met grote zorg samengesteld. Tovy kan echter de juistheid, volledigheid en actualiteit ervan niet garanderen. Volgens wettelijke bepalingen is Tovy verantwoordelijk voor de eigen inhoud op deze webpagina's. Tovy is niet verplicht om door derden aangeleverde informatie actief te controleren op illegale activiteiten.",
         "nederland": "Nederland",
         "peppolId": "E-facturatie (Peppol)"
       }
@@ -506,22 +506,22 @@
       "content": {
         "badge": "Fout 404",
         "titlePart1": "Verdwaald in de",
-        "titlePart2": "datasilo's?",
-        "description": "De bezochte pagina is verplaatst, verwijderd of heeft nooit bestaan. Tovy wijst je graag de weg terug.",
+        "titlePart2": "systemen?",
+        "description": "De bezochte pagina is verplaatst, verwijderd of heeft nooit bestaan.",
         "returnHome": "Terug naar home",
-        "startProject": "Project starten"
+        "startProject": "Neem contact op"
       }
     },
     "paymentSuccess": {
       "metadata": {
         "title": "Betaling geslaagd",
-        "description": "Je betaling is succesvol ontvangen. Hartelijk dank!"
+        "description": "Je betaling is succesvol ontvangen. Bedankt!"
       },
       "content": {
         "badge": "Betaling geslaagd",
         "title": "Bedankt voor je betaling",
-        "subtitle": "We hebben je betaling in goede orde ontvangen. Een bevestigingsmail met de factuur is onderweg.",
-        "returnHome": "Ga naar de homepage van Tovy",
+        "subtitle": "De betaling is ontvangen. Een bevestigingsmail met de factuur is onderweg.",
+        "returnHome": "Ga naar de homepage",
         "needHelp": "Hulp nodig of vragen?",
         "contactUs": "Neem contact op via"
       }
