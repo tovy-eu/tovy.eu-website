@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Home, FileText } from 'lucide-react';
+import { AeroShardsBackground } from '@/components/landing/aero-shards-background';
 
 import en from '@/dictionaries/en.json';
 import nl from '@/dictionaries/nl.json';
@@ -56,6 +57,7 @@ export default function NotFound() {
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
     >
+      <AeroShardsBackground />
       <div className="relative z-10 flex flex-col items-center">
         <div className="mb-4">
           <span className="inline-block rounded-full bg-primary/20 px-4 py-1 text-xs font-semibold tracking-wide text-primary-foreground">

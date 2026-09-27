@@ -8,6 +8,7 @@ import type { Dictionary } from '@/lib/get-dictionary';
 import Link from 'next/link';
 import { Spotlight } from '@/components/ui/spotlight';
 import { SectionHeader } from '@/components/landing/section-header';
+import { AeroShardsBackground } from '@/components/landing/aero-shards-background';
 
 import { usePathname } from 'next/navigation';
 
@@ -62,6 +63,7 @@ export default function LegalNoticeClient({ profile, dict }: LegalNoticeClientPr
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
     >
+      <AeroShardsBackground />
       <div className="container relative z-10 mx-auto max-w-3xl">
         <div className="mb-16">
           <SectionHeader 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import type { Dictionary } from "@/lib/get-dictionary";
+import { AeroShardsBackground } from "@/components/landing/aero-shards-background";
 
 interface PaymentSuccessClientProps {
   dict: Dictionary;
@@ -24,6 +25,7 @@ export default function PaymentSuccessClient({ dict, email, lang }: PaymentSucce
     >
       {/* Hide header and footer on this page */}
       <style dangerouslySetInnerHTML={{ __html: "header, footer { display: none !important; }" }} />
+      <AeroShardsBackground />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
