@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import type { Dictionary } from '@/lib/get-dictionary';
-import { WavyLines } from '@/components/landing/wavy-lines';
 import Link from 'next/link';
 import { Spotlight } from '@/components/ui/spotlight';
 import { SectionHeader } from '@/components/landing/section-header';
@@ -28,8 +27,6 @@ export default function PrivacyPolicyClient({ email, dict }: PrivacyPolicyClient
         background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
       }}
     >
-      <WavyLines />
-      
       <div className="container relative z-10 mx-auto max-w-3xl">
         <div className="mb-16">
           <SectionHeader 

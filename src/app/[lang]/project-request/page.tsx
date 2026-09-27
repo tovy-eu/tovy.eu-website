@@ -1,7 +1,6 @@
 
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import { WavyLines } from '@/components/landing/wavy-lines';
 import { getDictionary } from '@/lib/get-dictionary';
 import { alternates } from '@/lib/metadata';
 import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
@@ -58,7 +57,6 @@ export default async function ProjectRequestPage({ params }: Props) {
           background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
         }}
       >
-        <WavyLines />
         <div className="w-full max-w-6xl z-10 flex flex-col justify-start md:justify-start flex-grow py-0 md:py-20">
           <ProjectIntakeForm dict={dict} />
         </div>
