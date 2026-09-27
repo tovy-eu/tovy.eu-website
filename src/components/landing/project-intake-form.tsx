@@ -175,9 +175,11 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     const domain = data.email.split('@')[1]?.toLowerCase();
     score += publicEmailDomains.includes(domain) ? 0 : 5;
 
+    // One entry per companySize option: [Self-employed, 2–15, 16–49, 50–249, 250–999, 1,000+, Unknown].
+    // Peaks at mid-size SMBs (best fit for a solo engineer); "Unknown" stays neutral, never NaN.
     const companySizeIndex = singleOptions.companySize.findIndex((o: { label: string }) => o.label === data.companySize);
-    const sizeScores = [0, 4, 7, 10, 3];
-    if (companySizeIndex !== -1) score += sizeScores[companySizeIndex];
+    const sizeScores = [0, 4, 7, 10, 8, 5, 3];
+    if (companySizeIndex !== -1) score += sizeScores[companySizeIndex] ?? 0;
 
     const timelineIndex = singleOptions.timeline.findIndex((o: { label: string }) => o.label === data.timeline);
     const timelineScores = [5, 3, 1, -5];
