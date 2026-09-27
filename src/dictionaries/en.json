@@ -199,7 +199,7 @@
               },
               {
                 "question": "Why not a large consulting firm?",
-                "answer": "The same technical expertise, without the overhead. Because I develop with AI assistance, build costs are €5,000 to €15,000 instead of €50,000 to €100,000 at an agency. Management costs €800 to €2,000 per month — a fraction of an internal engineer."
+                "answer": "The same technical expertise, without the overhead. Because I develop with AI assistance, build costs are €1,000 to €5,000 instead of €50,000 to €100,000 at an agency. Management costs €150 to €500 per month — a fraction of an internal engineer."
               }
             ]
           },
@@ -324,9 +324,9 @@
             ]
           },
           "budget": {
-            "label": "Is budget available?",
-            "description": "A typical starting project costs €5,000 to €15,000 for the build. Monthly management starts at €800.",
-            "options": ["Yes", "No"]
+            "label": "What's your budget looking like?",
+            "description": "Most projects start around €1,000–€5,000 to build (depending on size), with software management from €150–€500/month (depending on scope). No need for an exact figure — a rough sense is fine.",
+            "options": ["Budget is ready", "Rough budget in mind", "Not sure yet — depends on the plan"]
           },
           "contact": {
             "label": "Contact details",

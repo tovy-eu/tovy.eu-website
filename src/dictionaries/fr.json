@@ -199,7 +199,7 @@
               },
               {
                 "question": "Pourquoi ne pas faire appel à un grand cabinet de conseil\u202f?",
-                "answer": "La même expertise technique, sans les frais de structure. Grâce au développement assisté par IA, le coût de construction se situe entre 5 000 € et 15 000 €, contre 50 000 € à 100 000 € chez un prestataire classique. La gestion mensuelle démarre à 800 €\u00a0: une fraction du coût d'un ingénieur interne."
+                "answer": "La même expertise technique, sans les frais de structure. Grâce au développement assisté par IA, le coût de construction se situe entre 1 000 € et 5 000 €, contre 50 000 € à 100 000 € chez un prestataire classique. La gestion mensuelle se situe entre 150 € et 500 €\u00a0: une fraction du coût d'un ingénieur interne."
               }
             ]
           },
@@ -324,9 +324,9 @@
             ]
           },
           "budget": {
-            "label": "Un budget est-il disponible\u202f?",
-            "description": "Un projet de démarrage typique coûte entre 5 000 € et 15 000 € pour la construction. La gestion mensuelle démarre à 800 €.",
-            "options": ["Oui", "Non"]
+            "label": "Où en êtes-vous côté budget ?",
+            "description": "La plupart des projets démarrent autour de 1 000–5 000 € pour la construction (selon la taille), avec une gestion logicielle de 150–500 €/mois (selon les besoins). Pas besoin d'un montant exact — une idée approximative suffit.",
+            "options": ["Budget prêt", "Idée approximative du budget", "Pas encore sûr — ça dépend du plan"]
           },
           "contact": {
             "label": "Coordonnées",

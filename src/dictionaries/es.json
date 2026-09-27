@@ -199,7 +199,7 @@
               },
               {
                 "question": "¿Por qué no una gran consultora?",
-                "answer": "La misma experiencia técnica, sin los costes de estructura. Gracias al desarrollo asistido por IA, el coste de construcción se sitúa entre 5.000 € y 15.000 €, frente a 50.000 € a 100.000 € en un despacho. La gestión mensual empieza en 800 €: una fracción de lo que cuesta un ingeniero interno."
+                "answer": "La misma experiencia técnica, sin los costes de estructura. Gracias al desarrollo asistido por IA, el coste de construcción se sitúa entre 1.000 € y 5.000 €, frente a 50.000 € a 100.000 € en un despacho. La gestión mensual se sitúa entre 150 € y 500 €: una fracción de lo que cuesta un ingeniero interno."
               }
             ]
           },
@@ -324,9 +324,9 @@
             ]
           },
           "budget": {
-            "label": "¿Hay presupuesto disponible?",
-            "description": "Un proyecto de inicio típico cuesta de 5.000 € a 15.000 € para la construcción. La gestión mensual empieza en 800 €.",
-            "options": ["Sí", "No"]
+            "label": "¿Cómo estás de presupuesto?",
+            "description": "La mayoría de los proyectos empiezan en torno a 1.000–5.000 € para la construcción (según el tamaño), con gestión de software de 150–500 €/mes (según lo que se necesite). No hace falta una cifra exacta — una idea aproximada es suficiente.",
+            "options": ["Presupuesto listo", "Idea aproximada del presupuesto", "Aún no seguro — depende del plan"]
           },
           "contact": {
             "label": "Datos de contacto",

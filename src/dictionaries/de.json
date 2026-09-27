@@ -199,7 +199,7 @@
               },
               {
                 "question": "Warum kein großes Beratungshaus?",
-                "answer": "Dieselbe technische Expertise, ohne den Verwaltungsaufwand. Durch KI-gestützte Entwicklung liegen die Baukosten bei 5.000 € bis 15.000 € statt 50.000 € bis 100.000 € bei einem Büro. Die monatliche Betreuung beginnt ab 800 € – ein Bruchteil eines internen Ingenieurs."
+                "answer": "Dieselbe technische Expertise, ohne den Verwaltungsaufwand. Durch KI-gestützte Entwicklung liegen die Baukosten bei 1.000 € bis 5.000 € statt 50.000 € bis 100.000 € bei einem Büro. Die monatliche Betreuung liegt bei 150 € bis 500 € – ein Bruchteil eines internen Ingenieurs."
               }
             ]
           },
@@ -324,9 +324,9 @@
             ]
           },
           "budget": {
-            "label": "Ist Budget vorhanden?",
-            "description": "Ein typisches Startprojekt kostet 5.000 € bis 15.000 € für den Aufbau. Die monatliche Betreuung beginnt ab 800 €.",
-            "options": ["Ja", "Nein"]
+            "label": "Wie sieht es mit dem Budget aus?",
+            "description": "Die meisten Projekte starten bei etwa 1.000–5.000 € für den Aufbau (je nach Umfang), mit Softwarebetreuung von 150–500 €/Monat (je nach Bedarf). Ein genauer Betrag ist nicht nötig — eine grobe Einschätzung reicht.",
+            "options": ["Budget steht bereit", "Grobes Budget im Kopf", "Noch unklar — hängt vom Plan ab"]
           },
           "contact": {
             "label": "Kontaktdaten",

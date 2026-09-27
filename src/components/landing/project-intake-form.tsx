@@ -170,9 +170,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
   const calculateScore = (data: ProjectRequestData): { score: number, path: RoutingPath } => {
     let score = 0;
 
+    // ponytail: personal-email domains no longer penalised — a founder on gmail is a normal early lead.
     const publicEmailDomains = ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com", "aol.com", "zoho.com", "mail.com", "protonmail.com", "gmx.com"];
     const domain = data.email.split('@')[1]?.toLowerCase();
-    score += publicEmailDomains.includes(domain) ? -10 : 5;
+    score += publicEmailDomains.includes(domain) ? 0 : 5;
 
     const companySizeIndex = singleOptions.companySize.findIndex((o: { label: string }) => o.label === data.companySize);
     const sizeScores = [0, 4, 7, 10, 3];
@@ -182,8 +183,10 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     const timelineScores = [5, 3, 1, -5];
     if (timelineIndex !== -1) score += timelineScores[timelineIndex];
 
+    // ponytail: budget is a private signal, not a gate — "not sure yet" scores neutral, never negative.
+    // Order matches the budget.options array: [ready, rough idea, not sure yet].
     const budgetIndex = singleOptions.budget.findIndex((o: { label: string }) => o.label === data.budget);
-    const budgetScores = [5, -10];
+    const budgetScores = [5, 3, 0];
     if (budgetIndex !== -1) score += budgetScores[budgetIndex];
 
     const isLargeCompany = companySizeIndex === 2 || companySizeIndex === 3;

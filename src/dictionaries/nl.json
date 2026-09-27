@@ -199,7 +199,7 @@
               },
               {
                 "question": "Waarom geen groot adviesbureau?",
-                "answer": "Dezelfde technische expertise, zonder de overhead. Doordat ik AI-ondersteund ontwikkel, krijg je een bouwkost van € 5.000 tot € 15.000 in plaats van € 50.000 tot € 100.000 bij een bureau. Het beheer kost € 800 tot € 2.000 per maand – een fractie van een interne engineer."
+                "answer": "Dezelfde technische expertise, zonder de overhead. Doordat ik AI-ondersteund ontwikkel, krijg je een bouwkost van € 1.000 tot € 5.000 in plaats van € 50.000 tot € 100.000 bij een bureau. Het beheer kost € 150 tot € 500 per maand – een fractie van een interne engineer."
               }
             ]
           },
@@ -324,9 +324,9 @@
             ]
           },
           "budget": {
-            "label": "Is er budget beschikbaar?",
-            "description": "Een typisch startproject kost € 5.000 tot € 15.000 voor de bouw. Het maandelijks beheer start vanaf € 800.",
-            "options": ["Ja", "Nee"]
+            "label": "Hoe zit het met je budget?",
+            "description": "De meeste projecten starten rond € 1.000–€ 5.000 voor de bouw (afhankelijk van de omvang), met softwarebeheer van € 150–€ 500/maand (afhankelijk van de wensen). Een exact bedrag is niet nodig — een grove indicatie is prima.",
+            "options": ["Budget staat klaar", "Grof budget in gedachten", "Nog niet zeker — hangt af van het plan"]
           },
           "contact": {
             "label": "Contactgegevens",
