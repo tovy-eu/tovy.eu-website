@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -411,6 +412,13 @@ const nextStep = async () => {
               ></iframe>
             </div>
             <CardHeader className="p-0">
+              {/* Mobile-only home link — the site header is hidden on this page for focus,
+                  so the logo (the usual way back) is restored here. */}
+              <div className="md:hidden flex items-center px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-2">
+                <Link href={`/${lang}/`} aria-label={dict.global.home} className="inline-flex transition-transform active:scale-95">
+                  <Image src="/images/tovy-wordmark.svg" alt="Tovy" width={100} height={29} className="h-5 w-auto" />
+                </Link>
+              </div>
               <div className="h-1.5 w-full bg-white/5">
                 <motion.div
                   initial={{ width: 0 }}
