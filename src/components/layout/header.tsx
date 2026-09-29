@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import LanguageSwitcher from "./language-switcher";
 import { usePathname } from "next/navigation";
 import type { Dictionary } from "@/lib/get-dictionary";
-import { CONFIG } from "@/lib/config";
 import { Magnetic } from "@/components/ui/magnetic";
 import { sendGA4Event } from "@/lib/tracking";
 import { Menu, X } from "lucide-react";

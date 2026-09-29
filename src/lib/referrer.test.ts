@@ -1,7 +1,6 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { describe, it, expect } from "vitest";
 import { resolvePageReferrer, ENTRY_REFERRER_KEY } from "./referrer";
+import { buildRedirectScript } from "./redirect-script";
 
 const HOST = "www.tovy.eu";
 
@@ -37,14 +36,19 @@ describe("resolvePageReferrer", () => {
   });
 });
 
-// The redirect shims run as inline <script> strings and cannot import ENTRY_REFERRER_KEY,
-// so they hardcode the storage key. If the constant is ever renamed, getPageReferrer would
-// read a key the shims never wrote and attribution would silently break. Pin the contract.
-describe("redirect shims stash the entry referrer under the shared key", () => {
-  const shims = ["../app/page.tsx", "../app/project-request/page.tsx"];
+// The redirect shims build their inline <script> via buildRedirectScript, which reads the
+// shared ENTRY_REFERRER_KEY. getPageReferrer reads that same key, so attribution only works
+// if the stash writes it. Pin the contract, and that the no-index payment-success path opts out.
+describe("buildRedirectScript stashes the entry referrer under the shared key", () => {
+  it("writes ENTRY_REFERRER_KEY before redirecting when stashing is enabled", () => {
+    expect(buildRedirectScript("")).toContain(`sessionStorage.setItem('${ENTRY_REFERRER_KEY}'`);
+  });
 
-  it.each(shims)("%s writes ENTRY_REFERRER_KEY before redirecting", (rel) => {
-    const src = readFileSync(join(__dirname, rel), "utf8");
-    expect(src).toContain(`sessionStorage.setItem('${ENTRY_REFERRER_KEY}'`);
+  it("omits the referrer stash when disabled (e.g. no-index pages)", () => {
+    expect(buildRedirectScript("payment-success/", false)).not.toContain(ENTRY_REFERRER_KEY);
+  });
+
+  it("redirects to the locale-prefixed suffix path", () => {
+    expect(buildRedirectScript("project-request/")).toContain("'/' + target + '/project-request/'");
   });
 });

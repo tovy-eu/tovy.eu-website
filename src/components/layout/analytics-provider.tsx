@@ -4,10 +4,6 @@ import { useEffect } from "react";
 import { sendGA4Event, initErrorTracking, initCTATracking, initGA, captureAttribution } from "@/lib/tracking";
 import { usePathname } from "next/navigation";
 
-export function AnalyticsProviderHead() {
-  return null;
-}
-
 export function AnalyticsProviderBody() {
   const pathname = usePathname();
 

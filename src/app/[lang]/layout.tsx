@@ -7,7 +7,7 @@ import { i18n } from '@/lib/config';
 import "../globals.css";
 import { Toaster } from "@/components/ui/toaster"
 import CookieBanner from "@/components/layout/cookie-banner";
-import { AnalyticsProviderHead, AnalyticsProviderBody } from "@/components/layout/analytics-provider";
+import { AnalyticsProviderBody } from "@/components/layout/analytics-provider";
 import { LanguageSync } from "@/components/layout/language-sync";
 import { ToastProviderClient } from "@/components/layout/toast-provider-client";
 
@@ -73,7 +73,6 @@ export default async function LocalizedLayout({
   return (
     <ToastProviderClient>
       <LanguageSync lang={lang} />
-      <AnalyticsProviderHead />
       <JsonLd type="Organization" data={getOrganizationSchema(dict)} />
       <JsonLd type="Person" data={getPersonSchema()} />
       <AnalyticsProviderBody />

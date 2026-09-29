@@ -1,5 +1,3 @@
-export const CONFIG = {};
-
 export const i18n = {
   defaultLocale: 'en',
   locales: ['en', 'nl', 'es', 'de', 'fr'],

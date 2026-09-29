@@ -196,9 +196,7 @@ export function ProjectIntakeForm({ dict }: ProjectIntakeFormProps) {
     const isLargeBudget = budgetIndex === 0;
     if (isLargeCompany && isLargeBudget) return { score, path: 'A' };
 
-    if (score >= 18) return { score, path: 'A' };
-    if (score >= 5) return { score, path: 'B' };
-    return { score, path: 'B' };
+    return { score, path: score >= 18 ? 'A' : 'B' };
   };
 
   const onSubmit = (data: ProjectRequestData) => {
@@ -400,17 +398,6 @@ const nextStep = async () => {
 
           <Card className="w-full bg-card/60 md:backdrop-blur-2xl border-x-0 border-t-0 md:border border-white/10 shadow-2xl overflow-hidden flex flex-col rounded-none md:rounded-lg transform-gpu h-full md:h-auto max-h-[100dvh] md:max-h-none">
             <Spotlight color="rgba(43, 94, 255, 0.08)" />
-            <div
-                className="hidden"
-                style={{ position: 'absolute', top: '-9999px', left: '-9999px' }}
-            >
-              <iframe
-                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GvYWPuGvxv0-8qtgsYeJKkgMUjmUqu-2D2FZrKqU6z75hXbUv6_FjFmbPdPBHcyew-fiAUXQ2?gv=true"
-                width="100%"
-                height="600"
-                title="SEO Placeholder"
-              ></iframe>
-            </div>
             <CardHeader className="p-0 space-y-0">
               {/* Mobile-only home link — the site header is hidden on this page for focus,
                   so the logo (the usual way back) is restored here. */}

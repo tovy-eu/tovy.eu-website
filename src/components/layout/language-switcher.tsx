@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { sendGA4Event } from "@/lib/tracking";
-import Cookies from 'js-cookie';
 
 interface LanguageSwitcherProps {
   currentLang: string;
@@ -21,6 +20,11 @@ const LANGUAGES = [
   { code: "es", label: "Español" },
   { code: "fr", label: "Français" },
 ] as const;
+
+// Module scope: assigning document.cookie inside a component trips react-hooks/immutability.
+function setLocaleCookie(lang: string) {
+  document.cookie = `NEXT_LOCALE=${lang}; Path=/; Max-Age=${365 * 24 * 60 * 60}; Secure; SameSite=Lax`;
+}
 
 export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps) {
   const pathname = usePathname();
@@ -58,7 +62,7 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
   const handleSelect = (lang: string) => {
     setOpen(false);
     if (lang === currentLang) return;
-    Cookies.set('NEXT_LOCALE', lang, { expires: 365, secure: true, sameSite: 'Lax' });
+    setLocaleCookie(lang);
     sendGA4Event('language_switch', { language: lang });
   };
 

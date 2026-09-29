@@ -16,38 +16,13 @@ export default function NotFound() {
   const pathname = usePathname();
   const lang = pathname?.split('/')[1] || 'en';
 
-  const translations: Record<string, typeof en.pages.notFound.content & {
-    homePath: string;
-    projectPath: string;
-  }> = {
-    en: {
-      ...en.pages.notFound.content,
-      homePath: "/en/",
-      projectPath: "/en/project-request/"
-    },
-    nl: {
-      ...nl.pages.notFound.content,
-      homePath: "/nl/",
-      projectPath: "/nl/project-request/"
-    },
-    de: {
-      ...de.pages.notFound.content,
-      homePath: "/de/",
-      projectPath: "/de/project-request/"
-    },
-    es: {
-      ...es.pages.notFound.content,
-      homePath: "/es/",
-      projectPath: "/es/project-request/"
-    },
-    fr: {
-      ...fr.pages.notFound.content,
-      homePath: "/fr/",
-      projectPath: "/fr/project-request/"
-    }
+  const dicts: Record<string, typeof en> = { en, nl, de, es, fr };
+  const activeLang = dicts[lang] ? lang : 'en';
+  const t = {
+    ...dicts[activeLang].pages.notFound.content,
+    homePath: `/${activeLang}/`,
+    projectPath: `/${activeLang}/project-request/`,
   };
-
-  const t = translations[lang] || translations.en;
 
   return (
     <div 
