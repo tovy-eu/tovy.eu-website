@@ -364,7 +364,7 @@ const nextStep = async () => {
           </Card>
         </div>
       ) : (
-        <div className="relative w-full max-w-3xl mx-auto flex flex-col px-4 md:px-6 h-[100dvh] md:h-auto py-2 md:py-2">
+        <div className="relative w-full max-w-3xl mx-auto flex flex-col px-0 md:px-6 h-[100dvh] md:h-auto py-0 md:py-2">
           {/* Step Progress Index — floated to the left of the centered card on wide screens */}
           <div className="hidden xl:flex flex-col gap-4 absolute right-full top-1/2 -translate-y-1/2 mr-10">
             {/* Vertical connector line */}
