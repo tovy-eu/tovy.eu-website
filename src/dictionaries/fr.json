@@ -87,20 +87,20 @@
         "pillarsTitle": "Méthode de travail",
         "pillars": {
           "tech": {
-            "title": "Collaboration directe",
-            "desc": "Vous travaillez directement avec moi. Pas de gestionnaires de comptes, pas de chefs de projet. Des échanges courts, des décisions rapides."
+            "title": "Expertise technologique",
+            "desc": "Ingénierie concrète en intégrations, cloud et données. Les bons outils. Des solutions qui tiennent."
           },
           "optimization": {
-            "title": "Collaboration fixe",
-            "desc": "Un forfait mensuel de 8 à 16 heures par semaine. Amélioration continue de vos automatisations, et non des projets ponctuels qui s'arrêtent ensuite."
+            "title": "Optimisation",
+            "desc": "Vos systèmes s'améliorent en continu. Plus rapides, plus légers, plus fiables. Pas de projets ponctuels qui s'essoufflent."
           },
           "freedom": {
-            "title": "Transfert de compétences",
-            "desc": "Tout ce que je construis est documenté et transférable. Vous n'êtes jamais dépendant de moi en tant que personne."
+            "title": "Liberté",
+            "desc": "Tout est documenté et transférable. Vous gardez le contrôle. Jamais dépendant d'une seule personne."
           },
           "innovation": {
-            "title": "Budget de startup, qualité senior",
-            "desc": "Le développement assisté par IA maintient les coûts bas. La même qualité qu'un grand cabinet, pour une fraction du prix."
+            "title": "Y pour l'Innovation",
+            "desc": "Développement assisté par IA. Niveau senior à coût de startup. Des solutions modernes, sans prix d'agence."
           }
         }
       },

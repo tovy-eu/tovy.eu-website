@@ -7,7 +7,7 @@ import { JsonLd, getBreadcrumbSchema } from '@/components/layout/json-ld';
 import { PageCategorySetter } from '@/components/layout/page-category-setter';
 
 const ProjectIntakeForm = dynamic(() => import('@/components/landing/project-intake-form').then(mod => mod.ProjectIntakeForm), {
-  loading: () => <div className="w-full h-[500px] md:h-[600px] flex items-center justify-center bg-card/20 animate-pulse rounded-[2.5rem]" />
+  loading: () => <div className="w-full h-[500px] md:h-[600px] flex items-center justify-center bg-card/20 animate-pulse rounded-lg" />
 });
 
 import { i18n } from '@/lib/config';
@@ -57,7 +57,7 @@ export default async function ProjectRequestPage({ params }: Props) {
           background: 'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),hsla(0,0%,100%,0))'
         }}
       >
-        <div className="w-full max-w-6xl z-10 flex flex-col justify-start md:justify-start flex-grow py-0 md:py-20">
+        <div className="w-full max-w-6xl z-10 flex flex-col justify-start flex-grow md:flex-grow-0 py-0 md:py-20">
           <ProjectIntakeForm dict={dict} />
         </div>
       </div>

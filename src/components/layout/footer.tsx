@@ -35,12 +35,12 @@ export default async function Footer({ lang }: { lang: Locale }) {
 
           {/* Redesigned Pill-shaped Legal Buttons */}
           <div className="flex items-center justify-center gap-3">
-            <Button asChild variant="ghost" className="h-8 rounded-full border border-white/5 hover:border-white/10 bg-white/[0.01] hover:bg-white/5 text-white/50 hover:text-white text-[11px] tracking-wide px-4 transition-all duration-300">
+            <Button asChild variant="ghost" className="h-11 md:h-8 rounded-full border border-white/5 hover:border-white/10 bg-white/[0.01] hover:bg-white/5 text-white/50 hover:text-white text-[11px] tracking-wide px-4 transition-all duration-300">
               <Link href={`/${lang}/legal-notice/`}>
                 {dictionary.global.footer["legal-notice"]}
               </Link>
             </Button>
-            <Button asChild variant="ghost" className="h-8 rounded-full border border-white/5 hover:border-white/10 bg-white/[0.01] hover:bg-white/5 text-white/50 hover:text-white text-[11px] tracking-wide px-4 transition-all duration-300">
+            <Button asChild variant="ghost" className="h-11 md:h-8 rounded-full border border-white/5 hover:border-white/10 bg-white/[0.01] hover:bg-white/5 text-white/50 hover:text-white text-[11px] tracking-wide px-4 transition-all duration-300">
               <Link href={`/${lang}/privacy-policy/`}>
                 {dictionary.global.footer["privacy-policy"]}
               </Link>
@@ -67,7 +67,7 @@ export default async function Footer({ lang }: { lang: Locale }) {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-10 sm:gap-6 text-center sm:text-left">
 
           {/* Copyright & Statutory Identifiers */}
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-2 text-white/55 text-xs tracking-wider font-mono">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-2 text-white/55 text-xs tracking-wider">
             <span>&copy; {currentYear} {profile.entity_name}</span>
             <span>KVK {profile.primary_identifiers.commercial_registry_number}</span>
             <span>{dictionary.global.footer.vatLabel} {profile.primary_identifiers.vat_id_number}</span>
@@ -75,7 +75,7 @@ export default async function Footer({ lang }: { lang: Locale }) {
 
           {/* Social Profiles */}
           <div className="flex items-center gap-3">
-            <Button asChild variant="ghost" size="icon" className="h-8 w-8 hover:bg-white/10 rounded-full border border-white/5 text-white/55 hover:text-white transition-all">
+            <Button asChild variant="ghost" size="icon" className="h-11 w-11 md:h-8 md:w-8 hover:bg-white/10 rounded-full border border-white/5 text-white/55 hover:text-white transition-all">
               <a
                 href={profile.social_media_profiles.linkedin_url}
                 target="_blank"
@@ -85,7 +85,7 @@ export default async function Footer({ lang }: { lang: Locale }) {
                 <Linkedin className="h-4 w-4" />
               </a>
             </Button>
-            <Button asChild variant="ghost" size="icon" className="h-8 w-8 hover:bg-white/10 rounded-full border border-white/5 text-white/55 hover:text-white transition-all">
+            <Button asChild variant="ghost" size="icon" className="h-11 w-11 md:h-8 md:w-8 hover:bg-white/10 rounded-full border border-white/5 text-white/55 hover:text-white transition-all">
               <a
                 href={profile.social_media_profiles.github_url}
                 target="_blank"

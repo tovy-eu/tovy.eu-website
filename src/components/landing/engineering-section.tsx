@@ -83,12 +83,12 @@ export function EngineeringSection({ dict }: { dict: Dictionary }) {
                   service.className
                 )}
               >
-                <div className="relative h-full w-full p-[1px] overflow-hidden rounded-2xl md:rounded-3xl group transition-all duration-500">
+                <div className="relative h-full w-full p-[1px] overflow-hidden rounded-lg group transition-all duration-500">
                   <div 
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
                   />
 
-                  <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(1rem-1px)] md:rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
+                  <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(0.5rem-1px)] p-6 md:p-8 flex flex-col transition-all duration-300 shadow-2xl border border-white/5 group-hover:border-transparent overflow-hidden">
                     <Spotlight color="rgba(43, 94, 255, 0.08)" size={400} />
                     
                     <div className="flex items-center gap-3 mb-6 relative z-10">

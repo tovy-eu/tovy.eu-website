@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import type { Dictionary } from "@/lib/get-dictionary";
-import { AeroShardsBackground } from "@/components/landing/aero-shards-background";
 
 interface PaymentSuccessClientProps {
   dict: Dictionary;
@@ -25,12 +24,11 @@ export default function PaymentSuccessClient({ dict, email, lang }: PaymentSucce
     >
       {/* Hide header and footer on this page */}
       <style dangerouslySetInnerHTML={{ __html: "header, footer { display: none !important; }" }} />
-      <AeroShardsBackground />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="z-10 w-full max-w-lg overflow-hidden rounded-[2.5rem] border border-white/10 bg-card/30 p-8 text-center backdrop-blur-xl shadow-2xl md:p-12"
+        className="z-10 w-full max-w-lg overflow-hidden rounded-lg border border-white/10 bg-card/30 p-8 text-center backdrop-blur-xl shadow-2xl md:p-12"
       >
         {/* Animated Checkmark Icon */}
         <div className="relative mx-auto mb-8 flex h-24 w-24 items-center justify-center">

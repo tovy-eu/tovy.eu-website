@@ -33,7 +33,7 @@ export function ScrollIndicator({ label }: ScrollIndicatorProps) {
   return (
     <div
       className={cn(
-        "absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-1000 ease-in-out z-20",
+        "absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 transition-all duration-1000 ease-in-out z-20",
         isVisible ? "opacity-30 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
       )}
     >

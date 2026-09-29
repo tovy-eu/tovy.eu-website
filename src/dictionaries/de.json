@@ -25,7 +25,7 @@
     },
     "common": {
       "workWithUs": "Gespräch vereinbaren",
-      "shareIdea": "Erzählen Sie von Ihrer Situation",
+      "shareIdea": "Erzählen Sie Ihre Situation",
       "privacyPolicy": "Datenschutzerklärung",
       "agreeTo": "Ich stimme der",
       "downloadJson": "Als JSON herunterladen",
@@ -87,20 +87,20 @@
         "pillarsTitle": "Arbeitsweise",
         "pillars": {
           "tech": {
-            "title": "Direkte Zusammenarbeit",
-            "desc": "Sie arbeiten unmittelbar mit mir. Keine Account-Manager, keine Projektmanager. Kurze Wege, schnelle Entscheidungen."
+            "title": "Technologische Expertise",
+            "desc": "Praxisnahe Entwicklung in Integrationen, Cloud und Daten. Die richtigen Tools. Lösungen, die Bestand haben."
           },
           "optimization": {
-            "title": "Feste Zusammenarbeit",
-            "desc": "Monatlicher Retainer von 8 bis 16 Stunden pro Woche. Fortlaufende Verbesserung Ihrer Automatisierung statt einmaliger Projekte, die danach stillstehen."
+            "title": "Optimierung",
+            "desc": "Ihre Systeme werden stetig besser. Schneller, schlanker, zuverlässiger. Keine einmaligen Projekte, die stocken."
           },
           "freedom": {
-            "title": "Wissenstransfer",
-            "desc": "Alles, was ich baue, ist dokumentiert und übertragbar. Sie sind nie von mir als Person abhängig."
+            "title": "Freiheit",
+            "desc": "Alles ist dokumentiert und übertragbar. Sie behalten die Kontrolle. Nie von einer Person abhängig."
           },
           "innovation": {
-            "title": "Gründerbudget, Seniorqualität",
-            "desc": "KI-gestützte Entwicklung hält die Kosten niedrig. Dieselbe Qualität wie ein großes Büro, für einen Bruchteil des Preises."
+            "title": "Y für Innovation",
+            "desc": "KI-gestützte Entwicklung. Senior-Niveau zu Startup-Kosten. Moderne Lösungen, kein Agenturpreis."
           }
         }
       },

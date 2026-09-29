@@ -87,20 +87,20 @@
         "pillarsTitle": "Forma de trabajar",
         "pillars": {
           "tech": {
-            "title": "Colaboración directa",
-            "desc": "Trabajas directamente conmigo. Sin gestores de cuentas, sin jefes de proyecto. Comunicación corta, decisiones rápidas."
+            "title": "Experiencia tecnológica",
+            "desc": "Ingeniería práctica en integraciones, nube y datos. Las herramientas adecuadas. Soluciones que aguantan."
           },
           "optimization": {
-            "title": "Colaboración fija",
-            "desc": "Retainer mensual de 8 a 16 horas por semana. Mejora continua de tu automatización, no proyectos puntuales que se quedan parados."
+            "title": "Optimización",
+            "desc": "Tus sistemas mejoran sin parar. Más rápidos, ligeros, fiables. Sin proyectos puntuales que se estancan."
           },
           "freedom": {
-            "title": "Transferencia de conocimiento",
-            "desc": "Todo lo que construyo está documentado y es transferible. Nunca dependes de mí como persona."
+            "title": "Libertad",
+            "desc": "Todo está documentado y es transferible. Tú mantienes el control. Sin depender de una sola persona."
           },
           "innovation": {
-            "title": "Presupuesto de startup, calidad senior",
-            "desc": "El desarrollo asistido por IA mantiene los costes bajos. La misma calidad que un gran despacho, por una fracción del precio."
+            "title": "Y de Innovación",
+            "desc": "Desarrollo asistido por IA. Nivel sénior a coste de startup. Soluciones modernas, sin precio de agencia."
           }
         }
       },

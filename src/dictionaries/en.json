@@ -25,7 +25,7 @@
     },
     "common": {
       "workWithUs": "Book a call",
-      "shareIdea": "Tell me about your situation",
+      "shareIdea": "Tell me your situation",
       "privacyPolicy": "Privacy Policy",
       "agreeTo": "I agree to the",
       "downloadJson": "Download as JSON",
@@ -71,7 +71,7 @@
       "hero": {
         "badge": "Automation & Integration",
         "title": "Make your systems work together",
-        "subtitle": "I connect your business software, automate manual processes and manage your cloud environment. SAP, Shopify, accounting, warehouse — everything linked and running without errors. No agency, no overhead. Direct collaboration with one engineer."
+        "subtitle": "I connect your business software, automate manual processes and manage your cloud environment. SAP, Shopify, accounting, warehouse. Everything linked and running without errors. No agency, no overhead. Direct collaboration with one engineer."
       },
       "about": {
         "section": "About",
@@ -87,20 +87,20 @@
         "pillarsTitle": "How I work",
         "pillars": {
           "tech": {
-            "title": "Direct collaboration",
-            "desc": "You work directly with me. No account managers, no project managers. Short lines, fast decisions."
+            "title": "Technological Expertise",
+            "desc": "Hands-on engineering across integrations, cloud and data. The right tools for the job. Solutions that hold up."
           },
           "optimization": {
-            "title": "Fixed engagement",
-            "desc": "Monthly retainer of 8 to 16 hours per week. Continuous improvement of your automation, not one-off projects that stall afterwards."
+            "title": "Optimisation",
+            "desc": "Your systems keep getting better. Faster, leaner, more reliable. No one-off projects that stall."
           },
           "freedom": {
-            "title": "Knowledge transfer",
-            "desc": "Everything I build is documented and transferable. You are never dependent on me as a person."
+            "title": "Freedom",
+            "desc": "Everything is documented and transferable. You stay in control. Never locked in to one person."
           },
           "innovation": {
-            "title": "Startup budget, senior quality",
-            "desc": "AI-assisted development keeps costs low. The same quality as a large agency, for a fraction of the price."
+            "title": "Y for Innovation",
+            "desc": "AI-assisted development. Senior-level results at startup cost. Modern solutions, no agency price tag."
           }
         }
       },
@@ -111,12 +111,12 @@
         "services": {
           "strategic": {
             "title": "System integration",
-            "desc": "I connect your business systems so data flows automatically. SAP, Shopify, accounting software, warehouse systems — linked through reliable API connections.",
+            "desc": "I connect your business systems so data flows automatically. SAP, Shopify, accounting software, warehouse systems. Linked through reliable API connections.",
             "tools": ["API connections", "SAP / Shopify / ERP", "ETL pipelines"]
           },
           "cloud": {
             "title": "Cloud management",
-            "desc": "I set up your cloud environment and manage it monthly. Performance, security, backups and uptime — you don't have to think about it anymore.",
+            "desc": "I set up your cloud environment and manage it monthly. Performance, security, backups and uptime. You don't have to think about it anymore.",
             "points": [
               "A cloud environment that grows with your business.",
               "Monthly management: updates, monitoring and security.",
@@ -127,7 +127,7 @@
           },
           "data": {
             "title": "Data warehousing & reporting",
-            "desc": "Data from all your sources — ERP, CRM, webshop, accounting — brought together in one central warehouse. Always up to date, always correct.",
+            "desc": "All your sources in one central warehouse. ERP, CRM, webshop, accounting. Always up to date, always correct.",
             "points": [
               "All your data in one place, automatically synced.",
               "Instant visibility through dashboards and reports.",
@@ -143,7 +143,7 @@
           },
           "automation": {
             "title": "Process automation",
-            "desc": "Manual tasks that cost your employees time — I automate them with workflows and AI. Order processing, reports, data entry — it runs by itself.",
+            "desc": "Manual tasks cost your employees time. I automate them with workflows and AI. Order processing, reports, data entry. It runs by itself.",
             "tools": ["Cloud Functions", "AI automation", "Workflows"]
           }
         }
@@ -196,11 +196,11 @@
               },
               {
                 "question": "What type of company is Tovy suited for?",
-                "answer": "Small companies (10 to 50 employees) in supply chain, retail, logistics or operations. Especially companies with multiple systems — SAP, Shopify, accounting software, warehouse systems — that don't communicate properly with each other."
+                "answer": "Small companies (10 to 50 employees) in supply chain, retail, logistics or operations. Especially those running multiple systems that don't talk to each other. Think SAP, Shopify, accounting software, warehouse systems."
               },
               {
                 "question": "Why not a large consulting firm?",
-                "answer": "The same technical expertise, without the overhead. Because I develop with AI assistance, build costs are €1,000 to €5,000 instead of €50,000 to €100,000 at an agency. Management costs €150 to €500 per month — a fraction of an internal engineer."
+                "answer": "The same technical expertise, without the overhead. Because I develop with AI assistance, build costs are €1,000 to €5,000 instead of €50,000 to €100,000 at an agency. Management costs €150 to €500 per month. A fraction of an internal engineer."
               }
             ]
           },
@@ -259,7 +259,7 @@
           "contactDetails": "contact details"
         },
         "title": "Intake & Assessment",
-        "subtitle": "Tell me what you need — I'll help find the solution.",
+        "subtitle": "Tell me what you need. I'll help find the solution.",
         "intro": {
           "title": "Tell me about your situation",
           "description": "Seven short questions about your company and systems. This helps me assess whether and how I can help."
@@ -326,8 +326,8 @@
           },
           "budget": {
             "label": "What's your budget looking like?",
-            "description": "Most projects start around €1,000–€5,000 to build (depending on size), with software management from €150–€500/month (depending on scope). No need for an exact figure — a rough sense is fine.",
-            "options": ["Budget is ready", "Rough budget in mind", "Not sure yet — depends on the plan"]
+            "description": "Most projects start around €1,000–€5,000 to build (depending on size), with software management from €150–€500/month (depending on scope). No need for an exact figure. A rough sense is fine.",
+            "options": ["Budget is ready", "Rough budget in mind", "Not sure yet, depends on the plan"]
           },
           "contact": {
             "label": "Contact details",
@@ -389,8 +389,8 @@
           "abandonment": {
             "subject": "Your intake at Tovy is still open",
             "greeting": "Hi,",
-            "introTitle": "Your intake isn't finished yet — your progress is saved.",
-            "introBody": "You started filling out our intake form but haven't completed it yet. Your progress is saved — you don't need to start over.",
+            "introTitle": "Your intake isn't finished yet. Your progress is saved.",
+            "introBody": "You started filling out our intake form but haven't completed it yet. Your progress is saved. You don't need to start over.",
             "progressTitle": "Your progress: 85% complete",
             "step1": "Company details & budget",
             "step2": "Contact details & email verification",

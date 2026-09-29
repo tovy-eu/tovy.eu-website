@@ -61,12 +61,12 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
           {/* Core Values Section */}
           <div className="md:col-span-1 grid grid-cols-1">
             <ScrollReveal delay="0" className="h-full">
-              <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
+              <div className="relative h-full w-full p-[1px] overflow-hidden rounded-lg group transition-all duration-500">
                 <div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
                  
                 />
-                <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 border border-white/5 group-hover:border-transparent overflow-hidden">
+                <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(0.5rem-1px)] p-6 md:p-8 border border-white/5 group-hover:border-transparent overflow-hidden">
                   <Spotlight color="rgba(43, 94, 255, 0.15)" />
                   <h3 className="text-xs font-bold text-white/55 leading-tight tracking-wide mb-6 md:mb-8">
                     {dict.pages.home.about.pillarsTitle}
@@ -96,12 +96,12 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
           {/* Founder Bio Section */}
           <div className="md:col-span-1">
             <ScrollReveal delay="200" className="h-full">
-              <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
+              <div className="relative h-full w-full p-[1px] overflow-hidden rounded-lg group transition-all duration-500">
                 <div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-primary via-[hsl(var(--accent-gradient-stop))] to-primary bg-[length:200%_auto] animate-[gradient-flow_15s_linear_infinite]" 
                  
                 />
-                <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col border border-white/5 group-hover:border-transparent overflow-hidden">
+                <div className="relative h-full w-full bg-card/95 backdrop-blur-xl rounded-[calc(0.5rem-1px)] p-6 md:p-8 flex flex-col border border-white/5 group-hover:border-transparent overflow-hidden">
                   <Spotlight color="rgba(43, 94, 255, 0.1)" />
                   <div className="flex items-start gap-4 mb-6 md:mb-8">
                     <div className="relative h-20 w-20 rounded-2xl overflow-hidden border border-white/10 p-1 bg-white/5 flex-shrink-0">

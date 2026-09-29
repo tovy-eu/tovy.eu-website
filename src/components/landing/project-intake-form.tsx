@@ -333,7 +333,7 @@ const nextStep = async () => {
 
       {formSubmitted ? (
         <div className="w-full h-full overflow-y-auto md:overflow-y-visible">
-          <Card className="w-full max-w-3xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-4 md:p-8 animate-scale-in rounded-none md:rounded-[2.5rem] md:min-h-0">
+          <Card className="w-full max-w-3xl mx-auto bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center p-4 md:p-8 animate-scale-in rounded-none md:rounded-lg md:min-h-0">
             <Spotlight color="rgba(43, 94, 255, 0.1)" />
             <CardHeader className="text-center pb-6">
               <CheckCircle className="mx-auto h-12 w-12 text-primary mb-4 animate-check-bounce" />
@@ -345,7 +345,7 @@ const nextStep = async () => {
               </CardDescription>
             </CardHeader>
 
-            <div className="w-full rounded-3xl overflow-hidden bg-white border border-white/5 mb-8 shadow-inner">
+            <div className="w-full rounded-lg overflow-hidden bg-white border border-white/5 mb-8 shadow-inner">
                 <iframe
                   src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GvYWPuGvxv0-8qtgsYeJKkgMUjmUqu-2D2FZrKqU6z75hXbUv6_FjFmbPdPBHcyew-fiAUXQ2?gv=true"
                   style={{ border: 0 }}
@@ -364,9 +364,9 @@ const nextStep = async () => {
           </Card>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-8 max-w-5xl mx-auto items-stretch md:items-center px-4 md:px-6 h-[100dvh] md:h-auto py-2 md:py-2">
-          {/* Step Progress Index */}
-          <div className="hidden md:flex flex-col gap-4 relative">
+        <div className="relative w-full max-w-3xl mx-auto flex flex-col px-4 md:px-6 h-[100dvh] md:h-auto py-2 md:py-2">
+          {/* Step Progress Index — floated to the left of the centered card on wide screens */}
+          <div className="hidden xl:flex flex-col gap-4 absolute right-full top-1/2 -translate-y-1/2 mr-10">
             {/* Vertical connector line */}
             <div className="absolute left-3 top-8 bottom-2 w-[1px] bg-white/5 z-0" />
 
@@ -382,7 +382,7 @@ const nextStep = async () => {
                 )}
               >
                 <span className={cn(
-                  "font-mono text-xs w-6 h-6 rounded-lg border flex items-center justify-center transition-all duration-500 shrink-0",
+                  "text-xs w-6 h-6 rounded-lg border flex items-center justify-center transition-all duration-500 shrink-0",
                   step === i
                     ? "bg-primary/10 border-primary/40 shadow-[0_0_15px_rgba(43,94,255,0.2)] text-primary"
                     : i < step
@@ -391,14 +391,14 @@ const nextStep = async () => {
                 )}>
                   {i < step ? <Check className="h-3 w-3" /> : (i + 1).toString().padStart(2, '0')}
                 </span>
-                <span className="font-bold text-xs tracking-wide whitespace-nowrap">
+                <span className="text-xs tracking-wide whitespace-nowrap">
                   {dict.pages.projectRequest.form.sidebarSteps?.[s.field as keyof typeof dict.pages.projectRequest.form.sidebarSteps] || s.field.replace(/([A-Z])/g, ' $1').toLowerCase()}
                 </span>
               </button>
             ))}
           </div>
 
-          <Card className="w-full bg-card/60 md:backdrop-blur-2xl border-x-0 border-t-0 md:border border-white/10 shadow-2xl overflow-hidden flex flex-col rounded-none md:rounded-[2.5rem] transform-gpu h-full md:h-auto max-h-[100dvh] md:max-h-none">
+          <Card className="w-full bg-card/60 md:backdrop-blur-2xl border-x-0 border-t-0 md:border border-white/10 shadow-2xl overflow-hidden flex flex-col rounded-none md:rounded-lg transform-gpu h-full md:h-auto max-h-[100dvh] md:max-h-none">
             <Spotlight color="rgba(43, 94, 255, 0.08)" />
             <div
                 className="hidden"
@@ -411,7 +411,7 @@ const nextStep = async () => {
                 title="SEO Placeholder"
               ></iframe>
             </div>
-            <CardHeader className="p-0">
+            <CardHeader className="p-0 space-y-0">
               {/* Mobile-only home link — the site header is hidden on this page for focus,
                   so the logo (the usual way back) is restored here. */}
               <div className="md:hidden flex items-center px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-2">
@@ -419,25 +419,32 @@ const nextStep = async () => {
                   <Image src="/images/tovy-wordmark.svg" alt="Tovy" width={100} height={29} className="h-5 w-auto" />
                 </Link>
               </div>
-              <div className="h-1.5 w-full bg-white/5">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${((step + 1) / (totalSteps + 1)) * 100}%` }}
-                  className="h-full bg-gradient-to-r from-primary to-blue-400 shadow-[0_0_15px_rgba(43,94,255,0.4)]"
+              {/* Progress line — identical to the homepage header's scroll progress bar */}
+              <div
+                className="relative w-full h-[1.5px] overflow-hidden transition-opacity duration-500"
+                style={{
+                  opacity: step > -1 ? 1 : 0,
+                  maskImage: 'linear-gradient(to right, transparent, black 1%, black 99%, transparent)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 1%, black 99%, transparent)',
+                }}
+              >
+                <div
+                  className="h-full bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-stop))] transition-all duration-150 ease-out"
+                  style={{ width: `${((step + 1) / (totalSteps + 1)) * 100}%` }}
                 />
               </div>
             </CardHeader>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full">
-                <CardContent className="p-3 md:p-6 lg:p-10 flex-grow flex flex-col overflow-hidden pt-4 md:pt-6 lg:pt-8">
+                <CardContent className="p-3 md:p-6 lg:p-10 flex-grow flex flex-col overflow-y-auto pt-4 md:pt-6 lg:pt-8">
                 <AnimatePresence mode="wait">
                     <motion.div
                       key={step}
-                      initial={{ opacity: 0, y: 15 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -15 }}
-                      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                      className="w-full flex flex-col justify-start mb-auto md:my-auto"
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+                      className="w-full flex flex-col justify-start my-auto"
                     >
                       {step === -1 && (
                         <div className="text-center py-6 md:py-8">
@@ -455,7 +462,6 @@ const nextStep = async () => {
                             <FormField key={field} control={form.control} name="email" render={({ field: f }) => (
                               <FormItem className="space-y-4 md:space-y-6">
                                 <div className="space-y-2 md:space-y-3">
-                                  <div className="text-xs tracking-wide text-primary/50 font-bold">{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                   <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
                                   <p className="text-white/70 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
@@ -463,8 +469,12 @@ const nextStep = async () => {
                                   <Input
                                     id={f.name}
                                     {...f}
+                                    type="email"
+                                    inputMode="email"
+                                    autoComplete="email"
+                                    autoCapitalize="off"
                                     placeholder={dict.global.common.emailPlaceholder}
-                                    className="bg-white/[0.03] border-white/10 h-10 md:h-14 text-sm md:text-lg px-5 md:px-8 rounded-2xl md:rounded-3xl focus-visible:ring-primary/40 focus-visible:border-primary/50 transition-all duration-300"
+                                    className="bg-white/[0.03] border-white/10 h-10 md:h-14 text-base md:text-lg px-5 md:px-8 rounded-2xl md:rounded-3xl focus-visible:ring-primary/40 focus-visible:border-primary/50 transition-all duration-300"
                                   />
                                 </FormControl>
                                 <FormDescription className="text-xs md:text-[13px] tracking-wide font-medium text-white/70 italic">
@@ -484,7 +494,6 @@ const nextStep = async () => {
                             <FormField key={field} control={form.control} name={field as keyof ProjectRequestData} render={({ field: f }) => (
                               <FormItem className="space-y-3 md:space-y-6">
                                 <div className="space-y-1.5 md:space-y-3">
-                                  <div className="text-xs tracking-wide text-primary/50 font-bold">{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                   <FormLabel className="text-2xl md:text-3xl font-bold leading-tight text-white block">{label}</FormLabel>
                                   <p className="text-white/70 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                 </div>
@@ -535,7 +544,6 @@ const nextStep = async () => {
                           return (
                             <div key={field} className="space-y-4 md:space-y-6">
                               <div className="space-y-2 md:space-y-3">
-                                <div className="text-xs tracking-wide text-primary/50 font-bold">{dict.pages.projectRequest.form.sidebarSteps[field as keyof typeof dict.pages.projectRequest.form.sidebarSteps]}</div>
                                 <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
                                 <p className="text-white/70 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                               </div>
@@ -617,7 +625,6 @@ const nextStep = async () => {
                           return (
                               <div key={field} className="space-y-4 md:space-y-6 w-full">
                                   <div className="space-y-2 md:space-y-3">
-                                      <div className="text-xs tracking-wide text-primary/50 font-bold">{dict.pages.projectRequest.form.sidebarSteps?.dataInfrastructure || "Infrastructure"}</div>
                                       <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
                                       <p className="text-white/70 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                                   </div>
@@ -720,7 +727,6 @@ const nextStep = async () => {
                           return (
                             <div key={field} className="space-y-5 md:space-y-8">
                               <div className="space-y-2 md:space-y-3">
-                                <div className="text-xs tracking-wide text-primary/50 font-bold">{dict.pages.projectRequest.form.sidebarSteps?.contactDetails || "Contact"}</div>
                                 <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white">{label}</h3>
                                 <p className="text-white/70 text-sm md:text-lg leading-relaxed font-medium">{description}</p>
                               </div>
@@ -730,19 +736,19 @@ const nextStep = async () => {
                                   <FormField control={form.control} name="firstName" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
                                       <FormLabel className="text-xs md:text-sm font-bold text-white/70 block">{dict.pages.projectRequest.form.steps.contact.firstName}</FormLabel>
-                                      <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
+                                      <Input id={f.name} {...f} autoComplete="given-name" className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
                                     </FormItem>
                                   )} />
                                   <FormField control={form.control} name="lastName" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
                                       <FormLabel className="text-xs md:text-sm font-bold text-white/70 block">{dict.pages.projectRequest.form.steps.contact.lastName}</FormLabel>
-                                      <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
+                                      <Input id={f.name} {...f} autoComplete="family-name" className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
                                     </FormItem>
                                   )} />
                                   <FormField control={form.control} name="company" render={({ field: f }) => (
                                     <FormItem className="space-y-1.5">
                                       <FormLabel className="text-xs md:text-sm font-bold text-white/70 block">{dict.pages.projectRequest.form.steps.contact.company}</FormLabel>
-                                      <Input id={f.name} {...f} className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
+                                      <Input id={f.name} {...f} autoComplete="organization" className="bg-white/[0.03] border-white/10 h-11 md:h-14 rounded-xl md:rounded-3xl px-5 md:px-8 focus-visible:ring-primary/40 text-base md:text-lg" />
                                     </FormItem>
                                   )} />
                                   <FormField control={form.control} name="phone" render={({ field: f }) => (

@@ -117,7 +117,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
 
       {/* Content Container (Logo, Navigation, CTA, Language Switcher - ALWAYS visible & interactive) */}
       <div 
-        className="container mx-auto relative flex w-full items-center justify-between h-11 md:h-14 px-4 sm:px-6 max-w-7xl z-10"
+        className="container mx-auto relative flex w-full items-center justify-between h-12 md:h-14 px-4 sm:px-6 max-w-7xl z-10"
       >
         <Link
           href={homePath}
@@ -145,7 +145,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
 
         <div className="flex items-center gap-2 md:gap-4 relative z-10">
           <Magnetic strength={0.1}>
-            <Button asChild size="sm" className="h-8 px-4 rounded-full bg-gradient-to-r from-[#5966ff] to-[#a966ff] hover:from-[#6b77ff] hover:to-[#b57aff] border-none shadow-lg shadow-[#5966ff]/20" onClick={() => sendGA4Event("cta_clicked", { location: "header", text: shareIdeaText })}>
+            <Button asChild size="sm" className="h-11 md:h-8 px-4 rounded-full bg-gradient-to-r from-[#5966ff] to-[#a966ff] hover:from-[#6b77ff] hover:to-[#b57aff] border-none shadow-lg shadow-[#5966ff]/20" onClick={() => sendGA4Event("cta_clicked", { location: "header", text: shareIdeaText })}>
               <Link href={`/${lang}/project-request/`}>
                 <span className="font-bold text-[11px] tracking-wide">{shareIdeaText}</span>
               </Link>
@@ -161,7 +161,7 @@ export default function Header({ lang = "en", dict }: { lang?: string; dict?: Di
             variant="ghost"
             size="sm"
             onClick={() => setMenuOpen(o => !o)}
-            className="md:hidden h-9 w-9 p-0 rounded-full hover:bg-white/10 border-none"
+            className="md:hidden h-11 w-11 p-0 rounded-full hover:bg-white/10 border-none"
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             aria-label={menuOpen ? "Close menu" : "Open menu"}

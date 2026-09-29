@@ -25,8 +25,8 @@ const FaqSection = ({ dict }: { dict: Dictionary }) => {
                 />
 
                 <ScrollReveal delay="duration-700" className="flex">
-                    <div className="relative h-full w-full p-[1px] overflow-hidden rounded-3xl group transition-all duration-500">
-                        <div className="relative h-full w-full bg-card rounded-[calc(1.5rem-1px)] p-5 md:p-10 flex flex-col transition-all duration-300 shadow-2xl border border-white/10 group-hover:border-transparent overflow-hidden">
+                    <div className="relative h-full w-full p-[1px] overflow-hidden rounded-lg group transition-all duration-500">
+                        <div className="relative h-full w-full bg-card rounded-[calc(0.5rem-1px)] p-5 md:p-10 flex flex-col transition-all duration-300 shadow-2xl border border-white/10 group-hover:border-transparent overflow-hidden">
                             <Accordion type="single" collapsible className="w-full">
                                 {dict.pages.home.faq.categories.flatMap((category: { name: string; questions: { question: string; answer: string }[] }, catIndex: number) => 
                                     category.questions.map((item: { question: string; answer: string }, qIndex: number) => (

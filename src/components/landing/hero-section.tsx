@@ -21,6 +21,7 @@ import { TrustedBySection } from "./logo-banner";
 
 export function HeroSection({ dict }: { dict: Dictionary }) {
   const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const pathname = usePathname();
   const lang = pathname?.split("/")[1] || "en";
@@ -29,6 +30,12 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     const timer = setTimeout(() => {
       setIsMounted(true);
     }, 100);
+
+    // Thinner shard spread on mobile (below md breakpoint)
+    const mq = window.matchMedia("(max-width: 767px)");
+    const onMq = () => setIsMobile(mq.matches);
+    onMq();
+    mq.addEventListener("change", onMq);
 
     const handleMouseMove = (e: MouseEvent) => {
       // Only track mouse on devices with a fine pointer (desktop Safari)
@@ -44,6 +51,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
     return () => {
       clearTimeout(timer);
       window.removeEventListener("mousemove", handleMouseMove);
+      mq.removeEventListener("change", onMq);
     };
   }, []);
 
@@ -90,7 +98,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
       />
 
       {/* AeroShards background — fills the hero viewport */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 opacity-60 md:opacity-100">
         <AeroShards
           backgroundColor="#070D1D"
           shardColor="#5966FF"
@@ -102,10 +110,10 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
           flow="ribbon"
           rippleIntensity={0.45}
           holdToGather
-          scale={0.65}
-          spread={0.35}
+          scale={isMobile ? 0.6 : 0.65}
+          spread={isMobile ? 0.22 : 0.35}
           depth={1.1}
-          speed={1.5}
+          speed={isMobile ? 0.9 : 1.5}
           spin={2}
           interaction="attract"
           density={1.15}

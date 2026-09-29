@@ -25,7 +25,7 @@
     },
     "common": {
       "workWithUs": "Plan een gesprek",
-      "shareIdea": "Vertel over je situatie",
+      "shareIdea": "Vertel je situatie",
       "privacyPolicy": "Privacyverklaring",
       "agreeTo": "Ik ga akkoord met de",
       "downloadJson": "Download als JSON",
@@ -87,20 +87,20 @@
         "pillarsTitle": "Werkwijze",
         "pillars": {
           "tech": {
-            "title": "Directe samenwerking",
-            "desc": "Je werkt rechtstreeks met mij. Geen accountmanagers, geen projectmanagers. Korte lijnen, snelle beslissingen."
+            "title": "Technologische expertise",
+            "desc": "Praktische engineering in integraties, cloud en data. De juiste tools voor de klus. Oplossingen die standhouden."
           },
           "optimization": {
-            "title": "Vaste samenwerking",
-            "desc": "Maandelijks retainer van 8 tot 16 uur per week. Doorlopende verbetering van je automatisering, geen eenmalige projecten die daarna stilvallen."
+            "title": "Optimalisatie",
+            "desc": "Je systemen worden steeds beter. Sneller, slanker, betrouwbaarder. Geen eenmalige projecten die stilvallen."
           },
           "freedom": {
-            "title": "Kennisoverdracht",
-            "desc": "Alles wat ik bouw is gedocumenteerd en overdraagbaar. Je bent nooit afhankelijk van mij als persoon."
+            "title": "Vrijheid",
+            "desc": "Alles is gedocumenteerd en overdraagbaar. Jij houdt de controle. Nooit afhankelijk van één persoon."
           },
           "innovation": {
-            "title": "Startup-budget, senior kwaliteit",
-            "desc": "AI-ondersteunde ontwikkeling houdt de kosten laag. Dezelfde kwaliteit als een groot bureau, voor een fractie van de prijs."
+            "title": "Y voor Innovatie",
+            "desc": "AI-ondersteunde ontwikkeling. Seniorniveau tegen startup-kosten. Moderne oplossingen, geen bureauprijs."
           }
         }
       },
